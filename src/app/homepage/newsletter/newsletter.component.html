@@ -4,34 +4,15 @@
       <i class="far fa-envelope"></i>
     </div>
     <div class="hgroup">
-      <h3>Join our Newsletter</h3>
-      <p>
-        Subscribe to stay up to date with the latest Nest updates, features, and
-        videos!
-      </p>
+      <h3>加入我们的时事通讯</h3>
+      <p> 订阅我们的频道，了解最新的Nest更新、功能和视频! </p>
     </div>
     <div class="newsletter-form">
-      <form
-        class="form-wrapper"
-        (submit)="addToNewsletter($event, email.value)"
-      >
-        <input
-          id="newsletter-email"
-          class="form-control"
-          name="email"
-          type="email"
-          placeholder="Email address.."
-          required
-          [disabled]="isDisabled"
-          #email
-        />
-        <button
-          type="submit"
-          class="signup-button"
-          aria-label="Signup to Newsletter"
-          [disabled]="isDisabled"
-          [class.btn-success]="isEmailAdded"
-        >
+      <form class="form-wrapper" (submit)="addToNewsletter($event, email.value)">
+        <input id="newsletter-email" class="form-control" name="email" type="email" placeholder="Email address.."
+          required [disabled]="isDisabled" #email />
+        <button type="submit" class="signup-button" aria-label="Signup to Newsletter" [disabled]="isDisabled"
+          [class.btn-success]="isEmailAdded">
           <i class="far fa-paper-plane"></i>
           <i class="icon-success fas fa-check-circle"></i>
         </button>

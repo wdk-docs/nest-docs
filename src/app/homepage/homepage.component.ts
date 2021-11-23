@@ -134,14 +134,14 @@ export class HomepageComponent implements OnInit, OnDestroy, AfterViewInit {
       return;
     }
     this.contentRef = nativeElement.querySelector('.content');
-    if (this.contentRef && !this.contentRef.querySelector('.carbon-wrapper')) {
-      const scriptTag = this.createCarbonScriptTag();
-      const carbonWrapper = document.createElement('div');
-      carbonWrapper.classList.add('carbon-wrapper');
-      carbonWrapper.prepend(scriptTag);
+    // if (this.contentRef && !this.contentRef.querySelector('.carbon-wrapper')) {
+    //   const scriptTag = this.createCarbonScriptTag();
+    //   const carbonWrapper = document.createElement('div');
+    //   carbonWrapper.classList.add('carbon-wrapper');
+    //   carbonWrapper.prepend(scriptTag);
 
-      this.contentRef.prepend(carbonWrapper);
-    }
+    //   this.contentRef.prepend(carbonWrapper);
+    // }
     this.cd.markForCheck();
   }
 

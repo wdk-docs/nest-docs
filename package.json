@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "prestart": "npm run docs",
-    "start": "ng serve --source-map=false",
+    "start": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --port 6002 --disable-host-check --live-reload",
     "start:watch": "ng serve --source-map=false --watch",
     "prebuild": "npm run docs",
     "build": "ng build --deleteOutputPath=false",
@@ -27,7 +27,7 @@
     "@angular/core": "13.0.2",
     "@angular/flex-layout": "12.0.0-beta.34",
     "@angular/forms": "13.0.2",
-    "@angular/material": "12.1.4",
+    "@angular/material": "13.0.2",
     "@angular/platform-browser": "13.0.2",
     "@angular/platform-browser-dynamic": "13.0.2",
     "@angular/router": "13.0.2",
