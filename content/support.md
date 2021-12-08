@@ -1,13 +1,16 @@
-### Support
+### 支持
 
-Nest is an MIT-licensed open source project with its ongoing development made possible thanks to the support by the community. This framework is a result of the long road, full of sleepless nights, working **after hours**, and busy weekends.
+Nest是MIT授权的开放源码项目，其正在进行的开发得益于社区的支持。 
+这个框架是漫长道路的结果，充满了不眠之夜，工作**后的时间**，和繁忙的周末。
 
-#### How can you help?
+#### 你能帮上什么忙?
 
-Nest doesn't have a large company that sits behind and is continuously paying for hours spent on the development. I fully rely on the **goodness** ❤️ of the people. However, I would love to make this framework even more **powerful**, to be fully focused on delivering you great solutions that make coding process enjoyable: In order to help me, I run few supporting platforms:
+Nest并没有一家大公司在背后支持它，而且它还在不断地为其开发时间付费。 
+我完全依靠人民的**善良**❤️。然而，我想让这个框架更加**强大**，完全专注于为您提供伟大的解决方案，使编码过程变得愉快:为了帮助我，我运行了几个支持平台:
 
-- become a backer or sponsor on [OpenCollective](https://opencollective.com/nest)
-- use [PayPal](https://paypal.me/kamilmysliwiec) to send a one-time donation
-- or reach me directly: [mail@kamilmysliwiec.com](mailto:mail@kamilmysliwiec.com)
+- 成为[OpenCollective](https://opencollective.com/nest)的支持者或赞助商
+- 使用[PayPal](https://paypal.me/kamilmysliwiec)发送一次性捐款
+- 或者直接联系我:[mail@kamilmysliwiec.com](mailto:mail@kamilmysliwiec.com)
 
-If you fell in love with Nest, or you run a business which is using Nest, consider sponsoring its development to ensure that the project which your product relies on is **actively maintained** and improved. Also, your support could help me to work more on content that benefits whole Nest community, writing either educational blog posts or recording videos.
+如果你爱上了Nest，或者你经营着一家使用Nest的企业，考虑赞助它的开发，以确保你的产品所依赖的项目得到**积极的维护**和改进。
+此外，您的支持可以帮助我更多地致力于有益于整个Nest社区的内容，比如撰写教育类博客或录制视频。

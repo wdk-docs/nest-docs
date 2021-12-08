@@ -78,7 +78,7 @@ Since jobs are persisted in Redis, each time a specific named queue is instantia
 
 Each queue can have one or many producers, consumers, and listeners. Consumers retrieve jobs from the queue in a specific order: FIFO (the default), LIFO, or according to priorities. Controlling queue processing order is discussed <a href="techniques/queues#consumers">here</a>.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Named configurations
 

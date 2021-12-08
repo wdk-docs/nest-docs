@@ -1,10 +1,13 @@
 ### Helmet
 
-[Helmet](https://github.com/helmetjs/helmet) can help protect your app from some well-known web vulnerabilities by setting HTTP headers appropriately. Generally, Helmet is just a collection of 14 smaller middleware functions that set security-related HTTP headers (read [more](https://github.com/helmetjs/helmet#how-it-works)).
+[Helmet](https://github.com/helmetjs/helmet)可以通过设置适当的HTTP头来保护你的应用程序免受一些众所周知的web漏洞。
+通常，Helmet只是14个较小的中间件函数的集合，用于设置与安全相关的HTTP头(请阅读[更多](https://github.com/helmetjs/helmet#how-it-works))。
 
-> info **Hint** Note that applying `helmet` as global or registering it must come before other calls to `app.use()` or setup functions that may call `app.use()`. This is due to the way the underlying platform (i.e., Express or Fastify) works, where the order that middleware/routes are defined matters. If you use middleware like `helmet` or `cors` after you define a route, then that middleware will not apply to that route, it will only apply to middleware defined after the route.
+> info **Hint** 注意，将`helmet`应用为全局或注册它必须在其他调用`app.use()`或可能调用`app.use()`的setup函数之前。
+> 这是由于底层平台(即Express或Fastify)的工作方式，其中中间件/路由的定义顺序很重要。 
+> 如果你在定义路由后使用`helmet`或`cors`之类的中间件，那么该中间件将不会应用于该路由，它只会应用于路由后定义的中间件。
 
-#### Use with Express (default)
+#### 与Express一起使用(默认)
 
 Start by installing the required package.
 
@@ -22,7 +25,7 @@ app.use(helmet());
 
 > info **Hint** If you are getting the `This expression is not callable` error while trying to import `Helmet`, you very likely have the `allowSyntheticDefaultImports` and `esModuleInterop` options set to `true` in your project's `tsconfig.json` file. If that's the case, change the import statement to: `import helmet from 'helmet'` instead.
 
-#### Use with Fastify
+#### 使用Fastify
 
 If you are using the `FastifyAdapter`, install the [fastify-helmet](https://github.com/fastify/fastify-helmet) package:
 

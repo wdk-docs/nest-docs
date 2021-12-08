@@ -791,7 +791,7 @@ TypeOrmModule.forRootAsync({
 
 A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/05-sql-typeorm).
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 ### Sequelize Integration
 

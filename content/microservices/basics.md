@@ -185,7 +185,7 @@ async handleUserCreated(data) {
 
 The `handleUserCreated()` **event handler** listens for the `'user_created'` event. The event handler takes a single argument, the `data` passed from the client (in this case, an event payload which has been sent over the network).
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Decorators
 

@@ -1,4 +1,4 @@
-### Authorization
+### 授权
 
 **Authorization** refers to the process that determines what a user is able to do. For example, an administrative user is allowed to create, edit, and delete posts. A non-administrative user is only authorized to read the posts.
 
@@ -6,7 +6,7 @@ Authorization is orthogonal and independent from authentication. However, author
 
 There are many different approaches and strategies to handle authorization. The approach taken for any project depends on its particular application requirements. This chapter presents a few approaches to authorization that can be adapted to a variety of different requirements.
 
-#### Basic RBAC implementation
+#### 基本的RBAC实现
 
 Role-based access control (**RBAC**) is a policy-neutral access-control mechanism defined around roles and privileges. In this section, we'll demonstrate how to implement a very basic RBAC mechanism using Nest [guards](/guards).
 
@@ -142,7 +142,7 @@ When a user with insufficient privileges requests an endpoint, Nest automaticall
 
 > info **Hint** If you want to return a different error response, you should throw your own specific exception instead of returning a boolean value.
 
-#### Claims-based authorization
+#### 声明式授权
 
 When an identity is created it may be assigned one or more claims issued by a trusted party. A claim is a name-value pair that represents what the subject can do, not what the subject is.
 
@@ -166,7 +166,7 @@ create(createCatDto) {
 
 > info **Hint** In the example above, `Permission` (similar to `Role` we have shown in RBAC section) is a TypeScript enum that contains all the permissions available in your system.
 
-#### Integrating CASL
+#### 整合CASL
 
 [CASL](https://casl.js.org/) is an isomorphic authorization library which restricts what resources a given client is allowed to access. It's designed to be incrementally adoptable and can easily scale between a simple claim based and fully featured subject and attribute based authorization.
 
@@ -328,7 +328,7 @@ ability.can(Action.Update, article); // false
 
 As you can see, `Ability` instance allows us to check permissions in pretty readable way. Likewise, `AbilityBuilder` allows us to define permissions (and specify various conditions) in a similar fashion. To find more examples, visit the official documentation.
 
-#### Advanced: Implementing a `PoliciesGuard`
+#### 高级:实现一个 `PoliciesGuard`
 
 In this section, we'll demonstrate how to build a somewhat more sophisticated guard, which checks if a user meets specific **authorization policies** that can be configured on the method-level (you can extend it to respect policies configured on the class-level too). In this example, we are going to use the CASL package just for illustration purposes, but using this library is not required. Also, we will use the `CaslAbilityFactory` provider that we've created in the previous section.
 

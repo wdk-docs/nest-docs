@@ -1,4 +1,4 @@
-### Authentication
+### 身份验证
 
 Authentication is an **essential** part of most applications. There are many different approaches and strategies to handle authentication. The approach taken for any project depends on its particular application requirements. This chapter presents several approaches to authentication that can be adapted to a variety of different requirements.
 
@@ -12,7 +12,7 @@ Passport has a rich ecosystem of [strategies](http://www.passportjs.org/) that i
 
 In this chapter, we'll implement a complete end-to-end authentication solution for a RESTful API server using these powerful and flexible modules. You can use the concepts described here to implement any Passport strategy to customize your authentication scheme. You can follow the steps in this chapter to build this complete example. You can find a repository with a completed sample app [here](https://github.com/nestjs/nest/tree/master/sample/19-auth-jwt).
 
-#### Authentication requirements
+#### 身份验证需求
 
 Let's flesh out our requirements. For this use case, clients will start by authenticating with a username and password. Once authenticated, the server will issue a JWT that can be sent as a [bearer token in an authorization header](https://tools.ietf.org/html/rfc6750) on subsequent requests to prove authentication. We'll also create a protected route that is accessible only to requests that contain a valid JWT.
 
@@ -27,7 +27,7 @@ $ npm install --save-dev @types/passport-local
 
 > warning **Notice** For **any** Passport strategy you choose, you'll always need the `@nestjs/passport` and `passport` packages. Then, you'll need to install the strategy-specific package (e.g., `passport-jwt` or `passport-local`) that implements the particular authentication strategy you are building. In addition, you can also install the type definitions for any Passport strategy, as shown above with `@types/passport-local`, which provides assistance while writing TypeScript code.
 
-#### Implementing Passport strategies
+#### 执行认证策略
 
 We're now ready to implement the authentication feature. We'll start with an overview of the process used for **any** Passport strategy. It's helpful to think of Passport as a mini framework in itself. The elegance of the framework is that it abstracts the authentication process into a few basic steps that you customize based on the strategy you're implementing. It's like a framework because you configure it by supplying customization parameters (as plain JSON objects) and custom code in the form of callback functions, which Passport calls at the appropriate time. The `@nestjs/passport` module wraps this framework in a Nest style package, making it easy to integrate into a Nest application. We'll use `@nestjs/passport` below, but first let's consider how **vanilla Passport** works.
 
@@ -198,7 +198,7 @@ import { UsersModule } from '../users/users.module';
 export class AuthModule {}
 ```
 
-#### Implementing Passport local
+#### 执行本地认证
 
 Now we can implement our Passport **local authentication strategy**. Create a file called `local.strategy.ts` in the `auth` folder, and add the following code:
 
@@ -286,7 +286,7 @@ import { LocalStrategy } from './local.strategy';
 export class AuthModule {}
 ```
 
-#### Built-in Passport Guards
+#### 内置的认证守卫
 
 The <a href="guards">Guards</a> chapter describes the primary function of Guards: to determine whether a request will be handled by the route handler or not. That remains true, and we'll use that standard capability soon. However, in the context of using the `@nestjs/passport` module, we will also introduce a slight new wrinkle that may at first be confusing, so let's discuss that now. Consider that your app can exist in two states, from an authentication perspective:
 
@@ -305,7 +305,7 @@ The second case enumerated above (logged in user) simply relies on the standard 
 
 <app-banner-courses></app-banner-courses>
 
-#### Login route
+#### 登录路由
 
 With the strategy in place, we can now implement a bare-bones `/auth/login` route, and apply the built-in Guard to initiate the passport-local flow.
 
@@ -372,9 +372,9 @@ async login(@Request() req) {
 }
 ```
 
-#### JWT functionality
+#### JWT 功能
 
-We're ready to move on to the JWT portion of our auth system. Let's review and refine our requirements:
+我们已经准备好转移到身份验证系统的JWT部分。让我们回顾和完善我们的要求:
 
 - Allow users to authenticate with username/password, returning a JWT for use in subsequent calls to protected API endpoints. We're well on our way to meeting this requirement. To complete it, we'll need to write the code that issues a JWT.
 - Create API routes which are protected based on the presence of a valid JWT as a bearer token
@@ -573,7 +573,7 @@ $ # result -> {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}
 $ # Note: above JWT truncated
 ```
 
-#### Implementing Passport JWT
+#### 实施认证WT
 
 We can now address our final requirement: protecting endpoints by requiring a valid JWT be present on the request. Passport can help us here too. It provides the [passport-jwt](https://github.com/mikenicholson/passport-jwt) strategy for securing RESTful endpoints with JSON Web Tokens. Start by creating a file called `jwt.strategy.ts` in the `auth` folder, and add the following code:
 
@@ -696,7 +696,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class JwtAuthGuard extends AuthGuard('jwt') {}
 ```
 
-#### Implement protected route and JWT strategy guards
+#### 实施保护路由和JWT策略守卫
 
 We can now implement our protected route and its associated Guard.
 
@@ -776,11 +776,11 @@ Note that in the `AuthModule`, we configured the JWT to have an expiration of `6
 
 We've now completed our JWT authentication implementation. JavaScript clients (such as Angular/React/Vue), and other JavaScript apps, can now authenticate and communicate securely with our API Server. 
 
-#### Example
+#### 示例
 
 You can find a complete version of the code in this chapter [here](https://github.com/nestjs/nest/tree/master/sample/19-auth-jwt).
 
-#### Extending guards
+#### 扩展守卫
 
 In most cases, using a provided `AuthGuard` class is sufficient. However, there might be use-cases when you would like to simply extend the default error handling or authentication logic. For this, you can extend the built-in class and override methods within a sub-class.
 
@@ -816,7 +816,7 @@ In addition to extending the default error handling and authentication logic, we
 export class JwtAuthGuard extends AuthGuard(['strategy_jwt_1', 'strategy_jwt_2', '...']) { ... }
 ```
 
-#### Enable authentication globally
+#### 使全局认证
 
 If the vast majority of your endpoints should be protected by default, you can register the authentication guard as a [global guard](/guards#binding-guards) and instead of using `@UseGuards()` decorator on top of each controller, you could simply flag which routes should be public.
 
@@ -876,7 +876,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 }
 ```
 
-#### Request-scoped strategies
+#### 请求范围内的策略
 
 The passport API is based on registering strategies to the global instance of the library. Therefore strategies are not designed to have request-dependent options or to be dynamically instantiated per request (read more about the [request-scoped](/fundamentals/injection-scopes) providers). When you configure your strategy to be request-scoped, Nest will never instantiate it since it's not tied to any specific route. There is no physical way to determine which "request-scoped" strategies should be executed per request.
 
@@ -915,7 +915,7 @@ async validate(
 
 In the example above, the `resolve()` method will asynchronously return the request-scoped instance of the `AuthService` provider (we assumed that `AuthService` is marked as a request-scoped provider).
 
-#### Customize Passport
+#### 定制的 Passport
 
 Any standard Passport customization options can be passed the same way, using the `register()` method. The available options depend on the strategy being implemented. For example:
 
@@ -937,7 +937,7 @@ constructor(private authService: AuthService) {
 
 Take a look at the official [Passport Website](http://www.passportjs.org/docs/oauth/) for property names.
 
-#### Named strategies
+#### 命名策略
 
 When implementing a strategy, you can provide a name for it by passing a second argument to the `PassportStrategy` function. If you don't do this, each strategy will have a default name (e.g., 'jwt' for jwt-strategy):
 

@@ -348,7 +348,7 @@ Nest supports GRPC stream handlers in two possible ways:
 - RxJS `Subject` + `Observable` handler: can be useful to write responses right inside of a Controller method or to be passed down to `Subject`/`Observable` consumer
 - Pure GRPC call stream handler: can be useful to be passed to some executor which will handle the rest of dispatch for the Node standard `Duplex` stream handler.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Streaming sample
 

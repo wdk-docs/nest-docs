@@ -1,14 +1,14 @@
-### Exception filters
+### 异常过滤器
 
-The only difference between the HTTP [exception filter](/exception-filters) layer and the corresponding web sockets layer is that instead of throwing `HttpException`, you should use `WsException`.
+HTTP[异常过滤器](/exception-filters)层和相应的web套接字层之间的唯一区别是，你应该使用`WsException`而不是抛出`HttpException`。
 
 ```typescript
 throw new WsException('Invalid credentials.');
 ```
 
-> info **Hint** The `WsException` class is imported from the `@nestjs/websockets` package.
+> info **Hint** `WsException`类是从`@nestjs/websockets`包中导入的。
 
-With the sample above, Nest will handle the thrown exception and emit the `exception` message with the following structure:
+在上面的示例中，Nest将处理抛出的异常，并使用以下结构发出`exception`消息:
 
 ```typescript
 {
@@ -17,9 +17,11 @@ With the sample above, Nest will handle the thrown exception and emit the `excep
 }
 ```
 
-#### Filters
+#### 过滤器
 
-Web sockets exception filters behave equivalently to HTTP exception filters. The following example uses a manually instantiated method-scoped filter. Just as with HTTP based applications, you can also use gateway-scoped filters (i.e., prefix the gateway class with a `@UseFilters()` decorator).
+Web套接字异常过滤器的行为等同于HTTP异常过滤器。
+下面的示例使用手动实例化的method-scoped过滤器。
+就像基于HTTP的应用程序一样，你也可以使用gateway-scoped的过滤器(例如，在网关类的前缀加上一个`@UseFilters()`装饰器)。
 
 ```typescript
 @UseFilters(new WsExceptionFilter())
@@ -30,7 +32,7 @@ onEvent(client, data: any): WsResponse<any> {
 }
 ```
 
-#### Inheritance
+#### 继承
 
 Typically, you'll create fully customized exception filters crafted to fulfill your application requirements. However, there might be use-cases when you would like to simply extend the **core exception filter**, and override the behavior based on certain factors.
 

@@ -186,7 +186,7 @@ handleInterval() {}
 
 The <a href="techniques/task-scheduling#dynamic-intervals">Dynamic API</a> also enables **creating** dynamic intervals, where the interval's properties are defined at runtime, and **listing and deleting** them.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Declarative timeouts
 

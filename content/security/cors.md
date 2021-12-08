@@ -2,7 +2,7 @@
 
 Cross-origin resource sharing (CORS) is a mechanism that allows resources to be requested from another domain. Under the hood, Nest makes use of the Express [cors](https://github.com/expressjs/cors) package. This package provides various options that you can customize based on your requirements.
 
-#### Getting started
+#### 入门
 
 To enable CORS, call the `enableCors()` method on the Nest application object.
 

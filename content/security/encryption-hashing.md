@@ -1,10 +1,10 @@
-### Encryption and Hashing
+### 加密和散列
 
 **Encryption** is the process of encoding information. This process converts the original representation of the information, known as plaintext, into an alternative form known as ciphertext. Ideally, only authorized parties can decipher a ciphertext back to plaintext and access the original information. Encryption does not itself prevent interference but denies the intelligible content to a would-be interceptor. Encryption is a two-way function; what is encrypted can be decrypted with the proper key.
 
 **Hashing** is the process of converting a given key into another value. A hash function is used to generate the new value according to a mathematical algorithm. Once hashing has been done, it should be impossible to go from the output to the input.
 
-#### Encryption
+#### 加密
 
 Node.js provides a built-in [crypto module](https://nodejs.org/api/crypto.html) that you can use to encrypt and decrypt strings, numbers, buffers, streams, and more. Nest itself does not provide any additional package on top of this module to avoid introducing unnecessary abstractions.
 
@@ -41,7 +41,7 @@ const decryptedText = Buffer.concat([
 ]);
 ```
 
-#### Hashing
+#### 哈希
 
 For hashing, we recommend using either the [bcrypt](https://www.npmjs.com/package/bcrypt) or [argon2](https://www.npmjs.com/package/argon2) packages. Nest itself does not provide any additional wrappers on top of these modules to avoid introducing unnecessary abstractions (making the learning curve short).
 

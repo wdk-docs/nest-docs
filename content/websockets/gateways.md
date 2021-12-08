@@ -188,7 +188,9 @@ socket.on('events', (data) => console.log(data));
 
 #### 异步响应
 
-Message handlers are able to respond either synchronously or **asynchronously**. Hence, `async` methods are supported. A message handler is also able to return an `Observable`, in which case the result values will be emitted until the stream is completed.
+消息处理程序能够同步响应或**异步响应**。
+因此，支持`async`方法。 
+消息处理程序还可以返回一个`Observable`，在这种情况下，结果值将一直发出，直到流完成。
 
 ```typescript
 @@filename(events.gateway)
@@ -214,11 +216,11 @@ onEvent(data) {
 }
 ```
 
-In the example above, the message handler will respond **3 times** (with each item from the array).
+在上面的例子中，消息处理程序将响应**3次**(对于数组中的每个项)。
 
 #### 生命周期的钩子
 
-There are 3 useful lifecycle hooks available. All of them have corresponding interfaces and are described in the following table:
+有3个有用的生命周期钩子可用。它们都有相应的接口，下表对此进行了描述:
 
 <table>
   <tr>
@@ -226,8 +228,8 @@ There are 3 useful lifecycle hooks available. All of them have corresponding int
       <code>OnGatewayInit</code>
     </td>
     <td>
-      Forces to implement the <code>afterInit()</code> method. Takes library-specific server instance as an argument (and
-      spreads the rest if required).
+      强制实现<code>afterInit()</code>方法。 
+      将特定于库的服务器实例作为参数(并在需要时传播其他参数)。
     </td>
   </tr>
   <tr>
@@ -235,8 +237,8 @@ There are 3 useful lifecycle hooks available. All of them have corresponding int
       <code>OnGatewayConnection</code>
     </td>
     <td>
-      Forces to implement the <code>handleConnection()</code> method. Takes library-specific client socket instance as
-      an argument.
+      强制实现<code>handleConnection()</code>方法. 
+      将特定于库的客户机套接字实例作为参数。
     </td>
   </tr>
   <tr>
@@ -244,29 +246,31 @@ There are 3 useful lifecycle hooks available. All of them have corresponding int
       <code>OnGatewayDisconnect</code>
     </td>
     <td>
-      Forces to implement the <code>handleDisconnect()</code> method. Takes library-specific client socket instance as
-      an argument.
+      强制实现<code>handleDisconnect()</code>方法. 
+      将特定于库的客户机套接字实例作为参数。
     </td>
   </tr>
 </table>
 
-> info **Hint** Each lifecycle interface is exposed from `@nestjs/websockets` package.
+> info **Hint** 每个生命周期接口都是从`@nestjs/websockets`包中公开的。
 
 #### 服务器
 
-Occasionally, you may want to have a direct access to the native, **platform-specific** server instance. The reference to this object is passed as an argument to the `afterInit()` method (`OnGatewayInit` interface). Another option is to use the `@WebSocketServer()` decorator.
+有时候，你可能想直接接触本地， **特定于平台**的服务器实例. 
+对该对象的引用作为参数传递给`afterInit()`方法(`OnGatewayInit`接口)。 
+另一个选项是使用`@WebSocketServer()`装饰器。
 
 ```typescript
 @WebSocketServer()
 server: Server;
 ```
 
-> warning **Notice** The `@WebSocketServer()` decorator is imported from the `@nestjs/websockets` package.
+> warning **Notice** `@WebSocketServer()`装饰器是从`@nestjs/websockets`包中导入的。
 
-Nest will automatically assign the server instance to this property once it is ready to use.
+一旦服务器实例准备好使用，Nest将自动将其分配给该属性。
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### 例子
 
-A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/02-gateways).
+一个可用的示例[在这里](https://github.com/nestjs/nest/tree/master/sample/02-gateways).

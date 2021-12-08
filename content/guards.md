@@ -49,7 +49,7 @@ Every guard must implement a `canActivate()` function. This function should retu
 - if it returns `true`, the request will be processed.
 - if it returns `false`, Nest will deny the request.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Execution context
 

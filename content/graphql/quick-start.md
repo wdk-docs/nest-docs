@@ -61,7 +61,7 @@ export class AppModule {}
 
 As mentioned, these options will be forwarded to the `ApolloServer` constructor.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### GraphQL playground
 

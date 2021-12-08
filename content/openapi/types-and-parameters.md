@@ -73,7 +73,7 @@ names: string[];
 
 Either include the type as the first element of an array (as shown above) or set the `isArray` property to `true`.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Circular dependencies
 

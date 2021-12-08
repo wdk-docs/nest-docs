@@ -126,7 +126,7 @@ const className = ctx.getClass().name; // "CatsController"
 
 The ability to access references to both the current class and handler method provides great flexibility. Most importantly, it gives us the opportunity to access the metadata set through the `@SetMetadata()` decorator from within guards or interceptors. We cover this use case below.
 
-<app-banner-enterprise></app-banner-enterprise>
+
 
 #### Reflection and metadata
 

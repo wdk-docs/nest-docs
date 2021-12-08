@@ -1,6 +1,7 @@
-### Rate Limiting
+### 速度限制
 
-A common technique to protect applications from brute-force attacks is **rate-limiting**. To get started, you'll need to install the `@nestjs/throttler` package.
+保护应用程序免受蛮力攻击的一种常见技术是限速。 
+首先，你需要安装`@nestjs/throttler`包。
 
 ```bash
 $ npm i --save @nestjs/throttler
@@ -31,13 +32,13 @@ Once the module has been imported, you can then choose how you would like to bin
 }
 ```
 
-#### Customization
+#### 定制
 
 There may be a time where you want to bind the guard to a controller or globally, but want to disable rate limiting for one or more of your endpoints. For that, you can use the `@SkipThrottle()` decorator, to negate the throttler for an entire class or a single route. The `@SkipThrottle()` decorator can also take in a boolean for if there is a case where you want to exclude _most_ of a controller, but not every route.
 
 There is also the `@Throttle()` decorator which can be used to override the `limit` and `ttl` set in the global module, to give tighter or looser security options. This decorator can be used on a class or a function as well. The order for this decorator does matter, as the arguments are in the order of `limit, ttl`.
 
-#### Proxies
+#### 代理
 
 If your application runs behind a proxy server, check the specific HTTP adapter options ([express](http://expressjs.com/en/guide/behind-proxies.html) and [fastify](https://www.fastify.io/docs/latest/Server/#trustproxy)) for the `trust proxy` option and enable it. Doing so will allow you to get the original IP address from the `X-Forward-For` header, and you can override the `getTracker()` method to pull the value from the header rather than from `req.ip`. The following example works with both express and fastify:
 
@@ -105,7 +106,7 @@ export class GqlThrottlerGuard extends ThrottlerGuard {
 }
 ```
 
-#### Configuration
+#### 配置
 
 The following options are valid for the `ThrottlerModule`:
 
@@ -128,7 +129,7 @@ The following options are valid for the `ThrottlerModule`:
   </tr>
 </table>
 
-#### Async Configuration
+#### 异步配置
 
 You may want to get your rate-limiting configuration asynchronously instead of synchronously. You can use the `forRootAsync()` method, which allows for dependency injection and `async` methods.
 
@@ -166,7 +167,7 @@ export class AppModule {}
 
 This is doable, as long as `ThrottlerConfigService` implements the interface `ThrottlerOptionsFactory`.
 
-#### Storages
+#### 存储
 
 The built in storage is an in memory cache that keeps track of the requests made until they have passed the TTL set by the global options. You can drop in your own storage option to the `storage` option of the `ThrottlerModule` so long as the class implements the `ThrottlerStorage` interface.
 
