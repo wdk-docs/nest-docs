@@ -13,32 +13,32 @@ const routes: Routes = [
   {
     path: 'gateways',
     component: GatewaysComponent,
-    data: { title: 'Gateways' },
+    data: { title: '网关' },
   },
   {
     path: 'pipes',
     component: WsPipesComponent,
-    data: { title: 'Pipes - Gateways' },
+    data: { title: '管道 - 网关' },
   },
   {
     path: 'exception-filters',
     component: WsExceptionFiltersComponent,
-    data: { title: 'Exception Filters - Gateways' },
+    data: { title: '异常过滤器-网关' },
   },
   {
     path: 'guards',
     component: WsGuardsComponent,
-    data: { title: 'Guards - Gateways' },
+    data: { title: '警卫 - 网关' },
   },
   {
     path: 'interceptors',
     component: WsInterceptorsComponent,
-    data: { title: 'Interceptors - Gateways' },
+    data: { title: '拦截器 - 网关' },
   },
   {
     path: 'adapter',
     component: AdapterComponent,
-    data: { title: 'Adapter - Gateways' },
+    data: { title: '适配器 - 网关' },
   },
 ];
 

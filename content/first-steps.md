@@ -1,18 +1,18 @@
-### First steps
+### 第一步
 
 In this set of articles, you'll learn the **core fundamentals** of Nest. To get familiar with the essential building blocks of Nest applications, we'll build a basic CRUD application with features that cover a lot of ground at an introductory level.
 
-#### Language
+#### 语言
 
 We're in love with [TypeScript](https://www.typescriptlang.org/), but above all - we love [Node.js](https://nodejs.org/en/). That's why Nest is compatible with both TypeScript and **pure JavaScript**. Nest takes advantage of the latest language features, so to use it with vanilla JavaScript we need a [Babel](https://babeljs.io/) compiler.
 
 We'll mostly use TypeScript in the examples we provide, but you can always **switch the code snippets** to vanilla JavaScript syntax (simply click to toggle the language button in the upper right hand corner of each snippet).
 
-#### Prerequisites
+#### 需求
 
 Please make sure that [Node.js](https://nodejs.org/) (>= 10.13.0, except for v13) is installed on your operating system.
 
-#### Setup
+#### 配置
 
 Setting up a new project is quite simple with the [Nest CLI](/cli/overview). With [npm](https://www.npmjs.com/) installed, you can create a new Nest project with the following commands in your OS terminal:
 
@@ -74,7 +74,7 @@ Note that a project scaffolded with the Nest CLI creates an initial project stru
 
 <app-banner-courses></app-banner-courses>
 
-#### Platform
+#### 平台
 
 Nest aims to be a platform-agnostic framework. Platform independence makes it possible to create reusable logical parts that developers can take advantage of across several different types of applications. Technically, Nest is able to work with any Node HTTP framework once an adapter is created. There are two HTTP platforms supported out-of-the-box: [express](https://expressjs.com/) and [fastify](https://www.fastify.io). You can choose the one that best suits your needs.
 
@@ -91,7 +91,7 @@ When you pass a type to the `NestFactory.create()` method, as in the example bel
 const app = await NestFactory.create<NestExpressApplication>(AppModule);
 ```
 
-#### Running the application
+#### 运行应用
 
 Once the installation process is complete, you can run the following command at your OS command prompt to start the application listening for inbound HTTP requests:
 

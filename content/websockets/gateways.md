@@ -1,16 +1,24 @@
-### Gateways
+### 网关
 
-Most of the concepts discussed elsewhere in this documentation, such as dependency injection, decorators, exception filters, pipes, guards and interceptors, apply equally to gateways. Wherever possible, Nest abstracts implementation details so that the same components can run across HTTP-based platforms, WebSockets, and Microservices. This section covers the aspects of Nest that are specific to WebSockets.
+本文档中讨论的大多数概念，如依赖注入、装饰器、异常过滤器、管道、守卫和拦截器，都同样适用于网关。
+只要有可能，Nest会抽象实现细节，这样相同的组件就可以在基于http的平台、WebSockets和Microservices上运行。
+本节将介绍Nest特有的WebSockets方面。
 
-In Nest, a gateway is simply a class annotated with `@WebSocketGateway()` decorator. Technically, gateways are platform-agnostic which makes them compatible with any WebSockets library once an adapter is created. There are two WS platforms supported out-of-the-box: [socket.io](https://github.com/socketio/socket.io) and [ws](https://github.com/websockets/ws). You can choose the one that best suits your needs. Also, you can build your own adapter by following this [guide](/websockets/adapter).
+在Nest中，网关只是一个带有`@WebSocketGateway()`装饰器注释的类。 
+从技术上讲，网关是平台无关的，这使得一旦创建了适配器，网关就与任何WebSockets库兼容。
+有两个现成的WS平台受支持:[socket.io](https://github.com/socketio/socket.io)和[ws](https://github.com/websockets/ws)。 
+您可以选择最适合您需要的。 
+同样，您可以通过以下[指南](/websockets/adapter)构建自己的适配器.
 
 <figure><img src="/assets/Gateways_1.png" /></figure>
 
-> info **Hint** Gateways can be treated as [providers](/providers); this means they can inject dependencies through the class constructor. Also, gateways can be injected by other classes (providers and controllers) as well.
+> info **Hint** 网关可以被视为[providers](/providers); 
+> 这意味着它们可以通过类构造函数注入依赖项。
+> 另外，网关也可以被其他类(提供程序和控制器)注入。
 
-#### Installation
+#### 安装
 
-To start building WebSockets-based applications, first install the required package:
+要开始构建基于websocket的应用程序，首先要安装所需的包:
 
 ```bash
 @@filename()
@@ -19,23 +27,26 @@ $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 ```
 
-#### Overview
+#### 概述
 
-In general, each gateway is listening on the same port as the **HTTP server**, unless your app is not a web application, or you have changed the port manually. This default behavior can be modified by passing an argument to the `@WebSocketGateway(80)` decorator where `80` is a chosen port number. You can also set a [namespace](https://socket.io/docs/rooms-and-namespaces/) used by the gateway using the following construction:
+通常情况下，每个网关都在同一个端口上监听**HTTP服务器**，除非你的应用不是web应用，或者你已经手动更改了端口。 
+这个默认行为可以通过传递一个参数给`@WebSocketGateway(80)`装饰器来修改，其中`80`是选定的端口号。 
+您还可以使用以下结构设置网关使用的[namespace](https://socket.io/docs/rooms-and-namespaces/):
 
 ```typescript
 @WebSocketGateway(80, { namespace: 'events' })
 ```
 
-> warning **Warning** Gateways are not instantiated until they are referenced in the providers array of an existing module.
+> warning **Warning** 网关只有在现有模块的提供者数组中引用它们时才被实例化。
 
-You can pass any supported [option](https://socket.io/docs/v4/server-options/) to the socket constructor with the second argument to the `@WebSocketGateway()` decorator, as shown below:
+您可以将任何受支持的[选项](https://socket.io/docs/v4/server-options/)传递给套接字构造函数，并将第二个参数传递给`@WebSocketGateway()`装饰器，如下所示:
 
 ```typescript
 @WebSocketGateway(81, { transports: ['websocket'] })
 ```
 
-The gateway is now listening, but we have not yet subscribed to any incoming messages. Let's create a handler that will subscribe to the `events` messages and respond to the user with the exact same data.
+网关现在正在收听，但是我们还没有订阅任何传入的消息。
+让我们创建一个处理程序，它将订阅`events`消息并以完全相同的数据响应用户。
 
 ```typescript
 @@filename(events.gateway)
@@ -51,9 +62,9 @@ handleEvent(data) {
 }
 ```
 
-> info **Hint** `@SubscribeMessage()` and `@MessageBody()` decorators are imported from `@nestjs/websockets` package.
+> info **Hint** `@SubscribeMessage()`和`@MessageBody()`装饰器是从`@nestjs/websockets`包中导入的.
 
-Once the gateway is created, we can register it in our module.
+一旦创建了网关，我们就可以在我们的模块中注册它。
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -66,7 +77,7 @@ import { EventsGateway } from './events.gateway';
 export class EventsModule {}
 ```
 
-You can also pass in a property key to the decorator to extract it from the incoming message body:
+您还可以向decorator传递一个属性键，以从传入的消息体中提取它:
 
 ```typescript
 @@filename(events.gateway)
@@ -84,7 +95,7 @@ handleEvent(id) {
 }
 ```
 
-If you would prefer not to use decorators, the following code is functionally equivalent:
+如果不喜欢使用装饰器，下面的代码在功能上是等价的:
 
 ```typescript
 @@filename(events.gateway)
@@ -99,9 +110,13 @@ handleEvent(client, data) {
 }
 ```
 
-In the example above, the `handleEvent()` function takes two arguments. The first one is a platform-specific [socket instance](https://socket.io/docs/server-api/#socket), while the second one is the data received from the client. This approach is not recommended though, because it requires mocking the `socket` instance in each unit test.
+在上面的例子中，`handleEvent()`函数接受两个参数。 
+第一个是平台特定的[套接字实例](https://socket.io/docs/server-api/#socket)，而第二个是从客户端接收的数据。 
+但是不推荐这种方法，因为它需要在每个单元测试中模拟`socket`实例。
 
-Once the `events` message is received, the handler sends an acknowledgment with the same data that was sent over the network. In addition, it's possible to emit messages using a library-specific approach, for example, by making use of `client.emit()` method. In order to access a connected socket instance, use `@ConnectedSocket()` decorator.
+一旦接收到`events` 消息，处理程序发送一个确认与通过网络发送的数据相同。 
+此外，还可以使用特定于库的方法发出消息，例如，通过使用`client.emit()`方法。 
+为了访问一个已连接的套接字实例，使用`@ConnectedSocket()`装饰器。
 
 ```typescript
 @@filename(events.gateway)
@@ -122,23 +137,28 @@ handleEvent(data, client) {
 
 > info **Hint** `@ConnectedSocket()` decorator is imported from `@nestjs/websockets` package.
 
-However, in this case, you won't be able to leverage interceptors. If you don't want to respond to the user, you can simple skip the `return` statement (or explicitly return "falsy" value, e.g. `undefined`).
+然而，在这种情况下，您将无法利用拦截器。
+如果你不想响应用户，你可以简单地跳过`return`语句(或者显式地返回"falsy"值，例如s`undefined`)。
 
-Now when a client emits the message as follows:
+现在，当客户机发出如下消息时:
 
 ```typescript
 socket.emit('events', { name: 'Nest' });
 ```
 
-The `handleEvent()` method will be executed. In order to listen for messages emitted from within the above handler, the client has to attach a corresponding acknowledgment listener:
+`handleEvent()`方法将被执行。 
+为了监听从上面的处理程序中发出的消息，客户端必须附加一个相应的确认监听器:
 
 ```typescript
 socket.emit('events', { name: 'Nest' }, (data) => console.log(data));
 ```
 
-#### Multiple responses
+#### 多个响应
 
-The acknowledgment is dispatched only once. Furthermore, it is not supported by native WebSockets implementation. To solve this limitation, you may return an object which consist of two properties. The `event` which is a name of the emitted event and the `data` that has to be forwarded to the client.
+确认只被发送一次。  
+此外，原生WebSockets实现也不支持它。
+为了解决这个限制，你可以返回一个包含两个属性的对象。 
+`event`是发出事件的名称，以及必须转发给客户端的`data`。
 
 ```typescript
 @@filename(events.gateway)
@@ -166,7 +186,7 @@ In order to listen for the incoming response(s), the client has to apply another
 socket.on('events', (data) => console.log(data));
 ```
 
-#### Asynchronous responses
+#### 异步响应
 
 Message handlers are able to respond either synchronously or **asynchronously**. Hence, `async` methods are supported. A message handler is also able to return an `Observable`, in which case the result values will be emitted until the stream is completed.
 
@@ -196,7 +216,7 @@ onEvent(data) {
 
 In the example above, the message handler will respond **3 times** (with each item from the array).
 
-#### Lifecycle hooks
+#### 生命周期的钩子
 
 There are 3 useful lifecycle hooks available. All of them have corresponding interfaces and are described in the following table:
 
@@ -232,7 +252,7 @@ There are 3 useful lifecycle hooks available. All of them have corresponding int
 
 > info **Hint** Each lifecycle interface is exposed from `@nestjs/websockets` package.
 
-#### Server
+#### 服务器
 
 Occasionally, you may want to have a direct access to the native, **platform-specific** server instance. The reference to this object is passed as an argument to the `afterInit()` method (`OnGatewayInit` interface). Another option is to use the `@WebSocketServer()` decorator.
 
@@ -247,6 +267,6 @@ Nest will automatically assign the server instance to this property once it is r
 
 <app-banner-enterprise></app-banner-enterprise>
 
-#### Example
+#### 例子
 
 A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/02-gateways).

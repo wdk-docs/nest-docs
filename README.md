@@ -27,7 +27,9 @@
 
 ## Description
 
-This project is built on top of the [Angular CLI](https://github.com/angular/angular-cli). It uses the [Dgeni documentation generator](https://github.com/angular/dgeni) to compile source documentation in markdown format into the published format. The Repository contains [docs.nestjs.com](https://docs.nestjs.com) source code, the official Nest documentation.
+This project is built on top of the [Angular CLI](https://github.com/angular/angular-cli). 
+It uses the [Dgeni documentation generator](https://github.com/angular/dgeni) to compile source documentation in markdown format into the published format. 
+The Repository contains [docs.nestjs.com](https://docs.nestjs.com) source code, the official Nest documentation.
 
 ## Installing
 

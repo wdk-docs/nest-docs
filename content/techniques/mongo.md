@@ -23,7 +23,7 @@ export class AppModule {}
 
 The `forRoot()` method accepts the same configuration object as `mongoose.connect()` from the Mongoose package, as described [here](https://mongoosejs.com/docs/connections.html).
 
-#### Model injection
+#### 模型注入
 
 With Mongoose, everything is derived from a [Schema](http://mongoosejs.com/docs/guide.html). Each schema maps to a MongoDB collection and defines the shape of the documents within that collection. Schemas are used to define [Models](https://mongoosejs.com/docs/models.html). Models are responsible for creating and reading documents from the underlying MongoDB database.
 
@@ -178,7 +178,7 @@ export class CatsService {
 }
 ```
 
-#### Connection
+#### 连接
 
 At times you may need to access the native [Mongoose Connection](https://mongoosejs.com/docs/api.html#Connection) object. For example, you may want to make native API calls on the connection object. You can inject the Mongoose Connection by using the `@InjectConnection()` decorator as follows:
 
@@ -193,7 +193,7 @@ export class CatsService {
 }
 ```
 
-#### Multiple databases
+#### 多库
 
 Some projects require multiple database connections. This can also be achieved with this module. To work with multiple connections, first create the connections. In this case, connection naming becomes **mandatory**.
 
@@ -253,7 +253,7 @@ To inject a given `Connection` to a custom provider (for example, factory provid
 }
 ```
 
-#### Hooks (middleware)
+#### 钩子 (中间件)
 
 Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. Middleware is specified on the schema level and is useful for writing plugins ([source](https://mongoosejs.com/docs/middleware.html)). Calling `pre()` or `post()` after compiling a model does not work in Mongoose. To register a hook **before** model registration, use the `forFeatureAsync()` method of the `MongooseModule` along with a factory provider (i.e., `useFactory`). With this technique, you can access a schema object, then use the `pre()` or `post()` method to register a hook on that schema. See example below:
 
@@ -301,7 +301,7 @@ Like other [factory providers](https://docs.nestjs.com/fundamentals/custom-provi
 export class AppModule {}
 ```
 
-#### Plugins
+#### 插件
 
 To register a [plugin](https://mongoosejs.com/docs/plugins.html) for a given schema, use the `forFeatureAsync()` method.
 
@@ -343,7 +343,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 export class AppModule {}
 ```
 
-#### Discriminators
+#### 鉴别器
 
 [Discriminators](https://mongoosejs.com/docs/discriminators.html) are a schema inheritance mechanism. They enable you to have multiple models with overlapping schemas on top of the same underlying MongoDB collection.
 
@@ -428,7 +428,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 export class EventsModule {}
 ```
 
-#### Testing
+#### 测试
 
 When unit testing an application, we usually want to avoid any database connection, making our test suites simpler to set up and faster to execute. But our classes might depend on models that are pulled from the connection instance. How do we resolve these classes? The solution is to create mock models.
 
@@ -451,7 +451,7 @@ In this example, a hardcoded `catModel` (object instance) will be provided whene
 
 <app-banner-courses></app-banner-courses>
 
-#### Async configuration
+#### 异步配置
 
 When you need to pass module options asynchronously instead of statically, use the `forRootAsync()` method. As with most dynamic modules, Nest provides several techniques to deal with async configuration.
 
@@ -507,6 +507,6 @@ MongooseModule.forRootAsync({
 });
 ```
 
-#### Example
+#### 例子
 
-A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/06-mongoose).
+(https://github.com/nestjs/nest/tree/master/sample/06-mongoose).

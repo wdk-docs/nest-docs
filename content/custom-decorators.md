@@ -1,4 +1,4 @@
-### Custom route decorators
+### 自定义路由修饰符
 
 Nest is built around a language feature called **decorators**. Decorators are a well-known concept in a lot of commonly used programming languages, but in the JavaScript world, they're still relatively new. In order to better understand how decorators work, we recommend reading [this article](https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841). Here's a simple definition:
 
@@ -8,7 +8,7 @@ Nest is built around a language feature called **decorators**. Decorators are a 
   you are trying to decorate. Decorators can be defined for either a class, a method or a property.
 </blockquote>
 
-#### Param decorators
+#### Param 修饰符
 
 Nest provides a set of useful **param decorators** that you can use together with the HTTP route handlers. Below is a list of the provided decorators and the plain Express (or Fastify) objects they represent
 
@@ -95,7 +95,7 @@ async findOne(user) {
 }
 ```
 
-#### Passing data
+#### 传递数据
 
 When the behavior of your decorator depends on some conditions, you can use the `data` parameter to pass an argument to the decorator's factory function. One use case for this is a custom decorator that extracts properties from the request object by key. Let's assume, for example, that our <a href="techniques/authentication#implementing-passport-strategies">authentication layer</a> validates requests and attaches a user entity to the request object. The user entity for an authenticated request might look like:
 
@@ -154,7 +154,7 @@ You can use this same decorator with different keys to access different properti
 
 > info **Hint** For TypeScript users, note that `createParamDecorator<T>()` is a generic. This means you can explicitly enforce type safety, for example `createParamDecorator<string>((data, ctx) => ...)`. Alternatively, specify a parameter type in the factory function, for example `createParamDecorator((data: string, ctx) => ...)`. If you omit both, the type for `data` will be `any`.
 
-#### Working with pipes
+#### 使用管道
 
 Nest treats custom param decorators in the same fashion as the built-in ones (`@Body()`, `@Param()` and `@Query()`). This means that pipes are executed for the custom annotated parameters as well (in our examples, the `user` argument). Moreover, you can apply the pipe directly to the custom decorator:
 
@@ -177,7 +177,7 @@ async findOne(user) {
 
 > info **Hint** Note that `validateCustomDecorators` option must be set to true. `ValidationPipe` does not validate arguments annotated with the custom decorators by default.
 
-#### Decorator composition
+#### 修饰符组成
 
 Nest provides a helper method to compose multiple decorators. For example, suppose you want to combine all decorators related to authentication into a single decorator. This could be done with the following construction:
 

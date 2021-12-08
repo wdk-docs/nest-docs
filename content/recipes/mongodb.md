@@ -4,7 +4,7 @@
 
 [Mongoose](https://mongoosejs.com) is the most popular [MongoDB](https://www.mongodb.org/) object modeling tool.
 
-#### Getting started
+#### 开始
 
 To start the adventure with this library we have to install all required dependencies:
 
@@ -54,7 +54,7 @@ export class DatabaseModule {}
 
 Now we can inject the `Connection` object using `@Inject()` decorator. Each class that would depend on the `Connection` async provider will wait until a `Promise` is resolved.
 
-#### Model injection
+#### 模型注入
 
 With Mongoose, everything is derived from a [Schema](https://mongoosejs.com/docs/guide.html). Let's define the `CatSchema`:
 
