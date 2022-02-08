@@ -307,7 +307,7 @@ export class CatsService {
 export class AppModule {}
 ```
 
-像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是`async`的，并且可以通过`inject`注入依赖项。
+像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async` 的，并且可以通过 `inject` 注入依赖项。
 
 ```typescript
 @Module({
@@ -502,7 +502,7 @@ MongooseModule.forRootAsync({
 });
 ```
 
-像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async '的，并且可以通过 `inject` 注入依赖项。
+像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async` 的，并且可以通过 `inject` 注入依赖项。
 
 ```typescript
 MongooseModule.forRootAsync({
