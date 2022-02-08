@@ -484,7 +484,7 @@ export class EventsModule {}
 export class CatsModule {}
 ```
 
-在这个例子中，当任何消费者使用“@InjectModel()”装饰器注入“Model<Cat>”时，就会提供一个硬编码的“catModel”(对象实例)。
+在这个例子中，当任何消费者使用 `@InjectModel()` 装饰器注入 `Model<Cat>` 时，就会提供一个硬编码的 `catModel`(对象实例)。
 
 <app-banner-courses></app-banner-courses>
 
