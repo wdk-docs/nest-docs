@@ -14,8 +14,8 @@ $ npm install --save @nestjs/mongoose mongoose
 
 ```typescript
 @@filename(app.module)
-import { Module } from`@nestjs/common';
-import { MongooseModule } from`@nestjs/mongoose';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [MongooseModule.forRoot('mongodb://localhost/nest')],
@@ -39,8 +39,8 @@ export class AppModule {}
 
 ```typescript
 @@filename(schemas/cat.schema)
-import { Prop, Schema, SchemaFactory } from`@nestjs/mongoose';
-import { Document } from`mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 export type CatDocument = Cat & Document;
 
@@ -59,7 +59,7 @@ export class Cat {
 export const CatSchema = SchemaFactory.createForClass(Cat);
 ```
 
-> info **Hint** 注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
+> info **提示** 注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
 
 `@Schema()`装饰器将一个类标记为一个模式定义。
 它将我们的`Cat`类映射到具有相同名称的 MongoDB 集合，但在末尾添加了一个额外的`s`——所以最终的 mongo 集合名称将是`cats`。
@@ -68,7 +68,7 @@ export const CatSchema = SchemaFactory.createForClass(Cat);
 要了解更多可用的模式选项，请参阅[本](https://mongoosejs.com/docs/guide.html#options)章。
 
 `@Prop()`装饰器在文档中定义了一个属性。
-例如，在上面的模式定义中，我们定义了三个属性:`name`、`age`和`breed`。
+例如，在上面的模式定义中，我们定义了三个属性:'name`、`age`和`breed`。
 
 由于 TypeScript 的元数据(和反射)功能，这些属性的[schema types](https://mongoosejs.com/docs/schematypes.html)会被自动推断出来。
 然而，在更复杂的场景中，类型不能隐式反映(例如，数组或嵌套对象结构)，类型必须显式表示，如下所示:
@@ -90,18 +90,18 @@ name: string;
 例如，如果`Cat`具有`Owner`，该属性存储在另一个名为`owners`的集合中，则该属性应该具有 type 和 ref。例如:
 
 ```typescript
-import * as mongoose from`mongoose';
-import { Owner } from`../owners/schemas/owner.schema';
+import * as mongoose from 'mongoose';
+import { Owner } from '../owners/schemas/owner.schema';
 
 // inside the class definition
-@Prop({ type: mongoose.Schema.Types.ObjectId, ref:`Owner`})
+@Prop({ type: mongoose.Schema.Types.ObjectId, ref:'Owner`})
 owner: Owner;
 ```
 
 如果有多个所有者，你的属性配置应该如下所示:
 
 ```typescript
-@Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref:`Owner`}] })
+@Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref:'Owner`}] })
 owner: Owner[];
 ```
 
@@ -130,15 +130,15 @@ export const CatSchema = new mongoose.Schema({
 `cat.schema` 文件位于`cats`目录下的一个文件夹中，在这里我们也定义了`CatsModule`。
 虽然你可以将模式文件存储在任何你喜欢的地方，但我们建议将它们存储在它们相关的**域**对象附近，在适当的模块目录中。
 
-让我们看看" CatsModule ":
+让我们看看`CatsModule`:
 
 ```typescript
 @@filename(cats.module)
-import { Module } from`@nestjs/common';
-import { MongooseModule } from`@nestjs/mongoose';
-import { CatsController } from`./cats.controller';
-import { CatsService } from`./cats.service';
-import { Cat, CatSchema } from`./schemas/cat.schema';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CatsController } from './cats.controller';
+import { CatsService } from './cats.service';
+import { Cat, CatSchema } from './schemas/cat.schema';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
@@ -155,11 +155,11 @@ export class CatsModule {}
 
 ```typescript
 @@filename(cats.service)
-import { Model } from`mongoose';
-import { Injectable } from`@nestjs/common';
-import { InjectModel } from`@nestjs/mongoose';
-import { Cat, CatDocument } from`./schemas/cat.schema';
-import { CreateCatDto } from`./dto/create-cat.dto';
+import { Model } from 'mongoose';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Cat, CatDocument } from './schemas/cat.schema';
+import { CreateCatDto } from './dto/create-cat.dto';
 
 @Injectable()
 export class CatsService {
@@ -175,10 +175,10 @@ export class CatsService {
   }
 }
 @@switch
-import { Model } from`mongoose';
-import { Injectable, Dependencies } from`@nestjs/common';
-import { getModelToken } from`@nestjs/mongoose';
-import { Cat } from`./schemas/cat.schema';
+import { Model } from 'mongoose';
+import { Injectable, Dependencies } from '@nestjs/common';
+import { getModelToken } from '@nestjs/mongoose';
+import { Cat } from './schemas/cat.schema';
 
 @Injectable()
 @Dependencies(getModelToken(Cat.name))
@@ -205,9 +205,9 @@ export class CatsService {
 你可以通过使用`@InjectConnection()`装饰器来注入 Mongoose 连接，如下所示:
 
 ```typescript
-import { Injectable } from`@nestjs/common';
-import { InjectConnection } from`@nestjs/mongoose';
-import { Connection } from`mongoose';
+import { Injectable } from '@nestjs/common';
+import { InjectConnection } from '@nestjs/mongoose';
+import { Connection } from 'mongoose';
 
 @Injectable()
 export class CatsService {
@@ -224,30 +224,30 @@ export class CatsService {
 
 ```typescript
 @@filename(app.module)
-import { Module } from`@nestjs/common';
-import { MongooseModule } from`@nestjs/mongoose';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/test', {
-      connectionName:`cats',
+      connectionName:'cats',
     }),
     MongooseModule.forRoot('mongodb://localhost/users', {
-      connectionName:`users',
+      connectionName:'users',
     }),
   ],
 })
 export class AppModule {}
 ```
 
-> warning **Notice** 请注意，您不应该有多个没有名称或具有相同名称的连接，否则它们将被覆盖。
+> warning **请注意** 请注意，您不应该有多个没有名称或具有相同名称的连接，否则它们将被覆盖。
 
 在这个设置中，你必须告诉`mongoosemmodule.forfeature()`函数应该使用哪个连接。
 
 ```typescript
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }],`cats'),
+    MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }], 'cats'),
   ],
 })
 export class AppModule {}
@@ -256,9 +256,9 @@ export class AppModule {}
 你也可以为一个给定的连接注入`Connection`:
 
 ```typescript
-import { Injectable } from`@nestjs/common';
-import { InjectConnection } from`@nestjs/mongoose';
-import { Connection } from`mongoose';
+import { Injectable } from '@nestjs/common';
+import { InjectConnection } from '@nestjs/mongoose';
+import { Connection } from 'mongoose';
 
 @Injectable()
 export class CatsService {
@@ -280,7 +280,12 @@ export class CatsService {
 
 #### 钩子 (中间件)
 
-Middleware (also called pre and post hooks) are functions which are passed control during execution of asynchronous functions. Middleware is specified on the schema level and is useful for writing plugins ([source](https://mongoosejs.com/docs/middleware.html)). Calling `pre()` or `post()` after compiling a model does not work in Mongoose. To register a hook **before** model registration, use the `forFeatureAsync()` method of the `MongooseModule` along with a factory provider (i.e., `useFactory`). With this technique, you can access a schema object, then use the `pre()` or `post()` method to register a hook on that schema. See example below:
+中间件(也称为前置钩子和 post 钩子)是在异步函数执行期间传递控制的函数。
+中间件是在模式级指定的，对于编写插件非常有用([source](https://mongoosejs.com/docs/middleware.html))。
+在编译模型后调用 `pre()` 或 `post()` 在 Mongoose 中不起作用。
+要在模型注册**之前**注册一个钩子，使用`MongooseModule`的`forFeatureAsync()`方法和一个工厂提供程序(例如`useFactory`)。
+使用这种技术，你可以访问一个模式对象，然后使用`pre()`或`post()`方法在该模式上注册一个钩子。
+请参见下面的例子:
 
 ```typescript
 @Module({
@@ -302,7 +307,7 @@ Middleware (also called pre and post hooks) are functions which are passed contr
 export class AppModule {}
 ```
 
-Like other [factory providers](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory), our factory function can be `async` and can inject dependencies through `inject`.
+像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是`async`的，并且可以通过`inject`注入依赖项。
 
 ```typescript
 @Module({
@@ -330,7 +335,7 @@ export class AppModule {}
 
 #### 插件
 
-To register a [plugin](https://mongoosejs.com/docs/plugins.html) for a given schema, use the `forFeatureAsync()` method.
+要注册一个[plugin](https://mongoosejs.com/docs/plugins.html)，使用`forFeatureAsync()`方法。
 
 ```typescript
 @Module({
@@ -350,12 +355,13 @@ To register a [plugin](https://mongoosejs.com/docs/plugins.html) for a given sch
 export class AppModule {}
 ```
 
-To register a plugin for all schemas at once, call the `.plugin()` method of the `Connection` object. You should access the connection before models are created; to do this, use the `connectionFactory`:
+要一次性为所有模式注册一个插件，调用`Connection`对象的`.plugin()`方法。
+您应该在创建模型之前访问连接;为此，使用`connectionFactory`:
 
 ```typescript
 @@filename(app.module)
-import { Module } from`@nestjs/common';
-import { MongooseModule } from`@nestjs/mongoose';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -372,13 +378,14 @@ export class AppModule {}
 
 #### 鉴别器
 
-[Discriminators](https://mongoosejs.com/docs/discriminators.html) are a schema inheritance mechanism. They enable you to have multiple models with overlapping schemas on top of the same underlying MongoDB collection.
+[Discriminators](https://mongoosejs.com/docs/discriminators.html)是一种模式继承机制。
+它们使您能够在相同的底层 MongoDB 集合上拥有具有重叠模式的多个模型。
 
-Suppose you wanted to track different types of events in a single collection. Every event will have a timestamp.
+假设您想要跟踪单个集合中的不同类型的事件。每个事件都有一个时间戳。
 
 ```typescript
 @@filename(event.schema)
-@Schema({ discriminatorKey:`kind`})
+@Schema({ discriminatorKey:'kind`})
 export class Event {
   @Prop({
     type: String,
@@ -394,12 +401,11 @@ export class Event {
 export const EventSchema = SchemaFactory.createForClass(Event);
 ```
 
-> info **Hint** The way mongoose tells the difference between the different discriminator models is by the "discriminator key", which is `__t` by default. Mongoose adds a String path called `__t` to your schemas that it uses to track which discriminator this document is an instance of.
-> You may also use the `discriminatorKey` option to define the path for discrimination.
+> info **Hint** mongoose 通过“discriminator key”来区分不同的鉴别器模型，默认为 `__t`。 Mongoose 将一个名为 `__t` 的字符串路径添加到您的模式中，用于跟踪该文档是哪个鉴别器的实例。 你也可以使用 `discriminatorKey` 选项来定义区分的路径。
 
-`SignedUpEvent` and `ClickedLinkEvent` instances will be stored in the same collection as generic events.
+`SignedUpEvent` 和 `clicklinkevent` 实例将作为通用事件存储在同一个集合中。
 
-Now, let's define the `ClickedLinkEvent` class, as follows:
+现在，让我们定义 `clicklinkevent` 类，如下所示:
 
 ```typescript
 @@filename(click-link-event.schema)
@@ -415,7 +421,7 @@ export class ClickedLinkEvent {
 export const ClickedLinkEventSchema = SchemaFactory.createForClass(ClickedLinkEvent);
 ```
 
-And `SignUpEvent` class:
+添加 `SignUpEvent` 类:
 
 ```typescript
 @@filename(sign-up-event.schema)
@@ -431,12 +437,13 @@ export class SignUpEvent {
 export const SignUpEventSchema = SchemaFactory.createForClass(SignUpEvent);
 ```
 
-With this in place, use the `discriminators` option to register a discriminator for a given schema. It works on both `MongooseModule.forFeature` and `MongooseModule.forFeatureAsync`:
+在此基础上，使用 `discriminator` 选项为给定的模式注册一个标识符。
+它工作在两个 `MongooseModule。forFeature’和‘MongooseModule.forFeatureAsync”:
 
 ```typescript
 @@filename(event.module)
-import { Module } from`@nestjs/common';
-import { MongooseModule } from`@nestjs/mongoose';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -457,9 +464,12 @@ export class EventsModule {}
 
 #### 测试
 
-When unit testing an application, we usually want to avoid any database connection, making our test suites simpler to set up and faster to execute. But our classes might depend on models that are pulled from the connection instance. How do we resolve these classes? The solution is to create mock models.
+在对应用程序进行单元测试时，我们通常希望避免任何数据库连接，从而使我们的测试套件设置起来更简单，执行起来更快。
+但是我们的类可能依赖于从连接实例中提取的模型。
+我们如何解析这些类?解决方案是创建模拟模型。
 
-To make this easier, the `@nestjs/mongoose` package exposes a `getModelToken()` function that returns a prepared [injection token](https://docs.nestjs.com/fundamentals/custom-providers#di-fundamentals) based on a token name. Using this token, you can easily provide a mock implementation using any of the standard [custom provider](/fundamentals/custom-providers) techniques, including `useClass`, `useValue`, and `useFactory`. For example:
+为了简化这个过程， `@nestjs/mongoose` 包公开了一个 `getModelToken()` 函数，该函数根据一个令牌名返回一个准备好的[注入令牌](https://docs.nestjs.com/fundamentals/custom-providers#di-fundamentals)。
+使用这个令牌，你可以很容易地使用任何标准的[自定义提供者](/fundamentals/自定义提供者)技术来提供一个模拟实现，包括 `useClass` ， `useValue` 和 `useFactory` 。例如:
 
 ```typescript
 @Module({
@@ -474,25 +484,25 @@ To make this easier, the `@nestjs/mongoose` package exposes a `getModelToken()` 
 export class CatsModule {}
 ```
 
-In this example, a hardcoded `catModel` (object instance) will be provided whenever any consumer injects a `Model<Cat>` using an `@InjectModel()` decorator.
+在这个例子中，当任何消费者使用“@InjectModel()”装饰器注入“Model<Cat>”时，就会提供一个硬编码的“catModel”(对象实例)。
 
 <app-banner-courses></app-banner-courses>
 
 #### 异步配置
 
-When you need to pass module options asynchronously instead of statically, use the `forRootAsync()` method. As with most dynamic modules, Nest provides several techniques to deal with async configuration.
+当你需要异步而不是静态传递模块选项时，使用 `forRootAsync()` 方法。与大多数动态模块一样，Nest 提供了几种技术来处理异步配置。
 
-One technique is to use a factory function:
+一种方法是使用工厂函数:
 
 ```typescript
 MongooseModule.forRootAsync({
   useFactory: () => ({
-    uri:`mongodb://localhost/nest',
+    uri: 'mongodb://localhost/nest',
   }),
 });
 ```
 
-Like other [factory providers](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory), our factory function can be `async` and can inject dependencies through `inject`.
+像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async '的，并且可以通过 `inject` 注入依赖项。
 
 ```typescript
 MongooseModule.forRootAsync({
@@ -504,7 +514,7 @@ MongooseModule.forRootAsync({
 });
 ```
 
-Alternatively, you can configure the `MongooseModule` using a class instead of a factory, as shown below:
+或者，你可以使用类而不是工厂来配置“MongooseModule”，如下所示:
 
 ```typescript
 MongooseModule.forRootAsync({
@@ -512,20 +522,20 @@ MongooseModule.forRootAsync({
 });
 ```
 
-The construction above instantiates `MongooseConfigService` inside `MongooseModule`, using it to create the required options object. Note that in this example, the `MongooseConfigService` has to implement the `MongooseOptionsFactory` interface, as shown below. The `MongooseModule` will call the `createMongooseOptions()` method on the instantiated object of the supplied class.
+上面的构造实例化了 `MongooseConfigService` 在 `MongooseModule` 中，使用它来创建所需的选项对象。注意在这个例子中， `MongooseConfigService` 必须实现 `MongooseOptionsFactory` 接口，如下所示。 `MongooseModule` 将在提供的类的实例化对象上调用 `createMongooseOptions()` 方法。
 
 ```typescript
 @Injectable()
 class MongooseConfigService implements MongooseOptionsFactory {
   createMongooseOptions(): MongooseModuleOptions {
     return {
-      uri:`mongodb://localhost/nest',
+      uri: 'mongodb://localhost/nest',
     };
   }
 }
 ```
 
-If you want to reuse an existing options provider instead of creating a private copy inside the `MongooseModule`, use the `useExisting` syntax.
+如果你想重用一个现有的选项提供商，而不是在 `MongooseModule` 中创建一个私有副本，使用 `useExisting` 语法。
 
 ```typescript
 MongooseModule.forRootAsync({
