@@ -401,7 +401,7 @@ export class Event {
 export const EventSchema = SchemaFactory.createForClass(Event);
 ```
 
-> info **Hint** mongoose 通过“discriminator key”来区分不同的鉴别器模型，默认为 `__t`。 Mongoose 将一个名为 `__t` 的字符串路径添加到您的模式中，用于跟踪该文档是哪个鉴别器的实例。 你也可以使用 `discriminatorKey` 选项来定义区分的路径。
+> info **Hint** mongoose 通过 `discriminator key` 来区分不同的鉴别器模型，默认为 `__t`。 Mongoose 将一个名为 `__t` 的字符串路径添加到您的模式中，用于跟踪该文档是哪个鉴别器的实例。 你也可以使用 `discriminatorKey` 选项来定义区分的路径。
 
 `SignedUpEvent` 和 `clicklinkevent` 实例将作为通用事件存储在同一个集合中。
 
