@@ -1,10 +1,10 @@
-### Compression
+### 压缩
 
 Compression can greatly decrease the size of the response body, thereby increasing the speed of a web app.
 
 For **high-traffic** websites in production, it is strongly recommended to offload compression from the application server - typically in a reverse proxy (e.g., Nginx). In that case, you should not use compression middleware.
 
-#### Use with Express (default)
+#### 与 Express 一起使用(默认)
 
 Use the [compression](https://github.com/expressjs/compression) middleware package to enable gzip compression.
 
@@ -22,7 +22,7 @@ import * as compression from 'compression';
 app.use(compression());
 ```
 
-#### Use with Fastify
+#### 与 Fastify 一起使用
 
 If using the `FastifyAdapter`, you'll want to use [fastify-compress](https://github.com/fastify/fastify-compress):
 

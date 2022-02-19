@@ -1,18 +1,19 @@
 ### MongoDB (Mongoose)
 
-> **Warning** In this article, you'll learn how to create a `DatabaseModule` based on the **Mongoose** package from scratch using custom components. As a consequence, this solution contains a lot of overhead that you can omit using ready to use and available out-of-the-box dedicated `@nestjs/mongoose` package. To learn more, see [here](/techniques/mongodb).
+> **警告** 在本文中，您将学习如何使用自定义组件创建基于**Mongoose**包的`DatabaseModule`。因此，这个解决方案包含了大量的开销，你可以通过使用现成可用的专用`@nestjs/mongoose`包来省略这些开销。 要了解更多，请参见[此处](/techniques/mongodb).
 
-[Mongoose](https://mongoosejs.com) is the most popular [MongoDB](https://www.mongodb.org/) object modeling tool.
+[Mongoose](https://mongoosejs.com)是目前最流行的[MongoDB](https://www.mongodb.org/)对象建模工具。
 
 #### 开始
 
-To start the adventure with this library we have to install all required dependencies:
+要开始这个库的冒险，我们必须安装所有必需的依赖:
 
 ```typescript
 $ npm install --save mongoose
 ```
 
-The first step we need to do is to establish the connection with our database using `connect()` function. The `connect()` function returns a `Promise`, and therefore we have to create an [async provider](/fundamentals/async-components).
+我们需要做的第一步是使用`connect()`函数建立与数据库的连接。
+`connect()`函数返回一个`Promise`，因此我们必须创建一个[async provider](/fundamentals/async-components).
 
 ```typescript
 @@filename(database.providers)
@@ -36,9 +37,9 @@ export const databaseProviders = [
 ];
 ```
 
-> info **Hint** Following best practices, we declared the custom provider in the separated file which has a `*.providers.ts` suffix.
+> info **提示** 按照最佳实践，我们在单独的文件中声明了定制的提供程序，该文件有一个`*.providers.ts`的后缀。
 
-Then, we need to export these providers to make them **accessible** for the rest part of the application.
+然后，我们需要导出这些提供器，使应用程序的其余部分能够访问它们。
 
 ```typescript
 @@filename(database.module)
@@ -52,11 +53,12 @@ import { databaseProviders } from './database.providers';
 export class DatabaseModule {}
 ```
 
-Now we can inject the `Connection` object using `@Inject()` decorator. Each class that would depend on the `Connection` async provider will wait until a `Promise` is resolved.
+现在我们可以使用`@Inject()`装饰器来注入`Connection`对象。
+每个依赖于`Connection`异步提供程序的类将等待，直到`Promise`被解析。
 
 #### 模型注入
 
-With Mongoose, everything is derived from a [Schema](https://mongoosejs.com/docs/guide.html). Let's define the `CatSchema`:
+使用 Mongoose，一切都是从[Schema](https://mongoosejs.com/docs/guide.html)派生出来的。让我们定义`CatSchema`:
 
 ```typescript
 @@filename(schemas/cat.schema)
@@ -69,9 +71,9 @@ export const CatSchema = new mongoose.Schema({
 });
 ```
 
-The `CatsSchema` belongs to the `cats` directory. This directory represents the `CatsModule`.
+`CatsSchema`属于`cats`目录。这个目录表示`CatsModule`。
 
-Now it's time to create a **Model** provider:
+现在是时候创建一个**Model** provider 了:
 
 ```typescript
 @@filename(cats.providers)
@@ -97,9 +99,9 @@ export const catsProviders = [
 ];
 ```
 
-> warning **Warning** In the real-world applications you should avoid **magic strings**. Both `CAT_MODEL` and `DATABASE_CONNECTION` should be kept in the separated `constants.ts` file.
+> warning **警告** 在实际应用中，你应该避免使用**魔法字符串**。`CAT_MODEL`和`DATABASE_CONNECTION`都应该保存在分开的`constants.ts`文件。
 
-Now we can inject the `CAT_MODEL` to the `CatsService` using the `@Inject()` decorator:
+现在我们可以使用`@Inject()`装饰器将`CAT_MODEL`注入到`CatsService`中:
 
 ```typescript
 @@filename(cats.service)
@@ -145,7 +147,7 @@ export class CatsService {
 }
 ```
 
-In the above example we have used the `Cat` interface. This interface extends the `Document` from the mongoose package:
+在上面的例子中，我们使用了`Cat`接口。这个接口扩展了 mongoose 包中的`Document`:
 
 ```typescript
 import { Document } from 'mongoose';
@@ -158,8 +160,11 @@ export interface Cat extends Document {
 ```
 
 The database connection is **asynchronous**, but Nest makes this process completely invisible for the end-user. The `CatModel` class is waiting for the db connection, and the `CatsService` is delayed until model is ready to use. The entire application can start when each class is instantiated.
+数据库连接是**异步**的，但是 Nest 使这个过程对最终用户完全不可见。
+`CatModel`类正在等待数据库连接，而`CatsService`被延迟到模型准备好使用。
+当每个类被实例化时，整个应用程序就可以启动了。
 
-Here is a final `CatsModule`:
+这是最后一个`CatsModule`:
 
 ```typescript
 @@filename(cats.module)
@@ -180,4 +185,4 @@ import { DatabaseModule } from '../database/database.module';
 export class CatsModule {}
 ```
 
-> info **Hint** Do not forget to import the `CatsModule` into the root `AppModule`.
+> info **提示** 不要忘记将`CatsModule`导入到根模块`AppModule`中。

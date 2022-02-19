@@ -62,9 +62,9 @@ export class TasksService {
 
 `@Cron()`装饰器支持所有标准的[cron 模式](http://crontab.org/):
 
-- Asterisk (e.g. `*`)
-- Ranges (e.g. `1-3,5`)
-- Steps (e.g. `*/2`)
+- 星号 (e.g. `*`)
+- 范围 (e.g. `1-3,5`)
+- 步频 (e.g. `*/2`)
 
 在上面的例子中，我们将`45 * * * * *`传递给装饰器。
 下面的键显示了如何解释 cron 模式字符串中的每个位置:
@@ -222,7 +222,7 @@ handleTimeout() {}
 #### 动态调度模块 API
 
 `@nestjs/schedule`模块提供了一个动态 API，支持管理声明式的[cron jobs](techniques/task-scheduling#declarative-cron-jobs)、[timeout](techniques/task-scheduling#declarative-timeout)和[interval](techniques/task-scheduling#declarative-interval)。
-该 API 还支持创建和管理**动态** cron 作业、超时和间隔，其中的属性是在运行时定义的。
+该 API 还支持创建和管理**动态** cron jobs、timeout 和 interval，其中的属性是在运行时定义的。
 
 #### 动态 cron jobs
 

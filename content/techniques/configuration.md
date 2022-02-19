@@ -1,4 +1,4 @@
-### Configuration
+### 配置
 
 Applications often run in different **environments**. Depending on the environment, different configuration settings should be used. For example, usually the local environment relies on specific database credentials, valid only for the local DB instance. The production environment would use a separate set of DB credentials. Since configuration variables change, best practice is to [store configuration variables](https://12factor.net/config) in the environment.
 
@@ -8,7 +8,7 @@ In Node.js applications, it's common to use `.env` files, holding key-value pair
 
 A good approach for using this technique in Nest is to create a `ConfigModule` that exposes a `ConfigService` which loads the appropriate `.env` file. While you may choose to write such a module yourself, for convenience Nest provides the `@nestjs/config` package out-of-the box. We'll cover this package in the current chapter.
 
-#### Installation
+#### 安装
 
 To begin using it, we first install the required dependency.
 
@@ -20,7 +20,7 @@ $ npm i --save @nestjs/config
 
 > warning **Note** `@nestjs/config` requires TypeScript 4.1 or later.
 
-#### Getting started
+#### 开始
 
 Once the installation process is complete, we can import the `ConfigModule`. Typically, we'll import it into the root `AppModule` and control its behavior using the `.forRoot()` static method. During this step, environment variable key/value pairs are parsed and resolved. Later, we'll see several options for accessing the `ConfigService` class of the `ConfigModule` in our other feature modules.
 
@@ -44,7 +44,7 @@ DATABASE_USER=test
 DATABASE_PASSWORD=test
 ```
 
-#### Custom env file path
+#### 自定义环境文件路径
 
 By default, the package looks for a `.env` file in the root directory of the application. To specify another path for the `.env` file, set the `envFilePath` property of an (optional) options object you pass to `forRoot()`, as follows:
 
@@ -64,7 +64,7 @@ ConfigModule.forRoot({
 
 If a variable is found in multiple files, the first one takes precedence.
 
-#### Disable env variables loading
+#### 禁用环境变量加载
 
 If you don't want to load the `.env` file, but instead would like to simply access environment variables from the runtime environment (as with OS shell exports like `export DATABASE_USER=test`), set the options object's `ignoreEnvFile` property to `true`, as follows:
 
@@ -74,7 +74,7 @@ ConfigModule.forRoot({
 });
 ```
 
-#### Use module globally
+#### 在全局范围内使用模块
 
 When you want to use `ConfigModule` in other modules, you'll need to import it (as is standard with any Nest module). Alternatively, declare it as a [global module](https://docs.nestjs.com/modules#global-modules) by setting the options object's `isGlobal` property to `true`, as shown below. In that case, you will not need to import `ConfigModule` in other modules once it's been loaded in the root module (e.g., `AppModule`).
 
@@ -84,7 +84,7 @@ ConfigModule.forRoot({
 });
 ```
 
-#### Custom configuration files
+#### 自定义配置文件
 
 For more complex projects, you may utilize custom configuration files to return nested configuration objects. This allows you to group related configuration settings by function (e.g., database-related settings), and to store related settings in individual files to help manage them independently.
 
@@ -161,9 +161,7 @@ export default () => {
 
 > warning **Note** Nest CLI does not automatically move your "assets" (non-TS files) to the `dist` folder during the build process. To make sure that your YAML files are copied, you have to specify this in the `compilerOptions#assets` object in the `nest-cli.json` file. As an example, if the `config` folder is at the same level as the `src` folder, add `compilerOptions#assets` with the value `"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]`. Read more [here](/cli/monorepo#assets).
 
-
-
-#### Using the `ConfigService`
+#### 使用 `ConfigService`
 
 To access configuration values from our `ConfigService`, we first need to inject `ConfigService`. As with any provider, we need to import its containing module - the `ConfigModule` - into the module that will use it (unless you set the `isGlobal` property in the options object passed to the `ConfigModule.forRoot()` method to `true`). Import it into a feature module as shown below.
 
@@ -256,7 +254,7 @@ constructor(private configService: ConfigService<{ PORT: number }, true>) {
 }
 ```
 
-#### Configuration namespaces
+#### 配置名称空间
 
 The `ConfigModule` allows you to define and load multiple custom configuration files, as shown in <a href="techniques/configuration#custom-configuration-files">Custom configuration files</a> above. You can manage complex configuration object hierarchies with nested configuration objects as shown in that section. Alternatively, you can return a "namespaced" configuration object with the `registerAs()` function as follows:
 
@@ -304,7 +302,7 @@ constructor(
 
 > info **Hint** The `ConfigType` is exported from the `@nestjs/config` package.
 
-#### Cache environment variables
+#### 缓存环境变量
 
 As accessing `process.env` can be slow, you can set the `cache` property of the options object passed to `ConfigModule.forRoot()` to increase the performance of `ConfigService#get` method when it comes to variables stored in `process.env`.
 
@@ -314,7 +312,7 @@ ConfigModule.forRoot({
 });
 ```
 
-#### Partial registration
+#### 部分注册
 
 Thus far, we've processed configuration files in our root module (e.g., `AppModule`), with the `forRoot()` method. Perhaps you have a more complex project structure, with feature-specific configuration files located in multiple different directories. Rather than load all these files in the root module, the `@nestjs/config` package provides a feature called **partial registration**, which references only the configuration files associated with each feature module. Use the `forFeature()` static method within a feature module to perform this partial registration, as follows:
 
@@ -329,7 +327,7 @@ export class DatabaseModule {}
 
 > info **Warning** In some circumstances, you may need to access properties loaded via partial registration using the `onModuleInit()` hook, rather than in a constructor. This is because the `forFeature()` method is run during module initialization, and the order of module initialization is indeterminate. If you access values loaded this way by another module, in a constructor, the module that the configuration depends upon may not yet have initialized. The `onModuleInit()` method runs only after all modules it depends upon have been initialized, so this technique is safe.
 
-#### Schema validation
+#### 模式验证
 
 It is standard practice to throw an exception during application startup if required environment variables haven't been provided or if they don't meet certain validation rules. The `@nestjs/config` package enables two different ways to do this:
 
@@ -399,7 +397,7 @@ The `@nestjs/config` package uses default settings of:
 
 Note that once you decide to pass a `validationOptions` object, any settings you do not explicitly pass will default to `Joi` standard defaults (not the `@nestjs/config` defaults). For example, if you leave `allowUnknowns` unspecified in your custom `validationOptions` object, it will have the `Joi` default value of `false`. Hence, it is probably safest to specify **both** of these settings in your custom object.
 
-#### Custom validate function
+#### 自定义验证函数
 
 Alternatively, you can specify a **synchronous** `validate` function that takes an object containing the environment variables (from env file and process) and returns an object containing validated environment variables so that you can convert/mutate them if needed. If the function throws an error, it will prevent the application from bootstrapping.
 
@@ -461,7 +459,7 @@ export class AppModule {}
 
 <app-banner-shop></app-banner-shop>
 
-#### Custom getter functions
+#### 定制的 getter 函数
 
 `ConfigService` defines a generic `get()` method to retrieve a configuration value by key. We may also add `getter` functions to enable a little more natural coding style:
 
@@ -513,7 +511,7 @@ export class AppService {
 }
 ```
 
-#### Expandable variables
+#### 可扩展的变量
 
 The `@nestjs/config` package supports environment variable expansion. With this technique, you can create nested environment variables, where one variable is referred to within the definition of another. For example:
 
@@ -541,7 +539,7 @@ Enable environment variable expansion using the `expandVariables` property in th
 export class AppModule {}
 ```
 
-#### Using in the `main.ts`
+#### 在`main.ts`中使用
 
 While our config is a stored in a service, it can still be used in the `main.ts` file. This way, you can use it to store variables such as the application port or the CORS host.
 
