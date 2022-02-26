@@ -1,27 +1,39 @@
-### Queues
+### 队列
 
-Queues are a powerful design pattern that help you deal with common application scaling and performance challenges. Some examples of problems that Queues can help you solve are:
+队列是一种功能强大的设计模式，可以帮助您处理常见的应用程序扩展和性能挑战。
+Queues 可以帮助你解决的一些问题示例如下:
 
-- Smooth out processing peaks. For example, if users can initiate resource-intensive tasks at arbitrary times, you can add these tasks to a queue instead of performing them synchronously. Then you can have worker processes pull tasks from the queue in a controlled manner. You can easily add new Queue consumers to scale up the back-end task handling as the application scales up.
-- Break up monolithic tasks that may otherwise block the Node.js event loop. For example, if a user request requires CPU intensive work like audio transcoding, you can delegate this task to other processes, freeing up user-facing processes to remain responsive.
-- Provide a reliable communication channel across various services. For example, you can queue tasks (jobs) in one process or service, and consume them in another. You can be notified (by listening for status events) upon completion, error or other state changes in the job life cycle from any process or service. When Queue producers or consumers fail, their state is preserved and task handling can restart automatically when nodes are restarted.
+- 平滑处理峰。
+  例如，如果用户可以在任意时间启动资源密集型任务，则可以将这些任务添加到队列中，而不是同步执行它们。
+  然后，你可以让工作进程以受控的方式从队列中拉出任务。
+  您可以轻松地添加新的 Queue 使用者，以便随着应用程序的扩展而扩展后端任务处理。
+- 分解可能会阻塞 Node.js 事件循环的单块任务。
+  例如，如果用户请求需要像音频转码这样的 CPU 密集型工作，您可以将此任务委托给其他进程，从而释放面向用户的进程以保持响应。
+- 在各种服务之间提供可靠的通信通道。
+  例如，您可以在一个进程或服务中对任务(作业)排队，然后在另一个进程或服务中使用它们。
+  您可以在作业生命周期中的任何流程或服务完成、错误或其他状态更改时收到通知(通过侦听状态事件)。
+  当队列的生产者或消费者失败时，它们的状态被保留，任务处理可以在节点重启时自动重启。
 
-Nest provides the `@nestjs/bull` package as an abstraction/wrapper on top of [Bull](https://github.com/OptimalBits/bull), a popular, well supported, high performance Node.js based Queue system implementation. The package makes it easy to integrate Bull Queues in a Nest-friendly way to your application.
+Nest 提供了“@nestjs/bull”包，作为[Bull](https://github.com/OptimalBits/bull)的抽象/包装，这是一个流行的、支持良好的、基于 Node.js 的高性能队列系统实现。
+这个包可以很容易地将 Bull Queues 以一种 nest 友好的方式集成到你的应用程序中。
 
-Bull uses [Redis](https://redis.io/) to persist job data, so you'll need to have Redis installed on your system. Because it is Redis-backed, your Queue architecture can be completely distributed and platform-independent. For example, you can have some Queue <a href="techniques/queues#producers">producers</a> and <a href="techniques/queues#consumers">consumers</a> and <a href="techniques/queues#event-listeners">listeners</a> running in Nest on one (or several) nodes, and other producers, consumers and listeners running on other Node.js platforms on other network nodes.
+Bull 使用[Redis](https://redis.io/)来保存作业数据，所以你需要在你的系统上安装 Redis。
+因为它是由 redisback 支持的，所以您的 Queue 体系结构可以是完全分布式的和平台无关的。
+例如，你可以让一些 Queue[生产者](techniques/queues#producers)、[消费者](techniques/queues#consumers)和[监听器](techniques/queues#event-listeners)运行在一个(或多个)节点的 Nest 中，而其他生产者、消费者和监听器运行在其他网络节点的其他 Node.js 平台上。
 
-This chapter covers the `@nestjs/bull` package. We also recommend reading the [Bull documentation](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md) for more background and specific implementation details.
+本章介绍了`@nestjs/bull`包。
+我们还建议阅读[Bull 文档](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md)以获得更多背景和具体的实现细节。
 
-#### Installation
+#### 安装
 
-To begin using it, we first install the required dependencies.
+要开始使用它，我们首先安装所需的依赖项。
 
 ```bash
 $ npm install --save @nestjs/bull bull
 $ npm install --save-dev @types/bull
 ```
 
-Once the installation process is complete, we can import the `BullModule` into the root `AppModule`.
+一旦安装过程完成，我们就可以将`BullModule`导入到根目录`AppModule`中。
 
 ```typescript
 @@filename(app.module)
@@ -41,17 +53,17 @@ import { BullModule } from '@nestjs/bull';
 export class AppModule {}
 ```
 
-The `forRoot()` method is used to register a `bull` package configuration object that will be used by all queues registered in the application (unless specified otherwise). A configuration object consist of the following properties:
+`forRoot()`方法用于注册一个`bull`包配置对象，该对象将被应用程序中注册的所有队列使用(除非另有说明)。配置对象由以下属性组成:
 
-- `limiter: RateLimiter` - Options to control the rate at which the queue's jobs are processed. See [RateLimiter](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue) for more information. Optional.
-- `redis: RedisOpts` - Options to configure the Redis connection. See [RedisOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue) for more information. Optional.
-- `prefix: string` - Prefix for all queue keys. Optional.
-- `defaultJobOptions: JobOpts` - Options to control the default settings for new jobs. See [JobOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd) for more information. Optional.
-- `settings: AdvancedSettings` - Advanced Queue configuration settings. These should usually not be changed. See [AdvancedSettings](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue) for more information. Optional.
+- `limiter: RateLimiter` - 用于控制队列作业的处理速度的选项。更多信息请参见[RateLimiter](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)。 可选的。
+- `redis: RedisOpts` - 配置 Redis 连接的选项。更多信息请参见[RedisOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)。 可选的。
+- `prefix: string` - 所有队列键的前缀。可选的。
+- `defaultJobOptions: JobOpts` - 用于控制新作业的默认设置的选项。更多信息请参见[JobOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd)。 可选的。
+- `settings: AdvancedSettings` - 高级队列配置设置。 这些通常不应更改。更多信息请参见[AdvancedSettings](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)。 可选的。
 
-All the options are optional, providing detailed control over queue behavior. These are passed directly to the Bull `Queue` constructor. Read more about these options [here](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue).
+所有选项都是可选的，提供了对队列行为的详细控制。这些被直接传递给 Bull `Queue`构造函数。 有关这些选项的更多信息[在这里](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)。
 
-To register a queue, import the `BullModule#registerQueue()` dynamic module, as follows:
+要注册一个队列，请导入`BullModule#registerQueue()`动态模块，如下所示:
 
 ```typescript
 BullModule.registerQueue({
@@ -59,11 +71,14 @@ BullModule.registerQueue({
 });
 ```
 
-> info **Hint** Create multiple queues by passing multiple comma-separated configuration objects to the `registerQueue()` method.
+> info **Hint** 通过将多个以逗号分隔的配置对象传递给`registerQueue()`方法来创建多个队列。
 
-The `registerQueue()` method is used to instantiate and/or register queues. Queues are shared across modules and processes that connect to the same underlying Redis database with the same credentials. Each queue is unique by its name property. A queue name is used as both an injection token (for injecting the queue into controllers/providers), and as an argument to decorators to associate consumer classes and listeners with queues.
+`registerQueue()`方法用于实例化和/或注册队列。
+队列是跨模块和进程共享的，连接到相同的基础 Redis 数据库具有相同的凭据。
+每个队列的 name 属性都是唯一的。
+队列名既可以用作注入令牌(用于将队列注入到控制器/提供者中)，也可以用作装饰器的参数，用于将消费者类和侦听器与队列关联起来。
 
-You can also override some of the pre-configured options for a specific queue, as follows:
+你也可以覆盖特定队列的一些预先配置的选项，如下所示:
 
 ```typescript
 BullModule.registerQueue({
@@ -74,17 +89,16 @@ BullModule.registerQueue({
 });
 ```
 
-Since jobs are persisted in Redis, each time a specific named queue is instantiated (e.g., when an app is started/restarted), it attempts to process any old jobs that may exist from a previous unfinished session.
+由于任务被持久化在 Redis 中，每次实例化一个特定的命名队列(例如，当一个应用程序启动/重启)，它试图处理任何旧的任务，可能存在于前一个未完成的会话。
 
-Each queue can have one or many producers, consumers, and listeners. Consumers retrieve jobs from the queue in a specific order: FIFO (the default), LIFO, or according to priorities. Controlling queue processing order is discussed <a href="techniques/queues#consumers">here</a>.
+每个队列可以有一个或多个生产者、消费者和侦听器。消费者按照特定的顺序从队列中检索作业:FIFO(默认)、LIFO 或根据优先级。[这里](techniques/queues#consumer)讨论了控制队列处理顺序。
 
+#### 命名配置
 
+如果你的队列连接到多个不同的 Redis 实例，你可以使用一种叫做**named configurations**的技术。
+这个特性允许您在指定的键下注册几个配置，然后您可以在队列选项中引用它们。
 
-#### Named configurations
-
-If your queues connect to multiple different Redis instances, you can use a technique called **named configurations**. This feature allows you to register several configurations under specified keys, which then you can refer to in the queue options.
-
-For example, assuming that you have an additional Redis instance (apart from the default one) used by a few queues registered in your application, you can register its configuration as follows:
+例如，假设你有一个额外的 Redis 实例(除了默认的)，被你的应用程序中注册的几个队列使用，你可以按如下方式注册它的配置:
 
 ```typescript
 BullModule.forRoot('alternative-config', {
@@ -94,9 +108,9 @@ BullModule.forRoot('alternative-config', {
 });
 ```
 
-In the example above, `'alternative-config'` is just a configuration key (it can be any arbitrary string).
+在上面的例子中，`'alternative-config'`只是一个配置键(它可以是任意字符串)。
 
-With this in place, you can now point to this configuration in the `registerQueue()` options object:
+有了这个，你现在可以在`registerQueue()`选项对象中指向这个配置:
 
 ```typescript
 BullModule.registerQueue({
@@ -105,9 +119,10 @@ BullModule.registerQueue({
 });
 ```
 
-#### Producers
+#### 生产者
 
-Job producers add jobs to queues. Producers are typically application services (Nest [providers](/providers)). To add jobs to a queue, first inject the queue into the service as follows:
+作业生成器将作业添加到队列中。
+生产者通常是应用服务(Nest [providers](/providers))。要将作业添加到队列中，首先要将队列注入到服务中，如下所示:
 
 ```typescript
 import { Injectable } from '@nestjs/common';
@@ -120,9 +135,11 @@ export class AudioService {
 }
 ```
 
-> info **Hint** The `@InjectQueue()` decorator identifies the queue by its name, as provided in the `registerQueue()` method call (e.g., `'audio'`).
+> info **Hint** `@InjectQueue()`装饰器通过它的名字来标识队列，就像在`registerQueue()`方法调用中提供的(例如，`audio`)。
 
-Now, add a job by calling the queue's `add()` method, passing a user-defined job object. Jobs are represented as serializable JavaScript objects (since that is how they are stored in the Redis database). The shape of the job you pass is arbitrary; use it to represent the semantics of your job object.
+现在，通过调用队列的`add()`方法添加一个作业，并传递一个用户定义的作业对象。
+作业被表示为可序列化的 JavaScript 对象(因为这是它们存储在 Redis 数据库中的方式)。
+你通过的任务的形状是任意的;使用它来表示作业对象的语义。
 
 ```typescript
 const job = await this.audioQueue.add({
@@ -130,9 +147,9 @@ const job = await this.audioQueue.add({
 });
 ```
 
-#### Named jobs
+#### 指定的工作
 
-Jobs may have unique names. This allows you to create specialized <a href="techniques/queues#consumers">consumers</a> that will only process jobs with a given name.
+Jobs 可能有独特的名字。这允许您创建专门的[consumer](techniques/queues#consumers)，它将只处理具有给定名称的作业。
 
 ```typescript
 const job = await this.audioQueue.add('transcode', {
@@ -140,28 +157,27 @@ const job = await this.audioQueue.add('transcode', {
 });
 ```
 
-> Warning **Warning** When using named jobs, you must create processors for each unique name added to a queue, or the queue will complain that you are missing a processor for the given job. See <a href="techniques/queues#consumers">here</a> for more information on consuming named jobs.
+> Warning **Warning** 在使用命名作业时，必须为添加到队列中的每个惟一名称创建处理器，否则队列将抱怨您缺少给定作业的处理器。有关使用命名作业的更多信息，请参见[here](techniques/queues#consumer)。
 
-#### Job options
+#### 作业选项
 
-Jobs can have additional options associated with them. Pass an options object after the `job` argument in the `Queue.add()` method. Job options properties are:
+作业可以有与之关联的其他选项。在`Queue.add()`方法的`job`参数后传递一个 options 对象。作业选项属性如下:
 
-- `priority`: `number` - Optional priority value. Ranges from 1 (highest priority) to MAX_INT (lowest priority). Note that using priorities has a slight impact on performance, so use them with caution.
-- `delay`: `number` - An amount of time (milliseconds) to wait until this job can be processed. Note that for accurate delays, both server and clients should have their clocks synchronized.
-- `attempts`: `number` - The total number of attempts to try the job until it completes.
-- `repeat`: `RepeatOpts` - Repeat job according to a cron specification. See [RepeatOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd).
-- `backoff`: `number | BackoffOpts` - Backoff setting for automatic retries if the job fails. See [BackoffOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd).
-- `lifo`: `boolean` - If true, adds the job to the right end of the queue instead of the left (default false).
-- `timeout`: `number` - The number of milliseconds after which the job should fail with a timeout error.
-- `jobId`: `number` | `string` - Override the job ID - by default, the job ID is a unique
-  integer, but you can use this setting to override it. If you use this option, it is up to you to ensure the jobId is unique. If you attempt to add a job with an id that already exists, it will not be added.
-- `removeOnComplete`: `boolean | number` - If true, removes the job when it successfully completes. A number specifies the amount of jobs to keep. Default behavior is to keep the job in the completed set.
-- `removeOnFail`: `boolean | number` - If true, removes the job when it fails after all attempts. A number specifies the amount of jobs to keep. Default behavior is to keep the job in the failed set.
-- `stackTraceLimit`: `number` - Limits the amount of stack trace lines that will be recorded in the stacktrace.
+- `priority`: `number` - 可选的优先级值。取值范围为 1(最高优先级)到 MAX_INT(最低优先级)。注意，使用优先级对性能有轻微的影响，所以要谨慎使用。
+- `delay`: `number` - 等待该作业被处理之前的时间(毫秒)。请注意，为了获得准确的延迟，服务器和客户机的时钟都应该同步。
+- `attempts`: `number` - 在任务完成之前尝试执行该任务的总次数。
+- `repeat`: `RepeatOpts` - 根据 cron 规范重复作业。查看[RepeatOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd).
+- `backoff`: `number | BackoffOpts` - 任务失败时自动重试的后退设置。查看[BackoffOpts](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueadd).
+- `lifo`: `boolean` - 如果为 true，则将作业添加到队列的右端而不是左端(默认为 false)。
+- `timeout`: `number` - 作业失败并出现超时错误的毫秒数。
+- `jobId`: `number` | `string` - 覆盖作业 ID - 在默认情况下，作业 ID 是唯一的整数，但您可以使用此设置来覆盖它。如果使用此选项，则由您来确保 jobId 是唯一的。如果尝试添加 id 已经存在的作业，则不会添加该作业。
+- `removeOnComplete`: `boolean | number` - 如果为 true，则在作业成功完成时移除作业。一个数字指定要保留的作业数量。默认行为是将作业保存在已完成的集中。
+- `removeOnFail`: `boolean | number` - 如果为 true，则在所有尝试都失败后删除作业。一个数字指定要保留的作业数量。默认行为是将作业保留在失败集中。
+- `stackTraceLimit`: `number` - 限制将在堆栈跟踪中记录的堆栈跟踪行数。
 
-Here are a few examples of customizing jobs with job options.
+下面是一些使用工作选项定制工作的例子。
 
-To delay the start of a job, use the `delay` configuration property.
+若要延迟作业的启动，请使用`delay`配置属性。
 
 ```typescript
 const job = await this.audioQueue.add(
@@ -172,7 +188,7 @@ const job = await this.audioQueue.add(
 );
 ```
 
-To add a job to the right end of the queue (process the job as **LIFO** (Last In First Out)), set the `lifo` property of the configuration object to `true`.
+要将一个作业添加到队列的右端(将作业处理为**LIFO**(后进先出))，请将配置对象的`lifo`属性设置为`true`。
 
 ```typescript
 const job = await this.audioQueue.add(
@@ -183,7 +199,7 @@ const job = await this.audioQueue.add(
 );
 ```
 
-To prioritize a job, use the `priority` property.
+要对工作进行优先级排序，请使用`priority`属性。
 
 ```typescript
 const job = await this.audioQueue.add(
@@ -194,9 +210,9 @@ const job = await this.audioQueue.add(
 );
 ```
 
-#### Consumers
+#### 消费者
 
-A consumer is a **class** defining methods that either process jobs added into the queue, or listen for events on the queue, or both. Declare a consumer class using the `@Processor()` decorator as follows:
+consumer 是一个定义方法的**类**，用来处理添加到队列中的任务，或者监听队列上的事件，或者两者兼有。使用`@Processor()`装饰器来声明一个消费者类，如下所示:
 
 ```typescript
 import { Processor } from '@nestjs/bull';
@@ -205,11 +221,11 @@ import { Processor } from '@nestjs/bull';
 export class AudioConsumer {}
 ```
 
-> info **Hint** Consumers must be registered as `providers` so the `@nestjs/bull` package can pick them up.
+> info **Hint** 消费者必须注册为`providers`，这样`@nestjs/bull`包才能把他们取走。
 
-Where the decorator's string argument (e.g., `'audio'`) is the name of the queue to be associated with the class methods.
+其中，装饰器的字符串参数(e.g., `'audio'`)是要与类方法关联的队列的名称。
 
-Within a consumer class, declare job handlers by decorating handler methods with the `@Process()` decorator.
+在消费者类中，通过使用`@Process()`装饰器装饰处理程序方法来声明作业处理程序。
 
 ```typescript
 import { Processor, Process } from '@nestjs/bull';
@@ -230,20 +246,27 @@ export class AudioConsumer {
 }
 ```
 
-The decorated method (e.g., `transcode()`) is called whenever the worker is idle and there are jobs to process in the queue. This handler method receives the `job` object as its only argument. The value returned by the handler method is stored in the job object and can be accessed later on, for example in a listener for the completed event.
+每当 worker 空闲且队列中有作业需要处理时，就会调用这个装饰方法(例如, `transcode()`)。
+这个处理程序方法接收`job`对象作为它的唯一参数。
+处理程序方法返回的值存储在作业对象中，以后可以访问，例如在已完成事件的侦听器中访问。
 
-`Job` objects have multiple methods that allow you to interact with their state. For example, the above code uses the `progress()` method to update the job's progress. See [here](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#job) for the complete `Job` object API reference.
+`Job`对象有多个方法，允许你与它们的状态进行交互。
+例如，上面的代码使用`progress()`方法来更新作业的进度。
+请参阅[这里](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#job)获得完整的`Job`对象 API 参考。
 
-You can designate that a job handler method will handle **only** jobs of a certain type (jobs with a specific `name`) by passing that `name` to the `@Process()` decorator as shown below. You can have multiple `@Process()` handlers in a given consumer class, corresponding to each job type (`name`). When you use named jobs, be sure to have a handler corresponding to each name.
+你可以指定一个作业处理方法将只处理特定类型的作业(带有特定`name`的作业)，方法是将这个`name`传递给`@Process()`装饰器，如下所示。
+在一个给定的消费者类中，可以有多个`@Process()`处理程序，对应于每个作业类型(`name`)。
+在使用命名作业时，请确保每个名称对应一个处理程序。
 
 ```typescript
 @Process('transcode')
 async transcode(job: Job<unknown>) { ... }
 ```
 
-#### Request-scoped consumers
+#### 请求范围内消费者
 
-When a consumer is flagged as request-scoped (learn more about the injection scopes [here](/fundamentals/injection-scopes#provider-scope)), a new instance of the class will be created exclusively for each job. The instance will be garbage-collected after the job has completed.
+当一个消费者被标记为请求作用域(了解更多关于注入作用域的信息[这里](/fundamentals/injection-scopes#provider-scope))时，类的一个新实例将专门为每个作业创建。
+该实例将在任务完成后被垃圾回收。
 
 ```typescript
 @Processor({
@@ -252,7 +275,7 @@ When a consumer is flagged as request-scoped (learn more about the injection sco
 })
 ```
 
-Since request-scoped consumer classes are instantiated dynamically and scoped to a single job, you can inject a `JOB_REF` through the constructor using a standard approach.
+由于请求作用域的消费者类是动态实例化的，并且作用域为单个作业，所以您可以使用标准方法通过构造函数注入`JOB_REF`。
 
 ```typescript
 constructor(@Inject(JOB_REF) jobRef: Job) {
@@ -260,13 +283,15 @@ constructor(@Inject(JOB_REF) jobRef: Job) {
 }
 ```
 
-> info **Hint** The `JOB_REF` token is imported from the `@nestjs/bull` package.
+> info **Hint** 令牌`JOB_REF`是从`@nestjs/bull`包中导入的。
 
-#### Event listeners
+#### 事件监听器
 
-Bull generates a set of useful events when queue and/or job state changes occur. Nest provides a set of decorators that allow subscribing to a core set of standard events. These are exported from the `@nestjs/bull` package.
+当队列和/或作业状态发生变化时，Bull 会生成一组有用的事件。Nest 提供了一组装饰器，允许订阅一组核心标准事件。这些都是从`@nestjs/bull`包中导出的。
 
-Event listeners must be declared within a <a href="techniques/queues#consumers">consumer</a> class (i.e., within a class decorated with the `@Processor()` decorator). To listen for an event, use one of the decorators in the table below to declare a handler for the event. For example, to listen to the event emitted when a job enters the active state in the `audio` queue, use the following construct:
+事件监听器必须在[consumer](techniques/queues#consumers)类中声明(例如，在一个用`@Processor()`装饰器装饰的类中)。
+要监听一个事件，请使用下表中的一个装饰器来声明该事件的处理程序。
+例如，要监听当作业进入`audio`队列中的活动状态时发出的事件，可以使用以下构造:
 
 ```typescript
 import { Processor, Process } from '@nestjs/bull';
@@ -284,57 +309,66 @@ export class AudioConsumer {
   ...
 ```
 
-Since Bull operates in a distributed (multi-node) environment, it defines the concept of event locality. This concept recognizes that events may be triggered either entirely within a single process, or on shared queues from different processes. A **local** event is one that is produced when an action or state change is triggered on a queue in the local process. In other words, when your event producers and consumers are local to a single process, all events happening on queues are local.
+由于 Bull 是在分布式(多节点)环境中运行的，因此它定义了事件局部性的概念。
+这个概念认识到，事件可以完全在单个进程中触发，也可以在来自不同进程的共享队列上触发。
+**局部**事件是在本地进程中的队列上触发动作或状态改变时产生的事件。
+换句话说，当事件的生产者和消费者是单个进程的本地时，队列上发生的所有事件也是本地的。
 
-When a queue is shared across multiple processes, we encounter the possibility of **global** events. For a listener in one process to receive an event notification triggered by another process, it must register for a global event.
+当一个队列在多个进程之间共享时，我们可能会遇到**全局**事件。
+为了让一个进程中的侦听器接收由另一个进程触发的事件通知，它必须注册一个全局事件。
 
-Event handlers are invoked whenever their corresponding event is emitted. The handler is called with the signature shown in the table below, providing access to information relevant to the event. We discuss one key difference between local and global event handler signatures below.
+事件处理程序在触发相应事件时被调用。
+使用下表所示的签名调用处理程序，提供对与事件相关的信息的访问。
+下面我们将讨论局部事件处理程序签名和全局事件处理程序签名之间的一个关键区别。
 
 <table>
   <tr>
-    <th>Local event listeners</th>
-    <th>Global event listeners</th>
-    <th>Handler method signature / When fired</th>
+    <th>本地事件监听器</th>
+    <th>全球事件监听器</th>
+    <th>Handler方法签名/何时触发</th>
   </tr>
   <tr>
-    <td><code>@OnQueueError()</code></td><td><code>@OnGlobalQueueError()</code></td><td><code>handler(error: Error)</code> - An error occurred. <code>error</code> contains the triggering error.</td>
+    <td><code>@OnQueueError()</code></td><td><code>@OnGlobalQueueError()</code></td><td><code>handler(error: Error)</code> - 一个错误发生。<code>error</code>包含触发错误。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueWaiting()</code></td><td><code>@OnGlobalQueueWaiting()</code></td><td><code>handler(jobId: number | string)</code> - A Job is waiting to be processed as soon as a worker is idling. <code>jobId</code> contains the id for the job that has entered this state.</td>
+    <td><code>@OnQueueWaiting()</code></td><td><code>@OnGlobalQueueWaiting()</code></td><td><code>handler(jobId: number | string)</code> - 当一个工人空闲时，一个Job正在等待被处理。<code>jobId</code>包含已进入该状态的作业的id。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueActive()</code></td><td><code>@OnGlobalQueueActive()</code></td><td><code>handler(job: Job)</code> - Job <code>job</code>has started. </td>
+    <td><code>@OnQueueActive()</code></td><td><code>@OnGlobalQueueActive()</code></td><td><code>handler(job: Job)</code> - Job <code>job</code>已经开始。 </td>
   </tr>
   <tr>
-    <td><code>@OnQueueStalled()</code></td><td><code>@OnGlobalQueueStalled()</code></td><td><code>handler(job: Job)</code> - Job <code>job</code> has been marked as stalled. This is useful for debugging job workers that crash or pause the event loop.</td>
+    <td><code>@OnQueueStalled()</code></td><td><code>@OnGlobalQueueStalled()</code></td><td><code>handler(job: Job)</code> - Job <code>job</code> 已被标记为停滞。 这对于调试崩溃或暂停事件循环的作业操作者非常有用。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueProgress()</code></td><td><code>@OnGlobalQueueProgress()</code></td><td><code>handler(job: Job, progress: number)</code> - Job <code>job</code>'s progress was updated to value <code>progress</code>.</td>
+    <td><code>@OnQueueProgress()</code></td><td><code>@OnGlobalQueueProgress()</code></td><td><code>handler(job: Job, progress: number)</code> - Job <code>job</code>的进度被更新为值<code>progress</code>.</td>
   </tr>
   <tr>
-    <td><code>@OnQueueCompleted()</code></td><td><code>@OnGlobalQueueCompleted()</code></td><td><code>handler(job: Job, result: any)</code> Job <code>job</code> successfully completed with a result <code>result</code>.</td>
+    <td><code>@OnQueueCompleted()</code></td><td><code>@OnGlobalQueueCompleted()</code></td><td><code>handler(job: Job, result: any)</code> Job <code>job</code>成功完成，结果<code>result</code>。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueFailed()</code></td><td><code>@OnGlobalQueueFailed()</code></td><td><code>handler(job: Job, err: Error)</code> Job <code>job</code> failed with reason <code>err</code>.</td>
+    <td><code>@OnQueueFailed()</code></td><td><code>@OnGlobalQueueFailed()</code></td><td><code>handler(job: Job, err: Error)</code> Job <code>job</code> 失败，原因<code>err</code>。</td>
   </tr>
   <tr>
-    <td><code>@OnQueuePaused()</code></td><td><code>@OnGlobalQueuePaused()</code></td><td><code>handler()</code> The queue has been paused.</td>
+    <td><code>@OnQueuePaused()</code></td><td><code>@OnGlobalQueuePaused()</code></td><td><code>handler()</code> 队列已暂停。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueResumed()</code></td><td><code>@OnGlobalQueueResumed()</code></td><td><code>handler(job: Job)</code> The queue has been resumed.</td>
+    <td><code>@OnQueueResumed()</code></td><td><code>@OnGlobalQueueResumed()</code></td><td><code>handler(job: Job)</code> 队列已恢复。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueCleaned()</code></td><td><code>@OnGlobalQueueCleaned()</code></td><td><code>handler(jobs: Job[], type: string)</code> Old jobs have been cleaned from the queue. <code>jobs</code> is an array of cleaned jobs, and <code>type</code> is the type of jobs cleaned.</td>
+    <td><code>@OnQueueCleaned()</code></td><td><code>@OnGlobalQueueCleaned()</code></td><td><code>handler(jobs: Job[], type: string)</code> 以前的工作已经从队列中清除了。 <code>jobs</code>是清理后的job的数组，<code>type</code>是清理后的job的类型。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueDrained()</code></td><td><code>@OnGlobalQueueDrained()</code></td><td><code>handler()</code> Emitted whenever the queue has processed all the waiting jobs (even if there can be some delayed jobs not yet processed).</td>
+    <td><code>@OnQueueDrained()</code></td><td><code>@OnGlobalQueueDrained()</code></td><td><code>handler()</code> 当队列处理完所有等待的作业时触发(即使可能有一些延迟的作业尚未处理)。</td>
   </tr>
   <tr>
-    <td><code>@OnQueueRemoved()</code></td><td><code>@OnGlobalQueueRemoved()</code></td><td><code>handler(job: Job)</code> Job <code>job</code> was successfully removed.</td>
+    <td><code>@OnQueueRemoved()</code></td><td><code>@OnGlobalQueueRemoved()</code></td><td><code>handler(job: Job)</code> Job <code>job</code> 已成功删除。</td>
   </tr>
 </table>
 
-When listening for global events, the method signatures can be slightly different from their local counterpart. Specifically, any method signature that receives `job` objects in the local version, instead receives a `jobId` (`number`) in the global version. To get a reference to the actual `job` object in such a case, use the `Queue#getJob` method. This call should be awaited, and therefore the handler should be declared `async`. For example:
+当监听全局事件时，方法签名可能与它们的本地对等物略有不同。
+具体来说，任何在本地版本中接收`job`对象的方法签名，都会在全局版本中接收到一个`jobId`(`number`)。
+在这种情况下，要获取对实际`job`对象的引用，请使用`Queue#getJob`方法。这个调用应该被等待，因此处理程序应该被声明为`async`。
+例如:
 
 ```typescript
 @OnGlobalQueueCompleted()
@@ -344,34 +378,37 @@ async onGlobalCompleted(jobId: number, result: any) {
 }
 ```
 
-> info **Hint** To access the `Queue` object (to make a `getJob()` call), you must of course inject it. Also, the Queue must be registered in the module where you are injecting it.
+> info **Hint** 要访问`Queue`对象(调用`getJob()`)，你当然必须注入它。此外，Queue 必须在注入它的模块中注册。
 
-In addition to the specific event listener decorators, you can also use the generic `@OnQueueEvent()` decorator in combination with either `BullQueueEvents` or `BullQueueGlobalEvents` enums. Read more about events [here](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#events).
+除了特定的事件监听器装饰器，你还可以使用通用的`@OnQueueEvent()`装饰器结合`BullQueueEvents`或`BullQueueGlobalEvents`枚举。
+阅读更多关于事件的信息[这里](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#events).
 
-#### Queue management
+#### 队列管理
 
-Queue's have an API that allows you to perform management functions like pausing and resuming, retrieving the count of jobs in various states, and several more. You can find the full queue API [here](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue). Invoke any of these methods directly on the `Queue` object, as shown below with the pause/resume examples.
+Queue 的 API 允许您执行管理功能，比如暂停和恢复，检索处于不同状态的作业的计数，等等。
+你可以在[这里](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)找到完整的队列 API.
+直接在`Queue`对象上调用这些方法，如下面的 pause/resume 示例所示。
 
-Pause a queue with the `pause()` method call. A paused queue will not process new jobs until resumed, but current jobs being processed will continue until they are finalized.
+使用`Pause()`方法调用暂停队列。暂停的队列在恢复之前不会处理新作业，但正在处理的当前作业将继续处理，直到它们完成为止。
 
 ```typescript
 await audioQueue.pause();
 ```
 
-To resume a paused queue, use the `resume()` method, as follows:
+要恢复暂停的队列，请使用`resume()`方法，如下所示:
 
 ```typescript
 await audioQueue.resume();
 ```
 
-#### Separate processes
+#### 独立的进程
 
-Job handlers can also be run in a separate (forked) process ([source](https://github.com/OptimalBits/bull#separate-processes)). This has several advantages:
+作业处理程序也可以在单独的(分叉的)进程中运行 ([source](https://github.com/OptimalBits/bull#separate-processes)). 这有几个优点:
 
-- The process is sandboxed so if it crashes it does not affect the worker.
-- You can run blocking code without affecting the queue (jobs will not stall).
-- Much better utilization of multi-core CPUs.
-- Less connections to redis.
+- 这个进程是沙箱化的，所以即使它崩溃了，也不会影响工作进程。
+- 您可以在不影响队列的情况下运行阻塞代码(作业不会停止)。
+- 更好地利用多核 cpu。
+- 减少与 redis 的连接。
 
 ```ts
 @@filename(app.module)
@@ -390,7 +427,8 @@ import { join } from 'path';
 export class AppModule {}
 ```
 
-Please note that because your function is being executed in a forked process, Dependency Injection (and IoC container) won't be available. That means that your processor function will need to contain (or create) all instances of external dependencies it needs.
+请注意，因为你的函数是在一个分叉的进程中执行的，所以依赖注入(和 IoC 容器)将不可用。
+这意味着您的处理器函数将需要包含(或创建)它需要的所有外部依赖项实例。
 
 ```ts
 @@filename(processor)
@@ -402,9 +440,11 @@ export default function (job: Job, cb: DoneCallback) {
 }
 ```
 
-#### Async configuration
+#### 异步的配置
 
-You may want to pass `bull` options asynchronously instead of statically. In this case, use the `forRootAsync()` method which provides several ways to deal with async configuration. Likewise, if you want to pass queue options asynchronously, use the `registerQueueAsync()` method.
+你可能想异步传递`bull`选项，而不是静态传递。
+在这种情况下，使用`forRootAsync()`方法，它提供了几种处理异步配置的方法。
+同样，如果你想异步传递队列选项，请使用`registerQueueAsync()`方法。
 
 One approach is to use a factory function:
 
@@ -419,7 +459,7 @@ BullModule.forRootAsync({
 });
 ```
 
-Our factory behaves like any other [asynchronous provider](https://docs.nestjs.com/fundamentals/async-providers) (e.g., it can be `async` and it's able to inject dependencies through `inject`).
+我们的工厂行为类似于任何其他的[异步提供程序](https://docs.nestjs.com/fundamentals/async-providers) (例如，它可以是`async`，并且可以通过`inject`注入依赖项。).
 
 ```typescript
 BullModule.forRootAsync({
@@ -434,7 +474,7 @@ BullModule.forRootAsync({
 });
 ```
 
-Alternatively, you can use the `useClass` syntax:
+或者，你可以使用`useClass`语法:
 
 ```typescript
 BullModule.forRootAsync({
@@ -442,7 +482,8 @@ BullModule.forRootAsync({
 });
 ```
 
-The construction above will instantiate `BullConfigService` inside `BullModule` and use it to provide an options object by calling `createSharedConfiguration()`. Note that this means that the `BullConfigService` has to implement the `SharedBullConfigurationFactory` interface, as shown below:
+上面的构造将在`BullModule`中实例化`BullConfigService`，并通过调用`createSharedConfiguration()`来提供一个选项对象。
+注意，这意味着`BullConfigService`必须实现`SharedBullConfigurationFactory`接口，如下所示:
 
 ```typescript
 @Injectable()
@@ -458,7 +499,7 @@ class BullConfigService implements SharedBullConfigurationFactory {
 }
 ```
 
-In order to prevent the creation of `BullConfigService` inside `BullModule` and use a provider imported from a different module, you can use the `useExisting` syntax.
+为了防止在`BullModule`中创建`BullConfigService`，并使用从不同模块导入的提供商，你可以使用`useExisting`语法。
 
 ```typescript
 BullModule.forRootAsync({
@@ -467,8 +508,8 @@ BullModule.forRootAsync({
 });
 ```
 
-This construction works the same as `useClass` with one critical difference - `BullModule` will lookup imported modules to reuse an existing `ConfigService` instead of instantiating a new one.
+这个构造的工作原理与`useClass`相同，但有一个关键的区别 -- `BullModule`将查找导入的模块来重用现有的`ConfigService`，而不是实例化一个新的。
 
-#### Example
+#### 例子
 
-A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/26-queues).
+一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/26-queues).

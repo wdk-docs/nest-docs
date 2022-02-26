@@ -398,7 +398,7 @@ export class AppModule {}
 ```
 
 默认情况下，所有模式键都被认为是可选的。
-在这里，我们为`NODE_ENV`和`PORT`设置了默认值，如果我们在环境('.env'文件或进程环境)中不提供这些变量，将使用它们。
+在这里，我们为`NODE_ENV`和`PORT`设置了默认值，如果我们在环境(`.env`文件或进程环境)中不提供这些变量，将使用它们。
 或者，我们可以使用`required()`验证方法来要求一个值必须定义在环境中(`.env`文件或进程环境)。
 在这种情况下，如果我们不提供环境中的变量，验证步骤将抛出一个异常。
 有关如何构造验证模式的更多信息，请参见[Joi 验证方法](https://joi.dev/api/?v=17.3.0#example)。
@@ -435,7 +435,7 @@ export class AppModule {}
 `@nestjs/config`包使用默认设置:
 
 - `allowUnknown`: 控制环境变量中是否允许未知键。默认是`true`
-- `abortEarly`: 如果`true`，在第一个错误时停止验证;如果为`fals`e，返回所有错误。默认为`false`。
+- `abortEarly`: 如果`true`，在第一个错误时停止验证;如果为`false`，返回所有错误。默认为`false`。
 
 请注意，一旦你决定传递一个`validationOptions`对象，任何你没有显式传递的设置将默认为`Joi`标准默认值(而不是`@nestjs/config`默认值)。
 例如，如果你在你的自定义`validationOptions`对象中未指定`allowUnknowns`，它的`Joi`默认值为`false`。

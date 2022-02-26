@@ -95,6 +95,7 @@ export class MenuComponent implements OnInit {
         { title: '版本控制', path: '/techniques/versioning' },
         { title: '任务调度', path: '/techniques/task-scheduling' },
         { title: '队列', path: '/techniques/queues' },
+        { title: 'Bull', path: '/techniques/bull' },
         { title: '日志', path: '/techniques/logger' },
         { title: 'Cookies', path: '/techniques/cookies' },
         { title: '事件', path: '/techniques/events' },
@@ -248,7 +249,7 @@ export class MenuComponent implements OnInit {
         { title: 'HTTP 适配器', path: '/faq/http-adapter' },
         { title: '全局路径前缀', path: '/faq/global-prefix' },
         { title: '混合应用程序', path: '/faq/hybrid-application' },
-        { title: 'HTTPS 多个服务器& ', path: '/faq/multiple-servers' },
+        { title: 'HTTPS 多服务器', path: '/faq/multiple-servers' },
         { title: '请求生命周期', path: '/faq/request-lifecycle' },
         { title: '常见的错误', path: '/faq/common-errors' },
         {
