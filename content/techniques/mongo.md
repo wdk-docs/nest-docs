@@ -486,8 +486,6 @@ export class CatsModule {}
 
 在这个例子中，当任何消费者使用 `@InjectModel()` 装饰器注入 `Model<Cat>` 时，就会提供一个硬编码的 `catModel`(对象实例)。
 
-<app-banner-courses></app-banner-courses>
-
 #### 异步配置
 
 当你需要异步而不是静态传递模块选项时，使用 `forRootAsync()` 方法。与大多数动态模块一样，Nest 提供了几种技术来处理异步配置。

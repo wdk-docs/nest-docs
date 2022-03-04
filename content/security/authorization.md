@@ -1,16 +1,22 @@
 ### 授权
 
-**Authorization** refers to the process that determines what a user is able to do. For example, an administrative user is allowed to create, edit, and delete posts. A non-administrative user is only authorized to read the posts.
+**授权**是指决定用户能够做什么的过程。
+例如，允许管理用户创建、编辑和删除帖子。
+非管理员用户只被授权阅读帖子。
 
-Authorization is orthogonal and independent from authentication. However, authorization requires an authentication mechanism.
+授权是正交的，并且独立于身份验证。
+但是，授权需要一种身份验证机制。
 
-There are many different approaches and strategies to handle authorization. The approach taken for any project depends on its particular application requirements. This chapter presents a few approaches to authorization that can be adapted to a variety of different requirements.
+处理授权有许多不同的方法和策略。
+任何项目所采用的方法取决于其特定的应用程序需求。
+本章介绍了几种授权方法，它们可以适应各种不同的需求。
 
-#### 基本的RBAC实现
+#### 基于 RBAC 实现
 
-Role-based access control (**RBAC**) is a policy-neutral access-control mechanism defined around roles and privileges. In this section, we'll demonstrate how to implement a very basic RBAC mechanism using Nest [guards](/guards).
+基于角色的访问控制(**RBAC**)是围绕角色和特权定义的策略无关的访问控制机制。
+在本节中，我们将演示如何使用 Nest [guards](/guards)实现一个非常基本的 RBAC 机制。
 
-First, let's create a `Role` enum representing roles in the system:
+首先，让我们在系统中创建一个表示角色的`Role`枚举:
 
 ```typescript
 @@filename(role.enum)
@@ -20,9 +26,10 @@ export enum Role {
 }
 ```
 
-> info **Hint** In more sophisticated systems, you may store roles within a database, or pull them from the external authentication provider.
+> info **Hint** 在更复杂的系统中，可以将角色存储在数据库中，或者从外部身份验证提供者获取角色。
 
-With this in place, we can create a `@Roles()` decorator. This decorator allows specifying what roles are required to access specific resources.
+有了这个，我们可以创建一个`@Roles()`装饰器。
+该装饰器允许指定访问特定资源所需的角色。
 
 ```typescript
 @@filename(roles.decorator)
@@ -38,7 +45,7 @@ export const ROLES_KEY = 'roles';
 export const Roles = (...roles) => SetMetadata(ROLES_KEY, roles);
 ```
 
-Now that we have a custom `@Roles()` decorator, we can use it to decorate any route handler.
+现在我们有了一个自定义的`@Roles()`装饰器，我们可以用它装饰任何路由处理程序。
 
 ```typescript
 @@filename(cats.controller)
@@ -56,7 +63,8 @@ create(createCatDto) {
 }
 ```
 
-Finally, we create a `RolesGuard` class which will compare the roles assigned to the current user to the actual roles required by the current route being processed. In order to access the route's role(s) (custom metadata), we'll use the `Reflector` helper class, which is provided out of the box by the framework and exposed from the `@nestjs/core` package.
+最后，我们创建一个`RolesGuard`类，它将把分配给当前用户的角色与正在处理的当前路由所需要的实际角色进行比较。
+为了访问路由的角色(自定义元数据)，我们将使用`Reflector `helper 类，它是由框架提供的，从`@nestjs/core`包中公开的。
 
 ```typescript
 @@filename(roles.guard)
@@ -104,13 +112,16 @@ export class RolesGuard {
 }
 ```
 
-> info **Hint** Refer to the [Reflection and metadata](/fundamentals/execution-context#reflection-and-metadata) section of the Execution context chapter for more details on utilizing `Reflector` in a context-sensitive way.
+> info **Hint** 请参阅执行上下文章节的[Reflection and metadata](/fundamentals/ Execution -context# Reflection -and-metadata)小节，了解更多关于以上下文敏感的方式使用`Reflector`的细节。
 
-> warning **Notice** This example is named "**basic**" as we only check for the presence of roles on the route handler level. In real-world applications, you may have endpoints/handlers that involve several operations, in which each of them requires a specific set of permissions. In this case, you'll have to provide a mechanism to check roles somewhere within your business-logic, making it somewhat harder to maintain as there will be no centralized place that associates permissions with specific actions.
+> warning **Notice** 这个例子被命名为`**basic**`，因为我们只在路由处理程序级别检查角色的存在。
+> 在现实世界的应用程序中，您可能有一些涉及多个操作的端点/处理程序，其中每个操作都需要一组特定的权限。
+> 在这种情况下，您必须提供一种机制来检查业务逻辑中的角色，这使维护变得有些困难，因为没有集中的地方将权限与特定的操作关联起来。
 
-In this example, we assumed that `request.user` contains the user instance and allowed roles (under the `roles` property). In your app, you will probably make that association in your custom **authentication guard** - see [authentication](/security/authentication) chapter for more details.
+在这个例子中，我们假设`request。User`包含用户实例和允许的角色(在`roles`属性下)。
+在你的应用程序中，你可能会在你的自定义的\*\*身份验证保护中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
 
-To make sure this example works, your `User` class must look as follows:
+为了确保这个例子能够正常工作，你的 User 类必须如下所示:
 
 ```typescript
 class User {
@@ -119,7 +130,7 @@ class User {
 }
 ```
 
-Lastly, make sure to register the `RolesGuard`, for example, at the controller level, or globally:
+最后，确保注册`RolesGuard`，例如，在控制器级别或全局:
 
 ```typescript
 providers: [
@@ -130,7 +141,7 @@ providers: [
 ],
 ```
 
-When a user with insufficient privileges requests an endpoint, Nest automatically returns the following response:
+当一个权限不足的用户请求一个端点时，Nest 自动返回以下响应:
 
 ```typescript
 {
@@ -140,13 +151,16 @@ When a user with insufficient privileges requests an endpoint, Nest automaticall
 }
 ```
 
-> info **Hint** If you want to return a different error response, you should throw your own specific exception instead of returning a boolean value.
+> info **Hint** 如果你想返回一个不同的错误响应，你应该抛出你自己的特定异常，而不是返回一个布尔值。
 
 #### 声明式授权
 
-When an identity is created it may be assigned one or more claims issued by a trusted party. A claim is a name-value pair that represents what the subject can do, not what the subject is.
+创建标识时，可以将其分配给受信任方发出的一个或多个声明。
+claim 是一个名称-值对，它表示主语可以做什么，而不是主语是什么。
 
-To implement a Claims-based authorization in Nest, you can follow the same steps we have shown above in the [RBAC](/security/authorization#basic-rbac-implementation) section with one significant difference: instead of checking for specific roles, you should compare **permissions**. Every user would have a set of permissions assigned. Likewise, each resource/endpoint would define what permissions are required (for example, through a dedicated `@RequirePermissions()` decorator) to access them.
+要在 Nest 中实现基于声明的授权，您可以按照我们在上面[RBAC](/security/authorization#basic-rbac-implementation)小节中展示的相同步骤进行操作，但有一个显著的区别:您应该比较**权限**，而不是检查特定的角色。
+每个用户都有一组被分配的权限。
+同样，每个资源/端点将定义需要哪些权限(例如，通过专用的`@RequirePermissions()`装饰器)来访问它们。
 
 ```typescript
 @@filename(cats.controller)
@@ -164,21 +178,22 @@ create(createCatDto) {
 }
 ```
 
-> info **Hint** In the example above, `Permission` (similar to `Role` we have shown in RBAC section) is a TypeScript enum that contains all the permissions available in your system.
+> info **Hint** 在上面的例子中，`Permission`(类似于我们在 RBAC 部分中展示的`Role`)是一个 TypeScript enum，它包含了你系统中所有可用的权限。
 
-#### 整合CASL
+#### 整合 CASL
 
-[CASL](https://casl.js.org/) is an isomorphic authorization library which restricts what resources a given client is allowed to access. It's designed to be incrementally adoptable and can easily scale between a simple claim based and fully featured subject and attribute based authorization.
+[CASL](https://casl.js.org/)是一个同构的授权库，它限制了给定的客户端可以访问哪些资源。
+它被设计成可增量采用的，并且可以轻松地在基于简单声明、全功能主题和基于属性的授权之间进行伸缩。
 
-To start, first install the `@casl/ability` package:
+首先，安装`@casl/ability`包:
 
 ```bash
 $ npm i @casl/ability
 ```
 
-> info **Hint** In this example, we chose CASL, but you can use any other library like `accesscontrol` or `acl`, depending on your preferences and project needs.
+> info **Hint** 在本例中，我们选择了 CASL，但您可以使用任何其他库，如`accesscontrol`或`acl`，这取决于您的首选项和项目需求。
 
-Once the installation is complete, for the sake of illustrating the mechanics of CASL, we'll define two entity classes: `User` and `Article`.
+安装完成后，为了说明 CASL 的机制，我们将定义两个实体类:`User`和`Article`。
 
 ```typescript
 class User {
@@ -187,7 +202,7 @@ class User {
 }
 ```
 
-`User` class consists of two properties, `id`, which is a unique user identifier, and `isAdmin`, indicating whether a user has administrator privileges.
+`User`类由两个属性组成，`id`是唯一的用户标识符，`isAdmin`表示用户是否具有管理员权限。
 
 ```typescript
 class Article {
@@ -197,16 +212,17 @@ class Article {
 }
 ```
 
-`Article` class has three properties, respectively `id`, `isPublished`, and `authorId`. `id` is a unique article identifier, `isPublished` indicates whether an article was already published or not, and `authorId`, which is an ID of a user who wrote the article.
+`Article`类有三个属性，分别是`id`、`isPublished`和`authorId`。
+`id`是文章的唯一标识符，`isPublished`表示文章是否已经发布，而`authorId`是撰写文章的用户的 id。
 
-Now let's review and refine our requirements for this example:
+现在让我们回顾并精炼这个例子中的需求:
 
-- Admins can manage (create/read/update/delete) all entities
-- Users have read-only access to everything
-- Users can update their articles (`article.authorId === userId`)
-- Articles that are published already cannot be removed (`article.isPublished === true`)
+- 管理员可以管理(创建/读取/更新/删除)所有实体
+- 用户对所有内容都具有只读访问权限
+- 用户可以更新他们的文章 (`article.authorId === userId`)
+- 无法删除已发布的项目(`article.isPublished === true`)
 
-With this in mind, we can start off by creating an `Action` enum representing all possible actions that the users can perform with entities:
+考虑到这一点，我们可以从创建一个`Action`枚举开始，它表示用户可以对实体执行的所有可能的操作:
 
 ```typescript
 export enum Action {
@@ -218,16 +234,17 @@ export enum Action {
 }
 ```
 
-> warning **Notice** `manage` is a special keyword in CASL which represents "any" action.
+> warning **Notice** `manage`是 CASL 中的一个特殊关键字，它表示`任何`操作。
 
-To encapsulate CASL library, let's generate the `CaslModule` and `CaslAbilityFactory` now.
+为了封装 CASL 库，现在让我们生成`CaslModule`和`CaslAbilityFactory`。
 
 ```bash
 $ nest g module casl
 $ nest g class casl/casl-ability.factory
 ```
 
-With this in place, we can define the `createForUser()` method on the `CaslAbilityFactory`. This method will create the `Ability` object for a given user:
+有了这个，我们可以在`CaslAbilityFactory`上定义`createForUser()`方法。
+这个方法将为给定的用户创建`Ability`对象:
 
 ```typescript
 type Subjects = InferSubjects<typeof Article | typeof User> | 'all';
@@ -252,21 +269,26 @@ export class CaslAbilityFactory {
 
     return build({
       // Read https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types for details
-      detectSubjectType: item => item.constructor as ExtractSubjectType<Subjects>
+      detectSubjectType: (item) =>
+        item.constructor as ExtractSubjectType<Subjects>,
     });
   }
 }
 ```
 
-> warning **Notice** `all` is a special keyword in CASL that represents "any subject".
+> warning **Notice** `all`是 CASL 中一个特殊的关键字，代表`任何主题`。
 
-> info **Hint** `Ability`, `AbilityBuilder`, `AbilityClass`, and `ExtractSubjectType` classes are exported from the `@casl/ability` package.
+> info **Hint** `Ability`， `AbilityBuilder`， `AbilityClass`和`ExtractSubjectType`类从`@casl/ Ability`包中导出。
 
-> info **Hint** `detectSubjectType` option let CASL understand how to get subject type out of an object. For more information read  [CASL documentation](https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types) for details.
+> info **Hint** `detectSubjectType`选项让 CASL 了解如何从对象中获取主题类型。
+> 有关更多信息，请阅读[CASL 文档](https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types)了解详细信息。
 
-In the example above, we created the `Ability` instance using the `AbilityBuilder` class. As you probably guessed, `can` and `cannot` accept the same arguments but has different meanings, `can` allows to do an action on the specified subject and `cannot` forbids. Both may accept up to 4 arguments. To learn more about these functions, visit the official [CASL documentation](https://casl.js.org/v5/en/guide/intro).
+在上面的例子中，我们使用`AbilityBuilder`类创建了`Ability`实例。
+正如你可能猜到的，can 和 cannot 接受相同的参数，但有不同的含义，can 允许对指定的主题做一个动作，而 cannot 禁止。
+两者都可以接受最多 4 个参数。
+要了解关于这些函数的更多信息，请访问官方[CASL 文档](https://casl.js.org/v5/en/guide/intro)。
 
-Lastly, make sure to add the `CaslAbilityFactory` to the `providers` and `exports` arrays in the `CaslModule` module definition:
+最后，确保将`CaslAbilityFactory`添加到`CaslModule`模块定义中的`providers`和`exports`数组中:
 
 ```typescript
 import { Module } from '@nestjs/common';
@@ -279,13 +301,13 @@ import { CaslAbilityFactory } from './casl-ability.factory';
 export class CaslModule {}
 ```
 
-With this in place, we can inject the `CaslAbilityFactory` to any class using standard constructor injection as long as the `CaslModule` is imported in the host context:
+有了这个，我们就可以使用标准构造函数注入将`CaslAbilityFactory`注入到任何类中，只要`CaslModule`是在宿主上下文中导入的:
 
 ```typescript
 constructor(private caslAbilityFactory: CaslAbilityFactory) {}
 ```
 
-Then use it in a class as follows.
+然后像下面这样在类中使用它。
 
 ```typescript
 const ability = this.caslAbilityFactory.createForUser(user);
@@ -294,9 +316,10 @@ if (ability.can(Action.Read, 'all')) {
 }
 ```
 
-> info **Hint** Learn more about the `Ability` class in the official [CASL documentation](https://casl.js.org/v5/en/guide/intro).
+> info **Hint** 有关`能力`类的更多信息，请参阅官方[CASL 文档](https://casl.js.org/v5/en/guide/intro)。
 
-For example, let's say we have a user who is not an admin. In this case, the user should be able to read articles, but creating new ones or removing the existing articles should be prohibited.
+例如，假设我们有一个不是管理员的用户。
+在这种情况下，用户应该能够阅读文章，但应该禁止创建新的文章或删除现有的文章。
 
 ```typescript
 const user = new User();
@@ -326,15 +349,21 @@ article.authorId = 2;
 ability.can(Action.Update, article); // false
 ```
 
-As you can see, `Ability` instance allows us to check permissions in pretty readable way. Likewise, `AbilityBuilder` allows us to define permissions (and specify various conditions) in a similar fashion. To find more examples, visit the official documentation.
+As you can see, `Ability` instance allows us to check permissions in pretty readable way.
+Likewise, `AbilityBuilder` allows us to define permissions (and specify various conditions) in a similar fashion.
+To find more examples, visit the official documentation.
 
 #### 高级:实现一个 `PoliciesGuard`
 
-In this section, we'll demonstrate how to build a somewhat more sophisticated guard, which checks if a user meets specific **authorization policies** that can be configured on the method-level (you can extend it to respect policies configured on the class-level too). In this example, we are going to use the CASL package just for illustration purposes, but using this library is not required. Also, we will use the `CaslAbilityFactory` provider that we've created in the previous section.
+在本节中，我们将演示如何构建一个更复杂的保护，它检查用户是否满足可以在方法级配置的特定的**授权策略**(您可以扩展它以尊重在类级配置的策略)。
+在本例中，我们将使用 CASL 包，只是为了演示目的，但不需要使用这个库。
+此外，我们将使用我们在前一节中创建的`CaslAbilityFactory`提供程序。
 
-First, let's flesh out the requirements. The goal is to provide a mechanism that allows specifying policy checks per route handler. We will support both objects and functions (for simpler checks and for those who prefer more functional-style code).
+首先，让我们充实需求。
+目标是提供一种机制，允许为每个路由处理程序指定策略检查。
+我们将同时支持对象和函数(用于更简单的检查和那些更喜欢函数式代码的人)。
 
-Let's start off by defining interfaces for policy handlers:
+让我们从定义策略处理程序的接口开始:
 
 ```typescript
 import { AppAbility } from '../casl/casl-ability.factory';
@@ -348,9 +377,10 @@ type PolicyHandlerCallback = (ability: AppAbility) => boolean;
 export type PolicyHandler = IPolicyHandler | PolicyHandlerCallback;
 ```
 
-As mentioned above, we provided two possible ways of defining a policy handler, an object (instance of a class that implements the `IPolicyHandler` interface) and a function (which meets the `PolicyHandlerCallback` type).
+如上所述，我们提供了定义策略处理程序的两种可能的方法，一个对象(实现`IPolicyHandler`接口的类的实例)和一个函数(满足`PolicyHandlerCallback`类型)。
 
-With this in place, we can create a `@CheckPolicies()` decorator. This decorator allows specifying what policies have to be met to access specific resources.
+有了这个，我们可以创建一个`@CheckPolicies()`装饰器。
+这个装饰器允许指定访问特定资源必须满足哪些策略。
 
 ```typescript
 export const CHECK_POLICIES_KEY = 'check_policy';
@@ -358,7 +388,7 @@ export const CheckPolicies = (...handlers: PolicyHandler[]) =>
   SetMetadata(CHECK_POLICIES_KEY, handlers);
 ```
 
-Now let's create a `PoliciesGuard` that will extract and execute all the policy handlers bound to a route handler.
+现在，让我们创建一个`policyesguard`，它将提取和执行绑定到路由处理程序的所有策略处理程序。
 
 ```typescript
 @Injectable()
@@ -392,11 +422,16 @@ export class PoliciesGuard implements CanActivate {
 }
 ```
 
-> info **Hint** In this example, we assumed that `request.user` contains the user instance. In your app, you will probably make that association in your custom **authentication guard** - see [authentication](/security/authentication) chapter for more details.
+> info **Hint** 在这个例子中，我们假设`request。User`包含用户实例。
+> 在你的应用程序中，你可能会在你的自定义的\*\*身份验证保护中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
 
-Let's break this example down. The `policyHandlers` is an array of handlers assigned to the method through the `@CheckPolicies()` decorator. Next, we use the `CaslAbilityFactory#create` method which constructs the `Ability` object, allowing us to verify whether a user has sufficient permissions to perform specific actions. We are passing this object to the policy handler which is either a function or an instance of a class that implements the `IPolicyHandler`, exposing the `handle()` method that returns a boolean. Lastly, we use the `Array#every` method to make sure that every handler returned `true` value.
+让我们来分析一下这个例子。
+`policyHandlers`是一个通过`@CheckPolicies()`装饰器分配给该方法的处理程序数组。
+接下来，我们使用`CaslAbilityFactory#create`方法来构造`Ability`对象，允许我们验证用户是否有足够的权限来执行特定的操作。
+我们将这个对象传递给策略处理程序，它要么是一个函数，要么是实现了`IPolicyHandler`的类的实例，暴露了返回布尔值的`handle()`方法。
+最后，我们使用`Array#every`方法来确保每个处理器都返回`true`值。
 
-Finally, to test this guard, bind it to any route handler, and register an inline policy handler (functional approach), as follows:
+最后，为了测试这个保护，将它绑定到任何路由处理程序，并注册一个内联策略处理程序(函数式方法)，如下所示:
 
 ```typescript
 @Get()
@@ -407,7 +442,7 @@ findAll() {
 }
 ```
 
-Alternatively, we can define a class which implements the `IPolicyHandler` interface:
+或者，我们可以定义一个实现`IPolicyHandler`接口的类:
 
 ```typescript
 export class ReadArticlePolicyHandler implements IPolicyHandler {
@@ -417,7 +452,7 @@ export class ReadArticlePolicyHandler implements IPolicyHandler {
 }
 ```
 
-And use it as follows:
+使用方法如下:
 
 ```typescript
 @Get()
@@ -428,4 +463,7 @@ findAll() {
 }
 ```
 
-> warning **Notice** Since we must instantiate the policy handler in-place using the `new` keyword, `ReadArticlePolicyHandler` class cannot use the Dependency Injection. This can be addressed with the `ModuleRef#get` method (read more [here](/fundamentals/module-ref)). Basically, instead of registering functions and instances through the `@CheckPolicies()` decorator, you must allow passing a `Type<IPolicyHandler>`. Then, inside your guard, you could retrieve an instance using a type reference: `moduleRef.get(YOUR_HANDLER_TYPE)` or even dynamically instantiate it using the `ModuleRef#create` method.
+> warning **Notice** 因为我们必须使用`new`关键字就地实例化策略处理程序，所以`ReadArticlePolicyHandler`类不能使用依赖注入。
+> 这可以通过`ModuleRef#get`方法来解决(详见[此处](/fundamentals/module-ref)).
+> 基本上，你必须允许传递一个`Type<IPolicyHandler>`，而不是通过`@CheckPolicies()`装饰器注册函数和实例。
+> 然后，在你的守卫内部，你可以使用类型引用`moduleRef.get(YOUR_HANDLER_TYPE)`来检索一个实例，或者甚至使用`ModuleRef#create`方法来动态实例化它。

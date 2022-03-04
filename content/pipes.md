@@ -225,8 +225,6 @@ How about creating validation middleware? This could work, but unfortunately it'
 
 This is, of course, exactly the use case for which pipes are designed. So let's go ahead and refine our validation pipe.
 
-<app-banner-courses></app-banner-courses>
-
 #### Object schema validation
 
 There are several approaches available for doing object validation in a clean, [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) way. One common approach is to use **schema-based** validation. Let's go ahead and try that approach.

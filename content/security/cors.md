@@ -1,10 +1,12 @@
 ### CORS
 
-Cross-origin resource sharing (CORS) is a mechanism that allows resources to be requested from another domain. Under the hood, Nest makes use of the Express [cors](https://github.com/expressjs/cors) package. This package provides various options that you can customize based on your requirements.
+跨源资源共享(CORS)是一种允许从另一个域请求资源的机制。
+Under the hood, Nest makes use of the Express [cors](https://github.com/expressjs/cors) package.
+This package provides various options that you can customize based on your requirements.
 
 #### 入门
 
-To enable CORS, call the `enableCors()` method on the Nest application object.
+要启用 CORS，调用 Nest 应用程序对象上的`enableCors()`方法。
 
 ```typescript
 const app = await NestFactory.create(AppModule);
@@ -12,21 +14,25 @@ app.enableCors();
 await app.listen(3000);
 ```
 
-The `enableCors()` method takes an optional configuration object argument. The available properties of this object are described in the official [CORS](https://github.com/expressjs/cors#configuration-options) documentation. Another way is to pass a [callback function](https://github.com/expressjs/cors#configuring-cors-asynchronously) that lets you define the configuration object asynchronously based on the request (on the fly).
+`enableCors()`方法接受一个可选的配置对象参数。
+该对象的可用属性在官方[CORS](https://github.com/expressjs/cors#configuration-options)文档中有描述。
+另一种方法是传递一个[回调函数](https://github.com/expressjs/cors#configuring-cors-asynchronously)，它允许您根据请求(动态地)异步定义配置对象。
 
-Alternatively, enable CORS via the `create()` method's options object. Set the `cors` property to `true` to enable CORS with default settings. 
-Or, pass a [CORS configuration object](https://github.com/expressjs/cors#configuration-options) or [callback function](https://github.com/expressjs/cors#configuring-cors-asynchronously) as the `cors` property value to customize its behavior.
+或者，通过`create()`方法的 options 对象启用 CORS。
+将`cors`属性设置为`true`以启用 cors 的默认设置。
+
+或者，将[CORS 配置对象](https://github.com/expressjs/cors#configuration-options)或[回调函数](https://github.com/expressjs/cors#configuring-cors-asynchronously)作为`CORS`属性值来定制其行为。
 
 ```typescript
 const app = await NestFactory.create(AppModule, { cors: true });
 await app.listen(3000);
 ```
 
-Above method only applies to REST endpoints. 
+上述方法仅适用于 REST 端点。
 
-To enable CORS in GraphQL, set `cors` property to `true` or pass [CORS configuration object](https://github.com/expressjs/cors#configuration-options) or a [callback function](https://github.com/expressjs/cors#configuring-cors-asynchronously) as the `cors` property value when you import GraphQL module.
+要在 GraphQL 中启用 CORS，请将`cors`属性设置为`true`，或者在导入 GraphQL 模块时，将[CORS 配置对象](https://github.com/expressjs/cors#configuration-options)或一个[回调函数](https://github.com/expressjs/cors#configuring-cors-asynchronously)作为`cors`属性值。
 
-> warning **Warning** `CorsOptionsDelegate` solution is not working with the `apollo-server-fastify` package yet.
+> warning **Warning** `CorsOptionsDelegate` 解决方案并不适用于 `apollo-server-fastify` 软件包。
 
 ```typescript
 GraphQLModule.forRoot({

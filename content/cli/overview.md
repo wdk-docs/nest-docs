@@ -56,8 +56,6 @@ You can use either mode to manage multiple projects. Here's a quick summary of t
 
 Read the sections on [Workspaces](/cli/monorepo) and [Libraries](/cli/libraries) for more detailed information to help you decide which mode is most suitable for you.
 
-<app-banner-courses></app-banner-courses>
-
 #### CLI command syntax
 
 All `nest` commands follow the same format:

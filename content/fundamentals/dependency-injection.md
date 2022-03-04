@@ -101,8 +101,6 @@ When the Nest IoC container instantiates a `CatsController`, it first looks for 
 
 \*This explanation is a bit simplified to illustrate the point. One important area we glossed over is that the process of analyzing the code for dependencies is very sophisticated, and happens during application bootstrapping. One key feature is that dependency analysis (or "creating the dependency graph"), is **transitive**. In the above example, if the `CatsService` itself had dependencies, those too would be resolved. The dependency graph ensures that dependencies are resolved in the correct order - essentially "bottom up". This mechanism relieves the developer from having to manage such complex dependency graphs.
 
-<app-banner-courses></app-banner-courses>
-
 #### Standard providers
 
 Let's take a closer look at the `@Module()` decorator. In `app.module`, we declare:

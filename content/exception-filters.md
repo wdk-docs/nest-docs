@@ -190,8 +190,6 @@ Let's look at the parameters of the `catch()` method. The `exception` parameter 
 
 \*The reason for this level of abstraction is that `ArgumentsHost` functions in all contexts (e.g., the HTTP server context we're working with now, but also Microservices and WebSockets). In the execution context chapter we'll see how we can access the appropriate <a href="https://docs.nestjs.com/fundamentals/execution-context#host-methods">underlying arguments</a> for **any** execution context with the power of `ArgumentsHost` and its helper functions. This will allow us to write generic exception filters that operate across all contexts.
 
-<app-banner-courses></app-banner-courses>
-
 #### Binding filters
 
 Let's tie our new `HttpExceptionFilter` to the `CatsController`'s `create()` method.
