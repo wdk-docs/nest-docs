@@ -29,7 +29,7 @@ export class AppModule {}
 
 使用 Mongoose，所有东西都来自[Schema](http://mongoosejs.com/docs/guide.html).
 每个模式映射到一个 MongoDB 集合，并定义该集合中文档的形状。
-`Schema`用于定义[Model]](https://mongoosejs.com/docs/models.html).
+`Schema`用于定义[Model](https://mongoosejs.com/docs/models.html).
 模型负责从底层 MongoDB 数据库创建和读取文档。
 
 模式可以用 NestJS 装饰器创建，也可以用 Mongoose 自己手动创建。
@@ -67,8 +67,8 @@ export const CatSchema = SchemaFactory.createForClass(Cat);
 把它想象成你通常会传递给`mongoose.Schema`类构造函数的第二个参数的对象(如, `new mongoose.Schema(_, options)`))。
 要了解更多可用的模式选项，请参阅[本](https://mongoosejs.com/docs/guide.html#options)章。
 
-`@Prop()`装饰器在文档中定义了一个属性。
-例如，在上面的模式定义中，我们定义了三个属性:'name`、`age`和`breed`。
+`@Prop()` 装饰器在文档中定义了一个属性。
+例如，在上面的模式定义中，我们定义了三个属性: `name`,`age` 和 `breed`。
 
 由于 TypeScript 的元数据(和反射)功能，这些属性的[schema types](https://mongoosejs.com/docs/schematypes.html)会被自动推断出来。
 然而，在更复杂的场景中，类型不能隐式反映(例如，数组或嵌套对象结构)，类型必须显式表示，如下所示:

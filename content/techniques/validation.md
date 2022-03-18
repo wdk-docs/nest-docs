@@ -1,6 +1,7 @@
-### Validation
+### 验证
 
-It is best practice to validate the correctness of any data sent into a web application. To automatically validate incoming requests, Nest provides several pipes available right out-of-the-box:
+最好的做法是验证发送到 web 应用程序的任何数据的正确性。
+为了自动验证传入的请求，Nest 提供了几个现成的可用管道:
 
 - `ValidationPipe`
 - `ParseIntPipe`
@@ -8,23 +9,28 @@ It is best practice to validate the correctness of any data sent into a web appl
 - `ParseArrayPipe`
 - `ParseUUIDPipe`
 
-The `ValidationPipe` makes use of the powerful [class-validator](https://github.com/typestack/class-validator) package and its declarative validation decorators. The `ValidationPipe` provides a convenient approach to enforce validation rules for all incoming client payloads, where the specific rules are declared with simple annotations in local class/DTO declarations in each module.
+`ValidationPipe`使用了功能强大的[class-validator](https://github.com/typestack/class-validator)包及其声明性验证装饰器。
+`ValidationPipe`提供了一种方便的方法来为所有传入的客户机有效负载强制验证规则，其中特定的规则在每个模块的本地类/DTO 声明中使用简单的注释声明。
 
-#### Overview
+#### 概述
 
-In the [Pipes](/pipes) chapter, we went through the process of building simple pipes and binding them to controllers, methods or to the global app to demonstrate how the process works. Be sure to review that chapter to best understand the topics of this chapter. Here, we'll focus on various **real world** use cases of the `ValidationPipe`, and show how to use some of its advanced customization features.
+在[Pipes](/pipes)一章中，我们详细介绍了如何构建简单的管道，并将它们绑定到控制器、方法或全局应用中，以演示这个过程是如何工作的。
+为了更好地理解本章的主题，一定要回顾那一章。
+在这里，我们将重点关注`ValidationPipe`的各种**真实世界**用例，并展示如何使用它的一些高级定制特性。
 
-#### Using the built-in ValidationPipe
+#### 使用内置的 ValidationPipe
 
-To begin using it, we first install the required dependency.
+要开始使用它，我们首先安装所需的依赖项。
 
 ```bash
 $ npm i --save class-validator class-transformer
 ```
 
-> info **Hint** The `ValidationPipe` is exported from the `@nestjs/common` package.
+> info **Hint** `ValidationPipe`是从`@nestjs/common`包中导出的。
 
-Because this pipe uses the `class-validator` and `class-transformer` libraries, there are many options available. You configure these settings via a configuration object passed to the pipe. Following are the built-in options:
+因为这个管道使用了`class-validator` 和 `class-transformer` 库，所以有很多可用的选项。
+您可以通过传递给管道的配置对象配置这些设置。
+以下是内置选项:
 
 ```typescript
 export interface ValidationPipeOptions extends ValidatorOptions {
@@ -34,48 +40,48 @@ export interface ValidationPipeOptions extends ValidatorOptions {
 }
 ```
 
-In addition to these, all `class-validator` options (inherited from the `ValidatorOptions` interface) are available:
+除此之外，所有的`class-validator`选项(继承自`ValidatorOptions`接口)都是可用的:
 
 <table>
   <tr>
-    <th>Option</th>
-    <th>Type</th>
-    <th>Description</th>
+    <th>选项</th>
+    <th>类型</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><code>enableDebugMessages</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, validator will print extra warning messages to the console when something is not right.</td>
+    <td>如果设置为true，当出现问题时，验证器将向控制台输出额外的警告消息。</td>
   </tr>
   <tr>
     <td><code>skipUndefinedProperties</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, validator will skip validation of all properties that are null in the validating object.</td>
+    <td>如果设置为true，验证器将跳过验证对象中所有为空的属性的验证。</td>
   </tr>
   <tr>
     <td><code>skipNullProperties</code></td>
     <td><code>boolean</code></td>
-    <td> If set to true, validator will skip validation of all properties that are null or undefined in the validating object.</td>
+    <td>如果设置为true，验证器将跳过验证对象中所有为空或未定义的属性的验证。</td>
   </tr>
   <tr>
     <td><code>skipMissingProperties</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, validator will skip validation of all properties that are missing in the validating object.</td>
+    <td>如果设置为true，验证器将跳过对验证对象中缺失的所有属性的验证。</td>
   </tr>
   <tr>
     <td><code>whitelist</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, validator will strip validated (returned) object of any properties that do not use any validation decorators.</td>
+    <td>如果设置为true，验证器将删除已验证(返回)对象中不使用任何验证装饰器的任何属性。</td>
   </tr>
   <tr>
     <td><code>forbidNonWhitelisted</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, instead of stripping non-whitelisted properties validator will throw an exception.</td>
+    <td>如果设置为true，验证器将抛出异常，而不是剥离非白名单属性。</td>
   </tr>
   <tr>
     <td><code>forbidUnknownValues</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, attempts to validate unknown objects fail immediately.</td>
+    <td>如果设置为true，尝试验证未知对象将立即失败。</td>
   </tr>
   <tr>
     <td><code>disableErrorMessages</code></td>
@@ -85,7 +91,8 @@ In addition to these, all `class-validator` options (inherited from the `Validat
   <tr>
     <td><code>errorHttpStatusCode</code></td>
     <td><code>number</code></td>
-    <td>This setting allows you to specify which exception type will be used in case of an error. By default it throws <code>BadRequestException</code>.</td>
+    <td>This setting allows you to specify which exception type will be used in case of an error.
+By default it throws <code>BadRequestException</code>.</td>
   </tr>
   <tr>
     <td><code>exceptionFactory</code></td>
@@ -100,7 +107,8 @@ In addition to these, all `class-validator` options (inherited from the `Validat
   <tr>
     <td><code>always</code></td>
     <td><code>boolean</code></td>
-    <td>Set default for <code>always</code> option of decorators. Default can be overridden in decorator options</td>
+    <td>Set default for <code>always</code> option of decorators.
+Default can be overridden in decorator options</td>
   </tr>
 
   <tr>
@@ -111,7 +119,8 @@ In addition to these, all `class-validator` options (inherited from the `Validat
   <tr>
     <td><code>dismissDefaultMessages</code></td>
     <td><code>boolean</code></td>
-    <td>If set to true, the validation will not use default messages. Error message always will be <code>undefined</code>        if
+    <td>If set to true, the validation will not use default messages.
+Error message always will be <code>undefined</code>        if
       its not explicitly set.</td>
   </tr>
   <tr>
@@ -127,15 +136,16 @@ In addition to these, all `class-validator` options (inherited from the `Validat
   <tr>
     <td><code>stopAtFirstError</code></td>
     <td><code>boolean</code></td>
-    <td>When set to true, validation of the given property will stop after encountering the first error. Defaults to false.</td>
+    <td>When set to true, validation of the given property will stop after encountering the first error.
+Defaults to false.</td>
   </tr>
 </table>
 
-> info **Notice** Find more information about the `class-validator` package in its [repository](https://github.com/typestack/class-validator).
+> info **Notice** 在它的[存储库](https://github.com/typestack/class-validator)中找到关于`class-validator`包的更多信息。
 
-#### Auto-validation
+#### 自动验证
 
-We'll start by binding `ValidationPipe` at the application level, thus ensuring all endpoints are protected from receiving incorrect data.
+我们将首先在应用程序级别绑定`ValidationPipe`，从而确保所有端点都受到保护，不接收不正确的数据。
 
 ```typescript
 async function bootstrap() {
@@ -146,7 +156,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-To test our pipe, let's create a basic endpoint.
+为了测试管道，让我们创建一个基本端点。
 
 ```typescript
 @Post()
@@ -155,11 +165,15 @@ create(@Body() createUserDto: CreateUserDto) {
 }
 ```
 
-> info **Hint** Since TypeScript does not store metadata about **generics or interfaces**, when you use them in your DTOs, `ValidationPipe` may not be able to properly validate incoming data. For this reason, consider using concrete classes in your DTOs.
+> info **Hint** 由于 TypeScript 不存储关于泛型或接口的元数据，当你在 DTOs 中使用它们时，`ValidationPipe` 可能无法正确地验证传入的数据。
+> 出于这个原因，请考虑在 DTOs 中使用具体类。
 
-> info **Hint** When importing your DTOs, you can't use a type-only import as that would be erased at runtime, i.e. remember to `import {{ '{' }} CreateUserDto {{ '}' }}` instead of `import type {{ '{' }} CreateUserDto {{ '}' }}`.
+> info **Hint** 当导入你的 DTOs 时，你不能使用仅类型导入，因为它会在运行时被删除。
+> 记得 `import {{ '{' }} CreateUserDto {{ '}' }}` 而不是 `import type {{ '{' }} CreateUserDto {{ '}' }}`.
 
-Now we can add a few validation rules in our `CreateUserDto`. We do this using decorators provided by the `class-validator` package, described in detail [here](https://github.com/typestack/class-validator#validation-decorators). In this fashion, any route that uses the `CreateUserDto` will automatically enforce these validation rules.
+现在我们可以在`CreateUserDto`中添加一些验证规则。
+我们使用 `class-validator` 包提供的装饰器来实现这一点，详细描述[在这里](https://github.com/typestack/class-validator#validation-decorators)。
+在这种方式下，任何使用 `CreateUserDto` 的路由都会自动执行这些验证规则。
 
 ```typescript
 import { IsEmail, IsNotEmpty } from 'class-validator';
@@ -173,7 +187,7 @@ export class CreateUserDto {
 }
 ```
 
-With these rules in place, if a request hits our endpoint with an invalid `email` property in the request body, the application will automatically respond with a `400 Bad Request` code, along with the following response body:
+有了这些规则，如果一个请求在请求体中有一个无效的 `email` 属性，应用程序将自动响应一个`400 Bad request`代码，以及下面的响应体:
 
 ```json
 {
@@ -183,7 +197,9 @@ With these rules in place, if a request hits our endpoint with an invalid `email
 }
 ```
 
-In addition to validating request bodies, the `ValidationPipe` can be used with other request object properties as well. Imagine that we would like to accept `:id` in the endpoint path. To ensure that only numbers are accepted for this request parameter, we can use the following construct:
+除了验证请求体之外，`ValidationPipe`还可以与其他请求对象属性一起使用。
+假设我们希望在端点路径中接受`:id`。
+为了确保这个请求参数只接受数字，我们可以使用以下构造:
 
 ```typescript
 @Get(':id')
@@ -192,7 +208,8 @@ findOne(@Param() params: FindOneParams) {
 }
 ```
 
-`FindOneParams`, like a DTO, is simply a class that defines validation rules using `class-validator`. It would look like this:
+像 DTO 一样，`FindOneParams`只是一个使用`class-validator`定义验证规则的类。
+它看起来是这样的:
 
 ```typescript
 import { IsNumberString } from 'class-validator';
@@ -203,39 +220,40 @@ export class FindOneParams {
 }
 ```
 
-#### Disable detailed errors
+#### 禁用详细错误
 
-Error messages can be helpful to explain what was incorrect in a request. However, some production environments prefer to disable detailed errors. Do this by passing an options object to the `ValidationPipe`:
-
-```typescript
-app.useGlobalPipes(
-  new ValidationPipe({
-    disableErrorMessages: true,
-  }),
-);
-```
-
-As a result, detailed error messages won't be displayed in the response body.
-
-#### Stripping properties
-
-Our `ValidationPipe` can also filter out properties that should not be received by the method handler. In this case, we can **whitelist** the acceptable properties, and any property not included in the whitelist is automatically stripped from the resulting object. For example, if our handler expects `email` and `password` properties, but a request also includes an `age` property, this property can be automatically removed from the resulting DTO. To enable such behavior, set `whitelist` to `true`.
+错误消息有助于解释请求中的错误。
+然而，一些生产环境倾向于禁用详细错误。
+通过将一个 options 对象传递给`ValidationPipe`来实现:
 
 ```typescript
-app.useGlobalPipes(
-  new ValidationPipe({
-    whitelist: true,
-  }),
-);
+app.useGlobalPipes(new ValidationPipe({ disableErrorMessages: true }));
 ```
 
-When set to true, this will automatically remove non-whitelisted properties (those without any decorator in the validation class).
+因此，详细的错误消息将不会显示在响应体中。
 
-Alternatively, you can stop the request from processing when non-whitelisted properties are present, and return an error response to the user. To enable this, set the `forbidNonWhitelisted` option property to `true`, in combination with setting `whitelist` to `true`.
+#### 剥离性能
 
-#### Transform payload objects
+我们的`ValidationPipe`还可以过滤掉方法处理程序不应该接收的属性。
+在这种情况下，我们可以将可接受的属性**白名单**，而任何未包含在白名单中的属性将自动从结果对象中删除。
+例如，如果我们的处理程序需要 `email` 和 `password` 属性，但请求还包含 `age` 属性，则可以自动从结果 DTO 中删除该属性。
+要启用这种行为，请将`whitelist`设置为`true`。
 
-Payloads coming in over the network are plain JavaScript objects. The `ValidationPipe` can automatically transform payloads to be objects typed according to their DTO classes. To enable auto-transformation, set `transform` to `true`. This can be done at a method level:
+```typescript
+app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+```
+
+当设置为 `true` 时，这将自动删除非白名单属性(在验证类中没有任何装饰器的属性)。
+
+或者，当出现非白名单属性时，您可以停止处理请求，并向用户返回一个错误响应。
+要启用此功能，请将 `forbidNonWhitelisted` 选项属性设置为 `true` ，同时将 `whitelist` 设置为 `true` 。
+
+#### 变换负载对象
+
+通过网络传入的有效负载是普通的 JavaScript 对象。
+`ValidationPipe` 可以根据 DTO 类自动将有效负载转换为对象类型。
+要启用自动转换，请将 `transform` 设置为' true '。
+这可以在方法级别完成:
 
 ```typescript
 @@filename(cats.controller)
@@ -246,17 +264,14 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
-To enable this behavior globally, set the option on a global pipe:
+要全局启用此行为，请在全局管道上设置该选项:
 
 ```typescript
-app.useGlobalPipes(
-  new ValidationPipe({
-    transform: true,
-  }),
-);
+app.useGlobalPipes(new ValidationPipe({ transform: true }));
 ```
 
-With the auto-transformation option enabled, the `ValidationPipe` will also perform conversion of primitive types. In the following example, the `findOne()` method takes one argument which represents an extracted `id` path parameter:
+启用自动转换选项后， `ValidationPipe` 也将执行基元类型的转换。
+在下面的例子中， `findOne()` 方法接受一个参数，它表示提取的 `id` 路径参数:
 
 ```typescript
 @Get(':id')
@@ -266,39 +281,45 @@ findOne(@Param('id') id: number) {
 }
 ```
 
-By default, every path parameter and query parameter comes over the network as a `string`. In the above example, we specified the `id` type as a `number` (in the method signature). Therefore, the `ValidationPipe` will try to automatically convert a string identifier to a number.
+默认情况下，网络中的每个路径参数和查询参数都是一个`string`。
+在上面的例子中，我们将`id` 类型指定为`number`(在方法签名中)。
+因此，`ValidationPipe`将尝试自动将字符串标识符转换为数字。
 
-#### Explicit conversion
+#### 显式转换
 
-In the above section, we showed how the `ValidationPipe` can implicitly transform query and path parameters based on the expected type. However, this feature requires having auto-transformation enabled.
+在上一节中，我们展示了`ValidationPipe`如何根据预期的类型隐式地转换查询和路径参数。
+然而，该特性需要启用自动转换。
 
-Alternatively (with auto-transformation disabled), you can explicitly cast values using the `ParseIntPipe` or `ParseBoolPipe` (note that `ParseStringPipe` is not needed because, as mentioned earlier, every path parameter and query parameter comes over the network as a `string` by default).
+或者(禁用自动转换)，您可以使用 `ParseIntPipe` 或 `ParseBoolPipe` 显式地强制转换值(注意， `ParseStringPipe` 是不需要的，因为正如前面提到的，每个路径参数和查询参数默认都作为`string`通过网络传递)。
 
 ```typescript
 @Get(':id')
-findOne(
-  @Param('id', ParseIntPipe) id: number,
-  @Query('sort', ParseBoolPipe) sort: boolean,
-) {
+findOne(  @Param('id', ParseIntPipe) id: number,  @Query('sort', ParseBoolPipe) sort: boolean,) {
   console.log(typeof id === 'number'); // true
   console.log(typeof sort === 'boolean'); // true
   return 'This action returns a user';
 }
 ```
 
-> info **Hint** The `ParseIntPipe` and `ParseBoolPipe` are exported from the `@nestjs/common` package.
+> info **Hint** `ParseIntPipe` 和 `ParseBoolPipe` 是从 `@nestjs/common` 包导出的。
 
-#### Mapped types
+#### 映射类型
 
-As you build out features like **CRUD** (Create/Read/Update/Delete) it's often useful to construct variants on a base entity type. Nest provides several utility functions that perform type transformations to make this task more convenient.
+当你构建像**CRUD**(创建/读取/更新/删除)这样的特性时，在基本实体类型上构造变量通常很有用。
+Nest 提供了几个执行类型转换的实用函数，使这项任务更加方便。
 
-> **Warning** If your application uses the `@nestjs/swagger` package, see [this chapter](/openapi/mapped-types) for more information about Mapped Types. Likewise, if you use the `@nestjs/graphql` package see [this chapter](/graphql/mapped-types). Both packages heavily rely on types and so they require a different import to be used. Therefore, if you used `@nestjs/mapped-types` (instead of an appropriate one, either `@nestjs/swagger` or `@nestjs/graphql` depending on the type of your app), you may face various, undocumented side-effects.
+> **Warning** 如果你的应用程序使用 `@nestjs/swagger` 包，请参阅[本章](/openapi/mapped-types)了解更多关于 Mapped Types 的信息。
+> Likewise, if you use the `@nestjs/graphql` package see [this chapter](/graphql/mapped-types).
+> 这两个包都严重依赖于类型，因此它们需要使用不同的导入。
+> 因此，如果你使用' `@nestjs/mapped-types` '(而不是一个适当的，' `@nestjs/swagger` '或' `@nestjs/graphql` '，这取决于你的应用程序的类型)，你可能会面临各种各样的，没有文档化的副作用。
 
-When building input validation types (also called DTOs), it's often useful to build **create** and **update** variations on the same type. For example, the **create** variant may require all fields, while the **update** variant may make all fields optional.
+当构建输入验证类型(也称为 dto)时，在同一类型上构建**create**和**update**变体通常很有用。
+例如，**create**变量可能需要所有字段，而**update**变量可能让所有字段都是可选的。
 
-Nest provides the `PartialType()` utility function to make this task easier and minimize boilerplate.
+Nest 提供了 `PartialType()` 实用函数来简化此任务并最小化样板文件。
 
-The `PartialType()` function returns a type (class) with all the properties of the input type set to optional. For example, suppose we have a **create** type as follows:
+`PartialType()` 函数返回一个类型(类)，其中输入类型的所有属性设置为可选。
+例如，假设我们有一个如下的**create**类型:
 
 ```typescript
 export class CreateCatDto {
@@ -308,15 +329,17 @@ export class CreateCatDto {
 }
 ```
 
-By default, all of these fields are required. To create a type with the same fields, but with each one optional, use `PartialType()` passing the class reference (`CreateCatDto`) as an argument:
+默认情况下，所有这些字段都是必需的。
+要创建具有相同字段的类型，但每个字段都是可选的，使用 `PartialType()` 传递类引用(`CreateCatDto`)作为参数:
 
 ```typescript
 export class UpdateCatDto extends PartialType(CreateCatDto) {}
 ```
 
-> info **Hint** The `PartialType()` function is imported from the `@nestjs/mapped-types` package.
+> info **Hint** ' PartialType() '函数是从' @nestjs/mapped-types '包中导入的。
 
-The `PickType()` function constructs a new type (class) by picking a set of properties from an input type. For example, suppose we start with a type like:
+' PickType() '函数通过从输入类型中选取一组属性来构造一个新类型(类)。
+例如，假设我们以如下类型开始:
 
 ```typescript
 export class CreateCatDto {
@@ -326,15 +349,16 @@ export class CreateCatDto {
 }
 ```
 
-We can pick a set of properties from this class using the `PickType()` utility function:
+我们可以使用' PickType() '实用函数从这个类中选取一组属性:
 
 ```typescript
 export class UpdateCatAgeDto extends PickType(CreateCatDto, ['age'] as const) {}
 ```
 
-> info **Hint** The `PickType()` function is imported from the `@nestjs/mapped-types` package.
+> info **Hint** ' PickType() '函数是从' @nestjs/mapped-types '包中导入的。
 
-The `OmitType()` function constructs a type by picking all properties from an input type and then removing a particular set of keys. For example, suppose we start with a type like:
+' OmitType() '函数通过从输入类型中选取所有属性，然后删除一组特定的键来构造类型。
+例如，假设我们以如下类型开始:
 
 ```typescript
 export class CreateCatDto {
@@ -344,15 +368,17 @@ export class CreateCatDto {
 }
 ```
 
-We can generate a derived type that has every property **except** `name` as shown below. In this construct, the second argument to `OmitType` is an array of property names.
+我们可以生成一个具有**除** ' name '之外的所有属性的派生类型，如下所示。
+在这个构造中，' OmitType '的第二个参数是一个属性名数组。
 
 ```typescript
 export class UpdateCatDto extends OmitType(CreateCatDto, ['name'] as const) {}
 ```
 
-> info **Hint** The `OmitType()` function is imported from the `@nestjs/mapped-types` package.
+> info **Hint** ' OmitType() '函数是从' @nestjs/mapped-types '包中导入的。
 
-The `IntersectionType()` function combines two types into one new type (class). For example, suppose we start with two types like:
+' IntersectionType() '函数将两种类型合并成一个新的类型(类)。
+例如，假设我们从以下两种类型开始:
 
 ```typescript
 export class CreateCatDto {
@@ -365,7 +391,7 @@ export class AdditionalCatInfo {
 }
 ```
 
-We can generate a new type that combines all properties in both types.
+我们可以生成一个新类型，它结合了这两种类型中的所有属性。
 
 ```typescript
 export class UpdateCatDto extends IntersectionType(
@@ -374,9 +400,10 @@ export class UpdateCatDto extends IntersectionType(
 ) {}
 ```
 
-> info **Hint** The `IntersectionType()` function is imported from the `@nestjs/mapped-types` package.
+> info **Hint** IntersectionType()函数是从' @nestjs/mapped-types '包中导入的。
 
-The type mapping utility functions are composable. For example, the following will produce a type (class) that has all of the properties of the `CreateCatDto` type except for `name`, and those properties will be set to optional:
+类型映射实用函数是可组合的。
+例如，下面将生成一个类型(类)，它拥有' CreateCatDto '类型的所有属性，除了' name '，这些属性将被设置为可选:
 
 ```typescript
 export class UpdateCatDto extends PartialType(
@@ -384,9 +411,10 @@ export class UpdateCatDto extends PartialType(
 ) {}
 ```
 
-#### Parsing and validating arrays
+#### 解析和验证数组
 
-TypeScript does not store metadata about generics or interfaces, so when you use them in your DTOs, `ValidationPipe` may not be able to properly validate incoming data. For instance, in the following code, `createUserDtos` won't be correctly validated:
+TypeScript 不存储关于泛型或接口的元数据，所以当你在 dto 中使用它们时，' ValidationPipe '可能无法正确地验证传入的数据。
+例如，在下面的代码中，' createUserDtos '将不会被正确验证:
 
 ```typescript
 @Post()
@@ -395,7 +423,7 @@ createBulk(@Body() createUserDtos: CreateUserDto[]) {
 }
 ```
 
-To validate the array, create a dedicated class which contains a property that wraps the array, or use the `ParseArrayPipe`.
+要验证数组，请创建一个专用类，其中包含一个包装数组的属性，或者使用' ParseArrayPipe '。
 
 ```typescript
 @Post()
@@ -407,19 +435,17 @@ createBulk(
 }
 ```
 
-In addition, the `ParseArrayPipe` may come in handy when parsing query parameters. Let's consider a `findByIds()` method that returns users based on identifiers passed as query parameters.
+此外，在解析查询参数时，' ParseArrayPipe '可能会派上用场。
+让我们考虑一个' findByIds() '方法，它根据作为查询参数传递的标识符返回用户。
 
 ```typescript
 @Get()
-findByIds(
-  @Query('ids', new ParseArrayPipe({ items: Number, separator: ',' }))
-  ids: number[],
-) {
+findByIds(  @Query('ids', new ParseArrayPipe({ items: Number, separator: ',' }))  ids: number[],) {
   return 'This action returns users by ids';
 }
 ```
 
-This construction validates the incoming query parameters from an HTTP `GET` request like the following:
+这个构造验证来自 HTTP ' GET '请求的传入查询参数，如下所示:
 
 ```bash
 GET /?ids=1,2,3
@@ -427,8 +453,8 @@ GET /?ids=1,2,3
 
 #### WebSockets and Microservices
 
-While this chapter shows examples using HTTP style applications (e.g., Express or Fastify), the `ValidationPipe` works the same for WebSockets and microservices, regardless of the transport method that is used.
+虽然本章展示了使用 HTTP 风格应用程序的例子(如 Express 或 Fastify)，但无论使用哪种传输方法，“ValidationPipe”对于 WebSockets 和微服务都是一样的。
 
-#### Learn more
+#### 了解更多
 
-Read more about custom validators, error messages, and available decorators as provided by the `class-validator` package [here](https://github.com/typestack/class-validator).
+更多关于自定义验证器、错误消息和“类验证器”包提供的可用装饰器的信息请参见[这里](https://github.com/typestack/class-validator)。

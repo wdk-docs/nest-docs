@@ -1,24 +1,25 @@
-### Introduction
+### 介绍
 
-The [OpenAPI](https://swagger.io/specification/) specification is a language-agnostic definition format used to describe RESTful APIs. Nest provides a dedicated [module](https://github.com/nestjs/swagger) which allows generating such a specification by leveraging decorators.
+[OpenAPI](https://swagger.io/specification/)规范是一种与语言无关的定义格式，用于描述 RESTful api。
+Nest 提供了一个专门的[模块](https://github.com/nestjs/swagger)，它允许通过利用装饰器生成这样的规范。
 
-#### Installation
+#### 安装
 
-To begin using it, we first install the required dependencies.
+要开始使用它，我们首先安装所需的依赖项。
 
 ```bash
 $ npm install --save @nestjs/swagger swagger-ui-express
 ```
 
-If you use fastify, install `fastify-swagger` instead of `swagger-ui-express`:
+如果你使用 fastify，安装 `fastify-swagger` 而不是 `swagger-ui-express`:
 
 ```bash
 $ npm install --save @nestjs/swagger fastify-swagger
 ```
 
-#### Bootstrap
+#### 引导
 
-Once the installation process is complete, open the `main.ts` file and initialize Swagger using the `SwaggerModule` class:
+安装过程完成后，打开`main.ts`并使用 `SwaggerModule` 类初始化 Swagger:
 
 ```typescript
 @@filename(main)
@@ -43,32 +44,38 @@ async function bootstrap() {
 bootstrap();
 ```
 
-> info **Hint** `document` (returned by the `SwaggerModule#createDocument()` method) is a serializable object conforming to [OpenAPI Document](https://swagger.io/specification/#openapi-document). Instead of hosting it via HTTP, you could also save it as a JSON/YAML file, and consume it in different ways.
+> info **Hint** `document` (由`SwaggerModule#createDocument()`方法返回) 是一个符合[OpenAPI 文档]的可序列化对象(https://swagger.io/specification/#openapi-document).
+> 除了通过 HTTP 托管它，您还可以将它保存为 JSON/YAML 文件，并以不同的方式使用它。
 
-The `DocumentBuilder` helps to structure a base document that conforms to the OpenAPI Specification. It provides several methods that allow setting such properties as title, description, version, etc. In order to create a full document (with all HTTP routes defined) we use the `createDocument()` method of the `SwaggerModule` class. This method takes two arguments, an application instance and a Swagger options object. Alternatively, we can provide a third argument, which should be of type `SwaggerDocumentOptions`. More on this in the [Document options section](/openapi/introduction#document-options).
+`DocumentBuilder`有助于构造一个符合 OpenAPI 规范的基础文档。
+它提供了几个方法，允许设置诸如标题、描述、版本等属性。
+为了创建一个完整的文档(定义了所有 HTTP 路由)，我们使用了`SwaggerModule`类的`createDocument()`方法。
+这个方法有两个参数，一个应用程序实例和一个 Swagger 选项对象。
+或者，我们可以提供第三个参数，它的类型应该是`SwaggerDocumentOptions`。
+更多信息请参见[文档选项部分](/openapi/introduction#document-options)。
 
-Once we create a document, we can call the `setup()` method. It accepts:
+一旦我们创建了一个文档，我们可以调用`setup()`方法。它接受:
 
-1. The path to mount the Swagger UI
-2. An application instance
-3. The document object instantiated above
-4. Optional configuration parameter (read more [here](/openapi/introduction#document-options))
+1. 安装 Swagger UI 的路径
+2. 一个应用程序实例
+3. 上面实例化的文档对象
+4. 可选的配置参数(阅读更多信息[此处](/openapi/introduction#document-options))
 
-Now you can run the following command to start the HTTP server:
+现在可以执行以下命令启动 HTTP 服务:
 
 ```bash
 $ npm run start
 ```
 
-While the application is running, open your browser and navigate to `http://localhost:3000/api`. You should see the Swagger UI.
+当应用程序运行时，打开浏览器并导航到`http://localhost:3000/api`。你应该看看 Swagger UI。
 
 <figure><img src="/assets/swagger1.png" /></figure>
 
-The `SwaggerModule` automatically reflects all of your endpoints. Note that the Swagger UI is created using either `swagger-ui-express` or `fastify-swagger`, depending on the platform.
+`SwaggerModule` 会自动反映你所有的端点。请注意，根据平台的不同，Swagger UI 可以使用`swagger-ui-express` or `fastify-swagger`创建。
 
-> info **Hint** To generate and download a Swagger JSON file, navigate to `http://localhost:3000/api-json` (`swagger-ui-express`) or `http://localhost:3000/api/json` (`fastify-swagger`) in your browser (assuming that your Swagger documentation is available under `http://localhost:3000/api`).
+> info **Hint** 要生成和下载 Swagger JSON 文件，请在浏览器中导航到`http://localhost:3000/api-json`(`swagger-ui-express`)或`http://localhost:3000/api/json`(`fastify-swagger`)(假设您的 Swagger 文档在`http://localhost:3000/api`下可用)。
 
-> warning **Warning** When using `fastify-swagger` and `helmet`, there may be a problem with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), to solve this collision, configure the CSP as shown below:
+> warning **Warning** 当使用`fastify-swagger`和 `helmet`时，[CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)可能会有一个问题，为了解决这个碰撞，配置 CSP 如下所示:
 >
 > ```typescript
 > app.register(helmet, {
@@ -88,9 +95,9 @@ The `SwaggerModule` automatically reflects all of your endpoints. Note that the 
 > });
 > ```
 
-#### Document options
+#### 文件选项
 
-When creating a document, it is possible to provide some extra options to fine tune the library's behavior. These options should be of type `SwaggerDocumentOptions`, which can be the following:
+在创建文档时，可以提供一些额外的选项来微调库的行为。这些选项的类型应该是`SwaggerDocumentOptions`，可以如下:
 
 ```TypeScript
 export interface SwaggerDocumentOptions {
@@ -123,7 +130,7 @@ export interface SwaggerDocumentOptions {
 }
 ```
 
-For example, if you want to make sure that the library generates operation names like `createUser` instead of `UserController_createUser`, you can set the following:
+例如，如果你想确保库生成的操作名是 `createUser` 而不是 `UserController_createUser`，你可以设置如下:
 
 ```TypeScript
 const options: SwaggerDocumentOptions =  {
@@ -135,9 +142,9 @@ const options: SwaggerDocumentOptions =  {
 const document = SwaggerModule.createDocument(app, config, options);
 ```
 
-#### Setup options
+#### 设置选项
 
-You can configure Swagger UI by passing the options object which fulfills the `ExpressSwaggerCustomOptions` (if you use express) interface as a fourth argument of the `SwaggerModule#setup` method.
+你可以通过传递实现`ExpressSwaggerCustomOptions`(如果你使用 express)接口的选项对象作为`SwaggerModule#setup`方法的第四个参数来配置 Swagger UI。
 
 ```TypeScript
 export interface ExpressSwaggerCustomOptions {
@@ -155,7 +162,7 @@ export interface ExpressSwaggerCustomOptions {
 }
 ```
 
-If you use fastify, you can configure the user interface by passing the `FastifySwaggerCustomOptions` object.
+如果你使用 fastify，你可以通过传递 `FastifySwaggerCustomOptions` 对象来配置用户界面。
 
 ```Typescript
 export interface FastifySwaggerCustomOptions {
@@ -163,7 +170,7 @@ export interface FastifySwaggerCustomOptions {
 }
 ```
 
-For example, if you want to make sure that the authentication token persists after refreshing the page, or change the page title (that shows up in the browser), you can use the following settings:
+例如，如果你想确保在刷新页面后认证令牌仍然存在，或者改变页面标题(显示在浏览器中)，你可以使用以下设置:
 
 ```TypeScript
 const customOptions: SwaggerCustomOptions = {
@@ -175,6 +182,6 @@ const customOptions: SwaggerCustomOptions = {
 SwaggerModule.setup('docs', app, document, customOptions);
 ```
 
-#### Example
+#### 例子
 
-A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/11-swagger).
+一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/11-swagger).

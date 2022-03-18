@@ -403,7 +403,8 @@ await audioQueue.resume();
 
 #### 独立的进程
 
-作业处理程序也可以在单独的(分叉的)进程中运行 ([source](https://github.com/OptimalBits/bull#separate-processes)). 这有几个优点:
+作业处理程序也可以在单独的(分叉的)进程中运行 ([source](https://github.com/OptimalBits/bull#separate-processes)).
+这有几个优点:
 
 - 这个进程是沙箱化的，所以即使它崩溃了，也不会影响工作进程。
 - 您可以在不影响队列的情况下运行阻塞代码(作业不会停止)。
@@ -446,7 +447,7 @@ export default function (job: Job, cb: DoneCallback) {
 在这种情况下，使用`forRootAsync()`方法，它提供了几种处理异步配置的方法。
 同样，如果你想异步传递队列选项，请使用`registerQueueAsync()`方法。
 
-One approach is to use a factory function:
+一种方法是使用工厂函数:
 
 ```typescript
 BullModule.forRootAsync({

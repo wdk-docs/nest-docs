@@ -240,10 +240,10 @@ Definitions are currently maintained in the [DefinitelyTyped](https://github.com
 
 ### 贡献
 
-We welcome all types of contributions, either code fixes, new features or doc improvements.
-Code formatting is enforced by [prettier](https://prettier.io/).
-For commits please follow conventional [commits convention](https://www.conventionalcommits.org/en/v1.0.0-beta.2/).
-All code must pass lint rules and test suites before it can be merged into develop.
+我们欢迎所有类型的贡献，无论是代码修复、新特性还是文档改进。
+代码格式由[prettier](https://prettier.io/)强制执行。
+对于提交，请遵循常规[commits convention](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)。
+所有代码都必须通过 lint 规则和测试套件，然后才能合并到 development 中。
 
 ---
 
@@ -327,57 +327,56 @@ imageQueue.add({ image: 'http://example.com/image1.tiff' });
 
 #### 使用承诺
 
-Alternatively, you can use return promises instead of using the `done` callback:
+或者，你可以使用 return promises 来代替`done`回调:
 
 ```javascript
 videoQueue.process(function (job) {
-  // don't forget to remove the done callback!
-  // Simply return a promise
+  // 不要忘记删除done回调!
+  // 简单地回报一个承诺
   return fetchVideo(job.data.url).then(transcodeVideo);
 
-  // Handles promise rejection
+  // 处理承诺拒绝
   return Promise.reject(new Error('error transcoding'));
 
-  // Passes the value the promise is resolved with to the "completed" event
+  // 将承诺解析的值传递给“completed”事件
   return Promise.resolve({ framerate: 29.5 /* etc... */ });
 
-  // If the job throws an unhandled exception it is also handled correctly
+  // 如果作业抛出一个未处理的异常，它也会得到正确的处理
   throw new Error('some unexpected error');
-  // same as
+  // 一样
   return Promise.reject(new Error('some unexpected error'));
 });
 ```
 
 #### 独立的进程
 
-The process function can also be run in a separate process. This has several advantages:
+进程函数也可以在单独的进程中运行。这有几个好处:
 
-- The process is sandboxed so if it crashes it does not affect the worker.
-- You can run blocking code without affecting the queue (jobs will not stall).
-- Much better utilization of multi-core CPUs.
-- Less connections to redis.
+- 这个进程是沙箱化的，所以即使它崩溃了，也不会影响工作进程。
+- 您可以在不影响队列的情况下运行阻塞代码(作业不会停止)。
+- 更好地利用多核 cpu。
+- 减少与 redis 的连接。
 
-In order to use this feature just create a separate file with the processor:
+为了使用这个特性，只需创建一个单独的处理器文件:
 
 ```js
 // processor.js
 module.exports = function (job) {
-  // Do some heavy work
-
+  // 做一些繁重的工作
   return Promise.resolve(result);
 };
 ```
 
-And define the processor like this:
+然后像这样定义处理器:
 
 ```js
-// Single process:
+// 单流程:
 queue.process('/path/to/my/processor.js');
 
-// You can use concurrency as well:
+// 你也可以使用并发:
 queue.process(5, '/path/to/my/processor.js');
 
-// and named processors:
+// 和指定的处理器:
 queue.process('my processor', 5, '/path/to/my/processor.js');
 ```
 
