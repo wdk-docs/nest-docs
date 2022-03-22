@@ -1,6 +1,6 @@
-### Security
+### 安全
 
-To define which security mechanisms should be used for a specific operation, use the `@ApiSecurity()` decorator.
+要定义特定操作应该使用哪些安全机制，请使用' @ apissecurity() '装饰器。
 
 ```typescript
 @ApiSecurity('basic')
@@ -8,7 +8,7 @@ To define which security mechanisms should be used for a specific operation, use
 export class CatsController {}
 ```
 
-Before you run your application, remember to add the security definition to your base document using `DocumentBuilder`:
+在运行你的应用程序之前，记得使用 DocumentBuilder 将安全定义添加到你的基础文档中:
 
 ```typescript
 const options = new DocumentBuilder().addSecurity('basic', {
@@ -17,11 +17,11 @@ const options = new DocumentBuilder().addSecurity('basic', {
 });
 ```
 
-Some of the most popular authentication techniques are built-in (e.g., `basic` and `bearer`) and therefore you don't have to define security mechanisms manually as shown above.
+一些最流行的身份验证技术是内置的(例如，‘basic’和‘承载者’)，因此您不必像上面所示那样手动定义安全机制。
 
-#### Basic authentication
+#### 基本身份验证
 
-To enable basic authentication, use `@ApiBasicAuth()`.
+要启用基本身份验证，请使用' @ApiBasicAuth() '。
 
 ```typescript
 @ApiBasicAuth()
@@ -35,9 +35,9 @@ Before you run your application, remember to add the security definition to your
 const options = new DocumentBuilder().addBasicAuth();
 ```
 
-#### Bearer authentication
+#### 持票人身份验证
 
-To enable bearer authentication, use `@ApiBearerAuth()`.
+要启用承载身份验证，使用' @ApiBearerAuth() '。
 
 ```typescript
 @ApiBearerAuth()
@@ -45,13 +45,13 @@ To enable bearer authentication, use `@ApiBearerAuth()`.
 export class CatsController {}
 ```
 
-Before you run your application, remember to add the security definition to your base document using `DocumentBuilder`:
+在运行你的应用程序之前，记得使用 DocumentBuilder 将安全定义添加到你的基础文档中:
 
 ```typescript
 const options = new DocumentBuilder().addBearerAuth();
 ```
 
-#### OAuth2 authentication
+#### OAuth2 身份认证
 
 To enable OAuth2, use `@ApiOAuth2()`.
 
@@ -67,7 +67,7 @@ Before you run your application, remember to add the security definition to your
 const options = new DocumentBuilder().addOAuth2();
 ```
 
-#### Cookie authentication
+#### Cookie 验证
 
 To enable cookie authentication, use `@ApiCookieAuth()`.
 

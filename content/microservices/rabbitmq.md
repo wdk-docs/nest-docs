@@ -1,18 +1,18 @@
 ### RabbitMQ
 
-[RabbitMQ](https://www.rabbitmq.com/) is an open-source and lightweight message broker which supports multiple messaging protocols. It can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements. In addition, it's the most widely deployed message broker, used worldwide at small startups and large enterprises.
+[RabbitMQ](https://www.rabbitmq.com/)是一个开源的轻量级消息代理，支持多种消息协议。它可以部署在分布式和联合配置中，以满足大规模、高可用性需求。此外，它是部署最广泛的消息代理，在全球范围内用于小型初创企业和大型企业。
 
-#### Installation
+#### 安装
 
-To start building RabbitMQ-based microservices, first install the required packages:
+要开始构建基于 rabbitmq 的微服务，首先要安装所需的包:
 
 ```bash
 $ npm i --save amqplib amqp-connection-manager
 ```
 
-#### Overview
+#### 概述
 
-To use the RabbitMQ transporter, pass the following options object to the `createMicroservice()` method:
+要使用 RabbitMQ 传输器，需要将以下选项对象传递给' createMicroservice() '方法:
 
 ```typescript
 @@filename(main)
@@ -39,48 +39,49 @@ const app = await NestFactory.createMicroservice(AppModule, {
 });
 ```
 
-> info **Hint** The `Transport` enum is imported from the `@nestjs/microservices` package.
+> info **Hint** `Transport` enum 是从`@nestjs/microservices`包中导入的。
 
-#### Options
+#### 选项
 
-The `options` property is specific to the chosen transporter. The <strong>RabbitMQ</strong> transporter exposes the properties described below.
+`options`属性特定于所选的传输器。
+<strong>RabbitMQ</strong> 传输器暴露了下面描述的属性。
 
 <table>
   <tr>
     <td><code>urls</code></td>
-    <td>Connection urls</td>
+    <td>连接url</td>
   </tr>
   <tr>
     <td><code>queue</code></td>
-    <td>Queue name which your server will listen to</td>
+    <td>您的服务器将侦听的队列名称</td>
   </tr>
   <tr>
     <td><code>prefetchCount</code></td>
-    <td>Sets the prefetch count for the channel</td>
+    <td>设置通道的预取计数</td>
   </tr>
   <tr>
     <td><code>isGlobalPrefetchCount</code></td>
-    <td>Enables per channel prefetching</td>
+    <td>启用每个通道预取</td>
   </tr>
   <tr>
     <td><code>noAck</code></td>
-    <td>If <code>false</code>, manual acknowledgment mode enabled</td>
+    <td>如果<code>false</code>，则启用手动确认模式</td>
   </tr>
   <tr>
     <td><code>queueOptions</code></td>
-    <td>Additional queue options (read more <a href="https://www.squaremobius.net/amqp.node/channel_api.html#channel_assertQueue" rel="nofollow" target="_blank">here</a>)</td>
+    <td>额外的队列选项(读取更多<a href="https://www.squaremobius.net/amqp.node/channel_api.html#channel_assertQueue" rel="nofollow" target="_blank">这里</a>)</td>
   </tr>
   <tr>
     <td><code>socketOptions</code></td>
-    <td>Additional socket options (read more <a href="https://www.squaremobius.net/amqp.node/channel_api.html#socket-options" rel="nofollow" target="_blank">here</a>)</td>
+    <td>额外的套接字选项(读取更多<a href="https://www.squaremobius.net/amqp.node/channel_api.html#socket-options" rel="nofollow" target="_blank">这里</a>)</td>
   </tr>
   <tr>
     <td><code>headers</code></td>
-    <td>Headers to be sent along with every message</td>
+    <td>标题将随每条消息一起发送</td>
   </tr>
 </table>
 
-#### Client
+#### 客户端
 
 Like other microservice transporters, you have <a href="https://docs.nestjs.com/microservices/basics#client">several options</a> for creating a RabbitMQ `ClientProxy` instance.
 
@@ -109,9 +110,10 @@ One method for creating an instance is to use the `ClientsModule`. To create a c
 
 Other options to create a client (either `ClientProxyFactory` or `@Client()`) can be used as well. You can read about them <a href="https://docs.nestjs.com/microservices/basics#client">here</a>.
 
-#### Context
+#### 上下文
 
-In more sophisticated scenarios, you may want to access more information about the incoming request. When using the RabbitMQ transporter, you can access the `RmqContext` object.
+在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
+当使用 RabbitMQ 传输器时，你可以访问' RmqContext '对象。
 
 ```typescript
 @@filename()
@@ -161,7 +163,7 @@ getNotifications(data, context) {
 }
 ```
 
-#### Message acknowledgement
+#### 消息确认
 
 To make sure a message is never lost, RabbitMQ supports [message acknowledgements](https://www.rabbitmq.com/confirms.html). An acknowledgement is sent back by the consumer to tell RabbitMQ that a particular message has been received, processed and that RabbitMQ is free to delete it. If a consumer dies (its channel is closed, connection is closed, or TCP connection is lost) without sending an ack, RabbitMQ will understand that a message wasn't processed fully and will re-queue it.
 
@@ -200,7 +202,7 @@ getNotifications(data, context) {
 }
 ```
 
-#### Record builders
+#### 记录构建
 
 To configure message options, you can use the `RmqRecordBuilder` class (note: this is doable for event-based flows as well). For example, to set `headers` and `priority` properties, use the `setOptions` method, as follows:
 

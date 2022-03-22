@@ -1,10 +1,10 @@
-### Migration guide
+### 迁移向导
 
-If you're currently using `@nestjs/swagger@3.*`, note the following breaking/API changes in version 4.0.
+如果你正在使用`@nestjs/swagger@3.*`，请注意下面在 4.0 版本中对/API 的更改。
 
-#### Breaking changes
+#### 突发的变化
 
-The following decorators have been changed/renamed:
+以下装饰器已被更改/重命名:
 
 - `@ApiModelProperty` is now `@ApiProperty`
 - `@ApiModelPropertyOptional` is now `@ApiPropertyOptional`
@@ -25,14 +25,12 @@ The following decorators have been changed/renamed:
 - `setHost` has been removed
 - `setSchemes` has been removed (use the `addServer` instead, e.g., `addServer('http://')`)
 
-#### New methods
+#### 新方法
 
-The following methods have been added:
+添加了以下方法:
 
 - `addServer`
 - `addApiKey`
 - `addBasicAuth`
 - `addSecurity`
 - `addSecurityRequirements`
-
-<app-banner-shop></app-banner-shop>

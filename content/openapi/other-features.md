@@ -1,10 +1,10 @@
-### Other features
+### 其他功能
 
-This page lists all the other available features that you may find useful.
+这个页面列出了所有其他有用的功能。
 
-#### Global prefix
+#### 全局前缀
 
-To ignore a global prefix for routes set through `setGlobalPrefix()`, use `ignoreGlobalPrefix`:
+要忽略通过' `setGlobalPrefix()` '设置的路由的全局前缀，请使用' `ignoreGlobalPrefix` ':
 
 ```typescript
 const document = SwaggerModule.createDocument(app, options, {
@@ -12,13 +12,16 @@ const document = SwaggerModule.createDocument(app, options, {
 });
 ```
 
-#### Multiple specifications
+#### 多个规范
 
-The `SwaggerModule` provides a way to support multiple specifications. In other words, you can serve different documentation, with different UIs, on different endpoints.
+SwaggerModule 提供了一种支持多个规范的方法。
+换句话说，您可以在不同的端点上使用不同的 ui 提供不同的文档。
 
-To support multiple specifications, your application must be written with a modular approach. The `createDocument()` method takes a 3rd argument, `extraOptions`, which is an object with a property named `include`. The `include` property takes a value which is an array of modules.
+要支持多个规范，应用程序必须使用模块化方法编写。
+' createDocument() '方法有第三个参数' extraOptions '，它是一个带有名为' include '属性的对象。
+' include '属性的值是一个模块数组。
 
-You can setup multiple specifications support as shown below:
+您可以设置多个规格支持如下所示:
 
 ```typescript
 import { NestFactory } from '@nestjs/core';
@@ -69,16 +72,16 @@ async function bootstrap() {
 bootstrap();
 ```
 
-Now you can start your server with the following command:
+现在你可以用以下命令启动你的服务器:
 
 ```bash
 $ npm run start
 ```
 
-Navigate to `http://localhost:3000/api/cats` to see the Swagger UI for cats:
+导航到`http://localhost:3000/api/cats`查看猫的 Swagger UI:
 
 <figure><img src="/assets/swagger-cats.png" /></figure>
 
-In turn, `http://localhost:3000/api/dogs` will expose the Swagger UI for dogs:
+反过来，`http://localhost:3000/api/dogs`将为狗狗提供 Swagger 用户界面:
 
 <figure><img src="/assets/swagger-dogs.png" /></figure>

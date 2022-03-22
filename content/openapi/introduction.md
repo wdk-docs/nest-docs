@@ -44,7 +44,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-> info **Hint** `document` (由`SwaggerModule#createDocument()`方法返回) 是一个符合[OpenAPI 文档]的可序列化对象(https://swagger.io/specification/#openapi-document).
+> info **Hint** `document` (由`SwaggerModule#createDocument()`方法返回)是一个符合[OpenAPI 文档](https://swagger.io/specification/#openapi-document)的可序列化对象.
 > 除了通过 HTTP 托管它，您还可以将它保存为 JSON/YAML 文件，并以不同的方式使用它。
 
 `DocumentBuilder`有助于构造一个符合 OpenAPI 规范的基础文档。
@@ -95,7 +95,7 @@ $ npm run start
 > });
 > ```
 
-#### 文件选项
+#### 文档选项
 
 在创建文档时，可以提供一些额外的选项来微调库的行为。这些选项的类型应该是`SwaggerDocumentOptions`，可以如下:
 

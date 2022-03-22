@@ -1,6 +1,7 @@
-### Types and parameters
+### 类型和参数
 
-The `SwaggerModule` searches for all `@Body()`, `@Query()`, and `@Param()` decorators in route handlers to generate the API document. It also creates corresponding model definitions by taking advantage of reflection. Consider the following code:
+“SwaggerModule”在路由处理程序中搜索所有的“@Body()”、“@Query()”和“@Param()”装饰器来生成 API 文档。
+它还通过利用反射创建相应的模型定义。考虑以下代码:
 
 ```typescript
 @Post()
@@ -9,13 +10,14 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
-> info **Hint** To explicitly set the body definition use the `@ApiBody()` decorator (imported from the `@nestjs/swagger` package).
+> info **Hint** 要显式设置 body 定义，请使用' @ApiBody() '装饰器(从' @nestjs/swagger '包导入)。
 
-Based on the `CreateCatDto`, the following model definition Swagger UI will be created:
+基于“CreateCatDto”，下面的模型定义将创建 Swagger UI:
 
 <figure><img src="/assets/swagger-dto.png" /></figure>
 
-As you can see, the definition is empty although the class has a few declared properties. In order to make the class properties visible to the `SwaggerModule`, we have to either annotate them with the `@ApiProperty()` decorator or use the CLI plugin (read more in the **Plugin** section) which will do it automatically:
+正如您所看到的，虽然类有一些声明的属性，但定义是空的。
+为了让类属性对“SwaggerModule”可见，我们必须要么用“@ApiProperty()”装饰器来注释它们，要么使用 CLI 插件(更多信息请阅读**插件**部分)，它会自动完成:
 
 ```typescript
 import { ApiProperty } from '@nestjs/swagger';
@@ -32,9 +34,9 @@ export class CreateCatDto {
 }
 ```
 
-> info **Hint** Instead of manually annotating each property, consider using the Swagger plugin (see [Plugin](/openapi/cli-plugin) section) which will automatically provide this for you.
+> info **Hint** 与其手动注释每个属性，不如考虑使用 Swagger 插件(参见[plugin](/openapi/cli-plugin)部分)，它会自动为你提供这些。
 
-Let's open the browser and verify the generated `CreateCatDto` model:
+让我们打开浏览器并验证生成的“CreateCatDto”模型:
 
 <figure><img src="/assets/swagger-dto2.png" /></figure>
 
@@ -73,8 +75,6 @@ names: string[];
 
 Either include the type as the first element of an array (as shown above) or set the `isArray` property to `true`.
 
-
-
 #### Circular dependencies
 
 When you have circular dependencies between classes, use a lazy function to provide the `SwaggerModule` with type information:
@@ -88,7 +88,8 @@ node: Node;
 
 #### Generics and interfaces
 
-Since TypeScript does not store metadata about generics or interfaces, when you use them in your DTOs, `SwaggerModule` may not be able to properly generate model definitions at runtime. For instance, the following code won't be correctly inspected by the Swagger module:
+Since TypeScript does not store metadata about generics or interfaces, when you use them in your DTOs, `SwaggerModule` may not be able to properly generate model definitions at runtime.
+For instance, the following code won't be correctly inspected by the Swagger module:
 
 ```typescript
 createBulk(@Body() usersDto: CreateUserDto[])
@@ -146,7 +147,9 @@ By default, the `enum` property will add a raw definition of [Enum](https://swag
       - Siamese
 ```
 
-The above specification works fine for most cases. However, if you are utilizing a tool that takes the specification as **input** and generates **client-side** code, you might run into a problem with the generated code containing duplicated `enums`. Consider the following code snippet:
+The above specification works fine for most cases.
+However, if you are utilizing a tool that takes the specification as **input** and generates **client-side** code, you might run into a problem with the generated code containing duplicated `enums`.
+Consider the following code snippet:
 
 ```typescript
 // generated client-side code
@@ -183,7 +186,8 @@ export class CatDetail {
 }
 ```
 
-The `enumName` property enables `@nestjs/swagger` to turn `CatBreed` into its own `schema` which in turns makes `CatBreed` enum reusable. The specification will look like the following:
+The `enumName` property enables `@nestjs/swagger` to turn `CatBreed` into its own `schema` which in turns makes `CatBreed` enum reusable.
+The specification will look like the following:
 
 ```yaml
 CatDetail:

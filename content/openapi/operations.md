@@ -115,7 +115,8 @@ Let's open the browser and verify the generated `Cat` model:
 
 #### File upload
 
-You can enable file upload for a specific method with the `@ApiBody` decorator together with `@ApiConsumes()`. Here's a full example using the [File Upload](/techniques/file-upload) technique:
+You can enable file upload for a specific method with the `@ApiBody` decorator together with `@ApiConsumes()`.
+Here's a full example using the [File Upload](/techniques/file-upload) technique:
 
 ```typescript
 @UseInterceptors(FileInterceptor('file'))
@@ -147,7 +148,8 @@ class FilesUploadDto {
 
 #### Extensions
 
-To add an Extension to a request use the `@ApiExtension()` decorator. The extension name must be prefixed with `x-`.
+To add an Extension to a request use the `@ApiExtension()` decorator.
+The extension name must be prefixed with `x-`.
 
 ```typescript
 @ApiExtension('x-foo', { hello: 'world' })
@@ -155,7 +157,8 @@ To add an Extension to a request use the `@ApiExtension()` decorator. The extens
 
 #### Advanced: Generic `ApiResponse`
 
-With the ability to provide [Raw Definitions](/openapi/types-and-parameters#raw-definitions), we can define Generic schema for Swagger UI. Assume we have the following DTO:
+With the ability to provide [Raw Definitions](/openapi/types-and-parameters#raw-definitions), we can define Generic schema for Swagger UI.
+Assume we have the following DTO:
 
 ```ts
 export class PaginatedDto<TData> {
@@ -172,7 +175,8 @@ export class PaginatedDto<TData> {
 }
 ```
 
-We skip decorating `results` as we will be providing a raw definition for it later. Now, let's define another DTO and name it, for example, `CatDto`, as follows:
+We skip decorating `results` as we will be providing a raw definition for it later.
+Now, let's define another DTO and name it, for example, `CatDto`, as follows:
 
 ```ts
 export class CatDto {
@@ -213,7 +217,9 @@ In this example, we specify that the response will have allOf `PaginatedDto` and
 - `getSchemaPath()` function that returns the OpenAPI Schema path from within the OpenAPI Spec File for a given model.
 - `allOf` is a concept that OAS 3 provides to cover various Inheritance related use-cases.
 
-Lastly, since `PaginatedDto` is not directly referenced by any controller, the `SwaggerModule` will not be able to generate a corresponding model definition just yet. In this case, we must add it as an [Extra Model](/openapi/types-and-parameters#extra-models). For example, we can use the `@ApiExtraModels()` decorator on the controller level, as follows:
+Lastly, since `PaginatedDto` is not directly referenced by any controller, the `SwaggerModule` will not be able to generate a corresponding model definition just yet.
+In this case, we must add it as an [Extra Model](/openapi/types-and-parameters#extra-models).
+For example, we can use the `@ApiExtraModels()` decorator on the controller level, as follows:
 
 ```ts
 @Controller('cats')
@@ -284,14 +290,16 @@ With this in place, we can use the custom `@ApiPaginatedResponse()` decorator on
 async findAll(): Promise<PaginatedDto<CatDto>> {}
 ```
 
-For client generation tools, this approach poses an ambiguity in how the `PaginatedResponse<TModel>` is being generated for the client. The following snippet is an example of a client generator result for the above `GET /` endpoint.
+For client generation tools, this approach poses an ambiguity in how the `PaginatedResponse<TModel>` is being generated for the client.
+The following snippet is an example of a client generator result for the above `GET /` endpoint.
 
 ```typescript
 // Angular
 findAll(): Observable<{ total: number, limit: number, offset: number, results: CatDto[] }>
 ```
 
-As you can see, the **Return Type** here is ambiguous. To workaround this issue, you can add a `title` property to the `schema` for `ApiPaginatedResponse`:
+As you can see, the **Return Type** here is ambiguous.
+To workaround this issue, you can add a `title` property to the `schema` for `ApiPaginatedResponse`:
 
 ```typescript
 export const ApiPaginatedResponse = <TModel extends Type<any>>(model: TModel) => {

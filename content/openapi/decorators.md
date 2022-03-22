@@ -1,6 +1,7 @@
-### Decorators
+### 修饰器
 
-All of the available OpenAPI decorators have an `Api` prefix to distinguish them from the core decorators. Below is a full list of the exported decorators along with a designation of the level at which the decorator may be applied.
+所有可用的 OpenAPI 装饰器都有一个`Api`前缀，以区别于核心装饰器。
+下面是导出的 decorator 的完整列表，并指定了 decorator 可以应用的级别。
 
 |                          |                     |
 | ------------------------ | ------------------- |
