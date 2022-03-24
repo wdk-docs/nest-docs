@@ -1,25 +1,27 @@
-### Custom transporters
+### 定制传输器
 
-Nest provides a variety of **transporters** out-of-the-box, as well as an API allowing developers to build new custom transport strategies.
-Transporters enable you to connect components over a network using a pluggable communications layer and a very simple application-level message protocol (read full [article](https://dev.to/nestjs/integrate-nestjs-with-external-services-using-microservice-transporters-part-1-p3)).
+Nest 提供了多种“开箱即用”的传输器，以及允许开发者构建新的自定义传输策略的 API。
+传输器使您能够使用一个可插入的通信层和一个非常简单的应用程序级消息协议在网络上连接组件(阅读全文[article](https://dev.to/nestjs/integrate-nestjs-with-external-services-using-microservice-transporters-part-1-p3))。
 
-> info **Hint** Building a microservice with Nest does not necessarily mean you must use the `@nestjs/microservices` package. For example, if you want to communicate with external services (let's say other microservices written in different languages), you may not need all the features provided by `@nestjs/microservice` library.
-> In fact, if you don't need decorators (`@EventPattern` or `@MessagePattern`) that let you declaratively define subscribers, running a [Standalone Application](/application-context) and manually maintaining connection/subscribing to channels should be enough for most use-cases and will provide you with more flexibility.
+> info **Hint** 用 Nest 构建一个微服务并不一定意味着你必须使用' @nestjs/microservices '包。
+> 例如，如果你想与外部服务通信(比如其他用不同语言编写的微服务)，你可能不需要' @nestjs/microservice '库提供的所有功能。
+> 事实上，如果你不需要那些让你声明式定义订阅者的装饰器(`@EventPattern` or `@MessagePattern`)，运行一个[独立的应用程序](/application-context)和手动维护连接/订阅通道对于大多数用例来说应该已经足够了，并且会为你提供更多的灵活性。
 
-With a custom transporter, you can integrate any messaging system/protocol (including Google Cloud Pub/Sub, Amazon Kinesis, and others) or extend the existing one, adding extra features on top (for example, [QoS](https://github.com/mqttjs/MQTT.js/blob/master/README.md#qos) for MQTT).
+通过自定义传输器，您可以集成任何消息传递系统/协议(包括谷歌 Cloud Pub/Sub、Amazon Kinesis 等)，或者扩展现有的消息传递系统/协议，在其上添加额外的功能(例如，MQTT 的[QoS](https://github.com/mqttjs/MQTT.js/blob/master/README.md#qos))。
 
-> info **Hint** To better understand how Nest microservices work and how you can extend the capabilities of existing transporters, we recommend reading the [NestJS Microservices in Action](https://dev.to/johnbiundo/series/4724) and [Advanced NestJS Microservices](https://dev.to/nestjs/part-1-introduction-and-setup-1a2l) article series.
+> info **Hint** 为了更好地理解 Nest 微服务是如何工作的，以及如何扩展现有传输器的功能，我们建议阅读[NestJS 微服务在行动](https://dev.to/johnbiundo/series/4724)和[高级 NestJS 微服务](https://dev.to/nestjs/part-1-introduction-and-setup-1a2l)系列文章。
 
-#### Creating a strategy
+#### 创建一个策略
 
-First, let's define a class representing our custom transporter.
+首先，让我们定义一个表示自定义传输器的类。
 
 ```typescript
 import { CustomTransportStrategy, Server } from '@nestjs/microservices';
 
 class GoogleCloudPubSubServer
   extends Server
-  implements CustomTransportStrategy {
+  implements CustomTransportStrategy
+{
   /**
    * This method is triggered when you run "app.listen()".
    */
@@ -37,7 +39,8 @@ class GoogleCloudPubSubServer
 > warning **Warning** Please, note we won't be implementing a fully-featured Google Cloud Pub/Sub server in this chapter as this would require diving into transporter specific technical details.
 
 In our example above, we declared the `GoogleCloudPubSubServer` class and provided `listen()` and `close()` methods enforced by the `CustomTransportStrategy` interface.
-Also, our class extends the `Server` class imported from the `@nestjs/microservices` package that provides a few useful methods, for example, methods used by Nest runtime to register message handlers. Alternatively, in case you want to extend the capabilities of an existing transport strategy, you could extend the corresponding server class, for example, `ServerRedis`.
+Also, our class extends the `Server` class imported from the `@nestjs/microservices` package that provides a few useful methods, for example, methods used by Nest runtime to register message handlers.
+Alternatively, in case you want to extend the capabilities of an existing transport strategy, you could extend the corresponding server class, for example, `ServerRedis`.
 Conventionally, we added the `"Server"` suffix to our class as it will be responsible for subscribing to messages/events (and responding to them, if necessary).
 
 With this in place, we can now use our custom strategy instead of using a built-in transporter, as follows:
@@ -66,7 +69,8 @@ echo(@Payload() data: object) {
 }
 ```
 
-This message handler will be automatically registered by Nest runtime. With `Server` class, you can see what message patterns have been registered and also, access and execute the actual methods that were assigned to them.
+This message handler will be automatically registered by Nest runtime.
+With `Server` class, you can see what message patterns have been registered and also, access and execute the actual methods that were assigned to them.
 To test this out, let's add a simple `console.log` inside `listen()` method before `callback` function is called:
 
 ```typescript
@@ -103,11 +107,12 @@ Hello world!
 
 Which means that our method handler was properly executed.
 
-#### Client proxy
+#### 客户端代理
 
-As we mentioned in the first section, you don't necessarily need to use the `@nestjs/microservices` package to create microservices, but if you decide to do so and you need to integrate a custom strategy, you will need to provide a "client" class too.
+正如我们在第一节中提到的，你不一定需要使用' @nestjs/microservices '包来创建微服务，但是如果你决定这样做，并且你需要集成一个自定义策略，你也需要提供一个“客户端”类。
 
-> info **Hint** Again, implementing a fully-featured client class compatible with all `@nestjs/microservices` features (e.g., streaming) requires a good understading of communication techniques used by the framework. To learn more, check out this [article](https://dev.to/nestjs/part-4-basic-client-component-16f9).
+> info **Hint** Again, implementing a fully-featured client class compatible with all `@nestjs/microservices` features (e.g., streaming) requires a good understading of communication techniques used by the framework.
+> To learn more, check out this [article](https://dev.to/nestjs/part-4-basic-client-component-16f9).
 
 To communicate with an external service/emit & publish messages (or events) you can either use a library-specific SDK package, or implement a custom client class that extends the `ClientProxy`, as follows:
 
@@ -128,7 +133,8 @@ class GoogleCloudPubSubClient extends ClientProxy {
 > warning **Warning** Please, note we won't be implementing a fully-featured Google Cloud Pub/Sub client in this chapter as this would require diving into transporter specific technical details.
 
 As you can see, `ClientProxy` class requires us to provide several methods for establishing & closing the connection and publishing messages (`publish`) and events (`dispatchEvent`).
-Note, if you don't need a request-response communication style support, you can leave the `publish()` method empty. Likewise, if you don't need to support event-based communication, skip the `dispatchEvent()` method.
+Note, if you don't need a request-response communication style support, you can leave the `publish()` method empty.
+Likewise, if you don't need to support event-based communication, skip the `dispatchEvent()` method.
 
 To observe what and when those methods are executed, let's add multiple `console.log` calls, as follows:
 
@@ -216,9 +222,12 @@ connect
 event to dispatch:  { pattern: 'event', data: 'Hello world!' }
 ```
 
-#### Message serialization
+#### 消息序列化
 
-If you need to add some custom logic around the serialization of responses on the client side, you can use a custom class that extends the `ClientProxy` class or one of its child classes. For modifying successful requests you can override the `serializeResponse` method, and for modifying any errors that go through this client you can override the `serializeError` method. To make use of this custom class, you can pass the class itself to the `ClientsModule.register()` method using the `customClass` property. Below is an example of a custom `ClientProxy` that serializes each error into an `RpcException`.
+If you need to add some custom logic around the serialization of responses on the client side, you can use a custom class that extends the `ClientProxy` class or one of its child classes.
+For modifying successful requests you can override the `serializeResponse` method, and for modifying any errors that go through this client you can override the `serializeError` method.
+To make use of this custom class, you can pass the class itself to the `ClientsModule.register()` method using the `customClass` property.
+Below is an example of a custom `ClientProxy` that serializes each error into an `RpcException`.
 
 ```typescript
 @@filename(error-handling.proxy)
@@ -246,5 +255,5 @@ and then use it in the `ClientsModule` like so:
 export class AppModule
 ```
 
-> info **hint** This is the class itself being passed to `customClass`, not an instance of the class. Nest will create the instance under the hood for you, and will pass any options given to the `options` property to the new `ClientProxy`.
-> 
+> info **hint** This is the class itself being passed to `customClass`, not an instance of the class.
+> Nest will create the instance under the hood for you, and will pass any options given to the `options` property to the new `ClientProxy`.

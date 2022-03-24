@@ -1,6 +1,9 @@
 ### NATS
 
-[NATS](https://nats.io) is a simple, secure and high performance open source messaging system for cloud native applications, IoT messaging, and microservices architectures. The NATS server is written in the Go programming language, but client libraries to interact with the server are available for dozens of major programming languages. NATS supports both **At Most Once** and **At Least Once** delivery. It can run anywhere, from large servers and cloud instances, through edge gateways and even Internet of Things devices.
+[NATS](https://nats.io)是一个简单、安全、高性能的开源消息传递系统，适用于云本地应用、物联网消息传递和微服务架构。
+NATS 服务器是用 Go 编程语言编写的，但与服务器交互的客户端库可用于数十种主要的编程语言。
+NATS 支持**At Most Once**和**At Least Once**交付。
+它可以在任何地方运行，从大型服务器和云实例，到边缘网关，甚至是物联网设备。
 
 #### Installation
 

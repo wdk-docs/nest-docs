@@ -1,14 +1,14 @@
 ### Kafka
 
-[Kafka](https://kafka.apache.org/) is an open source, distributed streaming platform which has three key capabilities:
+[Kafka](https://kafka.apache.org/)是一个开源的分布式流媒体平台，它有三个关键功能:
 
-- Publish and subscribe to streams of records, similar to a message queue or enterprise messaging system.
-- Store streams of records in a fault-tolerant durable way.
-- Process streams of records as they occur.
+- 发布和订阅记录流，类似于消息队列或企业消息传递系统。
+- 对记录流进行持久的容错存储。
+- 记录流发生时进行处理。
 
-The Kafka project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. It integrates very well with Apache Storm and Spark for real-time streaming data analysis.
+Kafka 项目的目标是提供一个统一、高吞吐量、低延迟的平台来处理实时数据。它与 Apache Storm 和 Spark 集成得非常好，可以进行实时流数据分析。
 
-#### Installation
+#### 安装
 
 To start building Kafka-based microservices, first install the required package:
 
@@ -16,7 +16,7 @@ To start building Kafka-based microservices, first install the required package:
 $ npm i --save kafkajs
 ```
 
-#### Overview
+#### 概述
 
 Like other Nest microservice transport layer implementations, you select the Kafka transporter mechanism using the `transport` property of the options object passed to the `createMicroservice()` method, along with an optional `options` property, as shown below:
 
@@ -43,7 +43,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 > info **Hint** The `Transport` enum is imported from the `@nestjs/microservices` package.
 
-#### Options
+#### 选项
 
 The `options` property is specific to the chosen transporter. The <strong>Kafka</strong> transporter exposes the properties described below.
 
@@ -110,7 +110,7 @@ The `options` property is specific to the chosen transporter. The <strong>Kafka<
   </tr>
 </table>
 
-#### Client
+#### 客户端
 
 There is a small difference in Kafka compared to other microservice transporters. Instead of the `ClientProxy` class, we use the `ClientKafka` class.
 
@@ -161,7 +161,7 @@ Use the `@Client()` decorator as follows:
 client: ClientKafka;
 ```
 
-#### Message pattern
+#### 消息模式
 
 The Kafka microservice message pattern utilizes two topics for the request and reply channels. The `ClientKafka#send()` method sends messages with a [return address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html) by associating a [correlation id](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html), reply topic, and reply partition with the request message. This requires the `ClientKafka` instance to be subscribed to the reply topic and assigned to at least one partition before sending a message.
 
@@ -173,7 +173,7 @@ Normally, topic partitions are assigned using the round robin partitioner, which
 
 To prevent the `ClientKafka` consumers from losing response messages, a Nest-specific built-in custom partitioner is utilized. This custom partitioner assigns partitions to a collection of consumers sorted by high-resolution timestamps (`process.hrtime()`) that are set on application launch.
 
-#### Message response subscription
+#### 消息响应订阅
 
 > warning **Note** This section is only relevant if you use [request-response](/microservices/basics#request-response) message style (with the `@MessagePatern` decorator and the `ClientKafka#send` method). Subscribing to the response topic is not necessary for the [event-based](/microservices/basics#event-based) communication (`@EventPattern` decorator and `ClientKafka#emit` method).
 

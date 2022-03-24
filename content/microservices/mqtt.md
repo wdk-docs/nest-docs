@@ -1,18 +1,21 @@
 ### MQTT
 
-[MQTT](https://mqtt.org/) (Message Queuing Telemetry Transport) is an open source, lightweight messaging protocol, optimized for low latency. This protocol provides a scalable and cost-efficient way to connect devices using a **publish/subscribe** model. A communication system built on MQTT consists of the publishing server, a broker and one or more clients. It is designed for constrained devices and low-bandwidth, high-latency or unreliable networks.
+[MQTT](https://mqtt.org/)(消息队列遥测传输)是一个开源、轻量级的消息传递协议，为低延迟进行了优化。
+该协议提供了一种使用**发布/订阅**模型连接设备的可扩展且经济有效的方式。
+构建在 MQTT 上的通信系统由发布服务器、代理和一个或多个客户端组成。
+它是为受限的设备和低带宽、高延迟或不可靠的网络而设计的。
 
-#### Installation
+#### 安装
 
-To start building MQTT-based microservices, first install the required package:
+要开始构建基于 mqtt 的微服务，首先要安装所需的包:
 
 ```bash
 $ npm i --save mqtt
 ```
 
-#### Overview
+#### 概述
 
-To use the MQTT transporter, pass the following options object to the `createMicroservice()` method:
+要使用 MQTT 传输器，请将以下选项对象传递给 `createMicroservice()` 方法:
 
 ```typescript
 @@filename(main)
@@ -31,17 +34,20 @@ const app = await NestFactory.createMicroservice(AppModule, {
 });
 ```
 
-> info **Hint** The `Transport` enum is imported from the `@nestjs/microservices` package.
+> info **Hint** `Transport` enum 从`@nestjs/microservices`包导入。
 
-#### Options
+#### 选项
 
-The `options` object is specific to the chosen transporter. The <strong>MQTT</strong> transporter exposes the properties described [here](https://github.com/mqttjs/MQTT.js/#mqttclientstreambuilder-options).
+`options`对象特定于所选的传输器。
+**MQTT**传输器公开了[此处](https://github.com/mqttjs/MQTT.js/#mqttclientstreambuilder-options)描述的属性。
 
-#### Client
+#### 客户端
 
-Like other microservice transporters, you have <a href="https://docs.nestjs.com/microservices/basics#client">several options</a> for creating a MQTT `ClientProxy` instance.
+与其他微服务传输器一样，您有几个创建 MQTT`ClientProxy`实例的[选项](https://docs.nestjs.com/microservices/basics#client)。
 
-One method for creating an instance is to use use the `ClientsModule`. To create a client instance with the `ClientsModule`, import it and use the `register()` method to pass an options object with the same properties shown above in the `createMicroservice()` method, as well as a `name` property to be used as the injection token. Read more about `ClientsModule` <a href="https://docs.nestjs.com/microservices/basics#client">here</a>.
+创建实例的一种方法是使用`ClientsModule`。
+要用`ClientsModule`创建一个客户端实例，请导入它，并使用`register()`方法传递一个选项对象，该对象的属性与上面的`createMicroservice()`方法中显示的相同，以及一个`name`属性作为注入令牌。
+在[这里](https://docs.nestjs.com/microservices/basics#client)阅读更多关于`ClientsModule`的内容。
 
 ```typescript
 @Module({
@@ -60,11 +66,13 @@ One method for creating an instance is to use use the `ClientsModule`. To create
 })
 ```
 
-Other options to create a client (either `ClientProxyFactory` or `@Client()`) can be used as well. You can read about them <a href="https://docs.nestjs.com/microservices/basics#client">here</a>.
+创建客户端的其他选项(`ClientProxyFactory`或`@Client()`)也可以使用。
+你可以阅读[这里](https://docs.nestjs.com/microservices/basics#client)。
 
-#### Context
+#### 上下文
 
-In more sophisticated scenarios, you may want to access more information about the incoming request. When using the MQTT transporter, you can access the `MqttContext` object.
+在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
+当使用 MQTT 传输器时，您可以访问`MqttContext`对象。
 
 ```typescript
 @@filename()
@@ -80,9 +88,9 @@ getNotifications(data, context) {
 }
 ```
 
-> info **Hint** `@Payload()`, `@Ctx()` and `MqttContext` are imported from the `@nestjs/microservices` package.
+> info **Hint** `@Payload()`, `@Ctx()` and `MqttContext` 从`@nestjs/microservices`包导入。
 
-To access the original mqtt [packet](https://github.com/mqttjs/mqtt-packet), use the `getPacket()` method of the `MqttContext` object, as follows:
+要访问原始的 mqtt [packet](https://github.com/mqttjs/mqtt-packet)，使用`MqttContext`对象的`getPacket()`方法，如下所示:
 
 ```typescript
 @@filename()
@@ -98,9 +106,11 @@ getNotifications(data, context) {
 }
 ```
 
-#### Wildcards
+#### 通配符
 
-A subscription may be to an explicit topic, or it may include wildcards. Two wildcards are available, `+` and `#`. `+` is a single-level wildcard, while `#` is a multi-level wildcard which covers many topic levels.
+订阅可以是一个显式主题，也可以包含通配符。
+有两个通配符可用，`+`和`#`。
+`+`是单级通配符，而`#`是多级通配符，涵盖许多主题级别。
 
 ```typescript
 @@filename()
@@ -116,9 +126,10 @@ getTemperature(context) {
 }
 ```
 
-#### Record builders
+#### 记录构建器
 
-To configure message options (adjust the QoS level, set the Retain or DUP flags, or add additional properties to the payload), you can use the `MqttRecordBuilder` class. For example, to set `QoS` to `2` use the `setQoS` method, as follows:
+要配置消息选项(调整 QoS 级别、设置 Retain 或 DUP 标志，或向负载添加额外的属性)，您可以使用`MqttRecordBuilder`类。
+例如，设置`QoS`为`2`使用`setQoS`方法，如下所示:
 
 ```typescript
 const userProperties = { 'x-version': '1.0.0' };
@@ -129,9 +140,9 @@ const record = new MqttRecordBuilder(':cat:')
 client.send('replace-emoji', record).subscribe(...);
 ```
 
-> info **Hint** `MqttRecordBuilder` class is exported from the `@nestjs/microservices` package.
+> info **Hint** `MqttRecordBuilder`类是从`@nestjs/microservices`包导出的。
 
-And you can read these options on the server-side as well, by accessing the `MqttContext`.
+通过访问 `MqttContext`，您也可以在服务器端读取这些选项。
 
 ```typescript
 @@filename()
@@ -149,7 +160,7 @@ replaceEmoji(data, context) {
 }
 ```
 
-In some cases you might want to configure user properties for multiple requests, you can pass these options to the `ClientProxyFactory`.
+在某些情况下，你可能想要为多个请求配置用户属性，你可以将这些选项传递给`ClientProxyFactory`。
 
 ```typescript
 import { Module } from '@nestjs/common';

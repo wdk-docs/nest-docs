@@ -1,12 +1,13 @@
 ### HTTP adapter
 
-Occasionally, you may want to access the underlying HTTP server, either within the Nest application context or from the outside.
+有时，您可能希望访问底层 HTTP 服务器，可以在 Nest 应用程序上下文中访问，也可以从外部访问。
 
-Every native (platform-specific) HTTP server/library (e.g., Express and Fastify) instance is wrapped in an **adapter**. The adapter is registered as a globally available provider that can be retrieved from the application context, as well as injected into other providers.
+每个本地(特定于平台的)HTTP 服务器/库(例如 Express 和 fasttify)实例都包装在一个**适配器**中。
+适配器被注册为一个全局可用的提供者，可以从应用程序上下文中检索它，也可以注入到其他提供者中。
 
-#### Outside application context strategy
+#### 外部应用程序上下文策略
 
-To get a reference to the `HttpAdapter` from outside of the application context, call the `getHttpAdapter()` method.
+要从应用程序上下文外部获取对`HttpAdapter`的引用，请调用`getHttpAdapter()`方法。
 
 ```typescript
 @@filename()
@@ -14,9 +15,9 @@ const app = await NestFactory.create(AppModule);
 const httpAdapter = app.getHttpAdapter();
 ```
 
-#### In-context strategy
+#### 语境策略
 
-To get a reference to the `HttpAdapterHost` from within the application context, inject it using the same technique as any other existing provider (e.g., using constructor injection).
+要从应用程序上下文中获取对`HttpAdapterHost`的引用，使用与任何其他现有提供商相同的技术(例如，使用构造函数注入)注入它。
 
 ```typescript
 @@filename()
@@ -34,16 +35,19 @@ export class CatsService {
 
 > info **Hint** The `HttpAdapterHost` is imported from the `@nestjs/core` package.
 
-The `HttpAdapterHost` is **not** an actual `HttpAdapter`. To get the actual `HttpAdapter` instance, simply access the `httpAdapter` property.
+`HttpAdapterHost`不是一个实际的`HttpAdapter`。
+要获得实际的`HttpAdapter`实例，只需访问`HttpAdapter`属性。
 
 ```typescript
 const adapterHost = app.get(HttpAdapterHost);
 const httpAdapter = adapterHost.httpAdapter;
 ```
 
-The `httpAdapter` is the actual instance of the HTTP adapter used by the underlying framework. It is an instance of either `ExpressAdapter` or `FastifyAdapter` (both classes extend `AbstractHttpAdapter`).
+`httpAdapter`是底层框架使用的 HTTP 适配器的实际实例。
+它是`ExpressAdapter`或`FastifyAdapter`的一个实例(两个类都扩展了`AbstractHttpAdapter`)。
 
-The adapter object exposes several useful methods to interact with the HTTP server. However, if you want to access the library instance (e.g., the Express instance) directly, call the `getInstance()` method.
+适配器对象公开了几个与 HTTP 服务器交互的有用方法。
+但是，如果你想直接访问库实例(例如 Express 实例)，可以调用`getInstance()`方法。
 
 ```typescript
 const instance = httpAdapter.getInstance();

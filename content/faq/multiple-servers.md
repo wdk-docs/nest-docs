@@ -1,6 +1,6 @@
 ### HTTPS
 
-To create an application that uses the HTTPS protocol, set the `httpsOptions` property in the options object passed to the `create()` method of the `NestFactory` class:
+要创建一个使用 HTTPS 协议的应用程序，在传递给' `NestFactory` '类的' `create()` '方法的 `options` 对象中设置' `httpOptions` '属性:
 
 ```typescript
 const httpsOptions = {
@@ -22,9 +22,9 @@ const app = await NestFactory.create<NestFastifyApplication>(
 );
 ```
 
-#### Multiple simultaneous servers
+#### 多个同步服务器
 
-The following recipe shows how to instantiate a Nest application that listens on multiple ports (for example, on a non-HTTPS port and an HTTPS port) simultaneously.
+下面的菜谱展示了如何实例化一个同时侦听多个端口(例如，侦听非 HTTPS 端口和 HTTPS 端口)的 Nest 应用程序。
 
 ```typescript
 const httpsOptions = {
@@ -33,10 +33,7 @@ const httpsOptions = {
 };
 
 const server = express();
-const app = await NestFactory.create(
-  AppModule,
-  new ExpressAdapter(server),
-);
+const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
 await app.init();
 
 http.createServer(server).listen(3000);

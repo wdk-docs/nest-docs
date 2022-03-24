@@ -95,7 +95,7 @@ export class MenuComponent implements OnInit {
         { title: '版本控制', path: '/techniques/versioning' },
         { title: '任务调度', path: '/techniques/task-scheduling' },
         { title: '队列', path: '/techniques/queues' },
-        { title: 'Bull', path: '/techniques/bull' },
+        // { title: 'Bull', path: '/techniques/bull' },
         { title: '日志', path: '/techniques/logger' },
         { title: 'Cookies', path: '/techniques/cookies' },
         { title: '事件', path: '/techniques/events' },

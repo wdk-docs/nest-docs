@@ -1,24 +1,29 @@
-### Serverless
+### 毫服务器
 
-Serverless computing is a cloud computing execution model in which the cloud provider allocates machine resources on-demand, taking care of the servers on behalf of their customers. When an app is not in use, there are no computing resources allocated to the app. Pricing is based on the actual amount of resources consumed by an application ([source](https://en.wikipedia.org/wiki/Serverless_computing)).
+无服务器计算是一种云计算执行模型，在该模型中，云提供商按需分配机器资源，代表客户管理服务器。
+当应用不被使用时，该应用将没有计算资源分配给该应用。
+定价是基于应用程序实际消耗的资源数量([source](https://en.wikipedia.org/wiki/Serverless_computing))。
 
-With a **serverless architecture**, you focus purely on the individual functions in your application code. Services such as AWS Lambda, Google Cloud Functions, and Microsoft Azure Functions take care of all the physical hardware, virtual machine operating system, and web server software management.
+在一个**无服务器架构**中，你只关注应用程序代码中的单个函数。
+AWS Lambda、谷歌云函数和微软 Azure 函数等服务负责所有物理硬件、虚拟机操作系统和 web 服务器软件管理。
 
-> info **Hint** This chapter does not cover the pros and cons of serverless functions nor dives into the specifics of any cloud providers.
+> info **Hint** 本章不讨论无服务器功能的优缺点，也不深入讨论任何云提供商的细节。
 
-#### Cold start
+#### 冷启动
 
-A cold start is the first time your code has been executed in a while. Depending on a cloud provider you use, it may span several different operations, from downloading the code and bootstrapping the runtime to eventually running your code.
-This process adds **significant latency** depending on several factors, the language, the number of packages your application require, etc.
+冷启动是代码在一段时间内第一次执行。
+根据您使用的云提供商的不同，它可能跨越几个不同的操作，从下载代码和引导运行时到最终运行您的代码。
+这个过程会增加大量的延迟，这取决于几个因素，语言，应用程序需要的包的数量，等等。
 
-The cold start is important and although there are things which are beyond our control, there's still a lot of things we can do on our side to make it as short as possible.
+冷启动很重要，虽然有些事情是我们无法控制的，但我们仍有很多事情可以做，以使它尽可能短。
 
-While you can think of Nest as a fully-fledged framework designed to be used in complex, enterprise applications,
-it is also **suitable for much "simpler" applications** (or scripts). For example, with the use of [Standalone applications](/standalone-applications) feature, you can take advantage of Nest's DI system in simple workers, CRON jobs, CLIs, or serverless functions.
+虽然你可以将 Nest 视为一个成熟的框架，专为复杂的企业应用而设计，
+它也**适用于“更简单”的应用程序**(或脚本)。
+例如，使用[独立应用程序](/standalone-applications)特性，你可以在 simple workers, CRON jobs, CLIs, or serverless functions 中利用 Nest 的 DI 系统。
 
-#### Benchmarks
+#### 基准
 
-To better understand what's the cost of using Nest or other, well-known libraries (like `express`) in the context of serverless functions, let's compare how much time Node runtime needs to run the following scripts:
+为了更好地理解在无服务器函数的环境中使用 Nest 或其他众所周知的库(如“express”)的成本，让我们来比较一下 Node 运行时需要运行以下脚本的时间:
 
 ```typescript
 // #1 Express
@@ -119,23 +124,31 @@ With this configuration, we received the following results:
 
 > info **Hint** You could optimize it even further by applying additional code minification & optimization techniques (using `webpack` plugins, etc.).
 
-As you can see, the way you compile (and whether you bundle your code) is crucial and has a significant impact on the overall startup time. With `webpack`, you can get the bootstrap time of a standalone Nest application (starter project with one module, controller, and service) down to ~32ms on average, and down to ~81.5ms for a regular HTTP, express-based NestJS app.
+As you can see, the way you compile (and whether you bundle your code) is crucial and has a significant impact on the overall startup time.
+With `webpack`, you can get the bootstrap time of a standalone Nest application (starter project with one module, controller, and service) down to ~32ms on average, and down to ~81.5ms for a regular HTTP, express-based NestJS app.
 
-For more complicated Nest applications, for example, with 10 resources (generated through `$ nest g resource` schematic = 10 modules, 10 controllers, 10 services, 20 DTO classes, 50 HTTP endpoints + `AppModule`), the overall startup on MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD is approximately 0.1298s (129.8ms). Running a monolithic application as a serverless function typically doesn't make too much sense anyway, so think of this benchmark more as an example of how the bootstrap time may potentially increase as your application grows.
+For more complicated Nest applications, for example, with 10 resources (generated through `$ nest g resource` schematic = 10 modules, 10 controllers, 10 services, 20 DTO classes, 50 HTTP endpoints + `AppModule`), the overall startup on MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD is approximately 0.1298s (129.8ms).
+Running a monolithic application as a serverless function typically doesn't make too much sense anyway, so think of this benchmark more as an example of how the bootstrap time may potentially increase as your application grows.
 
-#### Runtime optimizations
+#### 运行时优化
 
-Thus far we covered compile-time optimizations. These are unrelated to the way you define providers and load Nest modules in your application, and that plays an essential role as your application gets bigger.
+Thus far we covered compile-time optimizations.
+These are unrelated to the way you define providers and load Nest modules in your application, and that plays an essential role as your application gets bigger.
 
-For example, imagine having a database connection defined as an [asynchronous provider](/fundamentals/async-providers). Async providers are designed to delay the application start until one or more asynchronous tasks are completed.
+For example, imagine having a database connection defined as an [asynchronous provider](/fundamentals/async-providers).
+Async providers are designed to delay the application start until one or more asynchronous tasks are completed.
 That means, if your serverless function on average requires 2s to connect to the database (on bootstrap), your endpoint will need at least two extra seconds (because it must wait till the connection is established) to send a response back (when it's a cold start and your application wasn't running already).
 
 As you can see, the way you structure your providers is somewhat different in a **serverless environment** where bootstrap time is important.
-Another good example is if you use Redis for caching, but only in certain scenarios. Perhaps, in this case, you should not define a Redis connection as an async provider, as it would slow down the bootstrap time, even if it's not required for this specific function invocation.
+Another good example is if you use Redis for caching, but only in certain scenarios.
+Perhaps, in this case, you should not define a Redis connection as an async provider, as it would slow down the bootstrap time, even if it's not required for this specific function invocation.
 
-Also, sometimes you could lazy-load entire modules, using the `LazyModuleLoader` class, as described in [this chapter](/fundamentals/lazy-loading-modules). Caching is a great example here too.
-Imagine that your application has, let's say, `CacheModule` which internally connects to Redis and also, exports the `CacheService` to interact with the Redis storage. If you don't need it for all potential function invocations,
-you can just load it on-demand, lazily. This way you'll get a faster startup time (when a cold start occurs) for all invocations that don't require caching.
+Also, sometimes you could lazy-load entire modules, using the `LazyModuleLoader` class, as described in [this chapter](/fundamentals/lazy-loading-modules).
+Caching is a great example here too.
+Imagine that your application has, let's say, `CacheModule` which internally connects to Redis and also, exports the `CacheService` to interact with the Redis storage.
+If you don't need it for all potential function invocations,
+you can just load it on-demand, lazily.
+This way you'll get a faster startup time (when a cold start occurs) for all invocations that don't require caching.
 
 ```typescript
 if (request.method === RequestMethod[RequestMethod.GET]) {
@@ -164,7 +177,7 @@ if (workerType === WorkerType.A) {
 }
 ```
 
-#### Example integration
+#### 示例集成
 
 The way your application's entry file (typically `main.ts` file) is supposed to look like **depends on several factors** and so **there's no single template** that just works for every scenario.
 For example, the initialization file required to spin up your serverless function varies by cloud providers (AWS, Azure, GCP, etc.).
@@ -172,7 +185,8 @@ Also, depending on whether you want to run a typical HTTP application with multi
 your application's code will look different (for example, for the endpoint-per-function approach you could use the `NestFactory.createApplicationContext` instead of booting the HTTP server, setting up middleware, etc.).
 
 Just for illustration purposes, we'll integrate Nest (using `@nestjs/platform-express` and so spinning up the whole, fully functional HTTP router)
-with the [Serverless](https://www.serverless.com/) framework (in this case, targetting AWS Lambda). As we've mentioned earlier, your code will differ depending on the cloud provider you choose, and many other factors.
+with the [Serverless](https://www.serverless.com/) framework (in this case, targetting AWS Lambda).
+As we've mentioned earlier, your code will differ depending on the cloud provider you choose, and many other factors.
 
 First, let's install the required packages:
 
@@ -240,7 +254,8 @@ export const handler: Handler = async (
 
 > info **Hint** For creating multiple serverless functions and sharing common modules between them, we recommend using the [CLI Monorepo mode](/cli/monorepo#monorepo-mode).
 
-> warning **Warning** If you use `@nestjs/swagger` package, there are a few additional steps required to make it work properly in the context of serverless function. Check out this [article](https://javascript.plainenglish.io/serverless-nestjs-document-your-api-with-swagger-and-aws-api-gateway-64a53962e8a2) for more information.
+> warning **Warning** If you use `@nestjs/swagger` package, there are a few additional steps required to make it work properly in the context of serverless function.
+> Check out this [article](https://javascript.plainenglish.io/serverless-nestjs-document-your-api-with-swagger-and-aws-api-gateway-64a53962e8a2) for more information.
 
 Next, open up the `tsconfig.json` file and make sure to enable the `esModuleInterop` option to make the `@vendia/serverless-express` package load properly.
 
@@ -263,7 +278,8 @@ $ npx serverless offline
 Once the application is running, open your browser and navigate to `http://localhost:3000/dev/[ANY_ROUTE]` (where `[ANY_ROUTE]` is any endpoint registered in your application).
 
 In the sections above, we've shown that using `webpack` and bundling your app can have significant impact on the overall bootstrap time.
-However, to make it work with our example, there's one additional configuration you must add in your `webpack.config.js` file. Generally,
+However, to make it work with our example, there's one additional configuration you must add in your `webpack.config.js` file.
+Generally,
 to make sure our `handler` function will be picked up, we must change the `output.libraryTarget` property to `commonjs2`.
 
 ```javascript
@@ -274,13 +290,14 @@ return {
     ...options.output,
     libraryTarget: 'commonjs2',
   },
-  // ... the rest of the configuration
+  // ...
+the rest of the configuration
 };
 ```
 
 With this in place, you can now use `$ nest build --webpack` to compile your function's code (and then `$ npx serverless offline` to test it).
 
-#### Using standalone application feature
+#### 使用独立应用程序特性
 
 Alternatively, if you want to keep your function very lightweight and you don't need any HTTP-related features (routing, but also guards, interceptors, pipes, etc.),
 you can just use `NestFactory.createApplicationContext` (as mentioned earlier) instead of running the entire HTTP server (and `express` under the hood), as follows:
@@ -308,7 +325,8 @@ export const handler: Handler = async (
 };
 ```
 
-> info **Hint** Be aware that `NestFactory.createApplicationContext` does not wrap controller methods with enhancers (guard, interceptors, etc.). For this, you must use the `NestFactory.create` method.
+> info **Hint** Be aware that `NestFactory.createApplicationContext` does not wrap controller methods with enhancers (guard, interceptors, etc.).
+> For this, you must use the `NestFactory.create` method.
 
 You could also pass the `event` object down to, let's say, `EventsService` provider that could process it and return a corresponding value (depending on the input value and your business logic).
 

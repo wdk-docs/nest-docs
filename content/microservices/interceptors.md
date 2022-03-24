@@ -1,6 +1,7 @@
-### Interceptors
+### 拦截器
 
-There is no difference between [regular interceptors](/interceptors) and microservices interceptors. The following example uses a manually instantiated method-scoped interceptor. Just as with HTTP based applications, you can also use controller-scoped interceptors (i.e., prefix the controller class with a `@UseInterceptors()` decorator).
+[常规拦截器](/拦截器)和微服务拦截器没有区别。下面的示例使用了一个手工实例化的方法范围的拦截器。
+就像基于 HTTP 的应用程序一样，你也可以使用控制器作用域的拦截器(例如，在控制器类前面加上`@UseInterceptors()`装饰器)。
 
 ```typescript
 @@filename()

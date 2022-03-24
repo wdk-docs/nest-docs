@@ -1,6 +1,7 @@
 ### Pipes
 
-There is no fundamental difference between [regular pipes](/pipes) and microservices pipes. The only difference is that instead of throwing `HttpException`, you should use `RpcException`.
+[常规管道](/pipes)和微服务管道之间没有根本区别。
+唯一的区别是，你应该使用' `RpcException` '而不是抛出' `HttpException` '。
 
 > info **Hint** The `RpcException` class is exposed from `@nestjs/microservices` package.
 

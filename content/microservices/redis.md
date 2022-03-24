@@ -1,6 +1,12 @@
 ### Redis
 
-The [Redis](https://redis.io/) transporter implements the publish/subscribe messaging paradigm and leverages the [Pub/Sub](https://redis.io/topics/pubsub) feature of Redis. Published messages are categorized in channels, without knowing what subscribers (if any) will eventually receive the message. Each microservice can subscribe to any number of channels. In addition, more than one channel can be subscribed to at a time. Messages exchanged through channels are **fire-and-forget**, which means that if a message is published and there are no subscribers interested in it, the message is removed and cannot be recovered. Thus, you don't have a guarantee that either messages or events will be handled by at least one service. A single message can be subscribed to (and received) by multiple subscribers.
+[Redis](https://redis.io/)传输器实现了发布/订阅消息传递模式，并利用了 Redis 的[Pub/Sub](https://redis.io/topics/pubsub)特性。
+已发布的消息在通道中分类，而不知道哪些订阅者(如果有的话)最终将接收该消息。
+每个微服务可以订阅任意数量的频道。
+此外，还可以同时订阅多个频道。
+通过通道交换的消息是**即发即忘**，这意味着如果发布了消息，并且没有对该消息感兴趣的订阅者，则该消息将被删除且无法恢复。
+因此，您不能保证消息或事件将由至少一个服务处理。
+单个消息可以由多个订阅者订阅(和接收)。
 
 <figure><img src="/assets/Redis_1.png" /></figure>
 

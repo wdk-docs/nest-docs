@@ -1,13 +1,15 @@
-### Common errors
+### 常见的错误
 
-During your development with NestJS, you may encounter various errors as you learn the framework.
+在使用 NestJS 开发过程中，您可能会在学习框架时遇到各种错误。
 
 #### "Cannot resolve dependency" error
 
-Probably the most common error message is about Nest not being able to resolve dependencies of a provider. The error message usually looks something like this:
+可能最常见的错误消息是关于 Nest 无法解析提供器的依赖关系。
+错误信息通常是这样的:
 
 ```bash
-Nest can't resolve dependencies of the <provider> (?). Please make sure that the argument <unknown_token> at index [<index>] is available in the <module> context.
+Nest can't resolve dependencies of the <provider> (?).
+Please make sure that the argument <unknown_token> at index [<index>] is available in the <module> context.
 
 Potential solutions:
 - If <unknown_token> is a provider, is it part of the current <module>?
@@ -17,37 +19,54 @@ Potential solutions:
   })
 ```
 
+这个错误最常见的罪魁祸首是在模块的 `providers` 数组中没有包含 `provider` 。
+请确保该提供器确实在 `providers` 数组中，并遵循[标准的 NestJS 提供器实践](/fundamentals/custom-providers#di-fundamentals)。
 
-The most common culprit of the error, is not having the `provider` in the module's `providers` array. Please make sure that the provider is indeed in the `providers` array and following [standard NestJS provider practices](/fundamentals/custom-providers#di-fundamentals).
+这里有一些常见的陷阱。
+一种是将提供器放在一个 `imports` 数组中。
+如果是这种情况，该错误将包含提供程序的名称，而 `<module>` 应该包含在其中。
 
-There are a few gotchas, that are common. One is putting a provider in an `imports` array. If this is the case, the error will have the provider's name where `<module>` should be.
+如果你在开发过程中遇到这个错误，请查看错误消息中提到的模块，并查看它的`provider`。
+对于 `providers` 数组中的每个提供器，确保模块能够访问所有的依赖项。
+通常情况下，“提供器”会在“特性模块”和“根模块”中重复，这意味着 Nest 会尝试两次实例化该提供器。
+更有可能的是，包含被复制的`provider`的模块应该被添加到“根模块”的`imports`数组中。
 
-If you run across this error while developing, take a look at the module mentioned in the error message and look at its `providers`. For each provider in the `providers` array, make sure the module has access to all of the dependencies. Often times, `providers` are duplicated in a "Feature Module" and a "Root Module" which means Nest will try to instantiate the provider twice. More than likely, the module containing the `provider` being duplicated should be added in the "Root Module"'s `imports` array instead.
-
-If the `unknown_token` above is the string `dependency`, you might have a circular file import. This is different from the [circular dependency](./errors.md#circular-dependency-error) below because instead of  having providers depend on each other in their constructors, it just means that two files end up importing each other. A common case would be a module file declaring a token and importing a provider, and the provider import the token constant from the module file. If you are using barrel files, ensure that your barrel imports do not end up creating these circular imports as well.
+如果上面的 `unknown_token` 是字符串 `dependency` ，你可能会有一个循环文件导入。
+这与下面的[圆形依赖](./errors.md#circular-dependency-error)不同，因为它不是让提供程序在它们的构造函数中相互依赖，而是意味着两个文件最终会互相导入。
+常见的情况是，模块文件声明令牌并导入提供器，提供器从模块文件导入令牌常量。
+如果您正在使用 barrel 文件，请确保您的 barrel 导入也不会最终创建这些循环导入。
 
 #### "Circular dependency" error
 
-Occasionally you'll find it difficult to avoid [circular dependencies](/fundamentals/circular-dependency) in your application. You'll need to take some steps to help Nest resolve these. Errors that arise from circular dependencies look like this:
+偶尔你会发现在你的应用程序中很难避免[circular dependencies](/fundamentals/circular-dependency)。
+您需要采取一些步骤来帮助 Nest 解决这些问题。
+由循环依赖引起的错误如下所示:
 
 ```bash
 Nest cannot create the <module> instance.
 The module at index [<index>] of the <module> "imports" array is undefined.
 
 Potential causes:
-- A circular dependency between modules. Use forwardRef() to avoid it. Read more: https://docs.nestjs.com/fundamentals/circular-dependency
-- The module at index [<index>] is of type "undefined". Check your import statements and the type of the module.
+- A circular dependency between modules.
+Use forwardRef() to avoid it.
+Read more: https://docs.nestjs.com/fundamentals/circular-dependency
+- The module at index [<index>] is of type "undefined".
+Check your import statements and the type of the module.
 
 Scope [<module_import_chain>]
 # example chain AppModule -> FooModule
 ```
 
-Circular dependencies can arise from both providers depending on each other, or typescript files depending on each other for constants, such as exporting constants from a module file and importing them in a service file. In the latter case, it is advised to create a separate file for your constants. In the former case, please follow the guide on circular dependencies and make sure that both the modules **and** the providers are marked with `forwardRef`.
+循环依赖可能产生于两个相互依赖的提供者，或者 typescript 文件彼此依赖于常量，比如从模块文件导出常量，然后导入到服务文件中。
+在后一种情况下，建议为常量创建一个单独的文件。
+在前一种情况下，请遵循循环依赖的指南，并确保模块**和**提供商都被标记为`forwardRef`。
 
-#### Debugging dependency errors
+#### 调试依赖性错误
 
-Along with just manually verifying your dependencies are correct, as of Nest 8.1.0 you can set the `NEST_DEBUG` environment variable to a string that resolves as truthy, and get extra logging information while Nest is resolving all of the dependencies for the application. 
+除了手动验证你的依赖项是否正确之外，在 Nest 8.1.0 版本中，
+你可以将环境变量`NEST_DEBUG`设置为一个解析为 `true` 的字符串，并在 Nest 解析应用程序的所有依赖项时获得额外的日志信息。
 
 <figure><img src="/assets/injector_logs.png" /></figure>
 
-In the above image, the string in yellow is the host class of the dependency being injected, the string in blue is the name of the injected dependency, or its injection token, and the string in purple is the module in which the dependency is being searched for. Using this, you can usually trace back the dependency resolution for what's happening and why you're getting dependency injection problems.
+在上图中，黄色的字符串是被注入依赖的宿主类，蓝色的字符串是被注入依赖的名称，或者它的注入令牌，紫色的字符串是正在搜索依赖的模块。
+使用这个，你通常可以追踪到依赖解析发生了什么以及为什么你会遇到依赖注入问题。

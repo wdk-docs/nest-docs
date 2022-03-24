@@ -1,6 +1,7 @@
-### Hybrid application
+### 混合应用程序
 
-A hybrid application is one that both listens for HTTP requests, as well as makes use of connected microservices. The `INestApplication` instance can be connected with `INestMicroservice` instances through the `connectMicroservice()` method.
+混合应用程序既侦听 HTTP 请求，又利用连接的微服务。
+`INestApplication` 实例可以通过 `connectMicroservice()` 方法连接到 `INestMicroservice` 实例。
 
 ```typescript
 const app = await NestFactory.create(AppModule);
@@ -70,7 +71,10 @@ By default a hybrid application will not inherit global pipes, interceptors, gua
 To inherit these configuration properties from the main application, set the `inheritAppConfig` property in the second argument (an optional options object) of the `connectMicroservice()` call, as follow:
 
 ```typescript
-const microservice = app.connectMicroservice({
-  transport: Transport.TCP
-}, { inheritAppConfig: true });
+const microservice = app.connectMicroservice(
+  {
+    transport: Transport.TCP,
+  },
+  { inheritAppConfig: true },
+);
 ```

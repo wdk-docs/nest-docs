@@ -1,14 +1,14 @@
-### Exception filters
+### 异常过滤器
 
-The only difference between the HTTP [exception filter](/exception-filters) layer and the corresponding microservices layer is that instead of throwing `HttpException`, you should use `RpcException`.
+HTTP [异常过滤器](/exception-filters)层和相应的微服务层之间的唯一区别是，你应该使用`RpcException`而不是抛出`HttpException`。
 
 ```typescript
 throw new RpcException('Invalid credentials.');
 ```
 
-> info **Hint** The `RpcException` class is imported from the `@nestjs/microservices` package.
+> info **Hint** `RpcException` 类是从 `@nestjs/microservices` 包中导入的。
 
-With the sample above, Nest will handle the thrown exception and return the `error` object with the following structure:
+在上面的例子中，Nest 将处理抛出的异常，并以如下结构返回 `error` 对象:
 
 ```json
 {

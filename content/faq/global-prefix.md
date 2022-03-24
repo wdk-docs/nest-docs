@@ -1,13 +1,13 @@
-### Global prefix
+### 全局前缀
 
-To set a prefix for **every route** registered in an HTTP application, use the `setGlobalPrefix()` method of the `INestApplication` instance.
+使用 INestApplication 实例的 `setGlobalPrefix()` 方法为 HTTP 应用中注册的**每个路由**设置前缀。
 
 ```typescript
 const app = await NestFactory.create(AppModule);
 app.setGlobalPrefix('v1');
 ```
 
-You can exclude routes from the global prefix using the following construction:
+你可以使用以下结构从全局前缀中排除路由:
 
 ```typescript
 app.setGlobalPrefix('v1', {
@@ -15,7 +15,7 @@ app.setGlobalPrefix('v1', {
 });
 ```
 
-Alternatively, you can specify route as a string (it will apply to every request method):
+或者，你可以将 route 指定为一个字符串(它将应用于每个请求方法):
 
 ```typescript
 app.setGlobalPrefix('v1', { exclude: ['cats'] });
