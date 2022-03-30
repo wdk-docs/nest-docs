@@ -1,12 +1,14 @@
-### Exception filters
+### 异常过滤器
 
-Nest comes with a built-in **exceptions layer** which is responsible for processing all unhandled exceptions across an application. When an exception is not handled by your application code, it is caught by this layer, which then automatically sends an appropriate user-friendly response.
+Nest 自带一个内置的**异常层**，负责处理整个应用程序中所有未处理的异常。
+当应用程序代码没有处理异常时，该层会捕获异常，然后自动发送适当的用户友好响应。
 
 <figure>
   <img src="/assets/Filter_1.png" />
 </figure>
 
-Out of the box, this action is performed by a built-in **global exception filter**, which handles exceptions of type `HttpException` (and subclasses of it). When an exception is **unrecognized** (is neither `HttpException` nor a class that inherits from `HttpException`), the built-in exception filter generates the following default JSON response:
+开箱即用，这个动作是由内置的**全局异常过滤器**执行的，它处理类型为 `HttpException` 的异常(及其子类)。
+当一个异常是**不可识别的**(既不是 `HttpException` ，也不是继承自 `HttpException` 的类)，内置的异常过滤器生成以下默认 JSON 响应:
 
 ```json
 {
@@ -15,13 +17,17 @@ Out of the box, this action is performed by a built-in **global exception filter
 }
 ```
 
-> info **Hint** The global exception filter partially supports the `http-errors` library. Basically, any thrown exception containing the `statusCode` and `message` property will be properly populated and send back as a response (instead of the default `InternalServerErrorException` for unrecognized exceptions).
+> info **Hint** 全局异常过滤器部分支持 `http-errors` 库。
+> 基本上，任何抛出的异常包含 `statusCode` 和 `message` 属性将被正确填充并作为响应发送回(而不是默认的 `InternalServerErrorException` 对于未识别的异常)。
 
-#### Throwing standard exceptions
+#### 抛出标准异常
 
-Nest provides a built-in `HttpException` class, exposed from the `@nestjs/common` package. For typical HTTP REST/GraphQL API based applications, it's best practice to send standard HTTP response objects when certain error conditions occur.
+Nest 提供了一个内置的 `HttpException` 类，从 `@nestjs/common` 包中公开。
+对于典型的基于 HTTP REST/GraphQL API 的应用程序，最佳实践是在出现某些错误条件时发送标准 HTTP 响应对象。
 
-For example, in the `CatsController`, we have a `findAll()` method (a `GET` route handler). Let's assume that this route handler throws an exception for some reason. To demonstrate this, we'll hard-code it as follows:
+例如，在 `CatsController` 中，我们有一个 `findAll()` 方法(一个 `GET` 路由处理器)。
+让我们假设这个路由处理程序出于某种原因抛出了一个异常。
+为了演示这一点，我们将其硬编码如下:
 
 ```typescript
 @@filename(cats.controller)
@@ -31,9 +37,10 @@ async findAll() {
 }
 ```
 
-> info **Hint** We used the `HttpStatus` here. This is a helper enum imported from the `@nestjs/common` package.
+> info **Hint** 我们在这里使用了 `HttpStatus` 。
+> 这是从 `@nestjs/common` 包中导入的 `helper enum`。
 
-When the client calls this endpoint, the response looks like this:
+当客户端调用这个端点时，响应看起来像这样:
 
 ```json
 {
@@ -42,25 +49,24 @@ When the client calls this endpoint, the response looks like this:
 }
 ```
 
-The `HttpException` constructor takes two required arguments which determine the
-response:
+`HttpException` 构造函数有两个必需的参数来决定响应:
 
-- The `response` argument defines the JSON response body. It can be a `string`
-  or an `object` as described below.
-- The `status` argument defines the [HTTP status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
+- 参数 `response` 定义了 JSON 响应体。它可以是`字符串`或`对象`，如下所述。
+- `status` 参数定义了[HTTP 状态码](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 
-By default, the JSON response body contains two properties:
+默认情况下，JSON 响应体包含两个属性:
 
-- `statusCode`: defaults to the HTTP status code provided in the `status` argument
-- `message`: a short description of the HTTP error based on the `status`
+- `statusCode`: 默认为`status`参数中提供的 HTTP 状态码
+- `message`: 基于`status`的 HTTP 错误的简短描述
 
-To override just the message portion of the JSON response body, supply a string
-in the `response` argument. To override the entire JSON response body, pass an object in the `response` argument. Nest will serialize the object and return it as the JSON response body.
+要覆盖 JSON 响应体的消息部分，请在 `response` 参数中提供一个字符串。
+要覆盖整个 JSON 响应体，在 `response` 参数中传递一个对象。
+Nest 将序列化该对象并将其作为 JSON 响应体返回。
 
-The second constructor argument - `status` - should be a valid HTTP status code.
-Best practice is to use the `HttpStatus` enum imported from `@nestjs/common`.
+第二个构造函数参数 - `status` - 应该是一个有效的 HTTP 状态码。
+最佳实践是使用从 `@nestjs/common` 中导入的 `HttpStatus` 枚举。
 
-Here's an example overriding the entire response body:
+下面是一个覆盖整个响应体的例子:
 
 ```typescript
 @@filename(cats.controller)
@@ -73,7 +79,7 @@ async findAll() {
 }
 ```
 
-Using the above, this is how the response would look:
+使用上面的方法，下面是响应的样子:
 
 ```json
 {
@@ -82,9 +88,12 @@ Using the above, this is how the response would look:
 }
 ```
 
-#### Custom exceptions
+#### 自定义异常
 
-In many cases, you will not need to write custom exceptions, and can use the built-in Nest HTTP exception, as described in the next section. If you do need to create customized exceptions, it's good practice to create your own **exceptions hierarchy**, where your custom exceptions inherit from the base `HttpException` class. With this approach, Nest will recognize your exceptions, and automatically take care of the error responses. Let's implement such a custom exception:
+在许多情况下，您不需要编写自定义异常，可以使用内置的 Nest HTTP 异常，如下一节所述。
+如果你确实需要创建自定义异常，最好创建你自己的**异常层次**结构，其中你的自定义异常继承自基类 `HttpException` 。
+使用这种方法，Nest 将识别出你的异常，并自动处理错误响应。
+让我们实现这样一个自定义异常:
 
 ```typescript
 @@filename(forbidden.exception)
@@ -95,7 +104,7 @@ export class ForbiddenException extends HttpException {
 }
 ```
 
-Since `ForbiddenException` extends the base `HttpException`, it will work seamlessly with the built-in exception handler, and therefore we can use it inside the `findAll()` method.
+由于 `ForbiddenException` 扩展了基础的 `HttpException` ，它将与内置的异常处理程序无缝地工作，因此我们可以在 `findAll()` 方法中使用它。
 
 ```typescript
 @@filename(cats.controller)
@@ -105,9 +114,10 @@ async findAll() {
 }
 ```
 
-#### Built-in HTTP exceptions
+#### 内置的 HTTP 异常
 
-Nest provides a set of standard exceptions that inherit from the base `HttpException`. These are exposed from the `@nestjs/common` package, and represent many of the most common HTTP exceptions:
+Nest 提供了一组从基本的 `HttpException` 继承的标准异常。
+这些是从 `@nestjs/common` 包中公开的，代表了许多最常见的 HTTP 异常:
 
 - `BadRequestException`
 - `UnauthorizedException`
@@ -130,11 +140,17 @@ Nest provides a set of standard exceptions that inherit from the base `HttpExcep
 - `GatewayTimeoutException`
 - `PreconditionFailedException`
 
-#### Exception filters
+#### 异常过滤器
 
-While the base (built-in) exception filter can automatically handle many cases for you, you may want **full control** over the exceptions layer. For example, you may want to add logging or use a different JSON schema based on some dynamic factors. **Exception filters** are designed for exactly this purpose. They let you control the exact flow of control and the content of the response sent back to the client.
+虽然基本的(内置的)异常过滤器可以自动为你处理许多情况，但你可能想要对异常层进行完全控制。
+例如，您可能希望根据一些动态因素添加日志记录或使用不同的 JSON 模式。
+**异常过滤器**正是为此目的而设计的。
+它们允许您控制确切的控制流和发送回客户机的响应的内容。
 
-Let's create an exception filter that is responsible for catching exceptions which are an instance of the `HttpException` class, and implementing custom response logic for them. To do this, we'll need to access the underlying platform `Request` and `Response` objects. We'll access the `Request` object so we can pull out the original `url` and include that in the logging information. We'll use the `Response` object to take direct control of the response that is sent, using the `response.json()` method.
+让我们创建一个异常过滤器，它负责捕捉异常，这些异常是 `HttpException` 类的一个实例，并为它们实现定制的响应逻辑。
+为此，我们需要访问底层平台的 `Request` 和 `Response` 对象。
+我们将访问 `Request` 对象，这样我们就可以取出原始的 `url` ，并将其包含在日志信息中。
+我们将使用 `Response` 对象来直接控制发送的响应，使用`response.json()`方法。
 
 ```typescript
 @@filename(http-exception.filter)
@@ -180,19 +196,31 @@ export class HttpExceptionFilter {
 }
 ```
 
-> info **Hint** All exception filters should implement the generic `ExceptionFilter<T>` interface. This requires you to provide the `catch(exception: T, host: ArgumentsHost)` method with its indicated signature. `T` indicates the type of the exception.
+> info **Hint** 所有异常过滤器都应该实现通用的`ExceptionFilter<T>`接口。
+> 这需要你提供带有指定签名的`catch(exception: T, host: ArgumentsHost)` 方法。
+> `T` 表示异常的类型。
 
-The `@Catch(HttpException)` decorator binds the required metadata to the exception filter, telling Nest that this particular filter is looking for exceptions of type `HttpException` and nothing else. The `@Catch()` decorator may take a single parameter, or a comma-separated list. This lets you set up the filter for several types of exceptions at once.
+`@Catch(HttpException)` 装饰器将所需的元数据绑定到异常过滤器，告诉 Nest 这个特定的过滤器正在寻找 `HttpException` 类型的异常，而不是其他类型的异常。
+`@Catch()` 装饰器可以接受单个参数，或者一个逗号分隔的列表。
+这允许您一次为几种类型的异常设置过滤器。
 
-#### Arguments host
+#### 参数主机
 
-Let's look at the parameters of the `catch()` method. The `exception` parameter is the exception object currently being processed. The `host` parameter is an `ArgumentsHost` object. `ArgumentsHost` is a powerful utility object that we'll examine further in the [execution context chapter](/fundamentals/execution-context)\*. In this code sample, we use it to obtain a reference to the `Request` and `Response` objects that are being passed to the original request handler (in the controller where the exception originates). In this code sample, we've used some helper methods on `ArgumentsHost` to get the desired `Request` and `Response` objects. Learn more about `ArgumentsHost` [here](/fundamentals/execution-context).
+让我们看看 `catch()` 方法的参数。
+`exception` 参数是当前正在处理的异常对象。
+`host` 参数是一个 `ArgumentsHost` 对象。
+`ArgumentsHost` 是一个功能强大的实用程序对象，我们将在[执行上下文章节](/fundamentals/execute-context)中进一步研究它。
+在这个代码示例中，我们使用它来获取对传递给原始请求处理程序的 `Request` 和 `Response` 对象的引用(在产生异常的控制器中)。
+在这个代码示例中，我们在 `ArgumentsHost` 上使用了一些 helper 方法来获得所需的 `Request` 和 `Response` 对象。
+了解更多关于 `ArgumentsHost` 的信息[在这里](/基本面/执行上下文)。
 
-\*The reason for this level of abstraction is that `ArgumentsHost` functions in all contexts (e.g., the HTTP server context we're working with now, but also Microservices and WebSockets). In the execution context chapter we'll see how we can access the appropriate <a href="https://docs.nestjs.com/fundamentals/execution-context#host-methods">underlying arguments</a> for **any** execution context with the power of `ArgumentsHost` and its helper functions. This will allow us to write generic exception filters that operate across all contexts.
+这个抽象级别的原因是 `ArgumentsHost` 在所有上下文中都有作用(例如，我们现在处理的 HTTP 服务器上下文中，还有微服务和 WebSockets)。
+在执行上下文这一章中，我们将看到如何使用 `ArgumentsHost` 及其辅助函数的功能访问**任意**执行上下文的相应的<a href="https://docs.nestjs.com/fundamentals/execution-context#host-methods">底层参数</a>。
+这将允许我们编写跨所有上下文操作的通用异常过滤器。
 
-#### Binding filters
+#### 绑定的过滤器
 
-Let's tie our new `HttpExceptionFilter` to the `CatsController`'s `create()` method.
+让我们把新的 `HttpExceptionFilter` 绑定到 `CatsController` 的 `create()` 方法。
 
 ```typescript
 @@filename(cats.controller)
@@ -210,9 +238,12 @@ async create(createCatDto) {
 }
 ```
 
-> info **Hint** The `@UseFilters()` decorator is imported from the `@nestjs/common` package.
+> info **Hint** `@UseFilters()` 装饰器是从 `@nestjs/common` 包中导入的。
 
-We have used the `@UseFilters()` decorator here. Similar to the `@Catch()` decorator, it can take a single filter instance, or a comma-separated list of filter instances. Here, we created the instance of `HttpExceptionFilter` in place. Alternatively, you may pass the class (instead of an instance), leaving responsibility for instantiation to the framework, and enabling **dependency injection**.
+这里我们使用了 `@UseFilters()` 装饰器。
+类似于 `@Catch()` 装饰器，它可以接受单个过滤器实例，也可以接受逗号分隔的过滤器实例列表。
+这里，我们在适当的地方创建了 `HttpExceptionFilter` 的实例。
+或者，你可以传递类(而不是实例)，将实例化的责任留给框架，并启用依赖注入。
 
 ```typescript
 @@filename(cats.controller)
@@ -230,9 +261,12 @@ async create(createCatDto) {
 }
 ```
 
-> info **Hint** Prefer applying filters by using classes instead of instances when possible. It reduces **memory usage** since Nest can easily reuse instances of the same class across your entire module.
+> info **Hint** 如果可能的话，最好使用类而不是实例来应用过滤器。
+> 它减少了内存的使用，因为 Nest 可以轻松地在整个模块中重用同一个类的实例。
 
-In the example above, the `HttpExceptionFilter` is applied only to the single `create()` route handler, making it method-scoped. Exception filters can be scoped at different levels: method-scoped, controller-scoped, or global-scoped. For example, to set up a filter as controller-scoped, you would do the following:
+在上面的例子中， `HttpExceptionFilter` 只应用于单一的 `create()` 路由处理程序，使其限于方法范围。
+异常筛选器可以定义在不同的级别:方法范围的、控制器范围的或全局范围的。
+例如，要将过滤器设置为控制器作用域，你需要执行以下操作:
 
 ```typescript
 @@filename(cats.controller)
@@ -240,9 +274,9 @@ In the example above, the `HttpExceptionFilter` is applied only to the single `c
 export class CatsController {}
 ```
 
-This construction sets up the `HttpExceptionFilter` for every route handler defined inside the `CatsController`.
+这个构造为 `CatsController` 中定义的每个路由处理程序设置了 `HttpExceptionFilter` 。
 
-To create a global-scoped filter, you would do the following:
+要创建一个全局作用域的过滤器，你需要执行以下操作:
 
 ```typescript
 @@filename(main)
@@ -254,9 +288,11 @@ async function bootstrap() {
 bootstrap();
 ```
 
-> warning **Warning** The `useGlobalFilters()` method does not set up filters for gateways or hybrid applications.
+> warning **Warning** `useGlobalFilters()` 方法不为网关或混合应用程序设置过滤器。
 
-Global-scoped filters are used across the whole application, for every controller and every route handler. In terms of dependency injection, global filters registered from outside of any module (with `useGlobalFilters()` as in the example above) cannot inject dependencies since this is done outside the context of any module. In order to solve this issue, you can register a global-scoped filter **directly from any module** using the following construction:
+全局范围的过滤器在整个应用程序中使用，用于每个控制器和每个路由处理程序。
+在依赖注入方面，从任何模块外部注册的全局过滤器(如上面的例子中的 `useGlobalFilters()` )不能注入依赖，因为这是在任何模块的上下文之外完成的。
+为了解决这个问题，你可以直接从任何模块**注册一个全局作用域的过滤器**，使用以下构造:
 
 ```typescript
 @@filename(app.module)
@@ -274,15 +310,18 @@ import { APP_FILTER } from '@nestjs/core';
 export class AppModule {}
 ```
 
-> info **Hint** When using this approach to perform dependency injection for the filter, note that regardless of the module where this construction is employed, the filter is, in fact, global. Where should this be done? Choose the module where the filter (`HttpExceptionFilter` in the example above) is defined. Also, `useClass` is not the only way of dealing with custom provider registration. Learn more [here](/fundamentals/custom-providers).
+> info **Hint** 当使用此方法为过滤器执行依赖注入时，请注意，无论在哪个模块中使用此构造，过滤器实际上都是全局的。
+> 这应该在哪里做?选择定义过滤器(在上面的例子中为 `HttpExceptionFilter` )的模块。
+> 此外， `useClass` 并不是处理自定义提供商注册的唯一方法。
+> 了解更多[这](/fundamentals/custom-providers)。
 
-You can add as many filters with this technique as needed; simply add each to the providers array.
+你可以根据需要使用这种技术添加尽可能多的过滤器;只需将它们添加到提供者数组中。
 
-#### Catch everything
+#### 抓住一切
 
-In order to catch **every** unhandled exception (regardless of the exception type), leave the `@Catch()` decorator's parameter list empty, e.g., `@Catch()`.
+为了捕获**每个**未处理的异常(不管异常类型是什么)，让 `@Catch()` 装饰器的形参列表为空，例如 `@Catch()` 。
 
-In the example below we have a code that is platform-agnostic because it uses the [HTTP adapter](./faq/http-adapter) to deliver the response, and doesn't use any of the platform-specific objects (`Request` and `Response`) directly:
+在下面的例子中，我们有一个与平台无关的代码，因为它使用[HTTP 适配器](./faq/http-adapter)来传递响应，而不直接使用任何平台特定的对象(`Request`和`Response`):
 
 ```typescript
 import {
@@ -321,11 +360,12 @@ export class AllExceptionsFilter implements ExceptionFilter {
 }
 ```
 
-#### Inheritance
+#### 继承
 
-Typically, you'll create fully customized exception filters crafted to fulfill your application requirements. However, there might be use-cases when you would like to simply extend the built-in default **global exception filter**, and override the behavior based on certain factors.
+通常，您将创建完全定制的异常过滤器，以满足您的应用程序需求。
+然而，在某些情况下，您可能想简单地扩展内置的默认**全局异常过滤器**，并基于某些因素覆盖行为。
 
-In order to delegate exception processing to the base filter, you need to extend `BaseExceptionFilter` and call the inherited `catch()` method.
+为了将异常处理委托给基过滤器，您需要扩展 `BaseExceptionFilter` 并调用继承的 `catch()` 方法。
 
 ```typescript
 @@filename(all-exceptions.filter)
@@ -350,13 +390,16 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
 }
 ```
 
-> warning **Warning** Method-scoped and Controller-scoped filters that extend the `BaseExceptionFilter` should not be instantiated with `new`. Instead, let the framework instantiate them automatically.
+> warning **Warning** 扩展了 `BaseExceptionFilter` 的方法范围和控制器范围的过滤器不应该用 `new` 实例化。
+> 相反，让框架自动实例化它们。
 
-The above implementation is just a shell demonstrating the approach. Your implementation of the extended exception filter would include your tailored **business** logic (e.g., handling various conditions).
+上面的实现只是一个演示该方法的 shell。
+您的扩展异常过滤器的实现将包括您定制的**业务**逻辑(例如，处理各种条件)。
 
-Global filters **can** extend the base filter. This can be done in either of two ways.
+全局过滤器**可以**扩展基过滤器。
+这有两种方法。
 
-The first method is to inject the `HttpServer` reference when instantiating the custom global filter:
+第一个方法是在实例化自定义全局过滤器时注入 `HttpServer` 引用:
 
 ```typescript
 async function bootstrap() {
@@ -370,4 +413,4 @@ async function bootstrap() {
 bootstrap();
 ```
 
-The second method is to use the `APP_FILTER` token <a href="exception-filters#binding-filters">as shown here</a>.
+第二种方法是使用 `APP_FILTER` 令牌<a href="exception-filters#bind -filters">如下所示</a>。

@@ -1,14 +1,15 @@
 ### Healthchecks (Terminus)
 
-Terminus integration provides you with **readiness/liveness** health checks. Healthchecks are crucial when it comes to complex
-backend setups. In a nutshell, a health check in the realm of web development usually consists of a special address, for example, `https://my-website.com/health/readiness`.
-A service or a component of your infrastructure (e.g., Kubernetes) checks this address continuously. Depending on the HTTP status code returned from a `GET` request to this address the service will take action when it receives an "unhealthy" response.
-Since the definition of "healthy" or "unhealthy" varies with the type of service you provide, the **Terminus** integration supports you with a
-set of **health indicators**.
+Terminus 集成为您提供**就绪/活动**健康检查。
+当涉及到复杂的后端设置时，健康检查是至关重要的。
+简而言之，web 开发领域的健康检查通常包括一个特殊的地址，例如“https://my-website.com/health/readiness”。
+基础设施的一个服务或组件(例如，Kubernetes)会不断地检查这个地址。
+根据从“GET”请求返回到该地址的 HTTP 状态码，服务在收到“不健康”响应时将采取行动。
+由于“正常”或“不正常”的定义因您提供的服务类型而异，**Terminus**集成支持您使用一组**运行状况指示器**。
 
-As an example, if your web server uses MongoDB to store its data, it would be vital information whether MongoDB is still up and running.
-In that case, you can make use of the `MongooseHealthIndicator`. If configured correctly - more on that later - your health check address will return
-a healthy or unhealthy HTTP status code, depending on whether MongoDB is running.
+举个例子，如果你的 web 服务器使用 MongoDB 来存储数据，那么 MongoDB 是否仍然在运行是非常重要的信息。
+在这种情况下，你可以使用“MongooseHealthIndicator”。
+如果配置正确(稍后详细介绍)，您的健康检查地址将返回健康或不健康的 HTTP 状态码，这取决于 MongoDB 是否运行。
 
 #### Getting started
 
@@ -20,7 +21,10 @@ $ npm install --save @nestjs/terminus
 
 #### Setting up a Healthcheck
 
-A health check represents a summary of **health indicators**. A health indicator executes a check of a service, whether it is in a healthy or unhealthy state. A health check is positive if all the assigned health indicators are up and running. Because a lot of applications will need similar health indicators, [`@nestjs/terminus`](https://github.com/nestjs/terminus) provides a set of predefined indicators, such as:
+A health check represents a summary of **health indicators**.
+A health indicator executes a check of a service, whether it is in a healthy or unhealthy state.
+A health check is positive if all the assigned health indicators are up and running.
+Because a lot of applications will need similar health indicators, [`@nestjs/terminus`](https://github.com/nestjs/terminus) provides a set of predefined indicators, such as:
 
 - `HttpHealthIndicator`
 - `TypeOrmHealthIndicator`
@@ -50,7 +54,9 @@ Our healthcheck(s) can be executed using a [controller](/controllers), which can
 $ nest g controller health
 ```
 
-> info **Info** It is highly recommended to enable shutdown hooks in your application. Terminus integration makes use of this lifecycle event if enabled. Read more about shutdown hooks [here](fundamentals/lifecycle-events#application-shutdown).
+> info **Info** It is highly recommended to enable shutdown hooks in your application.
+> Terminus integration makes use of this lifecycle event if enabled.
+> Read more about shutdown hooks [here](fundamentals/lifecycle-events#application-shutdown).
 
 #### HTTP Healthcheck
 
@@ -100,7 +106,8 @@ export class HealthController {
 
 > warning **Warning** `HttpHealthIndicator` requires the installation of the `@nestjs/axios` package and the import of `HttpModule`.
 
-Our health check will now send a _GET_-request to the `https://docs.nestjs.com` address. If
+Our health check will now send a _GET_-request to the `https://docs.nestjs.com` address.
+If
 we get a healthy response from that address, our route at `http://localhost:3000/health` will return
 the following object with a 200 status code.
 
@@ -123,19 +130,26 @@ the following object with a 200 status code.
 
 The interface of this response object can be accessed from the `@nestjs/terminus` package with the `HealthCheckResult` interface.
 
-|           |                                                                                                                                                                                             |                                      |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `status`  | If any health indicator failed the status will be `'error'`. If the NestJS app is shutting down but still accepting HTTP requests, the health check will have the `'shutting_down'` status. | `'error' \| 'ok' \| 'shutting_down'` |
-| `info`    | Object containing information of each health indicator which is of status `'up'`, or in other words "healthy".                                                                              | `object`                             |
-| `error`   | Object containing information of each health indicator which is of status `'down'`, or in other words "unhealthy".                                                                          | `object`                             |
-| `details` | Object containing all information of each health indicator                                                                                                                                  | `object`                             |
+|          |                                                              |     |
+| -------- | ------------------------------------------------------------ | --- |
+| `status` | If any health indicator failed the status will be `'error'`. |
+
+If the NestJS app is shutting down but still accepting HTTP requests, the health check will have the `'shutting_down'` status.
+| `'error' \| 'ok' \| 'shutting_down'` |
+| `info` | Object containing information of each health indicator which is of status `'up'`, or in other words "healthy".
+| `object` |
+| `error` | Object containing information of each health indicator which is of status `'down'`, or in other words "unhealthy".
+| `object` |
+| `details` | Object containing all information of each health indicator | `object` |
 
 #### TypeOrm health indicator
 
-Terminus offers the capability to add database checks to your health check. In order to get started with this health indicator, you
+Terminus offers the capability to add database checks to your health check.
+In order to get started with this health indicator, you
 should check out the [Database chapter](/techniques/sql) and make sure your database connection within your application is established.
 
-> info **Hint** Behind the scenes the `TypeOrmHealthIndicator` simply executes a `SELECT 1`-SQL command which is often used to verify whether the database still alive. In case you are using an Oracle database it uses `SELECT 1 FROM DUAL`.
+> info **Hint** Behind the scenes the `TypeOrmHealthIndicator` simply executes a `SELECT 1`-SQL command which is often used to verify whether the database still alive.
+> In case you are using an Oracle database it uses `SELECT 1 FROM DUAL`.
 
 ```typescript
 @@filename(health.controller)
@@ -193,7 +207,8 @@ If your database is reachable, you should now see the following JSON-result when
 ```
 
 In case your app uses [multiple databases](techniques/database#multiple-databases), you need to inject each
-connection into your `HealthController`. Then, you can simply pass the connection reference to the `TypeOrmHealthIndicator`.
+connection into your `HealthController`.
+Then, you can simply pass the connection reference to the `TypeOrmHealthIndicator`.
 
 ```typescript
 @@filename(health.controller)
@@ -221,9 +236,13 @@ export class HealthController {
 
 #### Custom health indicator
 
-In some cases, the predefined health indicators provided by `@nestjs/terminus` do not cover all of your health check requirements. In that case, you can set up a custom health indicator according to your needs.
+In some cases, the predefined health indicators provided by `@nestjs/terminus` do not cover all of your health check requirements.
+In that case, you can set up a custom health indicator according to your needs.
 
-Let's get started by creating a service that will represent our custom indicator. To get a basic understanding of how an indicator is structured, we will create an example `DogHealthIndicator`. This service should have the state `'up'` if every `Dog` object has the type `'goodboy'`. If that condition is not satisfied then it should throw an error.
+Let's get started by creating a service that will represent our custom indicator.
+To get a basic understanding of how an indicator is structured, we will create an example `DogHealthIndicator`.
+This service should have the state `'up'` if every `Dog` object has the type `'goodboy'`.
+If that condition is not satisfied then it should throw an error.
 
 ```typescript
 @@filename(dog.health)
@@ -295,7 +314,8 @@ export class AppModule { }
 
 > info **Hint** In a real-world application the `DogHealthIndicator` should be provided in a separate module, for example, `DogModule`, which then will be imported by the `AppModule`.
 
-The last required step is to add the now available health indicator in the required health check endpoint. For that, we go back to our `HealthController` and add it to our `check` function.
+The last required step is to add the now available health indicator in the required health check endpoint.
+For that, we go back to our `HealthController` and add it to our `check` function.
 
 ```typescript
 @@filename(health.controller)
