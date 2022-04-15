@@ -9,7 +9,7 @@
 使用`@nestjs/passport`模块将这个库与**Nest**应用程序集成起来是很简单的。
 在高层，Passport 执行一系列步骤:
 
-- 通过验证用户的“凭证”(例如用户名/密码、JSON Web 令牌([JWT](https://jwt.io/))或来自身份提供者的身份令牌)来验证用户。
+- 通过验证用户的“凭证”(例如用户名/密码、JSON Web 令牌([JWT](https://jwt.io/))或来自身份提供器的身份令牌)来验证用户。
 - 管理经过身份验证的状态(通过发出可移植令牌，如 JWT，或创建[Express 会话](https://github.com/expressjs/session))
 - 将有关已验证用户的信息附加到`Request`对象，以便在路由处理程序中进一步使用
 
@@ -48,7 +48,7 @@ $ npm install --save-dev @types/passport-local
 #### 执行认证策略
 
 现在我们准备实现身份验证特性。
-我们将首先概述用于**任何**护照策略的流程。
+我们将首先概述用于**任何**passport 策略的流程。
 将 Passport 本身看作一个迷你框架是有帮助的。
 该框架的优雅之处在于，它将身份验证过程抽象为几个基本步骤，您可以根据正在实现的策略自定义这些步骤。
 它很像一个框架，因为您可以通过以回调函数的形式提供定制参数(作为普通的 JSON 对象)和定制代码来配置它，Passport 会在适当的时候调用回调函数。
@@ -57,7 +57,7 @@ $ npm install --save-dev @types/passport-local
 
 在普通的 Passport 中，你可以通过提供两件事来配置策略:
 
-1. 一组特定于该策略的选项。例如，在 JWT 策略中，您可以提供一个秘密来为令牌签名。
+1. 一组特定于该策略的选项。例如，在 JWT 策略中，您可以提供一个密钥来为令牌签名。
 2. 一个“验证回调”，在这里您可以告诉 Passport 如何与您的用户存储(您在其中管理用户帐户)交互。
    在这里，您将验证一个用户是否存在(和/或创建一个新用户)，以及他们的凭证是否有效。
    如果验证成功，Passport 库期望这个回调返回一个完整的用户，如果验证失败，则返回一个 null(失败定义为没有找到用户，或者在 passport-local 的情况下，密码不匹配)。
@@ -162,7 +162,7 @@ export class UsersModule {}
 我们的`AuthService`负责检索用户并验证密码。
 为此，我们创建了一个`validateUser()`方法。
 在下面的代码中，我们使用一个方便的 ES6 扩展操作符在返回用户对象之前从该对象中剥离密码属性。
-我们稍后将从 Passport 本地策略调用`validateUser()`方法。
+我们稍后将从 passport-local 策略调用`validateUser()`方法。
 
 ```typescript
 @@filename(auth/auth.service)
@@ -235,9 +235,9 @@ import { UsersModule } from '../users/users.module';
 export class AuthModule {}
 ```
 
-#### 执行本地认证
+#### 执行 local 认证
 
-现在我们可以实现我们的 Passport **本地认证策略**。
+现在我们可以实现我们的 passport-local **认证策略**。
 在`auth`文件夹中创建一个名为`local.strategy.ts`的文件，并添加以下代码:
 
 ```typescript
@@ -295,7 +295,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
 我们还实现了`validate()`方法。
 对于每个策略，Passport 将使用一组特定于策略的参数调用 verify 函数(在`@nestjs/passport`中使用`validate()`方法实现)。
-对于本地策略，Passport 需要一个带有以下签名的`validate()`方法: `validate(username: string, password:string): any`.
+对于 local 策略，Passport 需要一个带有以下签名的`validate()`方法: `validate(username: string, password:string): any`.
 
 大多数验证工作都是在我们的`AuthService`中完成的(在`UsersService`的帮助下)，所以这个方法非常简单。
 **任何** Passport 策略的`validate()`方法都将遵循类似的模式，只是在如何表示凭据的细节上有所不同。
@@ -349,13 +349,13 @@ export class AuthModule {}
 在第一种情况下(用户未登录)，我们需要执行两个不同的函数:
 
 - 限制未经认证的用户可以访问的路由(即拒绝访问受限制的路由)。
-  通过在受保护的路线上放置一个 Guard，我们将使用它们熟悉的功能来处理这个功能。
+  通过在受保护的路由上放置一个 Guard，我们将使用它们熟悉的功能来处理这个功能。
   正如您所预期的，我们将检查这个守卫中是否存在有效的 JWT，因此，一旦我们成功地发布了 JWT，我们将在稍后处理这个守卫。
 
 - 当先前未通过身份验证的用户试图登录时，初始化**身份验证步骤**本身。
   这是我们向有效用户**发送**JWT 的步骤。
   考虑一下这个问题，我们知道我们需要`POST`用户名/密码凭据来启动身份验证，因此我们将设置一个`POST /auth/login`路由来处理它。
-  这就提出了一个问题:在这条路线上，我们究竟如何调用护照-本地策略?
+  这就提出了一个问题:在这条路由上，我们究竟如何调用 passport-local 策略?
 
 答案很简单:使用另一种稍微不同的 Guard。
 `@nestjs/passport`模块为我们提供了一个内置的 Guard 来完成这一任务。
@@ -365,7 +365,7 @@ export class AuthModule {}
 
 #### 登录路由
 
-有了策略，我们现在可以实现一个基本的`/auth/login`路由，并应用内置的 Guard 来启动 Passport 本地流。
+有了策略，我们现在可以实现一个基本的`/auth/login`路由，并应用内置的 Guard 来启动 passport-local 流。
 
 打开`app.controller.ts`文件，并将其内容替换为以下内容:
 
@@ -397,9 +397,9 @@ export class AppController {
 }
 ```
 
-在使用`@UseGuards(AuthGuard('local'))`时，我们使用了`@nestjs/passport`**自动提供**的`AuthGuard`，这是我们在扩展“passport-local”策略时自动提供的。
+在使用`@UseGuards(AuthGuard('local'))`时，我们使用了`@nestjs/passport`**自动提供**的`AuthGuard`，这是我们在扩展`passport-local`策略时自动提供的。
 让我们来分析一下。
-我们的 Passport 本地策略的默认名称是`local`。
+我们的 passport-local 策略的默认名称是`local`。
 我们在`@UseGuards()`装饰器中引用该名称，将其与`passport-local`包提供的代码关联起来。
 这是用来消除歧义，在我们的应用程序中有多个 Passport 策略(每一个可能提供一个特定的策略`AuthGuard`)。
 虽然到目前为止我们只有一个这样的策略，但我们很快就会添加第二个，所以这是消除歧义所必需的。
@@ -455,19 +455,19 @@ $ npm install --save @nestjs/jwt passport-jwt
 $ npm install --save-dev @types/passport-jwt
 ```
 
-The `@nestjs/jwt` package (see more [here](https://github.com/nestjs/jwt)) is a utility package that helps with JWT manipulation.
-The `passport-jwt` package is the Passport package that implements the JWT strategy and `@types/passport-jwt` provides the TypeScript type definitions.
+`@nestjs/jwt`包(参见更多[这里](https://github.com/nestjs/jwt))是一个实用程序包，可以帮助进行 jwt 操作。
+`passport-jwt`包是实现了 JWT 策略的 Passport 包，而`@types/passport-jwt`包提供了 TypeScript 类型定义。
 
-Let's take a closer look at how a `POST /auth/login` request is handled.
-We've decorated the route using the built-in `AuthGuard` provided by the passport-local strategy.
-This means that:
+让我们仔细看看`POST /auth/login`请求是如何处理的。
+我们使用 passport-local 策略提供的内置`AuthGuard`来装饰路由。
+这意味着:
 
-1. The route handler **will only be invoked if the user has been validated**
-2. The `req` parameter will contain a `user` property (populated by Passport during the passport-local authentication flow)
+1. 路由处理程序**只会在用户已经验证**的情况下被调用
+2. `req`参数将包含一个`user`属性(在 passport-local 身份验证流程中由 Passport 填充)
 
-With this in mind, we can now finally generate a real JWT, and return it in this route.
-To keep our services cleanly modularized, we'll handle generating the JWT in the `authService`.
-Open the `auth.service.ts` file in the `auth` folder, and add the `login()` method, and import the `JwtService` as shown:
+考虑到这一点，我们现在终于可以生成真正的 JWT，并以这种方式返回它。
+为了保持服务的整洁模块化，我们将在`authService`中处理 JWT 的生成。
+打开`auth`文件夹中的`auth.service.ts`文件，添加`login()`方法，并导入`JwtService`，如下所示:
 
 ```typescript
 @@filename(auth/auth.service)
@@ -532,7 +532,7 @@ export class AuthService {
 
 我们使用`@nestjs/jwt`库，它提供了一个`sign()`函数来从`user`对象属性的子集生成我们的 jwt，然后我们返回一个简单的对象，带有一个`access_token`属性。
 注意:我们选择属性名`sub`来保存我们的`userId`值，以与 JWT 标准保持一致。
-不要忘记将 JwtService 提供商注入到`AuthService`中。
+不要忘记将 JwtService 提供器注入到`AuthService`中。
 
 现在我们需要更新`AuthModule`来导入新的依赖项，并配置`JwtModule`。
 
@@ -551,8 +551,8 @@ export const jwtConstants = {
 
 我们将使用它在 JWT 签名和验证步骤之间共享密钥。
 
-> 警告**警告** **不要公开此密钥**。
-> 我们在这里这样做是为了明确代码在做什么，但是在生产系统中，您必须使用适当的措施来保护这个密钥，例如秘密库、环境变量或配置服务。
+> Warning **Warning** **不要公开此密钥**。
+> 我们在这里这样做是为了明确代码在做什么，但是在生产系统中，您必须使用适当的措施来保护这个密钥，例如密钥库、环境变量或配置服务。
 
 现在，打开`auth.module.ts`文件夹中的`auth`，并将其更新为如下所示:
 
@@ -652,10 +652,10 @@ $ # result -> {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}
 $ # Note: above JWT truncated
 ```
 
-#### 实施认证 WT
+#### 实施认证 JWT
 
 现在我们可以处理我们的最终需求:通过要求在请求中提供有效的 JWT 来保护端点。
-护照也能帮到我们。
+passport 也能帮到我们。
 它提供了[passport-jwt](https://github.com/mikenicholson/passport-jwt)策略来使用 JSON Web token 保护 RESTful 端点。
 首先创建一个名为`jwt.strategy`的文件。在`auth`文件夹中添加以下代码:
 
@@ -712,10 +712,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   其他选项描述[此处](https://github.com/mikenicholson/passport-jwt#extracting-the-jwt-from-the-request).
 - `ignoreExpiration`: 为了明确起见，我们选择默认的`false`设置，它将确保 JWT 没有过期的责任委托给 Passport 模块。
   这意味着，如果我们的路由使用过期的 JWT 提供，则请求将被拒绝，并发送`401 Unauthorized`响应。
-  护照方便地自动为我们处理这个问题。
-- `secretOrKey`: 我们使用权宜之计来为令牌签名提供对称秘密。
+  passport 方便地自动为我们处理这个问题。
+- `secretOrKey`: 我们使用权宜之计来为令牌签名提供对称密钥。
   其他选项，如 pem 编码的公钥，可能更适合于生产应用程序(请参阅[这里](https://github.com/mikenicholson/passport-jwt#configure-strategy)了解更多信息)。
-  在任何情况下，正如前面所警告的，**不要公开揭露这个秘密**。
+  在任何情况下，正如前面所警告的，**不要公开揭露这个密钥**。
 
 `validate()`方法值得讨论。
 对于`jwt-strategy`，Passport 首先验证 JWT 的签名并解码 JSON。
@@ -727,10 +727,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
 同样值得指出的是，这种方法给我们留下了将其他业务逻辑注入流程的空间(可以说是`钩子`)。
 例如，我们可以在`validate()`方法中进行数据库查找，以提取用户的更多信息，从而在`Request`中提供更丰富的`user`对象。
-这也是我们可以决定进行进一步令牌验证的地方，例如在已撤销令牌列表中查找' userId '，使我们能够执行令牌撤销。
+这也是我们可以决定进行进一步令牌验证的地方，例如在已撤销令牌列表中查找 `userId`，使我们能够执行令牌撤销。
 我们在示例代码中实现的模型是一个快速的、`无状态的 JWT`模型，其中每个 API 调用都立即根据有效的 JWT 的存在进行授权，并且请求者的少量信息(它的`userId`和`用户名`)在我们的请求管道中可用。
 
-在`AuthModule`中添加新的`JwtStrategy`作为提供商:
+在`AuthModule`中添加新的`JwtStrategy`作为提供器:
 
 ```typescript
 @@filename(auth/auth.module)
@@ -781,7 +781,7 @@ import { jwtConstants } from './constants';
 export class AuthModule {}
 ```
 
-通过导入我们签署 JWT 时使用的相同秘密，我们确保 Passport 执行的**验证**阶段和 AuthService 执行的**签名**阶段使用一个公共秘密。
+通过导入我们签署 JWT 时使用的相同密钥，我们确保 Passport 执行的**验证**阶段和 AuthService 执行的**签名**阶段使用一个公共密钥。
 
 最后，我们定义了`JwtAuthGuard`类，它扩展了内置的`AuthGuard`:
 
@@ -993,11 +993,11 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 #### 请求范围内的策略
 
 passport API 基于将策略注册到库的全局实例。
-因此，策略的设计并不是为了拥有与请求相关的选项，或者为每个请求动态实例化(阅读更多关于[请求作用域](/fundamentals/injection-scopes)提供者的信息)。
+因此，策略的设计并不是为了拥有与请求相关的选项，或者为每个请求动态实例化(阅读更多关于[请求作用域](/fundamentals/injection-scopes)提供器的信息)。
 当你将策略配置为请求作用域时，Nest 将不会实例化它，因为它没有绑定到任何特定的路由。
 没有物理方法来确定每个请求应该执行哪些“请求范围”的策略。
 
-但是，有一些方法可以在策略中动态地解析请求范围的提供者。
+但是，有一些方法可以在策略中动态地解析请求范围的提供器。
 为此，我们利用了[module reference](/fundamentals/module-ref)特性。
 首先，打开`local.strategy.ts`文件，以正常方式注入`ModuleRef`:
 
@@ -1030,7 +1030,7 @@ async validate(
 }
 ```
 
-在上面的例子中，`resolve()`方法将异步返回`AuthService`提供者的请求范围的实例(我们假设`AuthService`被标记为请求范围的提供者)。
+在上面的例子中，`resolve()`方法将异步返回`AuthService`提供器的请求范围的实例(我们假设`AuthService`被标记为请求范围的提供器)。
 
 #### 定制的 Passport
 
@@ -1043,7 +1043,7 @@ PassportModule.register({ session: true });
 ```
 
 您还可以在策略的构造函数中传递一个选项对象来配置它们。
-对于本地策略，你可以通过，例如:
+对于 local 策略，你可以通过，例如:
 
 ```typescript
 constructor(private authService: AuthService) {
@@ -1058,7 +1058,7 @@ constructor(private authService: AuthService) {
 
 #### 命名策略
 
-当实现一个策略时，你可以通过传递第二个参数给·PassportStrategy·函数来为它提供一个名称。
+当实现一个策略时，你可以通过传递第二个参数给·`PassportStrategy`·函数来为它提供一个名称。
 如果你不这样做，每个策略将有一个默认名称(例如，`jwt`为`jwt-strategy`):
 
 ```typescript

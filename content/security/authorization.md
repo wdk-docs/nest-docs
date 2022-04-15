@@ -112,14 +112,14 @@ export class RolesGuard {
 }
 ```
 
-> info **Hint** 请参阅执行上下文章节的[Reflection and metadata](/fundamentals/ Execution -context# Reflection -and-metadata)小节，了解更多关于以上下文敏感的方式使用`Reflector`的细节。
+> info **Hint** 请参阅执行上下文章节的[反射和元数据](/fundamentals/execution-context#reflection-and-metadata)小节，了解更多关于以上下文敏感的方式使用`Reflector`的细节。
 
-> warning **Notice** 这个例子被命名为`**basic**`，因为我们只在路由处理程序级别检查角色的存在。
+> warning **Notice** 这个例子被命名为"**basic**"，因为我们只在路由处理程序级别检查角色的存在。
 > 在现实世界的应用程序中，您可能有一些涉及多个操作的端点/处理程序，其中每个操作都需要一组特定的权限。
 > 在这种情况下，您必须提供一种机制来检查业务逻辑中的角色，这使维护变得有些困难，因为没有集中的地方将权限与特定的操作关联起来。
 
-在这个例子中，我们假设`request。User`包含用户实例和允许的角色(在`roles`属性下)。
-在你的应用程序中，你可能会在你的自定义的\*\*身份验证保护中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
+在这个例子中，我们假设`request.user`包含用户实例和允许的角色(在`roles`属性下)。
+在你的应用程序中，你可能会在你的自定义的**身份验证保护**中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
 
 为了确保这个例子能够正常工作，你的 User 类必须如下所示:
 
@@ -331,9 +331,9 @@ ability.can(Action.Delete, Article); // false
 ability.can(Action.Create, Article); // false
 ```
 
-> info **Hint** Although both `Ability` and `AbilityBuilder` classes provide `can` and `cannot` methods, they have different purposes and accept slightly different arguments.
+> info **Hint** 虽然`Ability`和`AbilityBuilder`类都提供了`can`和`cannot`方法，但它们的目的不同，接受的参数也略有不同。
 
-Also, as we have specified in our requirements, the user should be able to update its articles:
+此外，正如我们在我们的要求中指定的，用户应该能够更新其文章:
 
 ```typescript
 const user = new User();
@@ -349,9 +349,9 @@ article.authorId = 2;
 ability.can(Action.Update, article); // false
 ```
 
-As you can see, `Ability` instance allows us to check permissions in pretty readable way.
-Likewise, `AbilityBuilder` allows us to define permissions (and specify various conditions) in a similar fashion.
-To find more examples, visit the official documentation.
+正如您所看到的，`Ability`允许我们以一种非常可读的方式检查权限。
+类似地，`AbilityBuilder`允许我们以类似的方式定义权限(并指定各种条件)。
+要查找更多示例，请访问官方文档。
 
 #### 高级:实现一个 `PoliciesGuard`
 
