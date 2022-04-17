@@ -1,8 +1,8 @@
-### Module reference
+### 模块引用
 
-Nest provides the `ModuleRef` class to navigate the internal list of providers and obtain a reference to any provider using its injection token as a lookup key.
-The `ModuleRef` class also provides a way to dynamically instantiate both static and scoped providers.
-`ModuleRef` can be injected into a class in the normal way:
+Nest 提供了' ModuleRef '类来导航提供器的内部列表，并使用其注入令牌作为查找键来获取对任何提供器的引用。
+' ModuleRef '类还提供了一种方法来动态实例化静态和限定作用域的提供器。
+' ModuleRef '可以通过正常的方式注入到类中:
 
 ```typescript
 @@filename(cats.service)

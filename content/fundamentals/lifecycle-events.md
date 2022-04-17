@@ -1,7 +1,7 @@
-### Lifecycle Events
+### 生命周期事件
 
-A Nest application, as well as every application element, has a lifecycle managed by Nest.
-Nest provides **lifecycle hooks** that give visibility into key lifecycle events, and the ability to act (run registered code on your `module`, `injectable` or `controller`) when they occur.
+Nest 应用程序以及每个应用程序元素都有一个由 Nest 管理的生命周期。
+Nest 提供了**生命周期钩子**，可以看到关键的生命周期事件，并能够在事件发生时采取行动(在你的“模块”、“可注入”或“控制器”上运行注册的代码)。
 
 #### Lifecycle sequence
 

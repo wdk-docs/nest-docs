@@ -1,16 +1,16 @@
-### Injection scopes
+### 注入范围
 
-For people coming from different programming language backgrounds, it might be unexpected to learn that in Nest, almost everything is shared across incoming requests.
-We have a connection pool to the database, singleton services with global state, etc.
-Remember that Node.js doesn't follow the request/response Multi-Threaded Stateless Model in which every request is processed by a separate thread.
-Hence, using singleton instances is fully **safe** for our applications.
+对于来自不同编程语言背景的人来说，可能会意外地发现，在 Nest 中，几乎所有的东西都是在传入请求之间共享的。
+我们有一个到数据库的连接池，带有全局状态的单例服务，等等。
+记住，Node.js 并不遵循请求/响应多线程无状态模型，在该模型中，每个请求都由一个单独的线程处理。
+因此，对于我们的应用来说，使用单例实例是完全**安全**的。
 
-However, there are edge-cases when request-based lifetime may be the desired behavior, for instance per-request caching in GraphQL applications, request tracking, and multi-tenancy.
-Injection scopes provide a mechanism to obtain the desired provider lifetime behavior.
+然而，在一些边缘情况下，基于请求的生命周期可能是理想的行为，例如在 GraphQL 应用程序中按请求缓存、请求跟踪和多租户。
+注入作用域提供了一种机制来获得所需的提供者生存期行为。
 
-#### Provider scope
+#### 供应商的范围
 
-A provider can have any of the following scopes:
+提供者可以有以下任何一个作用域:
 
 <table>
   <tr>

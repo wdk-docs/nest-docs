@@ -1,7 +1,7 @@
-### Lazy-loading modules
+### 延迟加载模块
 
-By default, modules are eagerly loaded, which means that as soon as the application loads, so do all the modules, whether or not they are immediately necessary.
-While this is fine for most applications, it may become a bottleneck for apps/workers running in the **serverless environment**, where the startup latency ("cold start") is crucial.
+默认情况下，模块是主动加载的，这意味着只要应用程序加载，所有模块也都加载，不管它们是否立即需要。
+虽然这对大多数应用来说是可以的，但它可能成为在**无服务器环境**中运行的应用/工作者的瓶颈，在那里启动延迟(“冷启动”)是至关重要的。
 
 Lazy loading can help decrease bootstrap time by loading only modules required by the specific serverless function invocation.
 In addition, you could also load other modules asynchronously once the serverless function is "warm" to speed-up the bootstrap time for subsequent calls even further (deferred modules registration).

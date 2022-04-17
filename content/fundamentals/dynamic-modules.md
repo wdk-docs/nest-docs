@@ -1,10 +1,10 @@
-### Dynamic modules
+### 动态模块
 
-The [Modules chapter](/modules) covers the basics of Nest modules, and includes a brief introduction to [dynamic modules](https://docs.nestjs.com/modules#dynamic-modules).
-This chapter expands on the subject of dynamic modules.
-Upon completion, you should have a good grasp of what they are and how and when to use them.
+[模块章节](/modules)涵盖了 Nest 模块的基础知识，并包含了[动态模块](https://docs.nestjs.com/modules#dynamic-modules)的简要介绍。
+本章扩展了动态模块的主题。
+完成后，您应该很好地掌握它们是什么，以及如何和何时使用它们。
 
-#### Introduction
+#### 介绍
 
 Most application code examples in the **Overview** section of the documentation make use of regular, or static, modules.
 Modules define groups of components like [providers](/providers) and [controllers](/controllers) that fit together as a modular part of an overall application.
@@ -67,7 +67,7 @@ Nest makes `UsersService` available inside `AuthModule` by:
 2.  Instantiating `AuthModule`, and making `UsersModule`'s exported providers available to components in `AuthModule` (just as if they had been declared in `AuthModule`).
 3.  Injecting an instance of `UsersService` in `AuthService`.
 
-#### Dynamic module use case
+#### 动态模块用例
 
 With static module binding, there's no opportunity for the consuming module to **influence** how providers from the host module are configured.
 Why does this matter? Consider the case where we have a general purpose module that needs to behave differently in different use cases.
@@ -86,7 +86,7 @@ In other words, dynamic modules provide an API for importing one module into ano
 
 <app-banner-shop></app-banner-shop>
 
-#### Config module example
+#### 配置模块的例子
 
 We'll be using the basic version of the example code from the [configuration chapter](https://docs.nestjs.com/techniques/configuration#service) for this section.
 The completed version as of the end of this chapter is available as a working [example here](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules).
@@ -201,7 +201,7 @@ Calling `ConfigModule.register(...)` returns a `DynamicModule` object with prope
 Our dynamic module isn't very interesting yet, however, as we haven't introduced any capability to **configure** it as we said we would like to do.
 Let's address that next.
 
-#### Module configuration
+#### 模块配置
 
 The obvious solution for customizing the behavior of the `ConfigModule` is to pass it an `options` object in the static `register()` method, as we guessed above.
 Let's look once again at our consuming module's `imports` property:
@@ -324,6 +324,6 @@ For example:
 export const CONFIG_OPTIONS = 'CONFIG_OPTIONS';
 ```
 
-### Example
+### 例子
 
 A full example of the code in this chapter can be found [here](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules).

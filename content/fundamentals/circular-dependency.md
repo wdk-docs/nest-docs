@@ -1,14 +1,14 @@
-### Circular dependency
+### 循环依赖
 
-A circular dependency occurs when two classes depend on each other.
-For example, class A needs class B, and class B also needs class A.
-Circular dependencies can arise in Nest between modules and between providers.
+当两个类相互依赖时，就会发生循环依赖。
+例如，A 类需要 B 类，B 类也需要 A 类。
+在 Nest 中，模块之间和提供者之间可能会出现循环依赖。
 
-While circular dependencies should be avoided where possible, you can't always do so.
-In such cases, Nest enables resolving circular dependencies between providers in two ways.
-In this chapter, we describe using **forward referencing** as one technique, and using the **ModuleRef** class to retrieve a provider instance from the DI container as another.
+尽管应该尽可能避免循环依赖关系，但不能总是这样做。
+在这种情况下，Nest 支持以两种方式解析提供者之间的循环依赖项。
+在本章中，我们描述了使用**前向引用**作为一种技术，以及使用**ModuleRef**类从 DI 容器中检索提供者实例作为另一种技术。
 
-We also describe resolving circular dependencies between modules.
+我们还描述了如何解析模块之间的循环依赖关系。
 
 > warning **Warning** A circular dependency might also be caused when using "barrel files"/index.ts files to group imports.
 > Barrel files should be omitted when it comes to module/provider classes.
@@ -16,12 +16,12 @@ We also describe resolving circular dependencies between modules.
 > `cats/cats.controller` should not import `cats` to import the `cats/cats.service` file.
 > For more details please also see [this github issue](https://github.com/nestjs/nest/issues/1181#issuecomment-430197191).
 
-#### Forward reference
+#### 向前引用
 
-A **forward reference** allows Nest to reference classes which aren't yet defined using the `forwardRef()` utility function.
-For example, if `CatsService` and `CommonService` depend on each other, both sides of the relationship can use `@Inject()` and the `forwardRef()` utility to resolve the circular dependency.
-Otherwise Nest won't instantiate them because all of the essential metadata won't be available.
-Here's an example:
+前向引用允许 Nest 引用尚未使用' forwardRef() '实用函数定义的类。
+例如，如果' CatsService '和' CommonService '相互依赖，关系的双方都可以使用' @Inject() '和' forwardRef() '工具来解决循环依赖。
+否则 Nest 将不会实例化它们，因为所有的基本元数据都将不可用。
+这里有一个例子:
 
 ```typescript
 @@filename(cats.service)
@@ -69,15 +69,15 @@ export class CommonService {
 > warning **Warning** The order of instantiation is indeterminate.
 > Make sure your code does not depend on which constructor is called first.
 
-#### ModuleRef class alternative
+#### ModuleRef 类替代
 
-An alternative to using `forwardRef()` is to refactor your code and use the `ModuleRef` class to retrieve a provider on one side of the (otherwise) circular relationship.
-Learn more about the `ModuleRef` utility class [here](/fundamentals/module-ref).
+使用“forwardRef()”的另一种选择是重构你的代码，并使用“ModuleRef”类来检索(否则)循环关系的一边的提供者。
+了解更多关于' ModuleRef '实用程序类的信息[这里](/fundamentals/module-ref)。
 
-#### Module forward reference
+#### 模块向前引用
 
-In order to resolve circular dependencies between modules, use the same `forwardRef()` utility function on both sides of the modules association.
-For example:
+为了解决模块之间的循环依赖关系，在模块关联的两边都使用相同的' forwardRef() '实用函数。
+例如:
 
 ```typescript
 @@filename(common.module)
