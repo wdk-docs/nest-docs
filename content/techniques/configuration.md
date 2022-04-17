@@ -187,7 +187,7 @@ export default () => {
 #### 使用 `ConfigService`
 
 要从`ConfigService`中访问配置值，我们首先需要注入`ConfigService`。
-与任何提供商一样，我们需要将其包含的模块- ConfigModule -导入到将要使用它的模块中(除非你将传递给`ConfigModule.forroot()`方法的选项对象中的`isGlobal`属性设置为`true`)。
+与任何提供器一样，我们需要将其包含的模块- ConfigModule -导入到将要使用它的模块中(除非你将传递给`ConfigModule.forroot()`方法的选项对象中的`isGlobal`属性设置为`true`)。
 将其导入特性模块中，如下所示。
 
 ```typescript

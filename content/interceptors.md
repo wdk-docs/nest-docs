@@ -1,38 +1,56 @@
-### Interceptors
+### 拦截器
 
-An interceptor is a class annotated with the `@Injectable()` decorator. Interceptors should implement the `NestInterceptor` interface.
+拦截器是用`@Injectable()`装饰器注解的类。
+拦截器应该实现 `NestInterceptor` 接口。
 
 <figure><img src="/assets/Interceptors_1.png" /></figure>
 
-Interceptors have a set of useful capabilities which are inspired by the [Aspect Oriented Programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) (AOP) technique. They make it possible to:
+拦截器有一组有用的功能，它们受到了[面向方面编程](https://en.wikipedia.org/wiki/Aspect-oriented_programming) (AOP)技术的启发。
+它们使以下事情成为可能:
 
-- bind extra logic before / after method execution
-- transform the result returned from a function
-- transform the exception thrown from a function
-- extend the basic function behavior
-- completely override a function depending on specific conditions (e.g., for caching purposes)
+- 在方法执行之前/之后绑定额外的逻辑
+- 转换函数返回的结果
+- 转换函数抛出的异常
+- 扩展基本函数行为
+- 根据特定条件完全重写函数(例如，为了缓存)
 
-#### Basics
+#### 基本
 
-Each interceptor implements the `intercept()` method, which takes two arguments. The first one is the `ExecutionContext` instance (exactly the same object as for [guards](/guards)). The `ExecutionContext` inherits from `ArgumentsHost`. We saw `ArgumentsHost` before in the exception filters chapter. There, we saw that it's a wrapper around arguments that have been passed to the original handler, and contains different arguments arrays based on the type of the application. You can refer back to the [exception filters](https://docs.nestjs.com/exception-filters#arguments-host) for more on this topic.
+每个拦截器都实现了`intercept()`方法，该方法接受两个参数。
+第一个是 `ExecutionContext` 实例(与[guards](/guards)的对象完全相同)。
+`ExecutionContext` 继承自 `ArgumentsHost`。
+我们在之前的异常过滤器一章中看到了`ArgumentsHost`。
+在这里，我们看到它是传递给原始处理程序的参数的包装器，并包含基于应用程序类型的不同参数数组。
+您可以参考[异常过滤器](https://docs.nestjs.com/exception-filters#arguments-host)了解更多关于这个主题的信息。
 
-#### Execution context
+#### 执行上下文
 
-By extending `ArgumentsHost`, `ExecutionContext` also adds several new helper methods that provide additional details about the current execution process. These details can be helpful in building more generic interceptors that can work across a broad set of controllers, methods, and execution contexts. Learn more about `ExecutionContext` [here](/fundamentals/execution-context).
+通过扩展`ArgumentsHost`， `ExecutionContext`还增加了几个新的助手方法，提供关于当前执行过程的额外细节。
+这些细节有助于构建更通用的拦截器，这些拦截器可以跨广泛的控制器、方法和执行上下文工作。
+了解更多关于`ExecutionContext`的信息[这里](/fundamentals/execution-context)。
 
-#### Call handler
+#### 调用管理器
 
-The second argument is a `CallHandler`. The `CallHandler` interface implements the `handle()` method, which you can use to invoke the route handler method at some point in your interceptor. If you don't call the `handle()` method in your implementation of the `intercept()` method, the route handler method won't be executed at all.
+第二个参数是`CallHandler`。
+`CallHandler`接口实现了`handle()`方法，你可以在拦截器的某个点上使用它来调用路由处理程序方法。
+如果你没有在你的`intercept()`方法的实现中调用`handle()`方法，路由处理程序方法将根本不会被执行。
 
-This approach means that the `intercept()` method effectively **wraps** the request/response stream. As a result, you may implement custom logic **both before and after** the execution of the final route handler. It's clear that you can write code in your `intercept()` method that executes **before** calling `handle()`, but how do you affect what happens afterward? Because the `handle()` method returns an `Observable`, we can use powerful [RxJS](https://github.com/ReactiveX/rxjs) operators to further manipulate the response. Using Aspect Oriented Programming terminology, the invocation of the route handler (i.e., calling `handle()`) is called a [Pointcut](https://en.wikipedia.org/wiki/Pointcut), indicating that it's the point at which our additional logic is inserted.
+这种方法意味着`intercept()`方法有效地**包装**了请求/响应流。
+因此，你可以在最终路由处理器执行**之前和之后都**实现自定义逻辑。
+很明显，你可以在你的`intercept()`方法中编写代码，在调用`handle()`**之前**执行，但你如何影响之后发生的事情?
+因为`handle()`方法返回一个`Observable`，所以我们可以使用功能强大的[RxJS](https://github.com/ReactiveX/rxjs)操作符来进一步操作响应。
+使用面向方面编程术语，路由处理程序的调用(例如，调用`handle()`)称为[切入点](<(https://en.wikipedia.org/wiki/Pointcut)>)，表明它是插入额外逻辑的点。
 
-Consider, for example, an incoming `POST /cats` request. This request is destined for the `create()` handler defined inside the `CatsController`. If an interceptor which does not call the `handle()` method is called anywhere along the way, the `create()` method won't be executed. Once `handle()` is called (and its `Observable` has been returned), the `create()` handler will be triggered. And once the response stream is received via the `Observable`, additional operations can be performed on the stream, and a final result returned to the caller.
+例如，考虑一个传入的`POST /cats`请求。
+这个请求的目的地是`CatsController`中定义的`create()`处理程序。
+如果一个没有调用`handle()`方法的拦截器在这个过程中被调用，`create()`方法将不会被执行。
+一旦`handle()`被调用(并且它的`Observable`已经被返回)，`create()`处理器就会被触发。
+一旦响应流通过`Observable`被接收，就可以在流上执行额外的操作，并将最终的结果返回给调用者。
 
-<app-banner-shop></app-banner-shop>
+#### 切面拦截
 
-#### Aspect interception
-
-The first use case we'll look at is to use an interceptor to log user interaction (e.g., storing user calls, asynchronously dispatching events or calculating a timestamp). We show a simple `LoggingInterceptor` below:
+我们将看到的第一个用例是使用拦截器来记录用户交互(例如，存储用户调用、异步调度事件或计算时间戳)。
+下面我们展示了一个简单的 `LoggingInterceptor`:
 
 ```typescript
 @@filename(logging.interceptor)
@@ -48,9 +66,7 @@ export class LoggingInterceptor implements NestInterceptor {
     const now = Date.now();
     return next
       .handle()
-      .pipe(
-        tap(() => console.log(`After... ${Date.now() - now}ms`)),
-      );
+      .pipe(tap(() => console.log(`After...${Date.now() - now}ms`)));
   }
 }
 @@switch
@@ -67,21 +83,24 @@ export class LoggingInterceptor {
     return next
       .handle()
       .pipe(
-        tap(() => console.log(`After... ${Date.now() - now}ms`)),
+        tap(() => console.log(`After...
+${Date.now() - now}ms`)),
       );
   }
 }
 ```
 
-> info **Hint** The `NestInterceptor<T, R>` is a generic interface in which `T` indicates the type of an `Observable<T>` (supporting the response stream), and `R` is the type of the value wrapped by `Observable<R>`.
+> info **Hint** `NestInterceptor<T, R>`是一个泛型接口，其中`T`表示`Observable<T>`(支持响应流)的类型，`R`是`Observable<R>`包装的值的类型。
 
-> warning **Notice** Interceptors, like controllers, providers, guards, and so on, can **inject dependencies** through their `constructor`.
+> warning **Notice** 拦截器，比如控制器、提供商、守卫等等，可以通过它们的“构造函数”**注入**依赖。
 
-Since `handle()` returns an RxJS `Observable`, we have a wide choice of operators we can use to manipulate the stream. In the example above, we used the `tap()` operator, which invokes our anonymous logging function upon graceful or exceptional termination of the observable stream, but doesn't otherwise interfere with the response cycle.
+因为`handle()`返回 `RxJS` 的`Observable`，所以我们有很多操作符可以用来操作流。
+在上面的例子中，我们使用了`tap()`操作符，它会在可观察流优雅或异常终止时调用我们的匿名日志函数，但不会干扰响应周期。
 
-#### Binding interceptors
+#### 拦截器绑定
 
-In order to set up the interceptor, we use the `@UseInterceptors()` decorator imported from the `@nestjs/common` package. Like [pipes](/pipes) and [guards](/guards), interceptors can be controller-scoped, method-scoped, or global-scoped.
+为了设置这个拦截器，我们使用从`@nestjs/common`包中导入的`@UseInterceptors()`装饰器。
+像[pipes](/pipes)和[guards](/guards)一样，拦截器可以是控制器作用域、方法作用域或全局作用域。
 
 ```typescript
 @@filename(cats.controller)
@@ -89,16 +108,19 @@ In order to set up the interceptor, we use the `@UseInterceptors()` decorator im
 export class CatsController {}
 ```
 
-> info **Hint** The `@UseInterceptors()` decorator is imported from the `@nestjs/common` package.
+> info **Hint** `@UseInterceptors()`装饰器是从`@nestjs/common`包中导入的。
 
-Using the above construction, each route handler defined in `CatsController` will use `LoggingInterceptor`. When someone calls the `GET /cats` endpoint, you'll see the following output in your standard output:
+使用上面的构造，每个在`CatsController`中定义的路由处理器将使用`LoggingInterceptor`。
+当有人调用`GET /cats`端点时，你会在标准输出中看到如下输出:
 
 ```typescript
 Before...
-After... 1ms
+After...
+1ms
 ```
 
-Note that we passed the `LoggingInterceptor` type (instead of an instance), leaving responsibility for instantiation to the framework and enabling dependency injection. As with pipes, guards, and exception filters, we can also pass an in-place instance:
+请注意，我们传递了`LoggingInterceptor`类型(而不是实例)，将实例化的责任留给框架并启用依赖注入。
+与管道、守卫和异常过滤器一样，我们也可以传递一个就地实例:
 
 ```typescript
 @@filename(cats.controller)
@@ -106,16 +128,19 @@ Note that we passed the `LoggingInterceptor` type (instead of an instance), leav
 export class CatsController {}
 ```
 
-As mentioned, the construction above attaches the interceptor to every handler declared by this controller. If we want to restrict the interceptor's scope to a single method, we simply apply the decorator at the **method level**.
+如上所述，上面的构造将拦截器附加到这个控制器声明的每个处理程序上。
+如果我们想要将拦截器的作用域限制到单个方法，我们只需在**方法级别**应用装饰器。
 
-In order to set up a global interceptor, we use the `useGlobalInterceptors()` method of the Nest application instance:
+为了设置一个全局拦截器，我们使用了 Nest 应用实例的`useGlobalInterceptors()`方法:
 
 ```typescript
 const app = await NestFactory.create(AppModule);
 app.useGlobalInterceptors(new LoggingInterceptor());
 ```
 
-Global interceptors are used across the whole application, for every controller and every route handler. In terms of dependency injection, global interceptors registered from outside of any module (with `useGlobalInterceptors()`, as in the example above) cannot inject dependencies since this is done outside the context of any module. In order to solve this issue, you can set up an interceptor **directly from any module** using the following construction:
+全局拦截器在整个应用中被使用，用于每个控制器和每个路由处理程序。
+在依赖注入方面，从任何模块外部注册的全局拦截器(使用`useGlobalInterceptors()`，就像上面的例子)不能注入依赖，因为这是在任何模块的上下文之外完成的。
+为了解决这个问题，你可以使用下面的构造直接从任何模块中建立一个拦截器:
 
 ```typescript
 @@filename(app.module)
@@ -133,17 +158,20 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 export class AppModule {}
 ```
 
-> info **Hint** When using this approach to perform dependency injection for the interceptor, note that regardless of the
-> module where this construction is employed, the interceptor is, in fact, global. Where should this be done? Choose the module
-> where the interceptor (`LoggingInterceptor` in the example above) is defined. Also, `useClass` is not the only way of dealing with custom provider registration. Learn more [here](/fundamentals/custom-providers).
+> info **Hint** 当使用此方法为拦截器执行依赖注入时，请注意，无论在哪个模块中使用此构造，拦截器实际上都是全局的。
+> 这应该在哪里做?选择拦截器(在上面的例子中为 `LoggingInterceptor`)定义的模块。
+> 此外，`useClass`并不是处理自定义提供商注册的唯一方法。
+> 了解更多(在这里)[here](/fundamentals/custom-providers).
 
-#### Response mapping
+#### 响应映射
 
-We already know that `handle()` returns an `Observable`. The stream contains the value **returned** from the route handler, and thus we can easily mutate it using RxJS's `map()` operator.
+我们已经知道`handle()`返回一个`Observable`。
+这个流包含从路由处理程序返回的**值**，因此我们可以很容易地使用 RxJS 的`map()`操作符来改变它。
 
-> warning **Warning** The response mapping feature doesn't work with the library-specific response strategy (using the `@Res()` object directly is forbidden).
+> warning **Warning** 响应映射特性不能用于特定于库的响应策略(直接使用`@Res()`对象是被禁止的)。
 
-Let's create the `TransformInterceptor`, which will modify each response in a trivial way to demonstrate the process. It will use RxJS's `map()` operator to assign the response object to the `data` property of a newly created object, returning the new object to the client.
+让我们创建`transformminterceptor`，它将以一种简单的方式修改每个响应，以演示该过程。
+它将使用 `RxJS` 的`map()`操作符将响应对象分配给新创建对象的`data`属性，并将新对象返回给客户端。
 
 ```typescript
 @@filename(transform.interceptor)
@@ -173,9 +201,10 @@ export class TransformInterceptor {
 }
 ```
 
-> info **Hint** Nest interceptors work with both synchronous and asynchronous `intercept()` methods. You can simply switch the method to `async` if necessary.
+> info **Hint** 嵌套拦截器同时使用同步和异步的`intercept()`方法。
+> 如果需要，你可以简单地将该方法切换到`async`。
 
-With the above construction, when someone calls the `GET /cats` endpoint, the response would look like the following (assuming that route handler returns an empty array `[]`):
+在上面的构造中，当有人调用`GET /cats`端点时，响应会像下面这样(假设路由处理程序返回一个空数组`[]`):
 
 ```json
 {
@@ -183,8 +212,9 @@ With the above construction, when someone calls the `GET /cats` endpoint, the re
 }
 ```
 
-Interceptors have great value in creating re-usable solutions to requirements that occur across an entire application.
-For example, imagine we need to transform each occurrence of a `null` value to an empty string `''`. We can do it using one line of code and bind the interceptor globally so that it will automatically be used by each registered handler.
+拦截器在为整个应用程序中出现的需求创建可重用的解决方案方面有很大的价值。
+例如，假设我们需要将每个`null`值的出现转换为空字符串`''`。
+我们可以使用一行代码，并全局绑定拦截器，这样每个注册的处理程序都会自动使用它。
 
 ```typescript
 @@filename()
@@ -214,9 +244,9 @@ export class ExcludeNullInterceptor {
 }
 ```
 
-#### Exception mapping
+#### 异常映射
 
-Another interesting use-case is to take advantage of RxJS's `catchError()` operator to override thrown exceptions:
+另一个有趣的用例是利用 RxJS 的`catchError()`操作符来重写抛出的异常:
 
 ```typescript
 @@filename(errors.interceptor)
@@ -257,9 +287,13 @@ export class ErrorsInterceptor {
 }
 ```
 
-#### Stream overriding
+#### 流覆盖
 
-There are several reasons why we may sometimes want to completely prevent calling the handler and return a different value instead. An obvious example is to implement a cache to improve response time. Let's take a look at a simple **cache interceptor** that returns its response from a cache. In a realistic example, we'd want to consider other factors like TTL, cache invalidation, cache size, etc., but that's beyond the scope of this discussion. Here we'll provide a basic example that demonstrates the main concept.
+我们有时可能希望完全避免调用处理程序而返回一个不同的值，原因有几个。
+一个明显的例子是实现缓存以提高响应时间。
+让我们来看看一个简单的**缓存拦截器**，它从缓存中返回响应。
+在实际的示例中，我们希望考虑其他因素，如 `TTL` 、缓存失效、缓存大小等，但这超出了本文的讨论范围。
+这里我们将提供一个演示主要概念的基本示例。
 
 ```typescript
 @@filename(cache.interceptor)
@@ -292,11 +326,19 @@ export class CacheInterceptor {
 }
 ```
 
-Our `CacheInterceptor` has a hardcoded `isCached` variable and a hardcoded response `[]` as well. The key point to note is that we return a new stream here, created by the RxJS `of()` operator, therefore the route handler **won't be called** at all. When someone calls an endpoint that makes use of `CacheInterceptor`, the response (a hardcoded, empty array) will be returned immediately. In order to create a generic solution, you can take advantage of `Reflector` and create a custom decorator. The `Reflector` is well described in the [guards](/guards) chapter.
+我们的`CacheInterceptor`有一个硬编码的`cache`变量和一个硬编码的响应`[]`。
+需要注意的关键点是，我们在这里返回了一个由 `RxJS` 的`of()`操作符创建的新流，因此路由处理器**根本不会被调用**。
+当有人调用使用`CacheInterceptor`的端点时，响应(一个硬编码的空数组)将立即返回。
+为了创建通用的解决方案，您可以利用`Reflector`并创建一个自定义装饰器。
+`Reflector`在[guards](/guards)章节中有很好的描述。
 
-#### More operators
+#### 更多的运营商
 
-The possibility of manipulating the stream using RxJS operators gives us many capabilities. Let's consider another common use case. Imagine you would like to handle **timeouts** on route requests. When your endpoint doesn't return anything after a period of time, you want to terminate with an error response. The following construction enables this:
+使用 `RxJS` 操作符操作流的可能性为我们提供了许多功能。
+让我们考虑另一个常见的用例。
+假设你想处理路由请求的**超时**。
+当端点在一段时间后没有返回任何内容时，您希望以一个错误响应结束。
+下面的构造可以实现这一点:
 
 ```typescript
 @@filename(timeout.interceptor)
@@ -339,4 +381,5 @@ export class TimeoutInterceptor {
 };
 ```
 
-After 5 seconds, request processing will be canceled. You can also add custom logic before throwing `RequestTimeoutException` (e.g. release resources).
+5 秒后，请求处理将被取消。
+你也可以在抛出`RequestTimeoutException`(例如释放资源)之前添加自定义逻辑。

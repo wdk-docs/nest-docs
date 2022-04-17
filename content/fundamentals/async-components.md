@@ -1,8 +1,12 @@
-### Asynchronous providers
+### 异步服务提供者
 
-At times, the application start should be delayed until one or more **asynchronous tasks** are completed. For example, you may not want to start accepting requests until the connection with the database has been established. You can achieve this using asynchronous providers.
+有时，应用程序应该延迟启动，直到一个或多个异步任务完成。
+例如，在与数据库建立连接之前，您可能不想开始接受请求。
+您可以使用异步提供程序来实现这一点。
 
-The syntax for this is to use `async/await` with the `useFactory` syntax. The factory returns a `Promise`, and the factory function can `await` asynchronous tasks. Nest will await resolution of the promise before instantiating any class that depends on (injects) such a provider.
+The syntax for this is to use `async/await` with the `useFactory` syntax.
+The factory returns a `Promise`, and the factory function can `await` asynchronous tasks.
+Nest will await resolution of the promise before instantiating any class that depends on (injects) such a provider.
 
 ```typescript
 {
@@ -18,7 +22,8 @@ The syntax for this is to use `async/await` with the `useFactory` syntax. The fa
 
 #### Injection
 
-Asynchronous providers are injected to other components by their tokens, like any other provider. In the example above, you would use the construct `@Inject('ASYNC_CONNECTION')`.
+Asynchronous providers are injected to other components by their tokens, like any other provider.
+In the example above, you would use the construct `@Inject('ASYNC_CONNECTION')`.
 
 #### Example
 
