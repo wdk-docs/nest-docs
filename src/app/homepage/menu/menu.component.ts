@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
       ],
     },
     {
-      title: '基本面',
+      title: '基本原理',
       isOpened: false,
       children: [
         { title: '自定义提供器', path: '/fundamentals/custom-providers' },
@@ -56,7 +56,7 @@ export class MenuComponent implements OnInit {
           path: '/fundamentals/injection-scopes',
         },
         {
-          title: '圆形依赖',
+          title: '循环依赖',
           path: '/fundamentals/circular-dependency',
         },
         {
@@ -76,7 +76,7 @@ export class MenuComponent implements OnInit {
           path: '/fundamentals/lifecycle-events',
         },
         {
-          title: '平台不可知论',
+          title: '平台无关性',
           path: '/fundamentals/platform-agnosticism',
         },
         { title: '测试', path: '/fundamentals/testing' },

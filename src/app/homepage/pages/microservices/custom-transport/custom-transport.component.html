@@ -206,8 +206,8 @@ To make use of this custom class, you can pass the class itself to the <code>Cli
 Below is an example of a custom <code>ClientProxy</code> that serializes each error into an <code>RpcException</code>.</p>
 
 <span class="filename">
-  {{ 'error-handling.proxy' | extension: app97a3df6a6f8ab03530caadf84cae770e06720d55.isJsActive }}
-<app-tabs #app97a3df6a6f8ab03530caadf84cae770e06720d55></app-tabs>
+  {{ 'error-handling.proxy' | extension: app37e73cf41d97a241b948b73cf815f8303960e1d9.isJsActive }}
+<app-tabs #app37e73cf41d97a241b948b73cf815f8303960e1d9></app-tabs>
 </span><pre><code class="language-typescript">
 import &#123; ClientTcp, RpcException &#125; from &#39;@nestjs/microservices&#39;;
 
@@ -219,8 +219,8 @@ class ErrorHandlingProxy extends ClientTCP &#123;
 </code></pre><p>and then use it in the <code>ClientsModule</code> like so:</p>
 
 <span class="filename">
-  {{ 'app.module' | extension: appb8649101c619af99c1ef877d50aa63c3ce49e849.isJsActive }}
-<app-tabs #appb8649101c619af99c1ef877d50aa63c3ce49e849></app-tabs>
+  {{ 'app.module' | extension: app7f48fadcfe0221aec8ecbab31f718200200ec103.isJsActive }}
+<app-tabs #app7f48fadcfe0221aec8ecbab31f718200200ec103></app-tabs>
 </span><pre><code class="language-typescript">
 @Module(&#123;
   imports: [

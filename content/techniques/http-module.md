@@ -1,20 +1,23 @@
 ### HTTP module
 
-[Axios](https://github.com/axios/axios) is richly featured HTTP client package that is widely used. Nest wraps Axios and exposes it via the built-in `HttpModule`. The `HttpModule` exports the `HttpService` class, which exposes Axios-based methods to perform HTTP requests. The library also transforms the resulting HTTP responses into `Observables`.
+[Axios](https://github.com/axios/axios)是广泛使用的功能丰富的 HTTP 客户端包。
+Nest 封装 Axios 并通过内置的`HttpModule`公开它。
+`HttpModule`导出`HttpService`类，该类公开了基于 axios 的方法来执行 HTTP 请求。
+该库还将产生的 HTTP 响应转换为“可观察对象”。
 
-> info **Hint** You can also use any general purpose Node.js HTTP client library directly, including [got](https://github.com/sindresorhus/got) or [undici](https://github.com/nodejs/undici).
+> info **Hint** 你也可以直接使用任何通用的 Node.js HTTP 客户端库，包括[got](https://github.com/sindresorhus/got)或[undici](https://github.com/nodejs/undici)。
 
-#### Installation
+#### 安装
 
-To begin using it, we first install the required dependency.
+要开始使用它，我们首先安装所需的依赖项。
 
 ```bash
 $ npm i --save @nestjs/axios
 ```
 
-#### Getting started
+#### 开始
 
-Once the installation process is complete, to use the `HttpService`, first import `HttpModule`.
+一旦安装过程完成，要使用`HttpService`，首先导入`HttpModule`。
 
 ```typescript
 @Module({
@@ -24,9 +27,9 @@ Once the installation process is complete, to use the `HttpService`, first impor
 export class CatsModule {}
 ```
 
-Next, inject `HttpService` using normal constructor injection.
+接下来，使用普通构造函数注入注入`HttpService`。
 
-> info **Hint** `HttpModule` and `HttpService` are imported from `@nestjs/axios` package.
+> info **Hint** `HttpModule`和`HttpService`是从`@nestjs/axios`包中导入的。
 
 ```typescript
 @@filename()
@@ -52,13 +55,16 @@ export class CatsService {
 }
 ```
 
-> info **Hint** `AxiosResponse` is an interface exported from the `axios` package (`$ npm i axios`). 
+> info **Hint** `AxiosResponse`是从`axios`包(`$ npm i axios`)导出的接口。
 
-All `HttpService` methods return an `AxiosResponse` wrapped in an `Observable` object.
+所有的“HttpService”方法都返回一个包装在“Observable”对象中的“AxiosResponse”。
 
-#### Configuration
+#### 配置
 
-[Axios](https://github.com/axios/axios) can be configured with a variety of options to customize the behavior of the `HttpService`. Read more about them [here](https://github.com/axios/axios#request-config). To configure the underlying Axios instance, pass an optional options object to the `register()` method of `HttpModule` when importing it. This options object will be passed directly to the underlying Axios constructor.
+[Axios](https://github.com/axios/axios)可以配置各种选项来定制`HttpService`的行为。
+[此处](https://github.com/axios/axios#request-config)了解更多。
+要配置底层的 Axios 实例，在导入它时将一个可选选项对象传递给`HttpModule`的`register()`方法。
+这个选项对象将直接传递给底层的 Axios 构造函数。
 
 ```typescript
 @Module({
@@ -73,11 +79,12 @@ All `HttpService` methods return an `AxiosResponse` wrapped in an `Observable` o
 export class CatsModule {}
 ```
 
-#### Async configuration
+#### 异步的配置
 
-When you need to pass module options asynchronously instead of statically, use the `registerAsync()` method. As with most dynamic modules, Nest provides several techniques to deal with async configuration.
+当您需要异步而不是静态地传递模块选项时，请使用`registerAsync()`方法。
+与大多数动态模块一样，Nest 提供了几种处理异步配置的技术。
 
-One technique is to use a factory function:
+一种技术是使用工厂函数:
 
 ```typescript
 HttpModule.registerAsync({
@@ -88,7 +95,7 @@ HttpModule.registerAsync({
 });
 ```
 
-Like other factory providers, our factory function can be [async](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory) and can inject dependencies through `inject`.
+像其他工厂提供程序一样，我们的工厂函数可以是[async](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)，并且可以通过`inject`注入依赖项。
 
 ```typescript
 HttpModule.registerAsync({
@@ -101,7 +108,7 @@ HttpModule.registerAsync({
 });
 ```
 
-Alternatively, you can configure the `HttpModule` using a class instead of a factory, as shown below.
+或者，你可以使用类而不是工厂来配置`HttpModule`，如下所示。
 
 ```typescript
 HttpModule.registerAsync({
@@ -109,7 +116,9 @@ HttpModule.registerAsync({
 });
 ```
 
-The construction above instantiates `HttpConfigService` inside `HttpModule`, using it to create an options object. Note that in this example, the `HttpConfigService` has to implement `HttpModuleOptionsFactory` interface as shown below. The `HttpModule` will call the `createHttpOptions()` method on the instantiated object of the supplied class.
+上面的构造函数在`HttpModule`中实例化了`HttpConfigService`，用它来创建一个选项对象。
+注意，在本例中，`HttpConfigService`必须实现如下所示的`HttpModuleOptionsFactory`接口。
+`HttpModule`将对所提供类的实例化对象调用`createHttpOptions()`方法。
 
 ```typescript
 @Injectable()
@@ -123,7 +132,7 @@ class HttpConfigService implements HttpModuleOptionsFactory {
 }
 ```
 
-If you want to reuse an existing options provider instead of creating a private copy inside the `HttpModule`, use the `useExisting` syntax.
+如果你想重用现有的选项提供程序，而不是在`HttpModule`中创建私有副本，请使用`useExisting`语法。
 
 ```typescript
 HttpModule.registerAsync({
