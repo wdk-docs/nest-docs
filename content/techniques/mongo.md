@@ -266,7 +266,7 @@ export class CatsService {
 }
 ```
 
-要将给定的`Connection`注入到自定义提供者(例如，工厂提供者)，使用`getConnectionToken()`函数将连接的名称作为参数传递。
+要将给定的`Connection`注入到自定义提供器(例如，工厂提供器)，使用`getConnectionToken()`函数将连接的名称作为参数传递。
 
 ```typescript
 {
@@ -283,7 +283,7 @@ export class CatsService {
 中间件(也称为前置钩子和 post 钩子)是在异步函数执行期间传递控制的函数。
 中间件是在模式级指定的，对于编写插件非常有用([source](https://mongoosejs.com/docs/middleware.html))。
 在编译模型后调用 `pre()` 或 `post()` 在 Mongoose 中不起作用。
-要在模型注册**之前**注册一个钩子，使用`MongooseModule`的`forFeatureAsync()`方法和一个工厂提供程序(例如`useFactory`)。
+要在模型注册**之前**注册一个钩子，使用`MongooseModule`的`forFeatureAsync()`方法和一个工厂提供器(例如`useFactory`)。
 使用这种技术，你可以访问一个模式对象，然后使用`pre()`或`post()`方法在该模式上注册一个钩子。
 请参见下面的例子:
 
@@ -307,7 +307,7 @@ export class CatsService {
 export class AppModule {}
 ```
 
-像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async` 的，并且可以通过 `inject` 注入依赖项。
+像其他[工厂提供器](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async` 的，并且可以通过 `inject` 注入依赖项。
 
 ```typescript
 @Module({
@@ -469,7 +469,7 @@ export class EventsModule {}
 我们如何解析这些类?解决方案是创建模拟模型。
 
 为了简化这个过程， `@nestjs/mongoose` 包公开了一个 `getModelToken()` 函数，该函数根据一个令牌名返回一个准备好的[注入令牌](https://docs.nestjs.com/fundamentals/custom-providers#di-fundamentals)。
-使用这个令牌，你可以很容易地使用任何标准的[自定义提供者](/fundamentals/自定义提供者)技术来提供一个模拟实现，包括 `useClass` ， `useValue` 和 `useFactory` 。例如:
+使用这个令牌，你可以很容易地使用任何标准的[自定义提供器](/fundamentals/自定义提供器)技术来提供一个模拟实现，包括 `useClass` ， `useValue` 和 `useFactory` 。例如:
 
 ```typescript
 @Module({
@@ -500,7 +500,7 @@ MongooseModule.forRootAsync({
 });
 ```
 
-像其他[工厂提供程序](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async` 的，并且可以通过 `inject` 注入依赖项。
+像其他[工厂提供器](https://docs.nestjs.com/fundamentals/custom-providers#factory-providers-usefactory)一样，我们的工厂函数可以是 `async` 的，并且可以通过 `inject` 注入依赖项。
 
 ```typescript
 MongooseModule.forRootAsync({
