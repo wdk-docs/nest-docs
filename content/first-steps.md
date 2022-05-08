@@ -40,13 +40,13 @@ $ nest new project-name
 
 以下是这些核心文件的简要概述:
 
-|                          |                                                                                                                     |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| `app.controller.ts`      | A basic controller with a single route.                                                                             |
-| `app.controller.spec.ts` | The unit tests for the controller.                                                                                  |
-| `app.module.ts`          | The root module of the application.                                                                                 |
-| `app.service.ts`         | A basic service with a single method.                                                                               |
-| `main.ts`                | The entry file of the application which uses the core function `NestFactory` to create a Nest application instance. |
+|                          |                                                                             |
+| ------------------------ | --------------------------------------------------------------------------- |
+| `app.controller.ts`      | 具有单一路由的基本控制器。                                                  |
+| `app.controller.spec.ts` | 单元测试控制器。                                                            |
+| `app.module.ts`          | 应用程序的根模块。                                                          |
+| `app.service.ts`         | 具有单一方法的基本服务。                                                    |
+| `main.ts`                | 应用程序的入口文件，它使用核心函数`NestFactory`创建一个 Nest 应用程序实例。 |
 
 `main.ts` 包含一个 async 函数，它将引导我们的应用程序:
 
@@ -88,10 +88,10 @@ Nest 的目标是成为一个平台无关的框架。
 目前支持两种即时可用的 HTTP 平台:[express](https://expressjs.com/)和[fastify](https://www.fastify.io)。
 你可以选择最适合你需要的。
 
-|                    |                                                                                                                                                                                                                                                                                                                                    |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `platform-express` | [Express](https://expressjs.com/) is a well-known minimalist web framework for node. It's a battle tested, production-ready library with lots of resources implemented by the community. The `@nestjs/platform-express` package is used by default. Many users are well served with Express, and need take no action to enable it. |
-| `platform-fastify` | [Fastify](https://www.fastify.io/) is a high performance and low overhead framework highly focused on providing maximum efficiency and speed. Read how to use it [here](/techniques/performance).                                                                                                                                  |
+|                    |                                                                                                                                                                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `platform-express` | [Express](https://expressjs.com/)是一个著名的极简节点 web 框架。这是一个经过实战测试的、可用于生产的库，由社区实现了大量资源。默认使用`@nestjs/platform-express`包。Express 为许多用户提供了良好的服务，不需要采取任何行动就可以启用它。 |
+| `platform-fastify` | [Fastify](https://www.fastify.io/)是一个高性能和低开销的框架，高度专注于提供最大的效率和速度。阅读如何使用它[此处](/techniques/performance)。                                                                                            |
 
 无论使用哪个平台，它都公开自己的应用程序接口。
 它们分别被视为`NestExpressApplication`和`NestFastifyApplication`。

@@ -153,7 +153,6 @@ export class AuthorsResolver {
 }
 ```
 
-
 > info **Hint** All decorators (e.g., `@Resolver`, `@ResolveField`, `@Args`, etc.) are exported from the `@nestjs/graphql` package.
 
 You can define multiple resolver classes. Nest will combine these at run time. See the [module](/graphql/resolvers#module) section below for more on code organization.
@@ -658,8 +657,6 @@ These arguments have the following meanings:
 - `context`: an object shared by all resolvers in a particular query; typically used to contain per-request state.
 - `info`: an object that contains information about the execution state of the query.
 - `args`: an object with the arguments passed into the field in the query.
-
-<app-banner-shop></app-banner-shop>
 
 #### Module
 

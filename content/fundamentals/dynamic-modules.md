@@ -84,8 +84,6 @@ Using dynamic module features, we can make our configuration module **dynamic** 
 
 In other words, dynamic modules provide an API for importing one module into another, and customizing the properties and behavior of that module when it is imported, as opposed to using the static bindings we've seen so far.
 
-<app-banner-shop></app-banner-shop>
-
 #### 配置模块的例子
 
 We'll be using the basic version of the example code from the [configuration chapter](https://docs.nestjs.com/techniques/configuration#service) for this section.

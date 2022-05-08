@@ -502,8 +502,6 @@ import { validate } from './env.validation';
 export class AppModule {}
 ```
 
-<app-banner-shop></app-banner-shop>
-
 #### 定制的 getter 函数
 
 `ConfigService`定义了一个通用的`get()`方法来按键检索配置值。

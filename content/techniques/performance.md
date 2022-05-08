@@ -1,25 +1,33 @@
-### Performance (Fastify)
+### 性能(Fastify)
 
-By default, Nest makes use of the [Express](https://expressjs.com/) framework. As mentioned earlier, Nest also provides compatibility with other libraries such as, for example, [Fastify](https://github.com/fastify/fastify). Nest achieves this framework independence by implementing a framework adapter whose primary function is to proxy middleware and handlers to appropriate library-specific implementations.
+默认情况下，Nest 使用[Express](https://expressjs.com/)框架。
+如前所述，Nest 还提供了与其他库的兼容性，例如[Fastify](https://github.com/fastify/fastify)。
+Nest 通过实现一个框架适配器来实现这种框架独立性，该适配器的主要功能是针对代理中间件和针对特定于库的实现的处理程序。
 
-> info **Hint** Note that in order for a framework adapter to be implemented, the target library has to provide similar request/response pipeline processing as found in Express.
+> info **Hint** 注意，为了实现框架适配器，目标库必须提供与 Express 中类似的请求/响应管道处理。
 
-[Fastify](https://github.com/fastify/fastify) provides a good alternative framework for Nest because it solves design issues in a similar manner to Express. However, fastify is much **faster** than Express, achieving almost two times better benchmarks results. A fair question is why does Nest use Express as the default HTTP provider? The reason is that Express is widely-used, well-known, and has an enormous set of compatible middleware, which is available to Nest users out-of-the-box.
+[Fastify](https://github.com/fastify/fastify)为 Nest 提供了一个很好的替代框架，因为它以类似于 Express 的方式解决了设计问题。
+然而，fastify 比 Express 快得多，实现的基准结果几乎是 Express 的两倍。
+一个合理的问题是，为什么 Nest 使用 Express 作为默认的 HTTP 提供者?原因是 Express 被广泛使用、众所周知，并且有大量兼容的中间件，Nest 用户可以开箱即用。
 
-But since Nest provides framework-independence, you can easily migrate between them. Fastify can be a better choice when you place high value on very fast performance. To utilize Fastify, simply choose the built-in `FastifyAdapter` as shown in this chapter.
+但是由于 Nest 提供了框架独立性，您可以轻松地在它们之间进行迁移。
+当您高度重视非常快的性能时，Fastify 可能是一个更好的选择。
+要使用 Fastify，只需选择本章所示的内置`FastifyAdapter`。
 
-#### Installation
+#### 安装
 
-First, we need to install the required package:
+首先，我们需要安装所需的软件包:
 
 ```bash
 $ npm i --save @nestjs/platform-fastify
 ```
-> warning **Warning** When using `@nestjs/platform-fastify` version `>=7.5.0` and `apollo-server-fastify`, GraphQL playground may not work due to incompatibility with `fastify` version `^3.0.0`. You may want to use the unstable `apollo-server-fastify` version `^3.0.0-alpha.3` or temporarily choose express instead.
 
-#### Adapter
+> warning **Warning** 当使用`@nestjs/platform-fastify ` 版本 `>=7.5.0`和`apolo -server-fastify`时，GraphQL playground 可能会因为与`fastify `version `^3.0.0`不兼容而无法工作。
+> 您可能想使用不稳定的`apollo-server-fastify ` 版本 `^3.0.0-alpha。3` 或暂时选择快递代替。
 
-Once the Fastify platform is installed, we can use the `FastifyAdapter`.
+#### 适配器
+
+一旦安装了 Fastify 平台，我们就可以使用`FastifyAdapter`。
 
 ```typescript
 @@filename(main)
@@ -40,25 +48,29 @@ async function bootstrap() {
 bootstrap();
 ```
 
-By default, Fastify listens only on the `localhost 127.0.0.1` interface ([read more](https://www.fastify.io/docs/latest/Getting-Started/#your-first-server)). If you want to accept connections on other hosts, you should specify `'0.0.0.0'` in the `listen()` call:
+默认情况下，Fastify 只侦听`localhost 127.0.0.1`接口([阅读更多](https://www.fastify.io/docs/latest/Getting-Started/#your-first-server))。
+如果你想在其他主机上接受连接，你应该在`listen()`调用中指定`0.0.0.0`:
 
 ```typescript
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter()
+    new FastifyAdapter(),
   );
   await app.listen(3000, '0.0.0.0');
 }
 ```
 
-#### Platform specific packages
+#### 特定于平台的包
 
-Keep in mind that when you use the `FastifyAdapter`, Nest uses Fastify as the **HTTP provider**. This means that each recipe that relies on Express may no longer work. You should, instead, use Fastify equivalent packages.
+请记住，当你使用`FastifyAdapter`时，Nest 使用 Fastify 作为**HTTP 提供器**。
+这意味着，每个依赖 Express 的配方可能不再有效。
+相反，您应该使用与 Fastify 等价的包。
 
-#### Redirect response
+#### 重定向响应
 
-Fastify handles redirect responses slightly differently than Express. To do a proper redirect with Fastify, return both the status code and the URL, as follows:
+Fastify 处理重定向响应的方式与 Express 略有不同。
+要使用 Fastify 做一个适当的重定向，返回状态码和 URL，如下:
 
 ```typescript
 @Get()
@@ -67,14 +79,15 @@ index(@Res() res) {
 }
 ```
 
-#### Fastify options
+#### Fastify 选项
 
-You can pass options into the Fastify constructor through the `FastifyAdapter` constructor. For example:
+你可以通过`FastifyAdapter`构造函数将选项传递给 Fastify 构造函数。
+例如:
 
 ```typescript
 new FastifyAdapter({ logger: true });
 ```
 
-#### Example
+#### 例子
 
-A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/10-fastify).
+[此处](https://github.com/nestjs/nest/tree/master/sample/10-fastify)提供了一个工作示例。
