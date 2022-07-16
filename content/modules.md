@@ -6,23 +6,23 @@
 <figure><img src="/assets/Modules_1.png" /></figure>
 
 每个应用程序至少有一个模块，一个**根模块**。
-根模块是 Nest 用来构建应用程序图的起点——Nest 用来解析模块和提供商关系和依赖关系的内部数据结构。
+根模块是 Nest 用来构建应用程序图的起点——Nest 用来解析模块和提供器关系和依赖关系的内部数据结构。
 虽然非常小的应用程序理论上可能只有根模块，但这不是典型的情况。
 我们要强调的是，强烈建议将模块作为组织组件的有效方式。
 因此，对于大多数应用程序，最终的体系结构将使用多个模块，每个模块封装了一组密切相关的功能。
 
 `@Module()`装饰器接受单个对象，其属性描述了该模块:
 
-|               |                                                                                                                                                                                                          |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `providers`   | the providers that will be instantiated by the Nest injector and that may be shared at least across this module                                                                                          |
-| `controllers` | the set of controllers defined in this module which have to be instantiated                                                                                                                              |
-| `imports`     | the list of imported modules that export the providers which are required in this module                                                                                                                 |
-| `exports`     | the subset of `providers` that are provided by this module and should be available in other modules which import this module. You can use either the provider itself or just its token (`provide` value) |
+|               |                                                                                                                              |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `providers`   | 这些提供器将被 Nest 注入器实例化，并且至少可以在整个模块中共享                                                               |
+| `controllers` | 在该模块中定义的必须实例化的控制器集                                                                                         |
+| `imports`     | 导入此模块中所需的提供程序的导入模块列表                                                                                     |
+| `exports`     | 由本模块提供的 `providers` 子集，应该在导入本模块的其他模块中可用。你可以使用提供器本身，也可以只使用它的令牌(`provider` 值) |
 
 默认情况下，模块**封装**提供程序。
-这意味着不可能注入既不直接属于当前模块也不从导入模块导出的提供商。
-因此，您可以将模块中导出的提供商视为该模块的公共接口或 API。
+这意味着不可能注入既不直接属于当前模块也不从导入模块导出的提供器。
+因此，您可以将模块中导出的提供器视为该模块的公共接口或 API。
 
 #### 功能模块
 
@@ -88,7 +88,7 @@ export class AppModule {}
 
 #### 共享模块
 
-在 Nest 中，模块默认情况下是**单例**的，因此你可以毫不费力地在多个模块之间共享任何提供商的同一个实例。
+在 Nest 中，模块默认情况下是**单例**的，因此你可以毫不费力地在多个模块之间共享任何提供器的同一个实例。
 
 <figure><img src="/assets/Shared_Module_1.png" /></figure>
 
@@ -117,7 +117,7 @@ export class CatsModule {}
 
 如上所述，模块可以导出它们的内部提供程序。
 此外，它们还可以重新导出所导入的模块。
-在下面的例子中，`CommonModule`既被导入到`comodule`中，又被`comodule`导出到`\*\*`中，使得它可以被其他导入这个模块的模块使用。
+在下面的例子中， `CommonModule` 被导入到 `CoreModule` 中，**也**从 `CoreModule` 中导出，使得它可以被其他导入这个模块的模块使用。
 
 ```typescript
 @Module({
@@ -129,7 +129,7 @@ export class CoreModule {}
 
 #### 依赖注入
 
-模块类也可以**注入**提供商(例如，用于配置目的):
+模块类也可以**注入**提供器(例如，用于配置目的):
 
 ```typescript
 @@filename(cats.module)
@@ -161,15 +161,15 @@ export class CatsModule {
 }
 ```
 
-然而，由于[circular dependency](/fundamentals/circular-dependency)，模块类本身不能作为提供商注入。
+然而，由于[circular dependency](/fundamentals/circular-dependency)，模块类本身不能作为提供器注入。
 
-#### 全球模块
+#### 全局模块
 
 如果您必须在所有地方导入相同的模块集，这可能会很乏味。
 与 Nest 不同的是，[Angular](https://angular.io)`providers`是在全局作用域中注册的。
 一旦定义，它们就无处不在。
 然而，Nest 将提供程序封装在模块范围内。
-如果不先导入封装模块，就不能在其他地方使用模块的提供商。
+如果不先导入封装模块，就不能在其他地方使用模块的提供器。
 
 当你想要提供一组在任何地方都可以开箱即用的提供程序(例如，助手，数据库连接等)时，使用`@Global()`装饰器将模块设为**global**。
 
@@ -188,8 +188,8 @@ export class CatsModule {}
 ```
 
 `@Global()`装饰器使模块成为全局作用域。
-全局模块应该只注册一次\*\*，通常由根模块或核心模块注册。
-在上面的例子中，`CatsService`提供商将是普遍存在的，希望注入该服务的模块将不需要在 imports 数组中导入`CatsModule`。
+全局模块应该**只注册一次**，通常由根模块或核心模块注册。
+在上面的例子中，`CatsService`提供器将是普遍存在的，希望注入该服务的模块将不需要在 imports 数组中导入`CatsModule`。
 
 > info **Hint** 全局化并不是一个好的设计决策。
 > 全局模块可用来减少必要的样板文件的数量。
@@ -198,8 +198,8 @@ export class CatsModule {}
 #### 动态模块
 
 Nest 模块系统包含一个强大的特性，称为动态模块。
-这个特性使您能够轻松地创建可定制的模块，这些模块可以动态地注册和配置提供者。
-动态模块在这里有广泛的介绍(/fundamentals/动态模块)。
+这个特性使您能够轻松地创建可定制的模块，这些模块可以动态地注册和配置提供器。
+动态模块在[这里](/fundamentals/dynamic-modules)有广泛的介绍。
 在本章中，我们将简要概述以完成对模块的介绍。
 
 下面是`DatabaseModule`的动态模块定义示例:

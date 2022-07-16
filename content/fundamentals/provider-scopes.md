@@ -1,4 +1,4 @@
-### 注入范围
+### 注入作用域
 
 对于来自不同编程语言背景的人来说，可能会意外地发现，在 Nest 中，几乎所有的东西都是在传入请求之间共享的。
 我们有一个到数据库的连接池，带有全局状态的单例服务，等等。
@@ -6,38 +6,44 @@
 因此，对于我们的应用来说，使用单例实例是完全**安全**的。
 
 然而，在一些边缘情况下，基于请求的生命周期可能是理想的行为，例如在 GraphQL 应用程序中按请求缓存、请求跟踪和多租户。
-注入作用域提供了一种机制来获得所需的提供者生存期行为。
+注入作用域提供了一种机制来获得所需的提供器生存期行为。
 
-#### 供应商的范围
+#### 提供器作用域
 
-提供者可以有以下任何一个作用域:
+提供器可以有以下任何一个作用域:
 
 <table>
   <tr>
     <td><code>DEFAULT</code></td>
-    <td>A single instance of the provider is shared across the entire application.
-The instance lifetime is tied directly to the application lifecycle.
-Once the application has bootstrapped, all singleton providers have been instantiated.
-Singleton scope is used by default.</td>
+    <td>
+      提供器的单个实例在整个应用程序中共享。
+      实例生命周期直接绑定到应用程序生命周期。
+      一旦应用程序启动，所有的单例提供器都已实例化。
+      默认情况下使用单例作用域。
+    </td>
   </tr>
   <tr>
     <td><code>REQUEST</code></td>
-    <td>A new instance of the provider is created exclusively for each incoming <strong>request</strong>.
- The instance is garbage-collected after the request has completed processing.</td>
+    <td>
+      为每个传入的<strong>请求</strong>创建提供器的新实例。
+      在请求完成处理后，对实例进行垃圾回收。
+    </td>
   </tr>
   <tr>
     <td><code>TRANSIENT</code></td>
-    <td>Transient providers are not shared across consumers.
-Each consumer that injects a transient provider will receive a new, dedicated instance.</td>
+    <td>
+      瞬态提供器不会在消费者之间共享。
+      每个注入临时提供器的消费者将收到一个新的专用实例。
+    </td>
   </tr>
 </table>
 
-> info **Hint** Using singleton scope is **recommended** for most use cases.
-> Sharing providers across consumers and across requests means that an instance can be cached and its initialization occurs only once, during application startup.
+> info **Hint** 对于大多数用例，**推荐**使用单例作用域。
+> 跨使用者和跨请求共享提供器意味着可以缓存实例，并且它的初始化只在应用程序启动期间发生一次。
 
-#### Usage
+#### 使用
 
-Specify injection scope by passing the `scope` property to the `@Injectable()` decorator options object:
+通过将 `scope` 属性传递给 `@Injectable()` 装饰器选项对象来指定注入范围:
 
 ```typescript
 import { Injectable, Scope } from '@nestjs/common';
@@ -46,7 +52,7 @@ import { Injectable, Scope } from '@nestjs/common';
 export class CatsService {}
 ```
 
-Similarly, for [custom providers](/fundamentals/custom-providers), set the `scope` property in the long-hand form for a provider registration:
+类似地，对于[定制的供应器](/fundamentals/custom-providers)，在提供器注册的长手表单中设置 `scope` 属性:
 
 ```typescript
 {
@@ -56,21 +62,21 @@ Similarly, for [custom providers](/fundamentals/custom-providers), set the `scop
 }
 ```
 
-> info **Hint** Import the `Scope` enum from `@nestjs/common`
+> info **Hint** 从 `@nestjs/common` 中导入 `Scope` enum
 
-> warning **Notice** Gateways should not use request-scoped providers because they must act as singletons.
-> Each gateway encapsulates a real socket and cannot be instantiated multiple times.
+> warning **Notice** 网关不应该使用请求作用域的提供器，因为它们必须充当单例。
+> 每个网关封装一个真正的套接字，不能多次实例化。
 
-Singleton scope is used by default, and need not be declared.
-If you do want to declare a provider as singleton scoped, use the `Scope.DEFAULT` value for the `scope` property.
+默认情况下使用单例作用域，不需要声明。
+如果你确实想声明一个提供器为单例作用域，使用 `scope` 属性的 `Scope.DEFAULT` 值。
 
-#### Controller scope
+#### 控制器作用域
 
-Controllers can also have scope, which applies to all request method handlers declared in that controller.
-Like provider scope, the scope of a controller declares its lifetime.
-For a request-scoped controller, a new instance is created for each inbound request, and garbage-collected when the request has completed processing.
+控制器也可以有作用域，它适用于控制器中声明的所有请求方法处理程序。
+与提供器作用域一样，控制器的作用域声明了它的生存期。
+对于请求作用域的控制器，将为每个入站请求创建一个新实例，并在请求完成处理后进行垃圾回收。
 
-Declare controller scope with the `scope` property of the `ControllerOptions` object:
+使用 `ControllerOptions` 对象的 `scope` 属性声明控制器作用域:
 
 ```typescript
 @Controller({
@@ -80,19 +86,19 @@ Declare controller scope with the `scope` property of the `ControllerOptions` ob
 export class CatsController {}
 ```
 
-#### Scope hierarchy
+#### 作用域层次结构
 
-Scope bubbles up the injection chain.
-A controller that depends on a request-scoped provider will, itself, be request-scoped.
+作用域在注入链上冒泡。
+依赖于请求作用域的提供器的控制器本身也将是请求作用域的。
 
-Imagine the following dependency graph: `CatsController <- CatsService <- CatsRepository`.
-If `CatsService` is request-scoped (and the others are default singletons), the `CatsController` will become request-scoped as it is dependent on the injected service.
-The `CatsRepository`, which is not dependent, would remain singleton-scoped.
+想象一下下面的依赖关系图: `CatsController <- CatsService <- CatsRepository` 。
+如果 `CatsService` 是请求作用域(其他的是默认的单例)， `CatsController` 将成为请求作用域，因为它依赖于注入的服务。
+`CatsRepository` 是不依赖的，它将保持单例作用域。
 
-#### Request provider
+#### 请求提供器
 
-In an HTTP server-based application (e.g., using `@nestjs/platform-express` or `@nestjs/platform-fastify`), you may want to access a reference to the original request object when using request-scoped providers.
-You can do this by injecting the `REQUEST` object.
+在一个基于 HTTP 服务器的应用程序中(例如，使用 `@nestjs/platform-express` 或 `@nestjs/platform-fastify` )，当使用请求作用域的提供器时，你可能想要访问原始请求对象的引用。
+你可以通过注入 `REQUEST` 对象来做到这一点。
 
 ```typescript
 import { Injectable, Scope, Inject } from '@nestjs/common';
@@ -105,8 +111,8 @@ export class CatsService {
 }
 ```
 
-Because of underlying platform/protocol differences, you access the inbound request slightly differently for Microservice or GraphQL applications.
-In [GraphQL](/graphql/quick-start) applications, you inject `CONTEXT` instead of `REQUEST`:
+由于底层平台/协议的差异，`Microservice` 或 `GraphQL` 应用程序访问入站请求的方式略有不同。
+在[GraphQL](/graphql/quick-start)应用程序中，你注入`CONTEXT`而不是`REQUEST`:
 
 ```typescript
 import { Injectable, Scope, Inject } from '@nestjs/common';
@@ -118,11 +124,11 @@ export class CatsService {
 }
 ```
 
-You then configure your `context` value (in the `GraphQLModule`) to contain `request` as its property.
+然后配置`context`值(在`GraphQLModule`中)，使其包含`request`作为属性。
 
-#### Performance
+#### 性能
 
-Using request-scoped providers will have an impact on application performance.
-While Nest tries to cache as much metadata as possible, it will still have to create an instance of your class on each request.
-Hence, it will slow down your average response time and overall benchmarking result.
-Unless a provider must be request-scoped, it is strongly recommended that you use the default singleton scope.
+使用请求作用域的提供器将对应用程序性能产生影响。
+虽然 Nest 试图缓存尽可能多的元数据，但它仍然必须为每个请求创建一个类的实例。
+因此，它会降低您的平均响应时间和整体基准测试结果。
+除非提供器必须是请求作用域，否则强烈建议使用默认的单例作用域。

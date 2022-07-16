@@ -115,25 +115,26 @@ export interface RpcArgumentsHost {
 #### ExecutionContext 类
 
 `ExecutionContext`扩展`ArgumentsHost`，提供关于当前执行过程的额外细节。
-像 `ArgumentsHost`,鸟巢的提供了一个实例的 `ExecutionContext` 在你需要它的地方,如在`canActivate()`的方法[后卫](https://docs.nestjs.com/guards)执行上下文和的拦截()的方法[拦截器](https://docs.nestjs.com/interceptors)执行上下文。
+与`ArgumentsHost`一样，Nest 在你可能需要它的地方提供了一个`ExecutionContext`实例，比如在[守卫](https://docs.nestjs.com/guards)的 `canActivate()` 方法和[拦截器](https://docs.nestjs.com/interceptors)的 `intercept()` 方法中。
+
 提供如下方法:
 
 ```typescript
 export interface ExecutionContext extends ArgumentsHost {
   /**
-   * Returns the type of the controller class which the current handler belongs to.
+   * 返回当前处理器所属的控制器类的类型。
    */
   getClass<T>(): Type<T>;
   /**
-   * Returns a reference to the handler (method) that will be invoked next in the
-   * request pipeline.
+   * 返回对接下来将在请求管道中调用的处理程序(方法)的引用。
    */
   getHandler(): Function;
 }
 ```
 
-`getHandler()`方法返回对即将被调用的处理程序的引用。
-`getClass()`方法返回此特定处理程序所属的`Controller`类的类型。
+- `getHandler()`方法返回对即将被调用的处理程序的引用。
+- `getClass()`方法返回此特定处理程序所属的`Controller`类的类型。
+
 例如，在 `HTTP` 上下文中，如果当前处理的请求是一个`POST`请求，绑定到`CatsController`上的`create()`方法，`getHandler()`返回一个对`create()`方法的引用，`getClass()`返回`CatsController` **类型**(不是实例)。
 
 ```typescript
