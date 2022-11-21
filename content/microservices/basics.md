@@ -409,7 +409,7 @@ export interface RequestContext<T = any> {
 如果微服务在一定时间内没有响应请求，就会抛出一个异常，可以捕获并适当地处理这个异常。
 
 要解决这个问题，你必须使用[rxjs](https://github.com/ReactiveX/rxjs)包。
-只需在管道中使用' timeout '操作符:
+只需在管道中使用 `timeout` 操作符:
 
 ```typescript
 @@filename()

@@ -77,7 +77,7 @@ import { EventsGateway } from './events.gateway';
 export class EventsModule {}
 ```
 
-您还可以向decorator传递一个属性键，以从传入的消息体中提取它:
+您还可以将一个属性键传递给装饰器，以便从传入的消息体中提取它
 
 ```typescript
 @@filename(events.gateway)
@@ -114,9 +114,9 @@ handleEvent(client, data) {
 第一个是平台特定的[套接字实例](https://socket.io/docs/server-api/#socket)，而第二个是从客户端接收的数据。 
 但是不推荐这种方法，因为它需要在每个单元测试中模拟`socket`实例。
 
-一旦接收到`events` 消息，处理程序发送一个确认与通过网络发送的数据相同。 
-此外，还可以使用特定于库的方法发出消息，例如，通过使用`client.emit()`方法。 
-为了访问一个已连接的套接字实例，使用`@ConnectedSocket()`装饰器。
+一旦接收到 `events` 消息，处理程序将使用通过网络发送的相同数据发送一个确认。
+此外，还可以使用特定于库的方法发出消息，例如使用`client.emit()`方法。
+为了访问已连接的套接字实例，请使用`@ConnectedSocket()`装饰器。
 
 ```typescript
 @@filename(events.gateway)
@@ -135,10 +135,11 @@ handleEvent(data, client) {
 }
 ```
 
-> info **Hint** `@ConnectedSocket()` decorator is imported from `@nestjs/websockets` package.
+> info **Hint** `@ConnectedSocket()`装饰器是从`@nestjs/websockets`包导入的。
 
 然而，在这种情况下，您将无法利用拦截器。
-如果你不想响应用户，你可以简单地跳过`return`语句(或者显式地返回"falsy"值，例如s`undefined`)。
+如果你不想响应用户，你可以简单地跳过`return`语句(或者显式地返回`falsy`值，例如`undefined`)。
+
 
 现在，当客户机发出如下消息时:
 
@@ -155,7 +156,7 @@ socket.emit('events', { name: 'Nest' }, (data) => console.log(data));
 
 #### 多个响应
 
-确认只被发送一次。  
+确认只被发送一次。
 此外，原生WebSockets实现也不支持它。
 为了解决这个限制，你可以返回一个包含两个属性的对象。 
 `event`是发出事件的名称，以及必须转发给客户端的`data`。
@@ -176,11 +177,11 @@ handleEvent(data) {
 }
 ```
 
-> info **Hint** The `WsResponse` interface is imported from `@nestjs/websockets` package.
+> info **Hint** `WsResponse`接口是从`@nestjs/websockets`包导入的。
 
-> warning **Warning** You should return a class instance that implements `WsResponse` if your `data` field relies on `ClassSerializerInterceptor`, as it ignores plain JavaScript objects responses.
+> warning **Warning** 如果你的`data`字段依赖于`ClassSerializerInterceptor`，你应该返回一个实现`WsResponse`的类实例，因为它忽略了普通的JavaScript对象响应。
 
-In order to listen for the incoming response(s), the client has to apply another event listener.
+为了监听传入的响应，客户机必须应用另一个事件侦听器。
 
 ```typescript
 socket.on('events', (data) => console.log(data));

@@ -45,7 +45,7 @@ $ npm install --save-dev @types/passport-local
 > 然后，您需要安装特定于策略的包(例如，`passport-jwt` 或 `passport-local`)，它实现了您正在构建的特定身份验证策略。
 > 此外，你还可以为任何 Passport 策略安装类型定义，如上面 `@types/assport-local` 所示，它在编写 TypeScript 代码时提供了帮助。
 
-#### 执行认证策略
+#### 实现认证策略
 
 现在我们准备实现身份验证特性。
 我们将首先概述用于**任何**passport 策略的流程。
@@ -55,7 +55,7 @@ $ npm install --save-dev @types/passport-local
 `@nestjs/passport`模块将这个框架封装在一个 Nest 风格的包中，使得它很容易集成到一个 Nest 应用程序中。
 我们将在下面使用`@nestjs/passport`，但首先让我们考虑一下 **vanilla Passport** 是如何工作的。
 
-在普通的 Passport 中，你可以通过提供两件事来配置策略:
+在 vanilla Passport 中，你可以通过提供两件事来配置策略:
 
 1. 一组特定于该策略的选项。例如，在 JWT 策略中，您可以提供一个密钥来为令牌签名。
 2. 一个“验证回调”，在这里您可以告诉 Passport 如何与您的用户存储(您在其中管理用户帐户)交互。

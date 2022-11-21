@@ -140,3 +140,19 @@ HttpModule.registerAsync({
   useExisting: ConfigService,
 });
 ```
+
+#### 直接使用 Axios
+
+如果你认为`HttpModule.register`的选项对你来说不够，或者如果你只想访问由`@nestjs/axios`创建的底层`Axios`实例，你可以通过以下方式`HttpService#axiosRef`访问它:
+
+```typescript
+@Injectable()
+export class CatsService {
+  constructor(private readonly httpService: HttpService) {}
+
+  findAll(): Promise<AxiosResponse<Cat[]>> {
+    return this.httpService.axiosRef.get('http://localhost:3000/cats');
+    //^ AxiosInstance interface
+  }
+}
+```

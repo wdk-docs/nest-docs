@@ -1,6 +1,6 @@
 ### 适配器
 
-WebSockets模块是平台无关的，因此，你可以通过使用“WebSocketAdapter”接口带来自己的库(甚至是本地实现)。
+WebSockets模块是平台无关的，因此，你可以通过使用`WebSocketAdapter`接口带来自己的库(甚至是本地实现)。
 该接口强制实现以下表中描述的几种方法:
 
 <table>
@@ -28,13 +28,17 @@ WebSockets模块是平台无关的，因此，你可以通过使用“WebSocketA
 
 #### 扩展 socket.io
 
-The [socket.io](https://github.com/socketio/socket.io) package is wrapped in an `IoAdapter` class. What if you would like to enhance the basic functionality of the adapter? For instance, your technical requirements require a capability to broadcast events across multiple load-balanced instances of your web service. For this, you can extend `IoAdapter` and override a single method which responsibility is to instantiate new socket.io servers. But first of all, let's install the required package.
+[socket.io](https://github.com/socketio/socket.io)包被包装在一个 `IoAdapter` 类中。
+如果您想增强适配器的基本功能，该怎么办呢? 
+例如，您的技术需求要求能够跨web服务的多个负载平衡实例广播事件。
+为此，你可以扩展`IoAdapter`并覆盖单个方法，该方法负责实例化新的`socket.io`服务器。
+但首先，让我们安装所需的包。
 
 ```bash
 $ npm i --save socket.io-redis
 ```
 
-Once the package is installed, we can create a `RedisIoAdapter` class.
+一旦安装了包，我们就可以创建一个 `RedisIoAdapter` 类。
 
 ```typescript
 import { IoAdapter } from '@nestjs/platform-socket.io';
@@ -55,7 +59,7 @@ export class RedisIoAdapter extends IoAdapter {
 }
 ```
 
-Afterward, simply switch to your newly created Redis adapter.
+之后，只需切换到新创建的Redis适配器。
 
 ```typescript
 const app = await NestFactory.create(AppModule);
@@ -156,6 +160,6 @@ const app = await NestFactory.create(AppModule);
 app.useWebSocketAdapter(new WsAdapter(app));
 ```
 
-#### Example
+#### 示例
 
-A working example that uses `WsAdapter` is available [here](https://github.com/nestjs/nest/tree/master/sample/16-gateways-ws).
+这里有一个使用 `WsAdapter` 的工作示例[此处](https://github.com/nestjs/nest/tree/master/sample/16-gateways-ws).

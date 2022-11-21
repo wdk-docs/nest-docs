@@ -34,9 +34,10 @@ onEvent(client, data: any): WsResponse<any> {
 
 #### 继承
 
-Typically, you'll create fully customized exception filters crafted to fulfill your application requirements. However, there might be use-cases when you would like to simply extend the **core exception filter**, and override the behavior based on certain factors.
+通常，您将创建完全定制的异常过滤器来满足您的应用程序需求。 
+然而，在有些用例中，您可能希望简单地扩展**核心异常过滤器**，并基于某些因素覆盖行为。
 
-In order to delegate exception processing to the base filter, you need to extend `BaseWsExceptionFilter` and call the inherited `catch()` method.
+为了将异常处理委托给基本过滤器，你需要扩展`BaseWsExceptionFilter`并调用继承的`catch()`方法。
 
 ```typescript
 @@filename()
@@ -61,4 +62,5 @@ export class AllExceptionsFilter extends BaseWsExceptionFilter {
 }
 ```
 
-The above implementation is just a shell demonstrating the approach. Your implementation of the extended exception filter would include your tailored **business logic** (e.g., handling various conditions).
+上面的实现只是演示该方法的shell。
+扩展异常过滤器的实现将包括定制的**业务逻辑**(例如，处理各种条件)。
