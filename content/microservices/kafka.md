@@ -10,7 +10,7 @@ Kafka 项目的目标是提供一个统一、高吞吐量、低延迟的平台�
 
 #### 安装
 
-To start building Kafka-based microservices, first install the required package:
+要开始构建基于 kafka 的微服务，首先要安装所需的包:
 
 ```bash
 $ npm i --save kafkajs
@@ -18,7 +18,7 @@ $ npm i --save kafkajs
 
 #### 概述
 
-Like other Nest microservice transport layer implementations, you select the Kafka transporter mechanism using the `transport` property of the options object passed to the `createMicroservice()` method, along with an optional `options` property, as shown below:
+像其他的 Nest 微服务传输层实现一样，你使用传递给' createMicroservice() '方法的 options 对象的' transport '属性来选择 Kafka 传输机制，以及一个可选的' options '属性，如下所示:
 
 ```typescript
 @@filename(main)
@@ -41,11 +41,11 @@ const app = await NestFactory.createMicroservice(AppModule, {
 });
 ```
 
-> info **Hint** The `Transport` enum is imported from the `@nestjs/microservices` package.
+> info **Hint** ' Transport ' enum 是从' @nestjs/microservices '包导入的。
 
 #### 选项
 
-The `options` property is specific to the chosen transporter. The <strong>Kafka</strong> transporter exposes the properties described below.
+options 属性是特定于所选传输器的。<strong>Kafka</strong>传输器暴露了下面描述的属性。
 
 <table>
   <tr>
@@ -112,7 +112,7 @@ The `options` property is specific to the chosen transporter. The <strong>Kafka<
 
 #### 客户端
 
-There is a small difference in Kafka compared to other microservice transporters. Instead of the `ClientProxy` class, we use the `ClientKafka` class.
+与其他微服务传输器相比，Kafka 有一个小小的区别。我们使用' ClientKafka '类代替' ClientProxy '类。
 
 Like other microservice transporters, you have <a href="https://docs.nestjs.com/microservices/basics#client">several options</a> for creating a `ClientKafka` instance.
 
@@ -163,9 +163,11 @@ client: ClientKafka;
 
 #### 消息模式
 
-The Kafka microservice message pattern utilizes two topics for the request and reply channels. The `ClientKafka#send()` method sends messages with a [return address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html) by associating a [correlation id](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html), reply topic, and reply partition with the request message. This requires the `ClientKafka` instance to be subscribed to the reply topic and assigned to at least one partition before sending a message.
+Kafka 微服务消息模式为请求和应答通道利用了两个主题。
+The `ClientKafka#send()` method sends messages with a [return address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html) by associating a [correlation id](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html), reply topic, and reply partition with the request message. This requires the `ClientKafka` instance to be subscribed to the reply topic and assigned to at least one partition before sending a message.
 
-Subsequently, you need to have at least one reply topic partition for every Nest application running. For example, if you are running 4 Nest applications but the reply topic only has 3 partitions, then 1 of the Nest applications will error out when trying to send a message.
+随后，您需要为每个正在运行的 Nest 应用程序至少设置一个回复主题分区。
+例如，如果你正在运行 4 个 Nest 应用程序，但是回复主题只有 3 个分区，那么当试图发送消息时，其中一个 Nest 应用程序将出错。
 
 When new `ClientKafka` instances are launched they join the consumer group and subscribe to their respective topics. This process triggers a rebalance of topic partitions assigned to consumers of the consumer group.
 
@@ -196,13 +198,17 @@ async onModuleInit() {
 }
 ```
 
-#### Incoming
+#### 传入的
 
-Nest receives incoming Kafka messages as an object with `key`, `value`, and `headers` properties that have values of type `Buffer`. Nest then parses these values by transforming the buffers into strings. If the string is "object like", Nest attempts to parse the string as `JSON`. The `value` is then passed to its associated handler.
+Nest 接收传入的 Kafka 消息作为一个具有“key”、“value”和“headers”属性的对象，这些属性的值类型为“Buffer”。
+然后 Nest 通过将缓冲区转换为字符串来解析这些值。
+如果字符串是"object like"， Nest 将尝试将该字符串解析为" JSON "。然后将' value '传递给其关联的处理程序。
 
-#### Outgoing
+#### 即将离任的
 
-Nest sends outgoing Kafka messages after a serialization process when publishing events or sending messages. This occurs on arguments passed to the `ClientKafka` `emit()` and `send()` methods or on values returned from a `@MessagePattern` method. This serialization "stringifies" objects that are not strings or buffers by using `JSON.stringify()` or the `toString()` prototype method.
+当发布事件或发送消息时，Nest 在序列化过程之后发送出站 Kafka 消息。
+这种情况发生在传递给' ClientKafka ' ' emit() '和' send() '方法的参数上，或者发生在从' @ messageppattern '方法返回的值上。
+这种序列化通过使用' JSON.stringify() '或' toString() '原型方法来“字符串化”非字符串或缓冲区的对象。
 
 ```typescript
 @@filename(heroes.controller)
@@ -278,15 +284,15 @@ export class HeroesController {
 }
 ```
 
-#### Event-based
+#### 基于事件的
 
-While the request-response method is ideal for exchanging messages between services, it is less suitable when your message style is event-based (which in turn is ideal for Kafka) - when you just want to publish events **without waiting for a response**. In that case, you do not want the overhead required by request-response for maintaining two topics.
+虽然请求-响应方法非常适合于在服务之间交换消息，但是当您的消息样式是基于事件的(这对于 Kafka 来说是非常理想的)—当您只想发布事件**而不需要等待响应**时，它就不太适合了。在这种情况下，您不希望维护两个主题所需的请求-响应开销。
 
 Check out these two sections to learn more about this: [Overview: Event-based](/microservices/basics#event-based) and [Overview: Publishing events](/microservices/basics#publishing-events).
 
-#### Context
+#### 上下文
 
-In more sophisticated scenarios, you may want to access more information about the incoming request. When using the Kafka transporter, you can access the `KafkaContext` object.
+在更复杂的场景中，您可能希望访问关于传入请求的更多信息。当使用 Kafka 传输器时，你可以访问' KafkaContext '对象。
 
 ```typescript
 @@filename()
@@ -338,9 +344,10 @@ interface IncomingMessage {
 }
 ```
 
-#### Naming conventions
+#### 命名约定
 
-The Kafka microservice components append a description of their respective role onto the `client.clientId` and `consumer.groupId` options to prevent collisions between Nest microservice client and server components. By default the `ClientKafka` components append `-client` and the `ServerKafka` components append `-server` to both of these options. Note how the provided values below are transformed in that way (as shown in the comments).
+Kafka 微服务组件在' client.clientId '和' consumer.groupId '选项上附加了各自角色的描述，以防止 Nest 微服务客户端和服务器组件之间的冲突。
+By default the `ClientKafka` components append `-client` and the `ServerKafka` components append `-server` to both of these options. Note how the provided values below are transformed in that way (as shown in the comments).
 
 ```typescript
 @@filename(main)

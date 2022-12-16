@@ -10,14 +10,14 @@
     </a>
   </div>
   <h3 id="定制传输器">定制传输器</h3>
-<p>Nest 提供了多种“开箱即用”的传输器，以及允许开发者构建新的自定义传输策略的 API。
-传输器使您能够使用一个可插入的通信层和一个非常简单的应用程序级消息协议在网络上连接组件(阅读全文<a rel='nofollow' target='_blank' href="https://dev.to/nestjs/integrate-nestjs-with-external-services-using-microservice-transporters-part-1-p3">article</a>)。</p>
+<p>Nest 提供了多种 <code>开箱即用</code> 的传输器，以及允许开发者构建新的自定义传输策略的 API。
+传输器使您能够使用一个可插入的通信层和一个非常简单的应用程序级消息协议在网络上连接组件(阅读全文<a rel='nofollow' target='_blank' href="https://dev.to/nestjs/integrate-nestjs-with-external-services-using-microservice-transporters-part-1-p3">文章</a>)。</p>
 <blockquote class="
 info "><strong>Hint</strong> 用 Nest 构建一个微服务并不一定意味着你必须使用 <code>@nestjs/microservices</code> 包。
 例如，如果你想与外部服务通信(比如其他用不同语言编写的微服务)，你可能不需要<code>@nestjs/microservice</code>库提供的所有功能。
 事实上，如果你不需要那些让你声明式定义订阅者的装饰器(<code>@EventPattern</code> 或 <code>@MessagePattern</code>)，运行一个<a routerLink="/application-context">独立的应用程序</a>和手动维护连接/订阅通道对于大多数用例来说应该已经足够了，并且会为你提供更多的灵活性。
 </blockquote>
-<p>通过自定义传输器，您可以集成任何消息传递系统/协议(包括谷歌 Cloud Pub/Sub、Amazon Kinesis 等)，或者扩展现有的消息传递系统/协议，在其上添加额外的功能(例如，MQTT 的<a rel='nofollow' target='_blank' href="https://github.com/mqttjs/MQTT.js/blob/master/README.md#qos">QoS</a>)。</p>
+<p>通过自定义传输器，您可以集成任何消息传递系统/协议(包括谷歌云Pub/Sub、Amazon Kinesis 等)，或者扩展现有的消息传递系统/协议，在其上添加额外的功能(例如，MQTT 的<a rel='nofollow' target='_blank' href="https://github.com/mqttjs/MQTT.js/blob/master/README.md#qos">QoS</a>)。</p>
 <blockquote class="
 info "><strong>Hint</strong> 为了更好地理解 Nest 微服务是如何工作的，以及如何扩展现有传输器的功能，我们建议阅读<a rel='nofollow' target='_blank' href="https://dev.to/johnbiundo/series/4724">NestJS 微服务在行动</a>和<a rel='nofollow' target='_blank' href="https://dev.to/nestjs/part-1-introduction-and-setup-1a2l">高级 NestJS 微服务</a>系列文章。
 </blockquote>
@@ -46,7 +46,7 @@ class GoogleCloudPubSubServer
 <blockquote class="
 warning "><strong>Warning</strong> 请注意，我们不会在本章中实现一个功能齐全的谷歌云发布/订阅服务器，因为这需要深入研究传输器特定的技术细节。
 </blockquote>
-<p>在上面的例子中，我们声明了“GoogleCloudPubSubServer”类，并提供了由“CustomTransportStrategy”接口强制执行的“listen()”和“close()”方法。
+<p>在上面的例子中，我们声明了 <code>GoogleCloudPubSubServer</code> 类，并提供了由 <code>CustomTransportStrategy</code> 接口强制执行的 <code>listen()</code> 和 <code>close()</code> 方法。
 此外，我们的类扩展了从 <code>@nestjs/microservices</code> 包导入的 <code>Server</code> 类，它提供了一些有用的方法，例如，Nest运行时用来注册消息处理程序的方法。
 或者，如果您想扩展现有传输策略的功能，您可以扩展相应的服务器类，例如， <code>ServerRedis</code> 。
 按照惯例，我们为我们的类添加了 <code>&quot;Server&quot;</code> 后缀，因为它将负责订阅消息/事件(并在必要时响应它们)。</p>
@@ -95,15 +95,15 @@ async listen(callback: () =&gt; void) &#123;
   callback();
 &#125;
 </code></pre>
-<p>一旦我们执行 <code>echoHandler</code> ，传递一个任意字符串作为参数( `&quot;Hello world!&quot;)，我们应该在控制台中看到它:</p>
+<p>一旦我们执行 <code>echoHandler</code> ，传递一个任意字符串作为参数(<code>&quot;Hello world!&quot;</code>)，我们应该在控制台中看到它:</p>
 <pre><code class="language-json">
 Hello world!
 </code></pre>
 <p>这意味着我们的方法处理程序被正确执行。</p>
 <h4 appAnchor id="客户端代理"><span>客户端代理</span></h4>
-<p>正如我们在第一节中提到的，你不一定需要使用 <code>@nestjs/microservices</code> 包来创建微服务，但是如果你决定这样做，并且你需要集成一个自定义策略，你也需要提供一个“客户端”类。</p>
+<p>正如我们在第一节中提到的，你不一定需要使用 <code>@nestjs/microservices</code> 包来创建微服务，但是如果你决定这样做，并且你需要集成一个自定义策略，你也需要提供一个 <code>客户端</code> 类。</p>
 <blockquote class="
-info "><strong>Hint</strong> 同样，实现一个与所有“@nestjs/microservices”特性兼容的全功能客户端类(例如，流媒体)需要很好地理解框架使用的通信技术。
+info "><strong>Hint</strong> 同样，实现一个与所有 <code>@nestjs/microservices</code> 特性兼容的全功能客户端类(例如，流媒体)需要很好地理解框架使用的通信技术。
 要了解更多信息，请查看这篇<a rel='nofollow' target='_blank' href="https://dev.to/nestjs/part-4-basic-client-component-16f9">文章</a>.
 </blockquote>
 <p>要与外部服务通信/发出和发布消息(或事件)，你可以使用库特定的SDK包，或实现一个扩展 <code>ClientProxy</code> 的自定义客户端类，如下所示:</p>
@@ -203,11 +203,11 @@ event to dispatch:  &#123; pattern: &#39;event&#39;, data: &#39;Hello world!&#39
 <p>如果您需要在客户端添加一些关于响应序列化的自定义逻辑，您可以使用扩展 <code>ClientProxy</code> 类或它的一个子类的自定义类。
 为了修改成功的请求，你可以覆盖 <code>serializeResponse</code> 方法，而为了修改通过这个客户端的任何错误，你可以覆盖 <code>serializeError</code> 方法。
 要使用这个自定义类，可以使用 <code>customClass</code> 属性将类本身传递给 <code>ClientsModule.register()</code> 方法。
-下面是一个自定义“ClientProxy”的例子，它将每个错误序列化为一个“RpcException”。</p>
+下面是一个自定义 <code>ClientProxy</code> 的例子，它将每个错误序列化为一个 <code>RpcException</code> 。</p>
 
 <span class="filename">
-  {{ 'error-handling.proxy' | extension: appa94f6d1d8ae2a25b96ba0ce87e89e40b389154f6.isJsActive }}
-<app-tabs #appa94f6d1d8ae2a25b96ba0ce87e89e40b389154f6></app-tabs>
+  {{ 'error-handling.proxy' | extension: app2629928adb9aa036f994a2474e5e3770f10b0993.isJsActive }}
+<app-tabs #app2629928adb9aa036f994a2474e5e3770f10b0993></app-tabs>
 </span><pre><code class="language-typescript">
 import &#123; ClientTcp, RpcException &#125; from &#39;@nestjs/microservices&#39;;
 
@@ -219,8 +219,8 @@ class ErrorHandlingProxy extends ClientTCP &#123;
 </code></pre><p>然后在 <code>ClientsModule</code> 中像这样使用它:</p>
 
 <span class="filename">
-  {{ 'app.module' | extension: appa410b61cde9b7efc05b3e4fdd8aed3fa7a4ba53d.isJsActive }}
-<app-tabs #appa410b61cde9b7efc05b3e4fdd8aed3fa7a4ba53d></app-tabs>
+  {{ 'app.module' | extension: app2dd2aa80784315e81a47f7f469b794188b3d065d.isJsActive }}
+<app-tabs #app2dd2aa80784315e81a47f7f469b794188b3d065d></app-tabs>
 </span><pre><code class="language-typescript">
 @Module(&#123;
   imports: [

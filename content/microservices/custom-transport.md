@@ -1,13 +1,13 @@
 ### 定制传输器
 
 Nest 提供了多种 `开箱即用` 的传输器，以及允许开发者构建新的自定义传输策略的 API。
-传输器使您能够使用一个可插入的通信层和一个非常简单的应用程序级消息协议在网络上连接组件(阅读全文[article](https://dev.to/nestjs/integrate-nestjs-with-external-services-using-microservice-transporters-part-1-p3))。
+传输器使您能够使用一个可插入的通信层和一个非常简单的应用程序级消息协议在网络上连接组件(阅读全文[文章](https://dev.to/nestjs/integrate-nestjs-with-external-services-using-microservice-transporters-part-1-p3))。
 
 > info **Hint** 用 Nest 构建一个微服务并不一定意味着你必须使用 `@nestjs/microservices` 包。
 > 例如，如果你想与外部服务通信(比如其他用不同语言编写的微服务)，你可能不需要`@nestjs/microservice`库提供的所有功能。
 > 事实上，如果你不需要那些让你声明式定义订阅者的装饰器(`@EventPattern` 或 `@MessagePattern`)，运行一个[独立的应用程序](/application-context)和手动维护连接/订阅通道对于大多数用例来说应该已经足够了，并且会为你提供更多的灵活性。
 
-通过自定义传输器，您可以集成任何消息传递系统/协议(包括谷歌 Cloud Pub/Sub、Amazon Kinesis 等)，或者扩展现有的消息传递系统/协议，在其上添加额外的功能(例如，MQTT 的[QoS](https://github.com/mqttjs/MQTT.js/blob/master/README.md#qos))。
+通过自定义传输器，您可以集成任何消息传递系统/协议(包括谷歌云Pub/Sub、Amazon Kinesis 等)，或者扩展现有的消息传递系统/协议，在其上添加额外的功能(例如，MQTT 的[QoS](https://github.com/mqttjs/MQTT.js/blob/master/README.md#qos))。
 
 > info **Hint** 为了更好地理解 Nest 微服务是如何工作的，以及如何扩展现有传输器的功能，我们建议阅读[NestJS 微服务在行动](https://dev.to/johnbiundo/series/4724)和[高级 NestJS 微服务](https://dev.to/nestjs/part-1-introduction-and-setup-1a2l)系列文章。
 
@@ -99,7 +99,7 @@ async listen(callback: () => void) {
 }
 ```
 
-一旦我们执行 `echoHandler` ，传递一个任意字符串作为参数( `"Hello world!")，我们应该在控制台中看到它:
+一旦我们执行 `echoHandler` ，传递一个任意字符串作为参数(`"Hello world!"`)，我们应该在控制台中看到它:
 
 ```json
 Hello world!
