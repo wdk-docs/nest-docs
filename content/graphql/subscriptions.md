@@ -1,10 +1,10 @@
-### Subscriptions
+# Subscriptions
 
 In addition to fetching data using queries and modifying data using mutations, the GraphQL spec supports a third operation type, called `subscription`. GraphQL subscriptions are a way to push data from the server to the clients that choose to listen to real time messages from the server. Subscriptions are similar to queries in that they specify a set of fields to be delivered to the client, but instead of immediately returning a single answer, a channel is opened and a result is sent to the client every time a particular event happens on the server.
 
 A common use case for subscriptions is notifying the client side about particular events, for example the creation of a new object, updated fields and so on (read more [here](https://www.apollographql.com/docs/react/data/subscriptions)).
 
-#### Enable subscriptions
+## Enable subscriptions
 
 To enable subscriptions, set the `installSubscriptionHandlers` property to `true`.
 
@@ -26,11 +26,13 @@ GraphQLModule.forRoot({
 }),
 ```
 
-> info **Hint** You can also use both packages (`subscriptions-transport-ws` and `graphql-ws`) at the same time, for example, for backward compatibility.
+!!! info "**Hint**"
 
-#### Code first
+    You can also use both packages (`subscriptions-transport-ws` and `graphql-ws`) at the same time, for example, for backward compatibility.
 
-To create a subscription using the code first approach, we use the `@Subscription()` decorator and the `PubSub` class from the `graphql-subscriptions` package, which provides a simple **publish/subscribe API**.
+## Code first
+
+To create a subscription using the code first approach, we use the `@Subscription()` decorator and the `PubSub` class from the `graphql-subscriptions` package, which provides a simple **publish/subscribe API** .
 
 The following subscription handler takes care of **subscribing** to an event by calling `PubSub#asyncIterator`. This method takes a single argument, the `triggerName`, which corresponds to an event topic name.
 
@@ -47,7 +49,9 @@ export class AuthorResolver {
 }
 ```
 
-> info **Hint** All decorators are exported from the `@nestjs/graphql` package, while the `PubSub` class is exported from the `graphql-subscriptions` package.
+!!! info "**Hint**"
+
+    All decorators are exported from the `@nestjs/graphql` package, while the `PubSub` class is exported from the `graphql-subscriptions` package.
 
 > warning **Note** `PubSub` is a class that exposes a simple `publish` and `subscribe API`. Read more about it [here](https://www.apollographql.com/docs/graphql-subscriptions/setup.html). Note that the Apollo docs warn that the default implementation is not suitable for production (read more [here](https://github.com/apollographql/graphql-subscriptions#getting-started-with-your-first-subscription)). Production apps should use a `PubSub` implementation backed by an external store (read more [here](https://github.com/apollographql/graphql-subscriptions#pubsub-implementations)).
 
@@ -72,7 +76,7 @@ Note that subscriptions, by definition, return an object with a single top level
 
 This construct produces the same SDL as the previous code sample, but allows us to decouple the method name from the subscription.
 
-#### Publishing
+## Publishing
 
 Now, to publish the event, we use the `PubSub#publish` method. This is often used within a mutation to trigger a client-side update when a part of the object graph has changed. For example:
 
@@ -99,7 +103,7 @@ type Subscription {
 
 This tells us that the subscription must return an object with a top-level property name of `commentAdded` that has a value which is a `Comment` object. The important point to note is that the shape of the event payload emitted by the `PubSub#publish` method must correspond to the shape of the value expected to return from the subscription. So, in our example above, the `pubSub.publish('commentAdded', {{ '{' }} commentAdded: newComment {{ '}' }})` statement publishes a `commentAdded` event with the appropriately shaped payload. If these shapes don't match, your subscription will fail during the GraphQL validation phase.
 
-#### Filtering subscriptions
+## Filtering subscriptions
 
 To filter out specific events, set the `filter` property to a filter function. This function acts similar to the function passed to an array `filter`. It takes two arguments: `payload` containing the event payload (as sent by the event publisher), and `variables` taking any arguments passed in during the subscription request. It returns a boolean determining whether this event should be published to client listeners.
 
@@ -113,7 +117,7 @@ commentAdded(@Args('title') title: string) {
 }
 ```
 
-#### Mutating subscription payloads
+## Mutating subscription payloads
 
 To mutate the published event payload, set the `resolve` property to a function. The function receives the event payload (as sent by the event publisher) and returns the appropriate value.
 
@@ -156,7 +160,7 @@ commentAdded() {
 }
 ```
 
-#### Schema first
+## Schema first
 
 To create an equivalent subscription in Nest, we'll make use of the `@Subscription()` decorator.
 
@@ -256,7 +260,7 @@ type Subscription {
 
 With this, we've created a single `commentAdded(title: String!): Comment` subscription. You can find a full sample implementation [here](https://github.com/nestjs/nest/blob/master/sample/12-graphql-schema-first).
 
-#### PubSub
+## PubSub
 
 We instantiated a local `PubSub` instance above. The preferred approach is to define `PubSub` as a [provider](/fundamentals/custom-providers) and inject it through the constructor (using the `@Inject()` decorator). This allows us to re-use the instance across the whole application. For example, define a provider as follows, then inject `'PUB_SUB'` where needed.
 
@@ -267,7 +271,7 @@ We instantiated a local `PubSub` instance above. The preferred approach is to de
 }
 ```
 
-#### Customize subscriptions server
+## Customize subscriptions server
 
 To customize the subscriptions server (e.g., change the path), use the `subscriptions` options property.
 
@@ -295,7 +299,7 @@ GraphQLModule.forRoot({
 }),
 ```
 
-#### Authentication over WebSocket
+## Authentication over WebSocket
 
 Checking that the user is authenticated should be done inside the `onConnect` callback function that you can specify in the `subscriptions` options.
 

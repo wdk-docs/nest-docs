@@ -1,4 +1,4 @@
-### 模块引用
+# 模块引用
 
 Nest 提供了`ModuleRef`类来导航提供器的内部列表，并使用其注入令牌作为查找键来获取对任何提供器的引用。
 `ModuleRef`类还提供了一种方法来动态实例化静态和限定作用域的提供器。
@@ -20,12 +20,14 @@ export class CatsService {
 }
 ```
 
-> info **Hint** `ModuleRef`类是从`@nestjs/core`包导入的。
+!!! info "**Hint**"
 
-#### 检索实例
+    `ModuleRef`类是从`@nestjs/core`包导入的。
 
-`ModuleRef`实例(以后我们将把它称为**模块引用**)有一个`get()`方法。
-这个方法使用注入令牌/类名来获取存在于**current**模块中(已被实例化)的提供器、控制器或可注入对象(例如，守卫、拦截器等)。
+## 检索实例
+
+`ModuleRef`实例(以后我们将把它称为 **模块引用** )有一个`get()`方法。
+这个方法使用注入令牌/类名来获取存在于 **current** 模块中(已被实例化)的提供器、控制器或可注入对象(例如，守卫、拦截器等)。
 
 ```typescript
 @@filename(cats.service)
@@ -62,7 +64,7 @@ export class CatsService {
 this.moduleRef.get(Service, { strict: false });
 ```
 
-#### 解决作用域内的提供器
+## 解决作用域内的提供器
 
 要动态解析作用域的提供器(瞬态或请求作用域)，请使用`resolve()`方法，并将提供器的注入令牌作为参数传递。
 
@@ -91,8 +93,8 @@ export class CatsService {
 }
 ```
 
-`resolve()`方法从它自己的**DI 容器子树**中返回提供器的唯一实例。
-每个子树都有一个惟一的上下文标**识符**。
+`resolve()`方法从它自己的 **DI 容器子树** 中返回提供器的唯一实例。
+每个子树都有一个惟一的上下文标 **识符** 。
 因此，如果多次调用该方法并比较实例引用，就会发现它们是不相等的。
 
 ```typescript
@@ -165,9 +167,11 @@ export class CatsService {
 }
 ```
 
-> info **Hint** `contextfactory`类是从`@nestjs/core`包中导入的。
+!!! info "**Hint**"
 
-#### 注册请求的提供器
+    `contextfactory`类是从`@nestjs/core`包中导入的。
+
+## 注册请求的提供器
 
 手动生成的上下文标识符(使用`contextfactory.create()`)表示 DI 子树，其中`REQUEST`提供器是`undefined`，因为它们没有被 Nest 依赖注入系统实例化和管理。
 
@@ -178,9 +182,9 @@ const contextId = ContextIdFactory.create();
 this.moduleRef.registerRequestByContextId(/* YOUR_REQUEST_OBJECT */, contextId);
 ```
 
-#### 获得当前子树
+## 获得当前子树
 
-有时，您可能希望在**请求**上下文中解析请求作用域的提供器的实例。
+有时，您可能希望在 **请求** 上下文中解析请求作用域的提供器的实例。
 假设`CatsService`是请求作用域的，您希望解析`CatsRepository`实例，该实例也被标记为请求作用域的提供器。
 为了共享相同的 DI 容器子树，你必须获取当前的上下文标识符，而不是生成一个新的上下文标识符(例如，使用`contextfactory.create()`函数，如上所示)。
 要获得当前的上下文标识符，首先使用`@Inject()`装饰器注入请求对象。
@@ -203,7 +207,9 @@ export class CatsService {
 }
 ```
 
-> info **Hint** 了解关于请求提供器的更多信息[此处](https://docs.nestjs.com/fundamentals/injection-scopes#request-provider).
+!!! info "**Hint**"
+
+    了解关于请求提供器的更多信息[此处](https://docs.nestjs.com/fundamentals/injection-scopes#request-provider).
 
 现在，使用`contextfactory`类的`getByRequest()`方法创建一个基于请求对象的上下文 id，并将其传递给`resolve()`调用:
 
@@ -212,7 +218,7 @@ const contextId = ContextIdFactory.getByRequest(this.request);
 const catsRepository = await this.moduleRef.resolve(CatsRepository, contextId);
 ```
 
-#### 动态实例化自定义类
+## 动态实例化自定义类
 
 要动态实例化一个之前没有注册为提供器的类，请使用模块引用的`create()`方法。
 

@@ -1,8 +1,8 @@
-### Official NestJS Consulting
+# Official NestJS Consulting
 
 Our goal is to ensure that your developers are successful and productive with NestJS as well as other modern technologies in today's ever-changing tech world.
 
-### Official Support
+# Official Support
 
 With official support, get expert help directly from the NestJS core team. We tackle your toughest challenges, and collaborate with your team on many levels such as:
 
@@ -37,11 +37,11 @@ With official support, get expert help directly from the NestJS core team. We ta
   </div>
 </div>
 
-#### First-hand access
+## First-hand access
 
 Direct communication channel will boost team velocity, giving a quick access to discuss and solve problems.
 
-#### NestJS Workshops and Trainings
+## NestJS Workshops and Trainings
 
 We provide solid kick-off training as well as more advanced ones that give teams an in-depth understanding of NestJS. We offer on-site workshops and remote intensive sessions which help get you up and running _quickly_ within the NestJS ecosystem.
 

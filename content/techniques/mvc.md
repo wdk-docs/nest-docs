@@ -1,4 +1,4 @@
-### Model-View-Controller
+# Model-View-Controller
 
 Nest, by default, makes use of the [Express](https://github.com/expressjs/express) library under the hood. Hence, every technique for using the MVC (Model-View-Controller) pattern in Express applies to Nest as well.
 
@@ -57,7 +57,7 @@ bootstrap();
 
 We told [Express](https://github.com/expressjs/express) that the `public` directory will be used for storing static assets, `views` will contain templates, and the `hbs` template engine should be used to render HTML output.
 
-#### Template rendering
+## Template rendering
 
 Now, let's create a `views` directory and `index.hbs` template inside it. In the template, we'll print a `message` passed from the controller:
 
@@ -94,11 +94,13 @@ In this code, we are specifying the template to use in the `@Render()` decorator
 
 While the application is running, open your browser and navigate to `http://localhost:3000`. You should see the `Hello world!` message.
 
-#### Dynamic template rendering
+## Dynamic template rendering
 
 If the application logic must dynamically decide which template to render, then we should use the `@Res()` decorator, and supply the view name in our route handler, rather than in the `@Render()` decorator:
 
-> info **Hint** When Nest detects the `@Res()` decorator, it injects the library-specific `response` object. We can use this object to dynamically render the template. Learn more about the `response` object API [here](https://expressjs.com/en/api.html).
+!!! info "**Hint**"
+
+    When Nest detects the `@Res()` decorator, it injects the library-specific `response` object. We can use this object to dynamically render the template. Learn more about the `response` object API [here](https://expressjs.com/en/api.html).
 
 ```typescript
 @@filename(app.controller)
@@ -120,11 +122,11 @@ export class AppController {
 }
 ```
 
-#### Example
+## Example
 
 A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/15-mvc).
 
-#### Fastify
+## Fastify
 
 As mentioned in this [chapter](/techniques/performance), we are able to use any compatible HTTP provider together with Nest. One such library is [Fastify](https://github.com/fastify/fastify). In order to create an MVC application with Fastify, we have to install the following packages:
 
@@ -200,6 +202,6 @@ export class AppController {
 
 While the application is running, open your browser and navigate to `http://localhost:3000`. You should see the `Hello world!` message.
 
-#### Example
+## Example
 
 A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/17-mvc-fastify).

@@ -1,4 +1,4 @@
-### 异步服务提供者
+# 异步服务提供者
 
 有时，应用程序应该延迟启动，直到一个或多个异步任务完成。
 例如，在与数据库建立连接之前，您可能不想开始接受请求。
@@ -18,13 +18,15 @@ Nest will await resolution of the promise before instantiating any class that de
 }
 ```
 
-> info **Hint** Learn more about custom provider syntax [here](/fundamentals/custom-providers).
+!!! info "**Hint**"
 
-#### Injection
+    Learn more about custom provider syntax [here](/fundamentals/custom-providers).
+
+## Injection
 
 Asynchronous providers are injected to other components by their tokens, like any other provider.
 In the example above, you would use the construct `@Inject('ASYNC_CONNECTION')`.
 
-#### Example
+## Example
 
 [The TypeORM recipe](/recipes/sql-typeorm) has a more substantial example of an asynchronous provider.

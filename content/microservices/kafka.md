@@ -1,4 +1,4 @@
-### Kafka
+# Kafka
 
 [Kafka](https://kafka.apache.org/)是一个开源的分布式流媒体平台，它有三个关键功能:
 
@@ -8,7 +8,7 @@
 
 Kafka 项目的目标是提供一个统一、高吞吐量、低延迟的平台来处理实时数据。它与 Apache Storm 和 Spark 集成得非常好，可以进行实时流数据分析。
 
-#### 安装
+## 安装
 
 要开始构建基于 kafka 的微服务，首先要安装所需的包:
 
@@ -16,9 +16,9 @@ Kafka 项目的目标是提供一个统一、高吞吐量、低延迟的平台�
 $ npm i --save kafkajs
 ```
 
-#### 概述
+## 概述
 
-像其他的 Nest 微服务传输层实现一样，你使用传递给' createMicroservice() '方法的 options 对象的' transport '属性来选择 Kafka 传输机制，以及一个可选的' options '属性，如下所示:
+像其他的 Nest 微服务传输层实现一样，你使用传递给 `createMicroservice()` 方法的 options 对象的 `transport` 属性来选择 Kafka 传输机制，以及一个可选的 `options` 属性，如下所示:
 
 ```typescript
 @@filename(main)
@@ -41,9 +41,11 @@ const app = await NestFactory.createMicroservice(AppModule, {
 });
 ```
 
-> info **Hint** ' Transport ' enum 是从' @nestjs/microservices '包导入的。
+!!! info "**Hint**"
 
-#### 选项
+     `Transport`  enum 是从 `@nestjs/microservices` 包导入的。
+
+## 选项
 
 options 属性是特定于所选传输器的。<strong>Kafka</strong>传输器暴露了下面描述的属性。
 
@@ -110,9 +112,9 @@ options 属性是特定于所选传输器的。<strong>Kafka</strong>传输器�
   </tr>
 </table>
 
-#### 客户端
+## 客户端
 
-与其他微服务传输器相比，Kafka 有一个小小的区别。我们使用' ClientKafka '类代替' ClientProxy '类。
+与其他微服务传输器相比，Kafka 有一个小小的区别。我们使用 `ClientKafka` 类代替 `ClientProxy` 类。
 
 Like other microservice transporters, you have <a href="https://docs.nestjs.com/microservices/basics#client">several options</a> for creating a `ClientKafka` instance.
 
@@ -161,7 +163,7 @@ Use the `@Client()` decorator as follows:
 client: ClientKafka;
 ```
 
-#### 消息模式
+## 消息模式
 
 Kafka 微服务消息模式为请求和应答通道利用了两个主题。
 The `ClientKafka#send()` method sends messages with a [return address](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ReturnAddress.html) by associating a [correlation id](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html), reply topic, and reply partition with the request message. This requires the `ClientKafka` instance to be subscribed to the reply topic and assigned to at least one partition before sending a message.
@@ -175,7 +177,7 @@ Normally, topic partitions are assigned using the round robin partitioner, which
 
 To prevent the `ClientKafka` consumers from losing response messages, a Nest-specific built-in custom partitioner is utilized. This custom partitioner assigns partitions to a collection of consumers sorted by high-resolution timestamps (`process.hrtime()`) that are set on application launch.
 
-#### 消息响应订阅
+## 消息响应订阅
 
 > warning **Note** This section is only relevant if you use [request-response](/microservices/basics#request-response) message style (with the `@MessagePatern` decorator and the `ClientKafka#send` method). Subscribing to the response topic is not necessary for the [event-based](/microservices/basics#event-based) communication (`@EventPattern` decorator and `ClientKafka#emit` method).
 
@@ -198,17 +200,17 @@ async onModuleInit() {
 }
 ```
 
-#### 传入的
+## 传入的
 
 Nest 接收传入的 Kafka 消息作为一个具有“key”、“value”和“headers”属性的对象，这些属性的值类型为“Buffer”。
 然后 Nest 通过将缓冲区转换为字符串来解析这些值。
-如果字符串是"object like"， Nest 将尝试将该字符串解析为" JSON "。然后将' value '传递给其关联的处理程序。
+如果字符串是"object like"， Nest 将尝试将该字符串解析为" JSON "。然后将 `value` 传递给其关联的处理程序。
 
-#### 即将离任的
+## 即将离任的
 
 当发布事件或发送消息时，Nest 在序列化过程之后发送出站 Kafka 消息。
-这种情况发生在传递给' ClientKafka ' ' emit() '和' send() '方法的参数上，或者发生在从' @ messageppattern '方法返回的值上。
-这种序列化通过使用' JSON.stringify() '或' toString() '原型方法来“字符串化”非字符串或缓冲区的对象。
+这种情况发生在传递给 `ClientKafka` `emit()` 和 `send()` 方法的参数上，或者发生在从 `@ messageppattern` 方法返回的值上。
+这种序列化通过使用 `JSON.stringify()` 或 `toString()` 原型方法来“字符串化”非字符串或缓冲区的对象。
 
 ```typescript
 @@filename(heroes.controller)
@@ -226,7 +228,9 @@ export class HeroesController {
 }
 ```
 
-> info **Hint** `@Payload()` is imported from the `@nestjs/microservices`.
+!!! info "**Hint**"
+
+    `@Payload()` is imported from the `@nestjs/microservices`.
 
 Outgoing messages can also be keyed by passing an object with the `key` and `value` properties. Keying messages is important for meeting the [co-partitioning requirement](https://docs.confluent.io/current/ksql/docs/developer-guide/partition-data.html#co-partitioning-requirements).
 
@@ -284,15 +288,15 @@ export class HeroesController {
 }
 ```
 
-#### 基于事件的
+## 基于事件的
 
-虽然请求-响应方法非常适合于在服务之间交换消息，但是当您的消息样式是基于事件的(这对于 Kafka 来说是非常理想的)—当您只想发布事件**而不需要等待响应**时，它就不太适合了。在这种情况下，您不希望维护两个主题所需的请求-响应开销。
+虽然请求-响应方法非常适合于在服务之间交换消息，但是当您的消息样式是基于事件的(这对于 Kafka 来说是非常理想的)—当您只想发布事件 **而不需要等待响应** 时，它就不太适合了。在这种情况下，您不希望维护两个主题所需的请求-响应开销。
 
 Check out these two sections to learn more about this: [Overview: Event-based](/microservices/basics#event-based) and [Overview: Publishing events](/microservices/basics#publishing-events).
 
-#### 上下文
+## 上下文
 
-在更复杂的场景中，您可能希望访问关于传入请求的更多信息。当使用 Kafka 传输器时，你可以访问' KafkaContext '对象。
+在更复杂的场景中，您可能希望访问关于传入请求的更多信息。当使用 Kafka 传输器时，你可以访问 `KafkaContext` 对象。
 
 ```typescript
 @@filename()
@@ -308,7 +312,9 @@ killDragon(message, context) {
 }
 ```
 
-> info **Hint** `@Payload()`, `@Ctx()` and `KafkaContext` are imported from the `@nestjs/microservices` package.
+!!! info "**Hint**"
+
+    `@Payload()`, `@Ctx()` and `KafkaContext` are imported from the `@nestjs/microservices` package.
 
 To access the original Kafka `IncomingMessage` object, use the `getMessage()` method of the `KafkaContext` object, as follows:
 
@@ -344,9 +350,9 @@ interface IncomingMessage {
 }
 ```
 
-#### 命名约定
+## 命名约定
 
-Kafka 微服务组件在' client.clientId '和' consumer.groupId '选项上附加了各自角色的描述，以防止 Nest 微服务客户端和服务器组件之间的冲突。
+Kafka 微服务组件在 `client.clientId` 和 `consumer.groupId` 选项上附加了各自角色的描述，以防止 Nest 微服务客户端和服务器组件之间的冲突。
 By default the `ClientKafka` components append `-client` and the `ServerKafka` components append `-server` to both of these options. Note how the provided values below are transformed in that way (as shown in the comments).
 
 ```typescript
@@ -384,7 +390,9 @@ And for the client:
 client: ClientKafka;
 ```
 
-> info **Hint** Kafka client and consumer naming conventions can be customized by extending `ClientKafka` and `KafkaServer` in your own custom provider and overriding the constructor.
+!!! info "**Hint**"
+
+    Kafka client and consumer naming conventions can be customized by extending `ClientKafka` and `KafkaServer` in your own custom provider and overriding the constructor.
 
 Since the Kafka microservice message pattern utilizes two topics for the request and reply channels, a reply pattern should be derived from the request topic. By default, the name of the reply topic is the composite of the request topic name with `.reply` appended.
 
@@ -395,4 +403,6 @@ onModuleInit() {
 }
 ```
 
-> info **Hint** Kafka reply topic naming conventions can be customized by extending `ClientKafka` in your own custom provider and overriding the `getResponsePatternName` method.
+!!! info "**Hint**"
+
+    Kafka reply topic naming conventions can be customized by extending `ClientKafka` in your own custom provider and overriding the `getResponsePatternName` method.

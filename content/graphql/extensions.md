@@ -1,10 +1,10 @@
-### Extensions
+# Extensions
 
 > warning **Warning** This chapter applies only to the code first approach.
 
 Extensions is an **advanced, low-level feature** that lets you define arbitrary data in the types configuration. Attaching custom metadata to certain fields allows you to create more sophisticated, generic solutions. For example, with extensions, you can define field-level roles required to access particular fields. Such roles can be reflected at runtime to determine whether the caller has sufficient permissions to retrieve a specific field.
 
-#### Adding custom metadata
+## Adding custom metadata
 
 To attach custom metadata for a field, use the `@Extensions()` decorator exported from the `@nestjs/graphql` package.
 
@@ -18,7 +18,7 @@ In the example above, we assigned the `role` metadata property the value of `Rol
 
 Note, in addition to setting metadata on fields, you can use the `@Extensions()` decorator at the class level and method level (e.g., on the query handler).
 
-#### Using custom metadata
+## Using custom metadata
 
 Logic that leverages the custom metadata can be as complex as needed. For example, you can create a simple interceptor that stores/logs events per method invocation, or a [field middleware](/graphql/field-middleware) that matches roles required to retrieve a field with the caller permissions (field-level permissions system).
 

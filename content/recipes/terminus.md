@@ -1,17 +1,17 @@
-### Healthchecks (Terminus)
+# Healthchecks (Terminus)
 
-Terminus 集成为您提供**就绪/活动**健康检查。
+Terminus 集成为您提供 **就绪/活动** 健康检查。
 当涉及到复杂的后端设置时，健康检查是至关重要的。
 简而言之，web 开发领域的健康检查通常包括一个特殊的地址，例如“https://my-website.com/health/readiness”。
 基础设施的一个服务或组件(例如，Kubernetes)会不断地检查这个地址。
 根据从“GET”请求返回到该地址的 HTTP 状态码，服务在收到“不健康”响应时将采取行动。
-由于“正常”或“不正常”的定义因您提供的服务类型而异，**Terminus**集成支持您使用一组**运行状况指示器**。
+由于“正常”或“不正常”的定义因您提供的服务类型而异， **Terminus**集成支持您使用一组**运行状况指示器** 。
 
 举个例子，如果你的 web 服务器使用 MongoDB 来存储数据，那么 MongoDB 是否仍然在运行是非常重要的信息。
 在这种情况下，你可以使用“MongooseHealthIndicator”。
 如果配置正确(稍后详细介绍)，您的健康检查地址将返回健康或不健康的 HTTP 状态码，这取决于 MongoDB 是否运行。
 
-#### Getting started
+## Getting started
 
 To get started with `@nestjs/terminus` we need to install the required dependency.
 
@@ -19,9 +19,9 @@ To get started with `@nestjs/terminus` we need to install the required dependenc
 $ npm install --save @nestjs/terminus
 ```
 
-#### Setting up a Healthcheck
+## Setting up a Healthcheck
 
-A health check represents a summary of **health indicators**.
+A health check represents a summary of **health indicators** .
 A health indicator executes a check of a service, whether it is in a healthy or unhealthy state.
 A health check is positive if all the assigned health indicators are up and running.
 Because a lot of applications will need similar health indicators, [`@nestjs/terminus`](https://github.com/nestjs/terminus) provides a set of predefined indicators, such as:
@@ -54,11 +54,12 @@ Our healthcheck(s) can be executed using a [controller](/controllers), which can
 $ nest g controller health
 ```
 
-> info **Info** It is highly recommended to enable shutdown hooks in your application.
+!!! info **Info** It is highly recommended to enable shutdown hooks in your application.
+
 > Terminus integration makes use of this lifecycle event if enabled.
 > Read more about shutdown hooks [here](fundamentals/lifecycle-events#application-shutdown).
 
-#### HTTP Healthcheck
+## HTTP Healthcheck
 
 Once we have installed `@nestjs/terminus`, imported our `TerminusModule` and created a new controller, we are ready to create a health check.
 
@@ -142,13 +143,16 @@ If the NestJS app is shutting down but still accepting HTTP requests, the health
 | `object` |
 | `details` | Object containing all information of each health indicator | `object` |
 
-#### TypeOrm health indicator
+## TypeOrm health indicator
 
 Terminus offers the capability to add database checks to your health check.
 In order to get started with this health indicator, you
 should check out the [Database chapter](/techniques/sql) and make sure your database connection within your application is established.
 
-> info **Hint** Behind the scenes the `TypeOrmHealthIndicator` simply executes a `SELECT 1`-SQL command which is often used to verify whether the database still alive.
+!!! info "**Hint**"
+
+    Behind the scenes the `TypeOrmHealthIndicator` simply executes a `SELECT 1`-SQL command which is often used to verify whether the database still alive.
+
 > In case you are using an Oracle database it uses `SELECT 1 FROM DUAL`.
 
 ```typescript
@@ -234,7 +238,7 @@ export class HealthController {
 }
 ```
 
-#### Custom health indicator
+## Custom health indicator
 
 In some cases, the predefined health indicators provided by `@nestjs/terminus` do not cover all of your health check requirements.
 In that case, you can set up a custom health indicator according to your needs.
@@ -312,7 +316,9 @@ import { DogHealthIndicator } from './dog.health';
 export class AppModule { }
 ```
 
-> info **Hint** In a real-world application the `DogHealthIndicator` should be provided in a separate module, for example, `DogModule`, which then will be imported by the `AppModule`.
+!!! info "**Hint**"
+
+    In a real-world application the `DogHealthIndicator` should be provided in a separate module, for example, `DogModule`, which then will be imported by the `AppModule`.
 
 The last required step is to add the now available health indicator in the required health check endpoint.
 For that, we go back to our `HealthController` and add it to our `check` function.
@@ -361,6 +367,6 @@ export class HealthController {
 }
 ```
 
-#### Examples
+## Examples
 
 Some working examples are available [here](https://github.com/nestjs/terminus/tree/master/sample).

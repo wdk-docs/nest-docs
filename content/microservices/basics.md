@@ -1,20 +1,20 @@
-### 概述
+# 概述
 
 除了传统的(有时称为单片的)应用程序架构外，Nest 本身支持微服务架构风格的开发。
 本文档中其他地方讨论的大多数概念，比如依赖注入、装饰器、异常过滤器、管道、守卫和拦截器，都同样适用于微服务。
 只要有可能，Nest 就会抽象实现细节，这样相同的组件就可以在基于 http 的平台、WebSockets 和微服务上运行。
 本节将介绍 Nest 特定于微服务的各个方面。
 
-在 Nest 中，微服务本质上是一个应用程序，它使用了与 HTTP 不同的**传输**层。
+在 Nest 中，微服务本质上是一个应用程序，它使用了与 HTTP 不同的 **传输** 层。
 
 <figure><img src="/assets/Microservices_1.png" /></figure>
 
-Nest 支持几个内置的传输层实现，称为**transporters**，负责在不同的微服务实例之间传输消息。
-大多数传输器天生支持**请求-响应**和**基于事件的**消息样式。
+Nest 支持几个内置的传输层实现，称为 **transporters** ，负责在不同的微服务实例之间传输消息。
+大多数传输器天生支持 **请求-响应**和**基于事件的** 消息样式。
 Nest 将每个传输器的实现细节抽象为一个规范接口，用于基于请求-响应和基于事件的消息传递。
 这使得可以很容易地从一个传输层切换到另一个传输层——例如，利用特定传输层的特定可靠性或性能特性——而不会影响应用程序代码。
 
-#### 安装
+## 安装
 
 要开始构建微服务，首先要安装所需的包:
 
@@ -22,7 +22,7 @@ Nest 将每个传输器的实现细节抽象为一个规范接口，用于基于
 $ npm i --save @nestjs/microservices
 ```
 
-#### 开始
+## 开始
 
 要实例化一个微服务，使用`NestFactory`类的`createMicroservice()`方法:
 
@@ -56,7 +56,9 @@ async function bootstrap() {
 bootstrap();
 ```
 
-> info **Hint** 微服务默认使用**TCP**传输层。
+!!! info "**Hint**"
+
+    微服务默认使用**TCP** 传输层。
 
 `createMicroservice()`方法的第二个参数是一个`options`对象。
 该对象可以由两个成员组成:
@@ -73,7 +75,7 @@ bootstrap();
 </table>
 
 `options`对象特定于所选的传输器。
-**TCP**传输器公开
+**TCP** 传输器公开
 下面描述的属性。
 对于其他传输器(如 Redis、MQTT 等)，请参阅相关章节以了解可用选项的描述。
 
@@ -96,16 +98,16 @@ bootstrap();
   </tr>
 </table>
 
-#### 模式
+## 模式
 
-微服务通过**模式**识别消息和事件。
+微服务通过 **模式** 识别消息和事件。
 模式是普通值，例如，文字对象或字符串。
 模式被自动序列化，并与消息的数据部分一起通过网络发送。
 通过这种方式，消息发送者和使用者可以协调哪些请求由哪些处理程序使用。
 
-#### 请求-响应
+## 请求-响应
 
-当您需要在各种外部服务之间**交换**消息时，请求-响应消息样式非常有用。
+当您需要在各种外部服务之间 **交换** 消息时，请求-响应消息样式非常有用。
 使用此范例，您可以确定服务已经实际接收了消息(而不需要手动实现消息 ACK 协议)。
 然而，请求-响应范例并不总是最佳选择。
 例如，使用基于日志的持久性的流传输器，如[Kafka](https://docs.confluent.io/3.0.0/streams/)或[NATS 流传输器](https://github.com/nats-io/node-nats-streaming)，被优化以解决不同范围的问题，更符合事件消息传递范例(请参阅下面的[基于事件的消息传递](https://docs.nestjs.com/microservices/basics#event-based)以了解更多细节)。
@@ -148,7 +150,7 @@ export class MathController {
 消息处理程序只接受一个参数，即从客户端传递的‘data’。
 在这种情况下，数据是一个要累积的数字数组。
 
-#### 异步响应
+## 异步响应
 
 消息处理程序能够同步或异步响应。
 因此，支持`async`方法。
@@ -181,11 +183,11 @@ accumulate(data: number[]): Observable<number> {
 }
 ```
 
-在上面的例子中，消息处理程序将响应**3 次**(每一项都来自数组)。
+在上面的例子中，消息处理程序将响应 **3 次** (每一项都来自数组)。
 
-#### 基于事件的
+## 基于事件的
 
-虽然请求-响应方法是服务之间交换消息的理想方法，但当您的消息样式是基于事件的——当您只想发布**事件**而不等待响应时，它就不太适合了。
+虽然请求-响应方法是服务之间交换消息的理想方法，但当您的消息样式是基于事件的——当您只想发布 **事件** 而不等待响应时，它就不太适合了。
 在这种情况下，您不希望维护两个通道所需的请求-响应开销。
 
 假设您想简单地通知另一个服务在系统的这一部分发生了某个条件。
@@ -206,12 +208,14 @@ async handleUserCreated(data) {
 }
 ```
 
-> info **Hint** 你可以为一个**单个**事件模式注册多个事件处理程序，所有的事件处理程序都将被自动并行触发。
+!!! info "**Hint**"
+
+    你可以为一个**单个** 事件模式注册多个事件处理程序，所有的事件处理程序都将被自动并行触发。
 
 `handleUserCreated()` **事件处理程序** 监听 `user_created` 事件。
 事件处理程序只接受一个参数，即从客户端传递的`数据`(在本例中，是通过网络发送的事件有效负载)。
 
-#### 修饰符
+## 修饰符
 
 在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
 例如，对于具有通配符订阅的 NATS，您可能希望获取生产者已将消息发送到的原始主题。
@@ -234,11 +238,15 @@ getDate(data, context) {
 }
 ```
 
-> info **Hint** `@Payload()`, `@Ctx()` and `NatsContext` 从 `@nestjs/microservices` 导入.
+!!! info "**Hint**"
 
-> info **Hint** 你也可以传递一个属性键给 `@Payload()` 装饰器来从传入的 payload 对象中提取一个特定的属性，例如`@Payload('id')`。
+    `@Payload()`, `@Ctx()` and `NatsContext` 从 `@nestjs/microservices` 导入.
 
-#### 客户端
+!!! info "**Hint**"
+
+    你也可以传递一个属性键给 `@Payload()` 装饰器来从传入的 payload 对象中提取一个特定的属性，例如`@Payload('id')`。
+
+## 客户端
 
 客户端 Nest 应用程序可以使用`ClientProxy`类向 Nest 微服务交换消息或发布事件。
 这个类定义了几个方法，比如`send()`(用于请求-响应消息传递)和`emit()`(用于事件驱动消息传递)，这些方法允许您与远程微服务通信。
@@ -248,7 +256,7 @@ getDate(data, context) {
 此方法接受一个参数，该参数是代表微服务传输器的对象数组。
 每个这样的对象都有一个`name`属性、一个可选的`transport`属性(默认为`transport.tcp`)和一个可选的特定于传输器的`options`属性。
 
-`name`属性作为一个**注入令牌**，可以在需要的地方注入一个`ClientProxy`的实例。
+`name`属性作为一个 **注入令牌** ，可以在需要的地方注入一个`ClientProxy`的实例。
 `name`属性的值，作为一个注入令牌，可以是任意字符串或 JavaScript 符号，如[这里](https://docs.nestjs.com/fundamentals/custom-providers#non-class-based-provider-tokens)所述。
 
 `options`属性是一个与我们之前在`createMicroservice()`方法中看到的属性相同的对象。
@@ -272,7 +280,9 @@ constructor(
 ) {}
 ```
 
-> info **Hint** `ClientsModule`和`ClientProxy`类是从`@nestjs/microservices`包中导入的。
+!!! info "**Hint**"
+
+    `ClientsModule`和`ClientProxy`类是从`@nestjs/microservices`包中导入的。
 
 有时，我们可能需要从另一个服务(比如`ConfigService`)获取传输器配置，而不是在我们的客户端应用程序中硬编码它。
 为此，我们可以使用`ClientProxyFactory`类注册一个[custom provider](/fundamentals/custom-providers)。
@@ -294,7 +304,9 @@ constructor(
 })
 ```
 
-> info **Hint** `ClientProxyFactory`是从`@nestjs/microservices`包导入的。
+!!! info "**Hint**"
+
+    `ClientProxyFactory`是从`@nestjs/microservices`包导入的。
 
 另一个选择是使用@Client()属性装饰器。
 
@@ -303,11 +315,13 @@ constructor(
 client: ClientProxy;
 ```
 
-> info **Hint** The `@Client()` decorator is imported from the `@nestjs/microservices` package.
+!!! info "**Hint**"
+
+    The `@Client()` decorator is imported from the `@nestjs/microservices` package.
 
 使用`@Client()`装饰器不是首选的技术，因为它更难测试，更难共享客户端实例。
 
-`ClientProxy`是**lazy**。
+`ClientProxy`是 **lazy** 。
 它不会立即启动连接。
 相反，它将在第一次微服务调用之前建立，然后在每个后续调用之间重用。
 然而，如果你想要延迟应用程序的引导过程，直到连接建立，你可以使用`OnApplicationBootstrap`生命周期钩子中的`ClientProxy`对象的`connect()`方法手动启动一个连接。
@@ -321,10 +335,10 @@ async onApplicationBootstrap() {
 
 If the connection cannot be created, the `connect()` method will reject with the corresponding error object.
 
-#### 发送消息
+## 发送消息
 
 `ClientProxy`公开了一个`send()`方法。
-这个方法的目的是调用微服务，并返回一个带有响应的' Observable '。
+这个方法的目的是调用微服务，并返回一个带有响应的 `Observable` 。
 因此，我们可以很容易地订阅发出的值。
 
 ```typescript
@@ -345,9 +359,9 @@ accumulate() {
 `send()`方法有两个参数，`pattern`和`payload`。
 `pattern`应该与`@messageppattern()`装饰器中定义的模式匹配。
 `有效负载`是我们想要传输到远程微服务的消息。
-这个方法返回一个**冷的**`可观察对象`，这意味着你必须在消息被发送之前显式地订阅它。
+这个方法返回一个 **冷的** `可观察对象`，这意味着你必须在消息被发送之前显式地订阅它。
 
-#### 发布事件
+## 发布事件
 
 要发送一个事件，请使用`ClientProxy`对象的`emit()`方法。
 此方法将事件发布到消息代理。
@@ -364,9 +378,9 @@ async publish() {
 ```
 
 `emit()`方法有两个参数，`pattern`和`payload`。`pattern`应该与`@EventPattern()`装饰器中定义的模式匹配。`payload`是我们想要传输到远程微服务的事件有效载荷。
-这个方法返回一个**热的**`可观察对象`(不像`send()`返回的冷的`可观察对象`)，这意味着无论你是否显式地订阅了这个可观察对象，代理都会立即尝试发送这个事件。
+这个方法返回一个 **热的** `可观察对象`(不像`send()`返回的冷的`可观察对象`)，这意味着无论你是否显式地订阅了这个可观察对象，代理都会立即尝试发送这个事件。
 
-#### 作用域
+## 作用域
 
 对于来自不同编程语言背景的人来说，可能会意外地发现，在 Nest 中，几乎所有的东西都是在传入请求之间共享的。
 我们有一个到数据库的连接池，带有全局状态的单例服务，等等。
@@ -400,12 +414,12 @@ export interface RequestContext<T = any> {
 `data`属性是由消息生成器发送的消息有效负载。
 `pattern`属性是用来标识处理传入消息的适当处理程序的模式。
 
-#### 处理超时
+## 处理超时
 
 在分布式系统中，有时微服务可能会关闭或不可用。
 为了避免无限长的等待，您可以使用 `timeout`。
 在与其他服务通信时，超时是一种非常有用的模式。
-要在微服务调用中应用超时，你可以使用' RxJS '超时操作符。
+要在微服务调用中应用超时，你可以使用 `RxJS` 超时操作符。
 如果微服务在一定时间内没有响应请求，就会抛出一个异常，可以捕获并适当地处理这个异常。
 
 要解决这个问题，你必须使用[rxjs](https://github.com/ReactiveX/rxjs)包。
@@ -424,6 +438,8 @@ this.client
       .toPromise();
 ```
 
-> info **Hint** `timeout`操作符是从`rxjs/operators`包中导入的。
+!!! info "**Hint**"
+
+    `timeout`操作符是从`rxjs/operators`包中导入的。
 
 5 秒后，如果微服务没有响应，它将抛出一个错误。

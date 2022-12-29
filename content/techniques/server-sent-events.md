@@ -1,10 +1,10 @@
-### Server-Sent Events
+# Server-Sent Events
 
 Server-Sent Events (SSE) is a server push technology enabling a client to receive automatic updates from a server via HTTP connection. Each notification is sent as a block of text terminated by a pair of newlines (learn more [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events)).
 
-#### Usage
+## Usage
 
-To enable Server-Sent events on a route (route registered within a **controller class**), annotate the method handler with the `@Sse()` decorator.
+To enable Server-Sent events on a route (route registered within a **controller class** ), annotate the method handler with the `@Sse()` decorator.
 
 ```typescript
 @Sse('sse')
@@ -13,7 +13,9 @@ sse(): Observable<MessageEvent> {
 }
 ```
 
-> info **Hint** The `@Sse()` decorator and `MessageEvent` interface are imported from the `@nestjs/common`, while `Observable`, `interval`, and `map` are imported from the `rxjs` package.
+!!! info "**Hint**"
+
+    The `@Sse()` decorator and `MessageEvent` interface are imported from the `@nestjs/common`, while `Observable`, `interval`, and `map` are imported from the `rxjs` package.
 
 > warning **Warning** Server-Sent Events routes must return an `Observable` stream.
 
@@ -43,6 +45,6 @@ eventSource.onmessage = ({ data }) => {
 };
 ```
 
-#### Example
+## Example
 
 A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/28-sse).

@@ -1,8 +1,8 @@
-### Cookies
+# Cookies
 
 An **HTTP cookie** is a small piece of data stored by the user's browser. Cookies were designed to be a reliable mechanism for websites to remember stateful information. When the user visits the website again, the cookie is automatically sent with the request.
 
-#### Use with Express (default)
+## Use with Express (default)
 
 First install the required package (and its types for TypeScript users):
 
@@ -38,7 +38,9 @@ findAll(@Req() request: Request) {
 }
 ```
 
-> info **Hint** The `@Req()` decorator is imported from the `@nestjs/common`, while `Request` from the `express` package.
+!!! info "**Hint**"
+
+    The `@Req()` decorator is imported from the `@nestjs/common`, while `Request` from the `express` package.
 
 To attach a cookie to an outgoing response, use the `Response#cookie()` method:
 
@@ -51,9 +53,11 @@ findAll(@Res({ passthrough: true }) response: Response) {
 
 > warning **Warning** If you want to leave the response handling logic to the framework, remember to set the `passthrough` option to `true`, as shown above. Read more [here](/controllers#appendix-library-specific-approach).
 
-> info **Hint** The `@Res()` decorator is imported from the `@nestjs/common`, while `Response` from the `express` package.
+!!! info "**Hint**"
 
-#### Use with Fastify
+    The `@Res()` decorator is imported from the `@nestjs/common`, while `Response` from the `express` package.
+
+## Use with Fastify
 
 First install the required package:
 
@@ -85,7 +89,9 @@ findAll(@Req() request: FastifyRequest) {
 }
 ```
 
-> info **Hint** The `@Req()` decorator is imported from the `@nestjs/common`, while `FastifyRequest` from the `fastify` package.
+!!! info "**Hint**"
+
+    The `@Req()` decorator is imported from the `@nestjs/common`, while `FastifyRequest` from the `fastify` package.
 
 To attach a cookie to an outgoing response, use the `FastifyReply#setCookie()` method:
 
@@ -100,9 +106,11 @@ To read more about `FastifyReply#setCookie()` method, check out this [page](http
 
 > warning **Warning** If you want to leave the response handling logic to the framework, remember to set the `passthrough` option to `true`, as shown above. Read more [here](/controllers#appendix-library-specific-approach).
 
-> info **Hint** The `@Res()` decorator is imported from the `@nestjs/common`, while `FastifyReply` from the `fastify` package.
+!!! info "**Hint**"
 
-#### Creating a custom decorator (cross-platform)
+    The `@Res()` decorator is imported from the `@nestjs/common`, while `FastifyReply` from the `fastify` package.
+
+## Creating a custom decorator (cross-platform)
 
 To provide a convenient, declarative way of accessing incoming cookies, we can create a [custom decorator](/custom-decorators).
 

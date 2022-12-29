@@ -1,21 +1,21 @@
-### 第一步
+# 第一步
 
-在本系列文章中，您将学习 Nest 的**核心基础**知识。
+在本系列文章中，您将学习 Nest 的 **核心基础** 知识。
 为了熟悉 Nest 应用程序的基本构建块，我们将构建一个基本的 CRUD 应用程序，其中的特性涵盖了入门级的大量内容。
 
-#### 语言
+## 语言
 
 我们喜欢[TypeScript](https://www.typescriptlang.org/)，但最重要的是——我们喜欢[Node.js](https://nodejs.org/en/)。
-这就是为什么 Nest 兼容 TypeScript 和**纯 JavaScript**。
+这就是为什么 Nest 兼容 TypeScript 和 **纯 JavaScript** 。
 Nest 利用了最新的语言特性，所以要将其与普通的 JavaScript 结合使用，我们需要一个[Babel](https://babeljs.io/)编译器。
 
-在我们提供的例子中，我们将主要使用 TypeScript，但你总是可以**将代码片段**转换为普通的 JavaScript 语法(只需点击切换每个代码片段右上角的语言按钮)。
+在我们提供的例子中，我们将主要使用 TypeScript，但你总是可以 **将代码片段** 转换为普通的 JavaScript 语法(只需点击切换每个代码片段右上角的语言按钮)。
 
-#### 需求
+## 需求
 
 请确保[Node.js](https://nodejs.org/)(>= 10.13.0，除了 v13)安装在您的操作系统上。
 
-#### 配置
+## 配置
 
 使用[Nest CLI](/cli/overview).设置一个新项目非常简单。
 安装了[npm](https://www.npmjs.com/)后，你可以在你的操作系统终端中用以下命令创建一个新的 Nest 项目:
@@ -80,7 +80,7 @@ bootstrap();
 
 请注意，使用 Nest CLI 搭建的项目创建了一个初始项目结构，该结构鼓励开发人员遵循将每个模块保存在自己的专用目录中的约定。
 
-#### 平台
+## 平台
 
 Nest 的目标是成为一个平台无关的框架。
 平台独立性使得创建可重用的逻辑部分成为可能，开发人员可以跨几种不同类型的应用程序利用这些逻辑部分。
@@ -103,7 +103,7 @@ Nest 的目标是成为一个平台无关的框架。
 const app = await NestFactory.create<NestExpressApplication>(AppModule);
 ```
 
-#### 运行应用
+## 运行应用
 
 安装完成后，您可以在操作系统命令提示符下运行以下命令，启动侦听入站 HTTP 请求的应用程序:
 

@@ -1,8 +1,8 @@
-### 常见的错误
+# 常见的错误
 
 在使用 NestJS 开发过程中，您可能会在学习框架时遇到各种错误。
 
-#### "Cannot resolve dependency" error
+## "Cannot resolve dependency" error
 
 可能最常见的错误消息是关于 Nest 无法解析提供器的依赖关系。
 错误信息通常是这样的:
@@ -36,7 +36,7 @@ Potential solutions:
 常见的情况是，模块文件声明令牌并导入提供器，提供器从模块文件导入令牌常量。
 如果您正在使用 barrel 文件，请确保您的 barrel 导入也不会最终创建这些循环导入。
 
-#### "Circular dependency" error
+## "Circular dependency" error
 
 偶尔你会发现在你的应用程序中很难避免[circular dependencies](/fundamentals/circular-dependency)。
 您需要采取一些步骤来帮助 Nest 解决这些问题。
@@ -59,9 +59,9 @@ Scope [<module_import_chain>]
 
 循环依赖可能产生于两个相互依赖的提供者，或者 typescript 文件彼此依赖于常量，比如从模块文件导出常量，然后导入到服务文件中。
 在后一种情况下，建议为常量创建一个单独的文件。
-在前一种情况下，请遵循循环依赖的指南，并确保模块**和**提供商都被标记为`forwardRef`。
+在前一种情况下，请遵循循环依赖的指南，并确保模块 **和** 提供商都被标记为`forwardRef`。
 
-#### 调试依赖性错误
+## 调试依赖性错误
 
 除了手动验证你的依赖项是否正确之外，在 Nest 8.1.0 版本中，
 你可以将环境变量`NEST_DEBUG`设置为一个解析为 `true` 的字符串，并在 Nest 解析应用程序的所有依赖项时获得额外的日志信息。

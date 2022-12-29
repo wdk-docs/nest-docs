@@ -1,9 +1,9 @@
-### CSRF 保护
+# CSRF 保护
 
-跨站请求伪造(也称为 CSRF 或 XSRF)是一种恶意利用网站的类型，其中**unauthorized**命令由 web 应用程序信任的用户传输。
+跨站请求伪造(也称为 CSRF 或 XSRF)是一种恶意利用网站的类型，其中 **unauthorized** 命令由 web 应用程序信任的用户传输。
 为了减轻这种攻击，您可以使用[csurf](https://github.com/expressjs/csurf)包。
 
-#### 与 Express 一起使用(默认)
+## 与 Express 一起使用(默认)
 
 首先安装所需的包:
 
@@ -23,7 +23,7 @@ import * as csurf from 'csurf';
 app.use(csurf());
 ```
 
-#### 与 Fastify 一起使用
+## 与 Fastify 一起使用
 
 Start by installing the required package:
 

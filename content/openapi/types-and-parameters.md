@@ -1,4 +1,4 @@
-### 类型和参数
+# 类型和参数
 
 “SwaggerModule”在路由处理程序中搜索所有的“@Body()”、“@Query()”和“@Param()”装饰器来生成 API 文档。
 它还通过利用反射创建相应的模型定义。考虑以下代码:
@@ -10,14 +10,16 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
-> info **Hint** 要显式设置 body 定义，请使用' @ApiBody() '装饰器(从' @nestjs/swagger '包导入)。
+!!! info "**Hint**"
+
+    要显式设置 body 定义，请使用 `@ApiBody()` 装饰器(从 `@nestjs/swagger` 包导入)。
 
 基于“CreateCatDto”，下面的模型定义将创建 Swagger UI:
 
 <figure><img src="/assets/swagger-dto.png" /></figure>
 
 正如您所看到的，虽然类有一些声明的属性，但定义是空的。
-为了让类属性对“SwaggerModule”可见，我们必须要么用“@ApiProperty()”装饰器来注释它们，要么使用 CLI 插件(更多信息请阅读**插件**部分)，它会自动完成:
+为了让类属性对“SwaggerModule”可见，我们必须要么用“@ApiProperty()”装饰器来注释它们，要么使用 CLI 插件(更多信息请阅读 **插件** 部分)，它会自动完成:
 
 ```typescript
 import { ApiProperty } from '@nestjs/swagger';
@@ -34,7 +36,9 @@ export class CreateCatDto {
 }
 ```
 
-> info **Hint** 与其手动注释每个属性，不如考虑使用 Swagger 插件(参见[plugin](/openapi/cli-plugin)部分)，它会自动为你提供这些。
+!!! info "**Hint**"
+
+    与其手动注释每个属性，不如考虑使用 Swagger 插件(参见[plugin](/openapi/cli-plugin)部分)，它会自动为你提供这些。
 
 让我们打开浏览器并验证生成的“CreateCatDto”模型:
 
@@ -51,7 +55,9 @@ In addition, the `@ApiProperty()` decorator allows setting various [Schema Objec
 age: number;
 ```
 
-> info **Hint** Instead of explicitly typing the `{{"@ApiProperty({ required: false })"}}` you can use the `@ApiPropertyOptional()` short-hand decorator.
+!!! info "**Hint**"
+
+    Instead of explicitly typing the `{{"@ApiProperty({ required: false })"}}` you can use the `@ApiPropertyOptional()` short-hand decorator.
 
 In order to explicitly set the type of the property, use the `type` key:
 
@@ -62,7 +68,7 @@ In order to explicitly set the type of the property, use the `type` key:
 age: number;
 ```
 
-#### Arrays
+## Arrays
 
 When the property is an array, we must manually indicate the array type as shown below:
 
@@ -71,11 +77,13 @@ When the property is an array, we must manually indicate the array type as shown
 names: string[];
 ```
 
-> info **Hint** Consider using the Swagger plugin (see [Plugin](/openapi/cli-plugin) section) which will automatically detect arrays.
+!!! info "**Hint**"
+
+    Consider using the Swagger plugin (see [Plugin](/openapi/cli-plugin) section) which will automatically detect arrays.
 
 Either include the type as the first element of an array (as shown above) or set the `isArray` property to `true`.
 
-#### Circular dependencies
+## Circular dependencies
 
 When you have circular dependencies between classes, use a lazy function to provide the `SwaggerModule` with type information:
 
@@ -84,9 +92,11 @@ When you have circular dependencies between classes, use a lazy function to prov
 node: Node;
 ```
 
-> info **Hint** Consider using the Swagger plugin (see [Plugin](/openapi/cli-plugin) section) which will automatically detect circular dependencies.
+!!! info "**Hint**"
 
-#### Generics and interfaces
+    Consider using the Swagger plugin (see [Plugin](/openapi/cli-plugin) section) which will automatically detect circular dependencies.
+
+## Generics and interfaces
 
 Since TypeScript does not store metadata about generics or interfaces, when you use them in your DTOs, `SwaggerModule` may not be able to properly generate model definitions at runtime.
 For instance, the following code won't be correctly inspected by the Swagger module:
@@ -102,7 +112,7 @@ In order to overcome this limitation, you can set the type explicitly:
 createBulk(@Body() usersDto: CreateUserDto[])
 ```
 
-#### Enums
+## Enums
 
 To identify an `enum`, we must manually set the `enum` property on the `@ApiProperty` with an array of values.
 
@@ -130,11 +140,11 @@ async filterByRole(@Query('role') role: UserRole = UserRole.User) {}
 
 <figure><img src="/assets/enum_query.gif" /></figure>
 
-With `isArray` set to **true**, the `enum` can be selected as a **multi-select**:
+With `isArray` set to **true**, the `enum` can be selected as a **multi-select** :
 
 <figure><img src="/assets/enum_query_array.gif" /></figure>
 
-#### Enums schema
+## Enums schema
 
 By default, the `enum` property will add a raw definition of [Enum](https://swagger.io/docs/specification/data-models/enums/) on the `parameter`.
 
@@ -174,7 +184,9 @@ export enum CatInformationEnum {
 }
 ```
 
-> info **Hint** The above snippet is generated using a tool called [NSwag](https://github.com/RicoSuter/NSwag).
+!!! info "**Hint**"
+
+    The above snippet is generated using a tool called [NSwag](https://github.com/RicoSuter/NSwag).
 
 You can see that now you have two `enums` that are exactly the same.
 To address this issue, you can pass an `enumName` along with the `enum` property in your decorator.
@@ -205,9 +217,11 @@ CatBreed:
     - Siamese
 ```
 
-> info **Hint** Any **decorator** that takes `enum` as a property will also take `enumName`.
+!!! info "**Hint**"
 
-#### Raw definitions
+    Any **decorator** that takes `enum` as a property will also take `enumName`.
+
+## Raw definitions
 
 In some specific scenarios (e.g., deeply nested arrays, matrices), you may want to describe your type by hand.
 
@@ -241,7 +255,7 @@ Likewise, in order to define your input/output content manually in controller cl
 async create(@Body() coords: number[][]) {}
 ```
 
-#### Extra models
+## Extra models
 
 To define additional models that are not directly referenced in your controllers but should be inspected by the Swagger module, use the `@ApiExtraModels()` decorator:
 
@@ -250,7 +264,9 @@ To define additional models that are not directly referenced in your controllers
 export class CreateCatDto {}
 ```
 
-> info **Hint** You only need to use `@ApiExtraModels()` once for a specific model class.
+!!! info "**Hint**"
+
+    You only need to use `@ApiExtraModels()` once for a specific model class.
 
 Alternatively, you can pass an options object with the `extraModels` property specified to the `SwaggerModule#createDocument()` method, as follows:
 
@@ -268,7 +284,7 @@ To get a reference (`$ref`) to your model, use the `getSchemaPath(ExtraModel)` f
 },
 ```
 
-#### oneOf, anyOf, allOf
+## oneOf, anyOf, allOf
 
 To combine schemas, you can use the `oneOf`, `anyOf` or `allOf` keywords ([read more](https://swagger.io/docs/specification/data-models/oneof-anyof-allof-not/)).
 
@@ -299,6 +315,8 @@ type Pet = Cat | Dog;
 pets: Pet[];
 ```
 
-> info **Hint** The `getSchemaPath()` function is imported from `@nestjs/swagger`.
+!!! info "**Hint**"
+
+    The `getSchemaPath()` function is imported from `@nestjs/swagger`.
 
 Both `Cat` and `Dog` must be defined as extra models using the `@ApiExtraModels()` decorator (at the class-level).

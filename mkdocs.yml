@@ -1,15 +1,18 @@
 INHERIT: config/nav.yml
 
 site_name: NestJS
-site_url: https://docs.nestjs.com/
+site_url: https://docs.nestjs.com
+site_author: Kamil Mysliwiec
 site_description: NestJS 文档
 docs_dir: content
 site_dir: docs
+dev_addr: 127.0.0.1:8001
 # extra_css:
 #   - stylesheets/extra.css
 
+repo_name: wdk-docs/nest-docs
 repo_url: https://github.com/wdk-docs/nest-docs
-edit_uri: edit/main/docs
+edit_uri: edit/master/content
 
 theme:
   name: material
@@ -24,30 +27,43 @@ theme:
     - navigation.top
 
 markdown_extensions:
-  # - mdx_include:
-  #     base_path: docs
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - attr_list
-  - meta
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.details
-  # - pymdownx.snippets:
-  #     base_path: source/snippets
-  - pymdownx.keys
-  - pymdownx.caret
-  - pymdownx.mark
-  - pymdownx.tilde
-  - pymdownx.escapeall
-  - pymdownx.tasklist:
-      custom_checkbox: true
+  - abbr
   - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
   - toc:
       permalink: true
-  - def_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 plugins:
   search:
@@ -66,8 +82,20 @@ plugins:
     filename: ".index"
     collapse_single_pages: true
     strict: false
+  blogging:
+    # locale: zh-CN
+    # {{ blog_content }}
+    dirs: # The directories to be included
+      - blog
+    features:
+      tags: {}
+    # {{ blog_content review }}
+    categories:
+      - name: review
+        dirs:
+          - review
 
-copyright: "版权所有 © 2022 NestJS Authors"
+copyright: "版权所有 © 2017-2022 MIT by Kamil Mysliwiec"
 
 extra:
   social:

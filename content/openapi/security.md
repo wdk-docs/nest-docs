@@ -1,6 +1,6 @@
-### 安全
+# 安全
 
-要定义特定操作应该使用哪些安全机制，请使用' @ apissecurity() '装饰器。
+要定义特定操作应该使用哪些安全机制，请使用 `@ apissecurity()` 装饰器。
 
 ```typescript
 @ApiSecurity('basic')
@@ -19,9 +19,9 @@ const options = new DocumentBuilder().addSecurity('basic', {
 
 一些最流行的身份验证技术是内置的(例如，‘basic’和‘承载者’)，因此您不必像上面所示那样手动定义安全机制。
 
-#### 基本身份验证
+## 基本身份验证
 
-要启用基本身份验证，请使用' @ApiBasicAuth() '。
+要启用基本身份验证，请使用 `@ApiBasicAuth()` 。
 
 ```typescript
 @ApiBasicAuth()
@@ -35,9 +35,9 @@ Before you run your application, remember to add the security definition to your
 const options = new DocumentBuilder().addBasicAuth();
 ```
 
-#### 持票人身份验证
+## 持票人身份验证
 
-要启用承载身份验证，使用' @ApiBearerAuth() '。
+要启用承载身份验证，使用 `@ApiBearerAuth()` 。
 
 ```typescript
 @ApiBearerAuth()
@@ -51,7 +51,7 @@ export class CatsController {}
 const options = new DocumentBuilder().addBearerAuth();
 ```
 
-#### OAuth2 身份认证
+## OAuth2 身份认证
 
 To enable OAuth2, use `@ApiOAuth2()`.
 
@@ -67,7 +67,7 @@ Before you run your application, remember to add the security definition to your
 const options = new DocumentBuilder().addOAuth2();
 ```
 
-#### Cookie 验证
+## Cookie 验证
 
 To enable cookie authentication, use `@ApiCookieAuth()`.
 

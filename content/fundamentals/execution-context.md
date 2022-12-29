@@ -1,11 +1,11 @@
-### 执行上下文
+# 执行上下文
 
 Nest 提供了几个实用程序类，帮助编写跨多个应用上下文的应用程序(例如，Nest 基于 HTTP 服务器、微服务和 WebSockets 应用上下文)。
 这些实用程序提供了有关当前执行上下文的信息，可用于构建通用的[guards](/guards)、[filters](/exception-filters)和[interceptors](/interceptors)，它们可以跨广泛的控制器、方法和执行上下文工作。
 
 我们将在本章中介绍两个这样的类:`ArgumentsHost`和`ExecutionContext`。
 
-#### ArgumentsHost 类
+## ArgumentsHost 类
 
 `ArgumentsHost`类提供了检索传递给处理程序的参数的方法。
 它允许选择适当的上下文(例如，HTTP、RPC(微服务)或 WebSockets)来检索参数。
@@ -16,7 +16,7 @@ Nest 提供了几个实用程序类，帮助编写跨多个应用上下文的应
 例如，对于 HTTP 服务器应用程序(当使用 `@nestjs/platform-express` 时)，`host` 对象封装了 `Express` 的`[request, response, next]`数组，其中`request`是请求对象，`response`是响应对象，而`next`是一个控制应用程序的请求-响应周期的函数。
 另一方面，对于[GraphQL](/graphql/quick-start) 应用程序，`host`对象包含`[root, args, context, info]`数组。
 
-#### 当前应用程序上下文
+## 当前应用程序上下文
 
 当构建泛型的[guards](/guards)、[filters](/exception-filters)和[interceptors](/interceptors)要在多个应用程序上下文中运行时，我们需要一种方法来确定我们的方法当前运行的应用程序类型。
 使用`ArgumentsHost`的`getType()`方法完成:
@@ -31,11 +31,13 @@ if (host.getType() === 'http') {
 }
 ```
 
-> info **Hint** `GqlContextType`是从`@nestjs/graphql`包中导入的。
+!!! info "**Hint**"
+
+    `GqlContextType`是从`@nestjs/graphql`包中导入的。
 
 有了可用的应用程序类型，我们可以编写更通用的组件，如下所示。
 
-#### 主机处理程序参数
+## 主机处理程序参数
 
 要检索传递给处理器的参数数组，一种方法是使用主机对象的`getArgs()`方法。
 
@@ -43,7 +45,7 @@ if (host.getType() === 'http') {
 const [req, res, next] = host.getArgs();
 ```
 
-你可以使用' getArgByIndex() '方法通过索引提取一个特定的参数:
+你可以使用 `getArgByIndex()` 方法通过索引提取一个特定的参数:
 
 ```typescript
 const request = host.getArgByIndex(0);
@@ -112,7 +114,7 @@ export interface RpcArgumentsHost {
 }
 ```
 
-#### ExecutionContext 类
+## ExecutionContext 类
 
 `ExecutionContext`扩展`ArgumentsHost`，提供关于当前执行过程的额外细节。
 与`ArgumentsHost`一样，Nest 在你可能需要它的地方提供了一个`ExecutionContext`实例，比如在[守卫](https://docs.nestjs.com/guards)的 `canActivate()` 方法和[拦截器](https://docs.nestjs.com/interceptors)的 `intercept()` 方法中。
@@ -135,7 +137,7 @@ export interface ExecutionContext extends ArgumentsHost {
 - `getHandler()`方法返回对即将被调用的处理程序的引用。
 - `getClass()`方法返回此特定处理程序所属的`Controller`类的类型。
 
-例如，在 `HTTP` 上下文中，如果当前处理的请求是一个`POST`请求，绑定到`CatsController`上的`create()`方法，`getHandler()`返回一个对`create()`方法的引用，`getClass()`返回`CatsController` **类型**(不是实例)。
+例如，在 `HTTP` 上下文中，如果当前处理的请求是一个`POST`请求，绑定到`CatsController`上的`create()`方法，`getHandler()`返回一个对`create()`方法的引用，`getClass()`返回`CatsController` **类型** (不是实例)。
 
 ```typescript
 const methodKey = ctx.getHandler().name; // "create"
@@ -146,9 +148,9 @@ const className = ctx.getClass().name; // "CatsController"
 最重要的是，它让我们有机会通过`@SetMetadata()`装饰器从守卫或拦截器中访问元数据集。
 我们将在下面讨论这个用例。
 
-#### 反射和元数据
+## 反射和元数据
 
-`Nest` 提供了通过`@SetMetadata()`装饰器将**定制元数据**连接到路由处理程序的能力。
+`Nest` 提供了通过`@SetMetadata()`装饰器将 **定制元数据** 连接到路由处理程序的能力。
 然后，我们可以从类中访问这些元数据来做出某些决定。
 
 ```typescript
@@ -167,7 +169,9 @@ async create(createCatDto) {
 }
 ```
 
-> info **Hint** `@SetMetadata()` 装饰器是从 `@nestjs/common` 包中导入的。
+!!! info "**Hint**"
+
+    `@SetMetadata()` 装饰器是从 `@nestjs/common` 包中导入的。
 
 在上面的构造中，我们将`roles`元数据(`roles`是一个元数据键，`['admin']`是关联值)附加到`create()`方法中。
 虽然这可以工作，但在你的路由中直接使用`@SetMetadata()`并不是一个好习惯。
@@ -222,7 +226,9 @@ export class CatsService {
 }
 ```
 
-> info **Hint** `Reflector`类是从`@nestjs/core`包中导入的。
+!!! info "**Hint**"
+
+    `Reflector`类是从`@nestjs/core`包中导入的。
 
 现在，要读取处理器元数据，请使用`get()`方法。
 
@@ -230,8 +236,8 @@ export class CatsService {
 const roles = this.reflector.get<string[]>('roles', context.getHandler());
 ```
 
-' Reflector#get '方法允许我们通过传入两个参数来轻松访问元数据:一个元数据**key**和一个**context**(装饰器目标)来检索元数据。
-在这个例子中，指定的**key**是`roles`(请参阅上面的`roles.decorator.ts`文件和那里的`SetMetadata()`调用)。
+`Reflector#get` 方法允许我们通过传入两个参数来轻松访问元数据:一个元数据 **key**和一个**context** (装饰器目标)来检索元数据。
+在这个例子中，指定的 **key** 是`roles`(请参阅上面的`roles.decorator.ts`文件和那里的`SetMetadata()`调用)。
 上下文是通过调用`context.gethandler()`来提供的，它会为当前处理的路由处理程序提取元数据。
 记住，`getHandler()`给了我们一个路由处理函数的\*\*引用。
 

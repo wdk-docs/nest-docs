@@ -1,4 +1,4 @@
-### 异常过滤器
+# 异常过滤器
 
 HTTP [异常过滤器](/exception-filters)层和相应的微服务层之间的唯一区别是，你应该使用`RpcException`而不是抛出`HttpException`。
 
@@ -6,7 +6,9 @@ HTTP [异常过滤器](/exception-filters)层和相应的微服务层之间的�
 throw new RpcException('Invalid credentials.');
 ```
 
-> info **Hint** `RpcException` 类是从 `@nestjs/microservices` 包中导入的。
+!!! info "**Hint**"
+
+    `RpcException` 类是从 `@nestjs/microservices` 包中导入的。
 
 在上面的例子中，Nest 将处理抛出的异常，并以如下结构返回 `error` 对象:
 
@@ -17,7 +19,7 @@ throw new RpcException('Invalid credentials.');
 }
 ```
 
-#### 过滤器
+## 过滤器
 
 微服务异常过滤器的行为类似于 HTTP 异常过滤器，只有一个小区别。
 `catch()`方法必须返回一个`Observable`。
@@ -66,10 +68,10 @@ accumulate(data) {
 }
 ```
 
-#### 继承
+## 继承
 
 通常，您将创建完全定制的异常过滤器来满足您的应用程序需求。
-然而，在有些用例中，您可能希望简单地扩展**核心异常过滤器**，并基于某些因素覆盖行为。
+然而，在有些用例中，您可能希望简单地扩展 **核心异常过滤器** ，并基于某些因素覆盖行为。
 
 为了将异常处理委托给基本过滤器，你需要扩展 `BaseExceptionFilter` 并调用继承的`catch()`方法。
 
@@ -97,4 +99,4 @@ export class AllExceptionsFilter extends BaseRpcExceptionFilter {
 ```
 
 上面的实现只是演示该方法的 shell。
-扩展异常过滤器的实现将包括定制的**业务逻辑**(例如，处理各种条件)。
+扩展异常过滤器的实现将包括定制的 **业务逻辑** (例如，处理各种条件)。

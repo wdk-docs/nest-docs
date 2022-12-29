@@ -1,10 +1,10 @@
-### CORS
+# CORS
 
 跨源资源共享(CORS)是一种允许从另一个域请求资源的机制。
 Under the hood, Nest makes use of the Express [cors](https://github.com/expressjs/cors) package.
 This package provides various options that you can customize based on your requirements.
 
-#### 入门
+## 入门
 
 要启用 CORS，调用 Nest 应用程序对象上的`enableCors()`方法。
 

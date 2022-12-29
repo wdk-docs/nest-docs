@@ -1,4 +1,4 @@
-### Mongo
+# Mongo
 
 Nest 支持两种集成[MongoDB](https://www.mongodb.com/)数据库的方法。
 您可以使用[这里](/techniques/database)描述的内置[TypeORM](https://github.com/typeorm/typeorm)模块，它为 MongoDB 提供了一个连接器，或者使用[Mongoose](https://mongoosejs.com)，最流行的 MongoDB 对象建模工具。
@@ -25,7 +25,7 @@ export class AppModule {}
 
 `forRoot()`方法接受与 Mongoose 包中的`Mongoose.connect()`相同的配置对象，如[这里](https://mongoosejs.com/docs/connections.html)所述.
 
-#### 模型注入
+## 模型注入
 
 使用 Mongoose，所有东西都来自[Schema](http://mongoosejs.com/docs/guide.html).
 每个模式映射到一个 MongoDB 集合，并定义该集合中文档的形状。
@@ -59,7 +59,7 @@ export class Cat {
 export const CatSchema = SchemaFactory.createForClass(Cat);
 ```
 
-> info **提示** 注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
+!!! info **提示** 注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
 
 `@Schema()`装饰器将一个类标记为一个模式定义。
 它将我们的`Cat`类映射到具有相同名称的 MongoDB 集合，但在末尾添加了一个额外的`s`——所以最终的 mongo 集合名称将是`cats`。
@@ -128,7 +128,7 @@ export const CatSchema = new mongoose.Schema({
 ```
 
 `cat.schema` 文件位于`cats`目录下的一个文件夹中，在这里我们也定义了`CatsModule`。
-虽然你可以将模式文件存储在任何你喜欢的地方，但我们建议将它们存储在它们相关的**域**对象附近，在适当的模块目录中。
+虽然你可以将模式文件存储在任何你喜欢的地方，但我们建议将它们存储在它们相关的 **域** 对象附近，在适当的模块目录中。
 
 让我们看看`CatsModule`:
 
@@ -198,7 +198,7 @@ export class CatsService {
 }
 ```
 
-#### 连接
+## 连接
 
 有时你可能需要访问本地[Mongoose Connection](https://mongoosejs.com/docs/api.html#Connection)对象。
 例如，您可能希望对连接对象进行本机 API 调用。
@@ -215,12 +215,12 @@ export class CatsService {
 }
 ```
 
-#### 多库
+## 多库
 
 有些项目需要多个数据库连接。
 这也可以通过这个模块实现。
 要处理多个连接，首先要创建连接。
-在这种情况下，连接命名成为**必须的**。
+在这种情况下，连接命名成为 **必须的** 。
 
 ```typescript
 @@filename(app.module)
@@ -278,12 +278,12 @@ export class CatsService {
 }
 ```
 
-#### 钩子 (中间件)
+## 钩子 (中间件)
 
 中间件(也称为前置钩子和 post 钩子)是在异步函数执行期间传递控制的函数。
 中间件是在模式级指定的，对于编写插件非常有用([source](https://mongoosejs.com/docs/middleware.html))。
 在编译模型后调用 `pre()` 或 `post()` 在 Mongoose 中不起作用。
-要在模型注册**之前**注册一个钩子，使用`MongooseModule`的`forFeatureAsync()`方法和一个工厂提供器(例如`useFactory`)。
+要在模型注册 **之前** 注册一个钩子，使用`MongooseModule`的`forFeatureAsync()`方法和一个工厂提供器(例如`useFactory`)。
 使用这种技术，你可以访问一个模式对象，然后使用`pre()`或`post()`方法在该模式上注册一个钩子。
 请参见下面的例子:
 
@@ -333,7 +333,7 @@ export class AppModule {}
 export class AppModule {}
 ```
 
-#### 插件
+## 插件
 
 要注册一个[plugin](https://mongoosejs.com/docs/plugins.html)，使用`forFeatureAsync()`方法。
 
@@ -376,7 +376,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 export class AppModule {}
 ```
 
-#### 鉴别器
+## 鉴别器
 
 [Discriminators](https://mongoosejs.com/docs/discriminators.html)是一种模式继承机制。
 它们使您能够在相同的底层 MongoDB 集合上拥有具有重叠模式的多个模型。
@@ -401,7 +401,9 @@ export class Event {
 export const EventSchema = SchemaFactory.createForClass(Event);
 ```
 
-> info **Hint** mongoose 通过 `discriminator key` 来区分不同的鉴别器模型，默认为 `__t`。 Mongoose 将一个名为 `__t` 的字符串路径添加到您的模式中，用于跟踪该文档是哪个鉴别器的实例。 你也可以使用 `discriminatorKey` 选项来定义区分的路径。
+!!! info "**Hint**"
+
+    mongoose 通过 `discriminator key` 来区分不同的鉴别器模型，默认为 `__t`。 Mongoose 将一个名为 `__t` 的字符串路径添加到您的模式中，用于跟踪该文档是哪个鉴别器的实例。 你也可以使用 `discriminatorKey` 选项来定义区分的路径。
 
 `SignedUpEvent` 和 `clicklinkevent` 实例将作为通用事件存储在同一个集合中。
 
@@ -462,7 +464,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 export class EventsModule {}
 ```
 
-#### 测试
+## 测试
 
 在对应用程序进行单元测试时，我们通常希望避免任何数据库连接，从而使我们的测试套件设置起来更简单，执行起来更快。
 但是我们的类可能依赖于从连接实例中提取的模型。
@@ -486,7 +488,7 @@ export class CatsModule {}
 
 在这个例子中，当任何消费者使用 `@InjectModel()` 装饰器注入 `Model<Cat>` 时，就会提供一个硬编码的 `catModel`(对象实例)。
 
-#### 异步配置
+## 异步配置
 
 当你需要异步而不是静态传递模块选项时，使用 `forRootAsync()` 方法。与大多数动态模块一样，Nest 提供了几种技术来处理异步配置。
 
@@ -542,6 +544,6 @@ MongooseModule.forRootAsync({
 });
 ```
 
-#### 例子
+## 例子
 
 (https://github.com/nestjs/nest/tree/master/sample/06-mongoose).

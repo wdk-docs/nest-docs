@@ -1,9 +1,9 @@
-### 介绍
+# 介绍
 
 [OpenAPI](https://swagger.io/specification/)规范是一种与语言无关的定义格式，用于描述 RESTful api。
 Nest 提供了一个专门的[模块](https://github.com/nestjs/swagger)，它允许通过利用装饰器生成这样的规范。
 
-#### 安装
+## 安装
 
 要开始使用它，我们首先安装所需的依赖项。
 
@@ -17,7 +17,7 @@ $ npm install --save @nestjs/swagger swagger-ui-express
 $ npm install --save @nestjs/swagger fastify-swagger
 ```
 
-#### 引导
+## 引导
 
 安装过程完成后，打开`main.ts`并使用 `SwaggerModule` 类初始化 Swagger:
 
@@ -44,7 +44,10 @@ async function bootstrap() {
 bootstrap();
 ```
 
-> info **Hint** `document` (由`SwaggerModule#createDocument()`方法返回)是一个符合[OpenAPI 文档](https://swagger.io/specification/#openapi-document)的可序列化对象.
+!!! info "**Hint**"
+
+    `document` (由`SwaggerModule#createDocument()`方法返回)是一个符合[OpenAPI 文档](https://swagger.io/specification/#openapi-document)的可序列化对象.
+
 > 除了通过 HTTP 托管它，您还可以将它保存为 JSON/YAML 文件，并以不同的方式使用它。
 
 `DocumentBuilder`有助于构造一个符合 OpenAPI 规范的基础文档。
@@ -73,7 +76,9 @@ $ npm run start
 
 `SwaggerModule` 会自动反映你所有的端点。请注意，根据平台的不同，Swagger UI 可以使用`swagger-ui-express` or `fastify-swagger`创建。
 
-> info **Hint** 要生成和下载 Swagger JSON 文件，请在浏览器中导航到`http://localhost:3000/api-json`(`swagger-ui-express`)或`http://localhost:3000/api/json`(`fastify-swagger`)(假设您的 Swagger 文档在`http://localhost:3000/api`下可用)。
+!!! info "**Hint**"
+
+    要生成和下载 Swagger JSON 文件，请在浏览器中导航到`http://localhost:3000/api-json`(`swagger-ui-express`)或`http://localhost:3000/api/json`(`fastify-swagger`)(假设您的 Swagger 文档在`http://localhost:3000/api`下可用)。
 
 > warning **Warning** 当使用`fastify-swagger`和 `helmet`时，[CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)可能会有一个问题，为了解决这个碰撞，配置 CSP 如下所示:
 >
@@ -95,7 +100,7 @@ $ npm run start
 > });
 > ```
 
-#### 文档选项
+## 文档选项
 
 在创建文档时，可以提供一些额外的选项来微调库的行为。这些选项的类型应该是`SwaggerDocumentOptions`，可以如下:
 
@@ -142,7 +147,7 @@ const options: SwaggerDocumentOptions =  {
 const document = SwaggerModule.createDocument(app, config, options);
 ```
 
-#### 设置选项
+## 设置选项
 
 你可以通过传递实现`ExpressSwaggerCustomOptions`(如果你使用 express)接口的选项对象作为`SwaggerModule#setup`方法的第四个参数来配置 Swagger UI。
 
@@ -182,6 +187,6 @@ const customOptions: SwaggerCustomOptions = {
 SwaggerModule.setup('docs', app, document, customOptions);
 ```
 
-#### 例子
+## 例子
 
 一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/11-swagger).

@@ -1,13 +1,16 @@
-### CLI 插件
+# CLI 插件
 
 TypeScript 的元数据反射系统有几个限制，比如，它不可能确定一个类由哪些属性组成，或者识别一个给定的属性是可选的还是必需的。
 但是，其中一些约束可以在编译时解决。
 Nest 提供了一个增强 TypeScript 编译过程的插件，以减少所需样板代码的数量。
 
-> info **Hint** 这个插件是**opt-in**。
+!!! info "**Hint**"
+
+    这个插件是**opt-in** 。
+
 > 如果愿意，可以手动声明所有的 decorator，或者只在需要它们的地方声明特定的 decorator。
 
-#### 概述
+## 概述
 
 Swagger 插件将自动:
 
@@ -20,7 +23,7 @@ Swagger 插件将自动:
 - 基于注释生成属性和端点的描述(如果`introspeccomments`设置为`true`)
 - 根据注释为属性生成示例值(如果`introspeccomments`设置为`true`)
 
-请注意，你的文件名**必须**以下后缀之一:`['.dto.ts'， '.entity.ts']`(例如，`create-user.dto.ts`)，才能被插件分析。
+请注意，你的文件名 **必须** 以下后缀之一:`['.dto.ts'， '.entity.ts']`(例如，`create-user.dto.ts`)，才能被插件分析。
 
 如果你使用了一个不同的后缀，你可以通过指定`dtoFileNameSuffix`选项来调整插件的行为(见下文)。
 
@@ -56,12 +59,14 @@ export class CreateUserDto {
 }
 ```
 
-该插件根据**抽象语法树**动态添加适当的装饰器。
+该插件根据 **抽象语法树** 动态添加适当的装饰器。
 这样你就不必在代码中纠结于`@ApiProperty`装饰器了。
 
-> info **Hint** 插件会自动生成任何丢失的 swagger 属性，但如果你需要重写它们，你只需通过`@ApiProperty()`显式地设置它们。
+!!! info "**Hint**"
 
-#### 注释内省
+    插件会自动生成任何丢失的 swagger 属性，但如果你需要重写它们，你只需通过`@ApiProperty()`显式地设置它们。
+
+## 注释内省
 
 启用注释内省功能后，CLI 插件将根据注释生成描述和属性示例值。
 
@@ -112,9 +117,11 @@ export class SomeController {
 @ApiOperation({ description: "Create some resource" })
 ```
 
-> info **Hint** 对于模型，同样的逻辑适用于`ApiProperty`装饰器。
+!!! info "**Hint**"
 
-#### 使用 CLI 插件
+    对于模型，同样的逻辑适用于`ApiProperty`装饰器。
+
+## 使用 CLI 插件
 
 要启用插件，打开`nest-cli.json`(如果你使用 [Nest CLI](/cli/overview))，并添加以下`plugins`配置:
 
@@ -201,7 +208,7 @@ getCustomTransformers: (program: any) => ({
 }),
 ```
 
-#### 与`ts-jest`集成(端到端测试)
+## 与`ts-jest`集成(端到端测试)
 
 要运行端到端测试，`ts-jest`会在内存中动态编译源代码文件。
 这意味着，它不使用 Nest CLI 编译器，也不应用任何插件或执行 AST 转换。
@@ -242,7 +249,7 @@ module.exports.factory = (cs) => {
 }
 ```
 
-#### “jest”故障排除(端到端测试)
+## “jest”故障排除(端到端测试)
 
 In case `jest` does not seem to pick up your configuration changes, it's possible that Jest has already **cached** the build result.
 To apply the new configuration, you need to clear Jest's cache directory.

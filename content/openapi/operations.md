@@ -1,8 +1,8 @@
-### 操作
+# 操作
 
 在 OpenAPI 术语中，路径是 API 公开的端点(资源)，如`/users`或`/reports/summary`，操作是用于操作这些路径的 HTTP 方法，如`GET`，` POST`或`DELETE`。
 
-#### 标签
+## 标签
 
 要将一个控制器附加到一个特定的标签，可以使用`@ApiTags(…tags)`装饰器。
 
@@ -12,7 +12,7 @@
 export class CatsController {}
 ```
 
-#### 头
+## 头
 
 要定义作为请求一部分的自定义头文件，请使用`@ApiHeader()`。
 
@@ -25,7 +25,7 @@ export class CatsController {}
 export class CatsController {}
 ```
 
-#### 响应
+## 响应
 
 要定义一个自定义的 HTTP 响应，使用`@ApiResponse()`装饰器。
 
@@ -38,7 +38,7 @@ async create(@Body() createCatDto: CreateCatDto) {
 }
 ```
 
-Nest 提供了一组简短的**API 响应**装饰器，它们继承自`@ApiResponse`装饰器:
+Nest 提供了一组简短的 **API 响应** 装饰器，它们继承自`@ApiResponse`装饰器:
 
 - `@ApiOkResponse()`
 - `@ApiCreatedResponse()`
@@ -113,7 +113,7 @@ export class CatsController {
 
 <figure><img src="/assets/swagger-response-type.png" /></figure>
 
-#### 文件上传
+## 文件上传
 
 你可以使用`@ApiBody`装饰器和`@ApiConsumes()`来启用特定方法的文件上传。
 下面是一个使用[File Upload](/techniques/file-upload)技术的完整示例:
@@ -146,7 +146,7 @@ class FilesUploadDto {
 }
 ```
 
-#### 扩展
+## 扩展
 
 要向请求添加 Extension，请使用`@ApiExtension()`装饰器。
 扩展名必须以`x-`作为前缀。
@@ -155,7 +155,7 @@ class FilesUploadDto {
 @ApiExtension('x-foo', { hello: 'world' })
 ```
 
-#### 高级:通用`ApiResponse`
+## 高级:通用`ApiResponse`
 
 有了提供[Raw Definitions](/openapi/types-and-parameters#raw-definitions)的能力，我们可以为 Swagger UI 定义通用模式。
 假设我们有以下 DTO:
@@ -281,7 +281,9 @@ export const ApiPaginatedResponse = <TModel extends Type<any>>(
 };
 ```
 
-> info **Hint** ` Type<any>`接口和`applyDecorators`函数是从`@nestjs/common`包中导入的。
+!!! info "**Hint**"
+
+    ` Type<any>`接口和`applyDecorators`函数是从`@nestjs/common`包中导入的。
 
 有了这些，我们可以在端点上使用自定义的`@ApiPaginatedResponse()`装饰器:
 
@@ -298,7 +300,7 @@ async findAll(): Promise<PaginatedDto<CatDto>> {}
 findAll(): Observable<{ total: number, limit: number, offset: number, results: CatDto[] }>
 ```
 
-如您所见，这里的**返回类型**是不明确的。
+如您所见，这里的 **返回类型** 是不明确的。
 为了解决这个问题，你可以在`ApiPaginatedResponse`的`schema`中添加一个`title`属性:
 
 ```typescript

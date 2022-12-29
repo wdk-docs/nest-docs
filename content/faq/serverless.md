@@ -1,15 +1,17 @@
-### 毫服务器
+# 毫服务器
 
 无服务器计算是一种云计算执行模型，在该模型中，云提供商按需分配机器资源，代表客户管理服务器。
 当应用不被使用时，该应用将没有计算资源分配给该应用。
 定价是基于应用程序实际消耗的资源数量([source](https://en.wikipedia.org/wiki/Serverless_computing))。
 
-在一个**无服务器架构**中，你只关注应用程序代码中的单个函数。
+在一个 **无服务器架构** 中，你只关注应用程序代码中的单个函数。
 AWS Lambda、谷歌云函数和微软 Azure 函数等服务负责所有物理硬件、虚拟机操作系统和 web 服务器软件管理。
 
-> info **Hint** 本章不讨论无服务器功能的优缺点，也不深入讨论任何云提供商的细节。
+!!! info "**Hint**"
 
-#### 冷启动
+    本章不讨论无服务器功能的优缺点，也不深入讨论任何云提供商的细节。
+
+## 冷启动
 
 冷启动是代码在一段时间内第一次执行。
 根据您使用的云提供商的不同，它可能跨越几个不同的操作，从下载代码和引导运行时到最终运行您的代码。
@@ -18,10 +20,10 @@ AWS Lambda、谷歌云函数和微软 Azure 函数等服务负责所有物理硬
 冷启动很重要，虽然有些事情是我们无法控制的，但我们仍有很多事情可以做，以使它尽可能短。
 
 虽然你可以将 Nest 视为一个成熟的框架，专为复杂的企业应用而设计，
-它也**适用于“更简单”的应用程序**(或脚本)。
+它也 **适用于“更简单”的应用程序** (或脚本)。
 例如，使用[独立应用程序](/standalone-applications)特性，你可以在 simple workers, CRON jobs, CLIs, or serverless functions 中利用 Nest 的 DI 系统。
 
-#### 基准
+## 基准
 
 为了更好地理解在无服务器函数的环境中使用 Nest 或其他众所周知的库(如“express”)的成本，让我们来比较一下 Node 运行时需要运行以下脚本的时间:
 
@@ -75,7 +77,7 @@ For all these scripts, we used the `tsc` (TypeScript) compiler and so the code r
 | Nest (standalone application)        | 0.1117s (111.7ms) |
 | Raw Node.js script                   | 0.0071s (7.1ms)   |
 
-> info **Note** Machine: MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD.
+!!! info **Note** Machine: MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD.
 
 Now, let's repeat all benchmarks but this time, using `webpack` (if you have [Nest CLI](/cli/overview) installed, you can run `nest build --webpack`) to bundle our application into a single executable JavaScript file.
 However, instead of using the default `webpack` configuration that Nest CLI ships with, we'll make sure to bundle all dependencies (`node_modules`) together, as follows:
@@ -109,7 +111,9 @@ module.exports = (options, webpack) => {
 };
 ```
 
-> info **Hint** To instruct Nest CLI to use this configuration, create a new `webpack.config.js` file in the root directory of your project.
+!!! info "**Hint**"
+
+    To instruct Nest CLI to use this configuration, create a new `webpack.config.js` file in the root directory of your project.
 
 With this configuration, we received the following results:
 
@@ -120,9 +124,11 @@ With this configuration, we received the following results:
 | Nest (standalone application)        | 0.0319s (31.9ms) |
 | Raw Node.js script                   | 0.0066s (6.6ms)  |
 
-> info **Note** Machine: MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD.
+!!! info **Note** Machine: MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD.
 
-> info **Hint** You could optimize it even further by applying additional code minification & optimization techniques (using `webpack` plugins, etc.).
+!!! info "**Hint**"
+
+    You could optimize it even further by applying additional code minification & optimization techniques (using `webpack` plugins, etc.).
 
 As you can see, the way you compile (and whether you bundle your code) is crucial and has a significant impact on the overall startup time.
 With `webpack`, you can get the bootstrap time of a standalone Nest application (starter project with one module, controller, and service) down to ~32ms on average, and down to ~81.5ms for a regular HTTP, express-based NestJS app.
@@ -130,7 +136,7 @@ With `webpack`, you can get the bootstrap time of a standalone Nest application 
 For more complicated Nest applications, for example, with 10 resources (generated through `$ nest g resource` schematic = 10 modules, 10 controllers, 10 services, 20 DTO classes, 50 HTTP endpoints + `AppModule`), the overall startup on MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD is approximately 0.1298s (129.8ms).
 Running a monolithic application as a serverless function typically doesn't make too much sense anyway, so think of this benchmark more as an example of how the bootstrap time may potentially increase as your application grows.
 
-#### 运行时优化
+## 运行时优化
 
 Thus far we covered compile-time optimizations.
 These are unrelated to the way you define providers and load Nest modules in your application, and that plays an essential role as your application gets bigger.
@@ -177,7 +183,7 @@ if (workerType === WorkerType.A) {
 }
 ```
 
-#### 示例集成
+## 示例集成
 
 The way your application's entry file (typically `main.ts` file) is supposed to look like **depends on several factors** and so **there's no single template** that just works for every scenario.
 For example, the initialization file required to spin up your serverless function varies by cloud providers (AWS, Azure, GCP, etc.).
@@ -195,7 +201,9 @@ $ npm i @vendia/serverless-express aws-lambda
 $ npm i @types/aws-lambda serverless-offline
 ```
 
-> info **Hint** To speed up development cycles, we install the `serverless-offline` plugin which emulates AWS λ and API Gateway.
+!!! info "**Hint**"
+
+    To speed up development cycles, we install the `serverless-offline` plugin which emulates AWS λ and API Gateway.
 
 Once the installation process is complete, let's create the `serverless.yml` file to configure the Serverless framework:
 
@@ -222,7 +230,9 @@ functions:
           path: '{proxy+}'
 ```
 
-> info **Hint** To learn more about the Serverless framework, visit the [official documentation](https://www.serverless.com/framework/docs/).
+!!! info "**Hint**"
+
+    To learn more about the Serverless framework, visit the [official documentation](https://www.serverless.com/framework/docs/).
 
 With this place, we can now navigate to the `main.ts` file and update our bootstrap code with the required boilerplate:
 
@@ -252,7 +262,9 @@ export const handler: Handler = async (
 };
 ```
 
-> info **Hint** For creating multiple serverless functions and sharing common modules between them, we recommend using the [CLI Monorepo mode](/cli/monorepo#monorepo-mode).
+!!! info "**Hint**"
+
+    For creating multiple serverless functions and sharing common modules between them, we recommend using the [CLI Monorepo mode](/cli/monorepo#monorepo-mode).
 
 > warning **Warning** If you use `@nestjs/swagger` package, there are a few additional steps required to make it work properly in the context of serverless function.
 > Check out this [article](https://javascript.plainenglish.io/serverless-nestjs-document-your-api-with-swagger-and-aws-api-gateway-64a53962e8a2) for more information.
@@ -297,7 +309,7 @@ the rest of the configuration
 
 With this in place, you can now use `$ nest build --webpack` to compile your function's code (and then `$ npx serverless offline` to test it).
 
-#### 使用独立应用程序特性
+## 使用独立应用程序特性
 
 Alternatively, if you want to keep your function very lightweight and you don't need any HTTP-related features (routing, but also guards, interceptors, pipes, etc.),
 you can just use `NestFactory.createApplicationContext` (as mentioned earlier) instead of running the entire HTTP server (and `express` under the hood), as follows:
@@ -325,7 +337,10 @@ export const handler: Handler = async (
 };
 ```
 
-> info **Hint** Be aware that `NestFactory.createApplicationContext` does not wrap controller methods with enhancers (guard, interceptors, etc.).
+!!! info "**Hint**"
+
+    Be aware that `NestFactory.createApplicationContext` does not wrap controller methods with enhancers (guard, interceptors, etc.).
+
 > For this, you must use the `NestFactory.create` method.
 
 You could also pass the `event` object down to, let's say, `EventsService` provider that could process it and return a corresponding value (depending on the input value and your business logic).

@@ -1,4 +1,4 @@
-### CQRS
+# CQRS
 
 The flow of simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (Create, Read, Update and Delete) applications can be described using the following steps:
 
@@ -9,7 +9,7 @@ The flow of simple [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and
 
 In most cases, for small and medium-sized applications, this pattern is sufficient. However, when our requirements become more complex, the **CQRS** model may be more appropriate and scalable. To facilitate that model, Nest provides a lightweight [CQRS module](https://github.com/nestjs/cqrs). This chapter describes how to use it.
 
-#### Installation
+## Installation
 
 First install the required package:
 
@@ -17,9 +17,9 @@ First install the required package:
 $ npm install --save @nestjs/cqrs
 ```
 
-#### Commands
+## Commands
 
-In this model, each action is called a **Command**. When a command is dispatched, the application reacts to it. Commands can be dispatched from the services layer, or directly from controllers/gateways. Commands are consumed by **Command Handlers**.
+In this model, each action is called a **Command**. When a command is dispatched, the application reacts to it. Commands can be dispatched from the services layer, or directly from controllers/gateways. Commands are consumed by **Command Handlers** .
 
 ```typescript
 @@filename(heroes-game.service)
@@ -68,7 +68,7 @@ export class KillDragonCommand {
 }
 ```
 
-The `CommandBus` is a **stream** of commands. It delegates commands to the equivalent handlers. Each command must have a corresponding **Command Handler**:
+The `CommandBus` is a **stream** of commands. It delegates commands to the equivalent handlers. Each command must have a corresponding **Command Handler** :
 
 ```typescript
 @@filename(kill-dragon.handler)
@@ -102,11 +102,11 @@ export class KillDragonHandler {
 }
 ```
 
-With this approach, every application state change is driven by the occurrence of a **Command**. The logic is encapsulated in handlers. With this approach, we can simply add behavior like logging or persisting commands in the database (e.g., for diagnostics purposes).
+With this approach, every application state change is driven by the occurrence of a **Command** . The logic is encapsulated in handlers. With this approach, we can simply add behavior like logging or persisting commands in the database (e.g., for diagnostics purposes).
 
-#### Events
+## Events
 
-Command handlers neatly encapsulate logic. While beneficial, the application structure is still not flexible enough, not **reactive**. To remedy this, we also introduce **events**.
+Command handlers neatly encapsulate logic. While beneficial, the application structure is still not flexible enough, not **reactive**. To remedy this, we also introduce **events** .
 
 ```typescript
 @@filename(hero-killed-dragon.event)
@@ -206,9 +206,11 @@ Now the model has the ability to publish events. Additionally, we can emit event
 this.eventBus.publish(new HeroKilledDragonEvent());
 ```
 
-> info **Hint** The `EventBus` is an injectable class.
+!!! info "**Hint**"
 
-Each event can have multiple **Event Handlers**.
+    The `EventBus` is an injectable class.
+
+Each event can have multiple **Event Handlers** .
 
 ```typescript
 @@filename(hero-killed-dragon.handler)
@@ -224,11 +226,11 @@ export class HeroKilledDragonHandler implements IEventHandler<HeroKilledDragonEv
 
 Now we can move the **write logic** into the event handlers.
 
-#### Sagas
+## Sagas
 
 This type of **Event-Driven Architecture** improves application **reactiveness and scalability**. Now, when we have events, we can simply react to them in various ways. **Sagas** are the final building block from an architectural point of view.
 
-Sagas are an extremely powerful feature. A single saga may listen for 1..\* events. Using the [RxJS](https://github.com/ReactiveX/rxjs) library, it can combine, merge, filter or apply other `RxJS` operators on the event stream. Each saga returns an Observable which contains a command. This command is dispatched **asynchronously**.
+Sagas are an extremely powerful feature. A single saga may listen for 1..\* events. Using the [RxJS](https://github.com/ReactiveX/rxjs) library, it can combine, merge, filter or apply other `RxJS` operators on the event stream. Each saga returns an Observable which contains a command. This command is dispatched **asynchronously** .
 
 ```typescript
 @@filename(heroes-game.saga)
@@ -255,15 +257,17 @@ export class HeroesGameSagas {
 }
 ```
 
-> info **Hint** The `ofType` operator is exported from the `@nestjs/cqrs` package.
+!!! info "**Hint**"
+
+    The `ofType` operator is exported from the `@nestjs/cqrs` package.
 
 We declared a rule - when any hero kills the dragon, the ancient item should be dropped. With this in place, `DropAncientItemCommand` will be dispatched and processed by the appropriate handler.
 
-#### Queries
+## Queries
 
 The `CqrsModule` can also be used for handling queries. The `QueryBus` follows the same pattern as the `CommandsBus`. Query handlers should implement the `IQueryHandler` interface and be marked with the `@QueryHandler()` decorator.
 
-#### Setup
+## Setup
 
 Finally, let's look at how to set up the whole CQRS mechanism.
 
@@ -286,10 +290,10 @@ export const EventHandlers =  [HeroKilledDragonHandler, HeroFoundItemHandler];
 export class HeroesGameModule {}
 ```
 
-#### Summary
+## Summary
 
-`CommandBus`, `QueryBus` and `EventBus` are **Observables**. This means that you can easily subscribe to the whole stream and enrich your application with **Event Sourcing**.
+`CommandBus`, `QueryBus` and `EventBus` are **Observables**. This means that you can easily subscribe to the whole stream and enrich your application with **Event Sourcing** .
 
-#### Example
+## Example
 
 A working example is available [here](https://github.com/kamilmysliwiec/nest-cqrs-example).

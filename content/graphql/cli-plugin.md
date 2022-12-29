@@ -1,12 +1,14 @@
-### CLI Plugin
+# CLI Plugin
 
 > warning **Warning** This chapter applies only to the code first approach.
 
 TypeScript's metadata reflection system has several limitations which make it impossible to, for instance, determine what properties a class consists of or recognize whether a given property is optional or required. However, some of these constraints can be addressed at compilation time. Nest provides a plugin that enhances the TypeScript compilation process to reduce the amount of boilerplate code required.
 
-> info **Hint** This plugin is **opt-in**. If you prefer, you can declare all decorators manually, or only specific decorators where you need them.
+!!! info "**Hint**"
 
-#### Overview
+    This plugin is **opt-in** . If you prefer, you can declare all decorators manually, or only specific decorators where you need them.
+
+## Overview
 
 The GraphQL plugin will automatically:
 
@@ -53,11 +55,13 @@ export class Author {
 }
 ```
 
-The plugin adds appropriate decorators on-the-fly based on the **Abstract Syntax Tree**. Thus, you won't have to struggle with `@Field` decorators scattered throughout the code.
+The plugin adds appropriate decorators on-the-fly based on the **Abstract Syntax Tree** . Thus, you won't have to struggle with `@Field` decorators scattered throughout the code.
 
-> info **Hint** The plugin will automatically generate any missing GraphQL properties, but if you need to override them, simply set them explicitly via `@Field()`.
+!!! info "**Hint**"
 
-#### Comments introspection
+    The plugin will automatically generate any missing GraphQL properties, but if you need to override them, simply set them explicitly via `@Field()`.
+
+## Comments introspection
 
 With the comments introspection feature enabled, CLI plugin will generate descriptions for fields based on comments.
 
@@ -82,7 +86,7 @@ You must duplicate description values. With `introspectComments` enabled, the CL
 roles: string[];
 ```
 
-#### Using the CLI plugin
+## Using the CLI plugin
 
 To enable the plugin, open `nest-cli.json` (if you use [Nest CLI](/cli/overview)) and add the following `plugins` configuration:
 
@@ -145,7 +149,7 @@ getCustomTransformers: (program: any) => ({
 }),
 ```
 
-#### Integration with `ts-jest` (e2e tests)
+## Integration with `ts-jest` (e2e tests)
 
 When running e2e tests with this plugin enabled, you may run into issues with compiling schema. For example, one of the most common errors is:
 

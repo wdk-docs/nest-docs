@@ -1,15 +1,18 @@
-### 延迟加载模块
+# 延迟加载模块
 
 默认情况下，模块是主动加载的，这意味着只要应用程序加载，所有模块也都加载，不管它们是否立即需要。
-虽然这对大多数应用来说是可以的，但它可能成为在**无服务器环境**中运行的应用/工作者的瓶颈，在那里启动延迟(“冷启动”)是至关重要的。
+虽然这对大多数应用来说是可以的，但它可能成为在 **无服务器环境** 中运行的应用/工作者的瓶颈，在那里启动延迟(“冷启动”)是至关重要的。
 
 Lazy loading can help decrease bootstrap time by loading only modules required by the specific serverless function invocation.
 In addition, you could also load other modules asynchronously once the serverless function is "warm" to speed-up the bootstrap time for subsequent calls even further (deferred modules registration).
 
-> info **Hint** If you're familiar with the **Angular** framework, you might have seen the "lazy-loading modules" term before.
+!!! info "**Hint**"
+
+    If you're familiar with the **Angular** framework, you might have seen the "lazy-loading modules" term before.
+
 > Be aware that this technique is **functionally different** in Nest and so think about this as an entirely different feature that shares similar naming conventions.
 
-#### Getting started
+## Getting started
 
 To load modules on-demand, Nest provides the `LazyModuleLoader` class that can be injected into a class in the normal way:
 
@@ -29,7 +32,9 @@ export class CatsService {
 }
 ```
 
-> info **Hint** The `LazyModuleLoader` class is imported from the `@nestjs/core` package.
+!!! info "**Hint**"
+
+    The `LazyModuleLoader` class is imported from the `@nestjs/core` package.
 
 Alternatively, you can obtain a reference to the `LazyModuleLoader` provider from within your application bootstrap file (`main.ts`), as follows:
 
@@ -45,7 +50,10 @@ const { LazyModule } = await import('./lazy.module');
 const moduleRef = await this.lazyModuleLoader.load(() => LazyModule);
 ```
 
-> info **Hint** "Lazy-loaded" modules are **cached** upon the first `LazyModuleLoader#load` method invocation.
+!!! info "**Hint**"
+
+    "Lazy-loaded" modules are **cached** upon the first `LazyModuleLoader#load` method invocation.
+
 > That means, each consecutive attempt to load `LazyModule` will be **very fast** and will return a cached instance, instead of loading the module again.
 >
 > ```bash
@@ -73,7 +81,10 @@ For example, let's say we have a `LazyModule` with the following definition:
 export class LazyModule {}
 ```
 
-> info **Hint** Lazy-loaded modules cannot be registered as **global modules** as it simply makes no sense (since they are registered lazily, on-demand when all the statically registered modules have been already instantiated).
+!!! info "**Hint**"
+
+    Lazy-loaded modules cannot be registered as **global modules** as it simply makes no sense (since they are registered lazily, on-demand when all the statically registered modules have been already instantiated).
+
 > Likewise, registered **global enhancers** (guards/interceptors/etc.) **will not work** properly either.
 
 With this, we could obtain a reference to the `LazyService` provider, as follows:
@@ -86,7 +97,7 @@ const { LazyService } = await import('./lazy.service');
 const lazyService = moduleRef.get(LazyService);
 ```
 
-> warning **Warning** If you use **Webpack**, make sure to update your `tsconfig.json` file - setting `compilerOptions.module` to `"esnext"` and adding `compilerOptions.moduleResolution` property with `"node"` as a value:
+> warning **Warning** If you use **Webpack** , make sure to update your `tsconfig.json` file - setting `compilerOptions.module` to `"esnext"` and adding `compilerOptions.moduleResolution` property with `"node"` as a value:
 >
 > ```json
 > {
@@ -100,7 +111,7 @@ const lazyService = moduleRef.get(LazyService);
 >
 > With these options set up, you'll be able to leverage the [code splitting](https://webpack.js.org/guides/code-splitting/) feature.
 
-#### Lazy-loading controllers, gateways, and resolvers
+## Lazy-loading controllers, gateways, and resolvers
 
 Since controllers (or resolvers in GraphQL applications) in Nest represent sets of routes/paths/topics (or queries/mutations), you **cannot lazy load them** using the `LazyModuleLoader` class.
 
@@ -118,7 +129,7 @@ Lastly, the `@nestjs/graphql` package with the code first approach enabled autom
 That means, it requires all classes to be loaded beforehand.
 Otherwise, it would not be doable to create the appropriate, valid schema.
 
-#### Common use-cases
+## Common use-cases
 
 Most commonly, you will see lazy loaded modules in situations when your worker/cron job/lambda & serverless function/webhook must trigger different services (different logic) based on the input arguments (route path/date/query parameters, etc.).
 On the other hand, lazy-loading modules may not make too much sense for monolithic applications, where the startup time is rather irrelevant.

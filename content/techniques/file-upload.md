@@ -1,4 +1,4 @@
-### 文件上传
+# 文件上传
 
 为了处理文件上传，Nest 基于 Express 的[multer](https://github.com/expressjs/multer)中间件包提供了一个内置模块。
 Multer 处理以`multipart/form-data`格式发布的数据，该格式主要用于通过 HTTP`POST`请求上传文件。  
@@ -15,7 +15,7 @@ $ npm i -D @types/multer
 
 安装了这个包后，我们现在可以使用 `Express.Multer.File` 类型 (您可以如下方式导入该类型: `import {{ '{' }} Express {{ '}' }} from 'express'`).
 
-#### 基本的例子
+## 基本的例子
 
 要上传单个文件，只需将`FileInterceptor()`拦截器绑定到路由处理程序上，然后使用`@UploadedFile()`装饰器从`request`中提取 `file` 。
 
@@ -35,7 +35,10 @@ uploadFile(file) {
 }
 ```
 
-> info **Hint** `FileInterceptor()`装饰器是从`@nestjs/platform-express`包导出的。
+!!! info "**Hint**"
+
+    `FileInterceptor()`装饰器是从`@nestjs/platform-express`包导出的。
+
 > `@UploadedFile()`装饰器是从`@nestjs/common`导出的。
 
 `FileInterceptor()`装饰器有两个参数:
@@ -46,9 +49,9 @@ uploadFile(file) {
 
 > warning **Warning** `FileInterceptor()`可能不兼容第三方云提供商，如谷歌 Firebase 或其他。
 
-#### 文件数组
+## 文件数组
 
-要上传一个文件数组(用一个字段名标识)，使用`FilesInterceptor()`装饰器(注意装饰器名称中的复数**Files**)。
+要上传一个文件数组(用一个字段名标识)，使用`FilesInterceptor()`装饰器(注意装饰器名称中的复数 **Files** )。
 这个装饰器有三个参数:
 
 - `fieldName`: 如上所述
@@ -73,10 +76,13 @@ uploadFile(files) {
 }
 ```
 
-> info **Hint** `FilesInterceptor()`装饰器是从`@nestjs/platform-express`包中导出的。
+!!! info "**Hint**"
+
+    `FilesInterceptor()`装饰器是从`@nestjs/platform-express`包中导出的。
+
 > `@UploadedFiles()`装饰器是从`@nestjs/common`导出的。
 
-#### 多个文件
+## 多个文件
 
 要上传多个字段(都有不同的字段名键)，请使用`FileFieldsInterceptor()`装饰器。
 这个装饰器有两个参数:
@@ -108,7 +114,7 @@ uploadFile(files) {
 }
 ```
 
-#### 任何文件
+## 任何文件
 
 要上传带有任意字段名键的所有字段，请使用`AnyFilesInterceptor()`装饰器。
 这个装饰器可以接受一个可选的`options`对象，如上所述。
@@ -131,7 +137,7 @@ uploadFile(files) {
 }
 ```
 
-#### 默认选项
+## 默认选项
 
 您可以在上面描述的文件拦截器中指定多个选项。
 要设置默认选项，你可以在导入`MulterModule`时调用静态的`register()`方法，传入支持的选项。
@@ -143,9 +149,11 @@ MulterModule.register({
 });
 ```
 
-> info **Hint** `MulterModule`类是从`@nestjs/platform-express`包中导出的。
+!!! info "**Hint**"
 
-#### 异步的配置
+    `MulterModule`类是从`@nestjs/platform-express`包中导出的。
+
+## 异步的配置
 
 当你需要异步而不是静态地设置 `MulterModule` 选项时，使用 `registerAsync()` 方法。
 与大多数动态模块一样，Nest 提供了几种技术来处理异步配置。
@@ -204,6 +212,6 @@ MulterModule.registerAsync({
 });
 ```
 
-#### 例子
+## 例子
 
 一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/29-file-upload).

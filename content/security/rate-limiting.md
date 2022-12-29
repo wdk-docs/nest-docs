@@ -1,4 +1,4 @@
-### 速度限制
+# 速度限制
 
 保护应用程序免受蛮力攻击的一种常见技术是限速。
 首先，你需要安装`@nestjs/throttler`包。
@@ -34,7 +34,7 @@ export class AppModule {}
 }
 ```
 
-#### 定制
+## 定制
 
 There may be a time where you want to bind the guard to a controller or globally, but want to disable rate limiting for one or more of your endpoints.
 For that, you can use the `@SkipThrottle()` decorator, to negate the throttler for an entire class or a single route.
@@ -44,7 +44,7 @@ There is also the `@Throttle()` decorator which can be used to override the `lim
 This decorator can be used on a class or a function as well.
 The order for this decorator does matter, as the arguments are in the order of `limit, ttl`.
 
-#### 代理
+## 代理
 
 如果您的应用程序运行在代理服务器后面，请检查特定的 HTTP 适配器选项([express](http://expressjs.com/en/guide/behind-proxies.html)和[fastify](https://www.fastify.io/docs/latest/Server/#trustproxy))以获取“信任代理”选项并启用它。
 这样做将允许你从`X-Forward-For`头获取原始 IP 地址，你可以重写`getTracker()`方法来从头而不是从`req.ip`获取值。
@@ -68,9 +68,11 @@ import { ThrottlerBehindProxyGuard } from './throttler-behind-proxy.guard';
 @UseGuards(ThrottlerBehindProxyGuard)
 ```
 
-> info **Hint** You can find the API of the `req` Request object for express [here](https://expressjs.com/en/api.html#req.ips) and for fastify [here](https://www.fastify.io/docs/latest/Request/).
+!!! info "**Hint**"
 
-#### Websockets
+    You can find the API of the `req` Request object for express [here](https://expressjs.com/en/api.html#req.ips) and for fastify [here](https://www.fastify.io/docs/latest/Request/).
+
+## Websockets
 
 这个模块可以使用 websockets，但它需要一些类扩展。
 你可以像这样扩展`ThrottlerGuard`并覆盖`handleRequest`方法:
@@ -98,9 +100,11 @@ export class WsThrottlerGuard extends ThrottlerGuard {
 }
 ```
 
-> info **Hint** 如果你正在使用`@nestjs/platform-ws` 包，你可以使用`client._socket.remoteAddress`代替。
+!!! info "**Hint**"
 
-#### GraphQL
+    如果你正在使用`@nestjs/platform-ws` 包，你可以使用`client._socket.remoteAddress`代替。
+
+## GraphQL
 
 The `ThrottlerGuard` can also be used to work with GraphQL requests.
 Again, the guard can be extended, but this time the `getRequestResponse` method will be overridden
@@ -116,7 +120,7 @@ export class GqlThrottlerGuard extends ThrottlerGuard {
 }
 ```
 
-#### 配置
+## 配置
 
 The following options are valid for the `ThrottlerModule`:
 
@@ -139,7 +143,7 @@ The following options are valid for the `ThrottlerModule`:
   </tr>
 </table>
 
-#### 异步配置
+## 异步配置
 
 You may want to get your rate-limiting configuration asynchronously instead of synchronously.
 You can use the `forRootAsync()` method, which allows for dependency injection and `async` methods.
@@ -178,11 +182,11 @@ export class AppModule {}
 
 这是可行的，只要`ThrottlerConfigService`实现接口`ThrottlerOptionsFactory`。
 
-#### 存储
+## 存储
 
 内建存储是一个内存缓存，它跟踪请求，直到它们传递了由全局选项设置的 TTL。
 你可以把你自己的存储选项放到`ThrottlerModule`的`storage`选项中，只要这个类实现了`ThrottlerStorage`接口。
 
 对于分布式服务器，你可以使用社区存储提供商[Redis](https://github.com/kkoomen/nestjs-throttler-storage-redis)来获得单一的真相来源。
 
-> info **Note** `ThrottlerStorage`可以从`@nestjs/throttler`中导入。
+!!! info **Note** `ThrottlerStorage`可以从`@nestjs/throttler`中导入。

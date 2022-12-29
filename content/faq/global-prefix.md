@@ -1,6 +1,6 @@
-### 全局前缀
+# 全局前缀
 
-使用 INestApplication 实例的 `setGlobalPrefix()` 方法为 HTTP 应用中注册的**每个路由**设置前缀。
+使用 INestApplication 实例的 `setGlobalPrefix()` 方法为 HTTP 应用中注册的 **每个路由** 设置前缀。
 
 ```typescript
 const app = await NestFactory.create(AppModule);

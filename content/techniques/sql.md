@@ -1,15 +1,15 @@
-### 数据库
+# 数据库
 
 Nest 与数据库无关，允许您轻松地与任何 SQL 或 NoSQL 数据库集成。
 根据您的偏好，您有许多可供选择的选项。
 在最一般的层面上，连接 Nest 到数据库只是一个简单的问题，为数据库加载一个合适的 Node.js 驱动程序，就像你使用[Express](https://expressjs.com/en/guide/database-integration.html)或 fasttify 一样。
 
-你也可以直接使用任何通用的 Node.js 数据库集成**库**或 ORM, such as [MikroORM](https://mikro-orm.io/) also check the [recipe here](/recipes/mikroorm), [Sequelize](https://sequelize.org/) (navigate to the [Sequelize integration](/techniques/database#sequelize-integration) section), [Knex.js](https://knexjs.org/) ([tutorial](https://dev.to/nestjs/build-a-nestjs-module-for-knex-js-or-other-resource-based-libraries-in-5-minutes-12an)), [TypeORM](https://github.com/typeorm/typeorm), and [Prisma](https://www.github.com/prisma/prisma) ([recipe](/recipes/prisma)) , 以在更高的抽象级别上操作。
+你也可以直接使用任何通用的 Node.js 数据库集成 **库** 或 ORM, such as [MikroORM](https://mikro-orm.io/) also check the [recipe here](/recipes/mikroorm), [Sequelize](https://sequelize.org/) (navigate to the [Sequelize integration](/techniques/database#sequelize-integration) section), [Knex.js](https://knexjs.org/) ([tutorial](https://dev.to/nestjs/build-a-nestjs-module-for-knex-js-or-other-resource-based-libraries-in-5-minutes-12an)), [TypeORM](https://github.com/typeorm/typeorm), and [Prisma](https://www.github.com/prisma/prisma) ([recipe](/recipes/prisma)) , 以在更高的抽象级别上操作。
 
 为了方便起见，Nest 提供了与 TypeORM 和 Sequelize 的紧密集成，它们分别是`@nestjs/typeorm`和`@nestjs/sequelize`包，我们将在本章中介绍，而 Mongoose 与`@nestjs/mongoose`包，这在[本章](/techniques/mongodb)中介绍。
 这些集成提供了额外的特定于 `nestjs` 的特性，例如模型/存储库注入、可测试性和异步配置，使访问您选择的数据库更加容易。
 
-### TypeORM 集成
+## TypeORM 集成
 
 为了集成 SQL 和 NoSQL 数据库，Nest 提供了`@nestjs/typeform`包。
 Nest 使用[TypeORM](https://github.com/typeorm/typeorm)是因为它是 TypeScript 可用的最成熟的对象关系映射器(Object Relational Mapper, ORM)。
@@ -72,7 +72,9 @@ export class AppModule {}
   </tr>
 </table>
 
-> info **Hint** 有关连接选项的更多信息[这里](https://typeorm.io/#/connection-options)。
+!!! info "**Hint**"
+
+    有关连接选项的更多信息[这里](https://typeorm.io/#/connection-options)。
 
 或者，不需要将配置对象传递给`forRoot()`，我们可以在项目根目录创建一个`ormconfig.json`文件。
 
@@ -102,9 +104,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 export class AppModule {}
 ```
 
-> warning **Warning** 静态的 glob 路径(e.g., `dist/**/*.entity{{ '{' }} .ts,.js{{ '}' }}`)不会正常工作[webpack](https://webpack.js.org/).
+> warning **Warning** 静态的 glob 路径(e.g., `dist/** /*.entity{{ '{' }} .ts,.js{{ '}' }}`)不会正常工作[webpack](https://webpack.js.org/).
 
-> info **Hint** 注意`ormconfig.json` 文件是由`typeform`库加载的。
+!!! info "**Hint**"
+
+    注意`ormconfig.json` 文件是由`typeform`库加载的。
+
 > 因此，上面描述的任何额外属性(通过内部的`forRoot()`方法支持-例如，`autoLoadEntities`和`retryDelay`)将不会被应用。
 > 幸运的是，TypeORM 提供了[`getConnectionOptions`](https://typeorm.io/#/using-ormconfig/overriding-options-defined-in-ormconfig)函数，该函数从`ormconfig`文件或环境变量中读取连接选项。
 > 这样，你仍然可以使用配置文件并设置特定于 nest 的选项，如下所示:
@@ -144,9 +149,9 @@ export class AppModule {
 }
 ```
 
-#### 库模式
+## 库模式
 
-[TypeORM](https://github.com/typeorm/typeorm)支持**库设计模式**，因此每个实体都有自己的库。
+[TypeORM](https://github.com/typeorm/typeorm)支持 **库设计模式** ，因此每个实体都有自己的库。
 这些存储库可以从数据库连接中获得。
 
 为了继续这个例子，我们至少需要一个实体。
@@ -172,11 +177,13 @@ export class User {
 }
 ```
 
-> info **Hint** 关于实体的更多信息，请参阅[TypeORM 文档](https://typeorm.io/#/entities)。
+!!! info "**Hint**"
+
+    关于实体的更多信息，请参阅[TypeORM 文档](https://typeorm.io/#/entities)。
 
 `User`实体文件位于`users`目录中。
 这个目录包含所有与`UsersModule`相关的文件。
-你可以决定在哪里保存你的模型文件，然而，我们建议在它们的**域**附近创建它们，在相应的模块目录中。
+你可以决定在哪里保存你的模型文件，然而，我们建议在它们的 **域** 附近创建它们，在相应的模块目录中。
 
 为了开始使用`User`实体，我们需要将它插入到模块的`forRoot()`方法选项中的`entities`数组中，让 TypeORM 知道它(除非你使用一个静态的 glob 路径):
 
@@ -311,7 +318,7 @@ import { UsersController } from './users.controller';
 export class UserHttpModule {}
 ```
 
-#### 关系
+## 关系
 
 关系是在两个或多个表之间建立的关联。
 关系基于每个表的公共字段，通常涉及主键和外键。
@@ -333,7 +340,7 @@ export class UserHttpModule {}
   </tr>
 </table>
 
-要定义实体中的关系，请使用相应的**装饰器**。
+要定义实体中的关系，请使用相应的 **装饰器** 。
 例如，要定义每个`User`可以有多个照片，请使用`@OneToMany()`装饰器。
 
 ```typescript
@@ -360,9 +367,11 @@ export class User {
 }
 ```
 
-> info **Hint** 要了解 TypeORM 中的更多关系，请访问[TypeORM 文档](https://typeorm.io/#/relations)。
+!!! info "**Hint**"
 
-#### 自动加载实体
+    要了解 TypeORM 中的更多关系，请访问[TypeORM 文档](https://typeorm.io/#/relations)。
+
+## 自动加载实体
 
 手动添加实体到连接选项的`entities`数组中可能很繁琐。
 此外，从根模块引用实体会打破应用程序域边界，并导致实现细节泄露到应用程序的其他部分。
@@ -392,7 +401,7 @@ export class AppModule {}
 
 > warning **Warning** 请注意，没有通过`forFeature()`方法注册的实体，但仅从实体引用(通过关系)，将不包括在`autoLoadEntities`设置的方式。
 
-#### 分离的实体定义
+## 分离的实体定义
 
 您可以使用装饰器在模型中直接定义实体及其列。
 但是有些人喜欢使用[`实体模式`](https://typeorm.io/#/separating-entity-definition)在单独的文件中定义实体和它们的列。
@@ -450,7 +459,7 @@ import { UsersService } from './users.service';
 export class UsersModule {}
 ```
 
-#### 事务
+## 事务
 
 数据库事务代表在数据库管理系统中针对数据库执行的工作单元，并以独立于其他事务的一致和可靠的方式处理。
 事务通常代表数据库中的任何变化([了解更多信息](https://en.wikipedia.org/wiki/Database_transaction))。
@@ -467,7 +476,9 @@ export class UsersService {
 }
 ```
 
-> info **Hint** Connection 类是从 type 包中导入的。
+!!! info "**Hint**"
+
+    Connection 类是从 type 包中导入的。
 
 现在，我们可以使用这个对象来创建事务。
 
@@ -492,7 +503,10 @@ async createMany(users: User[]) {
 }
 ```
 
-> info **Hint** 注意`connection`仅用于创建`QueryRunner`。
+!!! info "**Hint**"
+
+    注意`connection`仅用于创建`QueryRunner`。
+
 > 但是，要测试这个类，需要模拟整个`Connection`对象(它公开了几个方法)。
 > 因此，我们建议使用一个助手工厂类(例如，`QueryRunnerFactory`)，并定义一个接口，该接口包含一组维护事务所需的有限方法。
 > 这种技术使得模仿这些方法非常简单。
@@ -510,7 +524,7 @@ async createMany(users: User[]) {
 
 不建议使用装饰器来控制事务(`@Transaction()`和`@TransactionManager()`)。
 
-#### 订阅者
+## 订阅者
 
 使用 TypeORM[订阅者](https://typeorm.io/#/listeners-and-subscribers/what-is-a-subscriber)，您可以监听特定的实体事件。
 
@@ -559,9 +573,11 @@ import { UserSubscriber } from './user.subscriber';
 export class UsersModule {}
 ```
 
-> info **Hint** 了解更多实体订阅者[此处](https://typeorm.io/#/listeners-and-subscribers/what-is-a-subscriber).
+!!! info "**Hint**"
 
-#### 迁移
+    了解更多实体订阅者[此处](https://typeorm.io/#/listeners-and-subscribers/what-is-a-subscriber).
+
+## 迁移
 
 [Migrations](https://typeorm.io/#/migrations)提供了一种方法来增量地更新数据库模式，使其与应用程序的数据模型保持同步，同时保留数据库中的现有数据。
 为了生成、运行和恢复迁移，TypeORM 提供了一个专用的[CLI](https://typeorm.io/#/migrations/creating-a-new-migration).
@@ -571,12 +587,12 @@ export class UsersModule {}
 因此，您不能通过迁移来利用依赖注入和其他 Nest 特定的特性。
 要了解更多关于迁移的信息，请参考[TypeORM 文档](https://typeorm.io/#/migrations/creating-a-new-migration)中的指南。
 
-#### 多个数据库
+## 多个数据库
 
 有些项目需要多个数据库连接。
 这也可以通过这个模块实现。
 要处理多个连接，首先要创建连接。
-在这种情况下，连接命名成为**必须的**。
+在这种情况下，连接命名成为 **必须的** 。
 
 假设您有一个`Album`实体存储在自己的数据库中。
 
@@ -656,7 +672,7 @@ export class AlbumsService {
 export class AlbumsModule {}
 ```
 
-#### 测试
+## 测试
 
 当涉及到应用程序的单元测试时，我们通常希望避免建立数据库连接，保持测试套件的独立性，并尽可能快地执行它们。
 但是我们的类可能依赖于从连接实例中提取的存储库。
@@ -682,7 +698,7 @@ export class UsersModule {}
 现在，将使用一个替代的`mockRepository`作为`UsersRepository`。
 每当任何类使用`@InjectRepository()`装饰器请求`UsersRepository`时，Nest 就会使用注册的`mockRepository`对象。
 
-#### 自定义库
+## 自定义库
 
 TypeORM 提供了一个叫做自定义库的特性。
 自定义存储库允许您扩展基存储库类，并使用几个特殊的方法充实它。
@@ -695,7 +711,9 @@ TypeORM 提供了一个叫做自定义库的特性。
 export class AuthorRepository extends Repository<Author> {}
 ```
 
-> info **Hint** `@EntityRepository()`和`Repository`都是从`typeform`包中导入的。
+!!! info "**Hint**"
+
+    `@EntityRepository()`和`Repository`都是从`typeform`包中导入的。
 
 一旦创建了类，下一步就是将实例化责任委托给 Nest。
 为此，我们必须将`AuthorRepository`类传递给`TypeOrm.forFeature()`方法。
@@ -718,7 +736,7 @@ export class AuthorService {
 }
 ```
 
-#### 异步的配置
+## 异步的配置
 
 您可能希望异步传递存储库模块选项，而不是静态传递。
 在这种情况下，使用`forRootAsync()`方法，它提供了几种处理异步配置的方法。
@@ -799,10 +817,13 @@ TypeOrmModule.forRootAsync({
 
 这个构造的工作原理与`useClass`相同，但有一个关键的区别——`TypeOrmModule`将查找导入的模块来重用现有的`ConfigService`，而不是实例化一个新的。
 
-> info **Hint** 确保`name`属性与`useFactory`、`useClass`或`useValue`属性定义在同一级别。
+!!! info "**Hint**"
+
+    确保`name`属性与`useFactory`、`useClass`或`useValue`属性定义在同一级别。
+
 > 这将允许 Nest 在适当的注入令牌下正确地注册连接。
 
-#### 自定义连接工厂
+## 自定义连接工厂
 
 在使用`useFactory`， `useClass`，或`useExisting`的 async 配置中，你可以选择指定一个`connectionFactory`函数，它将允许你提供自己的 TypeORM 连接，而不是允许`TypeOrmModule`来创建连接。
 
@@ -833,13 +854,15 @@ TypeOrmModule.forRootAsync({
 });
 ```
 
-> info **Hint** `createConnection`函数是从`typeform`包中导入的。
+!!! info "**Hint**"
 
-#### 例子
+    `createConnection`函数是从`typeform`包中导入的。
+
+## 例子
 
 一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/05-sql-typeorm).
 
-### Sequelize 集成
+# Sequelize 集成
 
 使用 TypeORM 的另一个选择是使用[Sequelize](https://sequelize.org/) ORM 和`@nestjs/sequelize`包。
 此外，我们还利用了[sequelize-typescript](https://github.com/RobinBuschmann/sequelize-typescript)包，它提供了一组额外的装饰器来声明性地定义实体。
@@ -927,7 +950,7 @@ export class AppService {
 }
 ```
 
-#### 模型
+## 模型
 
 `Sequelize` 实现活动记录模式。
 使用这个模式，您可以直接使用模型类与数据库交互。
@@ -951,11 +974,13 @@ export class User extends Model {
 }
 ```
 
-> info **Hint** 了解更多可用的 decorator[这里](https://github.com/RobinBuschmann/sequelize-typescript#column).
+!!! info "**Hint**"
+
+    了解更多可用的 decorator[这里](https://github.com/RobinBuschmann/sequelize-typescript#column).
 
 `User`模型文件位于`users`目录中。
 这个目录包含所有与`UsersModule`相关的文件。
-你可以决定在哪里保存你的模型文件，然而，我们建议在它们的**域**附近创建它们，在相应的模块目录中。
+你可以决定在哪里保存你的模型文件，然而，我们建议在它们的 **域** 附近创建它们，在相应的模块目录中。
 
 为了开始使用“User”模型，我们需要把它插入到模块的“forRoot()”方法选项中的“models”数组中，让 Sequelize 知道它:
 
@@ -1098,7 +1123,7 @@ import { UsersController } from './users.controller';
 export class UserHttpModule {}
 ```
 
-#### 关系
+## 关系
 
 关系是在两个或多个表之间建立的关联。
 关系基于每个表的公共字段，通常涉及主键和外键。
@@ -1120,7 +1145,7 @@ export class UserHttpModule {}
   </tr>
 </table>
 
-要定义实体中的关系，请使用相应的**装饰器**。
+要定义实体中的关系，请使用相应的 **装饰器** 。
 例如，要定义每个`User`可以有多个照片，请使用`@HasMany()`装饰器。
 
 ```typescript
@@ -1144,9 +1169,11 @@ export class User extends Model {
 }
 ```
 
-> info **Hint** 要在 Sequelize 中了解更多有关关联的信息，请阅读[this](https://github.com/RobinBuschmann/sequelize-typescript#model-association)这一章。
+!!! info "**Hint**"
 
-#### 自动负载模型
+    要在 Sequelize 中了解更多有关关联的信息，请阅读[this](https://github.com/RobinBuschmann/sequelize-typescript#model-association)这一章。
+
+## 自动负载模型
 
 手动添加模型到连接选项的`models`数组中可能会很繁琐。
 此外，从根模块引用模型会打破应用程序域边界，并导致实现细节泄露到应用程序的其他部分。
@@ -1173,7 +1200,7 @@ export class AppModule {}
 
 > warning **Warning** 请注意，没有通过`forFeature()`方法注册的模型，但仅从模型引用(通过关联)，将不包括在内。
 
-#### 事务
+## 事务
 
 数据库事务代表在数据库管理系统中针对数据库执行的工作单元，并以独立于其他事务的一致和可靠的方式处理。
 事务通常代表数据库中的任何变化([了解更多信息](https://en.wikipedia.org/wiki/Database_transaction))。
@@ -1190,7 +1217,9 @@ export class UsersService {
 }
 ```
 
-> info **Hint** `Sequelize` 类是从 `sequelize-typescript` 包中导入的。
+!!! info "**Hint**"
+
+    `Sequelize` 类是从 `sequelize-typescript` 包中导入的。
 
 现在，我们可以使用这个对象来创建事务。
 
@@ -1216,12 +1245,15 @@ async createMany() {
 }
 ```
 
-> info **Hint** Note that the `Sequelize` instance is used only to start the transaction.
+!!! info "**Hint**"
+
+    Note that the `Sequelize` instance is used only to start the transaction.
+
 > However, to test this class would require mocking the entire `Sequelize` object (which exposes several methods).
 > Thus, we recommend using a helper factory class (e.g., `TransactionRunner`) and defining an interface with a limited set of methods required to maintain transactions.
 > This technique makes mocking these methods pretty straightforward.
 
-#### 迁移
+## 迁移
 
 [Migrations](https://sequelize.org/v5/manual/migrations.html)提供了一种方法来增量地更新数据库模式，使其与应用程序的数据模型保持同步，同时保留数据库中的现有数据。
 为了生成、运行和恢复迁移，Sequelize 提供了一个专用的[CLI](https://sequelize.org/v5/manual/migrations.html#the-cli)。
@@ -1231,12 +1263,12 @@ async createMany() {
 因此，您不能通过迁移来利用依赖注入和其他 Nest 特定的特性。
 要了解关于迁移的更多信息，请参考[Sequelize 文档](https://sequelize.org/v5/manual/migrations.html#the-cli)中的指南。
 
-#### 多个数据库
+## 多个数据库
 
 有些项目需要多个数据库连接。
 这也可以通过这个模块实现。
 要处理多个连接，首先要创建连接。
-在这种情况下，连接命名成为**必须的**。
+在这种情况下，连接命名成为 **必须的** 。
 
 假设您有一个`Album`实体存储在自己的数据库中。
 
@@ -1314,7 +1346,7 @@ export class AlbumsService {
 export class AlbumsModule {}
 ```
 
-#### 测试
+## 测试
 
 当涉及到应用程序的单元测试时，我们通常希望避免建立数据库连接，保持测试套件的独立性，并尽可能快地执行它们。
 但是我们的类可能依赖于从连接实例中提取的模型。
@@ -1340,7 +1372,7 @@ export class UsersModule {}
 现在，`mockModel`将被用作`UserModel`。
 当任何类使用`@InjectModel()`装饰器请求`UserModel`时，Nest 将使用注册的`mockModel`对象。
 
-#### 异步的配置
+## 异步的配置
 
 你可能想要异步传递你的“SequelizeModule”选项，而不是静态的。
 在这种情况下，使用`forRootAsync()`方法，它提供了几种处理异步配置的方法。
@@ -1418,6 +1450,6 @@ SequelizeModule.forRootAsync({
 
 这个构造的工作原理与`useClass`相同，但有一个关键的区别——`SequelizeModule`将查找导入的模块来重用现有的`ConfigService`，而不是实例化一个新的。
 
-#### 例子
+## 例子
 
 一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/07-sequelize).

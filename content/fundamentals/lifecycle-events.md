@@ -1,20 +1,20 @@
-### 生命周期事件
+# 生命周期事件
 
 Nest 应用程序以及每个应用程序元素都有一个由 Nest 管理的生命周期。
-Nest 提供了**生命周期钩子**，可以看到关键的生命周期事件，并能够在事件发生时采取行动(在你的“模块”、“可注入”或“控制器”上运行注册的代码)。
+Nest 提供了 **生命周期钩子** ，可以看到关键的生命周期事件，并能够在事件发生时采取行动(在你的“模块”、“可注入”或“控制器”上运行注册的代码)。
 
-#### Lifecycle sequence
+## Lifecycle sequence
 
 The following diagram depicts the sequence of key application lifecycle events, from the time the application is bootstrapped until the node process exits.
-We can divide the overall lifecycle into three phases: **initializing**, **running** and **terminating**.
+We can divide the overall lifecycle into three phases: **initializing**, **running** and **terminating** .
 Using this lifecycle, you can plan for appropriate initialization of modules and services, manage active connections, and gracefully shutdown your application when it receives a termination signal.
 
 <figure><img src="/assets/lifecycle-events.png" /></figure>
 
-#### Lifecycle events
+## Lifecycle events
 
 Lifecycle events happen during application bootstrapping and shutdown.
-Nest calls registered lifecycle hook methods on `modules`, `injectables` and `controllers` at each of the following lifecycle events (**shutdown hooks** need to be enabled first, as described [below](https://docs.nestjs.com/fundamentals/lifecycle-events#application-shutdown)).
+Nest calls registered lifecycle hook methods on `modules`, `injectables` and `controllers` at each of the following lifecycle events ( **shutdown hooks** need to be enabled first, as described [below](https://docs.nestjs.com/fundamentals/lifecycle-events#application-shutdown)).
 As shown in the diagram above, Nest also calls the appropriate underlying methods to begin listening for connections, and to stop listening for connections.
 
 In the following table, `onModuleDestroy`, `beforeApplicationShutdown` and `onApplicationShutdown` are only triggered if you explicitly call `app.close()` or if the process receives a special system signal (such as SIGTERM) and you have correctly called `enableShutdownHooks` at application bootstrap (see below **Application shutdown** part).
@@ -34,7 +34,7 @@ See [Application shutdown](fundamentals/lifecycle-events#application-shutdown) b
 > Request-scoped classes are not tied to the application lifecycle and their lifespan is unpredictable.
 > They are exclusively created for each request and automatically garbage-collected after the response is sent.
 
-#### Usage
+## Usage
 
 Each lifecycle hook is represented by an interface.
 Interfaces are technically optional because they do not exist after TypeScript compilation.
@@ -63,7 +63,7 @@ export class UsersService {
 }
 ```
 
-#### Asynchronous initialization
+## Asynchronous initialization
 
 Both the `OnModuleInit` and `OnApplicationBootstrap` hooks allow you to defer the application initialization process (return a `Promise` or mark the method as `async` and `await` an asynchronous method completion in the method body).
 
@@ -78,7 +78,7 @@ async onModuleInit() {
 }
 ```
 
-#### Application shutdown
+## Application shutdown
 
 The `onModuleDestroy()`, `beforeApplicationShutdown()` and `onApplicationShutdown()` hooks are called in the terminating phase (in response to an explicit call to `app.close()` or upon receipt of system signals such as SIGTERM if opted-in).
 This feature is often used with [Kubernetes](https://kubernetes.io/) to manage containers' lifecycles, by [Heroku](https://www.heroku.com/) for dynos or similar services.
@@ -107,7 +107,8 @@ bootstrap();
 > Here's some [relevant documentation](https://docs.libuv.org/en/v1.x/signal.html) from libuv to learn more about how `SIGINT`, `SIGBREAK` and others are handled on Windows.
 > Also, see Node.js documentation of [Process Signal Events](https://nodejs.org/api/process.html#process_signal_events)
 
-> info **Info** `enableShutdownHooks` consumes memory by starting listeners.
+!!! info **Info** `enableShutdownHooks` consumes memory by starting listeners.
+
 > In cases where you are running multiple Nest apps in a single Node process (e.g., when running parallel tests with Jest), Node may complain about excessive listener processes.
 > For this reason, `enableShutdownHooks` is not enabled by default.
 > Be aware of this condition when you are running multiple instances in a single Node process.
@@ -132,4 +133,4 @@ class UsersService implements OnApplicationShutdown {
 }
 ```
 
-> info **Info** Calling `app.close()` doesn't terminate the Node process but only triggers the `onModuleDestroy()` and `onApplicationShutdown()` hooks, so if there are some intervals, long-running background tasks, etc. the process won't be automatically terminated.
+!!! info **Info** Calling `app.close()` doesn't terminate the Node process but only triggers the `onModuleDestroy()` and `onApplicationShutdown()` hooks, so if there are some intervals, long-running background tasks, etc. the process won't be automatically terminated.

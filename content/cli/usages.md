@@ -1,6 +1,6 @@
-### CLI command reference
+# CLI command reference
 
-#### nest new
+## nest new
 
 Creates a new (standard mode) Nest project.
 
@@ -9,7 +9,7 @@ $ nest new <name> [options]
 $ nest n <name> [options]
 ```
 
-##### Description
+### Description
 
 Creates and initializes a new Nest project. Prompts for package manager.
 
@@ -18,24 +18,24 @@ Creates and initializes a new Nest project. Prompts for package manager.
 - Creates sub-folders for source code (`/src`) and end-to-end tests (`/test`)
 - Populates the sub-folders with default files for app components and tests
 
-##### Arguments
+### Arguments
 
 | Argument | Description                 |
 | -------- | --------------------------- |
 | `<name>` | The name of the new project |
 
-##### Options
+### Options
 
-| Option                                | Description                                                                                                     |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `--dry-run`                           | Reports changes that would be made, but does not change the filesystem.<br/> Alias: `-d`                        |
-| `--skip-git`                          | Skip git repository initialization.<br/> Alias: `-g`                                                            |
-| `--skip-install`                      | Skip package installation.<br/> Alias: `-s`                                                                     |
-| `--package-manager [package-manager]` | Specify package manager. Use `npm`, `yarn`, or `pnpm`. Package manager must be installed globally.<br/> Alias: `-p`      |
-| `--language [language]`               | Specify programming language (`TS` or `JS`).<br/> Alias: `-l`                                                   |
-| `--collection [collectionName]`       | Specify schematics collection. Use package name of installed npm package containing schematic.<br/> Alias: `-c` |
+| Option                                | Description                                                                                                         |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `--dry-run`                           | Reports changes that would be made, but does not change the filesystem.<br/> Alias: `-d`                            |
+| `--skip-git`                          | Skip git repository initialization.<br/> Alias: `-g`                                                                |
+| `--skip-install`                      | Skip package installation.<br/> Alias: `-s`                                                                         |
+| `--package-manager [package-manager]` | Specify package manager. Use `npm`, `yarn`, or `pnpm`. Package manager must be installed globally.<br/> Alias: `-p` |
+| `--language [language]`               | Specify programming language (`TS` or `JS`).<br/> Alias: `-l`                                                       |
+| `--collection [collectionName]`       | Specify schematics collection. Use package name of installed npm package containing schematic.<br/> Alias: `-c`     |
 
-#### nest generate
+## nest generate
 
 Generates and/or modifies files based on a schematic
 
@@ -44,36 +44,36 @@ $ nest generate <schematic> <name> [options]
 $ nest g <schematic> <name> [options]
 ```
 
-##### Arguments
+### Arguments
 
 | Argument      | Description                                                                                              |
 | ------------- | -------------------------------------------------------------------------------------------------------- |
 | `<schematic>` | The `schematic` or `collection:schematic` to generate. See the table below for the available schematics. |
 | `<name>`      | The name of the generated component.                                                                     |
 
-##### Schematics
+### Schematics
 
-| Name          | Alias | Description                                                                                         |
-| ------------- | ----- | --------------------------------------------------------------------------------------------------- |
-| `app`         |       | Generate a new application within a monorepo (converting to monorepo if it's a standard structure). |
-| `library`     | `lib` | Generate a new library within a monorepo (converting to monorepo if it's a standard structure).     |
-| `class`       | `cl`  | Generate a new class.                                                                               |
-| `controller`  | `co`  | Generate a controller declaration.                                                                  |
-| `decorator`   | `d`   | Generate a custom decorator.                                                                        |
-| `filter`      | `f`   | Generate a filter declaration.                                                                      |
-| `gateway`     | `ga`  | Generate a gateway declaration.                                                                     |
-| `guard`       | `gu`  | Generate a guard declaration.                                                                       |
-| `interface`   |       | Generate an interface.                                                                              |
-| `interceptor` | `in`  | Generate an interceptor declaration.                                                                |
-| `middleware`  | `mi`  | Generate a middleware declaration.                                                                  |
-| `module`      | `mo`  | Generate a module declaration.                                                                      |
-| `pipe`        | `pi`  | Generate a pipe declaration.                                                                        |
-| `provider`    | `pr`  | Generate a provider declaration.                                                                    |
-| `resolver`    | `r`   | Generate a resolver declaration.
-| `resource`    | `res` | Generate a new CRUD resource. See the [CRUD (resource) generator](/recipes/crud-generator) for more details.                                                                    |
-| `service`     | `s`   | Generate a service declaration.                                                                    |
+| Name          | Alias | Description                                                                                                  |
+| ------------- | ----- | ------------------------------------------------------------------------------------------------------------ |
+| `app`         |       | Generate a new application within a monorepo (converting to monorepo if it's a standard structure).          |
+| `library`     | `lib` | Generate a new library within a monorepo (converting to monorepo if it's a standard structure).              |
+| `class`       | `cl`  | Generate a new class.                                                                                        |
+| `controller`  | `co`  | Generate a controller declaration.                                                                           |
+| `decorator`   | `d`   | Generate a custom decorator.                                                                                 |
+| `filter`      | `f`   | Generate a filter declaration.                                                                               |
+| `gateway`     | `ga`  | Generate a gateway declaration.                                                                              |
+| `guard`       | `gu`  | Generate a guard declaration.                                                                                |
+| `interface`   |       | Generate an interface.                                                                                       |
+| `interceptor` | `in`  | Generate an interceptor declaration.                                                                         |
+| `middleware`  | `mi`  | Generate a middleware declaration.                                                                           |
+| `module`      | `mo`  | Generate a module declaration.                                                                               |
+| `pipe`        | `pi`  | Generate a pipe declaration.                                                                                 |
+| `provider`    | `pr`  | Generate a provider declaration.                                                                             |
+| `resolver`    | `r`   | Generate a resolver declaration.                                                                             |
+| `resource`    | `res` | Generate a new CRUD resource. See the [CRUD (resource) generator](/recipes/crud-generator) for more details. |
+| `service`     | `s`   | Generate a service declaration.                                                                              |
 
-##### Options
+### Options
 
 | Option                          | Description                                                                                                     |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -84,7 +84,7 @@ $ nest g <schematic> <name> [options]
 | `--spec`                        | Enforce spec files generation (default)                                                                         |
 | `--no-spec`                     | Disable spec files generation                                                                                   |
 
-#### nest build
+## nest build
 
 Compiles an application or workspace into an output folder.
 
@@ -92,13 +92,13 @@ Compiles an application or workspace into an output folder.
 $ nest build <name> [options]
 ```
 
-##### Arguments
+### Arguments
 
 | Argument | Description                       |
 | -------- | --------------------------------- |
 | `<name>` | The name of the project to build. |
 
-##### Options
+### Options
 
 | Option            | Description                                            |
 | ----------------- | ------------------------------------------------------ |
@@ -109,7 +109,7 @@ $ nest build <name> [options]
 | `--webpackPath`   | Path to webpack configuration.                         |
 | `--tsc`           | Force use `tsc` for compilation.                       |
 
-#### nest start
+## nest start
 
 Compiles and runs an application (or default project in a workspace).
 
@@ -117,13 +117,13 @@ Compiles and runs an application (or default project in a workspace).
 $ nest start <name> [options]
 ```
 
-##### Arguments
+### Arguments
 
 | Argument | Description                     |
 | -------- | ------------------------------- |
 | `<name>` | The name of the project to run. |
 
-##### Options
+### Options
 
 | Option                  | Description                                                                                                          |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -138,32 +138,32 @@ $ nest start <name> [options]
 | `--tsc`                 | Force use `tsc` for compilation.                                                                                     |
 | `--exec [binary]`       | Binary to run (default: `node`). <br/>Alias `-e`                                                                     |
 
-#### nest add
+## nest add
 
-Imports a library that has been packaged as a **nest library**, running its install schematic.
+Imports a library that has been packaged as a **nest library** , running its install schematic.
 
 ```bash
 $ nest add <name> [options]
 ```
 
-##### Arguments
+### Arguments
 
 | Argument | Description                        |
 | -------- | ---------------------------------- |
 | `<name>` | The name of the library to import. |
 
-#### nest update
+## nest update
 
 Updates `@nestjs` dependencies in the `package.json` `"dependencies"` list to their `@latest` version.
 
-##### Options
+### Options
 
-| Option    | Description                                                              |
-| --------- | ------------------------------------------------------------------------ |
-| `--force` | Do **upgrade** instead of update <br/>Alias `-f`                         |
-| `--tag`   | Update to tagged version (use `@latest`, `@<tag>`, etc) <br/>Alias `-t` |  |
+| Option    | Description                                                             |
+| --------- | ----------------------------------------------------------------------- | --- |
+| `--force` | Do **upgrade** instead of update <br/>Alias `-f`                        |
+| `--tag`   | Update to tagged version (use `@latest`, `@<tag>`, etc) <br/>Alias `-t` |     |
 
-#### nest info
+## nest info
 
 Displays information about installed nest packages and other helpful system info. For example:
 

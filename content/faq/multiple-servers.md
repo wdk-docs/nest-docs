@@ -1,6 +1,6 @@
-### HTTPS
+# HTTPS
 
-要创建一个使用 HTTPS 协议的应用程序，在传递给' `NestFactory` '类的' `create()` '方法的 `options` 对象中设置' `httpOptions` '属性:
+要创建一个使用 HTTPS 协议的应用程序，在传递给 `NestFactory` 类的 `create()` 方法的 `options` 对象中设置 `httpOptions` 属性:
 
 ```typescript
 const httpsOptions = {
@@ -22,7 +22,7 @@ const app = await NestFactory.create<NestFastifyApplication>(
 );
 ```
 
-#### 多个同步服务器
+## 多个同步服务器
 
 下面的菜谱展示了如何实例化一个同时侦听多个端口(例如，侦听非 HTTPS 端口和 HTTPS 端口)的 Nest 应用程序。
 
@@ -40,6 +40,8 @@ http.createServer(server).listen(3000);
 https.createServer(httpsOptions, server).listen(443);
 ```
 
-> info **Hint** The `ExpressAdapter` is imported from the `@nestjs/platform-express` package. The `http` and `https` packages are native Node.js packages.
+!!! info "**Hint**"
+
+    The `ExpressAdapter` is imported from the `@nestjs/platform-express` package. The `http` and `https` packages are native Node.js packages.
 
 > **Warning** This recipe does not work with [GraphQL Subscriptions](/graphql/subscriptions).

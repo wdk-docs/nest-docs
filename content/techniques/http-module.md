@@ -1,13 +1,15 @@
-### HTTP module
+# HTTP module
 
 [Axios](https://github.com/axios/axios)是广泛使用的功能丰富的 HTTP 客户端包。
 Nest 封装 Axios 并通过内置的`HttpModule`公开它。
 `HttpModule`导出`HttpService`类，该类公开了基于 axios 的方法来执行 HTTP 请求。
 该库还将产生的 HTTP 响应转换为“可观察对象”。
 
-> info **Hint** 你也可以直接使用任何通用的 Node.js HTTP 客户端库，包括[got](https://github.com/sindresorhus/got)或[undici](https://github.com/nodejs/undici)。
+!!! info "**Hint**"
 
-#### 安装
+    你也可以直接使用任何通用的 Node.js HTTP 客户端库，包括[got](https://github.com/sindresorhus/got)或[undici](https://github.com/nodejs/undici)。
+
+## 安装
 
 要开始使用它，我们首先安装所需的依赖项。
 
@@ -15,7 +17,7 @@ Nest 封装 Axios 并通过内置的`HttpModule`公开它。
 $ npm i --save @nestjs/axios
 ```
 
-#### 开始
+## 开始
 
 一旦安装过程完成，要使用`HttpService`，首先导入`HttpModule`。
 
@@ -29,7 +31,9 @@ export class CatsModule {}
 
 接下来，使用普通构造函数注入注入`HttpService`。
 
-> info **Hint** `HttpModule`和`HttpService`是从`@nestjs/axios`包中导入的。
+!!! info "**Hint**"
+
+    `HttpModule`和`HttpService`是从`@nestjs/axios`包中导入的。
 
 ```typescript
 @@filename()
@@ -55,11 +59,13 @@ export class CatsService {
 }
 ```
 
-> info **Hint** `AxiosResponse`是从`axios`包(`$ npm i axios`)导出的接口。
+!!! info "**Hint**"
+
+    `AxiosResponse`是从`axios`包(`$ npm i axios`)导出的接口。
 
 所有的“HttpService”方法都返回一个包装在“Observable”对象中的“AxiosResponse”。
 
-#### 配置
+## 配置
 
 [Axios](https://github.com/axios/axios)可以配置各种选项来定制`HttpService`的行为。
 [此处](https://github.com/axios/axios#request-config)了解更多。
@@ -79,7 +85,7 @@ export class CatsService {
 export class CatsModule {}
 ```
 
-#### 异步的配置
+## 异步的配置
 
 当您需要异步而不是静态地传递模块选项时，请使用`registerAsync()`方法。
 与大多数动态模块一样，Nest 提供了几种处理异步配置的技术。
@@ -141,7 +147,7 @@ HttpModule.registerAsync({
 });
 ```
 
-#### 直接使用 Axios
+## 直接使用 Axios
 
 如果你认为`HttpModule.register`的选项对你来说不够，或者如果你只想访问由`@nestjs/axios`创建的底层`Axios`实例，你可以通过以下方式`HttpService#axiosRef`访问它:
 

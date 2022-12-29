@@ -1,12 +1,12 @@
-### 动态模块
+# 动态模块
 
 [模块章节](/modules)涵盖了 Nest 模块的基础知识，并包含了[动态模块](https://docs.nestjs.com/modules#dynamic-modules)的简要介绍。
 本章扩展了动态模块的主题。
 完成后，您应该很好地掌握它们是什么，以及如何和何时使用它们。
 
-#### 介绍
+## 介绍
 
-文档的**概述**部分中的大多数应用程序代码示例使用常规或静态模块。
+文档的 **概述** 部分中的大多数应用程序代码示例使用常规或静态模块。
 模块定义了一组组件，比如[providers](/providers)和[controllers](/controllers)，它们作为整体应用程序的模块化部分组合在一起。
 它们为这些组件提供了执行上下文或范围。
 例如，模块中定义的提供程序对模块的其他成员可见，而不需要导出它们。
@@ -58,7 +58,7 @@ export class AuthService {
 }
 ```
 
-我们将其称为**静态**模块绑定。
+我们将其称为 **静态** 模块绑定。
 Nest 连接模块所需的所有信息都已经在宿主模块和消费模块中声明。
 让我们来了解一下这个过程中发生了什么。
 Nest 通过以下方式使`UsersService`在`AuthModule`中可用:
@@ -67,24 +67,24 @@ Nest 通过以下方式使`UsersService`在`AuthModule`中可用:
 2. 实例化`AuthModule`，并使`UsersModule`导出的提供商对`AuthModule`中的组件可用(就像它们已经在`AuthModule`中声明过一样).
 3. 在 AuthService 中注入一个`UsersService`的实例。
 
-#### 动态模块用例
+## 动态模块用例
 
-使用静态模块绑定，消费模块没有机会**影响**如何配置来自宿主模块的提供商。
+使用静态模块绑定，消费模块没有机会 **影响** 如何配置来自宿主模块的提供商。
 为什么这很重要?考虑这样一种情况:我们有一个通用模块，它需要在不同的用例中表现不同。
 这类似于许多系统中的“插件”概念，在这些系统中，通用功能在供使用者使用之前需要进行一些配置。
 
-使用 Nest 的一个很好的例子是**配置模块**。
+使用 Nest 的一个很好的例子是 **配置模块** 。
 许多应用程序发现，通过使用配置模块外部化配置细节非常有用。
 这使得在不同的部署中动态更改应用程序设置变得很容易:例如，开发人员的开发数据库，staging/testing 环境的 staging 数据库，等等。
 通过将配置参数的管理委托给配置模块，应用程序源代码可以独立于配置参数。
 
 挑战在于配置模块本身，因为它是通用的(类似于“插件”)，需要由它的消费模块进行定制。
 这就是*动态模块*发挥作用的地方。
-使用动态模块特性，我们可以使配置模块**动态**，以便消费模块可以使用 API 来控制在导入配置模块时如何定制配置模块。
+使用动态模块特性，我们可以使配置模块 **动态** ，以便消费模块可以使用 API 来控制在导入配置模块时如何定制配置模块。
 
 换句话说，动态模块提供了一个 API，用于将一个模块导入到另一个模块，并在导入时定制该模块的属性和行为，而不是使用我们目前看到的静态绑定。
 
-#### 配置模块的例子
+## 配置模块的例子
 
 在本节中，我们将使用[配置章](https://docs.nestjs.com/techniques/configuration#service)中的示例代码的基本版本。
 本章末尾的完整版本可以在这里找到[示例](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules)。
@@ -137,7 +137,7 @@ export class AppModule {}
 什么是活动部件?
 
 1. `ConfigModule`是一个普通的类，所以我们可以推断它必须有一个名为`register()`的静态方法。
-   我们知道它是静态的，因为我们在`ConfigModule`类上调用它，而不是在类的**实例**上。
+   我们知道它是静态的，因为我们在`ConfigModule`类上调用它，而不是在类的 **实例** 上。
    注意:这个方法，我们很快就会创建，可以有任意的名字，但是按照惯例我们应该叫它`forRoot()`或者`register()`。
 2. `register()`方法是由我们定义的，所以我们可以接受任何我们喜欢的输入参数。
    在本例中，我们将接受一个具有合适属性的简单`options`对象，这是典型的情况。
@@ -159,7 +159,9 @@ export class AppModule {}
 动态模块必须返回一个具有完全相同接口的对象，外加一个名为`module`的附加属性。
 `module`属性用作模块的名称，并且应该与模块的类名相同，如下面的例子所示。
 
-> info **Hint** 对于一个动态模块，模块选项对象的所有属性都是可选的**除了**` module`。
+!!! info "**Hint**"
+
+    对于一个动态模块，模块选项对象的所有属性都是可选的**除了** ` module`。
 
 那么静态的 `register()` 方法呢?
 我们现在可以看到它的工作是返回一个具有`DynamicModule`接口的对象。
@@ -168,7 +170,7 @@ export class AppModule {}
 
 为了使图片更完整，还需要涉及一些细节:
 
-1. 我们现在可以声明`@Module()`装饰器的`imports`属性不仅可以接受一个模块类名(例如 `imports:[UsersModule]` )，还可以接受一个函数**返回**一个动态模块(例如`imports:[ConfigModule.register(…)]`)。
+1. 我们现在可以声明`@Module()`装饰器的`imports`属性不仅可以接受一个模块类名(例如 `imports:[UsersModule]` )，还可以接受一个函数 **返回** 一个动态模块(例如`imports:[ConfigModule.register(…)]`)。
 2. 动态模块本身可以导入其他模块。
    本例中我们不会这样做，但如果动态模块依赖于其他模块的提供程序，你可以使用可选的`imports`属性来导入它们。
    同样，这与使用`@Module()`装饰器为静态模块声明元数据的方式完全相似。
@@ -195,12 +197,14 @@ export class ConfigModule {
 现在应该很清楚各个部分是如何联系在一起的。
 调用`ConfigModule.register(…)'将返回一个`DynamicModule`对象，其属性与我们通过`@Module()`装饰器提供的元数据本质上相同。
 
-> info **Hint** 从`@nestjs/common`导入`DynamicModule`。
+!!! info "**Hint**"
 
-我们的动态模块还不是很有趣，但是，因为我们还没有引入任何功能来**配置**它，就像我们说过的那样。
+    从`@nestjs/common`导入`DynamicModule`。
+
+我们的动态模块还不是很有趣，但是，因为我们还没有引入任何功能来 **配置** 它，就像我们说过的那样。
 让我们接下来讨论这个问题。
 
-#### 模块配置
+## 模块配置
 
 定制`ConfigModule`行为的明显解决方案是在静态`register()`方法中向它传递一个`options`对象，正如我们上面所猜测的那样。
 让我们再来看看我们消费模块的`imports`属性:
@@ -225,7 +229,7 @@ export class AppModule {}
 实际上我们的`ConfigService`需要读取`options`对象来定制其行为。
 让我们假设现在我们知道如何从`register()`方法中获取`options`到`ConfigService`。
 有了这个假设，我们可以对服务做一些更改，根据`options`对象的属性定制其行为。
-(**Note**: 目前，由于我们还*没有*确定如何传递它，我们将只硬编码`options`。我们马上就会解决这个问题).
+( **Note** : 目前，由于我们还*没有*确定如何传递它，我们将只硬编码`options`。我们马上就会解决这个问题).
 
 ```typescript
 import { Injectable } from '@nestjs/common';
@@ -259,7 +263,7 @@ export class ConfigService {
 我们的`ConfigModule`提供了`ConfigService`。
 `ConfigService`反过来依赖于`options`对象，该对象只在运行时提供。
 因此，在运行时，我们需要首先将`options`对象绑定到 Nest IoC 容器，然后让 Nest 将其注入到我们的`ConfigService`中。
-记住，在**定制的供应商**一章中，providers 可以[包括任何值](https://docs.nestjs.com/fundamentals/custom-providers#non-service-based-providers)，而不仅仅是服务，所以我们可以使用依赖注入来处理一个简单的`options`对象。
+记住，在 **定制的供应商** 一章中，providers 可以[包括任何值](https://docs.nestjs.com/fundamentals/custom-providers#non-service-based-providers)，而不仅仅是服务，所以我们可以使用依赖注入来处理一个简单的`options`对象。
 
 让我们首先处理将选项对象绑定到 IoC 容器的问题。
 我们在静态的`register()`方法中执行此操作。
@@ -322,6 +326,6 @@ export class ConfigService {
 export const CONFIG_OPTIONS = 'CONFIG_OPTIONS';
 ```
 
-### 例子
+# 例子
 
 本章中完整的代码示例可以在[此处](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules)找到.

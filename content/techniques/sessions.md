@@ -1,8 +1,8 @@
-### Session
+# Session
 
 **HTTP sessions** provide a way to store information about the user across multiple requests, which is particularly useful for [MVC](/techniques/mvc) applications.
 
-#### Use with Express (default)
+## Use with Express (default)
 
 First install the required package (and its types for TypeScript users):
 
@@ -35,7 +35,9 @@ Likewise, enabling the `saveUninitialized` option Forces a session that is "unin
 
 You can pass several other options to the `session` middleware, read more about them in the [API documentation](https://github.com/expressjs/session#options).
 
-> info **Hint** Please note that `secure: true` is a recommended option. However, it requires an https-enabled website, i.e., HTTPS is necessary for secure cookies. If secure is set, and you access your site over HTTP, the cookie will not be set. If you have your node.js behind a proxy and are using `secure: true`, you need to set `"trust proxy"` in express.
+!!! info "**Hint**"
+
+    Please note that `secure: true` is a recommended option. However, it requires an https-enabled website, i.e., HTTPS is necessary for secure cookies. If secure is set, and you access your site over HTTP, the cookie will not be set. If you have your node.js behind a proxy and are using `secure: true`, you need to set `"trust proxy"` in express.
 
 With this in place, you can now set and read session values from within the route handlers, as follows:
 
@@ -46,7 +48,9 @@ findAll(@Req() request: Request) {
 }
 ```
 
-> info **Hint** The `@Req()` decorator is imported from the `@nestjs/common`, while `Request` from the `express` package.
+!!! info "**Hint**"
+
+    The `@Req()` decorator is imported from the `@nestjs/common`, while `Request` from the `express` package.
 
 Alternatively, you can use the `@Session()` decorator to extract a session object from the request, as follows:
 
@@ -57,9 +61,11 @@ findAll(@Session() session: Record<string, any>) {
 }
 ```
 
-> info **Hint** The `@Session()` decorator is imported from the `@nestjs/common` package.
+!!! info "**Hint**"
 
-#### Use with Fastify
+    The `@Session()` decorator is imported from the `@nestjs/common` package.
+
+## Use with Fastify
 
 First install the required package:
 
@@ -83,7 +89,9 @@ app.register(secureSession, {
 });
 ```
 
-> info **Hint** You can also pregenerate a key ([see instructions](https://github.com/fastify/fastify-secure-session)) or use [keys rotation](https://github.com/fastify/fastify-secure-session#using-keys-with-key-rotation).
+!!! info "**Hint**"
+
+    You can also pregenerate a key ([see instructions](https://github.com/fastify/fastify-secure-session)) or use [keys rotation](https://github.com/fastify/fastify-secure-session#using-keys-with-key-rotation).
 
 Read more about the available options in the [official repository](https://github.com/fastify/fastify-secure-session).
 
@@ -107,4 +115,6 @@ findAll(@Session() session: secureSession.Session) {
 }
 ```
 
-> info **Hint** The `@Session()` decorator is imported from the `@nestjs/common`, while `secureSession.Session` from the `fastify-secure-session` package (import statement: `import * as secureSession from 'fastify-secure-session'`).
+!!! info "**Hint**"
+
+    The `@Session()` decorator is imported from the `@nestjs/common`, while `secureSession.Session` from the `fastify-secure-session` package (import statement: `import * as secureSession from 'fastify-secure-session'`).

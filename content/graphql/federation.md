@@ -1,19 +1,19 @@
-### Federation
+# Federation
 
 [Apollo Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/) offers a means of splitting your monolithic GraphQL server into independent microservices. It consists of two components: a gateway and one or more federated microservices. Each microservice holds part of the schema and the gateway merges the schemas into a single schema that can be consumed by the client.
 
 To quote the [Apollo docs](https://blog.apollographql.com/apollo-federation-f260cf525d21), Federation is designed with these core principles:
 
 - Building a graph should be **declarative.** With federation, you compose a graph declaratively from within your schema instead of writing imperative schema stitching code.
-- Code should be separated by **concern**, not by types. Often no single team controls every aspect of an important type like a User or Product, so the definition of these types should be distributed across teams and codebases, rather than centralized.
+- Code should be separated by **concern** , not by types. Often no single team controls every aspect of an important type like a User or Product, so the definition of these types should be distributed across teams and codebases, rather than centralized.
 - The graph should be simple for clients to consume. Together, federated services can form a complete, product-focused graph that accurately reflects how it’s being consumed on the client.
-- It’s just **GraphQL**, using only spec-compliant features of the language. Any language, not just JavaScript, can implement federation.
+- It’s just **GraphQL** , using only spec-compliant features of the language. Any language, not just JavaScript, can implement federation.
 
 > warning **Warning** Apollo Federation currently does not support subscriptions.
 
 In the next example, we'll set up a demo application with a gateway and two federated endpoints: a Users service and a Posts service.
 
-#### Federated example: Users
+## Federated example: Users
 
 First, install the optional dependency for federation:
 
@@ -21,7 +21,7 @@ First, install the optional dependency for federation:
 $ npm install --save @apollo/federation @apollo/subgraph
 ```
 
-#### Schema first
+## Schema first
 
 The User service has a simple schema. Note the `@key` directive: it tells the Apollo query planner that a particular instance of User can be fetched if you have its `id`. Also, note that we extend the `Query` type.
 
@@ -76,7 +76,7 @@ import { UsersResolvers } from './users.resolvers';
 export class AppModule {}
 ```
 
-#### Code first
+## Code first
 
 Code first federation is very similar to regular code first GraphQL. We simply add some extra decorators to the `User` entity.
 
@@ -136,11 +136,11 @@ import { UsersService } from './users.service'; // Not included in this example
 export class AppModule {}
 ```
 
-#### Federated example: Posts
+## Federated example: Posts
 
 Our Post service serves aggregated posts via a `getPosts` query, but also extends our `User` type with `user.posts`
 
-#### Schema first
+## Schema first
 
 The Posts service references the User type in its schema by marking it with the `extend` keyword. It also adds one property to the User type. Note the `@key` directive used for matching instances of User, and the `@external` directive indicating that the `id` field is managed elsewhere.
 
@@ -203,7 +203,7 @@ import { PostsResolvers } from './posts.resolvers';
 export class AppModule {}
 ```
 
-#### Code first
+## Code first
 
 We will need to create a class representing our `User` entity. Even though it lives in another service, we will be using and extending it. Note the `@extends` and `@external` directives.
 
@@ -319,7 +319,7 @@ import { PostsService } from './posts.service'; // Not included in example
 export class AppModule {}
 ```
 
-#### Federated example: Gateway
+## Federated example: Gateway
 
 First, install the optional dependency for the gateway:
 
@@ -352,9 +352,11 @@ import { GraphQLGatewayModule } from '@nestjs/graphql';
 export class AppModule {}
 ```
 
-> info **Hint** Apollo recommends that you don't rely on the service discovery in a production environment but use their [Graph Manager](https://www.apollographql.com/docs/graph-manager/federation/) instead.
+!!! info "**Hint**"
 
-#### Sharing context
+    Apollo recommends that you don't rely on the service discovery in a production environment but use their [Graph Manager](https://www.apollographql.com/docs/graph-manager/federation/) instead.
+
+## Sharing context
 
 You can customize the requests between the gateway and federated services using a build service. This allows you to share context about the request. You can easily extend the default `RemoteGraphQLDataSource` and implement one of the hooks. Please refer to [Apollo Docs](https://www.apollographql.com/docs/apollo-server/api/apollo-gateway/#remotegraphqldatasource) on `RemoteGraphQLDataSource` for more information about the possibilities.
 
@@ -412,6 +414,6 @@ class BuildServiceModule {}
 export class AppModule {}
 ```
 
-#### Async configuration
+## Async configuration
 
 Both the Federation and Gateway modules support asynchronous initialization using the same `forRootAsync` that's documented in [Quick start](/graphql/quick-start#async-configuration).

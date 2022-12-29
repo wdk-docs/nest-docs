@@ -1,4 +1,4 @@
-### Generating SDL
+# Generating SDL
 
 > warning **Warning** This chapter applies only to the code first approach.
 
@@ -15,9 +15,11 @@ async function generateSchema() {
 }
 ```
 
-> info **Hint** The `GraphQLSchemaBuilderModule` and `GraphQLSchemaFactory` are imported from the `@nestjs/graphql` package. The `printSchema` function is imported from the `graphql` package.
+!!! info "**Hint**"
 
-#### Usage
+    The `GraphQLSchemaBuilderModule` and `GraphQLSchemaFactory` are imported from the `@nestjs/graphql` package. The `printSchema` function is imported from the `graphql` package.
+
+## Usage
 
 The `gqlSchemaFactory.create()` method takes an array of resolver class references. For example:
 

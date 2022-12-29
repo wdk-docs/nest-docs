@@ -1,4 +1,4 @@
-### 队列
+# 队列
 
 队列是一种功能强大的设计模式，可以帮助您处理常见的应用程序扩展和性能挑战。
 队列可以帮助你解决的一些问题示例如下:
@@ -24,7 +24,7 @@ Bull 使用[Redis](https://redis.io/)来保存作业数据，所以你需要在�
 本章介绍了`@nestjs/bull`包。
 我们还建议阅读[Bull 文档](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md)以获得更多背景和具体的实现细节。
 
-#### 安装
+## 安装
 
 要开始使用它，我们首先安装所需的依赖项。
 
@@ -71,7 +71,9 @@ BullModule.registerQueue({
 });
 ```
 
-> info **Hint** 通过将多个以逗号分隔的配置对象传递给`registerQueue()`方法来创建多个队列。
+!!! info "**Hint**"
+
+    通过将多个以逗号分隔的配置对象传递给`registerQueue()`方法来创建多个队列。
 
 `registerQueue()`方法用于实例化和/或注册队列。
 队列是跨模块和进程共享的，连接到相同的基础 Redis 数据库具有相同的凭据。
@@ -93,9 +95,9 @@ BullModule.registerQueue({
 
 每个队列可以有一个或多个生产者、消费者和侦听器。消费者按照特定的顺序从队列中检索作业:FIFO(默认)、LIFO 或根据优先级。[这里](techniques/queues#consumer)讨论了控制队列处理顺序。
 
-#### 命名配置
+## 命名配置
 
-如果你的队列连接到多个不同的 Redis 实例，你可以使用一种叫做**named configurations**的技术。
+如果你的队列连接到多个不同的 Redis 实例，你可以使用一种叫做 **named configurations** 的技术。
 这个特性允许您在指定的键下注册几个配置，然后您可以在队列选项中引用它们。
 
 例如，假设你有一个额外的 Redis 实例(除了默认的)，被你的应用程序中注册的几个队列使用，你可以按如下方式注册它的配置:
@@ -119,7 +121,7 @@ BullModule.registerQueue({
 });
 ```
 
-#### 生产者
+## 生产者
 
 作业生成器将作业添加到队列中。
 生产者通常是应用服务(Nest [providers](/providers))。要将作业添加到队列中，首先要将队列注入到服务中，如下所示:
@@ -135,7 +137,9 @@ export class AudioService {
 }
 ```
 
-> info **Hint** `@InjectQueue()`装饰器通过它的名字来标识队列，就像在`registerQueue()`方法调用中提供的(例如，`audio`)。
+!!! info "**Hint**"
+
+    `@InjectQueue()`装饰器通过它的名字来标识队列，就像在`registerQueue()`方法调用中提供的(例如，`audio`)。
 
 现在，通过调用队列的`add()`方法添加一个作业，并传递一个用户定义的作业对象。
 作业被表示为可序列化的 JavaScript 对象(因为这是它们存储在 Redis 数据库中的方式)。
@@ -147,7 +151,7 @@ const job = await this.audioQueue.add({
 });
 ```
 
-#### 指定的工作
+## 指定的工作
 
 Jobs 可能有独特的名字。这允许您创建专门的[consumer](techniques/queues#consumers)，它将只处理具有给定名称的作业。
 
@@ -159,7 +163,7 @@ const job = await this.audioQueue.add('transcode', {
 
 > Warning **Warning** 在使用命名作业时，必须为添加到队列中的每个惟一名称创建处理器，否则队列将抱怨您缺少给定作业的处理器。有关使用命名作业的更多信息，请参见[here](techniques/queues#consumer)。
 
-#### 作业选项
+## 作业选项
 
 作业可以有与之关联的其他选项。在`Queue.add()`方法的`job`参数后传递一个 options 对象。作业选项属性如下:
 
@@ -188,7 +192,7 @@ const job = await this.audioQueue.add(
 );
 ```
 
-要将一个作业添加到队列的右端(将作业处理为**LIFO**(后进先出))，请将配置对象的`lifo`属性设置为`true`。
+要将一个作业添加到队列的右端(将作业处理为 **LIFO** (后进先出))，请将配置对象的`lifo`属性设置为`true`。
 
 ```typescript
 const job = await this.audioQueue.add(
@@ -210,9 +214,9 @@ const job = await this.audioQueue.add(
 );
 ```
 
-#### 消费者
+## 消费者
 
-consumer 是一个定义方法的**类**，用来处理添加到队列中的任务，或者监听队列上的事件，或者两者兼有。使用`@Processor()`装饰器来声明一个消费者类，如下所示:
+consumer 是一个定义方法的 **类** ，用来处理添加到队列中的任务，或者监听队列上的事件，或者两者兼有。使用`@Processor()`装饰器来声明一个消费者类，如下所示:
 
 ```typescript
 import { Processor } from '@nestjs/bull';
@@ -221,7 +225,9 @@ import { Processor } from '@nestjs/bull';
 export class AudioConsumer {}
 ```
 
-> info **Hint** 消费者必须注册为`providers`，这样`@nestjs/bull`包才能把他们取走。
+!!! info "**Hint**"
+
+    消费者必须注册为`providers`，这样`@nestjs/bull`包才能把他们取走。
 
 其中，装饰器的字符串参数(e.g., `'audio'`)是要与类方法关联的队列的名称。
 
@@ -263,7 +269,7 @@ export class AudioConsumer {
 async transcode(job: Job<unknown>) { ... }
 ```
 
-#### 请求范围内消费者
+## 请求范围内消费者
 
 当一个消费者被标记为请求作用域(了解更多关于注入作用域的信息[这里](/fundamentals/injection-scopes#provider-scope))时，类的一个新实例将专门为每个作业创建。
 该实例将在任务完成后被垃圾回收。
@@ -283,9 +289,11 @@ constructor(@Inject(JOB_REF) jobRef: Job) {
 }
 ```
 
-> info **Hint** 令牌`JOB_REF`是从`@nestjs/bull`包中导入的。
+!!! info "**Hint**"
 
-#### 事件监听器
+    令牌`JOB_REF`是从`@nestjs/bull`包中导入的。
+
+## 事件监听器
 
 当队列和/或作业状态发生变化时，Bull 会生成一组有用的事件。Nest 提供了一组装饰器，允许订阅一组核心标准事件。这些都是从`@nestjs/bull`包中导出的。
 
@@ -311,10 +319,10 @@ export class AudioConsumer {
 
 由于 Bull 是在分布式(多节点)环境中运行的，因此它定义了事件局部性的概念。
 这个概念认识到，事件可以完全在单个进程中触发，也可以在来自不同进程的共享队列上触发。
-**局部**事件是在本地进程中的队列上触发动作或状态改变时产生的事件。
+**局部** 事件是在本地进程中的队列上触发动作或状态改变时产生的事件。
 换句话说，当事件的生产者和消费者是单个进程的本地时，队列上发生的所有事件也是本地的。
 
-当一个队列在多个进程之间共享时，我们可能会遇到**全局**事件。
+当一个队列在多个进程之间共享时，我们可能会遇到 **全局** 事件。
 为了让一个进程中的侦听器接收由另一个进程触发的事件通知，它必须注册一个全局事件。
 
 事件处理程序在触发相应事件时被调用。
@@ -378,12 +386,14 @@ async onGlobalCompleted(jobId: number, result: any) {
 }
 ```
 
-> info **Hint** 要访问`Queue`对象(调用`getJob()`)，你当然必须注入它。此外，Queue 必须在注入它的模块中注册。
+!!! info "**Hint**"
+
+    要访问`Queue`对象(调用`getJob()`)，你当然必须注入它。此外，Queue 必须在注入它的模块中注册。
 
 除了特定的事件监听器装饰器，你还可以使用通用的`@OnQueueEvent()`装饰器结合`BullQueueEvents`或`BullQueueGlobalEvents`枚举。
 阅读更多关于事件的信息[这里](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#events).
 
-#### 队列管理
+## 队列管理
 
 Queue 的 API 允许您执行管理功能，比如暂停和恢复，检索处于不同状态的作业的计数，等等。
 你可以在[这里](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queue)找到完整的队列 API.
@@ -401,7 +411,7 @@ await audioQueue.pause();
 await audioQueue.resume();
 ```
 
-#### 独立的进程
+## 独立的进程
 
 作业处理程序也可以在单独的(分叉的)进程中运行 ([source](https://github.com/OptimalBits/bull#separate-processes)).
 这有几个优点:
@@ -441,7 +451,7 @@ export default function (job: Job, cb: DoneCallback) {
 }
 ```
 
-#### 异步的配置
+## 异步的配置
 
 你可能想异步传递`bull`选项，而不是静态传递。
 在这种情况下，使用`forRootAsync()`方法，它提供了几种处理异步配置的方法。
@@ -511,6 +521,6 @@ BullModule.forRootAsync({
 
 这个构造的工作原理与`useClass`相同，但有一个关键的区别 -- `BullModule`将查找导入的模块来重用现有的`ConfigService`，而不是实例化一个新的。
 
-#### 例子
+## 例子
 
 一个可用的例子[在这里](https://github.com/nestjs/nest/tree/master/sample/26-queues).

@@ -1,8 +1,8 @@
-### Scalars
+# Scalars
 
 A GraphQL object type has a name and fields, but at some point those fields have to resolve to some concrete data. That's where the scalar types come in: they represent the leaves of the query (read more [here](https://graphql.org/learn/schema/#scalar-types)). GraphQL includes the following default types: `Int`, `Float`, `String`, `Boolean` and `ID`. In addition to these built-in types, you may need to support custom atomic data types (e.g., `Date`).
 
-#### Code first
+## Code first
 
 The code-first approach ships with five scalars in which three of them are simple aliases for the existing GraphQL types.
 
@@ -75,7 +75,7 @@ Now we can use the `Date` type in our classes.
 creationDate: Date;
 ```
 
-#### Schema first
+## Schema first
 
 To define a custom scalar (read more about scalars [here](https://www.apollographql.com/docs/graphql-tools/scalars.html)), create a type definition and a dedicated resolver. Here (as in the official documentation), we’ll use the `graphql-type-json` package for demonstration purposes. This npm package defines a `JSON` GraphQL scalar type.
 
@@ -160,7 +160,7 @@ But, you can configure how Nest generates typings for your custom scalars when y
 import { GraphQLDefinitionsFactory } from '@nestjs/graphql';
 import { join } from 'path';
 
-const definitionsFactory = new GraphQLDefinitionsFactory()
+const definitionsFactory = new GraphQLDefinitionsFactory();
 
 definitionsFactory.generate({
   typePaths: ['./src/**/*.graphql'],
@@ -172,10 +172,12 @@ definitionsFactory.generate({
     BigNumber: '_BigNumber',
   },
   additionalHeader: "import _BigNumber from 'bignumber.js'",
-})
+});
 ```
 
-> info **Hint** Alternatively, you can use a type reference instead, for example: `DateTime: Date`. In this case, `GraphQLDefinitionsFactory` will extract the name property of the specified type (`Date.name`) to generate TS definitions. Note: adding an import statement for non-built-in types (custom types) is required.
+!!! info "**Hint**"
+
+    Alternatively, you can use a type reference instead, for example: `DateTime: Date`. In this case, `GraphQLDefinitionsFactory` will extract the name property of the specified type (`Date.name`) to generate TS definitions. Note: adding an import statement for non-built-in types (custom types) is required.
 
 Now, given the following GraphQL custom scalar types:
 
@@ -188,11 +190,11 @@ scalar Payload
 We will now see the following generated TypeScript definitions in `src/graphql.ts`:
 
 ```typescript
-import _BigNumber from 'bignumber.js'
+import _BigNumber from 'bignumber.js';
 
-export type DateTime = Date
-export type BigNumber = _BigNumber
-export type Payload = unknown
+export type DateTime = Date;
+export type BigNumber = _BigNumber;
+export type Payload = unknown;
 ```
 
 Here, we've used the `customScalarTypeMapping` property to supply a map of the types we wish to declare for our custom scalars. We've
@@ -200,4 +202,6 @@ also provided an `additionalHeader` property so that we can add any imports requ
 a `defaultScalarType` of `'unknown'`, so that any custom scalars not specified in `customScalarTypeMapping` will be aliased to
 `unknown` instead of `any` (which [TypeScript recommends](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type) using since 3.0 for added type safety).
 
-> info **Hint** Note that we've imported `_BigNumber` from `bignumber.js`; this is to avoid [circular type references](https://github.com/Microsoft/TypeScript/issues/12525#issuecomment-263166239).
+!!! info "**Hint**"
+
+    Note that we've imported `_BigNumber` from `bignumber.js`; this is to avoid [circular type references](https://github.com/Microsoft/TypeScript/issues/12525#issuecomment-263166239).

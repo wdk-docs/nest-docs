@@ -1,4 +1,4 @@
-### 测试
+# 测试
 
 自动化测试被认为是任何严肃的软件开发工作的重要组成部分。
 自动化使得在开发过程中可以轻松快速地重复单个测试或测试套件。
@@ -20,7 +20,7 @@ Nest:
 如前所述，您可以使用任何您喜欢的测试框架，因为 Nest 不强制使用任何特定的工具。
 只需替换所需的元素(比如测试运行器)，您仍然可以享受到 Nest 现成测试工具的好处。
 
-#### 安装
+## 安装
 
 首先安装所需的软件包:
 
@@ -28,7 +28,7 @@ Nest:
 $ npm i --save-dev @nestjs/testing
 ```
 
-#### 单元测试
+## 单元测试
 
 在下面的例子中，我们测试了两个类:`CatsController`和`CatsService`。
 如前所述，[Jest](https://github.com/facebook/jest)是作为默认测试框架提供的。
@@ -82,15 +82,18 @@ describe('CatsController', () => {
 });
 ```
 
-> info **Hint** Keep your test files located near the classes they test.
+!!! info "**Hint**"
+
+    Keep your test files located near the classes they test.
+
 > Testing files should have a `.spec` or `.test` suffix.
 
 因为上面的示例很简单，所以我们并没有真正测试任何特定于 nest 的东西。
 事实上，我们甚至没有使用依赖注入(注意，我们传递了一个`CatsService`的实例给`catsController`)。
-这种形式的测试——我们手动实例化被测试的类——通常被称为**隔离测试**，因为它独立于框架。
+这种形式的测试——我们手动实例化被测试的类——通常被称为 **隔离测试** ，因为它独立于框架。
 让我们介绍一些更高级的功能，它们可以帮助您测试更广泛使用 Nest 特性的应用程序。
 
-#### 测试工具
+## 测试工具
 
 `@nestjs/testing`包提供了一组实用程序，支持更健壮的测试过程。
 让我们用内置的`Test`类重写前面的例子:
@@ -160,7 +163,10 @@ describe('CatsController', () => {
 对于单元测试，重要的是`compile()`方法。
 这个方法引导一个模块及其依赖项(类似于传统的`main`引导应用程序的方式。使用`NestFactory.create()`)，并返回一个已准备好测试的模块。
 
-> info **Hint** The `compile()` method is **asynchronous** and therefore has to be awaited.
+!!! info "**Hint**"
+
+    The `compile()` method is **asynchronous** and therefore has to be awaited.
+
 > Once the module is compiled you can retrieve any **static** instance it declares (controllers and providers) using the `get()` method.
 
 `TestingModule` inherits from the [module reference](/fundamentals/module-ref) class, and therefore its ability to dynamically resolve scoped providers (transient or request-scoped).
@@ -175,23 +181,25 @@ const moduleRef = await Test.createTestingModule({
 catsService = await moduleRef.resolve(CatsService);
 ```
 
-> warning **Warning** The `resolve()` method returns a unique instance of the provider, from its own **DI container sub-tree**.
+> warning **Warning** The `resolve()` method returns a unique instance of the provider, from its own **DI container sub-tree** .
 > Each sub-tree has a unique context identifier.
 > Thus, if you call this method more than once and compare instance references, you will see that they are not equal.
 
-> info **Hint** Learn more about the module reference features [here](/fundamentals/module-ref).
+!!! info "**Hint**"
+
+    Learn more about the module reference features [here](/fundamentals/module-ref).
 
 Instead of using the production version of any provider, you can override it with a [custom provider](/fundamentals/custom-providers) for testing purposes.
 For example, you can mock a database service instead of connecting to a live database.
 We'll cover overrides in the next section, but they're available for unit tests as well.
 
-#### Auto mocking
+## Auto mocking
 
 Nest 还允许您定义一个模拟工厂，以应用于所有丢失的依赖项。
 这对于在一个类中有大量依赖项，并且模拟所有依赖项将花费很长时间和大量设置的情况很有用。
 要利用这个特性，`createTestingModule()`需要与`useMocker()`方法连接起来，为依赖项模拟传递一个工厂。
 这个工厂可以接受一个可选的令牌，这是一个实例令牌，任何对 Nest 提供程序有效的令牌，并返回一个模拟实现。
-下面是一个使用[' jest-mock '](https://www.npmjs.com/package/jest-mock)创建通用 mock 和使用' jest.fn() '为' CatsService '创建特定 mock 的示例。
+下面是一个使用[ `jest-mock` ](https://www.npmjs.com/package/jest-mock)创建通用 mock 和使用 `jest.fn()` 为 `CatsService` 创建特定 mock 的示例。
 
 ```typescript
 const moduleMocker = new ModuleMocker(global);
@@ -222,16 +230,18 @@ describe('CatsController', () => {
 });
 ```
 
-> info **Hint** A general mock factory, like `createMock` from [`@golevelup/ts-jest`](https://github.com/golevelup/nestjs/tree/master/packages/testing) can also be passed directly.
+!!! info "**Hint**"
+
+    A general mock factory, like `createMock` from [`@golevelup/ts-jest`](https://github.com/golevelup/nestjs/tree/master/packages/testing) can also be passed directly.
 
 You can also retrieve these mocks out of the testing container as you normally would custom providers, `moduleRef.get(CatsService)`.
 
-#### 端到端测试
+## 端到端测试
 
 与单元测试(侧重于单个模块和类)不同，端到端(e2e)测试在更聚合的层次上覆盖了类和模块的交互——更接近于终端用户与生产系统的交互。
 随着应用程序的增长，手动测试每个 API 端点的端到端行为变得越来越困难。
 自动化的端到端测试帮助我们确保系统的整体行为是正确的，并满足项目需求。
-为了执行端到端测试，我们使用了与刚刚在**单元测试**中介绍的配置类似的配置。
+为了执行端到端测试，我们使用了与刚刚在 **单元测试** 中介绍的配置类似的配置。
 此外，Nest 可以很容易地使用[Supertest](https://github.com/visionmedia/supertest)库来模拟 HTTP 请求。
 
 ```typescript
@@ -309,8 +319,10 @@ describe('Cats', () => {
 });
 ```
 
-> info **Hint** If you're using [Fastify](/techniques/performance) as your HTTP adapter, it requires a slightly different configuration, and has built-in testing capabilities:
->
+!!! info "**Hint**"
+
+    If you're using [Fastify](/techniques/performance) as your HTTP adapter, it requires a slightly different configuration, and has built-in testing capabilities:
+
 > ```ts
 > let app: NestFastifyApplication;
 >
@@ -415,10 +427,13 @@ Inherited from the <a href="/fundamentals/module-ref">module reference</a> class
   </tr>
 </table>
 
-> info **Hint** Keep your e2e test files inside the `test` directory.
+!!! info "**Hint**"
+
+    Keep your e2e test files inside the `test` directory.
+
 > The testing files should have a `.e2e-spec` suffix.
 
-#### 重写全局注册的增强子
+## 重写全局注册的增强子
 
 如果您有一个全局注册的守卫(或管道、拦截器或过滤器)，您需要采取更多的步骤来覆盖该增强程序。
 回顾一下最初的注册，看起来像这样:
@@ -440,13 +455,15 @@ providers: [
   {
     provide: APP_GUARD,
     useExisting: JwtAuthGuard,
-    // ^^^^^^^^ notice the use of 'useExisting' instead of 'useClass'
+    // ^^^^^^^^ notice the use of 'useExisting `instead of` useClass'
   },
   JwtAuthGuard,
 ],
 ```
 
-> info **Hint** Change the `useClass` to `useExisting` to reference a registered provider instead of having Nest instantiate it behind the token.
+!!! info "**Hint**"
+
+    Change the `useClass` to `useExisting` to reference a registered provider instead of having Nest instantiate it behind the token.
 
 Now the `JwtAuthGuard` is visible to Nest as a regular provider that can be overridden when creating the `TestingModule`:
 
@@ -461,9 +478,9 @@ const moduleRef = await Test.createTestingModule({
 
 Now all your tests will use the `MockAuthGuard` on every request.
 
-#### 请求范围内测试实例
+## 请求范围内测试实例
 
-[request -scoped](/fundamentals/injection-scoped)提供程序是为每个传入的**请求**创建的。
+[request -scoped](/fundamentals/injection-scoped)提供程序是为每个传入的 **请求** 创建的。
 在请求完成处理后，对实例进行垃圾回收。
 这就产生了一个问题，因为我们不能访问专门为测试请求生成的依赖注入子树。
 

@@ -1,8 +1,8 @@
-### Plugins
+# Plugins
 
 Plugins enable you to extend Apollo Server's core functionality by performing custom operations in response to certain events. Currently, these events correspond to individual phases of the GraphQL request lifecycle, and to the startup of Apollo Server itself (read more [here](https://www.apollographql.com/docs/apollo-server/integrations/plugins/)). For example, a basic logging plugin might log the GraphQL query string associated with each request that's sent to Apollo Server.
 
-#### Custom plugins
+## Custom plugins
 
 To create a plugin, declare a class annotated with the `@Plugin` decorator exported from the `@nestjs/graphql` package. Also, for better code autocompletion, implement the `ApolloServerPlugin` interface from the `apollo-server-plugin-base` package.
 
@@ -37,7 +37,7 @@ export class CommonModule {}
 
 Nest will automatically instantiate a plugin and apply it to the Apollo Server.
 
-#### Using external plugins
+## Using external plugins
 
 There are several plugins provided out-of-the-box. To use an existing plugin, simply import it and add it to the `plugins` array:
 
@@ -48,4 +48,6 @@ GraphQLModule.forRoot({
 }),
 ```
 
-> info **Hint** The `ApolloServerOperationRegistry` plugin is exported from the `apollo-server-plugin-operation-registry` package.
+!!! info "**Hint**"
+
+    The `ApolloServerOperationRegistry` plugin is exported from the `apollo-server-plugin-operation-registry` package.

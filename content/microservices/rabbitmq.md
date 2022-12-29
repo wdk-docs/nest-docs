@@ -1,11 +1,11 @@
-### RabbitMQ
+# RabbitMQ
 
 [RabbitMQ](https://www.rabbitmq.com/)是一个开源的轻量级消息代理，
 支持多种消息协议。
 它可以部署在分布式和联合配置中，以满足大规模、高可用性需求。
 此外，它是部署最广泛的消息代理，在全球范围内用于小型初创企业和大型企业。
 
-#### 安装
+## 安装
 
 要开始构建基于 rabbitmq 的微服务，首先要安装所需的包:
 
@@ -13,7 +13,7 @@
 $ npm i --save amqplib amqp-connection-manager
 ```
 
-#### 概述
+## 概述
 
 要使用 RabbitMQ 传输器，需要将以下选项对象传递给 `createMicroservice()` 方法:
 
@@ -42,9 +42,11 @@ const app = await NestFactory.createMicroservice(AppModule, {
 });
 ```
 
-> info **Hint** `Transport` 枚举是从 `@nestjs/microservices` 包中导入的。
+!!! info "**Hint**"
 
-#### 选项
+    `Transport` 枚举是从 `@nestjs/microservices` 包中导入的。
+
+## 选项
 
 `options`属性特定于所选的传输器。
 **RabbitMQ** 传输器暴露了下面描述的属性。
@@ -84,9 +86,9 @@ const app = await NestFactory.createMicroservice(AppModule, {
   </tr>
 </table>
 
-#### 客户端
+## 客户端
 
-像其他微服务传输器一样，创建RabbitMQ  `ClientProxy` 实例有[几个选项](https://docs.nestjs.com/microservices/basics#client)。
+像其他微服务传输器一样，创建 RabbitMQ `ClientProxy` 实例有[几个选项](https://docs.nestjs.com/microservices/basics#client)。
 
 创建实例的一种方法是使用`ClientsModule`。
 要使用`ClientsModule`创建一个客户端实例，请导入它并使用`register()`方法传递一个选项对象，该对象具有上面`createMicroservice()`方法中显示的相同属性，以及一个`name`属性，用于作为注入令牌。
@@ -116,7 +118,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 也可以使用其他创建客户端的选项(`ClientProxyFactory`或`@Client()`)。
 你可以在[这里](https://docs.nestjs.com/microservices/basics#client)阅读。
 
-#### 上下文
+## 上下文
 
 在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
 当使用 RabbitMQ 传输器时，你可以访问`RmqContext`对象。
@@ -135,9 +137,11 @@ getNotifications(data, context) {
 }
 ```
 
-> info **Hint** `@Payload()`, `@Ctx()` 和 `RmqContext` 从 `@nestjs/microservices` 包导入.
+!!! info "**Hint**"
 
-要访问原始的RabbitMQ消息 (with the `properties`, `fields`, and `content`), 使用`RmqContext`对象的`getMessage()`方法, 如下:
+    `@Payload()`, `@Ctx()` 和 `RmqContext` 从 `@nestjs/microservices` 包导入.
+
+要访问原始的 RabbitMQ 消息 (with the `properties`, `fields`, and `content`), 使用`RmqContext`对象的`getMessage()`方法, 如下:
 
 ```typescript
 @@filename()
@@ -153,7 +157,7 @@ getNotifications(data, context) {
 }
 ```
 
-获取对RabbitMQ [channel](https://www.rabbitmq.com/channels.html)的引用, 使用`RmqContext`对象的`getChannelRef`方法，如下所示:
+获取对 RabbitMQ [channel](https://www.rabbitmq.com/channels.html)的引用, 使用`RmqContext`对象的`getChannelRef`方法，如下所示:
 
 ```typescript
 @@filename()
@@ -169,11 +173,11 @@ getNotifications(data, context) {
 }
 ```
 
-#### 消息确认
+## 消息确认
 
-为了确保消息永远不会丢失，RabbitMQ支持[消息确认](https://www.rabbitmq.com/confirms.html). 
-一个确认信息被消费者发送回RabbitMQ，告诉RabbitMQ已经收到并处理了一个特定的消息，并且RabbitMQ可以自由删除它。
-如果一个使用者死了(它的通道被关闭，连接被关闭，或者TCP连接丢失)而没有发送一个ack, RabbitMQ将会理解一个消息没有被完全处理，并将它重新排队。
+为了确保消息永远不会丢失，RabbitMQ 支持[消息确认](https://www.rabbitmq.com/confirms.html).
+一个确认信息被消费者发送回 RabbitMQ，告诉 RabbitMQ 已经收到并处理了一个特定的消息，并且 RabbitMQ 可以自由删除它。
+如果一个使用者死了(它的通道被关闭，连接被关闭，或者 TCP 连接丢失)而没有发送一个 ack, RabbitMQ 将会理解一个消息没有被完全处理，并将它重新排队。
 
 要启用手动确认模式，请将`noAck`属性设置为`false`:
 
@@ -210,7 +214,7 @@ getNotifications(data, context) {
 }
 ```
 
-#### 记录构建
+## 记录构建
 
 要配置消息选项，您可以使用`RmqRecordBuilder`类(注意:这对于基于事件的流也是可行的)。
 例如，要设置`headers`和`priority`属性，使用`setOptions`方法，如下所示:
@@ -229,7 +233,9 @@ const record = new RmqRecordBuilder(message)
 this.client.send('replace-emoji', record).subscribe(...);
 ```
 
-> info **Hint** `RmqRecordBuilder`类从`@nestjs/microservices`包中导出。
+!!! info "**Hint**"
+
+    `RmqRecordBuilder`类从`@nestjs/microservices`包中导出。
 
 你也可以在服务器端读取这些值，通过访问`RmqContext`，如下所示:
 

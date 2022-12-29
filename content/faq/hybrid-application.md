@@ -1,4 +1,4 @@
-### 混合应用程序
+# 混合应用程序
 
 混合应用程序既侦听 HTTP 请求，又利用连接的微服务。
 `INestApplication` 实例可以通过 `connectMicroservice()` 方法连接到 `INestMicroservice` 实例。
@@ -63,9 +63,11 @@ getTCPDate(data, context) {
 }
 ```
 
-> info **Hint** `@Payload()`, `@Ctx()`, `Transport` and `NatsContext` are imported from `@nestjs/microservices`.
+!!! info "**Hint**"
 
-#### Sharing configuration
+    `@Payload()`, `@Ctx()`, `Transport` and `NatsContext` are imported from `@nestjs/microservices`.
+
+## Sharing configuration
 
 By default a hybrid application will not inherit global pipes, interceptors, guards and filters configured for the main (HTTP-based) application.
 To inherit these configuration properties from the main application, set the `inheritAppConfig` property in the second argument (an optional options object) of the `connectMicroservice()` call, as follow:

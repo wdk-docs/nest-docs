@@ -1,12 +1,12 @@
-### SQL (Sequelize)
+# SQL (Sequelize)
 
-##### This chapter applies only to TypeScript
+### This chapter applies only to TypeScript
 
 > **Warning** In this article, you'll learn how to create a `DatabaseModule` based on the **Sequelize** package from scratch using custom components. As a consequence, this technique contains a lot of overhead that you can avoid by using the dedicated, out-of-the-box `@nestjs/sequelize` package. To learn more, see [here](/techniques/database#sequelize-integration).
 
 [Sequelize](https://github.com/sequelize/sequelize) is a popular Object Relational Mapper (ORM) written in a vanilla JavaScript, but there is a [sequelize-typescript](https://github.com/RobinBuschmann/sequelize-typescript) TypeScript wrapper which provides a set of decorators and other extras for the base sequelize.
 
-#### Getting started
+## Getting started
 
 To start the adventure with this library we have to install the following dependencies:
 
@@ -42,7 +42,9 @@ export const databaseProviders = [
 ];
 ```
 
-> info **Hint** Following best practices, we declared the custom provider in the separated file which has a `*.providers.ts` suffix.
+!!! info "**Hint**"
+
+    Following best practices, we declared the custom provider in the separated file which has a `*.providers.ts` suffix.
 
 Then, we need to export these providers to make them **accessible** for the rest part of the application.
 
@@ -59,7 +61,7 @@ export class DatabaseModule {}
 
 Now we can inject the `Sequelize` object using `@Inject()` decorator. Each class that would depend on the `Sequelize` async provider will wait until a `Promise` is resolved.
 
-#### Model injection
+## Model injection
 
 In [Sequelize](https://github.com/sequelize/sequelize) the **Model** defines a table in the database. Instances of this class represent a database row. Firstly, we need at least one entity:
 
@@ -94,7 +96,7 @@ export const catsProviders = [
 ];
 ```
 
-> warning **Warning** In the real-world applications you should avoid **magic strings**. Both `CATS_REPOSITORY` and `SEQUELIZE` should be kept in the separated `constants.ts` file.
+> warning **Warning** In the real-world applications you should avoid **magic strings** . Both `CATS_REPOSITORY` and `SEQUELIZE` should be kept in the separated `constants.ts` file.
 
 In Sequelize, we use static methods to manipulate the data, and thus we created an **alias** here.
 
@@ -119,7 +121,7 @@ export class CatsService {
 }
 ```
 
-The database connection is **asynchronous**, but Nest makes this process completely invisible for the end-user. The `CATS_REPOSITORY` provider is waiting for the db connection, and the `CatsService` is delayed until repository is ready to use. The entire application can start when each class is instantiated.
+The database connection is **asynchronous** , but Nest makes this process completely invisible for the end-user. The `CATS_REPOSITORY` provider is waiting for the db connection, and the `CatsService` is delayed until repository is ready to use. The entire application can start when each class is instantiated.
 
 Here is a final `CatsModule`:
 
@@ -142,4 +144,6 @@ import { DatabaseModule } from '../database/database.module';
 export class CatsModule {}
 ```
 
-> info **Hint** Do not forget to import the `CatsModule` into the root `AppModule`.
+!!! info "**Hint**"
+
+    Do not forget to import the `CatsModule` into the root `AppModule`.

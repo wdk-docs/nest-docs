@@ -1,10 +1,10 @@
-### MikroORM
+# MikroORM
 
 This recipe is here to help users getting started with MikroORM in Nest. MikroORM is the TypeScript ORM for Node.js based on Data Mapper, Unit of Work and Identity Map patterns. It is a great alternative to TypeORM and migration from TypeORM should be fairly easy. The complete documentation on MikroORM can be found [here](https://mikro-orm.io/docs).
 
-> info **info** `@mikro-orm/nestjs` is a third party package and is not managed by the NestJS core team. Please, report any issues found with the library in the [appropriate repository](https://github.com/mikro-orm/nestjs).
+!!! info **info** `@mikro-orm/nestjs` is a third party package and is not managed by the NestJS core team. Please, report any issues found with the library in the [appropriate repository](https://github.com/mikro-orm/nestjs).
 
-#### Installation
+## Installation
 
 Easiest way to integrate MikroORM to Nest is via [`@mikro-orm/nestjs` module](https://github.com/mikro-orm/nestjs).
 Simply install it next to Nest, MikroORM and underlying driver:
@@ -63,13 +63,14 @@ export class MyService {
 }
 ```
 
-> info **info** Notice that the `EntityManager` is imported from the `@mikro-orm/driver` package, where driver is `mysql`, `sqlite`, `postgres` or what driver you are using. In case you have `@mikro-orm/knex` installed as a dependency, you can also import the `EntityManager` from there.
+!!! info **info** Notice that the `EntityManager` is imported from the `@mikro-orm/driver` package, where driver is `mysql`, `sqlite`, `postgres` or what driver you are using. In case you have `@mikro-orm/knex` installed as a dependency, you can also import the `EntityManager` from there.
 
-#### Repositories
+## Repositories
 
 MikroORM supports the repository design pattern. For every entity we can create a repository. Read the complete documentation on repositories [here](https://mikro-orm.io/docs/repositories). To define which repositories should be registered in the current scope you can use the `forFeature()` method. For example, in this way:
 
-> info **info** You should **not** register your base entities via `forFeature()`, as there are no
+!!! info **info** You should **not** register your base entities via `forFeature()`, as there are no
+
 > repositories for those. On the other hand, base entities need to be part of the list in `forRoot()` (or in the ORM config in general).
 
 ```typescript
@@ -104,7 +105,7 @@ export class PhotoService {
 }
 ```
 
-#### Using custom repositories
+## Using custom repositories
 
 When using custom repositories, we can get around the need for `@InjectRepository()`
 decorator by naming our repositories the same way as `getRepositoryToken()` method do:
@@ -119,14 +120,14 @@ appending `Repository` suffix, the repository will be registered automatically i
 the Nest DI container.
 
 ```ts
-// `**./author.entity.ts**`
+// ` **./author.entity.ts** `
 @Entity()
 export class Author {
   // to allow inference in `em.getRepository()`
   [EntityRepositoryType]?: AuthorRepository;
 }
 
-// `**./author.repository.ts**`
+// ` **./author.repository.ts** `
 @Repository(Author)
 export class AuthorRepository extends EntityRepository<Author> {
   // your custom methods...
@@ -143,9 +144,9 @@ export class MyService {
 }
 ```
 
-#### Load entities automatically
+## Load entities automatically
 
-> info **info** `autoLoadEntities` option was added in v4.1.0
+!!! info **info** `autoLoadEntities` option was added in v4.1.0
 
 Manually adding entities to the entities array of the connection options can be
 tedious. In addition, referencing entities from the root module breaks application
@@ -174,17 +175,19 @@ With that option specified, every entity registered through the `forFeature()`
 method will be automatically added to the entities array of the configuration
 object.
 
-> info **info** Note that entities that aren't registered through the `forFeature()` method, but
+!!! info **info** Note that entities that aren't registered through the `forFeature()` method, but
+
 > are only referenced from the entity (via a relationship), won't be included by
 > way of the `autoLoadEntities` setting.
 
-> info **info** Using `autoLoadEntities` also has no effect on the MikroORM CLI - for that we
+!!! info **info** Using `autoLoadEntities` also has no effect on the MikroORM CLI - for that we
+
 > still need CLI config with the full list of entities. On the other hand, we can
 > use globs there, as the CLI won't go thru webpack.
 
-#### Request scoped handlers in queues
+## Request scoped handlers in queues
 
-> info **info** `@UseRequestContext()` decorator was added in v4.1.0
+!!! info **info** `@UseRequestContext()` decorator was added in v4.1.0
 
 As mentioned in the [docs](https://mikro-orm.io/docs/identity-map), we need a clean state for each request. That is handled automatically thanks to the `RequestContext` helper registered via middleware.
 
@@ -209,7 +212,7 @@ export class MyService {
 }
 ```
 
-#### Using `AsyncLocalStorage` for request context
+## Using `AsyncLocalStorage` for request context
 
 By default, the `domain` api is used in the `RequestContext` helper. Since `@mikro-orm/core@4.0.3`,
 you can use the new `AsyncLocalStorage` too, if you are on up to date node version:
@@ -240,7 +243,7 @@ app.use((req, res, next) => {
 });
 ```
 
-#### Testing
+## Testing
 
 The `@mikro-orm/nestjs` package exposes `getRepositoryToken()` function that returns prepared token based on a given entity to allow mocking the repository.
 
@@ -257,6 +260,6 @@ The `@mikro-orm/nestjs` package exposes `getRepositoryToken()` function that ret
 export class PhotoModule {}
 ```
 
-#### Example
+## Example
 
 A real world example of NestJS with MikroORM can be found [here](https://github.com/mikro-orm/nestjs-realworld-example-app)

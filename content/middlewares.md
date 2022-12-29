@@ -1,8 +1,8 @@
-### 中间件
+# 中间件
 
-中间件是一个在路由处理器**之前**被称为的函数。
+中间件是一个在路由处理器 **之前** 被称为的函数。
 中间件函数可以访问[request](https://expressjs.com/en/4x/api.html#req)和[response](https://expressjs.com/en/4x/api.html#res)对象，以及应用程序请求-响应周期中的 `next()` 中间件函数。
-**next**中间件函数通常由一个名为`next`的变量表示。
+**next** 中间件函数通常由一个名为`next`的变量表示。
 
 <figure><img src="/assets/Middlewares_1.png" /></figure>
 
@@ -48,13 +48,13 @@ export class LoggerMiddleware {
 }
 ```
 
-#### 依赖注入
+## 依赖注入
 
 嵌套中间件完全支持依赖注入。
-就像提供程序和控制器一样，它们能够注入在同一个模块中可用的**依赖项**。
+就像提供程序和控制器一样，它们能够注入在同一个模块中可用的 **依赖项** 。
 通常，这是通过`构造函数`来完成的。
 
-#### 应用中间件
+## 应用中间件
 
 在 `@Module()` 装饰器中没有中间件的位置。
 相反，我们使用模块类的 `configure()` 方法来设置它们。
@@ -131,12 +131,14 @@ export class AppModule {
 }
 ```
 
-> info **Hint** 可以使用 `async/await` 方法使 `configure()` 方法变为异步的(例如，你可以在 `configure()` 方法体中 `await` 异步操作的完成)。
+!!! info "**Hint**"
 
-#### 路线通配符
+    可以使用 `async/await` 方法使 `configure()` 方法变为异步的(例如，你可以在 `configure()` 方法体中 `await` 异步操作的完成)。
+
+## 路线通配符
 
 也支持基于模式的路由。
-例如，星号被用作**通配符**，它将匹配任何字符组合:
+例如，星号被用作 **通配符** ，它将匹配任何字符组合:
 
 ```typescript
 forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });
@@ -147,7 +149,7 @@ forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });
 > warning **Warning** `fastify` 包使用 `path-to-regexp` 包的最新版本，该包不再支持通配符星号 `_` 。
 > 相反,您必须使用参数(如 ., `(._)`, `: 长条木板\*`)。
 
-#### 中间件的消费者
+## 中间件的消费者
 
 `MiddlewareConsumer`是一个助手类。
 它提供了几个内建的方法来管理中间件。
@@ -191,9 +193,11 @@ export class AppModule {
 }
 ```
 
-> info **Hint** `apply()` 方法可以使用单个中间件，也可以使用多个参数来指定[multiple middleware](/middleware#multiple-middleware)。
+!!! info "**Hint**"
 
-#### 不包括路线
+    `apply()` 方法可以使用单个中间件，也可以使用多个参数来指定[multiple middleware](/middleware#multiple-middleware)。
+
+## 不包括路线
 
 有时我们想要从中间件应用中排除某些路由。
 我们可以使用`exclude()`方法轻松地排除某些路由。
@@ -210,11 +214,13 @@ consumer
   .forRoutes(CatsController);
 ```
 
-> info **Hint** `exclude()`方法支持使用[path-to-regexp](https://github.com/pillarjs/path-to-regexp#parameters)包的通配符参数。
+!!! info "**Hint**"
+
+    `exclude()`方法支持使用[path-to-regexp](https://github.com/pillarjs/path-to-regexp#parameters)包的通配符参数。
 
 在上面的例子中， `LoggerMiddleware` 将被绑定到 `CatsController` 中定义的所有路由，除了传递给 `exclude()` 方法的三个路由。
 
-#### 功能的中间件
+## 功能的中间件
 
 我们使用的 LoggerMiddleware 类非常简单。
 它没有成员，没有额外的方法，也没有依赖关系。
@@ -246,9 +252,11 @@ consumer
   .forRoutes(CatsController);
 ```
 
-> info **Hint** 当你的中间件不需要任何依赖时，考虑使用更简单的功能性中间件。
+!!! info "**Hint**"
 
-#### 多个中间件
+    当你的中间件不需要任何依赖时，考虑使用更简单的功能性中间件。
+
+## 多个中间件
 
 如上所述，为了绑定多个顺序执行的中间件，只需在`apply()`方法中提供一个逗号分隔的列表:
 
@@ -256,7 +264,7 @@ consumer
 consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
 ```
 
-#### 全球的中间件
+## 全球的中间件
 
 如果我们想要将中间件绑定到每一个注册的路由，我们可以使用 `INestApplication` 实例提供的 `use()` 方法:
 
@@ -267,6 +275,9 @@ app.use(logger);
 await app.listen(3000);
 ```
 
-> info **Hint** 访问全局中间件中的 DI 容器是不可能的。
+!!! info "**Hint**"
+
+    访问全局中间件中的 DI 容器是不可能的。
+
 > 当使用 `app.use()` 时，你可以使用[functional middleware](middleware#functional-middleware)来代替。
 > 或者，你也可以使用一个类中间件，在 `AppModule` (或任何其他模块)中使用 `. forroutes('\*')` 来使用它。

@@ -1,6 +1,6 @@
-### 授权
+# 授权
 
-**授权**是指决定用户能够做什么的过程。
+**授权** 是指决定用户能够做什么的过程。
 例如，允许管理用户创建、编辑和删除帖子。
 非管理员用户只被授权阅读帖子。
 
@@ -11,9 +11,9 @@
 任何项目所采用的方法取决于其特定的应用程序需求。
 本章介绍了几种授权方法，它们可以适应各种不同的需求。
 
-#### 基于 RBAC 实现
+## 基于 RBAC 实现
 
-基于角色的访问控制(**RBAC**)是围绕角色和特权定义的策略无关的访问控制机制。
+基于角色的访问控制( **RBAC** )是围绕角色和特权定义的策略无关的访问控制机制。
 在本节中，我们将演示如何使用 Nest [guards](/guards)实现一个非常基本的 RBAC 机制。
 
 首先，让我们在系统中创建一个表示角色的`Role`枚举:
@@ -26,7 +26,9 @@ export enum Role {
 }
 ```
 
-> info **Hint** 在更复杂的系统中，可以将角色存储在数据库中，或者从外部身份验证提供者获取角色。
+!!! info "**Hint**"
+
+    在更复杂的系统中，可以将角色存储在数据库中，或者从外部身份验证提供者获取角色。
 
 有了这个，我们可以创建一个`@Roles()`装饰器。
 该装饰器允许指定访问特定资源所需的角色。
@@ -112,14 +114,16 @@ export class RolesGuard {
 }
 ```
 
-> info **Hint** 请参阅执行上下文章节的[反射和元数据](/fundamentals/execution-context#reflection-and-metadata)小节，了解更多关于以上下文敏感的方式使用`Reflector`的细节。
+!!! info "**Hint**"
 
-> warning **Notice** 这个例子被命名为"**basic**"，因为我们只在路由处理程序级别检查角色的存在。
+    请参阅执行上下文章节的[反射和元数据](/fundamentals/execution-context#reflection-and-metadata)小节，了解更多关于以上下文敏感的方式使用`Reflector`的细节。
+
+> warning **Notice** 这个例子被命名为"**basic** "，因为我们只在路由处理程序级别检查角色的存在。
 > 在现实世界的应用程序中，您可能有一些涉及多个操作的端点/处理程序，其中每个操作都需要一组特定的权限。
 > 在这种情况下，您必须提供一种机制来检查业务逻辑中的角色，这使维护变得有些困难，因为没有集中的地方将权限与特定的操作关联起来。
 
 在这个例子中，我们假设`request.user`包含用户实例和允许的角色(在`roles`属性下)。
-在你的应用程序中，你可能会在你的自定义的**身份验证保护**中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
+在你的应用程序中，你可能会在你的自定义的 **身份验证保护** 中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
 
 为了确保这个例子能够正常工作，你的 User 类必须如下所示:
 
@@ -151,14 +155,16 @@ providers: [
 }
 ```
 
-> info **Hint** 如果你想返回一个不同的错误响应，你应该抛出你自己的特定异常，而不是返回一个布尔值。
+!!! info "**Hint**"
 
-#### 声明式授权
+    如果你想返回一个不同的错误响应，你应该抛出你自己的特定异常，而不是返回一个布尔值。
+
+## 声明式授权
 
 创建标识时，可以将其分配给受信任方发出的一个或多个声明。
 claim 是一个名称-值对，它表示主语可以做什么，而不是主语是什么。
 
-要在 Nest 中实现基于声明的授权，您可以按照我们在上面[RBAC](/security/authorization#basic-rbac-implementation)小节中展示的相同步骤进行操作，但有一个显著的区别:您应该比较**权限**，而不是检查特定的角色。
+要在 Nest 中实现基于声明的授权，您可以按照我们在上面[RBAC](/security/authorization#basic-rbac-implementation)小节中展示的相同步骤进行操作，但有一个显著的区别:您应该比较 **权限** ，而不是检查特定的角色。
 每个用户都有一组被分配的权限。
 同样，每个资源/端点将定义需要哪些权限(例如，通过专用的`@RequirePermissions()`装饰器)来访问它们。
 
@@ -178,9 +184,11 @@ create(createCatDto) {
 }
 ```
 
-> info **Hint** 在上面的例子中，`Permission`(类似于我们在 RBAC 部分中展示的`Role`)是一个 TypeScript enum，它包含了你系统中所有可用的权限。
+!!! info "**Hint**"
 
-#### 整合 CASL
+    在上面的例子中，`Permission`(类似于我们在 RBAC 部分中展示的`Role`)是一个 TypeScript enum，它包含了你系统中所有可用的权限。
+
+## 整合 CASL
 
 [CASL](https://casl.js.org/)是一个同构的授权库，它限制了给定的客户端可以访问哪些资源。
 它被设计成可增量采用的，并且可以轻松地在基于简单声明、全功能主题和基于属性的授权之间进行伸缩。
@@ -191,7 +199,9 @@ create(createCatDto) {
 $ npm i @casl/ability
 ```
 
-> info **Hint** 在本例中，我们选择了 CASL，但您可以使用任何其他库，如`accesscontrol`或`acl`，这取决于您的首选项和项目需求。
+!!! info "**Hint**"
+
+    在本例中，我们选择了 CASL，但您可以使用任何其他库，如`accesscontrol`或`acl`，这取决于您的首选项和项目需求。
 
 安装完成后，为了说明 CASL 的机制，我们将定义两个实体类:`User`和`Article`。
 
@@ -278,9 +288,14 @@ export class CaslAbilityFactory {
 
 > warning **Notice** `all`是 CASL 中一个特殊的关键字，代表`任何主题`。
 
-> info **Hint** `Ability`， `AbilityBuilder`， `AbilityClass`和`ExtractSubjectType`类从`@casl/ Ability`包中导出。
+!!! info "**Hint**"
 
-> info **Hint** `detectSubjectType`选项让 CASL 了解如何从对象中获取主题类型。
+    `Ability`， `AbilityBuilder`， `AbilityClass`和`ExtractSubjectType`类从`@casl/ Ability`包中导出。
+
+!!! info "**Hint**"
+
+    `detectSubjectType`选项让 CASL 了解如何从对象中获取主题类型。
+
 > 有关更多信息，请阅读[CASL 文档](https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types)了解详细信息。
 
 在上面的例子中，我们使用`AbilityBuilder`类创建了`Ability`实例。
@@ -316,7 +331,9 @@ if (ability.can(Action.Read, 'all')) {
 }
 ```
 
-> info **Hint** 有关`能力`类的更多信息，请参阅官方[CASL 文档](https://casl.js.org/v5/en/guide/intro)。
+!!! info "**Hint**"
+
+    有关`能力`类的更多信息，请参阅官方[CASL 文档](https://casl.js.org/v5/en/guide/intro)。
 
 例如，假设我们有一个不是管理员的用户。
 在这种情况下，用户应该能够阅读文章，但应该禁止创建新的文章或删除现有的文章。
@@ -331,7 +348,9 @@ ability.can(Action.Delete, Article); // false
 ability.can(Action.Create, Article); // false
 ```
 
-> info **Hint** 虽然`Ability`和`AbilityBuilder`类都提供了`can`和`cannot`方法，但它们的目的不同，接受的参数也略有不同。
+!!! info "**Hint**"
+
+    虽然`Ability`和`AbilityBuilder`类都提供了`can`和`cannot`方法，但它们的目的不同，接受的参数也略有不同。
 
 此外，正如我们在我们的要求中指定的，用户应该能够更新其文章:
 
@@ -353,9 +372,9 @@ ability.can(Action.Update, article); // false
 类似地，`AbilityBuilder`允许我们以类似的方式定义权限(并指定各种条件)。
 要查找更多示例，请访问官方文档。
 
-#### 高级:实现一个 `PoliciesGuard`
+## 高级:实现一个 `PoliciesGuard`
 
-在本节中，我们将演示如何构建一个更复杂的保护，它检查用户是否满足可以在方法级配置的特定的**授权策略**(您可以扩展它以尊重在类级配置的策略)。
+在本节中，我们将演示如何构建一个更复杂的保护，它检查用户是否满足可以在方法级配置的特定的 **授权策略** (您可以扩展它以尊重在类级配置的策略)。
 在本例中，我们将使用 CASL 包，只是为了演示目的，但不需要使用这个库。
 此外，我们将使用我们在前一节中创建的`CaslAbilityFactory`提供程序。
 
@@ -422,7 +441,10 @@ export class PoliciesGuard implements CanActivate {
 }
 ```
 
-> info **Hint** 在这个例子中，我们假设`request。User`包含用户实例。
+!!! info "**Hint**"
+
+    在这个例子中，我们假设`request。User`包含用户实例。
+
 > 在你的应用程序中，你可能会在你的自定义的\*\*身份验证保护中建立这种关联-请参阅[authentication](/security/authentication)章节了解更多细节。
 
 让我们来分析一下这个例子。

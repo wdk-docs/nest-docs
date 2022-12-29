@@ -1,10 +1,10 @@
-### Events
+# Events
 
 [Event Emitter](https://www.npmjs.com/package/@nestjs/event-emitter) package (`@nestjs/event-emitter`) provides a simple observer implementation, allowing you to subscribe and listen for various events that occur in your application. Events serve as a great way to decouple various aspects of your application, since a single event can have multiple listeners that do not depend on each other.
 
 `EventEmitterModule` internally uses the [eventemitter2](https://github.com/EventEmitter2/EventEmitter2) package.
 
-#### Getting started
+## Getting started
 
 First install the required package:
 
@@ -50,7 +50,7 @@ EventEmitterModule.forRoot({
 });
 ```
 
-#### Dispatching Events
+## Dispatching Events
 
 To dispatch (i.e., fire) an event, first inject `EventEmitter2` using standard constructor injection:
 
@@ -58,7 +58,9 @@ To dispatch (i.e., fire) an event, first inject `EventEmitter2` using standard c
 constructor(private eventEmitter: EventEmitter2) {}
 ```
 
-> info **Hint** Import the `EventEmitter2` from the `@nestjs/event-emitter` package.
+!!! info "**Hint**"
+
+    Import the `EventEmitter2` from the `@nestjs/event-emitter` package.
 
 Then use it in a class as follows:
 
@@ -72,7 +74,7 @@ this.eventEmitter.emit(
 );
 ```
 
-#### Listening to Events
+## Listening to Events
 
 To declare an event listener, decorate a method with the `@OnEvent()` decorator preceding the method definition containing the code to be executed, as follows:
 
@@ -115,8 +117,10 @@ handleEverything(payload: any) {
 }
 ```
 
-> info **Hint** `EventEmitter2` class provides several useful methods for interacting with events, like `waitFor` and `onAny`. You can read more about them [here](https://github.com/EventEmitter2/EventEmitter2).
+!!! info "**Hint**"
 
-#### Example
+    `EventEmitter2` class provides several useful methods for interacting with events, like `waitFor` and `onAny`. You can read more about them [here](https://github.com/EventEmitter2/EventEmitter2).
+
+## Example
 
 A working example is available [here](https://github.com/nestjs/nest/tree/master/sample/30-event-emitter).

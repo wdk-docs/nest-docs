@@ -1,8 +1,8 @@
-### 迁移向导
+# 迁移向导
 
 如果你正在使用`@nestjs/swagger@3.*`，请注意下面在 4.0 版本中对/API 的更改。
 
-#### 突发的变化
+## 突发的变化
 
 以下装饰器已被更改/重命名:
 
@@ -25,7 +25,7 @@
 - `setHost` has been removed
 - `setSchemes` has been removed (use the `addServer` instead, e.g., `addServer('http://')`)
 
-#### 新方法
+## 新方法
 
 添加了以下方法:
 

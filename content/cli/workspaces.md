@@ -1,34 +1,34 @@
-### 工作区
+# 工作区
 
 Nest 有两种组织代码的模式:
 
-- **标准模式**: 对于构建具有自己的依赖项和设置、不需要为共享模块进行优化或优化复杂构建的独立项目应用程序非常有用。这是默认模式。
-- **monorepo 模式**: 这种模式将代码工件视为轻量级的单一项目的一部分，可能更适合开发团队和/或多项目环境。
+- **标准模式** : 对于构建具有自己的依赖项和设置、不需要为共享模块进行优化或优化复杂构建的独立项目应用程序非常有用。这是默认模式。
+- **monorepo 模式** : 这种模式将代码工件视为轻量级的单一项目的一部分，可能更适合开发团队和/或多项目环境。
   它自动化了部分构建过程，使创建和组合模块化组件变得更容易，促进了代码重用，使集成测试更容易，使它更容易共享项目范围内的工件，如 eslint 规则和其他配置策略，比 github 子模块更容易使用。
-  Monorepo 模式使用了一个**workspace**的概念，在`nest-cli.json`文件中表示，以协调 Monorepo 组件之间的关系。
+  Monorepo 模式使用了一个 **workspace** 的概念，在`nest-cli.json`文件中表示，以协调 Monorepo 组件之间的关系。
 
 需要注意的是，实际上 Nest 的所有特性都是独立于代码组织模式的。
-这个选择的**唯一的**影响是项目是如何组成的，以及构建构件是如何生成的。
+这个选择的 **唯一的** 影响是项目是如何组成的，以及构建构件是如何生成的。
 所有其他功能，从 CLI 到核心模块再到附加模块，在两种模式下都是一样的。
 
-此外，您可以在任何时候轻松地从**标准模式**切换到**monorepo 模式**，所以您可以推迟这个决定，直到其中一种或另一种方法的好处变得更清楚。
+此外，您可以在任何时候轻松地从 **标准模式**切换到**monorepo 模式** ，所以您可以推迟这个决定，直到其中一种或另一种方法的好处变得更清楚。
 
-#### 标准模式
+## 标准模式
 
-当你运行`nest new`时，一个新的**项目**会使用一个内置原理图为你创建。
+当你运行`nest new`时，一个新的 **项目** 会使用一个内置原理图为你创建。
 Nest 做了以下工作:
 
 1.  创建一个新文件夹，对应于你提供给`nest new`的`name`参数
 2.  用与最小基础级 Nest 应用程序对应的默认文件填充该文件夹。
     你可以在[typescript-starter](https://github.com/nestjs/typescript-starter)库中查看这些文件。
-3.  提供额外的文件，如' nest-cli.json '， ' package.json '和' tsconfig.json '，配置和启用各种工具来编译，测试和服务您的应用程序。
+3.  提供额外的文件，如 `nest-cli.json` ， `package.json` 和 `tsconfig.json` ，配置和启用各种工具来编译，测试和服务您的应用程序。
 
-从那里，你可以修改启动器文件，添加新组件，添加依赖项(例如，' npm install ')，或者开发你的应用程序，如本文档其余部分所述。
+从那里，你可以修改启动器文件，添加新组件，添加依赖项(例如， `npm install` )，或者开发你的应用程序，如本文档其余部分所述。
 
-#### Monorepo 模式
+## Monorepo 模式
 
-要启用 monorepo 模式，你需要从一个 _standard mode_ 结构开始，然后添加**projects**。
-一个项目可以是一个完整的**应用程序**(你可以用命令' nest generate app '添加到工作区中)或者一个**库**(你可以用命令' nest generate library '添加到工作区中)。
+要启用 monorepo 模式，你需要从一个 _standard mode_ 结构开始，然后添加 **projects** 。
+一个项目可以是一个完整的 **应用程序**(你可以用命令 `nest generate app` 添加到工作区中)或者一个**库** (你可以用命令 `nest generate library` 添加到工作区中)。
 我们将在下面详细讨论这些特定类型的项目组件。
 现在要注意的关键点是，将项目添加到现有的标准模式结构的行为将其转换为 Monorepo 模式。
 让我们看一个例子。
@@ -63,7 +63,7 @@ cd my-project
 nest generate app my-app
 ```
 
-此时，' nest '将现有结构转换为**monorepo 模式**结构。
+此时， `nest` 将现有结构转换为 **monorepo 模式** 结构。
 这导致了一些重要的变化。
 文件夹结构现在看起来像这样:
 
@@ -107,15 +107,15 @@ We'll cover default projects below.
 > Specifically, during conversion, the schematic attempts to relocate the `src` and `test` folders in a project folder beneath the `apps` folder in the root.
 > If a project does not use this structure, the conversion will fail or produce unreliable results.
 
-#### 工作区项目
+## 工作区项目
 
 A monorepo uses the concept of a workspace to manage its member entities.
-Workspaces are composed of **projects**.
+Workspaces are composed of **projects** .
 A project may be either:
 
-- an **application**: a full Nest application including a `main.ts` file to bootstrap the application.
+- an **application** : a full Nest application including a `main.ts` file to bootstrap the application.
   Aside from compile and build considerations, an application-type project within a workspace is functionally identical to an application within a _standard mode_ structure.
-- a **library**: a library is a way of packaging a general purpose set of features (modules, providers, controllers, etc.) that can be used within other projects.
+- a **library** : a library is a way of packaging a general purpose set of features (modules, providers, controllers, etc.) that can be used within other projects.
   A library cannot run on its own, and has no `main.ts` file.
   Read more about libraries [here](/cli/libraries).
 
@@ -139,7 +139,7 @@ To start `my-app`, we'd use:
 $ nest start my-app
 ```
 
-#### 应用程序
+## 应用程序
 
 Application-type projects, or what we might informally refer to as just "applications", are complete Nest applications that you can run and deploy.
 You generate an application-type project with `nest generate app`.
@@ -152,14 +152,14 @@ However, the schematic does generate a project-specific `tsconfig.app.json` file
 This config file automatically sets appropriate build options, including setting the compilation output folder properly.
 The file extends the top-level (monorepo) `tsconfig.json` file, so you can manage global settings monorepo-wide, but override them if needed at the project level.
 
-#### 库
+## 库
 
 As mentioned, library-type projects, or simply "libraries", are packages of Nest components that need to be composed into applications in order to run.
 You generate a library-type project with `nest generate library`.
 Deciding what belongs in a library is an architectural design decision.
 We discuss libraries in depth in the [libraries](/cli/libraries) chapter.
 
-#### CLI 属性
+## CLI 属性
 
 Nest keeps the metadata needed to organize, build and deploy both standard and monorepo structured projects in the `nest-cli.json` file.
 Nest automatically adds to and updates this file as you add projects, so you usually do not have to think about it or edit its contents.
@@ -215,7 +215,7 @@ The top-level properties are as follows:
 - `"monorepo"`: (monorepo only) for a monorepo mode structure, this value is always `true`
 - `"root"`: (monorepo only) points at the project root of the _default project_
 
-#### 全局的编译器选项
+## 全局的编译器选项
 
 These properties specify the compiler to use as well as various options that affect **any** compilation step, whether as part of `nest build` or `nest start`, and regardless of the compiler, whether `tsc` or webpack.
 
@@ -227,7 +227,7 @@ If `false` or not present, use `tsc`.
 In monorepo mode, the default is `true` (use webpack), in standard mode, the default is `false` (use `tsc`).
 See below for details.
 |
-| `tsConfigPath` | string | (**monorepo only**) Points at the file containing the `tsconfig.json` settings that will be used when `nest build` or `nest start` is called without a `project` option (e.g., when the default project is built or started).
+| `tsConfigPath` | string | ( **monorepo only** ) Points at the file containing the `tsconfig.json` settings that will be used when `nest build` or `nest start` is called without a `project` option (e.g., when the default project is built or started).
 |
 | `webpackConfigPath` | string | Points at a webpack options file.
 If not specified, Nest looks for the file `webpack.config.js`.
@@ -242,7 +242,7 @@ See below for details.
 (For more fine-grained control of the assets to watch, see [Assets](cli/monorepo#assets) section below).
 |
 
-#### 全局生成选项
+## 全局生成选项
 
 These properties specify the default generate options to be used by the `nest generate` command.
 
@@ -294,7 +294,7 @@ In the following example, `spec` file generation is disabled only for `service` 
 > }
 > ```
 
-#### 具体项目生成选项
+## 具体项目生成选项
 
 In addition to providing global generate options, you may also specify project-specific generate options.
 The project specific generate options follow the exact same format as the global generate options, but are specified directly on each project.
@@ -321,12 +321,12 @@ Project-specific generate options override global generate options.
 > Options specified on the CLI command line take precedence over project-specific options.
 > Project-specific options override global options.
 
-#### 指定编译器
+## 指定编译器
 
 The reason for the different default compilers is that for larger projects (e.g., more typical in a monorepo) webpack can have significant advantages in build times and in producing a single file bundling all project components together.
 If you wish to generate individual files, set `"webpack"` to `false`, which will cause the build process to use `tsc`.
 
-#### Webpack 可选的
+## Webpack 可选的
 
 The webpack options file can contain standard [webpack configuration options](https://webpack.js.org/configuration/).
 For example, to tell webpack to bundle `node_modules` (which are excluded by default), add the following to `webpack.config.js`:
@@ -348,7 +348,7 @@ module.exports = function (options) {
 };
 ```
 
-#### 资产
+## 资产
 
 TypeScript compilation automatically distributes compiler output (`.js` and `.d.ts` files) to the specified output directory.
 It can also be convenient to distribute non-TypeScript files, such as `.graphql` files, `images`, `.html` files and other assets.
@@ -375,13 +375,13 @@ For example:
 
 ```typescript
 "assets": [
-  { "include": "**/*.graphql", "exclude": "**/omitted.graphql", "watchAssets": true },
+  { "include": " **/*.graphql", "exclude": "** /omitted.graphql", "watchAssets": true },
 ]
 ```
 
 > warning **Warning** Setting `watchAssets` in a top-level `compilerOptions` property overrides any `watchAssets` settings within the `assets` property.
 
-#### 项目属性
+## 项目属性
 
 这个元素只存在于单模结构中。
 你通常不应该编辑这些属性，因为它们被 Nest 用来在 monorepo 中定位项目及其配置选项。

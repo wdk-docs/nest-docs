@@ -1,6 +1,8 @@
-### Versioning
+# Versioning
 
-> info **Hint** This chapter is only relevant to HTTP-based applications.
+!!! info "**Hint**"
+
+    This chapter is only relevant to HTTP-based applications.
 
 Versioning allows you to have **different versions** of your controllers or individual routes running within the same application. Applications change very often and it is not unusual that there are breaking changes that you need to make while still needing to support the previous version of the application.
 
@@ -21,7 +23,7 @@ There are 3 types of versioning that are supported:
   </tr>
 </table>
 
-#### URI Versioning Type
+## URI Versioning Type
 
 URI Versioning uses the version passed within the URI of the request, such as `https://example.com/v1/route` and `https://example.com/v2/route`.
 
@@ -41,9 +43,11 @@ await app.listen(3000);
 
 > warning **Notice** The version in the URI will be automatically prefixed with `v` by default, however the prefix value can be configured by setting the `prefix` key to your desired prefix or `false` if you wish to disable it.
 
-> info **Hint** The `VersioningType` enum is available to use for the `type` property and is imported from the `@nestjs/common` package.
+!!! info "**Hint**"
 
-#### Header Versioning Type
+    The `VersioningType` enum is available to use for the `type` property and is imported from the `@nestjs/common` package.
+
+## Header Versioning Type
 
 Header Versioning uses a custom, user specified, request header to specify the version where the value of the header will be the version to use for the request.
 
@@ -63,9 +67,11 @@ await app.listen(3000);
 
 The `header` property should be the name of the header that will contain the version of the request.
 
-> info **Hint** The `VersioningType` enum is available to use for the `type` property and is imported from the `@nestjs/common` package.
+!!! info "**Hint**"
 
-#### Media Type Versioning Type
+    The `VersioningType` enum is available to use for the `type` property and is imported from the `@nestjs/common` package.
+
+## Media Type Versioning Type
 
 Media Type Versioning uses the `Accept` header of the request to specify the version.
 
@@ -85,15 +91,17 @@ await app.listen(3000);
 
 The `key` property should be the key and separator of the key-value pair that contains the version. For the example `Accept: application/json;v=2`, the `key` property would be set to `v=`.
 
-> info **Hint** The `VersioningType` enum is available to use for the `type` property and is imported from the `@nestjs/common` package.
+!!! info "**Hint**"
 
-#### Usage
+    The `VersioningType` enum is available to use for the `type` property and is imported from the `@nestjs/common` package.
+
+## Usage
 
 Versioning allows you to version controllers, individual routes, and also provides a way for certain resources to opt-out of versioning. The usage of versioning is the same regardless of the Versioning Type your application uses.
 
 > warning **Notice** If versioning is enabled for the application but the controller or route does not specify the version, any requests to that controller/route will be returned a `404` response status. Similarly, if a request is received containing a version that does not have a corresponding controller or route, it will also be returned a `404` response status.
 
-#### Controller versions
+## Controller versions
 
 A version can be applied to a controller, setting the version for all routes within the controller.
 
@@ -122,7 +130,7 @@ export class CatsControllerV1 {
 }
 ```
 
-#### Route versions
+## Route versions
 
 A version can be applied to an individual route. This version will override any other version that would effect the route, such as the Controller Version.
 
@@ -165,7 +173,7 @@ export class CatsController {
 }
 ```
 
-#### Multiple versions
+## Multiple versions
 
 Multiple versions can be applied to a controller or route. To use multiple versions, you would set the version to be an Array.
 
@@ -194,7 +202,7 @@ export class CatsController {
 }
 ```
 
-#### Version "Neutral"
+## Version "Neutral"
 
 Some controllers or routes may not care about the version and would have the same functionality regardless of the version. To accommodate this, the version can be set to `VERSION_NEUTRAL` symbol.
 
@@ -231,7 +239,7 @@ export class CatsController {
 }
 ```
 
-#### Global default version
+## Global default version
 
 If you do not want to provide a version for each controller/or individual routes, or if you want to have a specific version set as the default version for every controller/route that don't have the version specified, you could set the `defaultVersion` as follows:
 

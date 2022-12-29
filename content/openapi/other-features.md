@@ -1,10 +1,10 @@
-### 其他功能
+# 其他功能
 
 这个页面列出了所有其他有用的功能。
 
-#### 全局前缀
+## 全局前缀
 
-要忽略通过' `setGlobalPrefix()` '设置的路由的全局前缀，请使用' `ignoreGlobalPrefix` ':
+要忽略通过 `setGlobalPrefix()` 设置的路由的全局前缀，请使用 `ignoreGlobalPrefix` :
 
 ```typescript
 const document = SwaggerModule.createDocument(app, options, {
@@ -12,14 +12,14 @@ const document = SwaggerModule.createDocument(app, options, {
 });
 ```
 
-#### 多个规范
+## 多个规范
 
 SwaggerModule 提供了一种支持多个规范的方法。
 换句话说，您可以在不同的端点上使用不同的 ui 提供不同的文档。
 
 要支持多个规范，应用程序必须使用模块化方法编写。
-' createDocument() '方法有第三个参数' extraOptions '，它是一个带有名为' include '属性的对象。
-' include '属性的值是一个模块数组。
+`createDocument()` 方法有第三个参数 `extraOptions` ，它是一个带有名为 `include` 属性的对象。
+`include` 属性的值是一个模块数组。
 
 您可以设置多个规格支持如下所示:
 
