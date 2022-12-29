@@ -1,0 +1,3530 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="NestJS 文档">
+      
+      
+      
+        <link rel="canonical" href="https://docs.nestjs.com/techniques/configuration/">
+      
+      <link rel="icon" href="../../assets/favicons/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>配置 - NestJS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="NestJS" class="md-header__button md-logo" aria-label="NestJS" data-md-component="logo">
+      
+  <img src="../../assets/logo/logo-small.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NestJS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wdk-docs/nest-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../introduction/" class="md-tabs__link">
+        入门介绍
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fundamentals/dependency-injection/" class="md-tabs__link">
+        基本原理
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../sql/" class="md-tabs__link md-tabs__link--active">
+        技术
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../security/authentication/" class="md-tabs__link">
+        安全
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../websockets/gateways/" class="md-tabs__link">
+        WebSockets
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../microservices/basics/" class="md-tabs__link">
+        微服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cli/overview/" class="md-tabs__link">
+        CLI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../openapi/introduction/" class="md-tabs__link">
+        OpenAPI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../recipes/crud-generator/" class="md-tabs__link">
+        食谱
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../faq/serverless/" class="md-tabs__link">
+        FAQ
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../graphql/quick-start/" class="md-tabs__link">
+        GraphQL
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../application-context/" class="md-tabs__link">
+        其它
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NestJS" class="md-nav__button md-logo" aria-label="NestJS" data-md-component="logo">
+      
+  <img src="../../assets/logo/logo-small.svg" alt="logo">
+
+    </a>
+    NestJS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wdk-docs/nest-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          入门介绍
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="入门介绍" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          入门介绍
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/" class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../first-steps/" class="md-nav__link">
+        第一步
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../controllers/" class="md-nav__link">
+        控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/" class="md-nav__link">
+        提供器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../middlewares/" class="md-nav__link">
+        中间件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exception-filters/" class="md-nav__link">
+        异常过滤
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pipes/" class="md-nav__link">
+        管道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guards/" class="md-nav__link">
+        守卫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interceptors/" class="md-nav__link">
+        拦截器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../custom-decorators/" class="md-nav__link">
+        自定义修饰符
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          基本原理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="基本原理" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          基本原理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/dependency-injection/" class="md-nav__link">
+        自定义提供器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/async-components/" class="md-nav__link">
+        异步服务提供器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/dynamic-modules/" class="md-nav__link">
+        动态模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/provider-scopes/" class="md-nav__link">
+        注入作用域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/circular-dependency/" class="md-nav__link">
+        循环依赖
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/module-reference/" class="md-nav__link">
+        模块引用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/lazy-loading-modules/" class="md-nav__link">
+        延迟加载模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/execution-context/" class="md-nav__link">
+        执行上下文
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/lifecycle-events/" class="md-nav__link">
+        生命周期事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/platform-agnosticism/" class="md-nav__link">
+        平台无关性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fundamentals/unit-testing/" class="md-nav__link">
+        测试
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          技术
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="技术" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          技术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongo/" class="md-nav__link">
+        Mongo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          配置
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        配置
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    配置
+  </a>
+  
+    <nav class="md-nav" aria-label="配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    开始
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    自定义环境文件路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    禁用环境变量加载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    在全局范围内使用模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自定义配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configservice" class="md-nav__link">
+    使用 ConfigService
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    配置名称空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    缓存环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    部分注册
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    模式验证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    自定义验证函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getter" class="md-nav__link">
+    定制的 getter 函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    可扩展的变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maints" class="md-nav__link">
+    在main.ts中使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        验证
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caching/" class="md-nav__link">
+        缓存
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serialization/" class="md-nav__link">
+        序列化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../versioning/" class="md-nav__link">
+        版本控制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task-scheduling/" class="md-nav__link">
+        任务调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queues/" class="md-nav__link">
+        队列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logger/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookies/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compression/" class="md-nav__link">
+        压缩
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-upload/" class="md-nav__link">
+        文件上传
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../streaming-files/" class="md-nav__link">
+        流文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http-module/" class="md-nav__link">
+        HTTP 模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sessions/" class="md-nav__link">
+        Session
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvc/" class="md-nav__link">
+        Model-View-Controller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
+        性能 (Fastify)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server-sent-events/" class="md-nav__link">
+        服务器发送的事件
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          安全
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="安全" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          安全
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/authentication/" class="md-nav__link">
+        身份验证
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/authorization/" class="md-nav__link">
+        授权
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/encryption-hashing/" class="md-nav__link">
+        加密和散列
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/helmet/" class="md-nav__link">
+        Helmet
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/cors/" class="md-nav__link">
+        CORS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/csrf/" class="md-nav__link">
+        CSRF 保护
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/rate-limiting/" class="md-nav__link">
+        速度限制
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          WebSockets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="WebSockets" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          WebSockets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websockets/gateways/" class="md-nav__link">
+        网关
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websockets/exception-filters/" class="md-nav__link">
+        异常过滤
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websockets/pipes/" class="md-nav__link">
+        管道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websockets/guards/" class="md-nav__link">
+        守卫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websockets/interceptors/" class="md-nav__link">
+        拦截器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../websockets/adapter/" class="md-nav__link">
+        适配器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          微服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="微服务" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          微服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/basics/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/mqtt/" class="md-nav__link">
+        MQTT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/nats/" class="md-nav__link">
+        NATS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/rabbitmq/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/kafka/" class="md-nav__link">
+        Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/grpc/" class="md-nav__link">
+        gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/custom-transport/" class="md-nav__link">
+        定制的传输器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/exception-filters/" class="md-nav__link">
+        异常过滤器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/pipes/" class="md-nav__link">
+        管道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/guards/" class="md-nav__link">
+        守卫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../microservices/interceptors/" class="md-nav__link">
+        拦截器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          CLI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CLI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          CLI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/overview/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/workspaces/" class="md-nav__link">
+        工作区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/libraries/" class="md-nav__link">
+        库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/usages/" class="md-nav__link">
+        使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/scripts/" class="md-nav__link">
+        脚本
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          OpenAPI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="OpenAPI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          OpenAPI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/introduction/" class="md-nav__link">
+        介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/types-and-parameters/" class="md-nav__link">
+        类型和参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/operations/" class="md-nav__link">
+        操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/security/" class="md-nav__link">
+        安全
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/mapped-types/" class="md-nav__link">
+        映射类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/decorators/" class="md-nav__link">
+        修饰符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/cli-plugin/" class="md-nav__link">
+        CLI 插件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/other-features/" class="md-nav__link">
+        其他功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/migration-guide/" class="md-nav__link">
+        迁移向导
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          食谱
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="食谱" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          食谱
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/crud-generator/" class="md-nav__link">
+        CRUD 生成器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/hot-reload/" class="md-nav__link">
+        Hot 重载
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/mikroorm/" class="md-nav__link">
+        MikroORM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/sql-typeorm/" class="md-nav__link">
+        TypeORM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/mongodb/" class="md-nav__link">
+        Mongoose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/sql-sequelize/" class="md-nav__link">
+        Sequelize
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/router-module/" class="md-nav__link">
+        路由器模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openapi/introduction/" class="md-nav__link">
+        Swagger
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/terminus/" class="md-nav__link">
+        健康检查
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/cqrs/" class="md-nav__link">
+        CQRS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/documentation/" class="md-nav__link">
+        Compodoc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/prisma/" class="md-nav__link">
+        Prisma
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/serve-static/" class="md-nav__link">
+        服务静态
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/nest-commander/" class="md-nav__link">
+        Commander
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          FAQ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FAQ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          FAQ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/serverless/" class="md-nav__link">
+        Serverless
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/http-adapter/" class="md-nav__link">
+        HTTP 适配器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/global-prefix/" class="md-nav__link">
+        全局路径前缀
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/hybrid-application/" class="md-nav__link">
+        混合应用程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/multiple-servers/" class="md-nav__link">
+        HTTPS 多服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/request-lifecycle/" class="md-nav__link">
+        请求生命周期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/errors/" class="md-nav__link">
+        常见的错误
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/nestjs/nest/tree/master/sample" target="_blank" class="md-nav__link">
+        例子
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          GraphQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GraphQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          GraphQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/quick-start/" class="md-nav__link">
+        快速启动
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/resolvers-map/" class="md-nav__link">
+        解析器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/mutations/" class="md-nav__link">
+        突变
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/subscriptions/" class="md-nav__link">
+        订阅
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/scalars/" class="md-nav__link">
+        标量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/directives/" class="md-nav__link">
+        指令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/plugins/" class="md-nav__link">
+        插件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/interfaces/" class="md-nav__link">
+        接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/unions-and-enums/" class="md-nav__link">
+        联合和枚举
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/field-middleware/" class="md-nav__link">
+        字段中间件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/mapped-types/" class="md-nav__link">
+        映射类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/complexity/" class="md-nav__link">
+        复杂性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/extensions/" class="md-nav__link">
+        扩展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/cli-plugin/" class="md-nav__link">
+        CLI 插件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/schema-generator/" class="md-nav__link">
+        生成 SDL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/guards-interceptors/" class="md-nav__link">
+        其他功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphql/federation/" class="md-nav__link">
+        联合会
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          其它
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="其它" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          其它
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../application-context/" class="md-nav__link">
+        独立的应用程序
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../migration/" class="md-nav__link">
+        迁移向导
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://courses.nestjs.com" target="_blank" class="md-nav__link">
+        正式的课程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_4" type="checkbox" id="__nav_12_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12_4">
+          发现
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="发现" data-md-level="2">
+        <label class="md-nav__title" for="__nav_12_4">
+          <span class="md-nav__icon md-icon"></span>
+          发现
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../discover/who-uses/" class="md-nav__link">
+        谁在使用Nest?
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://nestjs.threadless.com" target="_blank" class="md-nav__link">
+        t恤和连帽衫
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        支持我们
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise/" class="md-nav__link">
+        企业支持
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    配置
+  </a>
+  
+    <nav class="md-nav" aria-label="配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    开始
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    自定义环境文件路径
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    禁用环境变量加载
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    在全局范围内使用模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    自定义配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configservice" class="md-nav__link">
+    使用 ConfigService
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    配置名称空间
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    缓存环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    部分注册
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    模式验证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    自定义验证函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getter" class="md-nav__link">
+    定制的 getter 函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    可扩展的变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maints" class="md-nav__link">
+    在main.ts中使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/wdk-docs/nest-docs/edit/main/docs/techniques/configuration.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>配置</h1>
+
+<h3 id="_1">配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>应用程序通常在不同的<strong>环境</strong>中运行。
+根据环境的不同，应该使用不同的配置设置。
+例如，本地环境通常依赖于特定的数据库凭据，这些凭据仅对本地 DB 实例有效。
+生产环境将使用一组单独的 DB 凭证。
+由于配置变量的变化，最佳实践是在环境中<a href="https://12factor.net/config">存储配置变量</a>。</p>
+<p>外部定义的环境变量可以通过<code>process.env</code>全局变量在 Node.js 中可见。
+我们可以通过在每个环境中分别设置环境变量来尝试解决多个环境的问题。
+这很快就会变得笨拙不堪，特别是在开发和测试环境中，这些值需要很容易地被模仿和/或更改。
+在 Node.js 应用程序中，通常使用<code>.env</code>文件，保存键-值对，其中每个键代表一个特定的值，以表示每个环境。</p>
+<p>在不同的环境中运行应用程序只是交换正确的<code>.env</code>文件的问题。</p>
+<p>在 Nest 中使用这种技术的一个好方法是创建一个<code>ConfigModule</code>来公开一个<code>ConfigService</code>来加载适当的<code>env</code>文件。
+虽然你可以选择自己编写这样一个模块，但为了方便起见，Nest 提供了现成的<code>@nestjs/config</code>包。
+我们将在本章中讨论这个包。</p>
+<h4 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>要开始使用它，我们首先安装所需的依赖项。</p>
+<div class="highlight"><pre><span></span><code>$ npm i --save @nestjs/config
+</code></pre></div>
+<blockquote>
+<p>info <strong>Hint</strong> <code>@nestjs/config</code>包内部使用<a href="https://github.com/motdotla/dotenv">dotenv</a>.</p>
+<p>warning <strong>Note</strong> <code>@nestjs/config</code> 需要 TypeScript 4.1 或更高版本。</p>
+</blockquote>
+<h4 id="_3">开始<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>一旦安装过程完成，我们可以导入<code>ConfigModule</code>。
+通常，我们会把它导入根模块 AppModule，并使用静态方法<code>forRoot()</code>来控制它的行为。
+在此步骤中，将解析和解决环境变量键/值对。
+稍后，我们将在其他特性模块中看到访问<code>ConfigModule</code>类的<code>ConfigService</code>类的几个选项。</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ConfigModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/config&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">()],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<p>上面的代码将从默认位置(项目根目录)加载并解析一个<code>.env</code>文件，将<code>.env</code>文件中的键/值对与分配给<code>processenv</code>的环境变量合并，并将结果存储在一个私有结构中，你可以通过<code>ConfigService</code>访问该结构。
+<code>forRoot()</code>方法注册了<code>ConfigService</code>提供程序，后者提供了一个<code>get()</code>方法来读取这些解析/合并的配置变量。
+由于<code>@nestjs/config</code>依赖于<a href="https://github.com/motdotla/dotenv">dotenv</a>，它使用该包的规则来解决环境变量名称中的冲突。
+当一个键同时存在于运行时环境中作为一个环境变量(例如，通过 OS shell 导出，如<code>export DATABASE_USER=test</code>)和一个<code>.env</code>文件中时，运行时环境变量优先。</p>
+<p>一个示例<code>.env</code>文件看起来像这样:</p>
+<div class="highlight"><pre><span></span><code><span class="err">DATABASE_USER=</span><span class="kc">test</span><span class="w"></span>
+<span class="err">DATABASE_PASSWORD=</span><span class="kc">test</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_4">自定义环境文件路径<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>默认情况下，包会在应用程序的根目录中查找<code>.env</code>文件。
+要为<code>.env</code>文件指定另一个路径，请设置传递给<code>forRoot()</code>的(可选)选项对象的<code>envFilePath</code>属性，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">envFilePath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;.development.env&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<p>你也可以像这样为<code>.env</code>文件指定多个路径:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">envFilePath</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;.env.development.local&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;.env.development&#39;</span><span class="p">],</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<p>如果在多个文件中找到一个变量，则第一个变量优先。</p>
+<h4 id="_5">禁用环境变量加载<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>如果你不想加载<code>.env</code>文件，而是想简单地从运行环境中访问环境变量(就像操作系统 shell 导出<code>export DATABASE_USER=test</code>一样)，设置选项对象的<code>ignoreEnvFile</code>属性为<code>true</code>，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">ignoreEnvFile</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_6">在全局范围内使用模块<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>当你想在其他模块中使用<code>ConfigModule</code>时，你需要导入它(这是任何 Nest 模块的标准配置)。
+或者，通过设置 options 对象的<code>isGlobal</code>属性为<code>true</code>，将其声明为<a href="https://docs.nestjs.com/modules#global-modules">global 模块</a>，如下所示。
+在这种情况下，一旦 <code>ConfigModule</code> 被加载到根模块中(例如，<code>AppModule</code>)，你就不需要在其他模块中导入它了。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">isGlobal</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_7">自定义配置文件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>对于更复杂的项目，您可以利用自定义配置文件来返回嵌套的配置对象。
+这允许您按功能对相关的配置设置分组(例如，与数据库相关的设置)，并将相关的设置存储在单个文件中，以帮助独立地管理它们。</p>
+<p>自定义配置文件导出一个返回配置对象的工厂函数。
+配置对象可以是任意嵌套的普通 JavaScript 对象。
+<code>process.env</code>对象将包含完全解析的环境变量键/值对(与<code>.env</code>文件和外部定义的变量解析并合并，如<a href="techniques/configuration#getting-started">上面</a>)所述。
+因为您控制返回的配置对象，所以您可以添加任何必需的逻辑来将值强制转换为适当的类型，设置默认值，等等... 例如:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">config</span><span class="o">/</span><span class="nx">configuration</span><span class="p">)</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_HOST</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_PORT</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">5432</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<p>我们使用传递给<code>ConfigModule.forRoot()</code>方法的 options 对象的<code>load</code>属性来加载这个文件:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">configuration</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./config/configuration&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="nx">load</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">configuration</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<blockquote>
+<p>info <strong>Notice</strong> <code>load</code>属性的值是一个数组，允许你加载多个配置文件 (如... <code>load: [databaseConfig, authConfig]</code>)</p>
+</blockquote>
+<p>使用自定义配置文件，我们还可以管理自定义文件，如 YAML 文件。
+下面是一个使用 YAML 格式的配置示例:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">http</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;localhost&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+
+<span class="nt">db</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">postgres</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;localhost&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span><span class="w"></span>
+<span class="w">    </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;yaml-db&#39;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">sqlite</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;sqlite.db&#39;</span><span class="w"></span>
+</code></pre></div>
+<p>要读取和解析 YAML 文件，我们可以利用<code>js-yaml</code>包。</p>
+<div class="highlight"><pre><span></span><code>$ npm i js-yaml
+$ npm i -D @types/js-yaml
+</code></pre></div>
+<p>一旦安装了这个包，我们使用<code>yaml#load</code>函数来加载我们刚才创建的 yaml 文件。</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">config</span><span class="o">/</span><span class="nx">configuration</span><span class="p">)</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">readFileSync</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fs&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">yaml</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;js-yaml&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">join</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;path&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">YAML_CONFIG_FILENAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;config.yaml&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">yaml</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="nx">YAML_CONFIG_FILENAME</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39;utf8&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<blockquote>
+<p>warning <strong>Note</strong> 在构建过程中，Nest CLI 不会自动移动你的"assets"(非 ts 文件)到<code>dist</code>文件夹。 为了确保你的 YAML 文件被复制，你必须在<code>nest-clijson</code>文件中的<code>compilerOptions#assets</code>对象中指定这一点。 例如，如果<code>config</code>文件夹和<code>src</code>文件夹在同一级别，添加“compilerOptions#assets”值为 <code>"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]</code>. 阅读更多(在这里)(/cli/monorepo#assets).</p>
+</blockquote>
+<h4 id="configservice">使用 <code>ConfigService</code><a class="headerlink" href="#configservice" title="Permanent link">&para;</a></h4>
+<p>要从<code>ConfigService</code>中访问配置值，我们首先需要注入<code>ConfigService</code>。
+与任何提供器一样，我们需要将其包含的模块- ConfigModule -导入到将要使用它的模块中(除非你将传递给<code>ConfigModule.forroot()</code>方法的选项对象中的<code>isGlobal</code>属性设置为<code>true</code>)。
+将其导入特性模块中，如下所示。</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">feature</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">ConfigModule</span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+<p>然后我们可以使用标准构造函数注入来注入它:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">configService</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<blockquote>
+<p>info <strong>Hint</strong> ConfigService 是从<code>@nestjs/config</code>包中导入的。</p>
+</blockquote>
+<p>在我们的类上使用它:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// get an environment variable</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dbUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;DATABASE_USER&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// get a custom configuration value</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dbHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;database.host&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>如上所示，使用<code>configService.get()</code>方法通过传递变量名来获取一个简单的环境变量。
+你可以通过传递类型来做 TypeScript 类型提示，如上所示(例如，<code>get&lt;string&gt;(…)</code>)。
+<code>get()</code>方法也可以遍历嵌套的自定义配置对象(通过<a href="techniques/configuration#custom-configuration-files">自定义配置文件</a>创建)，如上面的第二个例子所示。</p>
+<p>你也可以使用一个接口作为类型提示来获得整个嵌套的自定义配置对象:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">DatabaseConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">dbConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="nx">DatabaseConfig</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// you can now use `dbConfig.port` and `dbConfig.host`</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dbConfig</span><span class="p">.</span><span class="nx">port</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p><code>get()</code>方法还接受一个可选的第二个参数，它定义了一个默认值，当键不存在时将返回这个默认值，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// use &quot;localhost&quot; when &quot;database.host&quot; is not defined</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dbHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;database.host&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;localhost&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p><code>ConfigService</code>有两个可选的泛型(类型参数)。
+第一个是帮助防止访问不存在的配置属性。如下图所示:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">EnvironmentVariables</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">TIMEOUT</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// somewhere in the code</span><span class="w"></span>
+<span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">configService</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="o">&lt;</span><span class="nx">EnvironmentVariables</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;PORT&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">infer</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// TypeScript Error: this is invalid as the URL property is not defined in EnvironmentVariables</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;URL&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">infer</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>当<code>infer</code>属性设置为<code>true</code>时，<code>ConfigService#get</code>方法将根据接口自动推断属性类型，举个例子,<code>typeof port === "number"</code>(如果你没有在 TypeScript 中使用' strictNullChecks '标志)因为<code>PORT</code>在<code>EnvironmentVariables</code>接口中有一个<code>number</code>类型。</p>
+<p>同样，使用<code>infer</code>特性，你可以推断嵌套的自定义配置对象的属性的类型，即使使用点符号，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">configService</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="o">&lt;</span><span class="p">{</span><span class="w"> </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dbHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;database.host&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">infer</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">})</span><span class="o">!</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// typeof dbHost === &quot;string&quot;                                          |</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//                                                                     +--&gt; non-null assertion operator</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>第二个泛型依赖于第一个泛型，作为一个类型断言，以消除当<code>strictNullChecks</code>打开时<code>ConfigService</code>的方法可以返回的所有<code>undefined</code>类型。例如:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ...</span><span class="w"></span>
+<span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">configService</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="o">&lt;</span><span class="p">{</span><span class="w"> </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="kc">true</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//                                                               ^^^^</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;PORT&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">infer</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="w">  </span><span class="c1">//    ^^^ The type of port will be &#39;number&#39; thus you don&#39;t need TS type assertions anymore</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_8">配置名称空间<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>ConfigModule 允许你定义和加载多个自定义配置文件，如上面<a href="techniques/configuration#custom-configuration-files">自定义配置文件</a>所示。
+您可以使用嵌套的配置对象管理复杂的配置对象层次结构，如该部分所示。
+或者，你可以用<code>registerAs()</code>函数返回一个"命名空间"的配置对象，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">config</span><span class="o">/</span><span class="nx">database</span><span class="p">.</span><span class="nx">config</span><span class="p">)</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">registerAs</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_HOST</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">5432</span><span class="w"></span>
+<span class="p">}));</span><span class="w"></span>
+</code></pre></div>
+<p>与自定义配置文件一样，在你的<code>registerAs()</code>工厂函数中，<code>process.env</code>对象将包含完全解析的环境变量键/值对(与<code>.env</code>文件和外部定义的变量解析和合并，如<a href="techniques/configuration#gettingstarted">上面</a>所述。</p>
+<blockquote>
+<p>info <strong>Hint</strong> <code>registerAs</code>函数是从<code>@nestjs/config</code>包导出的。</p>
+</blockquote>
+<p>用<code>forRoot()</code>方法的 options 对象的<code>load</code>属性加载有命名空间的配置，就像你加载自定义配置文件一样:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">databaseConfig</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./config/database.config&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="nx">load</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">databaseConfig</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<p>现在，要从<code>database</code>名称空间获取<code>host</code>值，请使用点表示法。
+使用<code>database</code>作为属性名的前缀，对应于命名空间的名称(作为<code>registerAs()</code>函数的第一个参数传递):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">dbHost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;database.host&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>一个合理的替代方法是直接注入<code>database</code>名称空间。这让我们可以从强类型中获益:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">constructor</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="kd">@Inject</span><span class="p">(</span><span class="nx">databaseConfig</span><span class="p">.</span><span class="nx">KEY</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">dbConfig</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigType</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">databaseConfig</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<blockquote>
+<p>info <strong>Hint</strong> ConfigType 是从<code>@nestjs/config</code>包中导出的。</p>
+</blockquote>
+<h4 id="_9">缓存环境变量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>由于访问<code>process.env</code>可能很慢，你可以设置传递给<code>ConfigModule.forRoot()</code>的选项对象的<code>cache</code>属性来提高<code>ConfigService#get</code>方法的性能，当它存储在<code>process.env</code>中的变量时。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">cache</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_10">部分注册<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>到目前为止，我们已经在根模块(例如<code>AppModule</code>)中处理了配置文件，使用的是<code>forRoot()</code>方法。
+也许您有一个更复杂的项目结构，特性特定的配置文件位于多个不同的目录中。<br />
+<code>@nestjs/config</code>包提供了一个名为<strong>部分注册</strong>的特性，它只引用与每个特性模块相关的配置文件，而不是将所有这些文件加载到根模块中。
+在特性模块中使用<code>forFeature()</code>静态方法来执行部分注册，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">databaseConfig</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./config/database.config&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forFeature</span><span class="p">(</span><span class="nx">databaseConfig</span><span class="p">)],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">DatabaseModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<blockquote>
+<p>info <strong>Warning</strong> 在某些情况下，您可能需要使用<code>onModuleInit()</code>钩子访问通过部分注册加载的属性，而不是在构造函数中。这是因为<code>forFeature()</code>方法是在模块初始化期间运行的，模块初始化的顺序是不确定的。如果在构造函数中访问另一个模块以这种方式加载的值，则配置所依赖的模块可能还没有初始化。<code>onModuleInit()</code>方法只有在它依赖的所有模块都被初始化后才会运行，所以这种技术是安全的。</p>
+</blockquote>
+<h4 id="_11">模式验证<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>如果没有提供所需的环境变量，或者它们不符合某些验证规则，那么在应用程序启动期间抛出异常是标准的做法。<code>@nestjs/config</code>包可以通过两种不同的方式来实现:</p>
+<ul>
+<li><a href="https://github.com/sideway/joi">Joi</a>内置验证器。使用 Joi，您可以定义一个对象模式，并根据它验证 JavaScript 对象。</li>
+<li>一个自定义的<code>validate()</code>函数，它接受环境变量作为输入。</li>
+</ul>
+<p>要使用 Joi，我们必须安装 Joi 包:</p>
+<div class="highlight"><pre><span></span><code>$ npm install --save joi
+</code></pre></div>
+<blockquote>
+<p>warning <strong>Notice</strong> “joi”的最新版本要求您运行的是 Node v12 或更高版本。对于较老版本的节点，请安装<code>v16.1.8</code>。这主要是在“v17.0.2”发布之后，它会在构建时导致错误。更多信息，请参考他们的<a href="https://github.com/sideway/joi/issues/2262">17.0.0 发布说明</a>。</p>
+</blockquote>
+<p>现在我们可以定义一个 Joi 验证模式，并通过<code>forRoot()</code>方法的 options 对象的<code>validationSchema</code>属性传递它，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Joi</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;joi&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="nx">validationSchema</span><span class="o">:</span><span class="w"> </span><span class="kt">Joi.object</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">NODE_ENV</span><span class="o">:</span><span class="w"> </span><span class="kt">Joi.string</span><span class="p">()</span><span class="w"></span>
+<span class="w">          </span><span class="p">.</span><span class="nx">valid</span><span class="p">(</span><span class="s1">&#39;development&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;production&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;provision&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="p">.</span><span class="k">default</span><span class="p">(</span><span class="s1">&#39;development&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">Joi.number</span><span class="p">().</span><span class="k">default</span><span class="p">(</span><span class="mf">3000</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">}),</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<p>默认情况下，所有模式键都被认为是可选的。
+在这里，我们为<code>NODE_ENV</code>和<code>PORT</code>设置了默认值，如果我们在环境(<code>.env</code>文件或进程环境)中不提供这些变量，将使用它们。
+或者，我们可以使用<code>required()</code>验证方法来要求一个值必须定义在环境中(<code>.env</code>文件或进程环境)。
+在这种情况下，如果我们不提供环境中的变量，验证步骤将抛出一个异常。
+有关如何构造验证模式的更多信息，请参见<a href="https://joi.dev/api/?v=17.3.0#example">Joi 验证方法</a>。</p>
+<p>默认情况下，允许未知的环境变量(其键不在模式中出现的环境变量)，并且不会触发验证异常。
+缺省情况下，报告所有验证错误。
+你可以通过<code>forRoot()</code>选项对象的<code>validationOptions</code>键传递一个选项对象来改变这些行为。
+这个选项对象可以包含由<a href="https://joi.dev/api/?v=17.3.0#anyvalidatevalue-options">Joi validation options</a>提供的任何标准验证选项属性。
+例如，要反转上面的两个设置，可以这样传递选项:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Joi</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;joi&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="nx">validationSchema</span><span class="o">:</span><span class="w"> </span><span class="kt">Joi.object</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">NODE_ENV</span><span class="o">:</span><span class="w"> </span><span class="kt">Joi.string</span><span class="p">()</span><span class="w"></span>
+<span class="w">          </span><span class="p">.</span><span class="nx">valid</span><span class="p">(</span><span class="s1">&#39;development&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;production&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;provision&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">          </span><span class="p">.</span><span class="k">default</span><span class="p">(</span><span class="s1">&#39;development&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">Joi.number</span><span class="p">().</span><span class="k">default</span><span class="p">(</span><span class="mf">3000</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="p">}),</span><span class="w"></span>
+<span class="w">      </span><span class="nx">validationOptions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">allowUnknown</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">abortEarly</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<p><code>@nestjs/config</code>包使用默认设置:</p>
+<ul>
+<li><code>allowUnknown</code>: 控制环境变量中是否允许未知键。默认是<code>true</code></li>
+<li><code>abortEarly</code>: 如果<code>true</code>，在第一个错误时停止验证;如果为<code>false</code>，返回所有错误。默认为<code>false</code>。</li>
+</ul>
+<p>请注意，一旦你决定传递一个<code>validationOptions</code>对象，任何你没有显式传递的设置将默认为<code>Joi</code>标准默认值(而不是<code>@nestjs/config</code>默认值)。
+例如，如果你在你的自定义<code>validationOptions</code>对象中未指定<code>allowUnknowns</code>，它的<code>Joi</code>默认值为<code>false</code>。
+因此，在你的自定义对象中同时指定这<strong>两个</strong>设置可能是最安全的。</p>
+<h4 id="_12">自定义验证函数<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>或者，你可以指定一个<strong>同步</strong> <code>validate</code>函数，该函数接受一个包含环境变量的对象(来自 env 文件和进程)，并返回一个包含已验证环境变量的对象，这样你可以在需要时对它们进行转换/修改。
+如果函数抛出错误，它将阻止应用程序引导。</p>
+<p>在本例中，我们将继续使用<code>class-transformer</code> and <code>class-validator</code> 包。首先，我们必须定义:</p>
+<ul>
+<li>一个有验证约束的类，</li>
+<li>使用<code>plainToClass</code>和<code>validateSync</code>函数的验证函数。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">env</span><span class="p">.</span><span class="nx">validation</span><span class="p">)</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">plainToClass</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;class-transformer&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">IsEnum</span><span class="p">,</span><span class="w"> </span><span class="nx">IsNumber</span><span class="p">,</span><span class="w"> </span><span class="nx">validateSync</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;class-validator&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">enum</span><span class="w"> </span><span class="nx">Environment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Development</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;development&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Production</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;production&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">Provision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;provision&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">EnvironmentVariables</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">@IsEnum</span><span class="p">(</span><span class="nx">Environment</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="nx">NODE_ENV</span><span class="o">:</span><span class="w"> </span><span class="kt">Environment</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">@IsNumber</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">validate</span><span class="p">(</span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">validatedConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">plainToClass</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="nx">EnvironmentVariables</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">config</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">enableImplicitConversion</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">validateSync</span><span class="p">(</span><span class="nx">validatedConfig</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">skipMissingProperties</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">validatedConfig</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>在这里，使用<code>validate</code>函数作为<code>ConfigModule</code>的配置选项，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">validate</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./env.validation&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="nx">validate</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="getter">定制的 getter 函数<a class="headerlink" href="#getter" title="Permanent link">&para;</a></h4>
+<p><code>ConfigService</code>定义了一个通用的<code>get()</code>方法来按键检索配置值。
+我们还可以添加<code>getter</code>函数来实现更自然的编码风格:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
+<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ApiConfigService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">configService</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">isAuthEnabled</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;AUTH_ENABLED&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<span class="kd">@Dependencies</span><span class="p">(</span><span class="nx">ConfigService</span><span class="p">)</span><span class="w"></span>
+<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ApiConfigService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">configService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">configService</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">isAuthEnabled</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;AUTH_ENABLED&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>现在我们可以像下面这样使用 getter 函数:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">service</span><span class="p">)</span><span class="w"></span>
+<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">apiConfigService</span><span class="o">:</span><span class="w"> </span><span class="kt">ApiConfigService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">apiConfigService</span><span class="p">.</span><span class="nx">isAuthEnabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Authentication is enabled</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<span class="kd">@Dependencies</span><span class="p">(</span><span class="nx">ApiConfigService</span><span class="p">)</span><span class="w"></span>
+<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">apiConfigService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">apiConfigService</span><span class="p">.</span><span class="nx">isAuthEnabled</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Authentication is enabled</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_13">可扩展的变量<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><code>@nestjs/config</code>包支持环境变量扩展。
+使用这种技术，您可以创建嵌套的环境变量，其中一个变量在另一个变量的定义中被引用。
+例如:</p>
+<div class="highlight"><pre><span></span><code><span class="err">APP_URL=mywebsi</span><span class="kc">te</span><span class="err">.com</span><span class="w"></span>
+<span class="err">SUPPORT_EMAIL=suppor</span><span class="kc">t</span><span class="err">@$</span><span class="p">{</span><span class="err">APP_URL</span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>在这个构造中，变量<code>SUPPORT_EMAIL</code>解析为<code>'support@mywebsite.com'</code>。注意<code>${{ '{' }}...{{ '}' }}</code>语法触发解析<code>SUPPORT_EMAIL</code>定义中的变量<code>APP_URL</code>的值。</p>
+<blockquote>
+<p>info <strong>Hint</strong> 对于这个特性，<code>@nestjs/config</code>包内部使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>。</p>
+</blockquote>
+<p>在传递给<code>ConfigModule</code>的<code>forRoot()</code>方法的 options 对象中，使用<code>expandVariables</code>属性启用环境变量展开，如下所示:</p>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ConfigModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// ...</span><span class="w"></span>
+<span class="w">      </span><span class="nx">expandVariables</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">}),</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="maints">在<code>main.ts</code>中使用<a class="headerlink" href="#maints" title="Permanent link">&para;</a></h4>
+<p>虽然我们的配置存储在服务中，但它仍然可以在<code>main.ts</code>文件中使用。这样，您就可以使用它来存储诸如应用程序端口或 CORS 主机之类的变量。
+要访问它，你必须使用<code>app.get()</code>方法，后面跟着服务引用:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">configService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">ConfigService</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>然后你可以像往常一样使用它，通过使用配置键调用<code>get</code>方法:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">configService</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;PORT&#39;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../mongo/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Mongo" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Mongo
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../validation/" class="md-footer__link md-footer__link--next" aria-label="下一页: 验证" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              验证
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      版权所有 © 2022 NestJS Authors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://twitter.com/kammysliwiec" target="_blank" rel="noopener" title="Kamil Mysliwiec Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/kamilmysliwiec" target="_blank" rel="noopener" title="Kamil Mysliwiec Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://www.facebook.com/kammysliwiec/" target="_blank" rel="noopener" title="Kamil Mysliwiec Facebook" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://kamilmysliwiec.com" target="_blank" rel="noopener" title="Kamil Mysliwiec Blog | Full-Stack Software Engineer" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M162.4 196c4.8-4.9 6.2-5.1 36.4-5.1 27.2 0 28.1.1 32.1 2.1 5.8 2.9 8.3 7 8.3 13.6 0 5.9-2.4 10-7.6 13.4-2.8 1.8-4.5 1.9-31.1 2.1-16.4.1-29.5-.2-31.5-.8-10.3-2.9-14.1-17.7-6.6-25.3zm61.4 94.5c-53.9 0-55.8.2-60.2 4.1-3.5 3.1-5.7 9.4-5.1 13.9.7 4.7 4.8 10.1 9.2 12 2.2 1 14.1 1.7 56.3 1.2l47.9-.6 9.2-1.5c9-5.1 10.5-17.4 3.1-24.4-5.3-4.7-5-4.7-60.4-4.7zm223.4 130.1c-3.5 28.4-23 50.4-51.1 57.5-7.2 1.8-9.7 1.9-172.9 1.8-157.8 0-165.9-.1-172-1.8-8.4-2.2-15.6-5.5-22.3-10-5.6-3.8-13.9-11.8-17-16.4-3.8-5.6-8.2-15.3-10-22C.1 423 0 420.3 0 256.3 0 93.2 0 89.7 1.8 82.6 8.1 57.9 27.7 39 53 33.4c7.3-1.6 332.1-1.9 340-.3 21.2 4.3 37.9 17.1 47.6 36.4 7.7 15.3 7-1.5 7.3 180.6.2 115.8 0 164.5-.7 170.5zm-85.4-185.2c-1.1-5-4.2-9.6-7.7-11.5-1.1-.6-8-1.3-15.5-1.7-12.4-.6-13.8-.8-17.8-3.1-6.2-3.6-7.9-7.6-8-18.3 0-20.4-8.5-39.4-25.3-56.5-12-12.2-25.3-20.5-40.6-25.1-3.6-1.1-11.8-1.5-39.2-1.8-42.9-.5-52.5.4-67.1 6.2-27 10.7-46.3 33.4-53.4 62.4-1.3 5.4-1.6 14.2-1.9 64.3-.4 62.8 0 72.1 4 84.5 9.7 30.7 37.1 53.4 64.6 58.4 9.2 1.7 122.2 2.1 133.7.5 20.1-2.7 35.9-10.8 50.7-25.9 10.7-10.9 17.4-22.8 21.8-38.5 3.2-10.9 2.9-88.4 1.7-93.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>

@@ -1,0 +1,511 @@
+<div align="center">
+  <br/>
+  <img src="https://github.com/OptimalBits/bull/blob/develop/support/logo@2x.png" width="300" />
+  <br/>
+  <br/>
+  <p>
+    最快、最可靠、基于redis的Node队列。 <br/>
+    仔细写的岩石固体的稳定性和原子性。
+  </p>
+  <br/>
+  <p>
+    <a href="#-sponsors-"><strong>赞助商</strong></a> ·
+    <a href="#bull-features"><strong>特性</strong></a> ·
+    <a href="#uis"><strong>UIs</strong></a> ·
+    <a href="#install"><strong>安装</strong></a> ·
+    <a href="#quick-guide"><strong>快速指南</strong></a> ·
+    <a href="#documentation"><strong>文档</strong></a>
+  </p>
+  <p>检查新的 <a href="https://optimalbits.github.io/bull/"><strong>指南!</strong></a></p>
+  <br/>
+  <p>
+    <a href="https://gitter.im/OptimalBits/bull">
+      <img src="https://badges.gitter.im/Join%20Chat.svg"/>
+    </a>
+    <a href="https://gitter.im/OptimalBits/bull">
+      <img src="https://img.shields.io/npm/dm/bull.svg?maxAge=2592000"/>
+    </a>
+    <a href="http://badge.fury.io/js/bull">
+      <img src="https://badge.fury.io/js/bull.svg"/>
+    </a>
+    <a href="https://coveralls.io/github/OptimalBits/bull?branch=master">
+      <img src="https://coveralls.io/repos/github/OptimalBits/bull/badge.svg?branch=master"/>
+    </a>
+    <a href="http://isitmaintained.com/project/OptimalBits/bull">
+      <img src="http://isitmaintained.com/badge/open/optimalbits/bull.svg"/>
+    </a>
+    <a href="http://isitmaintained.com/project/OptimalBits/bull">
+      <img src="http://isitmaintained.com/badge/resolution/optimalbits/bull.svg"/>
+    </a>
+        <a href="https://twitter.com/manast">
+      <img src="https://img.shields.io/twitter/follow/manast?label=Stay%20updated&style=social"/>
+    </a>
+  </p>
+</div>
+
+### 📻 新闻和更新
+
+请在[Twitter](http://twitter.com/manast)上关注我，了解重要的新闻和更新。
+
+### 🛠 教程
+
+你可以在这个博客中找到教程和新闻: https://blog.taskforce.sh/
+
+---
+
+### 所使用的
+
+Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="center">
+      <a href="https://github.com/atlassian/github-for-jira">
+        <img
+          src="https://876297641-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LUuDmt_xXMfG66Rn1GA%2Fuploads%2FevsJCF6F1tx1ScZwDQOd%2FAtlassian-horizontal-blue-rgb.webp?alt=media&token=2fcd0528-e8bb-4bdd-af35-9d20e313d1a8"
+          width="150"
+          alt="Atlassian"
+      /></a>
+    </td>
+    <td valign="center">
+      <a href="https://github.com/Autodesk">
+        <img
+          src="https://876297641-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LUuDmt_xXMfG66Rn1GA%2Fuploads%2FvpTe02RdOhUJBA8TdHEE%2Fautodesk-logo-white.png?alt=media&token=326961b4-ea4f-4ded-89a4-e05692eec8ee"
+          width="150"
+          alt="Autodesk"
+      /></a>
+    </td>
+    <td valign="center">
+      <a href="https://github.com/common-voice/common-voice">
+        <img
+          src="https://876297641-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LUuDmt_xXMfG66Rn1GA%2Fuploads%2F4zPSrubNJKViAzUIftIy%2Fmozilla-logo-bw-rgb.png?alt=media&token=9f93aae2-833f-4cc4-8df9-b7fea0ad5cb5"
+          width="150"
+          alt="Mozilla"
+      /></a>
+    </td>
+    <td valign="center">
+      <a href="https://github.com/nestjs/bull">
+        <img
+          src="https://876297641-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LUuDmt_xXMfG66Rn1GA%2Fuploads%2FfAcGye182utFUtPKdLqJ%2FScreenshot%202022-02-15%20at%2011.32.39.png?alt=media&token=29feb550-f0bc-467d-a290-f700701d7d15"
+          width="150"
+          alt="Nest"
+      /></a>
+    </td>
+    <td valign="center">
+      <a href="https://github.com/salesforce/refocus">
+        <img
+          src="https://876297641-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LUuDmt_xXMfG66Rn1GA%2Fuploads%2FZNnYNuL5qJ6ZoBh7JJEW%2Fsalesforce-logo.png?alt=media&token=ddcae63b-08c0-4dd4-8496-3b29a9bf977d"
+          width="100"
+          alt="Salesforce"
+      /></a>
+    </td>
+
+  </tr>
+</table>
+
+---
+
+### BullMQ
+
+如果你想开始使用完全用 Typescript 编写的下一个主要版本的 Bull，欢迎使用新的 repo[这里](https://github.com/taskforcesh/bullmq).
+否则，我们非常欢迎你仍然使用 Bull，这是一个安全的、经过战斗测试的代码库。
+
+---
+
+### 🚀 赞助商 🚀
+
+[<img src="https://www.redisgreen.com/images/rglogo/redisgreen_transparent_240x48.png" width="150" alt="RedisGreen" style="padding: 100px"/>](https://dashboard.redisgreen.net/new?utm_campaign=BULLMQ)
+
+如果您需要高质量的生产 Redis 实例为您的 Bull 项目，请考虑订阅[RedisGreen](https://dashboard.redisgreen.net/new?utm_campaign=BULLMQ),Redis 的领导者们与 Bull 完美地合作。
+注册时请使用促销代码“BULLMQ”，以帮助我们赞助 Bull 的发展!
+
+---
+
+### 官方的前端
+
+[<img src="http://taskforce.sh/assets/logo_square.png" width="100" alt="Taskforce.sh, Inc" style="padding: 100px"/>](https://taskforce.sh)
+
+用专业前端增压你的队列:
+
+- 获得所有队列的完整概览。
+- 检查作业、搜索、重试或提升被延迟的作业。
+- 指标和统计数据。
+- 还有更多的功能。
+
+登录[Taskforce.sh](https://taskforce.sh)
+
+---
+
+### Bull 特性
+
+- [x] 最小的 CPU 使用率，由于无轮询设计。
+- [x] 基于 Redis 的稳健设计。
+- [x] 延迟的工作。
+- [x] 根据 cron 规范安排和重复作业。
+- [x] 对工作的率限制。
+- [x] 重试。
+- [x] 优先级。
+- [x] 并发性。
+- [x] 暂停/恢复-全局或本地。
+- [x] 每个队列有多个作业类型。
+- [x] 线程(沙盒)处理函数。
+- [x] 从进程崩溃中自动恢复。
+
+接下来是路线图…
+
+- [ ] 作业完成确认(同时可以使用消息队列[pattern](https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md#returning-job-completions))。
+- [ ] 父子的工作关系。
+
+---
+
+### UIs
+
+你可以使用一些第三方 ui 来进行监控:
+
+**BullMQ**
+
+- [Taskforce](https://taskforce.sh)
+
+**Bull v3**
+
+- [Taskforce](https://taskforce.sh)
+- [bull-board](https://github.com/vcapretz/bull-board)
+- [bull-repl](https://github.com/darky/bull-repl)
+- [bull-monitor](https://github.com/s-r-x/bull-monitor)
+- [Monitoro](https://github.com/AbhilashJN/monitoro)
+
+**Bull <= v2**
+
+- [Matador](https://github.com/ShaneK/Matador)
+- [react-bull](https://github.com/kfatehi/react-bull)
+- [Toureiro](https://github.com/Epharmix/Toureiro)
+
+---
+
+### 监测和报警
+
+- With Prometheus [Bull Queue Exporter](https://github.com/UpHabit/bull_exporter)
+
+---
+
+### 特征比较
+
+Since there are a few job queue solutions, here is a table comparing them:
+
+| Feature                   |   Bullmq-Pro    |     Bullmq      |      Bull       |  Kue  | Bee      | Agenda |
+| :------------------------ | :-------------: | :-------------: | :-------------: | :---: | -------- | ------ |
+| Backend                   |      redis      |      redis      |      redis      | redis | redis    | mongo  |
+| Observables               |        ✓        |                 |                 |       |          |        |
+| Group Rate Limit          |        ✓        |                 |                 |       |          |        |
+| Group Support             |        ✓        |                 |                 |       |          |        |
+| Parent/Child Dependencies |        ✓        |        ✓        |                 |       |          |        |
+| Priorities                |        ✓        |        ✓        |        ✓        |   ✓   |          | ✓      |
+| Concurrency               |        ✓        |        ✓        |        ✓        |   ✓   | ✓        | ✓      |
+| Delayed jobs              |        ✓        |        ✓        |        ✓        |   ✓   |          | ✓      |
+| Global events             |        ✓        |        ✓        |        ✓        |   ✓   |          |        |
+| Rate Limiter              |        ✓        |        ✓        |        ✓        |       |          |        |
+| Pause/Resume              |        ✓        |        ✓        |        ✓        |   ✓   |          |        |
+| Sandboxed worker          |        ✓        |        ✓        |        ✓        |       |          |        |
+| Repeatable jobs           |        ✓        |        ✓        |        ✓        |       |          | ✓      |
+| Atomic ops                |        ✓        |        ✓        |        ✓        |       | ✓        |        |
+| Persistence               |        ✓        |        ✓        |        ✓        |   ✓   | ✓        | ✓      |
+| UI                        |        ✓        |        ✓        |        ✓        |   ✓   |          | ✓      |
+| Optimized for             | Jobs / Messages | Jobs / Messages | Jobs / Messages | Jobs  | Messages | Jobs   |
+
+### 安装
+
+```bash
+npm install bull --save
+```
+
+or
+
+```bash
+yarn add bull
+```
+
+_**Requirements:** Bull requires a Redis version greater than or equal to `2.8.18`._
+
+### Typescript 定义
+
+```bash
+npm install @types/bull --save-dev
+```
+
+```bash
+yarn add --dev @types/bull
+```
+
+Definitions are currently maintained in the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/bull) repo.
+
+### 贡献
+
+我们欢迎所有类型的贡献，无论是代码修复、新特性还是文档改进。
+代码格式由[prettier](https://prettier.io/)强制执行。
+对于提交，请遵循常规[commits convention](https://www.conventionalcommits.org/en/v1.0.0-beta.2/)。
+所有代码都必须通过 lint 规则和测试套件，然后才能合并到 development 中。
+
+---
+
+### 快速指南
+
+#### 基本用法
+
+```js
+const Queue = require('bull');
+
+const videoQueue = new Queue('video transcoding', 'redis://127.0.0.1:6379');
+const audioQueue = new Queue('audio transcoding', {
+  redis: { port: 6379, host: '127.0.0.1', password: 'foobared' },
+}); // Specify Redis connection using object
+const imageQueue = new Queue('image transcoding');
+const pdfQueue = new Queue('pdf transcoding');
+
+videoQueue.process(function (job, done) {
+  // job.data contains the custom data passed when the job was created
+  // job.id contains id of this job.
+
+  // transcode video asynchronously and report progress
+  job.progress(42);
+
+  // call done when finished
+  done();
+
+  // or give a error if error
+  done(new Error('error transcoding'));
+
+  // or pass it a result
+  done(null, { framerate: 29.5 /* etc... */ });
+
+  // If the job throws an unhandled exception it is also handled correctly
+  throw new Error('some unexpected error');
+});
+
+audioQueue.process(function (job, done) {
+  // transcode audio asynchronously and report progress
+  job.progress(42);
+
+  // call done when finished
+  done();
+
+  // or give a error if error
+  done(new Error('error transcoding'));
+
+  // or pass it a result
+  done(null, { samplerate: 48000 /* etc... */ });
+
+  // If the job throws an unhandled exception it is also handled correctly
+  throw new Error('some unexpected error');
+});
+
+imageQueue.process(function (job, done) {
+  // transcode image asynchronously and report progress
+  job.progress(42);
+
+  // call done when finished
+  done();
+
+  // or give a error if error
+  done(new Error('error transcoding'));
+
+  // or pass it a result
+  done(null, { width: 1280, height: 720 /* etc... */ });
+
+  // If the job throws an unhandled exception it is also handled correctly
+  throw new Error('some unexpected error');
+});
+
+pdfQueue.process(function (job) {
+  // Processors can also return promises instead of using the done callback
+  return pdfAsyncProcessor();
+});
+
+videoQueue.add({ video: 'http://example.com/video1.mov' });
+audioQueue.add({ audio: 'http://example.com/audio1.mp3' });
+imageQueue.add({ image: 'http://example.com/image1.tiff' });
+```
+
+#### 使用承诺
+
+或者，你可以使用 return promises 来代替`done`回调:
+
+```javascript
+videoQueue.process(function (job) {
+  // 不要忘记删除done回调!
+  // 简单地回报一个承诺
+  return fetchVideo(job.data.url).then(transcodeVideo);
+
+  // 处理承诺拒绝
+  return Promise.reject(new Error('error transcoding'));
+
+  // 将承诺解析的值传递给“completed”事件
+  return Promise.resolve({ framerate: 29.5 /* etc... */ });
+
+  // 如果作业抛出一个未处理的异常，它也会得到正确的处理
+  throw new Error('some unexpected error');
+  // 一样
+  return Promise.reject(new Error('some unexpected error'));
+});
+```
+
+#### 独立的进程
+
+进程函数也可以在单独的进程中运行。这有几个好处:
+
+- 这个进程是沙箱化的，所以即使它崩溃了，也不会影响工作进程。
+- 您可以在不影响队列的情况下运行阻塞代码(作业不会停止)。
+- 更好地利用多核 cpu。
+- 减少与 redis 的连接。
+
+为了使用这个特性，只需创建一个单独的处理器文件:
+
+```js
+// processor.js
+module.exports = function (job) {
+  // 做一些繁重的工作
+  return Promise.resolve(result);
+};
+```
+
+然后像这样定义处理器:
+
+```js
+// 单流程:
+queue.process('/path/to/my/processor.js');
+
+// 你也可以使用并发:
+queue.process(5, '/path/to/my/processor.js');
+
+// 和指定的处理器:
+queue.process('my processor', 5, '/path/to/my/processor.js');
+```
+
+#### 重复的工作
+
+A job can be added to a queue and processed repeatedly according to a cron specification:
+
+```js
+paymentsQueue.process(function (job) {
+  // Check payments
+});
+
+// Repeat payment job once every day at 3:15 (am)
+paymentsQueue.add(paymentsData, { repeat: { cron: '15 3 * * *' } });
+```
+
+As a tip, check your expressions here to verify they are correct:
+[cron expression generator](https://crontab.cronhub.io)
+
+#### 暂停/恢复
+
+A queue can be paused and resumed globally (pass `true` to pause processing for
+just this worker):
+
+```js
+queue.pause().then(function () {
+  // queue is paused now
+});
+
+queue.resume().then(function () {
+  // queue is resumed now
+});
+```
+
+#### 事件
+
+队列会发出一些有用的事件，例如…
+
+```js
+.on('completed', function (job, result) {
+  // Job completed with output result!
+})
+```
+
+For more information on events, including the full list of events that are fired, check out the [Events reference](./REFERENCE.md#events)
+
+#### 队列性能
+
+队列很便宜，所以如果你需要很多队列，只需创建新的不同名称的队列:
+
+```javascript
+const userJohn = new Queue('john');
+const userLisa = new Queue('lisa');
+.
+.
+.
+```
+
+However every queue instance will require new redis connections, check how to [reuse connections](https://github.com/OptimalBits/bull/blob/master/PATTERNS.md#reusing-redis-connections) or you can also use [named processors](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueprocess) to achieve a similar result.
+
+#### 集群的支持
+
+NOTE: From version 3.2.0 and above it is recommended to use threaded processors instead.
+
+Queues are robust and can be run in parallel in several threads or processes
+without any risk of hazards or queue corruption. Check this simple example
+using cluster to parallelize jobs across processes:
+
+```js
+const Queue = require('bull');
+const cluster = require('cluster');
+
+const numWorkers = 8;
+const queue = new Queue('test concurrent queue');
+
+if (cluster.isMaster) {
+  for (let i = 0; i < numWorkers; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('online', function (worker) {
+    // Let's create a few jobs for the queue workers
+    for (let i = 0; i < 500; i++) {
+      queue.add({ foo: 'bar' });
+    }
+  });
+
+  cluster.on('exit', function (worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
+  });
+} else {
+  queue.process(function (job, jobDone) {
+    console.log('Job done by worker', cluster.worker.id, job.id);
+    jobDone();
+  });
+}
+```
+
+---
+
+### 文档
+
+要获取完整的文档，请查看参考和常用模式:
+
+- [Guide](https://optimalbits.github.io/bull/) — Your starting point for developing with Bull.
+- [Reference](./REFERENCE.md) — Reference document with all objects and methods available.
+- [Patterns](./PATTERNS.md) — a set of examples for common patterns.
+- [License](./LICENSE.md) — the Bull license—it's MIT.
+
+如果你看到任何可以使用更多文档的东西，请提交一个 pull request!
+
+---
+
+### 重要的笔记
+
+The queue aims for an "at least once" working strategy. This means that in some situations, a job
+could be processed more than once. This mostly happens when a worker fails to keep a lock
+for a given job during the total duration of the processing.
+
+When a worker is processing a job it will keep the job "locked" so other workers can't process it.
+
+It's important to understand how locking works to prevent your jobs from losing their lock - becoming _stalled_ -
+and being restarted as a result. Locking is implemented internally by creating a lock for `lockDuration` on interval
+`lockRenewTime` (which is usually half `lockDuration`). If `lockDuration` elapses before the lock can be renewed,
+the job will be considered stalled and is automatically restarted; it will be **double processed**. This can happen when:
+
+1. The Node process running your job processor unexpectedly terminates.
+2. Your job processor was too CPU-intensive and stalled the Node event loop, and as a result, Bull couldn't renew the job lock (see [#488](https://github.com/OptimalBits/bull/issues/488) for how we might better detect this). You can fix this by breaking your job processor into smaller parts so that no single part can block the Node event loop. Alternatively, you can pass a larger value for the `lockDuration` setting (with the tradeoff being that it will take longer to recognize a real stalled job).
+
+As such, you should always listen for the `stalled` event and log this to your error monitoring system, as this means your jobs are likely getting double-processed.
+
+As a safeguard so problematic jobs won't get restarted indefinitely (e.g. if the job processor always crashes its Node process), jobs will be recovered from a stalled state a maximum of `maxStalledCount` times (default: `1`).

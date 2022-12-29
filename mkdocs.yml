@@ -8,7 +8,7 @@ site_dir: docs
 # extra_css:
 #   - stylesheets/extra.css
 
-repo_url: wdk-docs/nest-docs
+repo_url: https://github.com/wdk-docs/nest-docs
 edit_uri: edit/main/docs
 
 theme:
