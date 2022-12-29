@@ -1,0 +1,89 @@
+INHERIT: config/nav.yml
+
+site_name: NestJS
+site_url: https://docs.nestjs.com/
+site_description: NestJS 文档
+docs_dir: content
+site_dir: docs
+extra_css:
+  - stylesheets/extra.css
+
+repo_url: https://github.com/knative/docs
+edit_uri: edit/main/docs
+
+theme:
+  name: material
+  logo: assets/logo/logo-small.svg
+  favicon: images/favicon.ico
+  # custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.tabs.sticky
+    - navigation.top
+
+markdown_extensions:
+  # - mdx_include:
+  #     base_path: docs
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - meta
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  # - pymdownx.snippets:
+  #     base_path: source/snippets
+  - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.escapeall
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - toc:
+      permalink: true
+  - def_list
+
+plugins:
+  search:
+    # Spaces, dashes, periods and forward-slash (so serving.knative.dev/blibble can be searched as blibble).
+    separator: '[\/\s\-\.]+'
+  # macros:
+  #   module_name: hack/macros
+  #   include_dir: source/snippets
+  exclude:
+    glob:
+      # Exclude files that contain hugo specific shortcodes
+      # (either the include shortcode or not-converted-yet tabs).
+      - snippets/*
+      - smoketest.md
+  awesome-pages:
+    filename: ".index"
+    collapse_single_pages: true
+    strict: false
+
+copyright: "版权所有 © 2022 NestJS Authors"
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/NestJSProject
+    - icon: fontawesome/brands/github
+      link: https://github.com/knative/community
+      name: NestJS Community on Github
+    - icon: fontawesome/brands/slack
+      link: https://slack.knative.dev
+      name: Slack
+  # TODO: Replace with https://github.com/mkdocs/mkdocs/pull/2267 once mkdocs 1.2 is out.
+  version_warning: !!python/object/apply:os.getenv ["VERSION_WARNING"]
+  knative_version: !!python/object/apply:os.getenv ["KNATIVE_VERSION"]
+  branch: !!python/object/apply:os.getenv ["SAMPLES_BRANCH", "main"]
+  # analytics:
+  #   provider: google
+  #   property: G-YRMNFYE32R
+  version:
+    provider: mike

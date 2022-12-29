@@ -1,0 +1,141 @@
+nav:
+  - 介绍:
+      - 介绍: introduction.md
+      - 独立的应用程序: application-context.md
+      - 迁移向导: migration.md
+      - 正式的课程: https://courses.nestjs.com/
+      - 发现:
+          - 谁在使用Nest?: discover/companies.md
+      - t恤和连帽衫: https://nestjs.threadless.com/
+      - 支持我们: support
+  - 概述:
+      - 第一步: first-steps.md
+      - 控制器: controllers.md
+      - 提供器: components.md
+      - 模块: modules.md
+      - 中间件: middlewares.md
+      - 异常过滤: exception-filters.md
+      - 管道: pipes.md
+      - 守卫: guards.md
+      - 拦截器: interceptors.md
+      - 自定义修饰符: custom-decorators.md
+  - 基本原理:
+      - 自定义提供器: fundamentals/dependency-injection.md
+      - 异步服务提供器: fundamentals/async-components.md
+      - 动态模块: fundamentals/dynamic-modules.md
+      - 注入作用域: fundamentals/provider-scopes.md
+      - 循环依赖: fundamentals/circular-dependency.md
+      - 模块引用: fundamentals/module-reference.md
+      - 延迟加载模块: fundamentals/lazy-loading-modules.md
+      - 执行上下文: fundamentals/execution-context.md
+      - 生命周期事件: fundamentals/lifecycle-events.md
+      - 平台无关性: fundamentals/platform-agnosticism.md
+      - 测试: fundamentals/unit-testing.md
+  - 技术:
+      - 数据库: techniques/sql.md
+      - Mongo: techniques/mongo.md
+      - 配置: techniques/configuration.md
+      - 验证: techniques/validation.md
+      - 缓存: techniques/caching.md
+      - 序列化: techniques/serialization.md
+      - 版本控制: techniques/versioning.md
+      - 任务调度: techniques/task-scheduling.md
+      - 队列: techniques/queues.md
+      # - 'Bull': '/techniques/bull.md
+      - 日志: techniques/logger.md
+      - Cookies: techniques/cookies.md
+      - 事件: techniques/events.md
+      - 压缩: techniques/compression.md
+      - 文件上传: techniques/file-upload.md
+      - 流文件: techniques/streaming-files.md
+      - HTTP 模块: techniques/http-module.md
+      - Session: techniques/sessions.md
+      - Model-View-Controller: techniques/mvc.md
+      - 性能 (Fastify): techniques/performance.md
+      - 服务器发送的事件: techniques/server-sent-events.md
+  - 安全:
+      - 身份验证: security/authentication.md
+      - 授权: security/authorization.md
+      - 加密和散列: security/encryption-hashing.md
+      - Helmet: security/helmet.md
+      - CORS: security/cors.md
+      - CSRF 保护: security/csrf.md
+      - 速度限制: security/rate-limiting.md
+  - GraphQL:
+      - 快速启动: graphql/quick-start.md
+      - 解析器: graphql/resolvers-map.md
+      - 突变: graphql/mutations.md
+      - 订阅: graphql/subscriptions.md
+      - 标量: graphql/scalars.md
+      - 指令: graphql/directives.md
+      - 插件: graphql/plugins.md
+      - 接口: graphql/interfaces.md
+      - 联合和枚举: graphql/unions-and-enums.md
+      - 字段中间件: graphql/field-middleware.md
+      - 映射类型: graphql/mapped-types.md
+      - 复杂性: graphql/complexity.md
+      - 扩展: graphql/extensions.md
+      - CLI 插件: graphql/cli-plugin.md
+      - 生成 SDL: graphql/schema-generator.md
+      - 其他功能: graphql/guards-interceptors.md
+      - 联合会: graphql/federation.md
+  - WebSockets:
+      - 网关: websockets/gateways.md
+      - 异常过滤: websockets/exception-filters.md
+      - 管道: websockets/pipes.md
+      - 守卫: websockets/guards.md
+      - 拦截器: websockets/interceptors.md
+      - 适配器: websockets/adapter.md
+  - 微服务:
+      - 概述: microservices/basics.md
+      - Redis: microservices/redis.md
+      - MQTT: microservices/mqtt.md
+      - NATS: microservices/nats.md
+      - RabbitMQ: microservices/rabbitmq.md
+      - Kafka: microservices/kafka.md
+      - gRPC: microservices/grpc.md
+      - 定制的传输器: microservices/custom-transport.md
+      - 异常过滤器: microservices/exception-filters.md
+      - 管道: microservices/pipes.md
+      - 守卫: microservices/guards.md
+      - 拦截器: microservices/interceptors.md
+  - CLI:
+      - 概述: cli/overview.md
+      - 工作区: cli/workspaces.md
+      - 库: cli/libraries.md
+      - 使用: cli/usages.md
+      - 脚本: cli/scripts.md
+  - OpenAPI:
+      - 介绍: openapi/introduction.md
+      - 类型和参数: openapi/types-and-parameters.md
+      - 操作: openapi/operations.md
+      - 安全: openapi/security.md
+      - 映射类型: openapi/mapped-types.md
+      - 修饰符: openapi/decorators.md
+      - CLI 插件: openapi/cli-plugin.md
+      - 其他功能: openapi/other-features.md
+      - 迁移向导: openapi/migration-guide.md
+  - 食谱:
+      - CRUD 生成器: recipes/crud-generator.md
+      - Hot 重载: recipes/hot-reload.md
+      - MikroORM: recipes/mikroorm.md
+      - TypeORM: recipes/sql-typeorm.md
+      - Mongoose: recipes/mongodb.md
+      - Sequelize: recipes/sql-sequelize.md
+      - 路由器模块: recipes/router-module.md
+      - Swagger: openapi/introduction.md
+      - 健康检查: recipes/terminus.md
+      - CQRS: recipes/cqrs.md
+      - Compodoc: recipes/documentation.md
+      - Prisma: recipes/prisma.md
+      - 服务静态: recipes/serve-static.md
+      - Commander: recipes/nest-commander.md
+  - FAQ:
+      - Serverless: faq/serverless.md
+      - HTTP 适配器: faq/http-adapter.md
+      - 全局路径前缀: faq/global-prefix.md
+      - 混合应用程序: faq/hybrid-application.md
+      - HTTPS 多服务器: faq/multiple-servers.md
+      - 请求生命周期: faq/request-lifecycle.md
+      - 常见的错误: faq/errors.md
+      - 例子: https://github.com/nestjs/nest/tree/master/sample
