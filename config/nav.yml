@@ -1,14 +1,6 @@
 nav:
-  - 介绍:
+  - 入门介绍:
       - 介绍: introduction.md
-      - 独立的应用程序: application-context.md
-      - 迁移向导: migration.md
-      - 正式的课程: https://courses.nestjs.com/
-      - 发现:
-          - 谁在使用Nest?: discover/companies.md
-      - t恤和连帽衫: https://nestjs.threadless.com/
-      - 支持我们: support
-  - 概述:
       - 第一步: first-steps.md
       - 控制器: controllers.md
       - 提供器: components.md
@@ -61,24 +53,6 @@ nav:
       - CORS: security/cors.md
       - CSRF 保护: security/csrf.md
       - 速度限制: security/rate-limiting.md
-  - GraphQL:
-      - 快速启动: graphql/quick-start.md
-      - 解析器: graphql/resolvers-map.md
-      - 突变: graphql/mutations.md
-      - 订阅: graphql/subscriptions.md
-      - 标量: graphql/scalars.md
-      - 指令: graphql/directives.md
-      - 插件: graphql/plugins.md
-      - 接口: graphql/interfaces.md
-      - 联合和枚举: graphql/unions-and-enums.md
-      - 字段中间件: graphql/field-middleware.md
-      - 映射类型: graphql/mapped-types.md
-      - 复杂性: graphql/complexity.md
-      - 扩展: graphql/extensions.md
-      - CLI 插件: graphql/cli-plugin.md
-      - 生成 SDL: graphql/schema-generator.md
-      - 其他功能: graphql/guards-interceptors.md
-      - 联合会: graphql/federation.md
   - WebSockets:
       - 网关: websockets/gateways.md
       - 异常过滤: websockets/exception-filters.md
@@ -138,4 +112,31 @@ nav:
       - HTTPS 多服务器: faq/multiple-servers.md
       - 请求生命周期: faq/request-lifecycle.md
       - 常见的错误: faq/errors.md
-      - 例子: https://github.com/nestjs/nest/tree/master/sample
+      - 例子: https://github.com/nestjs/nest/tree/master/sample" target="_blank
+  - GraphQL:
+      - 快速启动: graphql/quick-start.md
+      - 解析器: graphql/resolvers-map.md
+      - 突变: graphql/mutations.md
+      - 订阅: graphql/subscriptions.md
+      - 标量: graphql/scalars.md
+      - 指令: graphql/directives.md
+      - 插件: graphql/plugins.md
+      - 接口: graphql/interfaces.md
+      - 联合和枚举: graphql/unions-and-enums.md
+      - 字段中间件: graphql/field-middleware.md
+      - 映射类型: graphql/mapped-types.md
+      - 复杂性: graphql/complexity.md
+      - 扩展: graphql/extensions.md
+      - CLI 插件: graphql/cli-plugin.md
+      - 生成 SDL: graphql/schema-generator.md
+      - 其他功能: graphql/guards-interceptors.md
+      - 联合会: graphql/federation.md
+  - 其它:
+      - 独立的应用程序: application-context.md
+      - 迁移向导: migration.md
+      - 正式的课程: https://courses.nestjs.com" target="_blank
+      - 发现:
+          - 谁在使用Nest?: discover/who-uses.md
+      - t恤和连帽衫: https://nestjs.threadless.com" target="_blank
+      - 支持我们: support.md
+      - 企业支持: enterprise.md
