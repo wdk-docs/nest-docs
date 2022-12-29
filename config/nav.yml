@@ -183,6 +183,7 @@ nav:
       - AWESOME: awesome.md
   - 博客:
       - blog/index.md
+      - 发布V9: blog/posts/nestjs-9-is-now-available.md
       - 文件:
           - 处理循环依赖项: blog/posts/61.circular-dependencies.md
           - 对typescript代码应用可靠的原则: blog/posts/applying-solid-principles-to-your-typescript-code.md

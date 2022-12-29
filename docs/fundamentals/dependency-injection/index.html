@@ -9,6 +9,8 @@
         <meta name="description" content="NestJS 文档">
       
       
+        <meta name="author" content="Kamil Mysliwiec">
+      
       
         <link rel="canonical" href="https://docs.nestjs.com/fundamentals/dependency-injection/">
       
@@ -150,7 +152,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
       </div>
@@ -172,7 +174,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../introduction/" class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         入门介绍
       </a>
     </li>
@@ -357,6 +359,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -399,7 +417,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
     </div>
@@ -440,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -636,6 +654,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           自定义提供器
@@ -652,6 +672,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -660,85 +682,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    定制的提供器
-  </a>
-  
-    <nav class="md-nav" aria-label="定制的提供器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#di" class="md-nav__link">
     DI 基本面
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     标准的提供器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     定制的提供器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#usevalue" class="md-nav__link">
     值提供器: useValue
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     非基于类的提供器令牌
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#useclass" class="md-nav__link">
     类提供器: useClass
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#usefactory" class="md-nav__link">
     工厂的提供器: useFactory
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#useexisting" class="md-nav__link">
     别名提供器: useExisting
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     非服务提供器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     导出自定义服务提供器程序
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -958,6 +967,142 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/redis/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
+        Health
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../techniques/configuration/" class="md-nav__link">
         配置
@@ -972,9 +1117,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          验证
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="验证" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          验证
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../techniques/validation/" class="md-nav__link">
-        验证
+        概述
       </a>
     </li>
   
@@ -987,9 +1158,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/caching/" class="md-nav__link">
-        缓存
+      <a href="../../techniques/validator/class-transformer/" class="md-nav__link">
+        class-transformer
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/validator/class-validator/" class="md-nav__link">
+        class-validator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          缓存
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="缓存" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          缓存
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/caching/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/cache-manager/node-cache-manager/" class="md-nav__link">
+        node-cache-manager
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1042,10 +1295,99 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10">
+          队列
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="队列" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          队列
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../techniques/queues/" class="md-nav__link">
-        队列
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/bull/bull/" class="md-nav__link">
+        Bull
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/bull/guide/" class="md-nav__link">
+        guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/bull/patterns/" class="md-nav__link">
+        patterns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/bull/reference/" class="md-nav__link">
+        reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1140,10 +1482,85 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_17" type="checkbox" id="__nav_3_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_17">
+          HTTP 模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTTP 模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_17">
+          <span class="md-nav__icon md-icon"></span>
+          HTTP 模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../techniques/http-module/" class="md-nav__link">
-        HTTP 模块
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/axios/axios/" class="md-nav__link">
+        Axios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/axios/axios-auth-refresh/" class="md-nav__link">
+        axios-auth-refresh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../techniques/axios/nest-axios-interceptor/" class="md-nav__link">
+        @narando/nest-axios-interceptor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2059,20 +2476,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openapi/introduction/" class="md-nav__link">
-        Swagger
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../recipes/terminus/" class="md-nav__link">
         健康检查
       </a>
@@ -2100,10 +2503,281 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_10">
+          Compodoc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_10">
+          <span class="md-nav__icon md-icon"></span>
+          Compodoc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../recipes/documentation/" class="md-nav__link">
-        Compodoc
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/comments/" class="md-nav__link">
+        注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/demo/" class="md-nav__link">
+        现场演示
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/documentation-coverage/" class="md-nav__link">
+        文档覆盖
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/extensions/" class="md-nav__link">
+        扩展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/features/" class="md-nav__link">
+        特性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/hosting/" class="md-nav__link">
+        托管
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/installation/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/jsdoc-tags/" class="md-nav__link">
+        JSDoc 标签
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/live-example-tab/" class="md-nav__link">
+        现场例子选项卡
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/miscellaneous/" class="md-nav__link">
+        杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/options/" class="md-nav__link">
+        选项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/routing/" class="md-nav__link">
+        路由
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/tab-configuration/" class="md-nav__link">
+        选项卡配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/themes/" class="md-nav__link">
+        主题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/tips-and-tricks/" class="md-nav__link">
+        提示和技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/tutorial/" class="md-nav__link">
+        教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/compodoc/usage/" class="md-nav__link">
+        使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2734,6 +3408,461 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awesome/" class="md-nav__link">
+        AWESOME
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          博客
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="博客" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        博客列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/nestjs-9-is-now-available/" class="md-nav__link">
+        发布V9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3">
+          文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文件" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/61.circular-dependencies/" class="md-nav__link">
+        处理循环依赖项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/applying-solid-principles-to-your-typescript-code/" class="md-nav__link">
+        对typescript代码应用可靠的原则
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/" class="md-nav__link">
+        JWT Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/nestjs-docker-production/" class="md-nav__link">
+        NestJS Dockerfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/nestjs-file-uploading-using-multer/" class="md-nav__link">
+        使用Multer上传文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/scalable-websockets-with-nestjs-and-redis/" class="md-nav__link">
+        使用 NestJS 和 Redis 扩展 WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/websocket-cluster-with-nestjs-and-redis/" class="md-nav__link">
+        WebSocket cluster with NestJs and Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/api-nestjs-uploading-files-to-server/" class="md-nav__link">
+        文件上传
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/api-nestjs-error-handling-validation/" class="md-nav__link">
+        错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/api-nestjs-stripe-events-webhooks/" class="md-nav__link">
+        Stripe事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/api-nestjs-logging-typeorm/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/indexes/" class="md-nav__link">
+        使用MongoDB和Mongoose定义索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/introduction/" class="md-nav__link">
+        MongoDB概论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/pagination/" class="md-nav__link">
+        使用MongoDB和Mongoose实现分页
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/relationships/" class="md-nav__link">
+        实现与MongoDB的关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/transactions/" class="md-nav__link">
+        与MongoDB和Mongoose管理事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/" class="md-nav__link">
+        MongoDB与Mongoose使用PUT vs PATCH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/updating/" class="md-nav__link">
+        用PUT和PATCH更新MongoDB和Mongoose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/mongodb/virtual/" class="md-nav__link">
+        MongoDB和Mongoose的虚拟属性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_5">
+          swagger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="swagger" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_5">
+          <span class="md-nav__icon md-icon"></span>
+          swagger
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/posts/openapi/api-nestjs-openapi-swagger" class="md-nav__link">
+        OpenAPI规范和Swagger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2757,6 +3886,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2765,85 +3896,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    定制的提供器
-  </a>
-  
-    <nav class="md-nav" aria-label="定制的提供器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#di" class="md-nav__link">
     DI 基本面
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     标准的提供器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     定制的提供器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#usevalue" class="md-nav__link">
     值提供器: useValue
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     非基于类的提供器令牌
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#useclass" class="md-nav__link">
     类提供器: useClass
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#usefactory" class="md-nav__link">
     工厂的提供器: useFactory
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#useexisting" class="md-nav__link">
     别名提供器: useExisting
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     非服务提供器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     导出自定义服务提供器程序
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2861,391 +3979,640 @@
                 
                   
 
-  <a href="https://github.com/wdk-docs/nest-docs/edit/main/docs/fundamentals/dependency-injection.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/fundamentals/dependency-injection.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>自定义提供器</h1>
-
-<h3 id="_1">定制的提供器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>在前面的章节中，我们谈到了<strong>依赖注入(DI)</strong>的各个方面，以及它在 Nest 中是如何使用的。
+<h1 id="_1">自定义提供器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在前面的章节中，我们谈到了 <strong>依赖注入(DI)</strong> 的各个方面，以及它在 Nest 中是如何使用的。
 其中一个例子就是<a href="https://docs.nestjs.com/providers#dependency-injection">基于构造函数</a>依赖注入，它将实例(通常是服务提供器)注入到类中。
 你不会惊讶于依赖注入以一种基本的方式内置到 Nest 核心中。
 到目前为止，我们只研究了一个主要模式。
 随着应用程序变得越来越复杂，您可能需要利用 DI 系统的全部特性，因此让我们更详细地研究它们。</p>
-<h4 id="di">DI 基本面<a class="headerlink" href="#di" title="Permanent link">&para;</a></h4>
+<h2 id="di">DI 基本面<a class="headerlink" href="#di" title="Permanent link">&para;</a></h2>
 <p>依赖注入是一种<a href="https://en.wikipedia.org/wiki/Inversion_of_control">控制反转(IoC)</a>技术，在这种技术中，你将依赖的实例化委托给 IoC 容器(在我们的例子中，是 NestJS 运行时系统)，而不是在你自己的代码中执行。
 让我们来看看<a href="https://docs.nestjs.com/providers">Providers 章节</a>中的这个例子中发生了什么。</p>
 <p>首先，我们定义一个提供器。
-' @Injectable() '装饰器将' CatsService '类标记为提供器。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">service</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Cat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">cats</span><span class="o">:</span><span class="w"> </span><span class="kt">Cat</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
-
-<span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">Cat</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<code>@Injectable()</code> 装饰器将 <code>CatsService</code> 类标记为提供器。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">cats.service.ts</label><label for="__tabbed_1_2">cats.service.js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Cat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="hll"><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+</span><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="hll"><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">cats</span><span class="o">:</span><span class="w"> </span><span class="kt">Cat</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">Cat</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="hll"><span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span><span class="w"></span>
+</span><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="hll"><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">  </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">cats</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>然后我们请求 Nest 将该提供器注入到我们的控制器类中:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Controller</span><span class="p">,</span><span class="w"> </span><span class="nx">Get</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Cat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">catsService</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-
-<span class="w">  </span><span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Cat</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Controller</span><span class="p">,</span><span class="w"> </span><span class="nx">Get</span><span class="p">,</span><span class="w"> </span><span class="nx">Bind</span><span class="p">,</span><span class="w"> </span><span class="nx">Dependencies</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Dependencies</span><span class="p">(</span><span class="nx">CatsService</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">catsService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">catsService</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">  </span><span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
-<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">cats.controller.ts</label><label for="__tabbed_2_2">cats.controller.js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Controller</span><span class="p">,</span><span class="w"> </span><span class="nx">Get</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Cat</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./interfaces/cat.interface&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">@Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">catsService</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</span><a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span><span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Cat</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Controller</span><span class="p">,</span><span class="w"> </span><span class="nx">Get</span><span class="p">,</span><span class="w"> </span><span class="nx">Bind</span><span class="p">,</span><span class="w"> </span><span class="nx">Dependencies</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="err">@</span><span class="nx">Controller</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="hll"><span class="err">@</span><span class="nx">Dependencies</span><span class="p">(</span><span class="nx">CatsService</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">catsService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="hll"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">catsService</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="hll"><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</span><a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">  </span><span class="err">@</span><span class="nx">Get</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">findAll</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>最后，我们向 Nest IoC 容器注册该提供器:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.controller&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.service&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">app.module</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span>
+<span class="normal"><a href="#__codelineno-4-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.controller&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="hll"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.service&#39;</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="hll"><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span><span class="w"></span>
+</span><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>到底是什么让这一切发生的?在这个过程中有三个关键步骤:</p>
 <ol>
-<li>在“cat.sservice.ts”中，“@Injectable()”装饰器将“CatsService”类声明为一个可以被 Nest IoC 容器管理的类。</li>
+<li>在<code>cat.sservice.ts</code>中，<code>@Injectable()</code>装饰器将<code>CatsService</code>类声明为一个可以被 Nest IoC 容器管理的类。</li>
 <li>
-<p>在' cat.scontroller.ts '中，' CatsController '通过构造函数注入声明了对' CatsService '令牌的依赖:</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">catsService</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">)</span><span class="w"></span>
-</code></pre></div>
+<p>在 <code>cat.scontroller.ts</code> 中， <code>CatsController</code> 通过构造函数注入声明了对 <code>CatsService</code> 令牌的依赖:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">catsService</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">)</span><span class="w"></span>
+</span></code></pre></div></td></tr></table></div>
 </li>
 <li>
-<p>在“app.module.ts”中，我们将令牌“CatsService”与“cat.sservice.ts”文件中的类“CatsService”关联起来。
-    下面我们将确切地<a href="/fundamentals/custom-providers#standard-providers">看到</a>这个关联(也称为<em>registration</em>)是如何发生的。</p>
+<p>在<code>app.module.ts</code>中，我们将令牌<code>CatsService</code>与<code>cat.sservice.ts</code>文件中的类<code>CatsService</code>关联起来。
+    下面我们将确切地<a href="/fundamentals/custom-providers#standard-providers">看到</a>这个关联(也称为 <em>登记</em>)是如何发生的。</p>
 </li>
 </ol>
-<p>当 Nest IoC 容器实例化一个“CatsController”时，它首先查找任何依赖项。
-当它找到' CatsService '依赖项时，它对' CatsService '令牌执行查找，该令牌返回' CatsService '类，每一个注册步骤(上面的第 3 条)。
-假设为' SINGLETON '范围(默认行为)，Nest 将创建一个' CatsService '的实例，缓存它，然后返回它，或者如果一个已经被缓存，返回现有的实例。</p>
+<p>当 Nest IoC 容器实例化一个<code>CatsController</code>时，它首先查找任何依赖项。
+当它找到 <code>CatsService</code> 依赖项时，它对 <code>CatsService</code> 令牌执行查找，该令牌返回 <code>CatsService</code> 类，每一个注册步骤(上面的第 3 条)。
+假设为 <code>单件模式</code> 范围(默认行为)，Nest 将创建一个 <code>CatsService</code> 的实例，缓存它，然后返回它，或者如果一个已经被缓存，返回现有的实例。</p>
 <p>为了说明这一点，这个解释有点简化了。
 我们忽略的一个重要方面是，分析依赖关系的代码的过程非常复杂，并且发生在应用程序引导期间。
-一个关键特性是依赖关系分析(或“创建依赖关系图”)是可传递的。
-在上面的例子中，如果' CatsService '本身有依赖项，这些依赖项也会被解析。
-依赖关系图确保依赖关系按照正确的顺序解析——本质上是“自底向上”。
+一个关键特性是依赖关系分析(或<code>创建依赖关系图</code>)是可传递的。
+在上面的例子中，如果 <code>CatsService</code> 本身有依赖项，这些依赖项也会被解析。
+依赖关系图确保依赖关系按照正确的顺序解析——本质上是<code>自底向上</code>。
 这种机制使开发人员不必管理如此复杂的依赖关系图。</p>
-<h4 id="_2">标准的提供器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>Let's take a closer look at the <code>@Module()</code> decorator.
-In <code>app.module</code>, we declare:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-</code></pre></div>
-<p>The <code>providers</code> property takes an array of <code>providers</code>.
-So far, we've supplied those providers via a list of class names.
-In fact, the syntax <code>providers: [CatsService]</code> is short-hand for the more complete syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="p">];</span><span class="w"></span>
-</code></pre></div>
-<p>Now that we see this explicit construction, we can understand the registration process.
-Here, we are clearly associating the token <code>CatsService</code> with the class <code>CatsService</code>.
-The short-hand notation is merely a convenience to simplify the most common use-case, where the token is used to request an instance of a class by the same name.</p>
-<h4 id="_3">定制的提供器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>What happens when your requirements go beyond those offered by <em>Standard providers</em>? Here are a few examples:</p>
+<h2 id="_2">标准的提供器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>让我们仔细看看<code>@Module()</code>装饰器。
+在<code>app.module</code>,中，我们声明:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="nx">controllers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsController</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsService</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">})</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p><code>providers</code>属性采用了一系列<code>providers</code>。
+到目前为止，我们已经通过类名列表提供了这些提供者。
+事实上，语法<code>providers: [CatsService]</code>是更完整语法的简写:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="p">];</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>现在我们看到了这种明确的构造，我们可以了解注册过程。
+这里，我们明确地将令牌<code>CatsService</code>与类<code>CatsService</code>关联起来。
+短表示法只是简化最常见的用例的便利性，在该案例中，令牌用于以同一名称要求类实例。</p>
+<h2 id="_3">定制的提供器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>当您的要求超出 <em>标准提供商</em> 提供的要求时会发生什么？这里有一些例子：</p>
 <ul>
-<li>You want to create a custom instance instead of having Nest instantiate (or return a cached instance of) a class</li>
-<li>You want to re-use an existing class in a second dependency</li>
-<li>You want to override a class with a mock version for testing</li>
+<li>您要创建一个自定义实例，而不是让 NEST 实例化（或返回一个缓存的实例）类</li>
+<li>您想在第二个依赖项中重复使用现有类</li>
+<li>您想覆盖一个带有模拟版本的课程</li>
 </ul>
-<p>Nest allows you to define Custom providers to handle these cases.
-It provides several ways to define custom providers.
-Let's walk through them.</p>
-<blockquote>
-<p>info <strong>Hint</strong> If you are having problems with dependency resolution you can set the <code>NEST_DEBUG</code> environment variable and get extra dependency resolution logs during startup.</p>
-</blockquote>
-<h4 id="usevalue">值提供器: <code>useValue</code><a class="headerlink" href="#usevalue" title="Permanent link">&para;</a></h4>
-<p>The <code>useValue</code> syntax is useful for injecting a constant value, putting an external library into the Nest container, or replacing a real implementation with a mock object.
-Let's say you'd like to force Nest to use a mock <code>CatsService</code> for testing purposes.</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">mockCatsService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="cm">/* mock implementation</span>
-<span class="cm">  ...</span>
-<span class="cm">  */</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">mockCatsService</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<p>In this example, the <code>CatsService</code> token will resolve to the <code>mockCatsService</code> mock object.
-<code>useValue</code> requires a value - in this case a literal object that has the same interface as the <code>CatsService</code> class it is replacing.
-Because of TypeScript's <a href="https://www.typescriptlang.org/docs/handbook/type-compatibility.html">structural typing</a>, you can use any object that has a compatible interface, including a literal object or a class instance instantiated with <code>new</code>.</p>
-<h4 id="_4">非基于类的提供器令牌<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>So far, we've used class names as our provider tokens (the value of the <code>provide</code> property in a provider listed in the <code>providers</code> array).
-This is matched by the standard pattern used with <a href="https://docs.nestjs.com/providers#dependency-injection">constructor based injection</a>, where the token is also a class name.
-(Refer back to <a href="/fundamentals/custom-providers#di-fundamentals">DI Fundamentals</a> for a refresher on tokens if this concept isn't entirely clear).
-Sometimes, we may want the flexibility to use strings or symbols as the DI token.
-For example:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">connection</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./connection&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">connection</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<p>In this example, we are associating a string-valued token (<code>'CONNECTION'</code>) with a pre-existing <code>connection</code> object we've imported from an external file.</p>
-<blockquote>
-<p>warning <strong>Notice</strong> In addition to using strings as token values, you can also use JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbols</a> or TypeScript <a href="https://www.typescriptlang.org/docs/handbook/enums.html">enums</a>.</p>
-</blockquote>
-<p>We've previously seen how to inject a provider using the standard <a href="https://docs.nestjs.com/providers#dependency-injection">constructor based injection</a> pattern.
-This pattern <strong>requires</strong> that the dependency be declared with a class name.
-The <code>'CONNECTION'</code> custom provider uses a string-valued token.
-Let's see how to inject such a provider.
-To do so, we use the <code>@Inject()</code> decorator.
-This decorator takes a single argument - the token.</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsRepository</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="kd">@Inject</span><span class="p">(</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">)</span><span class="w"> </span><span class="nx">connection</span><span class="o">:</span><span class="w"> </span><span class="kt">Connection</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="kd">@Dependencies</span><span class="p">(</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsRepository</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">connection</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> The <code>@Inject()</code> decorator is imported from <code>@nestjs/common</code> package.</p>
-</blockquote>
-<p>While we directly use the string <code>'CONNECTION'</code> in the above examples for illustration purposes, for clean code organization, it's best practice to define tokens in a separate file, such as <code>constants.ts</code>.
-Treat them much as you would symbols or enums that are defined in their own file and imported where needed.</p>
-<h4 id="useclass">类提供器: <code>useClass</code><a class="headerlink" href="#useclass" title="Permanent link">&para;</a></h4>
-<p>The <code>useClass</code> syntax allows you to dynamically determine a class that a token should resolve to.
-For example, suppose we have an abstract (or default) <code>ConfigService</code> class.
-Depending on the current environment, we want Nest to provide a different implementation of the configuration service.
-The following code implements such a strategy.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">configServiceProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useClass</span><span class="o">:</span><span class="w"></span>
-<span class="w">    </span><span class="kt">process.env.NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="o">?</span><span class="w"> </span><span class="nx">DevelopmentConfigService</span><span class="w"></span>
-<span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kt">ProductionConfigService</span><span class="p">,</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">configServiceProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<p>Let's look at a couple of details in this code sample.
-You'll notice that we define <code>configServiceProvider</code> with a literal object first, then pass it in the module decorator's <code>providers</code> property.
-This is just a bit of code organization, but is functionally equivalent to the examples we've used thus far in this chapter.</p>
-<p>Also, we have used the <code>ConfigService</code> class name as our token.
-For any class that depends on <code>ConfigService</code>, Nest will inject an instance of the provided class (<code>DevelopmentConfigService</code> or <code>ProductionConfigService</code>) overriding any default implementation that may have been declared elsewhere (e.g., a <code>ConfigService</code> declared with an <code>@Injectable()</code> decorator).</p>
-<h4 id="usefactory">工厂的提供器: <code>useFactory</code><a class="headerlink" href="#usefactory" title="Permanent link">&para;</a></h4>
-<p>The <code>useFactory</code> syntax allows for creating providers <strong>dynamically</strong>.
-The actual provider will be supplied by the value returned from a factory function.
-The factory function can be as simple or complex as needed.
-A simple factory may not depend on any other providers.
-A more complex factory can itself inject other providers it needs to compute its result.
-For the latter case, the factory provider syntax has a pair of related mechanisms:</p>
+<p>NEST 允许您定义自定义提供商来处理这些情况。
+它提供了几种定义自定义提供商的方法。
+让我们走过他们。</p>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>如果你在解决依赖关系时遇到问题，你可以设置<code>NEST_DEBUG</code>环境变量，在启动时获得额外的依赖关系解决日志。</p>
+</div>
+<h2 id="usevalue">值提供器: <code>useValue</code><a class="headerlink" href="#usevalue" title="Permanent link">&para;</a></h2>
+<p><code>useValue</code> 语法在注入常量值、将外部库放入 Nest 容器或用模拟对象替换实际实现时非常有用。
+假设你想强迫 Nest 使用一个模拟的<code>CatsService</code>来进行测试。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats.service&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mockCatsService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="cm">/* mock implementation</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="cm">  ...</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="cm">  */</span><span class="w"></span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="hll"><span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">CatsService</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="hll"><span class="w">      </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">mockCatsService</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="w">  </span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>在本例中，<code>CatsService</code>令牌将解析为<code>mockCatsService</code>模拟对象。
+<code>useValue</code>需要一个值-在这种情况下，一个文字对象具有与它正在替换的<code>CatsService</code>类相同的接口。
+由于 TypeScript 的<a href="https://www.typescriptlang.org/docs/handbook/type-compatibility.html">结构类型</a>，你可以使用任何具有兼容接口的对象，包括文字对象或用<code>new</code>实例化的类实例。</p>
+<h2 id="_4">非基于类的提供器令牌<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>到目前为止，我们使用类名作为我们的提供者令牌(在<code>providers</code>数组中列出的提供者<code>provider</code>属性的值)。
+这与<a href="https://docs.nestjs.com/providers#dependency-injection">基于构造函数的注入</a>使用的标准模式相匹配，其中令牌也是一个类名。
+(如果这个概念不完全清楚，可以参考<a href="/fundamentals/custom-providers#di-fundamentals">DI fundamentals</a>来复习标记)。
+有时，我们可能希望灵活地使用字符串或符号作为 DI 令牌。
+例如:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">connection</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./connection&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="hll"><span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="hll"><span class="w">      </span><span class="nx">useValue</span><span class="o">:</span><span class="w"> </span><span class="kt">connection</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">  </span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>在这个例子中，我们将一个字符串值的令牌(<code>'CONNECTION'</code>)与我们从外部文件导入的一个预先存在的<code>connection</code>对象相关联。</p>
+<div class="admonition warning">
+<p class="admonition-title"><strong>Notice</strong></p>
+<p>除了使用字符串作为标记值，你还可以使用JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbols</a>或TypeScript <a href="https://www.typescriptlang.org/docs/handbook/enums.html">enums</a>。</p>
+</div>
+<p>我们之前已经了解了如何使用标准的<a href="https://docs.nestjs.com/providers#dependency-injection">基于构造函数的注入</a>模式注入提供程序。</p>
+<p>此模式要求使用类名声明依赖项。
+<code>'CONNECTION'</code>自定义提供程序使用字符串值令牌。
+让我们看看如何注入这样一个提供程序。
+为此，我们使用<code>@Inject()</code>装饰器。
+这个装饰器只有一个参数 - 令牌。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">ts</label><label for="__tabbed_3_2">js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+</span><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsRepository</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="kd">@Inject</span><span class="p">(</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">)</span><span class="w"> </span><span class="nx">connection</span><span class="o">:</span><span class="w"> </span><span class="kt">Connection</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</span><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="hll"><span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span><span class="w"></span>
+</span><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="hll"><span class="err">@</span><span class="nx">Dependencies</span><span class="p">(</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">)</span><span class="w"></span>
+</span><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsRepository</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">connection</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</span><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p><code>@Inject()</code>装饰器是从<code>@nestjs/common</code>包中导入的。</p>
+</div>
+<p>虽然我们在上面的例子中直接使用字符串<code>'CONNECTION'</code> 来进行演示，但为了组织干净的代码，最好在单独的文件中定义令牌，例如<code>constants.ts</code>。
+对待它们就像对待在自己的文件中定义并在需要时导入的符号或枚举一样。</p>
+<h2 id="useclass">类提供器: <code>useClass</code><a class="headerlink" href="#useclass" title="Permanent link">&para;</a></h2>
+<p><code>useClass</code>语法允许您动态地确定一个令牌应该解析到的类。
+例如，假设我们有一个抽象(或默认)<code>ConfigService</code>类。
+根据当前环境的不同，我们希望 Nest 提供配置服务的不同实现。
+下面的代码实现了这样的策略。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">configServiceProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfigService</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="hll"><span class="w">  </span><span class="nx">useClass</span><span class="o">:</span><span class="w"></span>
+</span><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="hll"><span class="w">    </span><span class="kt">process.env.NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="w"></span>
+</span><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="hll"><span class="w">      </span><span class="o">?</span><span class="w"> </span><span class="nx">DevelopmentConfigService</span><span class="w"></span>
+</span><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="hll"><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kt">ProductionConfigService</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">configServiceProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>让我们看看这个代码示例中的一些细节。
+你会注意到我们先用一个文字对象定义<code>configServiceProvider</code>，然后将它传递到模块装饰器的<code>providers</code>属性中。
+这只是一些代码组织，但在功能上与本章迄今为止使用的示例相当。</p>
+<p>同样，我们使用了<code>ConfigService</code>类名作为我们的令牌。
+对于任何依赖于<code>ConfigService</code>的类，Nest 将注入一个所提供类的实例(<code>DevelopmentConfigService</code>或<code>ProductionConfigService</code>)，覆盖任何可能在其他地方声明的默认实现(例如，<code>ConfigService</code>声明了一个<code>@Injectable()</code>装饰器)。</p>
+<h2 id="usefactory">工厂的提供器: <code>useFactory</code><a class="headerlink" href="#usefactory" title="Permanent link">&para;</a></h2>
+<p><code>useFactory</code>语法允许*动态*地创建提供者。
+实际的提供程序将由工厂函数返回的值提供。
+工厂功能可以根据需要简单或复杂。
+简单工厂可能不依赖于任何其他提供者。
+一个更复杂的工厂可以自己注入它需要的其他提供者来计算它的结果。
+对于后一种情况，工厂提供程序语法有一对相关的机制:</p>
 <ol>
-<li>The factory function can accept (optional) arguments.</li>
-<li>The (optional) <code>inject</code> property accepts an array of providers that Nest will resolve and pass as arguments to the factory function during the instantiation process.
-    The two lists should be correlated: Nest will pass instances from the <code>inject</code> list as arguments to the factory function in the same order.</li>
+<li>工厂函数可以接受(可选的)参数。</li>
+<li>(可选)<code>inject</code>属性接受一个提供程序数组，Nest 将在实例化过程中解析并将其作为参数传递给工厂函数。
+    这两个列表应该是相关的:Nest 将以相同的顺序将<code>inject</code>列表中的实例作为参数传递给工厂函数。</li>
 </ol>
-<p>The example below demonstrates this.</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="o">:</span><span class="w"> </span><span class="kt">OptionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<h4 id="useexisting">别名提供器: <code>useExisting</code><a class="headerlink" href="#useexisting" title="Permanent link">&para;</a></h4>
-<p>The <code>useExisting</code> syntax allows you to create aliases for existing providers.
-This creates two ways to access the same provider.
-In the example below, the (string-based) token <code>'AliasedLoggerService'</code> is an alias for the (class-based) token <code>LoggerService</code>.
-Assume we have two different dependencies, one for <code>'AliasedLoggerService'</code> and one for <code>LoggerService</code>.
-If both dependencies are specified with <code>SINGLETON</code> scope, they'll both resolve to the same instance.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="kd">class</span><span class="w"> </span><span class="nx">LoggerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="cm">/* implementation details */</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">loggerAliasProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;AliasedLoggerService&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useExisting</span><span class="o">:</span><span class="w"> </span><span class="kt">LoggerService</span><span class="p">,</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">LoggerService</span><span class="p">,</span><span class="w"> </span><span class="nx">loggerAliasProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<h4 id="_5">非服务提供器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>While providers often supply services, they are not limited to that usage.
-A provider can supply <strong>any</strong> value.
-For example, a provider may supply an array of configuration objects based on the current environment, as shown below:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">configFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONFIG&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">devConfig</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">prodConfig</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">configFactory</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<h4 id="_6">导出自定义服务提供器程序<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>Like any provider, a custom provider is scoped to its declaring module.
-To make it visible to other modules, it must be exported.
-To export a custom provider, we can either use its token or the full provider object.</p>
-<p>The following example shows exporting using the token:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="o">:</span><span class="w"> </span><span class="kt">OptionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
-<p>Alternatively, export with the full provider object:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="o">:</span><span class="w"> </span><span class="kt">OptionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
+<p>下面的示例演示了这一点。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">ts</label><label for="__tabbed_4_2">js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="hll"><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="o">:</span><span class="w"> </span><span class="kt">OptionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="hll"><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="hll"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="hll"><span class="w">  </span><span class="p">},</span><span class="w"></span>
+</span><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="hll"><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="hll"><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+</span><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="hll"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
+</span><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="hll"><span class="w">  </span><span class="p">},</span><span class="w"></span>
+</span><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="err">@</span><span class="nx">Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h2 id="useexisting">别名提供器: <code>useExisting</code><a class="headerlink" href="#useexisting" title="Permanent link">&para;</a></h2>
+<p><code>useExisting</code>语法允许您为现有的提供程序创建别名。
+这就创建了两种访问同一提供程序的方法。
+在下面的例子中，(基于字符串的)令牌<code>'AliasedLoggerService'</code>是(基于类的)令牌<code>LoggerService</code>的别名。
+假设我们有两个不同的依赖项，一个用于<code>'AliasedLoggerService'</code>，另一个用于<code>LoggerService</code>。
+如果这两个依赖都指定为 <code>SINGLETON</code> 作用域，它们将解析到同一个实例。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="kd">class</span><span class="w"> </span><span class="nx">LoggerService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">  </span><span class="cm">/* implementation details */</span><span class="w"></span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="hll"><span class="kd">const</span><span class="w"> </span><span class="nx">loggerAliasProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="hll"><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;AliasedLoggerService&#39;</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="hll"><span class="w">  </span><span class="nx">useExisting</span><span class="o">:</span><span class="w"> </span><span class="kt">LoggerService</span><span class="p">,</span><span class="w"></span>
+</span><a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="hll"><span class="p">};</span><span class="w"></span>
+</span><a id="__codelineno-15-10" name="__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">LoggerService</span><span class="p">,</span><span class="w"> </span><span class="nx">loggerAliasProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_5">非服务提供器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>虽然提供商经常提供服务，但它们并不局限于这种用途。
+提供者可以提供 <strong>任意</strong> 值。
+例如，提供者可以根据当前环境提供一个配置对象数组，如下所示:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">configFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONFIG&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="hll"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">devConfig</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">prodConfig</span><span class="p">;</span><span class="w"></span>
+</span><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">configFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_6">导出自定义服务提供器程序<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>与任何提供程序一样，自定义提供程序的作用域仅限于其声明模块。
+为了使它对其他模块可见，必须导出它。
+要导出自定义提供程序，可以使用它的令牌或完整的提供程序对象。</p>
+<p>下面的例子展示了使用令牌进行导出:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">ts</label><label for="__tabbed_5_2">js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="o">:</span><span class="w"> </span><span class="kt">OptionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="hll"><span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">],</span><span class="w"></span>
+</span><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="err">@</span><span class="nx">Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="hll"><span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">],</span><span class="w"></span>
+</span><a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>或者，使用完整的 provider 对象导出:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">ts</label><label for="__tabbed_6_2">ts</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-19-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-19-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-19-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-19-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-19-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-19-10">10</a></span>
+<span class="normal"><a href="#__codelineno-19-11">11</a></span>
+<span class="normal"><a href="#__codelineno-19-12">12</a></span>
+<span class="normal"><a href="#__codelineno-19-13">13</a></span>
+<span class="normal"><a href="#__codelineno-19-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="o">:</span><span class="w"> </span><span class="kt">OptionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a><span class="hll"><span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+</span><a id="__codelineno-19-13" name="__codelineno-19-13"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connectionFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">  </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CONNECTION&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">  </span><span class="nx">useFactory</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">optionsProvider</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">optionsProvider</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DatabaseConnection</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-20-7" name="__codelineno-20-7"></a><span class="w">  </span><span class="nx">inject</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">OptionsProvider</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-20-8" name="__codelineno-20-8"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-20-9" name="__codelineno-20-9"></a>
+<a id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="err">@</span><span class="nx">Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="hll"><span class="w">  </span><span class="nx">exports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">connectionFactory</span><span class="p">],</span><span class="w"></span>
+</span><a id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-20-14" name="__codelineno-20-14"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 
 
 
@@ -3308,7 +4675,7 @@ To export a custom provider, we can either use its token or the full provider ob
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      版权所有 © 2022 NestJS Authors
+      版权所有 © 2017-2022 MIT by Kamil Mysliwiec
     </div>
   
   
@@ -3356,7 +4723,7 @@ To export a custom provider, we can either use its token or the full provider ob
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>

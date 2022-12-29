@@ -9,6 +9,8 @@
         <meta name="description" content="NestJS 文档">
       
       
+        <meta name="author" content="Kamil Mysliwiec">
+      
       
         <link rel="canonical" href="https://docs.nestjs.com/interceptors/">
       
@@ -150,7 +152,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
       </div>
@@ -174,7 +176,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
         入门介绍
       </a>
     </li>
@@ -357,6 +359,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../blog/" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -399,7 +417,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
     </div>
@@ -442,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -574,6 +592,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           拦截器
@@ -590,6 +610,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -598,78 +620,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    拦截器
-  </a>
-  
-    <nav class="md-nav" aria-label="拦截器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     基本
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     执行上下文
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     调用管理器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     切面拦截
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     拦截器绑定
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     响应映射
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     异常映射
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     流覆盖
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     更多的操作符
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -951,6 +960,142 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
+        Health
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/configuration/" class="md-nav__link">
         配置
@@ -965,9 +1110,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          验证
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="验证" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          验证
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/validation/" class="md-nav__link">
-        验证
+        概述
       </a>
     </li>
   
@@ -980,9 +1151,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../techniques/caching/" class="md-nav__link">
-        缓存
+      <a href="../techniques/validator/class-transformer/" class="md-nav__link">
+        class-transformer
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/validator/class-validator/" class="md-nav__link">
+        class-validator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          缓存
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="缓存" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          缓存
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/caching/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/cache-manager/node-cache-manager/" class="md-nav__link">
+        node-cache-manager
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1035,10 +1288,99 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10">
+          队列
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="队列" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          队列
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/queues/" class="md-nav__link">
-        队列
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/bull/" class="md-nav__link">
+        Bull
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/guide/" class="md-nav__link">
+        guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/patterns/" class="md-nav__link">
+        patterns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/reference/" class="md-nav__link">
+        reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1133,10 +1475,85 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_17" type="checkbox" id="__nav_3_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_17">
+          HTTP 模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTTP 模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_17">
+          <span class="md-nav__icon md-icon"></span>
+          HTTP 模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/http-module/" class="md-nav__link">
-        HTTP 模块
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/axios/" class="md-nav__link">
+        Axios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/axios-auth-refresh/" class="md-nav__link">
+        axios-auth-refresh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/nest-axios-interceptor/" class="md-nav__link">
+        @narando/nest-axios-interceptor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2052,20 +2469,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../openapi/introduction/" class="md-nav__link">
-        Swagger
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../recipes/terminus/" class="md-nav__link">
         健康检查
       </a>
@@ -2093,10 +2496,281 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_10">
+          Compodoc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_10">
+          <span class="md-nav__icon md-icon"></span>
+          Compodoc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../recipes/documentation/" class="md-nav__link">
-        Compodoc
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/comments/" class="md-nav__link">
+        注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/demo/" class="md-nav__link">
+        现场演示
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/documentation-coverage/" class="md-nav__link">
+        文档覆盖
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/extensions/" class="md-nav__link">
+        扩展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/features/" class="md-nav__link">
+        特性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/hosting/" class="md-nav__link">
+        托管
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/installation/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/jsdoc-tags/" class="md-nav__link">
+        JSDoc 标签
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/live-example-tab/" class="md-nav__link">
+        现场例子选项卡
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/miscellaneous/" class="md-nav__link">
+        杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/options/" class="md-nav__link">
+        选项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/routing/" class="md-nav__link">
+        路由
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tab-configuration/" class="md-nav__link">
+        选项卡配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/themes/" class="md-nav__link">
+        主题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tips-and-tricks/" class="md-nav__link">
+        提示和技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tutorial/" class="md-nav__link">
+        教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/usage/" class="md-nav__link">
+        使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2727,6 +3401,461 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awesome/" class="md-nav__link">
+        AWESOME
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          博客
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="博客" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        博客列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-9-is-now-available/" class="md-nav__link">
+        发布V9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3">
+          文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文件" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/61.circular-dependencies/" class="md-nav__link">
+        处理循环依赖项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/applying-solid-principles-to-your-typescript-code/" class="md-nav__link">
+        对typescript代码应用可靠的原则
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/" class="md-nav__link">
+        JWT Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-docker-production/" class="md-nav__link">
+        NestJS Dockerfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-file-uploading-using-multer/" class="md-nav__link">
+        使用Multer上传文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/scalable-websockets-with-nestjs-and-redis/" class="md-nav__link">
+        使用 NestJS 和 Redis 扩展 WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/websocket-cluster-with-nestjs-and-redis/" class="md-nav__link">
+        WebSocket cluster with NestJs and Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-uploading-files-to-server/" class="md-nav__link">
+        文件上传
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-error-handling-validation/" class="md-nav__link">
+        错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-stripe-events-webhooks/" class="md-nav__link">
+        Stripe事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-logging-typeorm/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/indexes/" class="md-nav__link">
+        使用MongoDB和Mongoose定义索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/introduction/" class="md-nav__link">
+        MongoDB概论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/pagination/" class="md-nav__link">
+        使用MongoDB和Mongoose实现分页
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/relationships/" class="md-nav__link">
+        实现与MongoDB的关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/transactions/" class="md-nav__link">
+        与MongoDB和Mongoose管理事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/" class="md-nav__link">
+        MongoDB与Mongoose使用PUT vs PATCH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/updating/" class="md-nav__link">
+        用PUT和PATCH更新MongoDB和Mongoose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/virtual/" class="md-nav__link">
+        MongoDB和Mongoose的虚拟属性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_5">
+          swagger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="swagger" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_5">
+          <span class="md-nav__icon md-icon"></span>
+          swagger
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/openapi/api-nestjs-openapi-swagger" class="md-nav__link">
+        OpenAPI规范和Swagger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2750,6 +3879,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2758,78 +3889,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    拦截器
-  </a>
-  
-    <nav class="md-nav" aria-label="拦截器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     基本
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     执行上下文
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     调用管理器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     切面拦截
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     拦截器绑定
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     响应映射
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     异常映射
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     流覆盖
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     更多的操作符
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2847,15 +3965,13 @@
                 
                   
 
-  <a href="https://github.com/wdk-docs/nest-docs/edit/main/docs/interceptors.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/interceptors.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>拦截器</h1>
-
-<h3 id="_1">拦截器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h1 id="_1">拦截器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>拦截器是用<code>@Injectable()</code>装饰器注解的类。
 拦截器实现了 <code>NestInterceptor</code> 接口。</p>
 <figure><img src="/assets/Interceptors_1.png" /></figure>
@@ -2869,24 +3985,24 @@
 <li>扩展基本函数行为</li>
 <li>根据特定条件完全重写函数(例如，为了缓存)</li>
 </ul>
-<h4 id="_2">基本<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h2 id="_2">基本<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>每个拦截器都实现了 <code>intercept()</code> 方法，该方法接受两个参数。
 第一个是 <code>ExecutionContext</code> 实例(与<a href="/guards">守卫</a>的对象完全相同)。
 <code>ExecutionContext</code> 继承自 <code>ArgumentsHost</code>。
 我们在之前的异常过滤器一章中看到了<code>ArgumentsHost</code>。
 在这里，我们看到它是传递给原始处理程序的参数的包装器，并包含基于应用程序类型的不同参数数组。
 您可以参考<a href="https://docs.nestjs.com/exception-filters#arguments-host">异常过滤器</a>了解更多关于这个主题的信息。</p>
-<h4 id="_3">执行上下文<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h2 id="_3">执行上下文<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>通过扩展<code>ArgumentsHost</code>， <code>ExecutionContext</code>还增加了几个新的助手方法，提供关于当前执行过程的额外细节。
 这些细节有助于构建更通用的拦截器，这些拦截器可以跨广泛的控制器、方法和执行上下文工作。
 <a href="/fundamentals/execution-context">这里</a>可以了解更多关于 <code>ExecutionContext</code> 的信息。</p>
-<h4 id="_4">调用管理器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="_4">调用管理器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>第二个参数是 <code>CallHandler</code>。
 <code>CallHandler</code> 接口实现了 <code>handle()</code> 方法，你可以在拦截器的某个点上使用它来调用路由处理程序方法。
 如果你没有在你的 <code>intercept()</code> 方法的实现中调用 <code>handle()</code> 方法，路由处理程序方法将根本不会被执行。</p>
-<p>这种方法意味着 <code>intercept()</code> 方法有效地<strong>包装</strong>了请求/响应流。
-因此，你可以在最终路由处理器执行<strong>之前和之后</strong>都实现自定义逻辑。
-很明显，你可以在你的 <code>intercept()</code> 方法中编写代码，在调用 <code>handle()</code> <strong>之前</strong>执行，但你如何影响之后发生的事情?
+<p>这种方法意味着 <code>intercept()</code> 方法有效地 <strong>包装</strong> 了请求/响应流。
+因此，你可以在最终路由处理器执行 <strong>之前和之后</strong> 都实现自定义逻辑。
+很明显，你可以在你的 <code>intercept()</code> 方法中编写代码，在调用 <code>handle()</code> <strong>之前</strong> 执行，但你如何影响之后发生的事情?
 因为 <code>handle()</code> 方法返回一个 <code>Observable</code>，所以我们可以使用功能强大的<a href="https://github.com/ReactiveX/rxjs">RxJS</a>操作符来进一步操作响应。
 使用面向方面编程术语，路由处理程序的调用(例如，调用<code>handle()</code>)称为<a href="(https://en.wikipedia.org/wiki/Pointcut)">切入点</a>，表明它是插入额外逻辑的点。</p>
 <p>例如，考虑一个传入的<code>POST /cats</code>请求。
@@ -2894,296 +4010,306 @@
 如果一个没有调用 <code>handle()</code> 方法的拦截器在这个过程中被调用，<code>create()</code> 方法将不会被执行。
 一旦 <code>handle()</code> 被调用(并且它的 <code>Observable</code> 已经被返回)，<code>create()</code> 处理器就会被触发。
 一旦响应流通过 <code>Observable</code> 被接收，就可以在流上执行额外的操作，并将最终的结果返回给调用者。</p>
-<h4 id="_5">切面拦截<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h2 id="_5">切面拦截<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>我们将看到的第一个用例是使用拦截器来记录用户交互(例如，存储用户调用、异步调度事件或计算时间戳)。
 下面我们展示了一个简单的 <code>LoggingInterceptor</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">logging</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tap</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">tap</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`After...</span><span class="si">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">now</span><span class="si">}</span><span class="sb">ms`</span><span class="p">)));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tap</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="nx">tap</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`After...</span><span class="si">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">now</span><span class="si">}</span><span class="sb">ms`</span><span class="p">)),</span><span class="w"></span>
-<span class="w">      </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">logging</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tap</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">tap</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`After...</span><span class="si">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">now</span><span class="si">}</span><span class="sb">ms`</span><span class="p">)));</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tap</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Before...&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="nx">tap</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`After...</span><span class="si">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">now</span><span class="si">}</span><span class="sb">ms`</span><span class="p">)),</span><span class="w"></span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">      </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p><code>NestInterceptor&lt;T, R&gt;</code> 是一个泛型接口，其中<code>T</code> 表示 <code>Observable&lt;T&gt;</code> (支持响应流)的类型，<code>R</code> 是 <code>Observable&lt;R&gt;</code> 包装的值的类型。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> <code>NestInterceptor&lt;T, R&gt;</code> 是一个泛型接口，其中<code>T</code> 表示 <code>Observable&lt;T&gt;</code> (支持响应流)的类型，<code>R</code> 是 <code>Observable&lt;R&gt;</code> 包装的值的类型。</p>
-<p>warning <strong>Notice</strong> 拦截器，比如控制器、提供器、守卫等等，可以通过它们的“构造函数”<strong>注入</strong>依赖。</p>
+<p>warning <strong>Notice</strong> 拦截器，比如控制器、提供器、守卫等等，可以通过它们的“构造函数”<strong>注入</strong> 依赖。</p>
 </blockquote>
 <p>因为 <code>handle()</code> 返回 <code>RxJS</code> 的 <code>Observable</code>，所以我们有很多操作符可以用来操作流。
 在上面的例子中，我们使用了 <code>tap()</code> 操作符，它会在可观察流优雅或异常终止时调用我们的匿名日志函数，但不会干扰响应周期。</p>
-<h4 id="_6">拦截器绑定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h2 id="_6">拦截器绑定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>为了设置这个拦截器，我们使用从 <code>@nestjs/common</code> 包中导入的 <code>@UseInterceptors()</code> 装饰器。
 像<a href="/pipes">管道</a>和<a href="/guards">守卫</a>一样，拦截器可以是<code>控制器作用域</code>、<code>方法作用域</code>或<code>全局作用域</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@UseInterceptors</span><span class="p">(</span><span class="nx">LoggingInterceptor</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">@UseInterceptors</span><span class="p">(</span><span class="nx">LoggingInterceptor</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> <code>@UseInterceptors()</code> 装饰器是从 <code>@nestjs/common</code> 包中导入的。</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p><code>@UseInterceptors()</code> 装饰器是从 <code>@nestjs/common</code> 包中导入的。</p>
+</div>
 <p>使用上面的构造，每个在<code>CatsController</code>中定义的路由处理器将使用<code>LoggingInterceptor</code>。
 当有人调用<code>GET /cats</code>端点时，你会在标准输出中看到如下输出:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">Before</span><span class="p">...</span><span class="w"></span>
-<span class="nx">After</span><span class="p">...</span><span class="w"></span>
-<span class="mf">1</span><span class="nx">ms</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">Before</span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">After</span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="mf">1</span><span class="nx">ms</span><span class="w"></span>
 </code></pre></div>
 <p>请注意，我们传递了 <code>LoggingInterceptor</code> 类型(而不是实例)，将实例化的责任留给框架并启用依赖注入。
 与管道、守卫和异常过滤器一样，我们也可以传递一个就地实例:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@UseInterceptors</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="p">())</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">@UseInterceptors</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div>
 <p>如上所述，上面的构造将拦截器附加到这个控制器声明的每个处理程序上。
-如果我们想要将拦截器的作用域限制到单个方法，我们只需在<strong>方法级别</strong>应用装饰器。</p>
+如果我们想要将拦截器的作用域限制到单个方法，我们只需在 <strong>方法级别</strong> 应用装饰器。</p>
 <p>为了设置一个全局拦截器，我们使用了 Nest 应用实例的 <code>useGlobalInterceptors()</code> 方法:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalInterceptors</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalInterceptors</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">LoggingInterceptor</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 <p>全局拦截器在整个应用中被使用，用于每个控制器和每个路由处理程序。
 在依赖注入方面，从任何模块外部注册的全局拦截器(使用 <code>useGlobalInterceptors()</code>，就像上面的例子)不能注入依赖，因为这是在任何模块的上下文之外完成的。
 为了解决这个问题，你可以使用下面的构造直接从任何模块中建立一个拦截器:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_INTERCEPTOR</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_INTERCEPTOR</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">LoggingInterceptor</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_INTERCEPTOR</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_INTERCEPTOR</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">LoggingInterceptor</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>当使用此方法为拦截器执行依赖注入时，请注意，无论在哪个模块中使用此构造，拦截器实际上都是全局的。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 当使用此方法为拦截器执行依赖注入时，请注意，无论在哪个模块中使用此构造，拦截器实际上都是全局的。
-这应该在哪里做?
+<p>这应该在哪里做?
 选择定义拦截器的模块(在上面的例子中为 <code>LoggingInterceptor</code>)。
 此外，<code>useClass</code> 并不是处理自定义提供器注册的唯一方法。
 了解更多<a href="/fundamentals/custom-providers">在这里</a>.</p>
 </blockquote>
-<h4 id="_7">响应映射<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h2 id="_7">响应映射<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>我们已经知道 <code>handle()</code> 返回一个 <code>Observable</code>。
-这个流包含从路由处理程序返回的<strong>值</strong>，因此我们可以很容易地使用 RxJS 的 <code>map()</code> 操作符来改变它。</p>
+这个流包含从路由处理程序返回的 <strong>值</strong> ，因此我们可以很容易地使用 RxJS 的 <code>map()</code> 操作符来改变它。</p>
 <blockquote>
 <p>warning <strong>Warning</strong> 响应映射特性不能用于特定于库的响应策略(直接使用 <code>@Res()</code> 对象是被禁止的)。</p>
 </blockquote>
 <p>让我们创建 <code>TransformInterceptor</code>，它将以一种简单的方式修改每个响应，以演示该过程。
 它将使用 <code>RxJS</code> 的 <code>map()</code> 操作符将响应对象分配给新创建对象的 <code>data</code> 属性，并将新对象返回给客户端。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">transform</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TransformInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TransformInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">transform</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TransformInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})));</span><span class="w"></span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TransformInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">})));</span><span class="w"></span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>嵌套拦截器同时使用同步和异步的 <code>intercept()</code> 方法。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 嵌套拦截器同时使用同步和异步的 <code>intercept()</code> 方法。
-如果需要，你可以简单地将该方法切换到<code>async</code>。</p>
+<p>如果需要，你可以简单地将该方法切换到<code>async</code>。</p>
 </blockquote>
 <p>在上面的构造中，当有人调用 <code>GET /cats</code> 端点时，响应会像下面这样(假设路由处理程序返回一个空数组<code>[]</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>拦截器在为整个应用程序中出现的需求创建可重用的解决方案方面有很大的价值。
 例如，假设我们需要将每个<code>null</code>值的出现转换为空字符串<code>''</code>。
 我们可以使用一行代码，并全局绑定拦截器，这样每个注册的处理程序都会自动使用它。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ExcludeNullInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ExcludeNullInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ExcludeNullInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ExcludeNullInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="_8">异常映射<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h2 id="_8">异常映射<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>另一个有趣的用例是利用 RxJS 的 <code>catchError()</code> 操作符来重写抛出的异常:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">BadGatewayException</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">CallHandler</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="nx">throwError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ErrorsInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">BadGatewayException</span><span class="p">())),</span><span class="w"></span>
-<span class="w">      </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">BadGatewayException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">throwError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ErrorsInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">BadGatewayException</span><span class="p">())),</span><span class="w"></span>
-<span class="w">      </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">errors</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nx">BadGatewayException</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nx">CallHandler</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="nx">throwError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ErrorsInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">        </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">BadGatewayException</span><span class="p">())),</span><span class="w"></span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">      </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">BadGatewayException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">throwError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ErrorsInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="w"></span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">      </span><span class="p">.</span><span class="nx">handle</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">      </span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">        </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">BadGatewayException</span><span class="p">())),</span><span class="w"></span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">      </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="_9">流覆盖<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h2 id="_9">流覆盖<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>我们有时可能希望完全避免调用处理程序而返回一个不同的值，原因有几个。
 一个明显的例子是实现缓存以提高响应时间。
-让我们来看看一个简单的<strong>缓存拦截器</strong>，它从缓存中返回响应。
+让我们来看看一个简单的 <strong>缓存拦截器</strong> ，它从缓存中返回响应。
 在实际的示例中，我们希望考虑其他因素，如 <code>TTL</code> 、缓存失效、缓存大小等，但这超出了本文的讨论范围。
 这里我们将提供一个演示主要概念的基本示例。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CacheInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isCached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isCached</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">of</span><span class="p">([]);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CacheInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isCached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isCached</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">of</span><span class="p">([]);</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CacheInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isCached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isCached</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">of</span><span class="p">([]);</span><span class="w"></span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CacheInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">isCached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isCached</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">of</span><span class="p">([]);</span><span class="w"></span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>我们的<code>CacheInterceptor</code>有一个硬编码的 <code>cache</code> 变量和一个硬编码的响应 <code>[]</code>。
-需要注意的关键点是，我们在这里返回了一个由 <code>RxJS</code> 的<code>of()</code> 操作符创建的新流，因此路由处理器<strong>根本不会被调用</strong>。
+需要注意的关键点是，我们在这里返回了一个由 <code>RxJS</code> 的<code>of()</code> 操作符创建的新流，因此路由处理器 <strong>根本不会被调用</strong> 。
 当有人调用使用 <code>CacheInterceptor</code> 的端点时，响应(一个硬编码的空数组)将立即返回。
 为了创建通用的解决方案，您可以利用 <code>Reflector</code> 并创建一个自定义装饰器。
 <code>Reflector</code> 在<a href="/guards">守卫</a>章节中有很好的描述。</p>
-<h4 id="_10">更多的操作符<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h2 id="_10">更多的操作符<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p>使用 <code>RxJS</code> 操作符操作流的可能性为我们提供了许多功能。
 让我们考虑另一个常见的用例。
-假设你想处理路由请求的<strong>超时</strong>。
+假设你想处理路由请求的 <strong>超时</strong> 。
 当端点在一段时间后没有返回任何内容时，您希望以一个错误响应结束。
 下面的构造可以实现这一点:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="nx">throwError</span><span class="p">,</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TimeoutInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="nx">timeout</span><span class="p">(</span><span class="mf">5000</span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}),</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="nx">throwError</span><span class="p">,</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TimeoutInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
-<span class="w">      </span><span class="nx">timeout</span><span class="p">(</span><span class="mf">5000</span><span class="p">),</span><span class="w"></span>
-<span class="w">      </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="p">());</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="p">}),</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">};</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">timeout</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="p">,</span><span class="w"> </span><span class="nx">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">CallHandler</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="nx">throwError</span><span class="p">,</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TimeoutInterceptor</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionContext</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">CallHandler</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">      </span><span class="nx">timeout</span><span class="p">(</span><span class="mf">5000</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">      </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">      </span><span class="p">}),</span><span class="w"></span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">  </span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Observable</span><span class="p">,</span><span class="w"> </span><span class="nx">throwError</span><span class="p">,</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">catchError</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TimeoutInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">  </span><span class="nx">intercept</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">      </span><span class="nx">timeout</span><span class="p">(</span><span class="mf">5000</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">      </span><span class="nx">catchError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">TimeoutError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">RequestTimeoutException</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">      </span><span class="p">}),</span><span class="w"></span>
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">  </span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>5 秒后，请求处理将被取消。
 你也可以在抛出<code>RequestTimeoutException</code>(例如释放资源)之前添加自定义逻辑。</p>
@@ -3249,7 +4375,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      版权所有 © 2022 NestJS Authors
+      版权所有 © 2017-2022 MIT by Kamil Mysliwiec
     </div>
   
   
@@ -3297,7 +4423,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>

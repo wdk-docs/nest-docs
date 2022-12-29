@@ -9,6 +9,8 @@
         <meta name="description" content="NestJS 文档">
       
       
+        <meta name="author" content="Kamil Mysliwiec">
+      
       
         <link rel="canonical" href="https://docs.nestjs.com/middlewares/">
       
@@ -150,7 +152,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
       </div>
@@ -174,7 +176,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
         入门介绍
       </a>
     </li>
@@ -357,6 +359,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../blog/" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -399,7 +417,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
     </div>
@@ -442,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -518,6 +536,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           中间件
@@ -534,6 +554,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -542,71 +564,58 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    中间件
-  </a>
-  
-    <nav class="md-nav" aria-label="中间件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     依赖注入
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     应用中间件
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     路线通配符
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     中间件的消费者
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     不包括路线
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     功能的中间件
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     多个中间件
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     全球的中间件
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -944,6 +953,142 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
+        Health
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/configuration/" class="md-nav__link">
         配置
@@ -958,9 +1103,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          验证
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="验证" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          验证
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/validation/" class="md-nav__link">
-        验证
+        概述
       </a>
     </li>
   
@@ -973,9 +1144,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../techniques/caching/" class="md-nav__link">
-        缓存
+      <a href="../techniques/validator/class-transformer/" class="md-nav__link">
+        class-transformer
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/validator/class-validator/" class="md-nav__link">
+        class-validator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          缓存
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="缓存" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          缓存
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/caching/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/cache-manager/node-cache-manager/" class="md-nav__link">
+        node-cache-manager
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1028,10 +1281,99 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10">
+          队列
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="队列" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          队列
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/queues/" class="md-nav__link">
-        队列
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/bull/" class="md-nav__link">
+        Bull
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/guide/" class="md-nav__link">
+        guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/patterns/" class="md-nav__link">
+        patterns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/reference/" class="md-nav__link">
+        reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1126,10 +1468,85 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_17" type="checkbox" id="__nav_3_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_17">
+          HTTP 模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTTP 模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_17">
+          <span class="md-nav__icon md-icon"></span>
+          HTTP 模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/http-module/" class="md-nav__link">
-        HTTP 模块
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/axios/" class="md-nav__link">
+        Axios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/axios-auth-refresh/" class="md-nav__link">
+        axios-auth-refresh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/nest-axios-interceptor/" class="md-nav__link">
+        @narando/nest-axios-interceptor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2045,20 +2462,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../openapi/introduction/" class="md-nav__link">
-        Swagger
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../recipes/terminus/" class="md-nav__link">
         健康检查
       </a>
@@ -2086,10 +2489,281 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_10">
+          Compodoc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_10">
+          <span class="md-nav__icon md-icon"></span>
+          Compodoc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../recipes/documentation/" class="md-nav__link">
-        Compodoc
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/comments/" class="md-nav__link">
+        注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/demo/" class="md-nav__link">
+        现场演示
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/documentation-coverage/" class="md-nav__link">
+        文档覆盖
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/extensions/" class="md-nav__link">
+        扩展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/features/" class="md-nav__link">
+        特性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/hosting/" class="md-nav__link">
+        托管
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/installation/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/jsdoc-tags/" class="md-nav__link">
+        JSDoc 标签
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/live-example-tab/" class="md-nav__link">
+        现场例子选项卡
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/miscellaneous/" class="md-nav__link">
+        杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/options/" class="md-nav__link">
+        选项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/routing/" class="md-nav__link">
+        路由
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tab-configuration/" class="md-nav__link">
+        选项卡配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/themes/" class="md-nav__link">
+        主题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tips-and-tricks/" class="md-nav__link">
+        提示和技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tutorial/" class="md-nav__link">
+        教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/usage/" class="md-nav__link">
+        使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2720,6 +3394,461 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awesome/" class="md-nav__link">
+        AWESOME
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          博客
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="博客" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        博客列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-9-is-now-available/" class="md-nav__link">
+        发布V9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3">
+          文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文件" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/61.circular-dependencies/" class="md-nav__link">
+        处理循环依赖项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/applying-solid-principles-to-your-typescript-code/" class="md-nav__link">
+        对typescript代码应用可靠的原则
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/" class="md-nav__link">
+        JWT Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-docker-production/" class="md-nav__link">
+        NestJS Dockerfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-file-uploading-using-multer/" class="md-nav__link">
+        使用Multer上传文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/scalable-websockets-with-nestjs-and-redis/" class="md-nav__link">
+        使用 NestJS 和 Redis 扩展 WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/websocket-cluster-with-nestjs-and-redis/" class="md-nav__link">
+        WebSocket cluster with NestJs and Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-uploading-files-to-server/" class="md-nav__link">
+        文件上传
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-error-handling-validation/" class="md-nav__link">
+        错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-stripe-events-webhooks/" class="md-nav__link">
+        Stripe事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-logging-typeorm/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/indexes/" class="md-nav__link">
+        使用MongoDB和Mongoose定义索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/introduction/" class="md-nav__link">
+        MongoDB概论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/pagination/" class="md-nav__link">
+        使用MongoDB和Mongoose实现分页
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/relationships/" class="md-nav__link">
+        实现与MongoDB的关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/transactions/" class="md-nav__link">
+        与MongoDB和Mongoose管理事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/" class="md-nav__link">
+        MongoDB与Mongoose使用PUT vs PATCH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/updating/" class="md-nav__link">
+        用PUT和PATCH更新MongoDB和Mongoose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/virtual/" class="md-nav__link">
+        MongoDB和Mongoose的虚拟属性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_5">
+          swagger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="swagger" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_5">
+          <span class="md-nav__icon md-icon"></span>
+          swagger
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/openapi/api-nestjs-openapi-swagger" class="md-nav__link">
+        OpenAPI规范和Swagger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2743,6 +3872,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2751,71 +3882,58 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    中间件
-  </a>
-  
-    <nav class="md-nav" aria-label="中间件">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     依赖注入
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     应用中间件
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     路线通配符
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     中间件的消费者
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     不包括路线
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     功能的中间件
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     多个中间件
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     全球的中间件
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2833,18 +3951,16 @@
                 
                   
 
-  <a href="https://github.com/wdk-docs/nest-docs/edit/main/docs/middlewares.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/middlewares.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>中间件</h1>
-
-<h3 id="_1">中间件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>中间件是一个在路由处理器<strong>之前</strong>被称为的函数。
+<h1 id="_1">中间件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>中间件是一个在路由处理器 <strong>之前</strong> 被称为的函数。
 中间件函数可以访问<a href="https://expressjs.com/en/4x/api.html#req">request</a>和<a href="https://expressjs.com/en/4x/api.html#res">response</a>对象，以及应用程序请求-响应周期中的 <code>next()</code> 中间件函数。
-<strong>next</strong>中间件函数通常由一个名为<code>next</code>的变量表示。</p>
+<strong>next</strong> 中间件函数通常由一个名为<code>next</code>的变量表示。</p>
 <figure><img src="/assets/Middlewares_1.png" /></figure>
 
 <p>默认情况下，Nest 中间件等价于<a href="https://expressjs.com/en/guide/using-middleware.html">express</a>中间件。
@@ -2863,217 +3979,224 @@
 <p>你可以在一个函数或一个带有 <code>@Injectable()</code> 装饰器的类中实现定制的 Nest 中间件。
 类应该实现<code>NestMiddleware</code>接口，而函数没有任何特殊要求。
 让我们从使用类方法实现一个简单的中间件特性开始。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">middleware</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">NextFunction</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestMiddleware</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">use</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">NextFunction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request...&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">use</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request...&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">middleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="p">,</span><span class="w"> </span><span class="nx">NestMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">NextFunction</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestMiddleware</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nx">use</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">NextFunction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request...&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nx">use</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request...&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="_2">依赖注入<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h2 id="_2">依赖注入<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>嵌套中间件完全支持依赖注入。
-就像提供程序和控制器一样，它们能够注入在同一个模块中可用的<strong>依赖项</strong>。
+就像提供程序和控制器一样，它们能够注入在同一个模块中可用的 <strong>依赖项</strong> 。
 通常，这是通过<code>构造函数</code>来完成的。</p>
-<h4 id="_3">应用中间件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h2 id="_3">应用中间件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>在 <code>@Module()</code> 装饰器中没有中间件的位置。
 相反，我们使用模块类的 <code>configure()</code> 方法来设置它们。
 包含中间件的模块必须实现 <code>NestModule</code> 接口。
 让我们在<code>AppModule</code>级别设置<code>LoggerMiddleware</code>。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">NestModule</span><span class="p">,</span><span class="w"> </span><span class="nx">MiddlewareConsumer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">NestModule</span><span class="p">,</span><span class="w"> </span><span class="nx">MiddlewareConsumer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="s1">&#39;cats&#39;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>在上面的例子中，我们为之前在 CatsController 中定义的路由处理器<code>/cats</code>设置了<code>LoggerMiddleware</code>。
 在配置中间件时，我们还可以通过将包含路径和请求方法的对象传递给 forRoutes()方法来进一步限制中间件只能使用特定的请求方法。
 在下面的例子中，请注意我们导入了 <code>RequestMethod</code> enum 来引用所需的请求方法类型。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">NestModule</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestMethod</span><span class="p">,</span><span class="w"> </span><span class="nx">MiddlewareConsumer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestMethod</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">NestModule</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestMethod</span><span class="p">,</span><span class="w"> </span><span class="nx">MiddlewareConsumer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">RequestMethod</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> 可以使用 <code>async/await</code> 方法使 <code>configure()</code> 方法变为异步的(例如，你可以在 <code>configure()</code> 方法体中 <code>await</code> 异步操作的完成)。</p>
-</blockquote>
-<h4 id="_4">路线通配符<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>可以使用 <code>async/await</code> 方法使 <code>configure()</code> 方法变为异步的(例如，你可以在 <code>configure()</code> 方法体中 <code>await</code> 异步操作的完成)。</p>
+</div>
+<h2 id="_4">路线通配符<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>也支持基于模式的路由。
-例如，星号被用作<strong>通配符</strong>，它将匹配任何字符组合:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">forRoutes</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ab*cd&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.ALL</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+例如，星号被用作 <strong>通配符</strong> ，它将匹配任何字符组合:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">forRoutes</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ab*cd&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.ALL</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
-<p>" ab<em>cd <code>'路由路径将匹配</code>abcd<code>，</code>ab_cd<code>，</code>abecd<code>，等等。 人物的?'，</code>+<code>，</code></em><code>和'()'可以在路由路径中使用，它们是它们对应的正则表达式的子集。 连字符(</code>-<code>)和点(</code>.` )按字面意思解释基于字符串的路径。</p>
+<p>" ab*cd <code>'路由路径将匹配</code>abcd<code>，</code>ab_cd<code>，</code>abecd<code>，等等。 人物的?'，</code>+<code>，</code>*<code>和'()'可以在路由路径中使用，它们是它们对应的正则表达式的子集。 连字符(</code>-<code>)和点(</code>.` )按字面意思解释基于字符串的路径。</p>
 <blockquote>
 <p>warning <strong>Warning</strong> <code>fastify</code> 包使用 <code>path-to-regexp</code> 包的最新版本，该包不再支持通配符星号 <code>_</code> 。
 相反,您必须使用参数(如 ., <code>(._)</code>, <code>: 长条木板\*</code>)。</p>
 </blockquote>
-<h4 id="_5">中间件的消费者<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h2 id="_5">中间件的消费者<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p><code>MiddlewareConsumer</code>是一个助手类。
 它提供了几个内建的方法来管理中间件。
-所有这些都可以用[流利的风格]简单地链接起来(https://en.wikipedia.org/wiki/Fluent_interface)。
+所有这些都可以用[流利的风格]简单地链接起来(<a href="https://en.wikipedia.org/wiki/Fluent_interface">https://en.wikipedia.org/wiki/Fluent_interface</a>)。
 <code>forRoutes()</code> 方法可以接受一个字符串，多个字符串，一个 <code>RouteInfo</code> 对象，一个控制器类，甚至多个控制器类。
 在大多数情况下，你可能只是传递一个以逗号分隔的<code>控制器</code>列表。
 下面是一个单控制器的例子:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">NestModule</span><span class="p">,</span><span class="w"> </span><span class="nx">MiddlewareConsumer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.controller.ts&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.controller.ts&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">NestModule</span><span class="p">,</span><span class="w"> </span><span class="nx">MiddlewareConsumer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.controller.ts&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">NestModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="o">:</span><span class="w"> </span><span class="kt">MiddlewareConsumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">LoggerMiddleware</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./common/middleware/logger.middleware&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./cats/cats.controller.ts&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span><span class="nx">imports</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">CatsModule</span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">  </span><span class="nx">configure</span><span class="p">(</span><span class="nx">consumer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">      </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">      </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> <code>apply()</code> 方法可以使用单个中间件，也可以使用多个参数来指定<a href="/middleware#multiple-middleware">multiple middleware</a>。</p>
-</blockquote>
-<h4 id="_6">不包括路线<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p><code>apply()</code> 方法可以使用单个中间件，也可以使用多个参数来指定<a href="/middleware#multiple-middleware">multiple middleware</a>。</p>
+</div>
+<h2 id="_6">不包括路线<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>有时我们想要从中间件应用中排除某些路由。
 我们可以使用<code>exclude()</code>方法轻松地排除某些路由。
 这个方法可以接受一个字符串，多个字符串，或者一个 <code>RouteInfo</code> 对象来标识要排除的路由，如下所示:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">consumer</span><span class="w"></span>
-<span class="w">  </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">.</span><span class="nx">exclude</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.POST</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="s1">&#39;cats/(.*)&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">LoggerMiddleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p">.</span><span class="nx">exclude</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.GET</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;cats&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">RequestMethod.POST</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="s1">&#39;cats/(.*)&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> <code>exclude()</code>方法支持使用<a href="https://github.com/pillarjs/path-to-regexp#parameters">path-to-regexp</a>包的通配符参数。</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p><code>exclude()</code>方法支持使用<a href="https://github.com/pillarjs/path-to-regexp#parameters">path-to-regexp</a>包的通配符参数。</p>
+</div>
 <p>在上面的例子中， <code>LoggerMiddleware</code> 将被绑定到 <code>CatsController</code> 中定义的所有路由，除了传递给 <code>exclude()</code> 方法的三个路由。</p>
-<h4 id="_7">功能的中间件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h2 id="_7">功能的中间件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>我们使用的 LoggerMiddleware 类非常简单。
 它没有成员，没有额外的方法，也没有依赖关系。
 为什么我们不能在一个简单的函数中定义它，而不是在一个类中?事实上，我们可以。
 这种类型的中间件被称为功能中间件。
 让我们将 logger 中间件从基于类的中间件转换为功能中间件来说明两者的区别:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">middleware</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">NextFunction</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">logger</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">NextFunction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Request...`</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">logger</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Request...`</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">middleware</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">NextFunction</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">logger</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="o">:</span><span class="w"> </span><span class="kt">NextFunction</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Request...`</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">logger</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Request...`</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>并在 <code>AppModule</code> 中使用它:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="nx">consumer</span><span class="w"></span>
-<span class="w">  </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nx">consumer</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="p">.</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> 当你的中间件不需要任何依赖时，考虑使用更简单的功能性中间件。</p>
-</blockquote>
-<h4 id="_8">多个中间件<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>当你的中间件不需要任何依赖时，考虑使用更简单的功能性中间件。</p>
+</div>
+<h2 id="_8">多个中间件<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>如上所述，为了绑定多个顺序执行的中间件，只需在<code>apply()</code>方法中提供一个逗号分隔的列表:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">consumer</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">cors</span><span class="p">(),</span><span class="w"> </span><span class="nx">helmet</span><span class="p">(),</span><span class="w"> </span><span class="nx">logger</span><span class="p">).</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">consumer</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">cors</span><span class="p">(),</span><span class="w"> </span><span class="nx">helmet</span><span class="p">(),</span><span class="w"> </span><span class="nx">logger</span><span class="p">).</span><span class="nx">forRoutes</span><span class="p">(</span><span class="nx">CatsController</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<h4 id="_9">全球的中间件<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h2 id="_9">全球的中间件<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>如果我们想要将中间件绑定到每一个注册的路由，我们可以使用 <code>INestApplication</code> 实例提供的 <code>use()</code> 方法:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">main</span><span class="p">)</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">logger</span><span class="p">);</span><span class="w"></span>
-<span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">main</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">logger</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>访问全局中间件中的 DI 容器是不可能的。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 访问全局中间件中的 DI 容器是不可能的。
-当使用 <code>app.use()</code> 时，你可以使用<a href="middleware#functional-middleware">functional middleware</a>来代替。
+<p>当使用 <code>app.use()</code> 时，你可以使用<a href="middleware#functional-middleware">functional middleware</a>来代替。
 或者，你也可以使用一个类中间件，在 <code>AppModule</code> (或任何其他模块)中使用 <code>. forroutes('\*')</code> 来使用它。</p>
 </blockquote>
 
@@ -3138,7 +4261,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      版权所有 © 2022 NestJS Authors
+      版权所有 © 2017-2022 MIT by Kamil Mysliwiec
     </div>
   
   
@@ -3186,7 +4309,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>

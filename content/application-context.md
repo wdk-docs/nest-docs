@@ -5,14 +5,13 @@
 
 独立的 Nest 应用程序是 Nest **IoC 容器** 的包装器，该容器包含所有实例化的类。
 我们可以直接使用独立的应用程序对象从任何导入的模块中获取对任何现有实例的引用。
-因此，你可以在任何地方利用 Nest 框架，例如，包括脚本化的 **CRON**作业。你甚至可以在上面构建一个**CLI** 。
+因此，你可以在任何地方利用 Nest 框架，例如，包括脚本化的 **CRON** 作业。你甚至可以在上面构建一个 **CLI** 。
 
 ## 开始
 
 要创建一个独立的 Nest 应用程序，使用以下构造:
 
 ```typescript
-@@filename()
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
   // application logic...
@@ -25,7 +24,6 @@ bootstrap();
 这个类提供了一组我们希望从 CRON 作业中调用的方法。
 
 ```typescript
-@@filename()
 const app = await NestFactory.createApplicationContext(AppModule);
 const tasksService = app.get(TasksService);
 ```
@@ -37,9 +35,10 @@ const tasksService = app.get(TasksService);
 实际上，使用这个选项，您必须通过特定的模块来从选定的上下文获取特定的实例。
 
 ```typescript
-@@filename()
 const app = await NestFactory.createApplicationContext(AppModule);
-const tasksService = app.select(TasksModule).get(TasksService, { strict: true });
+const tasksService = app
+  .select(TasksModule)
+  .get(TasksService, { strict: true });
 ```
 
 以下是可用于从独立应用程序对象检索实例引用的方法的摘要。
@@ -63,14 +62,11 @@ const tasksService = app.select(TasksModule).get(TasksService, { strict: true })
   </tr>
 </table>
 
-!!! info "**Hint**"
-
-    在非严格模式下，默认选择根模块。要选择任何其他模块，您需要一步一步地手动导航模块图。
+!!! info "在非严格模式下，默认选择根模块。要选择任何其他模块，您需要一步一步地手动导航模块图。"
 
 如果你想让 node 应用程序在脚本完成后关闭(例如，一个运行 CRON 作业的脚本)，添加`await app.close()`到你的`bootstrap`函数的末尾:
 
 ```typescript
-@@filename()
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
   // application logic...

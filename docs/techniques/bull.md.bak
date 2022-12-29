@@ -43,17 +43,17 @@
   </p>
 </div>
 
-### 📻 新闻和更新
+# 📻 新闻和更新
 
 请在[Twitter](http://twitter.com/manast)上关注我，了解重要的新闻和更新。
 
-### 🛠 教程
+# 🛠 教程
 
 你可以在这个博客中找到教程和新闻: https://blog.taskforce.sh/
 
 ---
 
-### 所使用的
+# 所使用的
 
 Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 
@@ -105,14 +105,14 @@ Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 
 ---
 
-### BullMQ
+# BullMQ
 
 如果你想开始使用完全用 Typescript 编写的下一个主要版本的 Bull，欢迎使用新的 repo[这里](https://github.com/taskforcesh/bullmq).
 否则，我们非常欢迎你仍然使用 Bull，这是一个安全的、经过战斗测试的代码库。
 
 ---
 
-### 🚀 赞助商 🚀
+# 🚀 赞助商 🚀
 
 [<img src="https://www.redisgreen.com/images/rglogo/redisgreen_transparent_240x48.png" width="150" alt="RedisGreen" style="padding: 100px"/>](https://dashboard.redisgreen.net/new?utm_campaign=BULLMQ)
 
@@ -121,7 +121,7 @@ Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 
 ---
 
-### 官方的前端
+# 官方的前端
 
 [<img src="http://taskforce.sh/assets/logo_square.png" width="100" alt="Taskforce.sh, Inc" style="padding: 100px"/>](https://taskforce.sh)
 
@@ -136,7 +136,7 @@ Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 
 ---
 
-### Bull 特性
+# Bull 特性
 
 - [x] 最小的 CPU 使用率，由于无轮询设计。
 - [x] 基于 Redis 的稳健设计。
@@ -158,15 +158,15 @@ Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 
 ---
 
-### UIs
+# UIs
 
 你可以使用一些第三方 ui 来进行监控:
 
-**BullMQ**
+ **BullMQ** 
 
 - [Taskforce](https://taskforce.sh)
 
-**Bull v3**
+ **Bull v3** 
 
 - [Taskforce](https://taskforce.sh)
 - [bull-board](https://github.com/vcapretz/bull-board)
@@ -174,7 +174,7 @@ Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 - [bull-monitor](https://github.com/s-r-x/bull-monitor)
 - [Monitoro](https://github.com/AbhilashJN/monitoro)
 
-**Bull <= v2**
+ **Bull <= v2** 
 
 - [Matador](https://github.com/ShaneK/Matador)
 - [react-bull](https://github.com/kfatehi/react-bull)
@@ -182,13 +182,13 @@ Bull 在大大小小的组织中都很受欢迎，比如以下这些组织:
 
 ---
 
-### 监测和报警
+# 监测和报警
 
 - With Prometheus [Bull Queue Exporter](https://github.com/UpHabit/bull_exporter)
 
 ---
 
-### 特征比较
+# 特征比较
 
 Since there are a few job queue solutions, here is a table comparing them:
 
@@ -212,7 +212,7 @@ Since there are a few job queue solutions, here is a table comparing them:
 | UI                        |        ✓        |        ✓        |        ✓        |   ✓   |          | ✓      |
 | Optimized for             | Jobs / Messages | Jobs / Messages | Jobs / Messages | Jobs  | Messages | Jobs   |
 
-### 安装
+# 安装
 
 ```bash
 npm install bull --save
@@ -224,9 +224,9 @@ or
 yarn add bull
 ```
 
-_**Requirements:** Bull requires a Redis version greater than or equal to `2.8.18`._
+_ **Requirements:**  Bull requires a Redis version greater than or equal to `2.8.18`._
 
-### Typescript 定义
+# Typescript 定义
 
 ```bash
 npm install @types/bull --save-dev
@@ -238,7 +238,7 @@ yarn add --dev @types/bull
 
 Definitions are currently maintained in the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/bull) repo.
 
-### 贡献
+# 贡献
 
 我们欢迎所有类型的贡献，无论是代码修复、新特性还是文档改进。
 代码格式由[prettier](https://prettier.io/)强制执行。
@@ -247,9 +247,9 @@ Definitions are currently maintained in the [DefinitelyTyped](https://github.com
 
 ---
 
-### 快速指南
+# 快速指南
 
-#### 基本用法
+## 基本用法
 
 ```js
 const Queue = require('bull');
@@ -325,7 +325,7 @@ audioQueue.add({ audio: 'http://example.com/audio1.mp3' });
 imageQueue.add({ image: 'http://example.com/image1.tiff' });
 ```
 
-#### 使用承诺
+## 使用承诺
 
 或者，你可以使用 return promises 来代替`done`回调:
 
@@ -348,7 +348,7 @@ videoQueue.process(function (job) {
 });
 ```
 
-#### 独立的进程
+## 独立的进程
 
 进程函数也可以在单独的进程中运行。这有几个好处:
 
@@ -380,7 +380,7 @@ queue.process(5, '/path/to/my/processor.js');
 queue.process('my processor', 5, '/path/to/my/processor.js');
 ```
 
-#### 重复的工作
+## 重复的工作
 
 A job can be added to a queue and processed repeatedly according to a cron specification:
 
@@ -396,7 +396,7 @@ paymentsQueue.add(paymentsData, { repeat: { cron: '15 3 * * *' } });
 As a tip, check your expressions here to verify they are correct:
 [cron expression generator](https://crontab.cronhub.io)
 
-#### 暂停/恢复
+## 暂停/恢复
 
 A queue can be paused and resumed globally (pass `true` to pause processing for
 just this worker):
@@ -411,7 +411,7 @@ queue.resume().then(function () {
 });
 ```
 
-#### 事件
+## 事件
 
 队列会发出一些有用的事件，例如…
 
@@ -423,7 +423,7 @@ queue.resume().then(function () {
 
 For more information on events, including the full list of events that are fired, check out the [Events reference](./REFERENCE.md#events)
 
-#### 队列性能
+## 队列性能
 
 队列很便宜，所以如果你需要很多队列，只需创建新的不同名称的队列:
 
@@ -437,7 +437,7 @@ const userLisa = new Queue('lisa');
 
 However every queue instance will require new redis connections, check how to [reuse connections](https://github.com/OptimalBits/bull/blob/master/PATTERNS.md#reusing-redis-connections) or you can also use [named processors](https://github.com/OptimalBits/bull/blob/master/REFERENCE.md#queueprocess) to achieve a similar result.
 
-#### 集群的支持
+## 集群的支持
 
 NOTE: From version 3.2.0 and above it is recommended to use threaded processors instead.
 
@@ -477,7 +477,7 @@ if (cluster.isMaster) {
 
 ---
 
-### 文档
+# 文档
 
 要获取完整的文档，请查看参考和常用模式:
 
@@ -490,7 +490,7 @@ if (cluster.isMaster) {
 
 ---
 
-### 重要的笔记
+# 重要的笔记
 
 The queue aims for an "at least once" working strategy. This means that in some situations, a job
 could be processed more than once. This mostly happens when a worker fails to keep a lock
@@ -501,7 +501,7 @@ When a worker is processing a job it will keep the job "locked" so other workers
 It's important to understand how locking works to prevent your jobs from losing their lock - becoming _stalled_ -
 and being restarted as a result. Locking is implemented internally by creating a lock for `lockDuration` on interval
 `lockRenewTime` (which is usually half `lockDuration`). If `lockDuration` elapses before the lock can be renewed,
-the job will be considered stalled and is automatically restarted; it will be **double processed**. This can happen when:
+the job will be considered stalled and is automatically restarted; it will be  **double processed** . This can happen when:
 
 1. The Node process running your job processor unexpectedly terminates.
 2. Your job processor was too CPU-intensive and stalled the Node event loop, and as a result, Bull couldn't renew the job lock (see [#488](https://github.com/OptimalBits/bull/issues/488) for how we might better detect this). You can fix this by breaking your job processor into smaller parts so that no single part can block the Node event loop. Alternatively, you can pass a larger value for the `lockDuration` setting (with the tradeoff being that it will take longer to recognize a real stalled job).

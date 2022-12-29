@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
+         <loc>https://docs.nestjs.com/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.nestjs.com/application-context/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/awesome/</loc>
          <lastmod>2022-12-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -46,11 +56,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.nestjs.com/introduction/</loc>
-         <lastmod>2022-12-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.nestjs.com/middlewares/</loc>
          <lastmod>2022-12-29</lastmod>
          <changefreq>daily</changefreq>
@@ -72,6 +77,116 @@
     </url>
     <url>
          <loc>https://docs.nestjs.com/support/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/61.circular-dependencies/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/api-nestjs-error-handling-validation/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/api-nestjs-logging-typeorm/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/api-nestjs-stripe-events-webhooks/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/api-nestjs-uploading-files-to-server/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/applying-solid-principles-to-your-typescript-code/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/nestjs-9-is-now-available/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/nestjs-docker-production/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/nestjs-file-uploading-using-multer/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/scalable-websockets-with-nestjs-and-redis/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/websocket-cluster-with-nestjs-and-redis/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/indexes/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/introduction/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/pagination/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/relationships/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/transactions/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/updating/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/mongodb/virtual/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/blog/posts/openapi/api-nestjs-openapi-swagger/</loc>
          <lastmod>2022-12-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -451,6 +566,96 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/comments/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/demo/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/documentation-coverage/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/extensions/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/features/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/hosting/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/installation/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/jsdoc-tags/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/live-example-tab/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/miscellaneous/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/options/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/routing/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/tab-configuration/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/themes/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/tips-and-tricks/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/tutorial/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/recipes/compodoc/usage/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.nestjs.com/security/authentication/</loc>
          <lastmod>2022-12-29</lastmod>
          <changefreq>daily</changefreq>
@@ -582,6 +787,91 @@
     </url>
     <url>
          <loc>https://docs.nestjs.com/techniques/versioning/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/axios/axios-auth-refresh/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/axios/axios/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/axios/nest-axios-interceptor/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/bull/bull/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/bull/guide/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/bull/patterns/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/bull/reference/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/cache-manager/node-cache-manager/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/redis/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/redis/liaoliaots_nestjs-redis/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/redis/liaoliaots_nestjs-redis/cluster/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/redis/liaoliaots_nestjs-redis/examples/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/redis/liaoliaots_nestjs-redis/health/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/redis/liaoliaots_nestjs-redis/redis/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/validator/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/validator/class-transformer/</loc>
+         <lastmod>2022-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.nestjs.com/techniques/validator/class-validator/</loc>
          <lastmod>2022-12-29</lastmod>
          <changefreq>daily</changefreq>
     </url>

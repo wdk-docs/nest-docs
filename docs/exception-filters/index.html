@@ -9,6 +9,8 @@
         <meta name="description" content="NestJS 文档">
       
       
+        <meta name="author" content="Kamil Mysliwiec">
+      
       
         <link rel="canonical" href="https://docs.nestjs.com/exception-filters/">
       
@@ -150,7 +152,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
       </div>
@@ -174,7 +176,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
         入门介绍
       </a>
     </li>
@@ -357,6 +359,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../blog/" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -399,7 +417,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    GitHub
+    wdk-docs/nest-docs
   </div>
 </a>
     </div>
@@ -442,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         介绍
       </a>
     </li>
@@ -532,6 +550,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           异常过滤
@@ -548,6 +568,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -556,71 +578,58 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    异常过滤器
-  </a>
-  
-    <nav class="md-nav" aria-label="异常过滤器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     抛出标准异常
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     自定义异常
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     内置的 HTTP 异常
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     异常过滤器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     参数主机
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     绑定的过滤器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     抓住一切
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     继承
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -944,6 +953,142 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_2">
+          Redis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Redis" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Redis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        Cluster
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
+        Health
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/configuration/" class="md-nav__link">
         配置
@@ -958,9 +1103,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          验证
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="验证" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          验证
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/validation/" class="md-nav__link">
-        验证
+        概述
       </a>
     </li>
   
@@ -973,9 +1144,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../techniques/caching/" class="md-nav__link">
-        缓存
+      <a href="../techniques/validator/class-transformer/" class="md-nav__link">
+        class-transformer
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/validator/class-validator/" class="md-nav__link">
+        class-validator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          缓存
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="缓存" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          缓存
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/caching/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/cache-manager/node-cache-manager/" class="md-nav__link">
+        node-cache-manager
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1028,10 +1281,99 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_10">
+          队列
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="队列" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          队列
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/queues/" class="md-nav__link">
-        队列
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/bull/" class="md-nav__link">
+        Bull
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/guide/" class="md-nav__link">
+        guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/patterns/" class="md-nav__link">
+        patterns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/bull/reference/" class="md-nav__link">
+        reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1126,10 +1468,85 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_17" type="checkbox" id="__nav_3_17" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_17">
+          HTTP 模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HTTP 模块" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_17">
+          <span class="md-nav__icon md-icon"></span>
+          HTTP 模块
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../techniques/http-module/" class="md-nav__link">
-        HTTP 模块
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/axios/" class="md-nav__link">
+        Axios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/axios-auth-refresh/" class="md-nav__link">
+        axios-auth-refresh
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../techniques/axios/nest-axios-interceptor/" class="md-nav__link">
+        @narando/nest-axios-interceptor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2045,20 +2462,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../openapi/introduction/" class="md-nav__link">
-        Swagger
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../recipes/terminus/" class="md-nav__link">
         健康检查
       </a>
@@ -2086,10 +2489,281 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_10">
+          Compodoc
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_10">
+          <span class="md-nav__icon md-icon"></span>
+          Compodoc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../recipes/documentation/" class="md-nav__link">
-        Compodoc
+        概述
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/comments/" class="md-nav__link">
+        注释
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/demo/" class="md-nav__link">
+        现场演示
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/documentation-coverage/" class="md-nav__link">
+        文档覆盖
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/extensions/" class="md-nav__link">
+        扩展
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/features/" class="md-nav__link">
+        特性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/hosting/" class="md-nav__link">
+        托管
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/installation/" class="md-nav__link">
+        安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/jsdoc-tags/" class="md-nav__link">
+        JSDoc 标签
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/live-example-tab/" class="md-nav__link">
+        现场例子选项卡
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/miscellaneous/" class="md-nav__link">
+        杂项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/options/" class="md-nav__link">
+        选项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/routing/" class="md-nav__link">
+        路由
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tab-configuration/" class="md-nav__link">
+        选项卡配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/themes/" class="md-nav__link">
+        主题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tips-and-tricks/" class="md-nav__link">
+        提示和技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/tutorial/" class="md-nav__link">
+        教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/compodoc/usage/" class="md-nav__link">
+        使用
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2720,6 +3394,461 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awesome/" class="md-nav__link">
+        AWESOME
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          博客
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="博客" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        博客列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-9-is-now-available/" class="md-nav__link">
+        发布V9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_3">
+          文件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="文件" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_3">
+          <span class="md-nav__icon md-icon"></span>
+          文件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/61.circular-dependencies/" class="md-nav__link">
+        处理循环依赖项
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/applying-solid-principles-to-your-typescript-code/" class="md-nav__link">
+        对typescript代码应用可靠的原则
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/" class="md-nav__link">
+        JWT Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-docker-production/" class="md-nav__link">
+        NestJS Dockerfile
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/nestjs-file-uploading-using-multer/" class="md-nav__link">
+        使用Multer上传文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/scalable-websockets-with-nestjs-and-redis/" class="md-nav__link">
+        使用 NestJS 和 Redis 扩展 WebSockets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/websocket-cluster-with-nestjs-and-redis/" class="md-nav__link">
+        WebSocket cluster with NestJs and Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-uploading-files-to-server/" class="md-nav__link">
+        文件上传
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-error-handling-validation/" class="md-nav__link">
+        错误处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-stripe-events-webhooks/" class="md-nav__link">
+        Stripe事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/api-nestjs-logging-typeorm/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_4">
+          MongoDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_4">
+          <span class="md-nav__icon md-icon"></span>
+          MongoDB
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/indexes/" class="md-nav__link">
+        使用MongoDB和Mongoose定义索引
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/introduction/" class="md-nav__link">
+        MongoDB概论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/pagination/" class="md-nav__link">
+        使用MongoDB和Mongoose实现分页
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/relationships/" class="md-nav__link">
+        实现与MongoDB的关系
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/transactions/" class="md-nav__link">
+        与MongoDB和Mongoose管理事务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/" class="md-nav__link">
+        MongoDB与Mongoose使用PUT vs PATCH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/updating/" class="md-nav__link">
+        用PUT和PATCH更新MongoDB和Mongoose
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/mongodb/virtual/" class="md-nav__link">
+        MongoDB和Mongoose的虚拟属性
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_13_5">
+          swagger
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="swagger" data-md-level="2">
+        <label class="md-nav__title" for="__nav_13_5">
+          <span class="md-nav__icon md-icon"></span>
+          swagger
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/posts/openapi/api-nestjs-openapi-swagger" class="md-nav__link">
+        OpenAPI规范和Swagger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2743,6 +3872,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2751,71 +3882,58 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    异常过滤器
-  </a>
-  
-    <nav class="md-nav" aria-label="异常过滤器">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     抛出标准异常
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     自定义异常
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     内置的 HTTP 异常
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     异常过滤器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     参数主机
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     绑定的过滤器
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     抓住一切
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     继承
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2833,53 +3951,57 @@
                 
                   
 
-  <a href="https://github.com/wdk-docs/nest-docs/edit/main/docs/exception-filters.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/exception-filters.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>异常过滤</h1>
-
-<h3 id="_1">异常过滤器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>Nest 自带一个内置的<strong>异常层</strong>，负责处理整个应用程序中所有未处理的异常。
+<h1 id="_1">异常过滤器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>Nest 自带一个内置的 <strong>异常层</strong> ，负责处理整个应用程序中所有未处理的异常。
 当应用程序代码没有处理异常时，该层会捕获异常，然后自动发送适当的用户友好响应。</p>
 <figure>
   <img src="/assets/Filter_1.png" />
 </figure>
 
-<p>开箱即用，这个动作是由内置的<strong>全局异常过滤器</strong>执行的，它处理类型为 <code>HttpException</code> 的异常(及其子类)。
-当一个异常是<strong>不可识别的</strong>(既不是 <code>HttpException</code> ，也不是继承自 <code>HttpException</code> 的类)，内置的异常过滤器生成以下默认 JSON 响应:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Internal server error&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<p>开箱即用，这个动作是由内置的 <strong>全局异常过滤器</strong> 执行的，它处理类型为 <code>HttpException</code> 的异常(及其子类)。
+当一个异常是 <strong>不可识别的</strong> (既不是 <code>HttpException</code> ，也不是继承自 <code>HttpException</code> 的类)，内置的异常过滤器生成以下默认 JSON 响应:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Internal server error&quot;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>全局异常过滤器部分支持 <code>http-errors</code> 库。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 全局异常过滤器部分支持 <code>http-errors</code> 库。
-基本上，任何抛出的异常包含 <code>statusCode</code> 和 <code>message</code> 属性将被正确填充并作为响应发送回(而不是默认的 <code>InternalServerErrorException</code> 对于未识别的异常)。</p>
+<p>基本上，任何抛出的异常包含 <code>statusCode</code> 和 <code>message</code> 属性将被正确填充并作为响应发送回(而不是默认的 <code>InternalServerErrorException</code> 对于未识别的异常)。</p>
 </blockquote>
-<h4 id="_2">抛出标准异常<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h2 id="_2">抛出标准异常<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>Nest 提供了一个内置的 <code>HttpException</code> 类，从 <code>@nestjs/common</code> 包中公开。
 对于典型的基于 HTTP REST/GraphQL API 的应用程序，最佳实践是在出现某些错误条件时发送标准 HTTP 响应对象。</p>
 <p>例如，在 <code>CatsController</code> 中，我们有一个 <code>findAll()</code> 方法(一个 <code>GET</code> 路由处理器)。
 让我们假设这个路由处理程序出于某种原因抛出了一个异常。
 为了演示这一点，我们将其硬编码如下:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>我们在这里使用了 <code>HttpStatus</code> 。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 我们在这里使用了 <code>HttpStatus</code> 。
-这是从 <code>@nestjs/common</code> 包中导入的 <code>helper enum</code>。</p>
+<p>这是从 <code>@nestjs/common</code> 包中导入的 <code>helper enum</code>。</p>
 </blockquote>
 <p>当客户端调用这个端点时，响应看起来像这样:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Forbidden&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Forbidden&quot;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p><code>HttpException</code> 构造函数有两个必需的参数来决定响应:</p>
 <ul>
@@ -2897,41 +4019,41 @@ Nest 将序列化该对象并将其作为 JSON 响应体返回。</p>
 <p>第二个构造函数参数 - <code>status</code> - 应该是一个有效的 HTTP 状态码。
 最佳实践是使用从 <code>@nestjs/common</code> 中导入的 <code>HttpStatus</code> 枚举。</p>
 <p>下面是一个覆盖整个响应体的例子:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpStatus.FORBIDDEN</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is a custom message&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpException</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpStatus.FORBIDDEN</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is a custom message&#39;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>使用上面的方法，下面是响应的样子:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a custom message&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is a custom message&quot;</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="_3">自定义异常<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h2 id="_3">自定义异常<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>在许多情况下，您不需要编写自定义异常，可以使用内置的 Nest HTTP 异常，如下一节所述。
-如果你确实需要创建自定义异常，最好创建你自己的<strong>异常层次</strong>结构，其中你的自定义异常继承自基类 <code>HttpException</code> 。
+如果你确实需要创建自定义异常，最好创建你自己的 <strong>异常层次</strong> 结构，其中你的自定义异常继承自基类 <code>HttpException</code> 。
 使用这种方法，Nest 将识别出你的异常，并自动处理错误响应。
 让我们实现这样一个自定义异常:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">forbidden</span><span class="p">.</span><span class="nx">exception</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">forbidden</span><span class="p">.</span><span class="nx">exception</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">FORBIDDEN</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>由于 <code>ForbiddenException</code> 扩展了基础的 <code>HttpException</code> ，它将与内置的异常处理程序无缝地工作，因此我们可以在 <code>findAll()</code> 方法中使用它。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">@Get</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">async</span><span class="w"> </span><span class="nx">findAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="http">内置的 HTTP 异常<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<h2 id="http">内置的 HTTP 异常<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
 <p>Nest 提供了一组从基本的 <code>HttpException</code> 继承的标准异常。
 这些是从 <code>@nestjs/common</code> 包中公开的，代表了许多最常见的 HTTP 异常:</p>
 <ul>
@@ -2956,66 +4078,69 @@ Nest 将序列化该对象并将其作为 JSON 响应体返回。</p>
 <li><code>GatewayTimeoutException</code></li>
 <li><code>PreconditionFailedException</code></li>
 </ul>
-<h4 id="_4">异常过滤器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="_4">异常过滤器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>虽然基本的(内置的)异常过滤器可以自动为你处理许多情况，但你可能想要对异常层进行完全控制。
 例如，您可能希望根据一些动态因素添加日志记录或使用不同的 JSON 模式。
-<strong>异常过滤器</strong>正是为此目的而设计的。
+<strong>异常过滤器</strong> 正是为此目的而设计的。
 它们允许您控制确切的控制流和发送回客户机的响应的内容。</p>
 <p>让我们创建一个异常过滤器，它负责捕捉异常，这些异常是 <code>HttpException</code> 类的一个实例，并为它们实现定制的响应逻辑。
 为此，我们需要访问底层平台的 <code>Request</code> 和 <code>Response</code> 对象。
 我们将访问 <code>Request</code> 对象，这样我们就可以取出原始的 <code>url</code> ，并将其包含在日志信息中。
 我们将使用 <code>Response</code> 对象来直接控制发送的响应，使用<code>response.json()</code>方法。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">http</span><span class="o">-</span><span class="nx">exception</span><span class="p">.</span><span class="nx">filter</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ExceptionFilter</span><span class="p">,</span><span class="w"> </span><span class="nx">Catch</span><span class="p">,</span><span class="w"> </span><span class="nx">ArgumentsHost</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Catch</span><span class="p">(</span><span class="nx">HttpException</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpException</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">ArgumentsHost</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getResponse</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequest</span><span class="o">&lt;</span><span class="nx">Request</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exception</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="nx">response</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">status</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">request.url</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Catch</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Catch</span><span class="p">(</span><span class="nx">HttpException</span><span class="p">)</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getResponse</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequest</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exception</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="nx">response</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">status</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
-<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">request.url</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="p">});</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">http</span><span class="o">-</span><span class="nx">exception</span><span class="p">.</span><span class="nx">filter</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ExceptionFilter</span><span class="p">,</span><span class="w"> </span><span class="nx">Catch</span><span class="p">,</span><span class="w"> </span><span class="nx">ArgumentsHost</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">@Catch</span><span class="p">(</span><span class="nx">HttpException</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpException</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">ArgumentsHost</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getResponse</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequest</span><span class="o">&lt;</span><span class="nx">Request</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exception</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nx">response</span><span class="w"></span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">      </span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">      </span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">status</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">request.url</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Catch</span><span class="p">,</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="kd">@Catch</span><span class="p">(</span><span class="nx">HttpException</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getResponse</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequest</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exception</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">    </span><span class="nx">response</span><span class="w"></span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">      </span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="nx">status</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">      </span><span class="p">.</span><span class="nx">json</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">        </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">status</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">request.url</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>所有异常过滤器都应该实现通用的<code>ExceptionFilter&lt;T&gt;</code>接口。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 所有异常过滤器都应该实现通用的<code>ExceptionFilter&lt;T&gt;</code>接口。
-这需要你提供带有指定签名的<code>catch(exception: T, host: ArgumentsHost)</code> 方法。
+<p>这需要你提供带有指定签名的<code>catch(exception: T, host: ArgumentsHost)</code> 方法。
 <code>T</code> 表示异常的类型。</p>
 </blockquote>
 <p><code>@Catch(HttpException)</code> 装饰器将所需的元数据绑定到异常过滤器，告诉 Nest 这个特定的过滤器正在寻找 <code>HttpException</code> 类型的异常，而不是其他类型的异常。
 <code>@Catch()</code> 装饰器可以接受单个参数，或者一个逗号分隔的列表。
 这允许您一次为几种类型的异常设置过滤器。</p>
-<h4 id="_5">参数主机<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h2 id="_5">参数主机<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>让我们看看 <code>catch()</code> 方法的参数。
 <code>exception</code> 参数是当前正在处理的异常对象。
 <code>host</code> 参数是一个 <code>ArgumentsHost</code> 对象。
@@ -3024,174 +4149,181 @@ Nest 将序列化该对象并将其作为 JSON 响应体返回。</p>
 在这个代码示例中，我们在 <code>ArgumentsHost</code> 上使用了一些 helper 方法来获得所需的 <code>Request</code> 和 <code>Response</code> 对象。
 了解更多关于 <code>ArgumentsHost</code> 的信息<a href="/基本面/执行上下文">在这里</a>。</p>
 <p>这个抽象级别的原因是 <code>ArgumentsHost</code> 在所有上下文中都有作用(例如，我们现在处理的 HTTP 服务器上下文中，还有微服务和 WebSockets)。
-在执行上下文这一章中，我们将看到如何使用 <code>ArgumentsHost</code> 及其辅助函数的功能访问<strong>任意</strong>执行上下文的相应的<a href="https://docs.nestjs.com/fundamentals/execution-context#host-methods">底层参数</a>。
+在执行上下文这一章中，我们将看到如何使用 <code>ArgumentsHost</code> 及其辅助函数的功能访问 <strong>任意</strong> 执行上下文的相应的<a href="https://docs.nestjs.com/fundamentals/execution-context#host-methods">底层参数</a>。
 这将允许我们编写跨所有上下文操作的通用异常过滤器。</p>
-<h4 id="_6">绑定的过滤器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h2 id="_6">绑定的过滤器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>让我们把新的 <code>HttpExceptionFilter</code> 绑定到 <code>CatsController</code> 的 <code>create()</code> 方法。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
-<span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span><span class="w"> </span><span class="nx">createCatDto</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
-<span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w"></span>
-<span class="kd">@Bind</span><span class="p">(</span><span class="nx">Body</span><span class="p">())</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span><span class="w"> </span><span class="nx">createCatDto</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="kd">@Bind</span><span class="p">(</span><span class="nx">Body</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<blockquote>
-<p>info <strong>Hint</strong> <code>@UseFilters()</code> 装饰器是从 <code>@nestjs/common</code> 包中导入的。</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p><code>@UseFilters()</code> 装饰器是从 <code>@nestjs/common</code> 包中导入的。</p>
+</div>
 <p>这里我们使用了 <code>@UseFilters()</code> 装饰器。
 类似于 <code>@Catch()</code> 装饰器，它可以接受单个过滤器实例，也可以接受逗号分隔的过滤器实例列表。
 这里，我们在适当的地方创建了 <code>HttpExceptionFilter</code> 的实例。
 或者，你可以传递类(而不是实例)，将实例化的责任留给框架，并启用依赖注入。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
-<span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span><span class="w"> </span><span class="nx">createCatDto</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
-<span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@Bind</span><span class="p">(</span><span class="nx">Body</span><span class="p">())</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="kd">@Body</span><span class="p">()</span><span class="w"> </span><span class="nx">createCatDto</span><span class="o">:</span><span class="w"> </span><span class="kt">CreateCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="kd">@Post</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="kd">@UseFilters</span><span class="p">(</span><span class="nx">HttpExceptionFilter</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="kd">@Bind</span><span class="p">(</span><span class="nx">Body</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">async</span><span class="w"> </span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ForbiddenException</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>如果可能的话，最好使用类而不是实例来应用过滤器。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 如果可能的话，最好使用类而不是实例来应用过滤器。
-它减少了内存的使用，因为 Nest 可以轻松地在整个模块中重用同一个类的实例。</p>
+<p>它减少了内存的使用，因为 Nest 可以轻松地在整个模块中重用同一个类的实例。</p>
 </blockquote>
 <p>在上面的例子中， <code>HttpExceptionFilter</code> 只应用于单一的 <code>create()</code> 路由处理程序，使其限于方法范围。
 异常筛选器可以定义在不同的级别:方法范围的、控制器范围的或全局范围的。
 例如，要将过滤器设置为控制器作用域，你需要执行以下操作:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
-<span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">controller</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kd">@UseFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsController</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div>
 <p>这个构造为 <code>CatsController</code> 中定义的每个路由处理程序设置了 <code>HttpExceptionFilter</code> 。</p>
 <p>要创建一个全局作用域的过滤器，你需要执行以下操作:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">main</span><span class="p">)</span><span class="w"></span>
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">());</span><span class="w"></span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">main</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">HttpExceptionFilter</span><span class="p">());</span><span class="w"></span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <blockquote>
 <p>warning <strong>Warning</strong> <code>useGlobalFilters()</code> 方法不为网关或混合应用程序设置过滤器。</p>
 </blockquote>
 <p>全局范围的过滤器在整个应用程序中使用，用于每个控制器和每个路由处理程序。
 在依赖注入方面，从任何模块外部注册的全局过滤器(如上面的例子中的 <code>useGlobalFilters()</code> )不能注入依赖，因为这是在任何模块的上下文之外完成的。
-为了解决这个问题，你可以直接从任何模块<strong>注册一个全局作用域的过滤器</strong>，使用以下构造:</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_FILTER</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_FILTER</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpExceptionFilter</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+为了解决这个问题，你可以直接从任何模块 <strong>注册一个全局作用域的过滤器</strong> ，使用以下构造:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">module</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Module</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">APP_FILTER</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="kd">@Module</span><span class="p">({</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span><span class="nx">providers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">      </span><span class="nx">provide</span><span class="o">:</span><span class="w"> </span><span class="kt">APP_FILTER</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">      </span><span class="nx">useClass</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpExceptionFilter</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">  </span><span class="p">],</span><span class="w"></span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="p">})</span><span class="w"></span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><strong>Hint</strong></p>
+<p>当使用此方法为过滤器执行依赖注入时，请注意，无论在哪个模块中使用此构造，过滤器实际上都是全局的。</p>
+</div>
 <blockquote>
-<p>info <strong>Hint</strong> 当使用此方法为过滤器执行依赖注入时，请注意，无论在哪个模块中使用此构造，过滤器实际上都是全局的。
-这应该在哪里做?选择定义过滤器(在上面的例子中为 <code>HttpExceptionFilter</code> )的模块。
+<p>这应该在哪里做?选择定义过滤器(在上面的例子中为 <code>HttpExceptionFilter</code> )的模块。
 此外， <code>useClass</code> 并不是处理自定义提供商注册的唯一方法。
 了解更多<a href="/fundamentals/custom-providers">这</a>。</p>
 </blockquote>
 <p>你可以根据需要使用这种技术添加尽可能多的过滤器;只需将它们添加到提供者数组中。</p>
-<h4 id="_7">抓住一切<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>为了捕获<strong>每个</strong>未处理的异常(不管异常类型是什么)，让 <code>@Catch()</code> 装饰器的形参列表为空，例如 <code>@Catch()</code> 。</p>
+<h2 id="_7">抓住一切<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>为了捕获 <strong>每个</strong> 未处理的异常(不管异常类型是什么)，让 <code>@Catch()</code> 装饰器的形参列表为空，例如 <code>@Catch()</code> 。</p>
 <p>在下面的例子中，我们有一个与平台无关的代码，因为它使用<a href="./faq/http-adapter">HTTP 适配器</a>来传递响应，而不直接使用任何平台特定的对象(<code>Request</code>和<code>Response</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">ExceptionFilter</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">Catch</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">ArgumentsHost</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">HttpException</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">HttpStatus</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">HttpAdapterHost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Catch</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">httpAdapterHost</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpAdapterHost</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">ArgumentsHost</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// In certain situations `httpAdapter` might not be available in the</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// constructor method, thus we should resolve it here.</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">httpAdapter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpAdapterHost</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">httpStatus</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="nx">exception</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"></span>
-<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="nx">exception</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">INTERNAL_SERVER_ERROR</span><span class="p">;</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">responseBody</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">httpStatus</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
-<span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">httpAdapter.getRequestUrl</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequest</span><span class="p">()),</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-
-<span class="w">    </span><span class="nx">httpAdapter</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getResponse</span><span class="p">(),</span><span class="w"> </span><span class="nx">responseBody</span><span class="p">,</span><span class="w"> </span><span class="nx">httpStatus</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nx">ExceptionFilter</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nx">Catch</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span><span class="nx">ArgumentsHost</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="nx">HttpException</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="nx">HttpStatus</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">HttpAdapterHost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="kd">@Catch</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">httpAdapterHost</span><span class="o">:</span><span class="w"> </span><span class="kt">HttpAdapterHost</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">ArgumentsHost</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="c1">// In certain situations `httpAdapter` might not be available in the</span><span class="w"></span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="c1">// constructor method, thus we should resolve it here.</span><span class="w"></span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">httpAdapter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">httpAdapterHost</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">switchToHttp</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">httpStatus</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">      </span><span class="nx">exception</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">HttpException</span><span class="w"></span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="nx">exception</span><span class="p">.</span><span class="nx">getStatus</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="nx">HttpStatus</span><span class="p">.</span><span class="nx">INTERNAL_SERVER_ERROR</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">responseBody</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">      </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">httpStatus</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">      </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">(),</span><span class="w"></span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">httpAdapter.getRequestUrl</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getRequest</span><span class="p">()),</span><span class="w"></span>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">    </span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">    </span><span class="nx">httpAdapter</span><span class="p">.</span><span class="nx">reply</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">getResponse</span><span class="p">(),</span><span class="w"> </span><span class="nx">responseBody</span><span class="p">,</span><span class="w"> </span><span class="nx">httpStatus</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="_8">继承<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h2 id="_8">继承<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>通常，您将创建完全定制的异常过滤器，以满足您的应用程序需求。
-然而，在某些情况下，您可能想简单地扩展内置的默认<strong>全局异常过滤器</strong>，并基于某些因素覆盖行为。</p>
+然而，在某些情况下，您可能想简单地扩展内置的默认 <strong>全局异常过滤器</strong> ，并基于某些因素覆盖行为。</p>
 <p>为了将异常处理委托给基过滤器，您需要扩展 <code>BaseExceptionFilter</code> 并调用继承的 <code>catch()</code> 方法。</p>
-<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">all</span><span class="o">-</span><span class="nx">exceptions</span><span class="p">.</span><span class="nx">filter</span><span class="p">)</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Catch</span><span class="p">,</span><span class="w"> </span><span class="nx">ArgumentsHost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Catch</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">ArgumentsHost</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Catch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">@Catch</span><span class="p">()</span><span class="w"></span>
-<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">all</span><span class="o">-</span><span class="nx">exceptions</span><span class="p">.</span><span class="nx">filter</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Catch</span><span class="p">,</span><span class="w"> </span><span class="nx">ArgumentsHost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="kd">@Catch</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="kt">ArgumentsHost</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="err">@</span><span class="kd">@switch</span><span class="w"></span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Catch</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/common&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="kd">@Catch</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">BaseExceptionFilter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">  </span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">exception</span><span class="p">,</span><span class="w"> </span><span class="nx">host</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <blockquote>
 <p>warning <strong>Warning</strong> 扩展了 <code>BaseExceptionFilter</code> 的方法范围和控制器范围的过滤器不应该用 <code>new</code> 实例化。
 相反，让框架自动实例化它们。</p>
 </blockquote>
 <p>上面的实现只是一个演示该方法的 shell。
-您的扩展异常过滤器的实现将包括您定制的<strong>业务</strong>逻辑(例如，处理各种条件)。</p>
-<p>全局过滤器<strong>可以</strong>扩展基过滤器。
+您的扩展异常过滤器的实现将包括您定制的 <strong>业务</strong> 逻辑(例如，处理各种条件)。</p>
+<p>全局过滤器 <strong>可以</strong> 扩展基过滤器。
 这有两种方法。</p>
 <p>第一个方法是在实例化自定义全局过滤器时注入 <code>HttpServer</code> 引用:</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">httpAdapter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">HttpAdapterHost</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="p">(</span><span class="nx">httpAdapter</span><span class="p">));</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">httpAdapter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">HttpAdapterHost</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">useGlobalFilters</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">AllExceptionsFilter</span><span class="p">(</span><span class="nx">httpAdapter</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>第二种方法是使用 <code>APP_FILTER</code> 令牌<a href="exception-filters#bind -filters">如下所示</a>。</p>
 
@@ -3256,7 +4388,7 @@ Nest 将序列化该对象并将其作为 JSON 响应体返回。</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      版权所有 © 2022 NestJS Authors
+      版权所有 © 2017-2022 MIT by Kamil Mysliwiec
     </div>
   
   
@@ -3304,7 +4436,7 @@ Nest 将序列化该对象并将其作为 JSON 响应体返回。</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tracking", "navigation.tabs.sticky", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
