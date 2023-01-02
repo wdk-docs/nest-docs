@@ -4,7 +4,10 @@
 幸运的是，使用[webpack](https://github.com/webpack/webpack) HMR(热模块替换)，我们不需要在每次发生更改时重新编译整个项目。
 这大大减少了实例化应用程序所需的时间，并使迭代开发变得更容易。
 
-> warning **Warning** 注意 `webpack` 不会自动复制你的资源(例如: `graphql` 文件)到 `dist` 文件夹。
+!!! warning
+
+    注意 `webpack` 不会自动复制你的资源(例如: `graphql` 文件)到 `dist` 文件夹。
+
 > 类似地， `webpack` 不兼容 glob 的静态路径(例如， `TypeOrmModule` 中的 `entities` 属性)。
 
 # 使用 CLI

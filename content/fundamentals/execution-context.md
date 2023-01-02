@@ -153,21 +153,26 @@ const className = ctx.getClass().name; // "CatsController"
 `Nest` 提供了通过`@SetMetadata()`装饰器将 **定制元数据** 连接到路由处理程序的能力。
 然后，我们可以从类中访问这些元数据来做出某些决定。
 
-```typescript
-@@filename(cats.controller)
-@Post()
-@SetMetadata('roles', ['admin'])
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-@@switch
-@Post()
-@SetMetadata('roles', ['admin'])
-@Bind(Body())
-async create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Post()
+    @SetMetadata('roles', ['admin'])
+    async create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
+
+=== "cats.controller.js"
+
+    ```js
+    @Post()
+    @SetMetadata('roles', ['admin'])
+    @Bind(Body())
+    async create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -177,54 +182,69 @@ async create(createCatDto) {
 虽然这可以工作，但在你的路由中直接使用`@SetMetadata()`并不是一个好习惯。
 相反，创建你自己的装饰器，如下所示:
 
-```typescript
-@@filename(roles.decorator)
-import { SetMetadata } from '@nestjs/common';
+=== "roles.decorator.ts"
 
-export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
-@@switch
-import { SetMetadata } from '@nestjs/common';
+    ```ts
+    import { SetMetadata } from '@nestjs/common';
 
-export const Roles = (...roles) => SetMetadata('roles', roles);
-```
+    export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
+    ```
+
+=== "roles.decorator.js"
+
+    ```js
+    import { SetMetadata } from '@nestjs/common';
+
+    export const Roles = (...roles) => SetMetadata('roles', roles);
+    ```
 
 这种方法更清晰，可读性更强，并且是强类型的。
 现在我们有了一个自定义的`@Roles()`装饰器，我们可以用它来装饰`create()`方法。
 
-```typescript
-@@filename(cats.controller)
-@Post()
-@Roles('admin')
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-@@switch
-@Post()
-@Roles('admin')
-@Bind(Body())
-async create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Post()
+    @Roles('admin')
+    async create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
+
+=== "cats.controller.js"
+
+    ```js
+    @Post()
+    @Roles('admin')
+    @Bind(Body())
+    async create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 为了访问路由的角色(自定义元数据)，我们将使用`Reflector` helper 类，它是由框架提供的，并从`@nestjs/core`包中公开。
 `Reflector`可以通过正常的方式注入到类中:
 
-```typescript
-@@filename(roles.guard)
-@Injectable()
-export class RolesGuard {
-  constructor(private reflector: Reflector) {}
-}
-@@switch
-@Injectable()
-@Dependencies(Reflector)
-export class CatsService {
-  constructor(reflector) {
-    this.reflector = reflector;
-  }
-}
-```
+=== "roles.guard.ts"
+
+    ```ts
+    @Injectable()
+    export class RolesGuard {
+      constructor(private reflector: Reflector) {}
+    }
+    ```
+
+=== "roles.guard.js"
+
+    ```js
+    @Injectable()
+    @Dependencies(Reflector)
+    export class CatsService {
+      constructor(reflector) {
+        this.reflector = reflector;
+      }
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -243,25 +263,35 @@ const roles = this.reflector.get<string[]>('roles', context.getHandler());
 
 或者，我们可以通过在控制器级别应用元数据来组织我们的控制器，应用到控制器类中的所有路由。
 
-```typescript
-@@filename(cats.controller)
-@Roles('admin')
-@Controller('cats')
-export class CatsController {}
-@@switch
-@Roles('admin')
-@Controller('cats')
-export class CatsController {}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Roles('admin')
+    @Controller('cats')
+    export class CatsController {}
+    ```
+
+=== "cats.controller.js"
+
+    ```js
+    @Roles('admin')
+    @Controller('cats')
+    export class CatsController {}
+    ```
 
 在这种情况下，要提取控制器元数据，我们传递`context.getclass()`作为第二个参数(以提供控制器类作为元数据提取的上下文)，而不是`context.gethandler ()`:
 
-```typescript
-@@filename(roles.guard)
-const roles = this.reflector.get<string[]>('roles', context.getClass());
-@@switch
-const roles = this.reflector.get('roles', context.getClass());
-```
+=== "roles.guard.ts"
+
+    ```ts
+    const roles = this.reflector.get<string[]>('roles', context.getClass());
+    ```
+
+=== "roles.guard.js"
+
+    ```js
+    const roles = this.reflector.get('roles', context.getClass());
+    ```
 
 由于能够在多个级别提供元数据，您可能需要从多个上下文提取和合并元数据。
 `Reflector`类提供了两个实用工具方法来帮助实现这一点。
@@ -269,29 +299,34 @@ const roles = this.reflector.get('roles', context.getClass());
 
 考虑以下场景，您在两个级别上都提供了“角色”元数据。
 
-```typescript
-@@filename(cats.controller)
-@Roles('user')
-@Controller('cats')
-export class CatsController {
-  @Post()
-  @Roles('admin')
-  async create(@Body() createCatDto: CreateCatDto) {
-    this.catsService.create(createCatDto);
-  }
-}
-@@switch
-@Roles('user')
-@Controller('cats')
-export class CatsController {}
-  @Post()
-  @Roles('admin')
-  @Bind(Body())
-  async create(createCatDto) {
-    this.catsService.create(createCatDto);
-  }
-}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Roles('user')
+    @Controller('cats')
+    export class CatsController {
+      @Post()
+      @Roles('admin')
+      async create(@Body() createCatDto: CreateCatDto) {
+        this.catsService.create(createCatDto);
+      }
+    }
+    ```
+
+=== "cats.controller.js"
+
+    ```js
+    @Roles('user')
+    @Controller('cats')
+    export class CatsController {}
+      @Post()
+      @Roles('admin')
+      @Bind(Body())
+      async create(createCatDto) {
+        this.catsService.create(createCatDto);
+      }
+    }
+    ```
 
 如果您的意图是指定`user`作为默认角色，并有选择地为某些方法覆盖它，您可能会使用`getAllAndOverride()`方法。
 

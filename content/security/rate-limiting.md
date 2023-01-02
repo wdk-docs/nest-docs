@@ -187,6 +187,6 @@ export class AppModule {}
 内建存储是一个内存缓存，它跟踪请求，直到它们传递了由全局选项设置的 TTL。
 你可以把你自己的存储选项放到`ThrottlerModule`的`storage`选项中，只要这个类实现了`ThrottlerStorage`接口。
 
-对于分布式服务器，你可以使用社区存储提供商[Redis](https://github.com/kkoomen/nestjs-throttler-storage-redis)来获得单一的真相来源。
+对于分布式服务器，你可以使用社区存储提供器[Redis](https://github.com/kkoomen/nestjs-throttler-storage-redis)来获得单一的真相来源。
 
 !!! info **Note** `ThrottlerStorage`可以从`@nestjs/throttler`中导入。

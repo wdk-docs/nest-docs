@@ -26,7 +26,11 @@
 ```bash
 @@filename()
 $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 ```
 
@@ -40,7 +44,9 @@ $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 @WebSocketGateway(80, { namespace: 'events' })
 ```
 
-> warning **Warning** 网关只有在现有模块的提供者数组中引用它们时才被实例化。
+!!! warning
+
+    网关只有在现有模块的提供器数组中引用它们时才被实例化。
 
 您可以将任何受支持的[选项](https://socket.io/docs/v4/server-options/)传递给套接字构造函数，并将第二个参数传递给`@WebSocketGateway()`装饰器，如下所示:
 
@@ -51,13 +57,18 @@ $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 网关现在正在收听，但是我们还没有订阅任何传入的消息。
 让我们创建一个处理程序，它将订阅`events`消息并以完全相同的数据响应用户。
 
-```typescript
-@@filename(events.gateway)
+=== "events.gateway"
+
+```ts
 @SubscribeMessage('events')
 handleEvent(@MessageBody() data: string): string {
   return data;
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(MessageBody())
 @SubscribeMessage('events')
 handleEvent(data) {
@@ -84,14 +95,19 @@ export class EventsModule {}
 
 您还可以将一个属性键传递给装饰器，以便从传入的消息体中提取它
 
-```typescript
-@@filename(events.gateway)
+=== "events.gateway"
+
+```ts
 @SubscribeMessage('events')
 handleEvent(@MessageBody('id') id: number): number {
   // id === messageBody.id
   return id;
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(MessageBody('id'))
 @SubscribeMessage('events')
 handleEvent(id) {
@@ -102,13 +118,18 @@ handleEvent(id) {
 
 如果不喜欢使用装饰器，下面的代码在功能上是等价的:
 
-```typescript
-@@filename(events.gateway)
+=== "events.gateway"
+
+```ts
 @SubscribeMessage('events')
 handleEvent(client: Socket, data: string): string {
   return data;
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @SubscribeMessage('events')
 handleEvent(client, data) {
   return data;
@@ -123,8 +144,9 @@ handleEvent(client, data) {
 此外，还可以使用特定于库的方法发出消息，例如使用`client.emit()`方法。
 为了访问已连接的套接字实例，请使用`@ConnectedSocket()`装饰器。
 
-```typescript
-@@filename(events.gateway)
+=== "events.gateway"
+
+```ts
 @SubscribeMessage('events')
 handleEvent(
   @MessageBody() data: string,
@@ -132,7 +154,11 @@ handleEvent(
 ): string {
   return data;
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(MessageBody(), ConnectedSocket())
 @SubscribeMessage('events')
 handleEvent(data, client) {
@@ -167,14 +193,19 @@ socket.emit('events', { name: 'Nest' }, (data) => console.log(data));
 为了解决这个限制，你可以返回一个包含两个属性的对象。
 `event`是发出事件的名称，以及必须转发给客户端的`data`。
 
-```typescript
-@@filename(events.gateway)
+=== "events.gateway"
+
+```ts
 @SubscribeMessage('events')
 handleEvent(@MessageBody() data: unknown): WsResponse<unknown> {
   const event = 'events';
   return { event, data };
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(MessageBody())
 @SubscribeMessage('events')
 handleEvent(data) {
@@ -187,7 +218,9 @@ handleEvent(data) {
 
     `WsResponse`接口是从`@nestjs/websockets`包导入的。
 
-> warning **Warning** 如果你的`data`字段依赖于`ClassSerializerInterceptor`，你应该返回一个实现`WsResponse`的类实例，因为它忽略了普通的 JavaScript 对象响应。
+!!! warning
+
+    如果你的`data`字段依赖于`ClassSerializerInterceptor`，你应该返回一个实现`WsResponse`的类实例，因为它忽略了普通的 JavaScript 对象响应。
 
 为了监听传入的响应，客户机必须应用另一个事件侦听器。
 
@@ -201,8 +234,9 @@ socket.on('events', (data) => console.log(data));
 因此，支持`async`方法。
 消息处理程序还可以返回一个`Observable`，在这种情况下，结果值将一直发出，直到流完成。
 
-```typescript
-@@filename(events.gateway)
+=== "events.gateway"
+
+```ts
 @SubscribeMessage('events')
 onEvent(@MessageBody() data: unknown): Observable<WsResponse<number>> {
   const event = 'events';
@@ -212,7 +246,11 @@ onEvent(@MessageBody() data: unknown): Observable<WsResponse<number>> {
     map(data => ({ event, data })),
   );
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(MessageBody())
 @SubscribeMessage('events')
 onEvent(data) {
@@ -276,7 +314,9 @@ onEvent(data) {
 server: Server;
 ```
 
-> warning **Notice** `@WebSocketServer()`装饰器是从`@nestjs/websockets`包中导入的。
+!!! warning
+
+    `@WebSocketServer()`装饰器是从`@nestjs/websockets`包中导入的。
 
 一旦服务器实例准备好使用，Nest 将自动将其分配给该属性。
 

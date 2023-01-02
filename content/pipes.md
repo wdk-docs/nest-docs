@@ -24,10 +24,9 @@ Nest 附带了许多内置管道，您可以开箱即用。
 !!! info "**Hint**"
 
     管道运行在异常区域内。
-
-> 这意味着，当 Pipe 抛出一个异常时，它是由异常层(全局异常过滤器和应用于当前上下文的任何[异常过滤器](/exception-filters)处理的。
-> 鉴于上述情况，应该很清楚，当在 Pipe 中抛出异常时，随后不会执行控制器方法。
-> 这为您提供了在系统边界验证来自外部源进入应用程序的数据的最佳实践技术。
+    这意味着，当 Pipe 抛出一个异常时，它是由异常层(全局异常过滤器和应用于当前上下文的任何[异常过滤器](/exception-filters)处理的。
+    鉴于上述情况，应该很清楚，当在 Pipe 中抛出异常时，随后不会执行控制器方法。
+    这为您提供了在系统边界验证来自外部源进入应用程序的数据的最佳实践技术。
 
 ## 内置的管道
 
@@ -102,6 +101,7 @@ async findOne(
 这些管道都在验证路由参数、查询字符串参数和请求体值的上下文中工作。
 
 例如，使用查询字符串参数:
+=== "JavaScript"
 
 ```typescript
 @Get()
@@ -112,19 +112,24 @@ async findOne(@Query('id', ParseIntPipe) id: number) {
 
 下面是一个使用 `ParseUUIDPipe` 来解析字符串参数并验证它是否为 UUID 的示例。
 
-```typescript
-@@filename()
-@Get(':uuid')
-async findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
-  return this.catsService.findOne(uuid);
-}
-@@switch
-@Get(':uuid')
-@Bind(Param('uuid', new ParseUUIDPipe()))
-async findOne(uuid) {
-  return this.catsService.findOne(uuid);
-}
-```
+=== "TypeScript"
+
+    ```ts
+    @Get(':uuid')
+    async findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
+      return this.catsService.findOne(uuid);
+    }
+    ```
+
+=== "JavaScript"
+
+    ```js
+    @Get(':uuid')
+    @Bind(Param('uuid', new ParseUUIDPipe()))
+    async findOne(uuid) {
+      return this.catsService.findOne(uuid);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -145,32 +150,36 @@ async findOne(uuid) {
 我们从一个简单的 `ValidationPipe` 开始。
 最初，我们将让它简单地接受一个输入值并立即返回相同的值，就像一个恒等函数一样。
 
-```typescript
-@@filename(validation.pipe)
-import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
+=== "validation.pipe.ts"
 
-@Injectable()
-export class ValidationPipe implements PipeTransform {
-  transform(value: any, metadata: ArgumentMetadata) {
-    return value;
-  }
-}
-@@switch
-import { Injectable } from '@nestjs/common';
+    ```ts
+    import { PipeTransform, Injectable, ArgumentMetadata } from '@nestjs/common';
 
-@Injectable()
-export class ValidationPipe {
-  transform(value, metadata) {
-    return value;
-  }
-}
-```
+    @Injectable()
+    export class ValidationPipe implements PipeTransform {
+      transform(value: any, metadata: ArgumentMetadata) {
+        return value;
+      }
+    }
+    ```
+
+=== "validation.pipe.js"
+
+    ```js
+    import { Injectable } from '@nestjs/common';
+
+    @Injectable()
+    export class ValidationPipe {
+      transform(value, metadata) {
+        return value;
+      }
+    }
+    ```
 
 !!! info "**Hint**"
 
     `PipeTransform<T, R>` 是一个通用接口，必须由任何管道实现。
-
-> 泛型接口使用 `T` 表示输入 `value` 的类型，使用 `R` 表示 `transform()` 方法的返回类型。
+    泛型接口使用 `T` 表示输入 `value` 的类型，使用 `R` 表示 `transform()` 方法的返回类型。
 
 每个管道必须实现 `transform()` 方法来实现 `PipeTransform` 接口契约。
 这个方法有两个参数:
@@ -224,38 +233,46 @@ It's
   </tr>
 </table>
 
-> warning **Warning** TypeScript 接口在编译过程中消失。
-> 因此，如果方法参数的类型声明为接口而不是类，则“元类型”值将为“对象”。
+!!! warning
+
+    TypeScript 接口在编译过程中消失。
+    因此，如果方法参数的类型声明为接口而不是类，则“元类型”值将为“对象”。
 
 ## 基于模式的验证
 
 让我们让验证管道更有用一些。
 仔细看看 `CatsController` 的 `create()` 方法，我们可能希望在尝试运行我们的 service 方法之前确保 post 主体对象是有效的。
 
-```typescript
-@@filename()
-@Post()
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-@@switch
-@Post()
-async create(@Body() createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "TypeScript"
+
+    ```ts
+    @Post()
+    async create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
+
+=== "JavaScript"
+
+    ```js
+    @Post()
+    async create(@Body() createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 让我们关注主体参数“createCatDto”。
 它的类型是 `CreateCatDto` :
 
-```typescript
-@@filename(create-cat.dto)
-export class CreateCatDto {
-  name: string;
-  age: number;
-  breed: string;
-}
-```
+=== "create-cat.dto.ts"
+
+    ```ts
+    export class CreateCatDto {
+      name: string;
+      age: number;
+      breed: string;
+    }
+    ```
 
 我们希望确保对 create 方法的任何传入请求都包含一个有效的主体。
 因此，我们必须验证 `createCatDto` 对象的三个成员。
@@ -295,41 +312,51 @@ $ npm install --save-dev @types/joi
 在下一节中，您将看到我们如何使用 `@UsePipes()` 装饰器为给定的控制器方法提供适当的模式。
 这样做可以使我们的验证管道跨上下文重用，就像我们开始做的那样。
 
-```typescript
-@@filename()
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
-import { ObjectSchema } from 'joi';
+=== "TypeScript"
 
-@Injectable()
-export class JoiValidationPipe implements PipeTransform {
-  constructor(private schema: ObjectSchema) {}
+    ```ts
+    import {
+      PipeTransform,
+      Injectable,
+      ArgumentMetadata,
+      BadRequestException,
+    } from '@nestjs/common';
+    import { ObjectSchema } from 'joi';
 
-  transform(value: any, metadata: ArgumentMetadata) {
-    const { error } = this.schema.validate(value);
-    if (error) {
-      throw new BadRequestException('Validation failed');
+    @Injectable()
+    export class JoiValidationPipe implements PipeTransform {
+      constructor(private schema: ObjectSchema) {}
+
+      transform(value: any, metadata: ArgumentMetadata) {
+        const { error } = this.schema.validate(value);
+        if (error) {
+          throw new BadRequestException('Validation failed');
+        }
+        return value;
+      }
     }
-    return value;
-  }
-}
-@@switch
-import { Injectable, BadRequestException } from '@nestjs/common';
+    ```
 
-@Injectable()
-export class JoiValidationPipe {
-  constructor(schema) {
-    this.schema = schema;
-  }
+=== "JavaScript"
 
-  transform(value, metadata) {
-    const { error } = this.schema.validate(value);
-    if (error) {
-      throw new BadRequestException('Validation failed');
+    ```js
+    import { Injectable, BadRequestException } from '@nestjs/common';
+
+    @Injectable()
+    export class JoiValidationPipe {
+      constructor(schema) {
+        this.schema = schema;
+      }
+
+      transform(value, metadata) {
+        const { error } = this.schema.validate(value);
+        if (error) {
+          throw new BadRequestException('Validation failed');
+        }
+        return value;
+      }
     }
-    return value;
-  }
-}
-```
+    ```
 
 ## 绑定验证管道
 
@@ -346,21 +373,26 @@ export class JoiValidationPipe {
 
 我们使用“@UsePipes()”装饰器来完成，如下所示:
 
-```typescript
-@@filename()
-@Post()
-@UsePipes(new JoiValidationPipe(createCatSchema))
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-@@switch
-@Post()
-@Bind(Body())
-@UsePipes(new JoiValidationPipe(createCatSchema))
-async create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "TypeScript"
+
+    ```ts
+    @Post()
+    @UsePipes(new JoiValidationPipe(createCatSchema))
+    async create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
+
+=== "JavaScript"
+
+    ```js
+    @Post()
+    @Bind(Body())
+    @UsePipes(new JoiValidationPipe(createCatSchema))
+    async create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -368,7 +400,9 @@ async create(createCatDto) {
 
 ## 类验证器
 
-> warning **Warning** 本节中提到的技术需要 TypeScript，如果你的应用是用 JavaScript 编写的，那么它是不可用的。
+!!! warning
+
+    本节中提到的技术需要 TypeScript，如果你的应用是用 JavaScript 编写的，那么它是不可用的。
 
 让我们看看验证技术的另一种实现。
 
@@ -384,21 +418,22 @@ $ npm i --save class-validator class-transformer
 一旦安装了这些，我们可以添加一些装饰器到 `CreateCatDto` 类。
 这里我们看到了这种技术的一个显著优势:“CreateCatDto”类仍然是 Post 主体对象的唯一真实源(而不是必须创建一个单独的验证类)。
 
-```typescript
-@@filename(create-cat.dto)
-import { IsString, IsInt } from 'class-validator';
+=== "create-cat.dto.ts"
 
-export class CreateCatDto {
-  @IsString()
-  name: string;
+    ```ts
+    import { IsString, IsInt } from 'class-validator';
 
-  @IsInt()
-  age: number;
+    export class CreateCatDto {
+      @IsString()
+      name: string;
 
-  @IsString()
-  breed: string;
-}
-```
+      @IsInt()
+      age: number;
+
+      @IsString()
+      breed: string;
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -406,35 +441,43 @@ export class CreateCatDto {
 
 现在我们可以创建一个使用这些注释的 `ValidationPipe` 类。
 
-```typescript
-@@filename(validation.pipe)
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
-import { validate } from 'class-validator';
-import { plainToClass } from 'class-transformer';
+=== "validation.pipe.ts"
 
-@Injectable()
-export class ValidationPipe implements PipeTransform<any> {
-  async transform(value: any, { metatype }: ArgumentMetadata) {
-    if (!metatype || !this.toValidate(metatype)) {
-      return value;
+    ```ts
+    import {
+      PipeTransform,
+      Injectable,
+      ArgumentMetadata,
+      BadRequestException,
+    } from '@nestjs/common';
+    import { validate } from 'class-validator';
+    import { plainToClass } from 'class-transformer';
+
+    @Injectable()
+    export class ValidationPipe implements PipeTransform<any> {
+      async transform(value: any, { metatype }: ArgumentMetadata) {
+        if (!metatype || !this.toValidate(metatype)) {
+          return value;
+        }
+        const object = plainToClass(metatype, value);
+        const errors = await validate(object);
+        if (errors.length > 0) {
+          throw new BadRequestException('Validation failed');
+        }
+        return value;
+      }
+
+      private toValidate(metatype: Function): boolean {
+        const types: Function[] = [String, Boolean, Number, Array, Object];
+        return !types.includes(metatype);
+      }
     }
-    const object = plainToClass(metatype, value);
-    const errors = await validate(object);
-    if (errors.length > 0) {
-      throw new BadRequestException('Validation failed');
-    }
-    return value;
-  }
+    ```
 
-  private toValidate(metatype: Function): boolean {
-    const types: Function[] = [String, Boolean, Number, Array, Object];
-    return !types.includes(metatype);
-  }
-}
-```
+!!! warning
 
-> warning **Notice** 在上面，我们使用了[class-transformer](https://github.com/typestack/class-transformer)库。
-> 它与 **类验证器** 库是由同一作者编写的，因此，它们可以很好地结合在一起。
+    在上面，我们使用了[class-transformer](https://github.com/typestack/class-transformer)库。
+    它与 **类验证器** 库是由同一作者编写的，因此，它们可以很好地结合在一起。
 
 让我们来看看这段代码。
 首先，请注意 `transform()` 方法被标记为 `async` 。
@@ -458,15 +501,16 @@ export class ValidationPipe implements PipeTransform<any> {
 在前面的基于 joi 的验证管道中，我们看到了一个在方法级别绑定管道的示例。
 在下面的例子中，我们将把管道实例绑定到路由处理器的 `@Body()` 装饰器上，这样我们的管道就会被调用来验证发送主体。
 
-```typescript
-@@filename(cats.controller)
-@Post()
-async create(
-  @Body(new ValidationPipe()) createCatDto: CreateCatDto,
-) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Post()
+    async create(
+      @Body(new ValidationPipe()) createCatDto: CreateCatDto,
+    ) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 当验证逻辑只涉及一个指定参数时，参数作用域的管道很有用。
 
@@ -474,47 +518,50 @@ async create(
 
 由于“ValidationPipe”被创建得尽可能通用，我们可以通过将它设置为一个 **全局作用域的** 管道来实现它的完整实用，这样它就可以应用于整个应用程序中的每个路由处理程序。
 
-```typescript
-@@filename(main)
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
-}
-bootstrap();
-```
+=== "main.ts"
 
-> warning **Notice** 在<a href="faq/hybrid-application">hybrid apps</a>的情况下， `useGlobalPipes()` 方法不为网关和微服务设置管道。
-> 对于“标准”(非混合)微服务应用， `useGlobalPipes()` 会全局安装管道。
+    ```ts
+    async function bootstrap() {
+      const app = await NestFactory.create(AppModule);
+      app.useGlobalPipes(new ValidationPipe());
+      await app.listen(3000);
+    }
+    bootstrap();
+    ```
+
+!!! warning
+
+    在<a href="faq/hybrid-application">hybrid apps</a>的情况下， `useGlobalPipes()` 方法不为网关和微服务设置管道。
+    对于“标准”(非混合)微服务应用， `useGlobalPipes()` 会全局安装管道。
 
 全局管道用于整个应用程序，包括每个控制器和每个路由处理程序。
 
 注意，在依赖项注入方面，从任何模块外部注册的全局管道(如上面的例子中使用 `useGlobalPipes()` )不能注入依赖项，因为绑定已经在任何模块的上下文之外完成了。
 为了解决这个问题，你可以 **直接从任何模块** 建立一个全局管道，使用以下结构:
 
-```typescript
-@@filename(app.module)
-import { Module } from '@nestjs/common';
-import { APP_PIPE } from '@nestjs/core';
+=== "app.module.ts"
 
-@Module({
-  providers: [
-    {
-      provide: APP_PIPE,
-      useClass: ValidationPipe,
-    },
-  ],
-})
-export class AppModule {}
-```
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { APP_PIPE } from '@nestjs/core';
+
+    @Module({
+      providers: [
+        {
+          provide: APP_PIPE,
+          useClass: ValidationPipe,
+        },
+      ],
+    })
+    export class AppModule {}
+    ```
 
 !!! info "**Hint**"
 
     当使用这种方法对管道执行依赖注入时，请注意，无论使用这种结构的模块是什么，管道实际上都是全局的。
-
-> 这应该在哪里做?选择管道(上面例子中的 `ValidationPipe` )定义的模块。
-> 此外， `useClass` 并不是处理自定义提供程序注册的唯一方法。
-> 了解更多[这里](/fundamentals/custom-providers)。
+    这应该在哪里做?选择管道(上面例子中的 `ValidationPipe` )定义的模块。
+    此外， `useClass` 并不是处理自定义提供程序注册的唯一方法。
+    了解更多[这里](/fundamentals/custom-providers)。
 
 ## 内置的 ValidationPipe
 
@@ -536,66 +583,86 @@ export class AppModule {}
 下面是一个简单的“ParseIntPipe”，它负责将字符串解析为整数值。
 (如前所述，Nest 有一个更复杂的内置 `ParseIntPipe` ;我们将其作为一个简单的自定义转换管道示例)。
 
-```typescript
-@@filename(parse-int.pipe)
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
+=== "parse-int.pipe.ts"
 
-@Injectable()
-export class ParseIntPipe implements PipeTransform<string, number> {
-  transform(value: string, metadata: ArgumentMetadata): number {
-    const val = parseInt(value, 10);
-    if (isNaN(val)) {
-      throw new BadRequestException('Validation failed');
-    }
-    return val;
-  }
-}
-@@switch
-import { Injectable, BadRequestException } from '@nestjs/common';
+    ```ts
+    import {
+      PipeTransform,
+      Injectable,
+      ArgumentMetadata,
+      BadRequestException,
+    } from '@nestjs/common';
 
-@Injectable()
-export class ParseIntPipe {
-  transform(value, metadata) {
-    const val = parseInt(value, 10);
-    if (isNaN(val)) {
-      throw new BadRequestException('Validation failed');
+    @Injectable()
+    export class ParseIntPipe implements PipeTransform<string, number> {
+      transform(value: string, metadata: ArgumentMetadata): number {
+        const val = parseInt(value, 10);
+        if (isNaN(val)) {
+          throw new BadRequestException('Validation failed');
+        }
+        return val;
+      }
     }
-    return val;
-  }
-}
-```
+    ```
+
+=== "parse-int.pipe.js"
+
+    ```js
+    import { Injectable, BadRequestException } from '@nestjs/common';
+
+    @Injectable()
+    export class ParseIntPipe {
+      transform(value, metadata) {
+        const val = parseInt(value, 10);
+        if (isNaN(val)) {
+          throw new BadRequestException('Validation failed');
+        }
+        return val;
+      }
+    }
+    ```
 
 然后，我们可以将该管道绑定到选定的参数，如下所示:
 
-```typescript
-@@filename()
-@Get(':id')
-async findOne(@Param('id', new ParseIntPipe()) id) {
-  return this.catsService.findOne(id);
-}
-@@switch
-@Get(':id')
-@Bind(Param('id', new ParseIntPipe()))
-async findOne(id) {
-  return this.catsService.findOne(id);
-}
-```
+=== "TypeScript"
+
+    ```ts
+    @Get(':id')
+    async findOne(@Param('id', new ParseIntPipe()) id) {
+      return this.catsService.findOne(id);
+    }
+    ```
+
+=== "JavaScript"
+
+    ```js
+    @Get(':id')
+    @Bind(Param('id', new ParseIntPipe()))
+    async findOne(id) {
+      return this.catsService.findOne(id);
+    }
+    ```
 
 另一个有用的转换案例是使用请求中提供的 id 从数据库中选择一个现有用户实体:
 
-```typescript
-@@filename()
-@Get(':id')
-findOne(@Param('id', UserByIdPipe) userEntity: UserEntity) {
-  return userEntity;
-}
-@@switch
-@Get(':id')
-@Bind(Param('id', UserByIdPipe))
-findOne(userEntity) {
-  return userEntity;
-}
-```
+=== "TypeScript"
+
+    ```ts
+    @Get(':id')
+    findOne(@Param('id', UserByIdPipe) userEntity: UserEntity) {
+      return userEntity;
+    }
+    ```
+
+=== "JavaScript"
+
+    ```js
+    @Get(':id')
+    @Bind(Param('id', UserByIdPipe))
+    findOne(userEntity) {
+      return userEntity;
+    }
+    ```
 
 我们将该管道的实现留给读者，但是请注意，像所有其他转换管道一样，它接收一个输入值(一个“id”)并返回一个输出值(一个“UserEntity”对象)。
 这可以使您的代码更具有声明性和[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)，方法是将样板代码从处理程序中抽象出来，放到一个公共管道中。
@@ -608,13 +675,14 @@ findOne(userEntity) {
 `DefaultValuePipe` 可以达到这个目的。
 只需在 `@Query()` 装饰器中相关的 `Parse*` 管道之前实例化一个 `DefaultValuePipe` ，如下所示:
 
-```typescript
-@@filename()
-@Get()
-async findAll(
-  @Query('activeOnly', new DefaultValuePipe(false), ParseBoolPipe) activeOnly: boolean,
-  @Query('page', new DefaultValuePipe(0), ParseIntPipe) page: number,
-) {
-  return this.catsService.findAll({ activeOnly, page });
-}
-```
+=== "TypeScript"
+
+    ```ts
+    @Get()
+    async findAll(
+      @Query('activeOnly', new DefaultValuePipe(false), ParseBoolPipe) activeOnly: boolean,
+      @Query('page', new DefaultValuePipe(0), ParseIntPipe) page: number,
+    ) {
+      return this.catsService.findAll({ activeOnly, page });
+    }
+    ```

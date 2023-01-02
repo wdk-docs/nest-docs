@@ -12,14 +12,19 @@
 下面的示例使用了一个方法范围的保护。
 就像基于 HTTP 的应用程序一样，你也可以使用控制器范围的保护器(例如，在控制器类前面加上 `@UseGuards()` 装饰器)。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @UseGuards(AuthGuard)
 @MessagePattern({ cmd: 'sum' })
 accumulate(data: number[]): number {
   return (data || []).reduce((a, b) => a + b);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @UseGuards(AuthGuard)
 @MessagePattern({ cmd: 'sum' })
 accumulate(data) {

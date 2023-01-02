@@ -7,8 +7,8 @@ site_description: NestJS 文档
 docs_dir: content
 site_dir: docs
 dev_addr: 127.0.0.1:8001
-# extra_css:
-#   - stylesheets/extra.css
+extra_css:
+  - stylesheets/extra.css
 
 repo_name: wdk-docs/nest-docs
 repo_url: https://github.com/wdk-docs/nest-docs
@@ -22,10 +22,14 @@ theme:
   # custom_dir: overrides
   features:
     - navigation.tabs
-    - navigation.tracking
     - navigation.tabs.sticky
+    - navigation.tracking
     - navigation.top
+    - navigation.indexes # 父菜单索引
+    # - navigation.sections # 全部展开
+    # - navigation.expand # 打开收缩
     - content.code.annotate
+    - navigation.top # 返回头部
 
 markdown_extensions:
   - abbr
@@ -47,6 +51,7 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
   - pymdownx.highlight:
       anchor_linenums: true
+      linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.keys
@@ -66,8 +71,11 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - pymdownx.magiclink
 
 plugins:
+  tags:
+    tags_file: tags.md
   search:
     # Spaces, dashes, periods and forward-slash (so serving.knative.dev/blibble can be searched as blibble).
     separator: '[\/\s\-\.]+'

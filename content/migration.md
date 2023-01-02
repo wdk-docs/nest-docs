@@ -1,7 +1,7 @@
-# Migration guide
+# 迁移指南
 
-This article provides a set of guidelines for migrating from Nest version 7 to version 8.
-To learn more about the new features we've added in the v8, check out this [link](https://github.com/nestjs/nest/pull/6349).
+本文提供了一组从 Nest 版本 7 到版本 8 迁移的准则。
+要了解有关我们在 V8 中添加的新功能的更多信息，请查看此[链接](https://github.com/nestjs/nest/pull/6349).
 
 ## HTTP module
 

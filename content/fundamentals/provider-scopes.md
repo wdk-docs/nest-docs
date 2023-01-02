@@ -12,37 +12,15 @@
 
 提供器可以有以下任何一个作用域:
 
-<table>
-  <tr>
-    <td><code>DEFAULT</code></td>
-    <td>
-      提供器的单个实例在整个应用程序中共享。
-      实例生命周期直接绑定到应用程序生命周期。
-      一旦应用程序启动，所有的单例提供器都已实例化。
-      默认情况下使用单例作用域。
-    </td>
-  </tr>
-  <tr>
-    <td><code>REQUEST</code></td>
-    <td>
-      为每个传入的<strong>请求</strong>创建提供器的新实例。
-      在请求完成处理后，对实例进行垃圾回收。
-    </td>
-  </tr>
-  <tr>
-    <td><code>TRANSIENT</code></td>
-    <td>
-      瞬态提供器不会在消费者之间共享。
-      每个注入临时提供器的消费者将收到一个新的专用实例。
-    </td>
-  </tr>
-</table>
+| 范围      | 说明                                                                                                                                                      |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DEFAULT   | 提供器的单个实例在整个应用程序中共享。 实例生命周期直接绑定到应用程序生命周期。 一旦应用程序启动，所有的单例提供器都已实例化。 默认情况下使用单例作用域。 |
+| REQUEST   | 为每个传入的 **请求** 创建提供器的新实例。在请求完成处理后，对实例进行垃圾回收。                                                                          |
+| TRANSIENT | 瞬态提供器不会在消费者之间共享。 每个注入临时提供器的消费者将收到一个新的专用实例。                                                                       |
 
-!!! info "**Hint**"
+!!! info "对于大多数用例，**推荐** 使用单例作用域。"
 
-    对于大多数用例，**推荐** 使用单例作用域。
-
-> 跨使用者和跨请求共享提供器意味着可以缓存实例，并且它的初始化只在应用程序启动期间发生一次。
+    跨使用者和跨请求共享提供器意味着可以缓存实例，并且它的初始化只在应用程序启动期间发生一次。
 
 ## 使用
 
@@ -55,7 +33,7 @@ import { Injectable, Scope } from '@nestjs/common';
 export class CatsService {}
 ```
 
-类似地，对于[定制的供应器](/fundamentals/custom-providers)，在提供器注册的长手表单中设置 `scope` 属性:
+类似地，对于[定制提供器](/fundamentals/custom-providers)，在提供器注册的长手表单中设置 `scope` 属性:
 
 ```typescript
 {
@@ -65,12 +43,12 @@ export class CatsService {}
 }
 ```
 
-!!! info "**Hint**"
+!!! info "从 `@nestjs/common` 中导入 `Scope` enum"
 
-    从 `@nestjs/common` 中导入 `Scope` enum
+!!! warning
 
-> warning **Notice** 网关不应该使用请求作用域的提供器，因为它们必须充当单例。
-> 每个网关封装一个真正的套接字，不能多次实例化。
+    网关不应该使用请求作用域的提供器，因为它们必须充当单例。
+    每个网关封装一个真正的套接字，不能多次实例化。
 
 默认情况下使用单例作用域，不需要声明。
 如果你确实想声明一个提供器为单例作用域，使用 `scope` 属性的 `Scope.DEFAULT` 值。
@@ -105,7 +83,7 @@ export class CatsController {}
 在一个基于 HTTP 服务器的应用程序中(例如，使用 `@nestjs/platform-express` 或 `@nestjs/platform-fastify` )，当使用请求作用域的提供器时，你可能想要访问原始请求对象的引用。
 你可以通过注入 `REQUEST` 对象来做到这一点。
 
-```typescript
+```typescript hl_lines="7"
 import { Injectable, Scope, Inject } from '@nestjs/common';
 import { REQUEST } from '@nestjs/core';
 import { Request } from 'express';
@@ -119,7 +97,7 @@ export class CatsService {
 由于底层平台/协议的差异，`Microservice` 或 `GraphQL` 应用程序访问入站请求的方式略有不同。
 在[GraphQL](/graphql/quick-start)应用程序中，你注入`CONTEXT`而不是`REQUEST`:
 
-```typescript
+```typescript hl_lines="6"
 import { Injectable, Scope, Inject } from '@nestjs/common';
 import { CONTEXT } from '@nestjs/graphql';
 

@@ -11,7 +11,10 @@
 $ npm i --save csurf
 ```
 
-> warning **Warning** As explained in the [`csurf` docs](https://github.com/expressjs/csurf#csurf), this middleware requires either session middleware or `cookie-parser` to be initialized first.
+!!! warning
+
+    As explained in the [`csurf` docs](https://github.com/expressjs/csurf#csurf), this middleware requires either session middleware or `cookie-parser` to be initialized first.
+
 > Please see that documentation for further instructions.
 
 Once the installation is complete, apply the `csurf` middleware as global middleware.
@@ -40,5 +43,8 @@ import fastifyCsrf from 'fastify-csrf';
 app.register(fastifyCsrf);
 ```
 
-> warning **Warning** As explained in the `fastify-csrf` docs [here](https://github.com/fastify/fastify-csrf#usage), this plugin requires a storage plugin to be initialized first.
+!!! warning
+
+    As explained in the `fastify-csrf` docs [here](https://github.com/fastify/fastify-csrf#usage), this plugin requires a storage plugin to be initialized first.
+
 > Please, see that documentation for further instructions.

@@ -51,7 +51,9 @@ findAll(@Res({ passthrough: true }) response: Response) {
 }
 ```
 
-> warning **Warning** If you want to leave the response handling logic to the framework, remember to set the `passthrough` option to `true`, as shown above. Read more [here](/controllers#appendix-library-specific-approach).
+!!! warning
+
+    If you want to leave the response handling logic to the framework, remember to set the `passthrough` option to `true`, as shown above. Read more [here](/controllers#appendix-library-specific-approach).
 
 !!! info "**Hint**"
 
@@ -104,7 +106,9 @@ findAll(@Res({ passthrough: true }) response: FastifyReply) {
 
 To read more about `FastifyReply#setCookie()` method, check out this [page](https://github.com/fastify/fastify-cookie#sending).
 
-> warning **Warning** If you want to leave the response handling logic to the framework, remember to set the `passthrough` option to `true`, as shown above. Read more [here](/controllers#appendix-library-specific-approach).
+!!! warning
+
+    If you want to leave the response handling logic to the framework, remember to set the `passthrough` option to `true`, as shown above. Read more [here](/controllers#appendix-library-specific-approach).
 
 !!! info "**Hint**"
 

@@ -37,13 +37,14 @@ Because a lot of applications will need similar health indicators, [`@nestjs/ter
 
 To get started with our first health check, we need to import the `TerminusModule` into our `AppModule`.
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 
 @Module({
-  imports: [TerminusModule]
+  imports: [TerminusModule],
 })
 export class AppModule {}
 ```
@@ -63,10 +64,15 @@ $ nest g controller health
 
 Once we have installed `@nestjs/terminus`, imported our `TerminusModule` and created a new controller, we are ready to create a health check.
 
-```typescript
-@@filename(health.controller)
+=== "health.controller"
+
+```ts
 import { Controller, Get } from '@nestjs/common';
-import { HealthCheckService, HttpHealthIndicator, HealthCheck } from '@nestjs/terminus';
+import {
+  HealthCheckService,
+  HttpHealthIndicator,
+  HealthCheck,
+} from '@nestjs/terminus';
 
 @Controller('health')
 export class HealthController {
@@ -83,7 +89,11 @@ export class HealthController {
     ]);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Controller, Get } from '@nestjs/common';
 import { HealthCheckService, HttpHealthIndicator, HealthCheck } from '@nestjs/terminus';
 
@@ -105,7 +115,9 @@ export class HealthController {
 }
 ```
 
-> warning **Warning** `HttpHealthIndicator` requires the installation of the `@nestjs/axios` package and the import of `HttpModule`.
+!!! warning
+
+    `HttpHealthIndicator` requires the installation of the `@nestjs/axios` package and the import of `HttpModule`.
 
 Our health check will now send a _GET_-request to the `https://docs.nestjs.com` address.
 If
@@ -155,8 +167,9 @@ should check out the [Database chapter](/techniques/sql) and make sure your data
 
 > In case you are using an Oracle database it uses `SELECT 1 FROM DUAL`.
 
-```typescript
-@@filename(health.controller)
+=== "health.controller"
+
+```ts
 @Controller('health')
 export class HealthController {
   constructor(
@@ -167,12 +180,14 @@ export class HealthController {
   @Get()
   @HealthCheck()
   check() {
-    return this.health.check([
-      () => this.db.pingCheck('database'),
-    ]);
+    return this.health.check([() => this.db.pingCheck('database')]);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Controller('health')
 @Dependencies(HealthCheckService, TypeOrmHealthIndicator)
 export class HealthController {
@@ -214,8 +229,9 @@ In case your app uses [multiple databases](techniques/database#multiple-database
 connection into your `HealthController`.
 Then, you can simply pass the connection reference to the `TypeOrmHealthIndicator`.
 
-```typescript
-@@filename(health.controller)
+=== "health.controller"
+
+```ts
 @Controller('health')
 export class HealthController {
   constructor(
@@ -231,8 +247,12 @@ export class HealthController {
   @HealthCheck()
   check() {
     return this.health.check([
-      () => this.db.pingCheck('albums-database', { connection: this.albumsConnection }),
-      () => this.db.pingCheck('database', { connection: this.defaultConnection }),
+      () =>
+        this.db.pingCheck('albums-database', {
+          connection: this.albumsConnection,
+        }),
+      () =>
+        this.db.pingCheck('database', { connection: this.defaultConnection }),
     ]);
   }
 }
@@ -248,10 +268,15 @@ To get a basic understanding of how an indicator is structured, we will create a
 This service should have the state `'up'` if every `Dog` object has the type `'goodboy'`.
 If that condition is not satisfied then it should throw an error.
 
-```typescript
-@@filename(dog.health)
+=== "dog.health"
+
+```ts
 import { Injectable } from '@nestjs/common';
-import { HealthIndicator, HealthIndicatorResult, HealthCheckError } from '@nestjs/terminus';
+import {
+  HealthIndicator,
+  HealthIndicatorResult,
+  HealthCheckError,
+} from '@nestjs/terminus';
 
 export interface Dog {
   name: string;
@@ -266,7 +291,7 @@ export class DogHealthIndicator extends HealthIndicator {
   ];
 
   async isHealthy(key: string): Promise<HealthIndicatorResult> {
-    const badboys = this.dogs.filter(dog => dog.type === 'badboy');
+    const badboys = this.dogs.filter((dog) => dog.type === 'badboy');
     const isHealthy = badboys.length === 0;
     const result = this.getStatus(key, isHealthy, { badboys: badboys.length });
 
@@ -276,7 +301,11 @@ export class DogHealthIndicator extends HealthIndicator {
     throw new HealthCheckError('Dogcheck failed', result);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Injectable } from '@nestjs/common';
 import { HealthCheckError } from '@godaddy/terminus';
 
@@ -288,7 +317,7 @@ export class DogHealthIndicator extends HealthIndicator {
   ];
 
   async isHealthy(key) {
-    const badboys = this.dogs.filter(dog => dog.type === 'badboy');
+    const badboys = this.dogs.filter((dog) => dog.type === 'badboy');
     const isHealthy = badboys.length === 0;
     const result = this.getStatus(key, isHealthy, { badboys: badboys.length });
 
@@ -302,8 +331,9 @@ export class DogHealthIndicator extends HealthIndicator {
 
 The next thing we need to do is register the health indicator as a provider.
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { DogHealthIndicator } from './dog.health';
@@ -311,9 +341,9 @@ import { DogHealthIndicator } from './dog.health';
 @Module({
   controllers: [HealthController],
   imports: [TerminusModule],
-  providers: [DogHealthIndicator]
+  providers: [DogHealthIndicator],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 !!! info "**Hint**"
@@ -323,8 +353,9 @@ export class AppModule { }
 The last required step is to add the now available health indicator in the required health check endpoint.
 For that, we go back to our `HealthController` and add it to our `check` function.
 
-```typescript
-@@filename(health.controller)
+=== "health.controller"
+
+```ts
 import { HealthCheckService } from '@nestjs/terminus';
 import { Injectable } from '@nestjs/common';
 import { DogHealthIndicator } from './dog.health';
@@ -333,7 +364,7 @@ import { DogHealthIndicator } from './dog.health';
 export class HealthController {
   constructor(
     private health: HealthCheckService,
-    private dogHealthIndicator: DogHealthIndicator
+    private dogHealthIndicator: DogHealthIndicator,
   ) {}
 
   @Get()
@@ -341,10 +372,14 @@ export class HealthController {
   healthCheck() {
     return this.health.check([
       async () => this.dogHealthIndicator.isHealthy('dog'),
-    ])
+    ]);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { HealthCheckService } from '@nestjs/terminus';
 import { Injectable } from '@nestjs/common';
 import { DogHealthIndicator } from './dog.health';

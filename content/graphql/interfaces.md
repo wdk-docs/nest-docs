@@ -19,7 +19,9 @@ export abstract class Character {
 }
 ```
 
-> warning **Warning** TypeScript interfaces cannot be used to define GraphQL interfaces.
+!!! warning
+
+    TypeScript interfaces cannot be used to define GraphQL interfaces.
 
 This will result in generating the following part of the GraphQL schema in SDL:
 

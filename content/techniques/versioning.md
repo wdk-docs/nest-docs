@@ -27,12 +27,15 @@ There are 3 types of versioning that are supported:
 
 URI Versioning uses the version passed within the URI of the request, such as `https://example.com/v1/route` and `https://example.com/v2/route`.
 
-> warning **Notice** With URI Versioning the version will be automatically added to the URI after the <a href="faq/global-prefix">global path prefix</a> (if one exists), and before any controller or route paths.
+!!! warning
+
+    With URI Versioning the version will be automatically added to the URI after the <a href="faq/global-prefix">global path prefix</a> (if one exists), and before any controller or route paths.
 
 To enable URI Versioning for your application, do the following:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 const app = await NestFactory.create(AppModule);
 // or "app.enableVersioning()"
 app.enableVersioning({
@@ -41,7 +44,9 @@ app.enableVersioning({
 await app.listen(3000);
 ```
 
-> warning **Notice** The version in the URI will be automatically prefixed with `v` by default, however the prefix value can be configured by setting the `prefix` key to your desired prefix or `false` if you wish to disable it.
+!!! warning
+
+    The version in the URI will be automatically prefixed with `v` by default, however the prefix value can be configured by setting the `prefix` key to your desired prefix or `false` if you wish to disable it.
 
 !!! info "**Hint**"
 
@@ -55,8 +60,9 @@ Example HTTP Requests for Header Versioning:
 
 To enable **Header Versioning** for your application, do the following:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 const app = await NestFactory.create(AppModule);
 app.enableVersioning({
   type: VersioningType.HEADER,
@@ -79,8 +85,9 @@ Within the `Accept` header, the version will be separated from the media type wi
 
 To enable **Media Type Versioning** for your application, do the following:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 const app = await NestFactory.create(AppModule);
 app.enableVersioning({
   type: VersioningType.MEDIA_TYPE,
@@ -99,7 +106,9 @@ The `key` property should be the key and separator of the key-value pair that co
 
 Versioning allows you to version controllers, individual routes, and also provides a way for certain resources to opt-out of versioning. The usage of versioning is the same regardless of the Versioning Type your application uses.
 
-> warning **Notice** If versioning is enabled for the application but the controller or route does not specify the version, any requests to that controller/route will be returned a `404` response status. Similarly, if a request is received containing a version that does not have a corresponding controller or route, it will also be returned a `404` response status.
+!!! warning
+
+    If versioning is enabled for the application but the controller or route does not specify the version, any requests to that controller/route will be returned a `404` response status. Similarly, if a request is received containing a version that does not have a corresponding controller or route, it will also be returned a `404` response status.
 
 ## Controller versions
 
@@ -107,8 +116,9 @@ A version can be applied to a controller, setting the version for all routes wit
 
 To add a version to a controller do the following:
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 @Controller({
   version: '1',
 })
@@ -118,7 +128,11 @@ export class CatsControllerV1 {
     return 'This action returns all cats for version 1';
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Controller({
   version: '1',
 })
@@ -136,8 +150,9 @@ A version can be applied to an individual route. This version will override any 
 
 To add a version to an individual route do the following:
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 import { Controller, Get, Version } from '@nestjs/common';
 
 @Controller()
@@ -154,7 +169,11 @@ export class CatsController {
     return 'This action returns all cats for version 2';
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Controller, Get, Version } from '@nestjs/common';
 
 @Controller()
@@ -179,8 +198,9 @@ Multiple versions can be applied to a controller or route. To use multiple versi
 
 To add multiple versions do the following:
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 @Controller({
   version: ['1', '2'],
 })
@@ -190,7 +210,11 @@ export class CatsController {
     return 'This action returns all cats for version 1 or 2';
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Controller({
   version: ['1', '2'],
 })
@@ -208,12 +232,15 @@ Some controllers or routes may not care about the version and would have the sam
 
 An incoming request will be mapped to a `VERSION_NEUTRAL` controller or route regardless of the version sent in the request in addition to if the request does not contain a version at all.
 
-> warning **Notice** For URI Versioning, a `VERSION_NEUTRAL` resource would not have the version present in the URI.
+!!! warning
+
+    For URI Versioning, a `VERSION_NEUTRAL` resource would not have the version present in the URI.
 
 To add a version neutral controller or route do the following:
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 import { Controller, Get, VERSION_NEUTRAL } from '@nestjs/common';
 
 @Controller({
@@ -225,7 +252,11 @@ export class CatsController {
     return 'This action returns all cats regardless of version';
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Controller, Get, VERSION_NEUTRAL } from '@nestjs/common';
 
 @Controller({
@@ -243,8 +274,9 @@ export class CatsController {
 
 If you do not want to provide a version for each controller/or individual routes, or if you want to have a specific version set as the default version for every controller/route that don't have the version specified, you could set the `defaultVersion` as follows:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 app.enableVersioning({
   // ...
   defaultVersion: '1'

@@ -38,8 +38,9 @@ await app.listen(3001);
 
 To bind `@MessagePattern()` to only one transport strategy (for example, MQTT) in a hybrid application with multiple microservices, we can pass the second argument of type `Transport` which is an enum with all the built-in transport strategies defined.
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('time.us.*', Transport.NATS)
 getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
   console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
@@ -49,7 +50,11 @@ getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
 getTCPDate(@Payload() data: number[]) {
   return new Date().toLocaleTimeString(...);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('time.us.*', Transport.NATS)
 getDate(data, context) {

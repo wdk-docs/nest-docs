@@ -137,7 +137,7 @@ export class AppModule {}
 ```
 
 `providers`属性采用了一系列`providers`。
-到目前为止，我们已经通过类名列表提供了这些提供者。
+到目前为止，我们已经通过类名列表提供了这些提供器。
 事实上，语法`providers: [CatsService]`是更完整语法的简写:
 
 ```typescript linenums="1"
@@ -155,14 +155,14 @@ providers: [
 
 ## 定制的提供器
 
-当您的要求超出 _标准提供商_ 提供的要求时会发生什么？这里有一些例子：
+当您的要求超出 _标准提供器_ 提供的要求时会发生什么？这里有一些例子：
 
 - 您要创建一个自定义实例，而不是让 NEST 实例化（或返回一个缓存的实例）类
 - 您想在第二个依赖项中重复使用现有类
 - 您想覆盖一个带有模拟版本的课程
 
-NEST 允许您定义自定义提供商来处理这些情况。
-它提供了几种定义自定义提供商的方法。
+NEST 允许您定义自定义提供器来处理这些情况。
+它提供了几种定义自定义提供器的方法。
 让我们走过他们。
 
 !!! info "**Hint**"
@@ -201,7 +201,7 @@ export class AppModule {}
 
 ## 非基于类的提供器令牌
 
-到目前为止，我们使用类名作为我们的提供者令牌(在`providers`数组中列出的提供者`provider`属性的值)。
+到目前为止，我们使用类名作为我们的提供器令牌(在`providers`数组中列出的提供器`provider`属性的值)。
 这与[基于构造函数的注入](https://docs.nestjs.com/providers#dependency-injection)使用的标准模式相匹配，其中令牌也是一个类名。
 (如果这个概念不完全清楚，可以参考[DI fundamentals](/fundamentals/custom-providers#di-fundamentals)来复习标记)。
 有时，我们可能希望灵活地使用字符串或符号作为 DI 令牌。
@@ -235,7 +235,7 @@ export class AppModule {}
 为此，我们使用`@Inject()`装饰器。
 这个装饰器只有一个参数 - 令牌。
 
-=== "ts"
+=== "TypeScript"
 
     ```typescript linenums="1" hl_lines="1 3"
     @Injectable()
@@ -244,7 +244,7 @@ export class AppModule {}
     }
     ```
 
-=== "js"
+=== "JavaScript"
 
     ```js  linenums="1" hl_lines="1 2 4"
     @Injectable()
@@ -292,11 +292,11 @@ export class AppModule {}
 
 ## 工厂的提供器: `useFactory`
 
-`useFactory`语法允许*动态*地创建提供者。
+`useFactory`语法允许*动态*地创建提供器。
 实际的提供程序将由工厂函数返回的值提供。
 工厂功能可以根据需要简单或复杂。
-简单工厂可能不依赖于任何其他提供者。
-一个更复杂的工厂可以自己注入它需要的其他提供者来计算它的结果。
+简单工厂可能不依赖于任何其他提供器。
+一个更复杂的工厂可以自己注入它需要的其他提供器来计算它的结果。
 对于后一种情况，工厂提供程序语法有一对相关的机制:
 
 1.  工厂函数可以接受(可选的)参数。
@@ -305,7 +305,7 @@ export class AppModule {}
 
 下面的示例演示了这一点。
 
-=== "ts"
+=== "TypeScript"
 
     ```typescript title=""  linenums="1" hl_lines="3 4 5 6"
     const connectionFactory = {
@@ -323,7 +323,7 @@ export class AppModule {}
     export class AppModule {}
     ```
 
-=== "js"
+=== "JavaScript"
 
     ```js title=""  linenums="1" hl_lines="3 4 5 6"
     const connectionFactory = {
@@ -368,9 +368,9 @@ export class AppModule {}
 
 ## 非服务提供器
 
-虽然提供商经常提供服务，但它们并不局限于这种用途。
-提供者可以提供 **任意** 值。
-例如，提供者可以根据当前环境提供一个配置对象数组，如下所示:
+虽然提供器经常提供服务，但它们并不局限于这种用途。
+提供器可以提供 **任意** 值。
+例如，提供器可以根据当前环境提供一个配置对象数组，如下所示:
 
 ```typescript linenums="1" hl_lines="4"
 const configFactory = {
@@ -394,7 +394,7 @@ export class AppModule {}
 
 下面的例子展示了使用令牌进行导出:
 
-=== "ts"
+=== "TypeScript"
 
     ```typescript title=""  linenums="1" hl_lines="12"
     const connectionFactory = {
@@ -413,7 +413,7 @@ export class AppModule {}
     export class AppModule {}
     ```
 
-=== "js"
+=== "JavaScript"
 
     ```js title=""  linenums="1" hl_lines="12"
     const connectionFactory = {
@@ -434,7 +434,7 @@ export class AppModule {}
 
 或者，使用完整的 provider 对象导出:
 
-=== "ts"
+=== "TypeScript"
 
     ```typescript title=""  linenums="1" hl_lines="12"
     const connectionFactory = {
@@ -453,7 +453,7 @@ export class AppModule {}
     export class AppModule {}
     ```
 
-=== "ts"
+=== "JavaScript"
 
     ```js title=""  linenums="1" hl_lines="12"
     const connectionFactory = {

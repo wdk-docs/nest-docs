@@ -48,8 +48,10 @@ import { fastifyHelmet } from 'fastify-helmet';
 await app.register(fastifyHelmet);
 ```
 
-> warning **Warning** When using `apollo-server-fastify` and `fastify-helmet`, there may be a problem with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) on the GraphQL playground, to solve this collision, configure the CSP as shown below:
->
+!!! warning
+
+    When using `apollo-server-fastify` and `fastify-helmet`, there may be a problem with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) on the GraphQL playground, to solve this collision, configure the CSP as shown below:
+
 > ```typescript
 > await app.register(fastifyHelmet, {
 >   contentSecurityPolicy: {

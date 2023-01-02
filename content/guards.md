@@ -26,37 +26,41 @@
 我们现在要构建的 `AuthGuard` 假设用户通过了身份验证(因此，一个令牌被附加到请求头)。
 它将提取并验证令牌，并使用提取的信息来确定请求是否可以继续。
 
-```typescript
-@@filename(auth.guard)
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { Observable } from 'rxjs';
+=== "auth.guard.ts"
 
-@Injectable()
-export class AuthGuard implements CanActivate {
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
-    const request = context.switchToHttp().getRequest();
-    return validateRequest(request);
-  }
-}
-@@switch
-import { Injectable } from '@nestjs/common';
+    ```ts
+    import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+    import { Observable } from 'rxjs';
 
-@Injectable()
-export class AuthGuard {
-  async canActivate(context) {
-    const request = context.switchToHttp().getRequest();
-    return validateRequest(request);
-  }
-}
-```
+    @Injectable()
+    export class AuthGuard implements CanActivate {
+      canActivate(
+        context: ExecutionContext,
+      ): boolean | Promise<boolean> | Observable<boolean> {
+        const request = context.switchToHttp().getRequest();
+        return validateRequest(request);
+      }
+    }
+    ```
+
+=== "auth.guard.js"
+
+    ```js
+    import { Injectable } from '@nestjs/common';
+
+    @Injectable()
+    export class AuthGuard {
+      async canActivate(context) {
+        const request = context.switchToHttp().getRequest();
+        return validateRequest(request);
+      }
+    }
+    ```
 
 !!! info "**Hint**"
 
     如果你正在寻找一个关于如何在你的应用中实现认证机制的真实例子，请访问[本章](/security/authentication)。
-
-> 同样，对于更复杂的授权示例，请检查[this page](/security/authorization)。
+    同样，对于更复杂的授权示例，请检查[this page](/security/authorization)。
 
 `validateRequest()` 函数内部的逻辑可以根据需要简单或复杂。
 这个示例的主要目的是展示守卫如何适应请求/响应周期。
@@ -87,29 +91,34 @@ Nest 使用返回值来控制下一个动作:
 我们将从一个基本的保护模板开始，并在接下来的部分中构建它。
 目前，它允许所有请求继续:
 
-```typescript
-@@filename(roles.guard)
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { Observable } from 'rxjs';
+=== "roles.guard.ts"
 
-@Injectable()
-export class RolesGuard implements CanActivate {
-  canActivate(
-    context: ExecutionContext,
-  ): boolean | Promise<boolean> | Observable<boolean> {
-    return true;
-  }
-}
-@@switch
-import { Injectable } from '@nestjs/common';
+    ```ts
+    import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+    import { Observable } from 'rxjs';
 
-@Injectable()
-export class RolesGuard {
-  canActivate(context) {
-    return true;
-  }
-}
-```
+    @Injectable()
+    export class RolesGuard implements CanActivate {
+      canActivate(
+        context: ExecutionContext,
+      ): boolean | Promise<boolean> | Observable<boolean> {
+        return true;
+      }
+    }
+    ```
+
+=== "roles.guard.js"
+
+    ```js
+    import { Injectable } from '@nestjs/common';
+
+    @Injectable()
+    export class RolesGuard {
+      canActivate(context) {
+        return true;
+      }
+    }
+    ```
 
 ## 绑定警卫
 
@@ -118,12 +127,13 @@ export class RolesGuard {
 该修饰符可以接受单个参数，也可以接受逗号分隔的参数列表。
 这使您可以通过一个声明轻松地应用适当的保护集。
 
-```typescript
-@@filename()
-@Controller('cats')
-@UseGuards(RolesGuard)
-export class CatsController {}
-```
+=== "TypeScript"
+
+    ```ts
+    @Controller('cats')
+    @UseGuards(RolesGuard)
+    export class CatsController {}
+    ```
 
 !!! info "**Hint**"
 
@@ -132,55 +142,60 @@ export class CatsController {}
 上面，我们传递了 `RolesGuard` 类型(而不是一个实例)，将实例化的责任留给框架，并启用依赖注入。
 与管道和异常过滤器一样，我们也可以传递一个就地实例:
 
-```typescript
-@@filename()
-@Controller('cats')
-@UseGuards(new RolesGuard())
-export class CatsController {}
-```
+=== "TypeScript"
+
+    ```ts
+    @Controller('cats')
+    @UseGuards(new RolesGuard())
+    export class CatsController {}
+    ```
 
 上面的结构将警卫附加到由这个控制器声明的每个处理程序上。
 如果我们希望这个守卫只应用于一个方法，我们可以在 **方法级别** 应用 `@UseGuards()` 装饰器。
 
 为了建立全局守卫，使用 Nest 应用实例的 `useGlobalGuards()` 方法:
 
-```typescript
-@@filename()
-const app = await NestFactory.create(AppModule);
-app.useGlobalGuards(new RolesGuard());
-```
+=== "TypeScript"
 
-> warning **Notice** 在混合应用的情况下， `useGlobalGuards()` 方法默认不会为网关和微服务设置守卫(参见[hybrid application](/faq/hybrid-application)了解如何改变这种行为)。
+    ```ts
+    const app = await NestFactory.create(AppModule);
+    app.useGlobalGuards(new RolesGuard());
+    ```
+
+!!! warning
+
+    在混合应用的情况下， `useGlobalGuards()` 方法默认不会为网关和微服务设置守卫(参见[hybrid application](/faq/hybrid-application)了解如何改变这种行为)。
+
 > 对于 `标准` (非混合)微服务应用， `useGlobalGuards()` 确实在全球安装了守卫。
 
 全局保护在整个应用程序中使用，用于每个控制器和每个路由处理程序。
 在依赖项注入方面，从任何模块外部注册的全局守卫(如上面示例中的 `useGlobalGuards()` )不能注入依赖项，因为这是在任何模块的上下文之外完成的。
 为了解决这个问题，你可以使用以下结构直接从任何模块设置一个守卫:
 
-```typescript
-@@filename(app.module)
-import { Module } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
+=== "app.module.ts"
 
-@Module({
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard,
-    },
-  ],
-})
-export class AppModule {}
-```
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { APP_GUARD } from '@nestjs/core';
+
+    @Module({
+      providers: [
+        {
+          provide: APP_GUARD,
+          useClass: RolesGuard,
+        },
+      ],
+    })
+    export class AppModule {}
+    ```
 
 !!! info "**Hint**"
 
     当使用这种方法为守卫执行依赖注入时，请注意，无论使用这种构造的模块是什么，该守卫实际上都是全局的。
-
-> 这应该在哪里做?
-> 选择守卫(上例中的 `RolesGuard` )定义的模块。
-> 此外， `useClass` 并不是处理自定义提供程序注册的唯一方法。
-> 了解更多[这里](/fundamentals/custom-providers)。
+    这应该在哪里做?
+    选择守卫(上例中的 `RolesGuard` )定义的模块。
+    此外， `useClass` 并不是处理自定义提供程序注册的唯一方法。
+    了解更多[这里](/fundamentals/custom-providers)。
 
 ## 为每个处理程序设置角色
 
@@ -196,21 +211,26 @@ export class AppModule {}
 这些元数据提供了我们所缺少的 `角色` 数据，智能守卫需要这些数据来做出决策。
 让我们看看如何使用 `@SetMetadata()` :
 
-```typescript
-@@filename(cats.controller)
-@Post()
-@SetMetadata('roles', ['admin'])
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-@@switch
-@Post()
-@SetMetadata('roles', ['admin'])
-@Bind(Body())
-async create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Post()
+    @SetMetadata('roles', ['admin'])
+    async create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
+
+=== "cats.controller.js"
+
+    ```js
+    @Post()
+    @SetMetadata('roles', ['admin'])
+    @Bind(Body())
+    async create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -220,35 +240,45 @@ async create(createCatDto) {
 虽然这是可行的，但直接在路由中使用 `@SetMetadata()` 并不是一个好习惯。
 相反，创建你自己的装饰器，如下所示:
 
-```typescript
-@@filename(roles.decorator)
-import { SetMetadata } from '@nestjs/common';
+=== "roles.decorator.ts"
 
-export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
-@@switch
-import { SetMetadata } from '@nestjs/common';
+    ```ts
+    import { SetMetadata } from '@nestjs/common';
 
-export const Roles = (...roles) => SetMetadata('roles', roles);
-```
+    export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
+    ```
+
+=== "roles.decorator.js"
+
+    ```js
+    import { SetMetadata } from '@nestjs/common';
+
+    export const Roles = (...roles) => SetMetadata('roles', roles);
+    ```
 
 这种方法更简洁，可读性更强，而且是强类型的。
 现在我们有了一个自定义的 `@Roles()` 装饰器，我们可以用它来装饰 `create()` 方法。
 
-```typescript
-@@filename(cats.controller)
-@Post()
-@Roles('admin')
-async create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-@@switch
-@Post()
-@Roles('admin')
-@Bind(Body())
-async create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+=== "cats.controller.ts"
+
+    ```ts
+    @Post()
+    @Roles('admin')
+    async create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
+
+=== "cats.controller.js"
+
+    ```js
+    @Post()
+    @Roles('admin')
+    @Bind(Body())
+    async create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 ## 把它们放在一起
 
@@ -257,58 +287,64 @@ async create(createCatDto) {
 我们希望将分配给当前用户的 **角色** 与正在处理的当前路由所需的实际角色进行比较，从而使返回值具有条件。
 为了访问路由的角色(自定义元数据)，我们将使用 `Reflector` 助手类，它是由框架提供的，从 `@nestjs/core` 包中公开的。
 
-```typescript
-@@filename(roles.guard)
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+=== "roles.guard.ts"
 
-@Injectable()
-export class RolesGuard implements CanActivate {
-  constructor(private reflector: Reflector) {}
+    ```ts
+    import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+    import { Reflector } from '@nestjs/core';
 
-  canActivate(context: ExecutionContext): boolean {
-    const roles = this.reflector.get<string[]>('roles', context.getHandler());
-    if (!roles) {
-      return true;
+    @Injectable()
+    export class RolesGuard implements CanActivate {
+      constructor(private reflector: Reflector) {}
+
+      canActivate(context: ExecutionContext): boolean {
+        const roles = this.reflector.get<string[]>('roles', context.getHandler());
+        if (!roles) {
+          return true;
+        }
+        const request = context.switchToHttp().getRequest();
+        const user = request.user;
+        return matchRoles(roles, user.roles);
+      }
     }
-    const request = context.switchToHttp().getRequest();
-    const user = request.user;
-    return matchRoles(roles, user.roles);
-  }
-}
-@@switch
-import { Injectable, Dependencies } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+    ```
 
-@Injectable()
-@Dependencies(Reflector)
-export class RolesGuard {
-  constructor(reflector) {
-    this.reflector = reflector;
-  }
+=== "roles.guard.js"
 
-  canActivate(context) {
-    const roles = this.reflector.get('roles', context.getHandler());
-    if (!roles) {
-      return true;
+    ```js
+    import { Injectable, Dependencies } from '@nestjs/common';
+    import { Reflector } from '@nestjs/core';
+
+    @Injectable()
+    @Dependencies(Reflector)
+    export class RolesGuard {
+      constructor(reflector) {
+        this.reflector = reflector;
+      }
+
+      canActivate(context) {
+        const roles = this.reflector.get('roles', context.getHandler());
+        if (!roles) {
+          return true;
+        }
+        const request = context.switchToHttp().getRequest();
+        const user = request.user;
+        return matchRoles(roles, user.roles);
+      }
     }
-    const request = context.switchToHttp().getRequest();
-    const user = request.user;
-    return matchRoles(roles, user.roles);
-  }
-}
-```
+    ```
 
 !!! info "**Hint**"
 
     在 node.js 中，将授权用户附加到 `request` 对象是一种常见的做法。
+    因此，在上面的示例代码中，我们假设 `request` 。User` 包含用户实例和允许的角色。
+    在你的应用中，你可能会在你的自定义认证守卫(或中间件)中创建这个关联。
+    请查看[this chapter](/security/authentication)以了解有关本主题的更多信息。
 
-> 因此，在上面的示例代码中，我们假设 `request` 。User` 包含用户实例和允许的角色。
-> 在你的应用中，你可能会在你的自定义认证守卫(或中间件)中创建这个关联。
-> 请查看[this chapter](/security/authentication)以了解有关本主题的更多信息。
+!!! warning
 
-> warning **Warning** `matchRoles()` 函数内部的逻辑可以根据需要简单或复杂。
-> 这个示例的主要目的是展示守卫如何适应请求/响应周期。
+    `matchRoles()` 函数内部的逻辑可以根据需要简单或复杂。
+    这个示例的主要目的是展示守卫如何适应请求/响应周期。
 
 请参阅 **执行上下文** 章节的<a href="https://docs.nestjs.com/fundamentals/execution-context#reflection-and-metadata">反射和元数据</a>小节，以上下文敏感的方式使用 `Reflector` 的更多细节。
 

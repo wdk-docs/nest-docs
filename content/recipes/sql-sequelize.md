@@ -17,8 +17,9 @@ $ npm install --save-dev @types/sequelize
 
 The first step we need to do is create a **Sequelize** instance with an options object passed into the constructor. Also, we need to add all models (the alternative is to use `modelPaths` property) and `sync()` our database tables.
 
-```typescript
-@@filename(database.providers)
+=== "database.providers"
+
+```ts
 import { Sequelize } from 'sequelize-typescript';
 import { Cat } from '../cats/cat.entity';
 
@@ -65,8 +66,9 @@ Now we can inject the `Sequelize` object using `@Inject()` decorator. Each class
 
 In [Sequelize](https://github.com/sequelize/sequelize) the **Model** defines a table in the database. Instances of this class represent a database row. Firstly, we need at least one entity:
 
-```typescript
-@@filename(cat.entity)
+=== "cat.entity"
+
+```ts
 import { Table, Column, Model } from 'sequelize-typescript';
 
 @Table
@@ -84,8 +86,9 @@ export class Cat extends Model {
 
 The `Cat` entity belongs to the `cats` directory. This directory represents the `CatsModule`. Now it's time to create a **Repository** provider:
 
-```typescript
-@@filename(cats.providers)
+=== "cats.providers"
+
+```ts
 import { Cat } from './cat.entity';
 
 export const catsProviders = [
@@ -96,14 +99,17 @@ export const catsProviders = [
 ];
 ```
 
-> warning **Warning** In the real-world applications you should avoid **magic strings** . Both `CATS_REPOSITORY` and `SEQUELIZE` should be kept in the separated `constants.ts` file.
+!!! warning
+
+    In the real-world applications you should avoid **magic strings** . Both `CATS_REPOSITORY` and `SEQUELIZE` should be kept in the separated `constants.ts` file.
 
 In Sequelize, we use static methods to manipulate the data, and thus we created an **alias** here.
 
 Now we can inject the `CATS_REPOSITORY` to the `CatsService` using the `@Inject()` decorator:
 
-```typescript
-@@filename(cats.service)
+=== "cats.service"
+
+```ts
 import { Injectable, Inject } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from './cat.entity';
@@ -112,7 +118,7 @@ import { Cat } from './cat.entity';
 export class CatsService {
   constructor(
     @Inject('CATS_REPOSITORY')
-    private catsRepository: typeof Cat
+    private catsRepository: typeof Cat,
   ) {}
 
   async findAll(): Promise<Cat[]> {
@@ -125,8 +131,9 @@ The database connection is **asynchronous** , but Nest makes this process comple
 
 Here is a final `CatsModule`:
 
-```typescript
-@@filename(cats.module)
+=== "cats.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
@@ -136,10 +143,7 @@ import { DatabaseModule } from '../database/database.module';
 @Module({
   imports: [DatabaseModule],
   controllers: [CatsController],
-  providers: [
-    CatsService,
-    ...catsProviders,
-  ],
+  providers: [CatsService, ...catsProviders],
 })
 export class CatsModule {}
 ```

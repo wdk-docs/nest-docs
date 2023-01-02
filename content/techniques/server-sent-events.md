@@ -17,7 +17,9 @@ sse(): Observable<MessageEvent> {
 
     The `@Sse()` decorator and `MessageEvent` interface are imported from the `@nestjs/common`, while `Observable`, `interval`, and `map` are imported from the `rxjs` package.
 
-> warning **Warning** Server-Sent Events routes must return an `Observable` stream.
+!!! warning
+
+    Server-Sent Events routes must return an `Observable` stream.
 
 In the example above, we defined a route named `sse` that will allow us to propagate real-time updates. These events can be listened to using the [EventSource API](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
 

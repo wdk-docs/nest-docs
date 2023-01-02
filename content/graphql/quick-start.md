@@ -16,7 +16,9 @@ $ npm i @nestjs/graphql graphql@^15 apollo-server-express
 
     If using Fastify, instead of installing `apollo-server-express`, you should install `apollo-server-fastify`.
 
-> warning **Warning** `@nestjs/graphql@^9` is compatible with **Apollo v3** (check out Apollo Server 3 [migration guide](https://www.apollographql.com/docs/apollo-server/migration/) for more details), while `@nestjs/graphql@^8` only supports **Apollo v2** (e.g., `apollo-server-express@2.x.x` package). Both versions (v9 and v8) are fully compatible with Nest v8 (`@nestjs/common@^8`, `@nestjs/core@^8`, etc.).
+!!! warning
+
+    `@nestjs/graphql@^9` is compatible with **Apollo v3** (check out Apollo Server 3 [migration guide](https://www.apollographql.com/docs/apollo-server/migration/) for more details), while `@nestjs/graphql@^8` only supports **Apollo v2** (e.g., `apollo-server-express@2.x.x` package). Both versions (v9 and v8) are fully compatible with Nest v8 (`@nestjs/common@^8`, `@nestjs/core@^8`, etc.).
 
 ## Overview
 
@@ -30,23 +32,23 @@ In the **schema first** approach, the source of truth is GraphQL SDL (Schema Def
 
 Once the packages are installed, we can import the `GraphQLModule` and configure it with the `forRoot()` static method.
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot({}),
-  ],
+  imports: [GraphQLModule.forRoot({})],
 })
 export class AppModule {}
 ```
 
 The `forRoot()` method takes an options object as an argument. These options are passed through to the underlying Apollo instance (read more about available settings [here](https://www.apollographql.com/docs/apollo-server/v2/api/apollo-server.html#constructor-options-lt-ApolloServer-gt)). For example, if you want to disable the `playground` and turn off `debug` mode, pass the following options:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 
@@ -83,7 +85,9 @@ GraphQLModule.forRoot({
 }),
 ```
 
-> warning **Warning** If you use the `apollo-server-fastify` package with multiple GraphQL endpoints in a single application, make sure to enable the `disableHealthCheck` setting in the `GraphQLModule` configuration.
+!!! warning
+
+    If you use the `apollo-server-fastify` package with multiple GraphQL endpoints in a single application, make sure to enable the `disableHealthCheck` setting in the `GraphQLModule` configuration.
 
 ## Code first
 

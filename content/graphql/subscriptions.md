@@ -14,7 +14,9 @@ GraphQLModule.forRoot({
 }),
 ```
 
-> warning **Warning** The `installSubscriptionHandlers` configuration option has been removed from the latest version of Apollo server and will be soon deprecated in this package as well. By default, `installSubscriptionHandlers` will fallback to use the `subscriptions-transport-ws` ([read more](https://github.com/apollographql/subscriptions-transport-ws)) but we strongly recommend using the `graphql-ws`([read more](https://github.com/enisdenjo/graphql-ws)) library instead.
+!!! warning
+
+    The `installSubscriptionHandlers` configuration option has been removed from the latest version of Apollo server and will be soon deprecated in this package as well. By default, `installSubscriptionHandlers` will fallback to use the `subscriptions-transport-ws` ([read more](https://github.com/apollographql/subscriptions-transport-ws)) but we strongly recommend using the `graphql-ws`([read more](https://github.com/enisdenjo/graphql-ws)) library instead.
 
 To switch to use the `graphql-ws` package instead, use the following configuration:
 
@@ -80,8 +82,9 @@ This construct produces the same SDL as the previous code sample, but allows us 
 
 Now, to publish the event, we use the `PubSub#publish` method. This is often used within a mutation to trigger a client-side update when a part of the object graph has changed. For example:
 
-```typescript
-@@filename(posts/posts.resolver)
+=== "posts/posts.resolver"
+
+```ts
 @Mutation(returns => Post)
 async addComment(
   @Args('postId', { type: () => Int }) postId: number,

@@ -1,6 +1,8 @@
 # Mapped types
 
-> warning **Warning** This chapter applies only to the code first approach.
+!!! warning
+
+    This chapter applies only to the code first approach.
 
 As you build out features like CRUD (Create/Read/Update/Delete) it's often useful to construct variants on a base entity type. Nest provides several utility functions that perform type transformations to make this task more convenient.
 

@@ -22,15 +22,23 @@ $ npm i --save redis
 
 要使用 Redis 传输器，将以下选项对象传递给`createMicroservice()`方法:
 
-```typescript
-@@filename(main)
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-  transport: Transport.REDIS,
-  options: {
-    url: 'redis://localhost:6379',
+=== "main"
+
+```ts
+const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  AppModule,
+  {
+    transport: Transport.REDIS,
+    options: {
+      url: 'redis://localhost:6379',
+    },
   },
-});
-@@switch
+);
+```
+
+=== "JavaScript"
+
+```js
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.REDIS,
   options: {
@@ -96,13 +104,18 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 在更复杂的场景中，您可能希望访问关于传入请求的更多信息。当使用 Redis 传输器时，你可以访问 `RedisContext` 对象。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: RedisContext) {
   console.log(`Channel: ${context.getChannel()}`);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {

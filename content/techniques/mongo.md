@@ -12,8 +12,9 @@ $ npm install --save @nestjs/mongoose mongoose
 
 一旦安装完成，我们就可以把`MongooseModule`导入到根目录`AppModule`中。
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -37,8 +38,9 @@ export class AppModule {}
 
 我们定义的 `CatSchema`:
 
-```typescript
-@@filename(schemas/cat.schema)
+=== "schemas/cat.schema"
+
+```ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
@@ -132,8 +134,9 @@ export const CatSchema = new mongoose.Schema({
 
 让我们看看`CatsModule`:
 
-```typescript
-@@filename(cats.module)
+=== "cats.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CatsController } from './cats.controller';
@@ -153,8 +156,9 @@ export class CatsModule {}
 
 一旦你注册了这个模式，你就可以使用`@InjectModel()`装饰器将一个`Cat`模型注入到`CatsService`中:
 
-```typescript
-@@filename(cats.service)
+=== "cats.service"
+
+```ts
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -174,7 +178,11 @@ export class CatsService {
     return this.catModel.find().exec();
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Model } from 'mongoose';
 import { Injectable, Dependencies } from '@nestjs/common';
 import { getModelToken } from '@nestjs/mongoose';
@@ -222,18 +230,19 @@ export class CatsService {
 要处理多个连接，首先要创建连接。
 在这种情况下，连接命名成为 **必须的** 。
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/test', {
-      connectionName:'cats',
+      connectionName: 'cats',
     }),
     MongooseModule.forRoot('mongodb://localhost/users', {
-      connectionName:'users',
+      connectionName: 'users',
     }),
   ],
 })
@@ -358,8 +367,9 @@ export class AppModule {}
 要一次性为所有模式注册一个插件，调用`Connection`对象的`.plugin()`方法。
 您应该在创建模型之前访问连接;为此，使用`connectionFactory`:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -369,7 +379,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       connectionFactory: (connection) => {
         connection.plugin(require('mongoose-autopopulate'));
         return connection;
-      }
+      },
     }),
   ],
 })
@@ -383,8 +393,9 @@ export class AppModule {}
 
 假设您想要跟踪单个集合中的不同类型的事件。每个事件都有一个时间戳。
 
-```typescript
-@@filename(event.schema)
+=== "event.schema"
+
+```ts
 @Schema({ discriminatorKey:'kind`})
 export class Event {
   @Prop({
@@ -409,8 +420,9 @@ export const EventSchema = SchemaFactory.createForClass(Event);
 
 现在，让我们定义 `clicklinkevent` 类，如下所示:
 
-```typescript
-@@filename(click-link-event.schema)
+=== "click-link-event.schema"
+
+```ts
 @Schema()
 export class ClickedLinkEvent {
   kind: string;
@@ -420,13 +432,15 @@ export class ClickedLinkEvent {
   url: string;
 }
 
-export const ClickedLinkEventSchema = SchemaFactory.createForClass(ClickedLinkEvent);
+export const ClickedLinkEventSchema =
+  SchemaFactory.createForClass(ClickedLinkEvent);
 ```
 
 添加 `SignUpEvent` 类:
 
-```typescript
-@@filename(sign-up-event.schema)
+=== "sign-up-event.schema"
+
+```ts
 @Schema()
 export class SignUpEvent {
   kind: string;
@@ -442,8 +456,9 @@ export const SignUpEventSchema = SchemaFactory.createForClass(SignUpEvent);
 在此基础上，使用 `discriminator` 选项为给定的模式注册一个标识符。
 它工作在两个 `MongooseModule。forFeature’和‘MongooseModule.forFeatureAsync”:
 
-```typescript
-@@filename(event.module)
+=== "event.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -459,7 +474,7 @@ import { MongooseModule } from '@nestjs/mongoose';
         ],
       },
     ]),
-  ]
+  ],
 })
 export class EventsModule {}
 ```
@@ -535,7 +550,7 @@ class MongooseConfigService implements MongooseOptionsFactory {
 }
 ```
 
-如果你想重用一个现有的选项提供商，而不是在 `MongooseModule` 中创建一个私有副本，使用 `useExisting` 语法。
+如果你想重用一个现有的选项提供器，而不是在 `MongooseModule` 中创建一个私有副本，使用 `useExisting` 语法。
 
 ```typescript
 MongooseModule.forRootAsync({

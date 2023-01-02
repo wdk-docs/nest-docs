@@ -1,6 +1,8 @@
 # Generating SDL
 
-> warning **Warning** This chapter applies only to the code first approach.
+!!! warning
+
+    This chapter applies only to the code first approach.
 
 To manually generate a GraphQL SDL schema (i.e., without running an application, connecting to the database, hooking up resolvers, etc.), use the `GraphQLSchemaBuilderModule`.
 

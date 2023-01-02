@@ -1,8 +1,8 @@
 ---
-title: "使用 NestJS 和 Redis 扩展 WebSockets"
-linkTitle: "ws 扩展"
-date: "2020-02-13"
-author: "Maciej Cieślar"
+title: '使用 NestJS 和 Redis 扩展 WebSockets'
+linkTitle: 'ws 扩展'
+date: '2020-02-13'
+author: 'Maciej Cieślar'
 description: >
 ---
 
@@ -61,13 +61,13 @@ Docker 为我们负责安装和启动 Redis。
 ```ts
 //redis.providers.ts
 
-import { Provider } from "@nestjs/common";
-import Redis from "ioredis";
+import { Provider } from '@nestjs/common';
+import Redis from 'ioredis';
 
 import {
   REDIS_PUBLISHER_CLIENT,
   REDIS_SUBSCRIBER_CLIENT,
-} from "./redis.constants";
+} from './redis.constants';
 
 export type RedisClient = Redis.Redis;
 
@@ -75,7 +75,7 @@ export const redisProviders: Provider[] = [
   {
     useFactory: (): RedisClient => {
       return new Redis({
-        host: "socket-redis",
+        host: 'socket-redis',
         port: 6379,
       });
     },
@@ -84,7 +84,7 @@ export const redisProviders: Provider[] = [
   {
     useFactory: (): RedisClient => {
       return new Redis({
-        host: "socket-redis",
+        host: 'socket-redis',
         port: 6379,
       });
     },
@@ -95,7 +95,7 @@ export const redisProviders: Provider[] = [
 
 > 注意，主机和端口值通常是通过某种形式的配置来配置的，比如 ConfigService，但是这里为了简单起见省略了它。
 
-有了这些在 RedisModule 中注册的提供商，我们就可以将它们作为依赖注入到我们的服务中。
+有了这些在 RedisModule 中注册的提供器，我们就可以将它们作为依赖注入到我们的服务中。
 
 让我们创建一个 RedisService。
 
@@ -105,8 +105,8 @@ export const redisProviders: Provider[] = [
 import {
   REDIS_PUBLISHER_CLIENT,
   REDIS_SUBSCRIBER_CLIENT,
-} from "./redis.constants";
-import { RedisClient } from "./redis.providers";
+} from './redis.constants';
+import { RedisClient } from './redis.providers';
 
 export interface RedisSubscribeMessage {
   readonly message: string;
@@ -119,7 +119,7 @@ export class RedisService {
     @Inject(REDIS_SUBSCRIBER_CLIENT)
     private readonly redisSubscriberClient: RedisClient,
     @Inject(REDIS_PUBLISHER_CLIENT)
-    private readonly redisPublisherClient: RedisClient
+    private readonly redisPublisherClient: RedisClient,
   ) {}
 
   // ...
@@ -276,7 +276,7 @@ Nest 最好的特性之一是，它允许开发人员处理底层库——比如
 export class SocketStateAdapter extends IoAdapter implements WebSocketAdapter {
   public constructor(
     private readonly app: INestApplicationContext,
-    private readonly socketStateService: SocketStateService
+    private readonly socketStateService: SocketStateService,
   ) {
     super(app);
   }
@@ -285,7 +285,7 @@ export class SocketStateAdapter extends IoAdapter implements WebSocketAdapter {
 
   public create(
     port: number,
-    options: socketio.ServerOptions = {}
+    options: socketio.ServerOptions = {},
   ): socketio.Server {
     this.server = super.createIOServer(port, options);
 
@@ -305,7 +305,7 @@ export class SocketStateAdapter extends IoAdapter implements WebSocketAdapter {
       try {
         // fake auth
         socket.auth = {
-          userId: "1234",
+          userId: '1234',
         };
 
         return next();
@@ -318,11 +318,11 @@ export class SocketStateAdapter extends IoAdapter implements WebSocketAdapter {
   }
 
   public bindClientConnect(server: socketio.Server, callback: Function): void {
-    server.on("connection", (socket: AuthenticatedSocket) => {
+    server.on('connection', (socket: AuthenticatedSocket) => {
       if (socket.auth) {
         this.socketStateService.add(socket.auth.userId, socket);
 
-        socket.on("disconnect", () => {
+        socket.on('disconnect', () => {
           this.socketStateService.remove(socket.auth.userId, socket);
         });
       }
@@ -372,7 +372,7 @@ export const initAdapters = (app: INestApplication): INestApplication => {
   const redisPropagatorService = app.get(RedisPropagatorService);
 
   app.useWebSocketAdapter(
-    new SocketStateAdapter(app, socketStateService, redisPropagatorService)
+    new SocketStateAdapter(app, socketStateService, redisPropagatorService),
   );
 
   return app;
@@ -415,11 +415,11 @@ bootstrap();
 在代码中，我们将如下定义它们:
 
 ```ts
-export const REDIS_SOCKET_EVENT_SEND_NAME = "REDIS_SOCKET_EVENT_SEND_NAME";
+export const REDIS_SOCKET_EVENT_SEND_NAME = 'REDIS_SOCKET_EVENT_SEND_NAME';
 export const REDIS_SOCKET_EVENT_EMIT_ALL_NAME =
-  "REDIS_SOCKET_EVENT_EMIT_ALL_NAME";
+  'REDIS_SOCKET_EVENT_EMIT_ALL_NAME';
 export const REDIS_SOCKET_EVENT_EMIT_AUTHENTICATED_NAME =
-  "REDIS_SOCKET_EVENT_EMIT_AUTHENTICATED_NAME";
+  'REDIS_SOCKET_EVENT_EMIT_AUTHENTICATED_NAME';
 ```
 
 现在让我们创建服务:
@@ -431,7 +431,7 @@ export class RedisPropagatorService {
 
   public constructor(
     private readonly socketStateService: SocketStateService,
-    private readonly redisService: RedisService
+    private readonly redisService: RedisService,
   ) {}
 
   public propagateEvent(eventInfo: RedisSocketEventSendDTO): boolean {
@@ -447,7 +447,7 @@ export class RedisPropagatorService {
   public emitToAuthenticated(eventInfo: RedisSocketEventEmitDTO): boolean {
     this.redisService.publish(
       REDIS_SOCKET_EVENT_EMIT_AUTHENTICATED_NAME,
-      eventInfo
+      eventInfo,
     );
 
     return true;
@@ -484,12 +484,12 @@ export class RedisPropagatorInterceptor<T>
   implements NestInterceptor<T, WsResponse<T>>
 {
   public constructor(
-    private readonly redisPropagatorService: RedisPropagatorService
+    private readonly redisPropagatorService: RedisPropagatorService,
   ) {}
 
   public intercept(
     context: ExecutionContext,
-    next: CallHandler
+    next: CallHandler,
   ): Observable<WsResponse<T>> {
     const socket: AuthenticatedSocket = context.switchToWs().getClient();
 
@@ -500,7 +500,7 @@ export class RedisPropagatorInterceptor<T>
           socketId: socket.id,
           userId: socket.auth?.userId,
         });
-      })
+      }),
     );
   }
 }
@@ -536,7 +536,7 @@ export class RedisPropagatorService {
 
   public constructor(
     private readonly socketStateService: SocketStateService,
-    private readonly redisService: RedisService
+    private readonly redisService: RedisService,
   ) {
     this.redisService
       .fromEvent(REDIS_SOCKET_EVENT_SEND_NAME)
@@ -665,12 +665,12 @@ return this.socketStateService
 @UseInterceptors(RedisPropagatorInterceptor)
 @WebSocketGateway()
 export class EventsGateway {
-  @SubscribeMessage("events")
+  @SubscribeMessage('events')
   public findAll(): Observable<any> {
     return from([1, 2, 3]).pipe(
       map((item) => {
-        return { event: "events", data: item };
-      })
+        return { event: 'events', data: item };
+      }),
     );
   }
 }
@@ -693,14 +693,14 @@ export class EventsGateway {
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
     <script>
-      window.s = io("http://localhost:3000", {
+      window.s = io('http://localhost:3000', {
         query: {
-          token: "123",
+          token: '123',
         },
       });
 
-      s.emit("events", { event: "events", data: { test: true } });
-      s.on("events", (response) => {
+      s.emit('events', { event: 'events', data: { test: true } });
+      s.on('events', (response) => {
         console.log(response);
       });
     </script>

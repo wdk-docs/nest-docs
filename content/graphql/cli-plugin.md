@@ -1,6 +1,8 @@
 # CLI Plugin
 
-> warning **Warning** This chapter applies only to the code first approach.
+!!! warning
+
+    This chapter applies only to the code first approach.
 
 TypeScript's metadata reflection system has several limitations which make it impossible to, for instance, determine what properties a class consists of or recognize whether a given property is optional or required. However, some of these constraints can be addressed at compilation time. Nest provides a plugin that enhances the TypeScript compilation process to reduce the amount of boilerplate code required.
 
@@ -21,11 +23,12 @@ Please, note that your filenames **must have** one of the following suffixes in 
 
 With what we've learned so far, you have to duplicate a lot of code to let the package know how your type should be declared in GraphQL. For example, you could define a simple `Author` class as follows:
 
-```typescript
-@@filename(authors/models/author.model)
+=== "authors/models/author.model"
+
+```ts
 @ObjectType()
 export class Author {
-  @Field(type => ID)
+  @Field((type) => ID)
   id: number;
 
   @Field({ nullable: true })
@@ -34,7 +37,7 @@ export class Author {
   @Field({ nullable: true })
   lastName?: string;
 
-  @Field(type => [Post])
+  @Field((type) => [Post])
   posts: Post[];
 }
 ```
@@ -43,11 +46,12 @@ While not a significant issue with medium-sized projects, it becomes verbose & h
 
 By enabling the GraphQL plugin, the above class definition can be declared simply:
 
-```typescript
-@@filename(authors/models/author.model)
+=== "authors/models/author.model"
+
+```ts
 @ObjectType()
 export class Author {
-  @Field(type => ID)
+  @Field((type) => ID)
   id: number;
   firstName?: string;
   lastName?: string;

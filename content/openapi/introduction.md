@@ -21,8 +21,9 @@ $ npm install --save @nestjs/swagger fastify-swagger
 
 安装过程完成后，打开`main.ts`并使用 `SwaggerModule` 类初始化 Swagger:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
@@ -80,8 +81,10 @@ $ npm run start
 
     要生成和下载 Swagger JSON 文件，请在浏览器中导航到`http://localhost:3000/api-json`(`swagger-ui-express`)或`http://localhost:3000/api/json`(`fastify-swagger`)(假设您的 Swagger 文档在`http://localhost:3000/api`下可用)。
 
-> warning **Warning** 当使用`fastify-swagger`和 `helmet`时，[CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)可能会有一个问题，为了解决这个碰撞，配置 CSP 如下所示:
->
+!!! warning
+
+    当使用`fastify-swagger`和 `helmet`时，[CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)可能会有一个问题，为了解决这个碰撞，配置 CSP 如下所示:
+
 > ```typescript
 > app.register(helmet, {
 >   contentSecurityPolicy: {

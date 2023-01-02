@@ -11,14 +11,19 @@
 
 下面的示例使用一个手工实例化的方法范围的管道。就像基于 HTTP 的应用程序一样，您也可以使用控制器作用域的管道(即，在控制器类前面加上`@UsePipes()` 装饰器)。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @UsePipes(new ValidationPipe())
 @MessagePattern({ cmd: 'sum' })
 accumulate(data: number[]): number {
   return (data || []).reduce((a, b) => a + b);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @UsePipes(new ValidationPipe())
 @MessagePattern({ cmd: 'sum' })
 accumulate(data) {

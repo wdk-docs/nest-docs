@@ -14,7 +14,7 @@ $ npm install -D @types/cache-manager
 
 ## 内存缓存
 
-Nest 为各种缓存存储提供商提供了统一的 API
+Nest 为各种缓存存储提供器提供了统一的 API
 内置的是内存中的数据存储
 不过，你可以很容易地切换到一个更全面的解决方案，比如 Redis。
 
@@ -86,7 +86,10 @@ await this.cacheManager.reset();
 
 ## 自动缓存响应
 
-> warning **Warning** 在[GraphQL](/GraphQL/quick-start)应用程序中，拦截器是为每个字段解析器单独执行的
+!!! warning
+
+    在[GraphQL](/GraphQL/quick-start)应用程序中，拦截器是为每个字段解析器单独执行的
+
 > 因此，`CacheModule`(使用拦截器来缓存响应)将无法正常工作。
 
 要启用自动缓存响应，只需将`CacheInterceptor`绑定在你想要缓存数据的地方。
@@ -102,7 +105,10 @@ export class AppController {
 }
 ```
 
-> warning **Warning** 只缓存`GET`端点
+!!! warning
+
+    只缓存`GET`端点
+
 > 此外，注入本机响应对象(`@Res()`)的 HTTP 服务器路由不能使用缓存拦截器
 > 请参阅<a href="https://docs.nestjs.com/interceptors#response-mapping">响应映射</a>了解更多详细信息。
 
@@ -179,15 +185,20 @@ export class AppController {
 
 你也可以将`CacheInterceptor`应用到 WebSocket 订阅者和 Microservice 的模式中(不管使用的传输方法是什么)。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @CacheKey('events')
 @UseInterceptors(CacheInterceptor)
 @SubscribeMessage('events')
 handleEvent(client: Client, data: string[]): Observable<string[]> {
   return [];
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @CacheKey('events')
 @UseInterceptors(CacheInterceptor)
 @SubscribeMessage('events')
@@ -202,15 +213,20 @@ handleEvent(client, data) {
 
 此外，您可以使用`@CacheTTL()`装饰器指定缓存过期时间(TTL)，它将覆盖全局默认 TTL 值。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @CacheTTL(10)
 @UseInterceptors(CacheInterceptor)
 @SubscribeMessage('events')
 handleEvent(client: Client, data: string[]): Observable<string[]> {
   return [];
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @CacheTTL(10)
 @UseInterceptors(CacheInterceptor)
 @SubscribeMessage('events')

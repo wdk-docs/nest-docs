@@ -35,8 +35,9 @@ export class CatsModule {}
 
     `HttpModule`和`HttpService`是从`@nestjs/axios`包中导入的。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @Injectable()
 export class CatsService {
   constructor(private httpService: HttpService) {}
@@ -45,7 +46,11 @@ export class CatsService {
     return this.httpService.get('http://localhost:3000/cats');
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Injectable()
 @Dependencies(HttpService)
 export class CatsService {

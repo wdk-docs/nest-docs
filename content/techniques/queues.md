@@ -35,8 +35,9 @@ $ npm install --save-dev @types/bull
 
 一旦安装过程完成，我们就可以将`BullModule`导入到根目录`AppModule`中。
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bull';
 
@@ -78,7 +79,7 @@ BullModule.registerQueue({
 `registerQueue()`方法用于实例化和/或注册队列。
 队列是跨模块和进程共享的，连接到相同的基础 Redis 数据库具有相同的凭据。
 每个队列的 name 属性都是唯一的。
-队列名既可以用作注入令牌(用于将队列注入到控制器/提供者中)，也可以用作装饰器的参数，用于将消费者类和侦听器与队列关联起来。
+队列名既可以用作注入令牌(用于将队列注入到控制器/提供器中)，也可以用作装饰器的参数，用于将消费者类和侦听器与队列关联起来。
 
 你也可以覆盖特定队列的一些预先配置的选项，如下所示:
 
@@ -161,7 +162,9 @@ const job = await this.audioQueue.add('transcode', {
 });
 ```
 
-> Warning **Warning** 在使用命名作业时，必须为添加到队列中的每个惟一名称创建处理器，否则队列将抱怨您缺少给定作业的处理器。有关使用命名作业的更多信息，请参见[here](techniques/queues#consumer)。
+!!! warning
+
+    在使用命名作业时，必须为添加到队列中的每个惟一名称创建处理器，否则队列将抱怨您缺少给定作业的处理器。有关使用命名作业的更多信息，请参见[here](techniques/queues#consumer)。
 
 ## 作业选项
 
@@ -510,7 +513,7 @@ class BullConfigService implements SharedBullConfigurationFactory {
 }
 ```
 
-为了防止在`BullModule`中创建`BullConfigService`，并使用从不同模块导入的提供商，你可以使用`useExisting`语法。
+为了防止在`BullModule`中创建`BullConfigService`，并使用从不同模块导入的提供器，你可以使用`useExisting`语法。
 
 ```typescript
 BullModule.forRootAsync({

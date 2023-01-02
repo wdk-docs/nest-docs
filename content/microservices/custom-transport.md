@@ -41,7 +41,9 @@ class GoogleCloudPubSubServer
 }
 ```
 
-> warning **Warning** 请注意，我们不会在本章中实现一个功能齐全的谷歌云发布/订阅服务器，因为这需要深入研究传输器特定的技术细节。
+!!! warning
+
+    请注意，我们不会在本章中实现一个功能齐全的谷歌云发布/订阅服务器，因为这需要深入研究传输器特定的技术细节。
 
 在上面的例子中，我们声明了 `GoogleCloudPubSubServer` 类，并提供了由 `CustomTransportStrategy` 接口强制执行的 `listen()` 和 `close()` 方法。
 此外，我们的类扩展了从 `@nestjs/microservices` 包导入的 `Server` 类，它提供了一些有用的方法，例如，Nest 运行时用来注册消息处理程序的方法。
@@ -140,7 +142,9 @@ class GoogleCloudPubSubClient extends ClientProxy {
 }
 ```
 
-> warning **Warning** 请注意，我们不会在本章中实现一个功能齐全的谷歌云发布/订阅客户端，因为这需要深入研究传输器特定的技术细节。
+!!! warning
+
+    请注意，我们不会在本章中实现一个功能齐全的谷歌云发布/订阅客户端，因为这需要深入研究传输器特定的技术细节。
 
 如你所见， `ClientProxy` 类需要我们提供几个方法来建立和关闭连接，发布消息( `publish` )和事件( `dispatchEvent` )。
 注意，如果不需要请求-响应通信样式支持，可以将 `publish()` 方法保留为空。
@@ -241,8 +245,9 @@ event to dispatch:  { pattern: 'event', data: 'Hello world!' }
 要使用这个自定义类，可以使用 `customClass` 属性将类本身传递给 `ClientsModule.register()` 方法。
 下面是一个自定义 `ClientProxy` 的例子，它将每个错误序列化为一个 `RpcException` 。
 
-```typescript
-@@filename(error-handling.proxy)
+=== "error-handling.proxy"
+
+```ts
 import { ClientTcp, RpcException } from '@nestjs/microservices';
 
 class ErrorHandlingProxy extends ClientTCP {
@@ -254,8 +259,9 @@ class ErrorHandlingProxy extends ClientTCP {
 
 然后在 `ClientsModule` 中像这样使用它:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 @Module({
   imports: [
     ClientsModule.register({

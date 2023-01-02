@@ -20,106 +20,122 @@
 让我们从创建一个简单的`CatsService`开始。
 该服务将负责数据存储和检索，并被设计为由`CatsController`使用，因此将其定义为提供器是一个很好的候选对象。
 
-```typescript
-@@filename(cats.service)
-import { Injectable } from '@nestjs/common';
-import { Cat } from './interfaces/cat.interface';
+=== "cats.service.ts"
 
-@Injectable()
-export class CatsService {
-  private readonly cats: Cat[] = [];
+    ```ts
+    import { Injectable } from '@nestjs/common';
+    import { Cat } from './interfaces/cat.interface';
 
-  create(cat: Cat) {
-    this.cats.push(cat);
-  }
+    @Injectable()
+    export class CatsService {
+      private readonly cats: Cat[] = [];
 
-  findAll(): Cat[] {
-    return this.cats;
-  }
-}
-@@switch
-import { Injectable } from '@nestjs/common';
+      create(cat: Cat) {
+        this.cats.push(cat);
+      }
 
-@Injectable()
-export class CatsService {
-  constructor() {
-    this.cats = [];
-  }
+      findAll(): Cat[] {
+        return this.cats;
+      }
+    }
+    ```
 
-  create(cat) {
-    this.cats.push(cat);
-  }
+=== "cats.service.js"
 
-  findAll() {
-    return this.cats;
-  }
-}
-```
+    ```js
+    import { Injectable } from '@nestjs/common';
 
-!!! info "**Hint**"
+    @Injectable()
+    export class CatsService {
+      constructor() {
+        this.cats = [];
+      }
 
-    要使用 CLI 创建服务，只需执行`$ nest g service cats`命令。
+      create(cat) {
+        this.cats.push(cat);
+      }
+
+      findAll() {
+        return this.cats;
+      }
+    }
+    ```
+
+!!! info "要使用 CLI 创建服务，只需执行`$ nest g service cats`命令。"
 
 我们的`CatsService`是一个有一个属性和两个方法的基本类。
 唯一的新特性是它使用了@Injectable()装饰器。
 `@Injectable()`装饰器附加元数据，它声明`CatsService`是一个可以由 Nest IoC 容器管理的类。
 顺便说一下，这个例子也使用了`Cat`接口，大概是这样的:
 
-```typescript
-@@filename(interfaces/cat.interface)
-export interface Cat {
-  name: string;
-  age: number;
-  breed: string;
-}
-```
+=== "interfaces/cat.interface.ts"
+
+    ```ts
+    export interface Cat {
+      name: string;
+      age: number;
+      breed: string;
+    }
+    ```
 
 现在我们有了一个服务类来检索 cats，让我们在`CatsController`中使用它:
 
-```typescript
-@@filename(cats.controller)
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { CreateCatDto } from './dto/create-cat.dto';
-import { CatsService } from './cats.service';
-import { Cat } from './interfaces/cat.interface';
+=== "cats.controller.ts"
 
-@Controller('cats')
-export class CatsController {
-  constructor(private catsService: CatsService) {}
+    ```ts
+    import { Controller, Get, Post, Body } from '@nestjs/common';
+    import { CreateCatDto } from './dto/create-cat.dto';
+    import { CatsService } from './cats.service';
+    import { Cat } from './interfaces/cat.interface';
 
-  @Post()
-  async create(@Body() createCatDto: CreateCatDto) {
-    this.catsService.create(createCatDto);
-  }
+    @Controller('cats')
+    export class CatsController {
+      constructor(private catsService: CatsService) {}
 
-  @Get()
-  async findAll(): Promise<Cat[]> {
-    return this.catsService.findAll();
-  }
-}
-@@switch
-import { Controller, Get, Post, Body, Bind, Dependencies } from '@nestjs/common';
-import { CatsService } from './cats.service';
+      @Post()
+      async create(@Body() createCatDto: CreateCatDto) {
+        this.catsService.create(createCatDto);
+      }
 
-@Controller('cats')
-@Dependencies(CatsService)
-export class CatsController {
-  constructor(catsService) {
-    this.catsService = catsService;
-  }
+      @Get()
+      async findAll(): Promise<Cat[]> {
+        return this.catsService.findAll();
+      }
+    }
+    ```
 
-  @Post()
-  @Bind(Body())
-  async create(createCatDto) {
-    this.catsService.create(createCatDto);
-  }
+=== "cats.controller.js"
 
-  @Get()
-  async findAll() {
-    return this.catsService.findAll();
-  }
-}
-```
+    ```js
+    import {
+      Controller,
+      Get,
+      Post,
+      Body,
+      Bind,
+      Dependencies,
+    } from '@nestjs/common';
+    import { CatsService } from './cats.service';
+
+    @Controller('cats')
+    @Dependencies(CatsService)
+    export class CatsController {
+      constructor(catsService) {
+        this.catsService = catsService;
+      }
+
+      @Post()
+      @Bind(Body())
+      async create(createCatDto) {
+        this.catsService.create(createCatDto);
+      }
+
+      @Get()
+      async findAll() {
+        return this.catsService.findAll();
+      }
+    }
+    ```
 
 `CatsService`是通过类构造函数 **注入** 的。
 注意`private`语法的使用。
@@ -191,25 +207,26 @@ export class HttpService<T> {
 }
 ```
 
-> warning **Warning** 如果你的类没有扩展其他提供器，你应该总是倾向于使用基于构造函数的\*\*注入。
+!!! warning "如果你的类没有扩展其他提供器，你应该总是倾向于使用基于构造函数的**注入**。"
 
 ## 提供器登记
 
 现在我们已经定义了提供器(`CatsService`)，并且有了该服务的消费者(`CatsController`)，我们需要向 Nest 注册该服务，以便它可以执行注入。
 我们通过编辑模块文件(`app.module.ts`)，并将该服务添加到`@Module()`装饰器的`providers`数组中来实现这一点。
 
-```typescript
-@@filename(app.module)
-import { Module } from '@nestjs/common';
-import { CatsController } from './cats/cats.controller';
-import { CatsService } from './cats/cats.service';
+=== "app.module"
 
-@Module({
-  controllers: [CatsController],
-  providers: [CatsService],
-})
-export class AppModule {}
-```
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { CatsController } from './cats/cats.controller';
+    import { CatsService } from './cats/cats.service';
+
+    @Module({
+      controllers: [CatsController],
+      providers: [CatsService],
+    })
+    export class AppModule {}
+    ```
 
 Nest 现在将能够解析`CatsController`类的依赖项。
 

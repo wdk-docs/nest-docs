@@ -10,7 +10,7 @@ Nest 通过实现一个框架适配器来实现这种框架独立性，该适配
 
 [Fastify](https://github.com/fastify/fastify)为 Nest 提供了一个很好的替代框架，因为它以类似于 Express 的方式解决了设计问题。
 然而，fastify 比 Express 快得多，实现的基准结果几乎是 Express 的两倍。
-一个合理的问题是，为什么 Nest 使用 Express 作为默认的 HTTP 提供者?原因是 Express 被广泛使用、众所周知，并且有大量兼容的中间件，Nest 用户可以开箱即用。
+一个合理的问题是，为什么 Nest 使用 Express 作为默认的 HTTP 提供器?原因是 Express 被广泛使用、众所周知，并且有大量兼容的中间件，Nest 用户可以开箱即用。
 
 但是由于 Nest 提供了框架独立性，您可以轻松地在它们之间进行迁移。
 当您高度重视非常快的性能时，Fastify 可能是一个更好的选择。
@@ -24,15 +24,19 @@ Nest 通过实现一个框架适配器来实现这种框架独立性，该适配
 $ npm i --save @nestjs/platform-fastify
 ```
 
-> warning **Warning** 当使用`@nestjs/platform-fastify ` 版本 `>=7.5.0`和`apolo -server-fastify`时，GraphQL playground 可能会因为与`fastify `version `^3.0.0`不兼容而无法工作。
+!!! warning
+
+    当使用`@nestjs/platform-fastify ` 版本 `>=7.5.0`和`apolo -server-fastify`时，GraphQL playground 可能会因为与`fastify `version `^3.0.0`不兼容而无法工作。
+
 > 您可能想使用不稳定的`apollo-server-fastify ` 版本 `^3.0.0-alpha。3` 或暂时选择快递代替。
 
 ## 适配器
 
 一旦安装了 Fastify 平台，我们就可以使用`FastifyAdapter`。
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 import { NestFactory } from '@nestjs/core';
 import {
   FastifyAdapter,
@@ -43,7 +47,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter()
+    new FastifyAdapter(),
   );
   await app.listen(3000);
 }

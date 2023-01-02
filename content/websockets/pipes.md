@@ -13,15 +13,20 @@
 下面的示例使用一个手工实例化的方法范围的管道。
 就像基于 HTTP 的应用程序一样，您也可以使用网关作用域的管道(即，在网关类前面加上`@UsePipes()`装饰器)。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @UsePipes(new ValidationPipe())
 @SubscribeMessage('events')
 handleEvent(client: Client, data: unknown): WsResponse<unknown> {
   const event = 'events';
   return { event, data };
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @UsePipes(new ValidationPipe())
 @SubscribeMessage('events')
 handleEvent(client, data) {

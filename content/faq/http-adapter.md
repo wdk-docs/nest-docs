@@ -3,28 +3,34 @@
 有时，您可能希望访问底层 HTTP 服务器，可以在 Nest 应用程序上下文中访问，也可以从外部访问。
 
 每个本地(特定于平台的)HTTP 服务器/库(例如 Express 和 fasttify)实例都包装在一个 **适配器** 中。
-适配器被注册为一个全局可用的提供者，可以从应用程序上下文中检索它，也可以注入到其他提供者中。
+适配器被注册为一个全局可用的提供器，可以从应用程序上下文中检索它，也可以注入到其他提供器中。
 
 ## 外部应用程序上下文策略
 
 要从应用程序上下文外部获取对`HttpAdapter`的引用，请调用`getHttpAdapter()`方法。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 const app = await NestFactory.create(AppModule);
 const httpAdapter = app.getHttpAdapter();
 ```
 
 ## 语境策略
 
-要从应用程序上下文中获取对`HttpAdapterHost`的引用，使用与任何其他现有提供商相同的技术(例如，使用构造函数注入)注入它。
+要从应用程序上下文中获取对`HttpAdapterHost`的引用，使用与任何其他现有提供器相同的技术(例如，使用构造函数注入)注入它。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 export class CatsService {
   constructor(private adapterHost: HttpAdapterHost) {}
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Dependencies(HttpAdapterHost)
 export class CatsService {
   constructor(adapterHost) {

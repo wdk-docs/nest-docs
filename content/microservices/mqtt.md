@@ -17,15 +17,23 @@ $ npm i --save mqtt
 
 要使用 MQTT 传输器，请将以下选项对象传递给 `createMicroservice()` 方法:
 
-```typescript
-@@filename(main)
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-  transport: Transport.MQTT,
-  options: {
-    url: 'mqtt://localhost:1883',
+=== "main"
+
+```ts
+const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  AppModule,
+  {
+    transport: Transport.MQTT,
+    options: {
+      url: 'mqtt://localhost:1883',
+    },
   },
-});
-@@switch
+);
+```
+
+=== "JavaScript"
+
+```js
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.MQTT,
   options: {
@@ -76,13 +84,18 @@ const app = await NestFactory.createMicroservice(AppModule, {
 在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
 当使用 MQTT 传输器时，您可以访问`MqttContext`对象。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: MqttContext) {
   console.log(`Topic: ${context.getTopic()}`);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -96,13 +109,18 @@ getNotifications(data, context) {
 
 要访问原始的 mqtt [packet](https://github.com/mqttjs/mqtt-packet)，使用`MqttContext`对象的`getPacket()`方法，如下所示:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: MqttContext) {
   console.log(context.getPacket());
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -116,13 +134,18 @@ getNotifications(data, context) {
 有两个通配符可用，`+`和`#`。
 `+`是单级通配符，而`#`是多级通配符，涵盖许多主题级别。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('sensors/+/temperature/+')
 getTemperature(@Ctx() context: MqttContext) {
   console.log(`Topic: ${context.getTopic()}`);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Ctx())
 @MessagePattern('sensors/+/temperature/+')
 getTemperature(context) {
@@ -150,14 +173,19 @@ client.send('replace-emoji', record).subscribe(...);
 
 通过访问 `MqttContext`，您也可以在服务器端读取这些选项。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('replace-emoji')
 replaceEmoji(@Payload() data: string, @Ctx() context: MqttContext): string {
   const { properties: { userProperties } } = context.getPacket();
   return userProperties['x-version'] === '1.0.0' ? '🐱' : '🐈';
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('replace-emoji')
 replaceEmoji(data, context) {

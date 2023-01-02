@@ -263,8 +263,9 @@ app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 要启用自动转换，请将 `transform` 设置为 `true` 。
 这可以在方法级别完成:
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 @Post()
 @UsePipes(new ValidationPipe({ transform: true }))
 async create(@Body() createCatDto: CreateCatDto) {

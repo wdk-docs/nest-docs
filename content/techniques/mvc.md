@@ -17,17 +17,16 @@ $ npm install --save hbs
 
 We've used the `hbs` ([Handlebars](https://github.com/pillarjs/hbs#readme)) engine, though you can use whatever fits your requirements. Once the installation process is complete, we need to configure the express instance using the following code:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(
-    AppModule,
-  );
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
@@ -36,15 +35,17 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { NestFactory } from '@nestjs/core';
 import { join } from 'path';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(
-    AppModule,
-  );
+  const app = await NestFactory.create(AppModule);
 
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
@@ -76,8 +77,9 @@ Now, let's create a `views` directory and `index.hbs` template inside it. In the
 
 Next, open the `app.controller` file and replace the `root()` method with the following code:
 
-```typescript
-@@filename(app.controller)
+=== "app.controller"
+
+```ts
 import { Get, Controller, Render } from '@nestjs/common';
 
 @Controller()
@@ -102,8 +104,9 @@ If the application logic must dynamically decide which template to render, then 
 
     When Nest detects the `@Res()` decorator, it injects the library-specific `response` object. We can use this object to dynamically render the template. Learn more about the `response` object API [here](https://expressjs.com/en/api.html).
 
-```typescript
-@@filename(app.controller)
+=== "app.controller"
+
+```ts
 import { Get, Controller, Res, Render } from '@nestjs/common';
 import { Response } from 'express';
 import { AppService } from './app.service';
@@ -114,10 +117,9 @@ export class AppController {
 
   @Get()
   root(@Res() res: Response) {
-    return res.render(
-      this.appService.getViewName(),
-      { message: 'Hello world!' },
-    );
+    return res.render(this.appService.getViewName(), {
+      message: 'Hello world!',
+    });
   }
 }
 ```
@@ -136,10 +138,14 @@ $ npm i --save fastify-static point-of-view handlebars
 
 The next steps cover almost the same process used with Express, with minor differences specific to the platform. Once the installation process is complete, open the `main.ts` file and update its contents:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 import { NestFactory } from '@nestjs/core';
-import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify';
+import {
+  NestFastifyApplication,
+  FastifyAdapter,
+} from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 import { join } from 'path';
 
@@ -161,7 +167,11 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
@@ -186,8 +196,9 @@ bootstrap();
 
 The Fastify API is slightly different but the end result of those methods calls remains the same. One difference to notice with Fastify is that the template name passed into the `@Render()` decorator must include a file extension.
 
-```typescript
-@@filename(app.controller)
+=== "app.controller"
+
+```ts
 import { Get, Controller, Render } from '@nestjs/common';
 
 @Controller()

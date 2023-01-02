@@ -14,15 +14,14 @@ $ npm i --save @nestjs/event-emitter
 
 Once the installation is complete, import the `EventEmitterModule` into the root `AppModule` and run the `forRoot()` static method as shown below:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
-  imports: [
-    EventEmitterModule.forRoot()
-  ],
+  imports: [EventEmitterModule.forRoot()],
 })
 export class AppModule {}
 ```
@@ -85,7 +84,9 @@ handleOrderCreatedEvent(payload: OrderCreatedEvent) {
 }
 ```
 
-> warning **Warning** Event subscribers cannot be request-scoped.
+!!! warning
+
+    Event subscribers cannot be request-scoped.
 
 The first argument can be a `string` or `symbol` for a simple event emitter and a `string | symbol | Array<string | symbol>` in a case of a wildcard emitter. The second argument (optional) is a listener options object ([read more](https://github.com/EventEmitter2/EventEmitter2#emitteronevent-listener-options-objectboolean)).
 

@@ -21,19 +21,24 @@ $ npm install --save @nestjs/cqrs
 
 In this model, each action is called a **Command**. When a command is dispatched, the application reacts to it. Commands can be dispatched from the services layer, or directly from controllers/gateways. Commands are consumed by **Command Handlers** .
 
-```typescript
-@@filename(heroes-game.service)
+=== "heroes-game.service"
+
+```ts
 @Injectable()
 export class HeroesGameService {
   constructor(private commandBus: CommandBus) {}
 
   async killDragon(heroId: string, killDragonDto: KillDragonDto) {
     return this.commandBus.execute(
-      new KillDragonCommand(heroId, killDragonDto.dragonId)
+      new KillDragonCommand(heroId, killDragonDto.dragonId),
     );
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Injectable()
 @Dependencies(CommandBus)
 export class HeroesGameService {
@@ -43,7 +48,7 @@ export class HeroesGameService {
 
   async killDragon(heroId, killDragonDto) {
     return this.commandBus.execute(
-      new KillDragonCommand(heroId, killDragonDto.dragonId)
+      new KillDragonCommand(heroId, killDragonDto.dragonId),
     );
   }
 }
@@ -51,15 +56,20 @@ export class HeroesGameService {
 
 Here's a sample service that dispatches `KillDragonCommand`. Let's see how the command looks:
 
-```typescript
-@@filename(kill-dragon.command)
+=== "kill-dragon.command"
+
+```ts
 export class KillDragonCommand {
   constructor(
     public readonly heroId: string,
     public readonly dragonId: string,
   ) {}
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 export class KillDragonCommand {
   constructor(heroId, dragonId) {
     this.heroId = heroId;
@@ -70,8 +80,9 @@ export class KillDragonCommand {
 
 The `CommandBus` is a **stream** of commands. It delegates commands to the equivalent handlers. Each command must have a corresponding **Command Handler** :
 
-```typescript
-@@filename(kill-dragon.handler)
+=== "kill-dragon.handler"
+
+```ts
 @CommandHandler(KillDragonCommand)
 export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
   constructor(private repository: HeroRepository) {}
@@ -84,7 +95,11 @@ export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
     await this.repository.persist(hero);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @CommandHandler(KillDragonCommand)
 @Dependencies(HeroRepository)
 export class KillDragonHandler {
@@ -108,15 +123,20 @@ With this approach, every application state change is driven by the occurrence o
 
 Command handlers neatly encapsulate logic. While beneficial, the application structure is still not flexible enough, not **reactive**. To remedy this, we also introduce **events** .
 
-```typescript
-@@filename(hero-killed-dragon.event)
+=== "hero-killed-dragon.event"
+
+```ts
 export class HeroKilledDragonEvent {
   constructor(
     public readonly heroId: string,
     public readonly dragonId: string,
   ) {}
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 export class HeroKilledDragonEvent {
   constructor(heroId, dragonId) {
     this.heroId = heroId;
@@ -127,8 +147,9 @@ export class HeroKilledDragonEvent {
 
 Events are asynchronous. They are dispatched either by **models** or directly using `EventBus`. In order to dispatch events, models have to extend the `AggregateRoot` class.
 
-```typescript
-@@filename(hero.model)
+=== "hero.model"
+
+```ts
 export class Hero extends AggregateRoot {
   constructor(private id: string) {
     super();
@@ -139,7 +160,11 @@ export class Hero extends AggregateRoot {
     this.apply(new HeroKilledDragonEvent(this.id, enemyId));
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 export class Hero extends AggregateRoot {
   constructor(id) {
     super();
@@ -155,8 +180,9 @@ export class Hero extends AggregateRoot {
 
 The `apply()` method does not dispatch events yet because there's no relationship between the model and the `EventPublisher` class. How do we associate the model and the publisher? By using a publisher `mergeObjectContext()` method inside our command handler.
 
-```typescript
-@@filename(kill-dragon.handler)
+=== "kill-dragon.handler"
+
+```ts
 @CommandHandler(KillDragonCommand)
 export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
   constructor(
@@ -173,7 +199,11 @@ export class KillDragonHandler implements ICommandHandler<KillDragonCommand> {
     hero.commit();
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @CommandHandler(KillDragonCommand)
 @Dependencies(HeroRepository, EventPublisher)
 export class KillDragonHandler {
@@ -212,10 +242,13 @@ this.eventBus.publish(new HeroKilledDragonEvent());
 
 Each event can have multiple **Event Handlers** .
 
-```typescript
-@@filename(hero-killed-dragon.handler)
+=== "hero-killed-dragon.handler"
+
+```ts
 @EventsHandler(HeroKilledDragonEvent)
-export class HeroKilledDragonHandler implements IEventHandler<HeroKilledDragonEvent> {
+export class HeroKilledDragonHandler
+  implements IEventHandler<HeroKilledDragonEvent>
+{
   constructor(private repository: HeroRepository) {}
 
   handle(event: HeroKilledDragonEvent) {
@@ -232,8 +265,9 @@ This type of **Event-Driven Architecture** improves application **reactiveness a
 
 Sagas are an extremely powerful feature. A single saga may listen for 1..\* events. Using the [RxJS](https://github.com/ReactiveX/rxjs) library, it can combine, merge, filter or apply other `RxJS` operators on the event stream. Each saga returns an Observable which contains a command. This command is dispatched **asynchronously** .
 
-```typescript
-@@filename(heroes-game.saga)
+=== "heroes-game.saga"
+
+```ts
 @Injectable()
 export class HeroesGameSagas {
   @Saga()
@@ -242,9 +276,13 @@ export class HeroesGameSagas {
       ofType(HeroKilledDragonEvent),
       map((event) => new DropAncientItemCommand(event.heroId, fakeItemID)),
     );
-  }
+  };
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Injectable()
 export class HeroesGameSagas {
   @Saga()
@@ -253,7 +291,7 @@ export class HeroesGameSagas {
       ofType(HeroKilledDragonEvent),
       map((event) => new DropAncientItemCommand(event.heroId, fakeItemID)),
     );
-  }
+  };
 }
 ```
 
@@ -271,10 +309,11 @@ The `CqrsModule` can also be used for handling queries. The `QueryBus` follows t
 
 Finally, let's look at how to set up the whole CQRS mechanism.
 
-```typescript
-@@filename(heroes-game.module)
+=== "heroes-game.module"
+
+```ts
 export const CommandHandlers = [KillDragonHandler, DropAncientItemHandler];
-export const EventHandlers =  [HeroKilledDragonHandler, HeroFoundItemHandler];
+export const EventHandlers = [HeroKilledDragonHandler, HeroFoundItemHandler];
 
 @Module({
   imports: [CqrsModule],
@@ -285,7 +324,7 @@ export const EventHandlers =  [HeroKilledDragonHandler, HeroFoundItemHandler];
     ...CommandHandlers,
     ...EventHandlers,
     HeroRepository,
-  ]
+  ],
 })
 export class HeroesGameModule {}
 ```

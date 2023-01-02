@@ -32,7 +32,9 @@ await app.listen(3000);
 
 要在 GraphQL 中启用 CORS，请将`cors`属性设置为`true`，或者在导入 GraphQL 模块时，将[CORS 配置对象](https://github.com/expressjs/cors#configuration-options)或一个[回调函数](https://github.com/expressjs/cors#configuring-cors-asynchronously)作为`cors`属性值。
 
-> warning **Warning** `CorsOptionsDelegate` 解决方案并不适用于 `apollo-server-fastify` 软件包。
+!!! warning
+
+    `CorsOptionsDelegate` 解决方案并不适用于 `apollo-server-fastify` 软件包。
 
 ```typescript
 GraphQLModule.forRoot({

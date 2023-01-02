@@ -23,14 +23,15 @@ type Author {
 
 In this case, using the code first approach, we define schemas using TypeScript classes and using TypeScript decorators to annotate the fields of those classes. The equivalent of the above SDL in the code first approach is:
 
-```typescript
-@@filename(authors/models/author.model)
+=== "authors/models/author.model"
+
+```ts
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Post } from './post';
 
 @ObjectType()
 export class Author {
-  @Field(type => Int)
+  @Field((type) => Int)
   id: number;
 
   @Field({ nullable: true })
@@ -39,7 +40,7 @@ export class Author {
   @Field({ nullable: true })
   lastName?: string;
 
-  @Field(type => [Post])
+  @Field((type) => [Post])
   posts: Post[];
 }
 ```
@@ -110,19 +111,20 @@ posts: Post[];
 
 Now that the `Author` object type is created, let's define the `Post` object type.
 
-```typescript
-@@filename(posts/models/post.model)
+=== "posts/models/post.model"
+
+```ts
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class Post {
-  @Field(type => Int)
+  @Field((type) => Int)
   id: number;
 
   @Field()
   title: string;
 
-  @Field(type => Int, { nullable: true })
+  @Field((type) => Int, { nullable: true })
   votes?: number;
 }
 ```
@@ -141,16 +143,17 @@ type Post {
 
 At this point, we've defined the objects (type definitions) that can exist in our data graph, but clients don't yet have a way to interact with those objects. To address that, we need to create a resolver class. In the code first method, a resolver class both defines resolver functions **and** generates the **Query type** . This will be clear as we work through the example below:
 
-```typescript
-@@filename(authors/authors.resolver)
-@Resolver(of => Author)
+=== "authors/authors.resolver"
+
+```ts
+@Resolver((of) => Author)
 export class AuthorsResolver {
   constructor(
     private authorsService: AuthorsService,
     private postsService: PostsService,
   ) {}
 
-  @Query(returns => Author)
+  @Query((returns) => Author)
   async author(@Args('id', { type: () => Int }) id: number) {
     return this.authorsService.findOneById(id);
   }
@@ -210,21 +213,22 @@ type Query {
 
 Conventionally, we prefer to decouple these names; for example, we prefer to use a name like `getAuthor()` for our query handler method, but still use `author` for our query type name. The same applies to our field resolvers. We can easily do this by passing the mapping names as arguments of the `@Query()` and `@ResolveField()` decorators, as shown below:
 
-```typescript
-@@filename(authors/authors.resolver)
-@Resolver(of => Author)
+=== "authors/authors.resolver"
+
+```ts
+@Resolver((of) => Author)
 export class AuthorsResolver {
   constructor(
     private authorsService: AuthorsService,
     private postsService: PostsService,
   ) {}
 
-  @Query(returns => Author, { name: 'author' })
+  @Query((returns) => Author, { name: 'author' })
   async getAuthor(@Args('id', { type: () => Int }) id: number) {
     return this.authorsService.findOneById(id);
   }
 
-  @ResolveField('posts', returns => [Post])
+  @ResolveField('posts', (returns) => [Post])
   async getPosts(@Parent() author: Author) {
     const { id } = author;
     return this.postsService.findAll({ authorId: id });
@@ -295,8 +299,9 @@ With inline `@Args()` calls, code like the example above becomes bloated. Instea
 
 Create the `GetAuthorArgs` class using `@ArgsType()` as shown below:
 
-```typescript
-@@filename(authors/dto/get-author.args)
+=== "authors/dto/get-author.args"
+
+```ts
 import { MinLength } from 'class-validator';
 import { Field, ArgsType } from '@nestjs/graphql';
 
@@ -513,8 +518,9 @@ The schema above exposes a single query - `author(id: Int!): Author`.
 
 Let's now create an `AuthorsResolver` class that resolves author queries:
 
-```typescript
-@@filename(authors/authors.resolver)
+=== "authors/authors.resolver"
+
+```ts
 @Resolver('Author')
 export class AuthorsResolver {
   constructor(
@@ -558,7 +564,9 @@ In this case (`@Resolver()` decorator at the method level), if you have multiple
 
     Any class name argument passed to `@Resolver()` **does not** affect queries (`@Query()` decorator) or mutations (`@Mutation()` decorator).
 
-> warning **Warning** Using the `@Resolver` decorator at the method level is not supported with the **code first** approach.
+!!! warning
+
+    Using the `@Resolver` decorator at the method level is not supported with the **code first** approach.
 
 In the above examples, the `@Query()` and `@ResolveField()` decorators are associated with GraphQL schema types based on the method name. For example, consider the following construction from the example above:
 
@@ -579,8 +587,9 @@ type Query {
 
 Conventionally, we would prefer to decouple these, using names like `getAuthor()` or `getPosts()` for our resolver methods. We can easily do this by passing the mapping name as an argument to the decorator, as shown below:
 
-```typescript
-@@filename(authors/authors.resolver)
+=== "authors/authors.resolver"
+
+```ts
 @Resolver('Author')
 export class AuthorsResolver {
   constructor(
@@ -609,8 +618,9 @@ export class AuthorsResolver {
 
 Assuming that we use the schema first approach and have enabled the typings generation feature (with `outputAs: 'class'` as shown in the [previous](/graphql/quick-start) chapter), once you run the application it will generate the following file (in the location you specified in the `GraphQLModule.forRoot()` method). For example, in `src/graphql.ts`:
 
-```typescript
-@@filename(graphql)
+=== "graphql"
+
+```ts
 export class Author {
   id: number;
   firstName?: string;
@@ -641,7 +651,9 @@ export class CreatePostInput {
 }
 ```
 
-> warning **Notice** To enable auto-validation of your inputs (and parameters), use `ValidationPipe`. Read more about validation [here](/techniques/validation) and more specifically about pipes [here](/pipes).
+!!! warning
+
+    To enable auto-validation of your inputs (and parameters), use `ValidationPipe`. Read more about validation [here](/techniques/validation) and more specifically about pipes [here](/pipes).
 
 However, if you add decorators directly to the automatically generated file, they will be **overwritten** each time the file is generated. Instead, create a separate file and simply extend the generated class.
 
@@ -696,8 +708,9 @@ The only other thing you need to take care of is to **provide** (i.e., list as a
 
 For example, we can do this in an `AuthorsModule`, which can also provide other services needed in this context. Be sure to import `AuthorsModule` somewhere (e.g., in the root module, or some other module imported by the root module).
 
-```typescript
-@@filename(authors/authors.module)
+=== "authors/authors.module"
+
+```ts
 @Module({
   imports: [PostsModule],
   providers: [AuthorsService, AuthorsResolver],

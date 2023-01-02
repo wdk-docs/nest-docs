@@ -1,6 +1,6 @@
 # 毫服务器
 
-无服务器计算是一种云计算执行模型，在该模型中，云提供商按需分配机器资源，代表客户管理服务器。
+无服务器计算是一种云计算执行模型，在该模型中，云提供器按需分配机器资源，代表客户管理服务器。
 当应用不被使用时，该应用将没有计算资源分配给该应用。
 定价是基于应用程序实际消耗的资源数量([source](https://en.wikipedia.org/wiki/Serverless_computing))。
 
@@ -266,7 +266,10 @@ export const handler: Handler = async (
 
     For creating multiple serverless functions and sharing common modules between them, we recommend using the [CLI Monorepo mode](/cli/monorepo#monorepo-mode).
 
-> warning **Warning** If you use `@nestjs/swagger` package, there are a few additional steps required to make it work properly in the context of serverless function.
+!!! warning
+
+    If you use `@nestjs/swagger` package, there are a few additional steps required to make it work properly in the context of serverless function.
+
 > Check out this [article](https://javascript.plainenglish.io/serverless-nestjs-document-your-api-with-swagger-and-aws-api-gateway-64a53962e8a2) for more information.
 
 Next, open up the `tsconfig.json` file and make sure to enable the `esModuleInterop` option to make the `@vendia/serverless-express` package load properly.
@@ -314,8 +317,9 @@ With this in place, you can now use `$ nest build --webpack` to compile your fun
 Alternatively, if you want to keep your function very lightweight and you don't need any HTTP-related features (routing, but also guards, interceptors, pipes, etc.),
 you can just use `NestFactory.createApplicationContext` (as mentioned earlier) instead of running the entire HTTP server (and `express` under the hood), as follows:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 import { HttpStatus } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { Callback, Context, Handler } from 'aws-lambda';

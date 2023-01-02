@@ -4,7 +4,10 @@
 Multer 处理以`multipart/form-data`格式发布的数据，该格式主要用于通过 HTTP`POST`请求上传文件。  
 此模块是完全可配置的，您可以根据应用程序的需求调整其行为。
 
-> warning **Warning** Multer 不能处理不支持多部分格式的数据 (`multipart/form-data`).
+!!! warning
+
+    Multer 不能处理不支持多部分格式的数据 (`multipart/form-data`).
+
 > 另外，请注意这个包不兼容`FastifyAdapter`。
 
 为了更好的类型安全，让我们安装 Multer typings 包:
@@ -19,14 +22,19 @@ $ npm i -D @types/multer
 
 要上传单个文件，只需将`FileInterceptor()`拦截器绑定到路由处理程序上，然后使用`@UploadedFile()`装饰器从`request`中提取 `file` 。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @Post('upload')
 @UseInterceptors(FileInterceptor('file'))
 uploadFile(@UploadedFile() file: Express.Multer.File) {
   console.log(file);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Post('upload')
 @UseInterceptors(FileInterceptor('file'))
 @Bind(UploadedFile())
@@ -47,7 +55,9 @@ uploadFile(file) {
 - `options`: 类型为`MulterOptions`的可选对象。
   这是 multiter 构造函数使用的同一个对象 (更多细节[在这里](https://github.com/expressjs/multer#multeropts)).
 
-> warning **Warning** `FileInterceptor()`可能不兼容第三方云提供商，如谷歌 Firebase 或其他。
+!!! warning
+
+    `FileInterceptor()`可能不兼容第三方云提供商，如谷歌 Firebase 或其他。
 
 ## 文件数组
 
@@ -60,14 +70,19 @@ uploadFile(file) {
 
 当使用`FilesInterceptor()`时，使用`@UploadedFiles()`装饰器从`request`中提取文件。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @Post('upload')
 @UseInterceptors(FilesInterceptor('files'))
 uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
   console.log(files);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Post('upload')
 @UseInterceptors(FilesInterceptor('files'))
 @Bind(UploadedFiles())
@@ -92,8 +107,9 @@ uploadFile(files) {
 
 当使用`FileFieldsInterceptor()`时，使用`@UploadedFiles()`装饰器从`request`中提取文件。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @Post('upload')
 @UseInterceptors(FileFieldsInterceptor([
   { name: 'avatar', maxCount: 1 },
@@ -102,7 +118,11 @@ uploadFile(files) {
 uploadFile(@UploadedFiles() files: { avatar?: Express.Multer.File[], background?: Express.Multer.File[] }) {
   console.log(files);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Post('upload')
 @Bind(UploadedFiles())
 @UseInterceptors(FileFieldsInterceptor([
@@ -121,14 +141,19 @@ uploadFile(files) {
 
 当使用`AnyFilesInterceptor()`时，使用`@UploadedFiles()`装饰器从`request`中提取文件。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @Post('upload')
 @UseInterceptors(AnyFilesInterceptor())
 uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
   console.log(files);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Post('upload')
 @Bind(UploadedFiles())
 @UseInterceptors(AnyFilesInterceptor())

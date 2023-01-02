@@ -18,8 +18,9 @@
 
 首先，让我们在系统中创建一个表示角色的`Role`枚举:
 
-```typescript
-@@filename(role.enum)
+=== "role.enum"
+
+```ts
 export enum Role {
   User = 'user',
   Admin = 'admin',
@@ -28,19 +29,24 @@ export enum Role {
 
 !!! info "**Hint**"
 
-    在更复杂的系统中，可以将角色存储在数据库中，或者从外部身份验证提供者获取角色。
+    在更复杂的系统中，可以将角色存储在数据库中，或者从外部身份验证提供器获取角色。
 
 有了这个，我们可以创建一个`@Roles()`装饰器。
 该装饰器允许指定访问特定资源所需的角色。
 
-```typescript
-@@filename(roles.decorator)
+=== "roles.decorator"
+
+```ts
 import { SetMetadata } from '@nestjs/common';
 import { Role } from '../enums/role.enum';
 
 export const ROLES_KEY = 'roles';
 export const Roles = (...roles: Role[]) => SetMetadata(ROLES_KEY, roles);
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { SetMetadata } from '@nestjs/common';
 
 export const ROLES_KEY = 'roles';
@@ -49,14 +55,19 @@ export const Roles = (...roles) => SetMetadata(ROLES_KEY, roles);
 
 现在我们有了一个自定义的`@Roles()`装饰器，我们可以用它装饰任何路由处理程序。
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 @Post()
 @Roles(Role.Admin)
 create(@Body() createCatDto: CreateCatDto) {
   this.catsService.create(createCatDto);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Post()
 @Roles(Role.Admin)
 @Bind(Body())
@@ -68,8 +79,9 @@ create(createCatDto) {
 最后，我们创建一个`RolesGuard`类，它将把分配给当前用户的角色与正在处理的当前路由所需要的实际角色进行比较。
 为了访问路由的角色(自定义元数据)，我们将使用`Reflector `helper 类，它是由框架提供的，从`@nestjs/core`包中公开的。
 
-```typescript
-@@filename(roles.guard)
+=== "roles.guard"
+
+```ts
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
@@ -89,7 +101,11 @@ export class RolesGuard implements CanActivate {
     return requiredRoles.some((role) => user.roles?.includes(role));
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Injectable, Dependencies } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
@@ -118,7 +134,10 @@ export class RolesGuard {
 
     请参阅执行上下文章节的[反射和元数据](/fundamentals/execution-context#reflection-and-metadata)小节，了解更多关于以上下文敏感的方式使用`Reflector`的细节。
 
-> warning **Notice** 这个例子被命名为"**basic** "，因为我们只在路由处理程序级别检查角色的存在。
+!!! warning
+
+    这个例子被命名为"**basic** "，因为我们只在路由处理程序级别检查角色的存在。
+
 > 在现实世界的应用程序中，您可能有一些涉及多个操作的端点/处理程序，其中每个操作都需要一组特定的权限。
 > 在这种情况下，您必须提供一种机制来检查业务逻辑中的角色，这使维护变得有些困难，因为没有集中的地方将权限与特定的操作关联起来。
 
@@ -168,14 +187,19 @@ claim 是一个名称-值对，它表示主语可以做什么，而不是主语�
 每个用户都有一组被分配的权限。
 同样，每个资源/端点将定义需要哪些权限(例如，通过专用的`@RequirePermissions()`装饰器)来访问它们。
 
-```typescript
-@@filename(cats.controller)
+=== "cats.controller"
+
+```ts
 @Post()
 @RequirePermissions(Permission.CREATE_CAT)
 create(@Body() createCatDto: CreateCatDto) {
   this.catsService.create(createCatDto);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Post()
 @RequirePermissions(Permission.CREATE_CAT)
 @Bind(Body())
@@ -244,7 +268,9 @@ export enum Action {
 }
 ```
 
-> warning **Notice** `manage`是 CASL 中的一个特殊关键字，它表示`任何`操作。
+!!! warning
+
+    `manage`是 CASL 中的一个特殊关键字，它表示`任何`操作。
 
 为了封装 CASL 库，现在让我们生成`CaslModule`和`CaslAbilityFactory`。
 
@@ -286,7 +312,9 @@ export class CaslAbilityFactory {
 }
 ```
 
-> warning **Notice** `all`是 CASL 中一个特殊的关键字，代表`任何主题`。
+!!! warning
+
+    `all`是 CASL 中一个特殊的关键字，代表`任何主题`。
 
 !!! info "**Hint**"
 
@@ -485,7 +513,10 @@ findAll() {
 }
 ```
 
-> warning **Notice** 因为我们必须使用`new`关键字就地实例化策略处理程序，所以`ReadArticlePolicyHandler`类不能使用依赖注入。
+!!! warning
+
+    因为我们必须使用`new`关键字就地实例化策略处理程序，所以`ReadArticlePolicyHandler`类不能使用依赖注入。
+
 > 这可以通过`ModuleRef#get`方法来解决(详见[此处](/fundamentals/module-ref)).
 > 基本上，你必须允许传递一个`Type<IPolicyHandler>`，而不是通过`@CheckPolicies()`装饰器注册函数和实例。
 > 然后，在你的守卫内部，你可以使用类型引用`moduleRef.get(YOUR_HANDLER_TYPE)`来检索一个实例，或者甚至使用`ModuleRef#create`方法来动态实例化它。

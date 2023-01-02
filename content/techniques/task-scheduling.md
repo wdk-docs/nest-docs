@@ -17,15 +17,14 @@ $ npm install --save-dev @types/cron
 
 要激活作业调度，请将`ScheduleModule`导入到根模块`AppModule`中，并运行`forRoot()`静态方法，如下所示:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [
-    ScheduleModule.forRoot()
-  ],
+  imports: [ScheduleModule.forRoot()],
 })
 export class AppModule {}
 ```
@@ -288,7 +287,9 @@ addCronJob(name: string, seconds: string) {
 `CronJob` 构造函数的第一个参数是 cron 模式(就像 `@Cron()` [decorator](techniques/task-scheduling#declarative-cron-jobs))，第二个参数是 cron 计时器触发时执行的回调。
 `SchedulerRegistry.addCronJob()`方法有两个参数:`CronJob`的名称和`CronJob`对象本身。
 
-> warning **Warning** 记得在访问之前注入`SchedulerRegistry`。从`cron`包中导入`CronJob`。
+!!! warning
+
+    记得在访问之前注入`SchedulerRegistry`。从`cron`包中导入`CronJob`。
 
 使用`SchedulerRegistry.deleteCronJob()`方法 **删除** 一个名为`cron`的任务，如下所示:
 

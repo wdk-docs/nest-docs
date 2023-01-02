@@ -16,30 +16,32 @@ $ npm install --save typeorm mysql2
 
 The first step we need to do is to establish the connection with our database using `createConnection()` function imported from the `typeorm` package. The `createConnection()` function returns a `Promise`, and therefore we have to create an [async provider](/fundamentals/async-components).
 
-```typescript
-@@filename(database.providers)
+=== "database.providers"
+
+```ts
 import { createConnection } from 'typeorm';
 
 export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
-    useFactory: async () => await createConnection({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      entities: [
-          __dirname + '/../**/*.entity{.ts,.js}',
-      ],
-      synchronize: true,
-    }),
+    useFactory: async () =>
+      await createConnection({
+        type: 'mysql',
+        host: 'localhost',
+        port: 3306,
+        username: 'root',
+        password: 'root',
+        database: 'test',
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        synchronize: true,
+      }),
   },
 ];
 ```
 
-> warning **Warning** Setting `synchronize: true` shouldn't be used in production - otherwise you can lose production data.
+!!! warning
+
+    Setting `synchronize: true` shouldn't be used in production - otherwise you can lose production data.
 
 !!! info "**Hint**"
 
@@ -47,8 +49,9 @@ export const databaseProviders = [
 
 Then, we need to export these providers to make them **accessible** for the rest of the application.
 
-```typescript
-@@filename(database.module)
+=== "database.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { databaseProviders } from './database.providers';
 
@@ -67,8 +70,9 @@ The [TypeORM](https://github.com/typeorm/typeorm) supports the repository design
 
 But firstly, we need at least one entity. We are going to reuse the `Photo` entity from the official documentation.
 
-```typescript
-@@filename(photo.entity)
+=== "photo.entity"
+
+```ts
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -95,8 +99,9 @@ export class Photo {
 
 The `Photo` entity belongs to the `photo` directory. This directory represents the `PhotoModule`. Now, let's create a **Repository** provider:
 
-```typescript
-@@filename(photo.providers)
+=== "photo.providers"
+
+```ts
 import { Connection } from 'typeorm';
 import { Photo } from './photo.entity';
 
@@ -109,12 +114,15 @@ export const photoProviders = [
 ];
 ```
 
-> warning **Warning** In the real-world applications you should avoid **magic strings** . Both `PHOTO_REPOSITORY` and `DATABASE_CONNECTION` should be kept in the separated `constants.ts` file.
+!!! warning
+
+    In the real-world applications you should avoid **magic strings** . Both `PHOTO_REPOSITORY` and `DATABASE_CONNECTION` should be kept in the separated `constants.ts` file.
 
 Now we can inject the `Repository<Photo>` to the `PhotoService` using the `@Inject()` decorator:
 
-```typescript
-@@filename(photo.service)
+=== "photo.service"
+
+```ts
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Photo } from './photo.entity';
@@ -136,8 +144,9 @@ The database connection is **asynchronous** , but Nest makes this process comple
 
 Here is a final `PhotoModule`:
 
-```typescript
-@@filename(photo.module)
+=== "photo.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { photoProviders } from './photo.providers';
@@ -145,10 +154,7 @@ import { PhotoService } from './photo.service';
 
 @Module({
   imports: [DatabaseModule],
-  providers: [
-    ...photoProviders,
-    PhotoService,
-  ],
+  providers: [...photoProviders, PhotoService],
 })
 export class PhotoModule {}
 ```

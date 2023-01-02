@@ -26,8 +26,9 @@ $ npm i --save @nestjs/microservices
 
 要实例化一个微服务，使用`NestFactory`类的`createMicroservice()`方法:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 import { NestFactory } from '@nestjs/core';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import { AppModule } from './app.module';
@@ -42,7 +43,11 @@ async function bootstrap() {
   app.listen();
 }
 bootstrap();
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { NestFactory } from '@nestjs/core';
 import { Transport, MicroserviceOptions } from '@nestjs/microservices';
 import { AppModule } from './app.module';
@@ -121,8 +126,9 @@ bootstrap();
 这个装饰器应该只在[controller](https://docs.nestjs.com/controllers)类中使用，因为它们是应用程序的入口点。
 在提供程序中使用它们不会有任何影响，因为它们会被 Nest 运行时忽略。
 
-```typescript
-@@filename(math.controller)
+=== "math.controller"
+
+```ts
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
@@ -133,7 +139,11 @@ export class MathController {
     return (data || []).reduce((a, b) => a + b);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
@@ -155,13 +165,18 @@ export class MathController {
 消息处理程序能够同步或异步响应。
 因此，支持`async`方法。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern({ cmd: 'sum' })
 async accumulate(data: number[]): Promise<number> {
   return (data || []).reduce((a, b) => a + b);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @MessagePattern({ cmd: 'sum' })
 async accumulate(data) {
   return (data || []).reduce((a, b) => a + b);
@@ -170,13 +185,18 @@ async accumulate(data) {
 
 消息处理程序也能够返回一个`Observable`，在这种情况下，结果值将被触发，直到流完成。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern({ cmd: 'sum' })
 accumulate(data: number[]): Observable<number> {
   return from([1, 2, 3]);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @MessagePattern({ cmd: 'sum' })
 accumulate(data: number[]): Observable<number> {
   return from([1, 2, 3]);
@@ -195,13 +215,18 @@ accumulate(data: number[]): Observable<number> {
 
 要创建一个事件处理程序，我们使用`@EventPattern()`装饰器，它是从`@nestjs/microservices`包中导入的。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @EventPattern('user_created')
 async handleUserCreated(data: Record<string, unknown>) {
   // business logic
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @EventPattern('user_created')
 async handleUserCreated(data) {
   // business logic
@@ -222,14 +247,19 @@ async handleUserCreated(data) {
 同样，在 Kafka 中，你可能想要访问消息头。
 为了实现这一点，你可以像下面这样使用内置装饰器:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('time.us.*')
 getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
   console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
   return new Date().toLocaleTimeString(...);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('time.us.*')
 getDate(data, context) {
@@ -326,8 +356,9 @@ client: ClientProxy;
 相反，它将在第一次微服务调用之前建立，然后在每个后续调用之间重用。
 然而，如果你想要延迟应用程序的引导过程，直到连接建立，你可以使用`OnApplicationBootstrap`生命周期钩子中的`ClientProxy`对象的`connect()`方法手动启动一个连接。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 async onApplicationBootstrap() {
   await this.client.connect();
 }
@@ -341,14 +372,19 @@ If the connection cannot be created, the `connect()` method will reject with the
 这个方法的目的是调用微服务，并返回一个带有响应的 `Observable` 。
 因此，我们可以很容易地订阅发出的值。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 accumulate(): Observable<number> {
   const pattern = { cmd: 'sum' };
   const payload = [1, 2, 3];
   return this.client.send<number>(pattern, payload);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 accumulate() {
   const pattern = { cmd: 'sum' };
   const payload = [1, 2, 3];
@@ -366,12 +402,17 @@ accumulate() {
 要发送一个事件，请使用`ClientProxy`对象的`emit()`方法。
 此方法将事件发布到消息代理。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 async publish() {
   this.client.emit<number>('user_created', new UserCreatedEvent());
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 async publish() {
   this.client.emit('user_created', new UserCreatedEvent());
 }
@@ -390,7 +431,7 @@ async publish() {
 然而，在一些边缘情况下，基于请求的处理程序生命周期可能是所需的行为，例如 GraphQL 应用程序中的每个请求缓存、请求跟踪或多租户。
 了解如何控制范围[在这里](/基本面/注入范围)。
 
-请求作用域的处理程序和提供者可以使用`@Inject()`装饰器结合`CONTEXT`令牌来注入`RequestContext`:
+请求作用域的处理程序和提供器可以使用`@Inject()`装饰器结合`CONTEXT`令牌来注入`RequestContext`:
 
 ```typescript
 import { Injectable, Scope, Inject } from '@nestjs/common';
@@ -425,17 +466,19 @@ export interface RequestContext<T = any> {
 要解决这个问题，你必须使用[rxjs](https://github.com/ReactiveX/rxjs)包。
 只需在管道中使用 `timeout` 操作符:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 this.client
-      .send<TResult, TInput>(pattern, data)
-      .pipe(timeout(5000))
-      .toPromise();
-@@switch
-this.client
-      .send(pattern, data)
-      .pipe(timeout(5000))
-      .toPromise();
+  .send<TResult, TInput>(pattern, data)
+  .pipe(timeout(5000))
+  .toPromise();
+```
+
+=== "JavaScript"
+
+```js
+this.client.send(pattern, data).pipe(timeout(5000)).toPromise();
 ```
 
 !!! info "**Hint**"

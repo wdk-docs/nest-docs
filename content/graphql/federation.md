@@ -9,7 +9,9 @@ To quote the [Apollo docs](https://blog.apollographql.com/apollo-federation-f260
 - The graph should be simple for clients to consume. Together, federated services can form a complete, product-focused graph that accurately reflects how it’s being consumed on the client.
 - It’s just **GraphQL** , using only spec-compliant features of the language. Any language, not just JavaScript, can implement federation.
 
-> warning **Warning** Apollo Federation currently does not support subscriptions.
+!!! warning
+
+    Apollo Federation currently does not support subscriptions.
 
 In the next example, we'll set up a demo application with a gateway and two federated endpoints: a Users service and a Posts service.
 

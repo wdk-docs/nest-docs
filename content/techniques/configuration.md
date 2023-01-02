@@ -38,8 +38,9 @@ $ npm i --save @nestjs/config
 在此步骤中，将解析和解决环境变量键/值对。
 稍后，我们将在其他特性模块中看到访问`ConfigModule`类的`ConfigService`类的几个选项。
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -114,14 +115,15 @@ ConfigModule.forRoot({
 `process.env`对象将包含完全解析的环境变量键/值对(与`.env`文件和外部定义的变量解析并合并，如[上面](techniques/configuration#getting-started))所述。
 因为您控制返回的配置对象，所以您可以添加任何必需的逻辑来将值强制转换为适当的类型，设置默认值，等等... 例如:
 
-```typescript
-@@filename(config/configuration)
+=== "config/configuration"
+
+```ts
 export default () => ({
   port: parseInt(process.env.PORT, 10) || 3000,
   database: {
     host: process.env.DATABASE_HOST,
-    port: parseInt(process.env.DATABASE_PORT, 10) || 5432
-  }
+    port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
+  },
 });
 ```
 
@@ -169,8 +171,9 @@ $ npm i -D @types/js-yaml
 
 一旦安装了这个包，我们使用`yaml#load`函数来加载我们刚才创建的 yaml 文件。
 
-```typescript
-@@filename(config/configuration)
+=== "config/configuration"
+
+```ts
 import { readFileSync } from 'fs';
 import * as yaml from 'js-yaml';
 import { join } from 'path';
@@ -192,8 +195,9 @@ export default () => {
 与任何提供器一样，我们需要将其包含的模块- ConfigModule -导入到将要使用它的模块中(除非你将传递给`ConfigModule.forroot()`方法的选项对象中的`isGlobal`属性设置为`true`)。
 将其导入特性模块中，如下所示。
 
-```typescript
-@@filename(feature.module)
+=== "feature.module"
+
+```ts
 @Module({
   imports: [ConfigModule],
   // ...
@@ -292,11 +296,12 @@ ConfigModule 允许你定义和加载多个自定义配置文件，如上面[自
 您可以使用嵌套的配置对象管理复杂的配置对象层次结构，如该部分所示。
 或者，你可以用`registerAs()`函数返回一个"命名空间"的配置对象，如下所示:
 
-```typescript
-@@filename(config/database.config)
+=== "config/database.config"
+
+```ts
 export default registerAs('database', () => ({
   host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT || 5432
+  port: process.env.DATABASE_PORT || 5432,
 }));
 ```
 
@@ -382,12 +387,15 @@ export class DatabaseModule {}
 $ npm install --save joi
 ```
 
-> warning **Notice** “joi”的最新版本要求您运行的是 Node v12 或更高版本。对于较老版本的节点，请安装`v16.1.8`。这主要是在“v17.0.2”发布之后，它会在构建时导致错误。更多信息，请参考他们的[17.0.0 发布说明](https://github.com/sideway/joi/issues/2262)。
+!!! warning
+
+    “joi”的最新版本要求您运行的是 Node v12 或更高版本。对于较老版本的节点，请安装`v16.1.8`。这主要是在“v17.0.2”发布之后，它会在构建时导致错误。更多信息，请参考他们的[17.0.0 发布说明](https://github.com/sideway/joi/issues/2262)。
 
 现在我们可以定义一个 Joi 验证模式，并通过`forRoot()`方法的 options 对象的`validationSchema`属性传递它，如下所示:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import * as Joi from 'joi';
 
 @Module({
@@ -417,8 +425,9 @@ export class AppModule {}
 这个选项对象可以包含由[Joi validation options](https://joi.dev/api/?v=17.3.0#anyvalidatevalue-options)提供的任何标准验证选项属性。
 例如，要反转上面的两个设置，可以这样传递选项:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import * as Joi from 'joi';
 
 @Module({
@@ -459,16 +468,17 @@ export class AppModule {}
 - 一个有验证约束的类，
 - 使用`plainToClass`和`validateSync`函数的验证函数。
 
-```typescript
-@@filename(env.validation)
+=== "env.validation"
+
+```ts
 import { plainToClass } from 'class-transformer';
 import { IsEnum, IsNumber, validateSync } from 'class-validator';
 
 enum Environment {
-  Development = "development",
-  Production = "production",
-  Test = "test",
-  Provision = "provision",
+  Development = 'development',
+  Production = 'production',
+  Test = 'test',
+  Provision = 'provision',
 }
 
 class EnvironmentVariables {
@@ -480,12 +490,12 @@ class EnvironmentVariables {
 }
 
 export function validate(config: Record<string, unknown>) {
-  const validatedConfig = plainToClass(
-    EnvironmentVariables,
-    config,
-    { enableImplicitConversion: true },
-  );
-  const errors = validateSync(validatedConfig, { skipMissingProperties: false });
+  const validatedConfig = plainToClass(EnvironmentVariables, config, {
+    enableImplicitConversion: true,
+  });
+  const errors = validateSync(validatedConfig, {
+    skipMissingProperties: false,
+  });
 
   if (errors.length > 0) {
     throw new Error(errors.toString());
@@ -496,8 +506,9 @@ export function validate(config: Record<string, unknown>) {
 
 在这里，使用`validate`函数作为`ConfigModule`的配置选项，如下所示:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 import { validate } from './env.validation';
 
 @Module({
@@ -515,8 +526,9 @@ export class AppModule {}
 `ConfigService`定义了一个通用的`get()`方法来按键检索配置值。
 我们还可以添加`getter`函数来实现更自然的编码风格:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @Injectable()
 export class ApiConfigService {
   constructor(private configService: ConfigService) {}
@@ -525,7 +537,11 @@ export class ApiConfigService {
     return this.configService.get('AUTH_ENABLED') === 'true';
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Dependencies(ConfigService)
 @Injectable()
 export class ApiConfigService {
@@ -541,8 +557,9 @@ export class ApiConfigService {
 
 现在我们可以像下面这样使用 getter 函数:
 
-```typescript
-@@filename(app.service)
+=== "app.service"
+
+```ts
 @Injectable()
 export class AppService {
   constructor(apiConfigService: ApiConfigService) {
@@ -551,7 +568,11 @@ export class AppService {
     }
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Dependencies(ApiConfigService)
 @Injectable()
 export class AppService {
@@ -582,8 +603,9 @@ SUPPORT_EMAIL=support@${APP_URL}
 
 在传递给`ConfigModule`的`forRoot()`方法的 options 对象中，使用`expandVariables`属性启用环境变量展开，如下所示:
 
-```typescript
-@@filename(app.module)
+=== "app.module"
+
+```ts
 @Module({
   imports: [
     ConfigModule.forRoot({

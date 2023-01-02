@@ -24,8 +24,9 @@ throw new RpcException('Invalid credentials.');
 微服务异常过滤器的行为类似于 HTTP 异常过滤器，只有一个小区别。
 `catch()`方法必须返回一个`Observable`。
 
-```typescript
-@@filename(rpc-exception.filter)
+=== "rpc-exception.filter"
+
+```ts
 import { Catch, RpcExceptionFilter, ArgumentsHost } from '@nestjs/common';
 import { Observable, throwError } from 'rxjs';
 import { RpcException } from '@nestjs/microservices';
@@ -36,7 +37,11 @@ export class ExceptionFilter implements RpcExceptionFilter<RpcException> {
     return throwError(exception.getError());
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Catch } from '@nestjs/common';
 import { throwError } from 'rxjs';
 
@@ -48,19 +53,26 @@ export class ExceptionFilter {
 }
 ```
 
-> warning **Warning** 当使用[混合应用程序](/faq/hybrid-application)时，默认情况下全局微服务异常过滤器不启用.
+!!! warning
+
+    当使用[混合应用程序](/faq/hybrid-application)时，默认情况下全局微服务异常过滤器不启用.
 
 下面的示例使用一个手动实例化的方法范围的过滤器。
 就像基于 HTTP 的应用程序一样，您也可以使用控制器作用域的过滤器(即，在控制器类前面加上 `@UseFilters()` 装饰器)。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @UseFilters(new ExceptionFilter())
 @MessagePattern({ cmd: 'sum' })
 accumulate(data: number[]): number {
   return (data || []).reduce((a, b) => a + b);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @UseFilters(new ExceptionFilter())
 @MessagePattern({ cmd: 'sum' })
 accumulate(data) {
@@ -75,8 +87,9 @@ accumulate(data) {
 
 为了将异常处理委托给基本过滤器，你需要扩展 `BaseExceptionFilter` 并调用继承的`catch()`方法。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 import { Catch, ArgumentsHost } from '@nestjs/common';
 import { BaseRpcExceptionFilter } from '@nestjs/microservices';
 
@@ -86,7 +99,11 @@ export class AllExceptionsFilter extends BaseRpcExceptionFilter {
     return super.catch(exception, host);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Catch } from '@nestjs/common';
 import { BaseRpcExceptionFilter } from '@nestjs/microservices';
 

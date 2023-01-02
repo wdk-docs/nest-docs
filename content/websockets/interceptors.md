@@ -4,15 +4,20 @@
 下面的示例使用手动实例化的 method-scoped 的拦截器。
 就像基于 HTTP 的应用程序一样，你也可以使用网关范围的拦截器(例如，在网关类的前缀加上一个`@UseInterceptors()`装饰器)。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @UseInterceptors(new TransformInterceptor())
 @SubscribeMessage('events')
 handleEvent(client: Client, data: unknown): WsResponse<unknown> {
   const event = 'events';
   return { event, data };
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @UseInterceptors(new TransformInterceptor())
 @SubscribeMessage('events')
 handleEvent(client, data) {

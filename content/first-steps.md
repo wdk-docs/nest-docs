@@ -40,7 +40,7 @@ $ nest new project-name
 
 以下是这些核心文件的简要概述:
 
-|                          |                                                                             |
+| 文件                     | 描述                                                                        |
 | ------------------------ | --------------------------------------------------------------------------- |
 | `app.controller.ts`      | 具有单一路由的基本控制器。                                                  |
 | `app.controller.spec.ts` | 单元测试控制器。                                                            |
@@ -50,27 +50,31 @@ $ nest new project-name
 
 `main.ts` 包含一个 async 函数，它将引导我们的应用程序:
 
-```typescript
-@@filename(main)
+=== "main.ts"
 
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+    ```ts
+    import { NestFactory } from '@nestjs/core';
+    import { AppModule } from './app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
-}
-bootstrap();
-@@switch
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+    async function bootstrap() {
+      const app = await NestFactory.create(AppModule);
+      await app.listen(3000);
+    }
+    bootstrap();
+    ```
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
-}
-bootstrap();
-```
+=== "main.js"
+
+    ```js
+    import { NestFactory } from '@nestjs/core';
+    import { AppModule } from './app.module';
+
+    async function bootstrap() {
+      const app = await NestFactory.create(AppModule);
+      await app.listen(3000);
+    }
+    bootstrap();
+    ```
 
 为了创建一个 Nest 应用实例，我们使用了核心的`NestFactory`类。
 `NestFactory`公开了一些静态方法，它们允许创建应用实例。
@@ -88,10 +92,10 @@ Nest 的目标是成为一个平台无关的框架。
 目前支持两种即时可用的 HTTP 平台:[express](https://expressjs.com/)和[fastify](https://www.fastify.io)。
 你可以选择最适合你需要的。
 
-|                    |                                                                                                                                                                                                                                          |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `platform-express` | [Express](https://expressjs.com/)是一个著名的极简节点 web 框架。这是一个经过实战测试的、可用于生产的库，由社区实现了大量资源。默认使用`@nestjs/platform-express`包。Express 为许多用户提供了良好的服务，不需要采取任何行动就可以启用它。 |
-| `platform-fastify` | [Fastify](https://www.fastify.io/)是一个高性能和低开销的框架，高度专注于提供最大的效率和速度。阅读如何使用它[此处](/techniques/performance)。                                                                                            |
+| 平台               | 描述                                                                                                                                                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `platform-express` | [Express][express]是一个著名的极简节点 web 框架。这是一个经过实战测试的、可用于生产的库，由社区实现了大量资源。默认使用`@nestjs/platform-express`包。Express 为许多用户提供了良好的服务，不需要采取任何行动就可以启用它。 |
+| `platform-fastify` | [Fastify][fastify]是一个高性能和低开销的框架，高度专注于提供最大的效率和速度。阅读如何使用它[此处](/techniques/performance)。                                                                                             |
 
 无论使用哪个平台，它都公开自己的应用程序接口。
 它们分别被视为`NestExpressApplication`和`NestFastifyApplication`。
@@ -102,6 +106,9 @@ Nest 的目标是成为一个平台无关的框架。
 ```typescript
 const app = await NestFactory.create<NestExpressApplication>(AppModule);
 ```
+
+[express]: https://expressjs.com/
+[fastify]: https://www.fastify.io/
 
 ## 运行应用
 

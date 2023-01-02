@@ -41,8 +41,9 @@ onEvent(client, data: any): WsResponse<any> {
 
 为了将异常处理委托给基本过滤器，你需要扩展`BaseWsExceptionFilter`并调用继承的`catch()`方法。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 import { Catch, ArgumentsHost } from '@nestjs/common';
 import { BaseWsExceptionFilter } from '@nestjs/websockets';
 
@@ -52,7 +53,11 @@ export class AllExceptionsFilter extends BaseWsExceptionFilter {
     super.catch(exception, host);
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Catch } from '@nestjs/common';
 import { BaseWsExceptionFilter } from '@nestjs/websockets';
 

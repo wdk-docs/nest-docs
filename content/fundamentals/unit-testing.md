@@ -35,58 +35,62 @@ $ npm i --save-dev @nestjs/testing
 它充当测试运行器，还提供断言函数和 test-double 实用程序，以帮助模拟、监视等。
 在接下来的基本测试中，我们手动实例化这些类，并确保控制器和服务履行它们的 API 契约。
 
-```typescript
-@@filename(cats.controller.spec)
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+=== "cats.controller.spec.ts"
 
-describe('CatsController', () => {
-  let catsController: CatsController;
-  let catsService: CatsService;
+    ```ts
+    import { CatsController } from './cats.controller';
+    import { CatsService } from './cats.service';
 
-  beforeEach(() => {
-    catsService = new CatsService();
-    catsController = new CatsController(catsService);
-  });
+    describe('CatsController', () => {
+      let catsController: CatsController;
+      let catsService: CatsService;
 
-  describe('findAll', () => {
-    it('should return an array of cats', async () => {
-      const result = ['test'];
-      jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+      beforeEach(() => {
+        catsService = new CatsService();
+        catsController = new CatsController(catsService);
+      });
 
-      expect(await catsController.findAll()).toBe(result);
+      describe('findAll', () => {
+        it('should return an array of cats', async () => {
+          const result = ['test'];
+          jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+
+          expect(await catsController.findAll()).toBe(result);
+        });
+      });
     });
-  });
-});
-@@switch
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+    ```
 
-describe('CatsController', () => {
-  let catsController;
-  let catsService;
+=== "cats.controller.spec.js"
 
-  beforeEach(() => {
-    catsService = new CatsService();
-    catsController = new CatsController(catsService);
-  });
+    ```js
+    import { CatsController } from './cats.controller';
+    import { CatsService } from './cats.service';
 
-  describe('findAll', () => {
-    it('should return an array of cats', async () => {
-      const result = ['test'];
-      jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+    describe('CatsController', () => {
+      let catsController;
+      let catsService;
 
-      expect(await catsController.findAll()).toBe(result);
+      beforeEach(() => {
+        catsService = new CatsService();
+        catsController = new CatsController(catsService);
+      });
+
+      describe('findAll', () => {
+        it('should return an array of cats', async () => {
+          const result = ['test'];
+          jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+
+          expect(await catsController.findAll()).toBe(result);
+        });
+      });
     });
-  });
-});
-```
+    ```
 
 !!! info "**Hint**"
 
     Keep your test files located near the classes they test.
-
-> Testing files should have a `.spec` or `.test` suffix.
+    Testing files should have a `.spec` or `.test` suffix.
 
 因为上面的示例很简单，所以我们并没有真正测试任何特定于 nest 的东西。
 事实上，我们甚至没有使用依赖注入(注意，我们传递了一个`CatsService`的实例给`catsController`)。
@@ -98,64 +102,69 @@ describe('CatsController', () => {
 `@nestjs/testing`包提供了一组实用程序，支持更健壮的测试过程。
 让我们用内置的`Test`类重写前面的例子:
 
-```typescript
-@@filename(cats.controller.spec)
-import { Test } from '@nestjs/testing';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+=== "cats.controller.spec.ts"
 
-describe('CatsController', () => {
-  let catsController: CatsController;
-  let catsService: CatsService;
+    ```ts
+    import { Test } from '@nestjs/testing';
+    import { CatsController } from './cats.controller';
+    import { CatsService } from './cats.service';
 
-  beforeEach(async () => {
-    const moduleRef = await Test.createTestingModule({
-        controllers: [CatsController],
-        providers: [CatsService],
-      }).compile();
+    describe('CatsController', () => {
+      let catsController: CatsController;
+      let catsService: CatsService;
 
-    catsService = moduleRef.get<CatsService>(CatsService);
-    catsController = moduleRef.get<CatsController>(CatsController);
-  });
+      beforeEach(async () => {
+        const moduleRef = await Test.createTestingModule({
+          controllers: [CatsController],
+          providers: [CatsService],
+        }).compile();
 
-  describe('findAll', () => {
-    it('should return an array of cats', async () => {
-      const result = ['test'];
-      jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+        catsService = moduleRef.get<CatsService>(CatsService);
+        catsController = moduleRef.get<CatsController>(CatsController);
+      });
 
-      expect(await catsController.findAll()).toBe(result);
+      describe('findAll', () => {
+        it('should return an array of cats', async () => {
+          const result = ['test'];
+          jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+
+          expect(await catsController.findAll()).toBe(result);
+        });
+      });
     });
-  });
-});
-@@switch
-import { Test } from '@nestjs/testing';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+    ```
 
-describe('CatsController', () => {
-  let catsController;
-  let catsService;
+=== "cats.controller.spec.js"
 
-  beforeEach(async () => {
-    const moduleRef = await Test.createTestingModule({
-        controllers: [CatsController],
-        providers: [CatsService],
-      }).compile();
+    ```js
+    import { Test } from '@nestjs/testing';
+    import { CatsController } from './cats.controller';
+    import { CatsService } from './cats.service';
 
-    catsService = moduleRef.get(CatsService);
-    catsController = moduleRef.get(CatsController);
-  });
+    describe('CatsController', () => {
+      let catsController;
+      let catsService;
 
-  describe('findAll', () => {
-    it('should return an array of cats', async () => {
-      const result = ['test'];
-      jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+      beforeEach(async () => {
+        const moduleRef = await Test.createTestingModule({
+          controllers: [CatsController],
+          providers: [CatsService],
+        }).compile();
 
-      expect(await catsController.findAll()).toBe(result);
+        catsService = moduleRef.get(CatsService);
+        catsController = moduleRef.get(CatsController);
+      });
+
+      describe('findAll', () => {
+        it('should return an array of cats', async () => {
+          const result = ['test'];
+          jest.spyOn(catsService, 'findAll').mockImplementation(() => result);
+
+          expect(await catsController.findAll()).toBe(result);
+        });
+      });
     });
-  });
-});
-```
+    ```
 
 “Test”类在提供应用程序执行上下文时非常有用，该上下文实际上模拟了完整的 Nest 运行时，但它提供了一些钩子，使管理类实例变得容易，包括模拟和覆盖。
 `Test`类有一个`createTestingModule()`方法，它接受一个模块元数据对象作为它的参数(与你传递给`@Module()`装饰器的对象相同)。
@@ -166,8 +175,7 @@ describe('CatsController', () => {
 !!! info "**Hint**"
 
     The `compile()` method is **asynchronous** and therefore has to be awaited.
-
-> Once the module is compiled you can retrieve any **static** instance it declares (controllers and providers) using the `get()` method.
+    Once the module is compiled you can retrieve any **static** instance it declares (controllers and providers) using the `get()` method.
 
 `TestingModule` inherits from the [module reference](/fundamentals/module-ref) class, and therefore its ability to dynamically resolve scoped providers (transient or request-scoped).
 Do this with the `resolve()` method (the `get()` method can only retrieve static instances).
@@ -181,9 +189,11 @@ const moduleRef = await Test.createTestingModule({
 catsService = await moduleRef.resolve(CatsService);
 ```
 
-> warning **Warning** The `resolve()` method returns a unique instance of the provider, from its own **DI container sub-tree** .
-> Each sub-tree has a unique context identifier.
-> Thus, if you call this method more than once and compare instance references, you will see that they are not equal.
+!!! warning
+
+    The `resolve()` method returns a unique instance of the provider, from its own **DI container sub-tree** .
+    Each sub-tree has a unique context identifier.
+    Thus, if you call this method more than once and compare instance references, you will see that they are not equal.
 
 !!! info "**Hint**"
 
@@ -193,7 +203,7 @@ Instead of using the production version of any provider, you can override it wit
 For example, you can mock a database service instead of connecting to a live database.
 We'll cover overrides in the next section, but they're available for unit tests as well.
 
-## Auto mocking
+## 自动嘲笑
 
 Nest 还允许您定义一个模拟工厂，以应用于所有丢失的依赖项。
 这对于在一个类中有大量依赖项，并且模拟所有依赖项将花费很长时间和大量设置的情况很有用。
@@ -234,7 +244,7 @@ describe('CatsController', () => {
 
     A general mock factory, like `createMock` from [`@golevelup/ts-jest`](https://github.com/golevelup/nestjs/tree/master/packages/testing) can also be passed directly.
 
-You can also retrieve these mocks out of the testing container as you normally would custom providers, `moduleRef.get(CatsService)`.
+您也可以像通常会自定义提供商一样从测试容器中检索这些模型, `moduleRef.get(CatsService)`.
 
 ## 端到端测试
 
@@ -244,113 +254,112 @@ You can also retrieve these mocks out of the testing container as you normally w
 为了执行端到端测试，我们使用了与刚刚在 **单元测试** 中介绍的配置类似的配置。
 此外，Nest 可以很容易地使用[Supertest](https://github.com/visionmedia/supertest)库来模拟 HTTP 请求。
 
-```typescript
-@@filename(cats.e2e-spec)
-import * as request from 'supertest';
-import { Test } from '@nestjs/testing';
-import { CatsModule } from '../../src/cats/cats.module';
-import { CatsService } from '../../src/cats/cats.service';
-import { INestApplication } from '@nestjs/common';
+=== "cats.e2e-spec.ts"
 
-describe('Cats', () => {
-  let app: INestApplication;
-  let catsService = { findAll: () => ['test'] };
+    ```ts
+    import * as request from 'supertest';
+    import { Test } from '@nestjs/testing';
+    import { CatsModule } from '../../src/cats/cats.module';
+    import { CatsService } from '../../src/cats/cats.service';
+    import { INestApplication } from '@nestjs/common';
 
-  beforeAll(async () => {
-    const moduleRef = await Test.createTestingModule({
-      imports: [CatsModule],
-    })
-      .overrideProvider(CatsService)
-      .useValue(catsService)
-      .compile();
+    describe('Cats', () => {
+      let app: INestApplication;
+      let catsService = { findAll: () => ['test'] };
 
-    app = moduleRef.createNestApplication();
-    await app.init();
-  });
+      beforeAll(async () => {
+        const moduleRef = await Test.createTestingModule({
+          imports: [CatsModule],
+        })
+          .overrideProvider(CatsService)
+          .useValue(catsService)
+          .compile();
 
-  it(`/GET cats`, () => {
-    return request(app.getHttpServer())
-      .get('/cats')
-      .expect(200)
-      .expect({
-        data: catsService.findAll(),
+        app = moduleRef.createNestApplication();
+        await app.init();
       });
-  });
 
-  afterAll(async () => {
-    await app.close();
-  });
-});
-@@switch
-import * as request from 'supertest';
-import { Test } from '@nestjs/testing';
-import { CatsModule } from '../../src/cats/cats.module';
-import { CatsService } from '../../src/cats/cats.service';
-import { INestApplication } from '@nestjs/common';
-
-describe('Cats', () => {
-  let app: INestApplication;
-  let catsService = { findAll: () => ['test'] };
-
-  beforeAll(async () => {
-    const moduleRef = await Test.createTestingModule({
-      imports: [CatsModule],
-    })
-      .overrideProvider(CatsService)
-      .useValue(catsService)
-      .compile();
-
-    app = moduleRef.createNestApplication();
-    await app.init();
-  });
-
-  it(`/GET cats`, () => {
-    return request(app.getHttpServer())
-      .get('/cats')
-      .expect(200)
-      .expect({
-        data: catsService.findAll(),
+      it(`/GET cats`, () => {
+        return request(app.getHttpServer()).get('/cats').expect(200).expect({
+          data: catsService.findAll(),
+        });
       });
-  });
 
-  afterAll(async () => {
-    await app.close();
-  });
-});
-```
+      afterAll(async () => {
+        await app.close();
+      });
+    });
+    ```
+
+=== "cats.e2e-spec.js"
+
+    ```js
+    import * as request from 'supertest';
+    import { Test } from '@nestjs/testing';
+    import { CatsModule } from '../../src/cats/cats.module';
+    import { CatsService } from '../../src/cats/cats.service';
+    import { INestApplication } from '@nestjs/common';
+
+    describe('Cats', () => {
+      let app: INestApplication;
+      let catsService = { findAll: () => ['test'] };
+
+      beforeAll(async () => {
+        const moduleRef = await Test.createTestingModule({
+          imports: [CatsModule],
+        })
+          .overrideProvider(CatsService)
+          .useValue(catsService)
+          .compile();
+
+        app = moduleRef.createNestApplication();
+        await app.init();
+      });
+
+      it(`/GET cats`, () => {
+        return request(app.getHttpServer()).get('/cats').expect(200).expect({
+          data: catsService.findAll(),
+        });
+      });
+
+      afterAll(async () => {
+        await app.close();
+      });
+    });
+    ```
 
 !!! info "**Hint**"
 
     If you're using [Fastify](/techniques/performance) as your HTTP adapter, it requires a slightly different configuration, and has built-in testing capabilities:
 
-> ```ts
-> let app: NestFastifyApplication;
->
-> beforeAll(async () => {
->   app = moduleRef.createNestApplication<NestFastifyApplication>(
->     new FastifyAdapter(),
->   );
->
->   await app.init();
->   await app.getHttpAdapter().getInstance().ready();
-> });
->
-> it(`/GET cats`, () => {
->   return app
->     .inject({
->       method: 'GET',
->       url: '/cats',
->     })
->     .then((result) => {
->       expect(result.statusCode).toEqual(200);
->       expect(result.payload).toEqual(/* expectedPayload */);
->     });
-> });
->
-> afterAll(async () => {
->   await app.close();
-> });
-> ```
+    ```ts
+    let app: NestFastifyApplication;
+
+    beforeAll(async () => {
+      app = moduleRef.createNestApplication<NestFastifyApplication>(
+        new FastifyAdapter(),
+      );
+
+      await app.init();
+      await app.getHttpAdapter().getInstance().ready();
+    });
+
+    it(`/GET cats`, () => {
+      return app
+        .inject({
+          method: 'GET',
+          url: '/cats',
+        })
+        .then((result) => {
+          expect(result.statusCode).toEqual(200);
+          expect(result.payload).toEqual(/* expectedPayload */);
+        });
+    });
+
+    afterAll(async () => {
+      await app.close();
+    });
+    ```
 
 In this example, we build on some of the concepts described earlier.
 In addition to the `compile()` method we used earlier, we now use the `createNestApplication()` method to instantiate a full Nest runtime environment.
@@ -430,8 +439,7 @@ Inherited from the <a href="/fundamentals/module-ref">module reference</a> class
 !!! info "**Hint**"
 
     Keep your e2e test files inside the `test` directory.
-
-> The testing files should have a `.e2e-spec` suffix.
+    The testing files should have a `.e2e-spec` suffix.
 
 ## 重写全局注册的增强子
 

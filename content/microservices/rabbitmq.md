@@ -17,26 +17,34 @@ $ npm i --save amqplib amqp-connection-manager
 
 要使用 RabbitMQ 传输器，需要将以下选项对象传递给 `createMicroservice()` 方法:
 
-```typescript
-@@filename(main)
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-  transport: Transport.RMQ,
-  options: {
-    urls: ['amqp://localhost:5672'],
-    queue: 'cats_queue',
-    queueOptions: {
-      durable: false
+=== "main"
+
+```ts
+const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  AppModule,
+  {
+    transport: Transport.RMQ,
+    options: {
+      urls: ['amqp://localhost:5672'],
+      queue: 'cats_queue',
+      queueOptions: {
+        durable: false,
+      },
     },
   },
-});
-@@switch
+);
+```
+
+=== "JavaScript"
+
+```js
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.RMQ,
   options: {
     urls: ['amqp://localhost:5672'],
     queue: 'cats_queue',
     queueOptions: {
-      durable: false
+      durable: false,
     },
   },
 });
@@ -123,13 +131,18 @@ const app = await NestFactory.createMicroservice(AppModule, {
 在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
 当使用 RabbitMQ 传输器时，你可以访问`RmqContext`对象。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
   console.log(`Pattern: ${context.getPattern()}`);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -143,13 +156,18 @@ getNotifications(data, context) {
 
 要访问原始的 RabbitMQ 消息 (with the `properties`, `fields`, and `content`), 使用`RmqContext`对象的`getMessage()`方法, 如下:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
   console.log(context.getMessage());
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -159,13 +177,18 @@ getNotifications(data, context) {
 
 获取对 RabbitMQ [channel](https://www.rabbitmq.com/channels.html)的引用, 使用`RmqContext`对象的`getChannelRef`方法，如下所示:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
   console.log(context.getChannelRef());
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -194,8 +217,9 @@ options: {
 
 当手动使用者确认被打开时，我们必须从工作者发送一个适当的确认，以表明我们完成了一个任务。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
   const channel = context.getChannelRef();
@@ -203,7 +227,11 @@ getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
 
   channel.ack(originalMsg);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -239,14 +267,19 @@ this.client.send('replace-emoji', record).subscribe(...);
 
 你也可以在服务器端读取这些值，通过访问`RmqContext`，如下所示:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('replace-emoji')
 replaceEmoji(@Payload() data: string, @Ctx() context: RmqContext): string {
   const { properties: { headers } } = context.getMessage();
   return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('replace-emoji')
 replaceEmoji(data, context) {

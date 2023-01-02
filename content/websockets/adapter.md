@@ -102,8 +102,9 @@ app.useWebSocketAdapter(new WsAdapter(app));
 正如前面提到的，这个库的适配器已经创建，并作为一个`WsAdapter`类从`@nestjs/platform-ws`包中公开。
 下面是简化后的实现可能看起来的样子:
 
-```typescript
-@@filename(ws-adapter)
+=== "ws-adapter"
+
+```ts
 import * as WebSocket from 'ws';
 import { WebSocketAdapter, INestApplicationContext } from '@nestjs/common';
 import { MessageMappingProperties } from '@nestjs/websockets';
@@ -128,10 +129,10 @@ export class WsAdapter implements WebSocketAdapter {
   ) {
     fromEvent(client, 'message')
       .pipe(
-        mergeMap(data => this.bindMessageHandler(data, handlers, process)),
-        filter(result => result),
+        mergeMap((data) => this.bindMessageHandler(data, handlers, process)),
+        filter((result) => result),
       )
-      .subscribe(response => client.send(JSON.stringify(response)));
+      .subscribe((response) => client.send(JSON.stringify(response)));
   }
 
   bindMessageHandler(
@@ -141,7 +142,7 @@ export class WsAdapter implements WebSocketAdapter {
   ): Observable<any> {
     const message = JSON.parse(buffer.data);
     const messageHandler = handlers.find(
-      handler => handler.message === message.event,
+      (handler) => handler.message === message.event,
     );
     if (!messageHandler) {
       return EMPTY;
@@ -161,8 +162,9 @@ export class WsAdapter implements WebSocketAdapter {
 
 然后，我们可以使用`useWebSocketAdapter()`方法设置自定义适配器:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 const app = await NestFactory.create(AppModule);
 app.useWebSocketAdapter(new WsAdapter(app));
 ```

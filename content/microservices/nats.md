@@ -17,15 +17,23 @@ $ npm i --save nats
 
 要使用 NATS 传输器，将以下选项对象传递给`createMicroservice()`方法:
 
-```typescript
-@@filename(main)
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-  transport: Transport.NATS,
-  options: {
-    servers: ['nats://localhost:4222'],
+=== "main"
+
+```ts
+const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+  AppModule,
+  {
+    transport: Transport.NATS,
+    options: {
+      servers: ['nats://localhost:4222'],
+    },
   },
-});
-@@switch
+);
+```
+
+=== "JavaScript"
+
+```js
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.NATS,
   options: {
@@ -91,8 +99,9 @@ NATS 传输器公开了[此处](https://github.com/nats-io/node-nats#connect-opt
 NATS 提供了一个称为[分布式队列](https://docs.nats.io/nats-concepts/queue)的内置负载平衡特性。
 要创建队列订阅，使用 `queue` 属性如下所示:
 
-```typescript
-@@filename(main)
+=== "main"
+
+```ts
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.NATS,
   options: {
@@ -107,13 +116,18 @@ const app = await NestFactory.createMicroservice(AppModule, {
 在更复杂的场景中，您可能希望访问关于传入请求的更多信息。
 当使用 NATS 传输器时，您可以访问 `NatsContext` 对象。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('notifications')
 getNotifications(@Payload() data: number[], @Ctx() context: NatsContext) {
   console.log(`Subject: ${context.getSubject()}`);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('notifications')
 getNotifications(data, context) {
@@ -129,14 +143,19 @@ getNotifications(data, context) {
 
 订阅可以是对显式主题的订阅，也可以包括通配符。
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('time.us.*')
 getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
   console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
   return new Date().toLocaleTimeString(...);
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('time.us.*')
 getDate(data, context) {
@@ -167,14 +186,19 @@ this.client.send('replace-emoji', record).subscribe(...);
 
 你也可以在服务器端读取这些头文件，通过访问 `NatsContext` ，如下所示:
 
-```typescript
-@@filename()
+=== "TypeScript"
+
+```ts
 @MessagePattern('replace-emoji')
 replaceEmoji(@Payload() data: string, @Ctx() context: NatsContext): string {
   const headers = context.getHeaders();
   return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 @Bind(Payload(), Ctx())
 @MessagePattern('replace-emoji')
 replaceEmoji(data, context) {

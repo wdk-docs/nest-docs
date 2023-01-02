@@ -15,8 +15,9 @@ $ npm install --save mongoose
 我们需要做的第一步是使用`connect()`函数建立与数据库的连接。
 `connect()`函数返回一个`Promise`，因此我们必须创建一个[async provider](/fundamentals/async-components).
 
-```typescript
-@@filename(database.providers)
+=== "database.providers"
+
+```ts
 import * as mongoose from 'mongoose';
 
 export const databaseProviders = [
@@ -26,7 +27,11 @@ export const databaseProviders = [
       mongoose.connect('mongodb://localhost/nest'),
   },
 ];
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import * as mongoose from 'mongoose';
 
 export const databaseProviders = [
@@ -41,8 +46,9 @@ export const databaseProviders = [
 
 然后，我们需要导出这些提供器，使应用程序的其余部分能够访问它们。
 
-```typescript
-@@filename(database.module)
+=== "database.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { databaseProviders } from './database.providers';
 
@@ -60,8 +66,9 @@ export class DatabaseModule {}
 
 使用 Mongoose，一切都是从[Schema](https://mongoosejs.com/docs/guide.html)派生出来的。让我们定义`CatSchema`:
 
-```typescript
-@@filename(schemas/cat.schema)
+=== "schemas/cat.schema"
+
+```ts
 import * as mongoose from 'mongoose';
 
 export const CatSchema = new mongoose.Schema({
@@ -75,8 +82,9 @@ export const CatSchema = new mongoose.Schema({
 
 现在是时候创建一个 **Model** provider 了:
 
-```typescript
-@@filename(cats.providers)
+=== "cats.providers"
+
+```ts
 import { Connection } from 'mongoose';
 import { CatSchema } from './schemas/cat.schema';
 
@@ -87,7 +95,11 @@ export const catsProviders = [
     inject: ['DATABASE_CONNECTION'],
   },
 ];
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { CatSchema } from './schemas/cat.schema';
 
 export const catsProviders = [
@@ -103,8 +115,9 @@ export const catsProviders = [
 
 现在我们可以使用`@Inject()`装饰器将`CAT_MODEL`注入到`CatsService`中:
 
-```typescript
-@@filename(cats.service)
+=== "cats.service"
+
+```ts
 import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
 import { Cat } from './interfaces/cat.interface';
@@ -126,7 +139,11 @@ export class CatsService {
     return this.catModel.find().exec();
   }
 }
-@@switch
+```
+
+=== "JavaScript"
+
+```js
 import { Injectable, Dependencies } from '@nestjs/common';
 
 @Injectable()
@@ -166,8 +183,9 @@ The database connection is **asynchronous** , but Nest makes this process comple
 
 这是最后一个`CatsModule`:
 
-```typescript
-@@filename(cats.module)
+=== "cats.module"
+
+```ts
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
@@ -177,10 +195,7 @@ import { DatabaseModule } from '../database/database.module';
 @Module({
   imports: [DatabaseModule],
   controllers: [CatsController],
-  providers: [
-    CatsService,
-    ...catsProviders,
-  ],
+  providers: [CatsService, ...catsProviders],
 })
 export class CatsModule {}
 ```
