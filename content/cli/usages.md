@@ -1,30 +1,30 @@
-# CLI command reference
+# CLI 命令参考
 
 ## nest new
 
-Creates a new (standard mode) Nest project.
+创建一个新的（标准模式）巢项目。
 
 ```bash
 $ nest new <name> [options]
 $ nest n <name> [options]
 ```
 
-### Description
+### 描述
 
-Creates and initializes a new Nest project. Prompts for package manager.
+创建并初始化一个新的 NEST 项目。提示软件包管理器。
 
 - Creates a folder with the given `<name>`
 - Populates the folder with configuration files
 - Creates sub-folders for source code (`/src`) and end-to-end tests (`/test`)
 - Populates the sub-folders with default files for app components and tests
 
-### Arguments
+### 参数
 
-| Argument | Description                 |
-| -------- | --------------------------- |
-| `<name>` | The name of the new project |
+| Argument | Description  |
+| -------- | ------------ |
+| `<name>` | 新项目的名称 |
 
-### Options
+### 选项
 
 | Option                                | Description                                                                                                         |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -37,21 +37,21 @@ Creates and initializes a new Nest project. Prompts for package manager.
 
 ## nest generate
 
-Generates and/or modifies files based on a schematic
+基于原理图生成和/或修改文件
 
 ```bash
 $ nest generate <schematic> <name> [options]
 $ nest g <schematic> <name> [options]
 ```
 
-### Arguments
+### 参数
 
 | Argument      | Description                                                                                              |
 | ------------- | -------------------------------------------------------------------------------------------------------- |
 | `<schematic>` | The `schematic` or `collection:schematic` to generate. See the table below for the available schematics. |
 | `<name>`      | The name of the generated component.                                                                     |
 
-### Schematics
+### 原理图
 
 | Name          | Alias | Description                                                                                                  |
 | ------------- | ----- | ------------------------------------------------------------------------------------------------------------ |
@@ -86,7 +86,7 @@ $ nest g <schematic> <name> [options]
 
 ## nest build
 
-Compiles an application or workspace into an output folder.
+将应用程序或工作区编译到输出文件夹中。
 
 ```bash
 $ nest build <name> [options]
@@ -111,7 +111,7 @@ $ nest build <name> [options]
 
 ## nest start
 
-Compiles and runs an application (or default project in a workspace).
+编译并运行应用程序（或工作区中的默认项目）。
 
 ```bash
 $ nest start <name> [options]
@@ -140,7 +140,7 @@ $ nest start <name> [options]
 
 ## nest add
 
-Imports a library that has been packaged as a **nest library** , running its install schematic.
+导入已包装为 **巢库** 的库，运行其安装示意图。
 
 ```bash
 $ nest add <name> [options]
@@ -152,20 +152,20 @@ $ nest add <name> [options]
 | -------- | ---------------------------------- |
 | `<name>` | The name of the library to import. |
 
-## nest update
+<!-- ## nest update
 
-Updates `@nestjs` dependencies in the `package.json` `"dependencies"` list to their `@latest` version.
+依据 `package.json` `"dependencies"` 列表更新 `@nestjs` 到它们 `@latest` 版本.
 
-### Options
+### 选项
 
 | Option    | Description                                                             |
-| --------- | ----------------------------------------------------------------------- | --- |
+| --------- | ----------------------------------------------------------------------- |
 | `--force` | Do **upgrade** instead of update <br/>Alias `-f`                        |
-| `--tag`   | Update to tagged version (use `@latest`, `@<tag>`, etc) <br/>Alias `-t` |     |
+| `--tag`   | Update to tagged version (use `@latest`, `@<tag>`, etc) <br/>Alias `-t` | -->
 
 ## nest info
 
-Displays information about installed nest packages and other helpful system info. For example:
+显示有关已安装的 Nest 软件包和其他有用的系统信息的信息。例如：
 
 ```bash
 $ nest info

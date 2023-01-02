@@ -1021,7 +1021,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1029,10 +1029,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1044,8 +1044,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1058,8 +1058,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1073,7 +1073,7 @@
   
     <li class="md-nav__item">
       <a href="../redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1086,8 +1086,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4813,9 +4813,10 @@
 <p class="admonition-title"><strong>Hint</strong></p>
 <p><code>@nestjs/config</code>包内部使用<a href="https://github.com/motdotla/dotenv">dotenv</a>.</p>
 </div>
-<blockquote>
-<p>warning <strong>Note</strong> <code>@nestjs/config</code> 需要 TypeScript 4.1 或更高版本。</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>@nestjs/config</code> 需要 TypeScript 4.1 或更高版本。</p>
+</div>
 <h2 id="_3">开始<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>一旦安装过程完成，我们可以导入<code>ConfigModule</code>。
 通常，我们会把它导入根模块 AppModule，并使用静态方法<code>forRoot()</code>来控制它的行为。
@@ -4991,9 +4992,10 @@
 <a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<blockquote>
-<p>warning <strong>Note</strong> 在构建过程中，Nest CLI 不会自动移动你的"assets"(非 ts 文件)到<code>dist</code>文件夹。 为了确保你的 YAML 文件被复制，你必须在<code>nest-clijson</code>文件中的<code>compilerOptions#assets</code>对象中指定这一点。 例如，如果<code>config</code>文件夹和<code>src</code>文件夹在同一级别，添加“compilerOptions#assets”值为 <code>"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]</code>. 阅读更多(在这里)(/cli/monorepo#assets).</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>在构建过程中，Nest CLI 不会自动移动你的"assets"(非 ts 文件)到<code>dist</code>文件夹。 为了确保你的 YAML 文件被复制，你必须在<code>nest-clijson</code>文件中的<code>compilerOptions#assets</code>对象中指定这一点。 例如，如果<code>config</code>文件夹和<code>src</code>文件夹在同一级别，添加“compilerOptions#assets”值为 <code>"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]</code>. 阅读更多(在这里)(/cli/monorepo#assets).</p>
+</div>
 <h2 id="configservice">使用 <code>ConfigService</code><a class="headerlink" href="#configservice" title="Permanent link">&para;</a></h2>
 <p>要从<code>ConfigService</code>中访问配置值，我们首先需要注入<code>ConfigService</code>。
 与任何提供器一样，我们需要将其包含的模块- ConfigModule -导入到将要使用它的模块中(除非你将传递给<code>ConfigModule.forroot()</code>方法的选项对象中的<code>isGlobal</code>属性设置为<code>true</code>)。
@@ -5252,7 +5254,7 @@
 你可以通过<code>forRoot()</code>选项对象的<code>validationOptions</code>键传递一个选项对象来改变这些行为。
 这个选项对象可以包含由<a href="https://joi.dev/api/?v=17.3.0#anyvalidatevalue-options">Joi validation options</a>提供的任何标准验证选项属性。
 例如，要反转上面的两个设置，可以这样传递选项:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.module.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -5311,7 +5313,7 @@
 <li>一个有验证约束的类，</li>
 <li>使用<code>plainToClass</code>和<code>validateSync</code>函数的验证函数。</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">env.validation</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">env.validation.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -5379,7 +5381,7 @@
 <a id="__codelineno-29-31" name="__codelineno-29-31"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>在这里，使用<code>validate</code>函数作为<code>ConfigModule</code>的配置选项，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">app.module.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -5456,11 +5458,9 @@
 <a id="__codelineno-32-11" name="__codelineno-32-11"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>现在我们可以像下面这样使用 getter 函数:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app.service.ts</label><label for="__tabbed_12_2">app.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
 <span class="normal"><a href="#__codelineno-33-2">2</a></span>
 <span class="normal"><a href="#__codelineno-33-3">3</a></span>
@@ -5477,11 +5477,8 @@
 <a id="__codelineno-33-7" name="__codelineno-33-7"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
 <span class="normal"><a href="#__codelineno-34-2">2</a></span>
 <span class="normal"><a href="#__codelineno-34-3">3</a></span>
@@ -5500,6 +5497,9 @@
 <a id="__codelineno-34-8" name="__codelineno-34-8"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-34-9" name="__codelineno-34-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_13">可扩展的变量<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <p><code>@nestjs/config</code>包支持环境变量扩展。
 使用这种技术，您可以创建嵌套的环境变量，其中一个变量在另一个变量的定义中被引用。
@@ -5514,11 +5514,9 @@
 <p>对于这个特性，<code>@nestjs/config</code>包内部使用<a href="https://github.com/motdotla/dotenv-expand">dotenv-expand</a>。</p>
 </div>
 <p>在传递给<code>ConfigModule</code>的<code>forRoot()</code>方法的 options 对象中，使用<code>expandVariables</code>属性启用环境变量展开，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
 <span class="normal"><a href="#__codelineno-36-2">2</a></span>
 <span class="normal"><a href="#__codelineno-36-3">3</a></span>
@@ -5537,6 +5535,9 @@
 <a id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-36-9" name="__codelineno-36-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="maints">在<code>main.ts</code>中使用<a class="headerlink" href="#maints" title="Permanent link">&para;</a></h2>
 <p>虽然我们的配置存储在服务中，但它仍然可以在<code>main.ts</code>文件中使用。这样，您就可以使用它来存储诸如应用程序端口或 CORS 主机之类的变量。
 要访问它，你必须使用<code>app.get()</code>方法，后面跟着服务引用:</p>
@@ -5570,7 +5571,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../redis/liaoliaots_nestjs-redis/redis/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Redis" rel="prev">
+        <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 举例" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -5579,7 +5580,7 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              Redis
+              举例
             </div>
           </div>
         </a>

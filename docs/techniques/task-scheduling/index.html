@@ -1021,7 +1021,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1029,10 +1029,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1044,8 +1044,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1058,8 +1058,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1073,7 +1073,7 @@
   
     <li class="md-nav__item">
       <a href="../redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1086,8 +1086,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4720,11 +4720,9 @@ Nest 提供了<code>@nestjs/schedule</code>包，它集成了流行的 Node.js <
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a>$ npm install --save-dev @types/cron
 </code></pre></div></td></tr></table></div>
 <p>要激活作业调度，请将<code>ScheduleModule</code>导入到根模块<code>AppModule</code>中，并运行<code>forRoot()</code>静态方法，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -4739,6 +4737,9 @@ Nest 提供了<code>@nestjs/schedule</code>包，它集成了流行的 Node.js <
 <a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p><code>.forroot()</code>调用初始化调度器，并注册应用程序中存在的任何声明性<a href="techniques/task-scheduling#declarative-cron-jobs">cron job</a>、<a href="techniques/task-scheduling#declarative-timeout">timeout</a>和<a href="techniques/task-scheduling#declarative-interval">interval</a>。
 当<code>onApplicationBootstrap</code>生命周期钩子发生时，就会发生注册，以确保所有模块都已加载并声明了任何调度的作业。</p>
 <h2 id="cron-jobs">声明式 cron jobs<a class="headerlink" href="#cron-jobs" title="Permanent link">&para;</a></h2>

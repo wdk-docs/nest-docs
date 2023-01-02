@@ -1019,7 +1019,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1027,10 +1027,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1042,8 +1042,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1056,8 +1056,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1071,7 +1071,7 @@
   
     <li class="md-nav__item">
       <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1084,8 +1084,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4764,9 +4764,10 @@
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>All decorators are exported from the <code>@nestjs/graphql</code> package, while the <code>PubSub</code> class is exported from the <code>graphql-subscriptions</code> package.</p>
 </div>
-<blockquote>
-<p>warning <strong>Note</strong> <code>PubSub</code> is a class that exposes a simple <code>publish</code> and <code>subscribe API</code>. Read more about it <a href="https://www.apollographql.com/docs/graphql-subscriptions/setup.html">here</a>. Note that the Apollo docs warn that the default implementation is not suitable for production (read more <a href="https://github.com/apollographql/graphql-subscriptions#getting-started-with-your-first-subscription">here</a>). Production apps should use a <code>PubSub</code> implementation backed by an external store (read more <a href="https://github.com/apollographql/graphql-subscriptions#pubsub-implementations">here</a>).</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>PubSub</code> is a class that exposes a simple <code>publish</code> and <code>subscribe API</code>. Read more about it <a href="https://www.apollographql.com/docs/graphql-subscriptions/setup.html">here</a>. Note that the Apollo docs warn that the default implementation is not suitable for production (read more <a href="https://github.com/apollographql/graphql-subscriptions#getting-started-with-your-first-subscription">here</a>). Production apps should use a <code>PubSub</code> implementation backed by an external store (read more <a href="https://github.com/apollographql/graphql-subscriptions#pubsub-implementations">here</a>).</p>
+</div>
 <p>This will result in generating the following part of the GraphQL schema in SDL:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
@@ -4851,9 +4852,10 @@
 <a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">pubSub</span><span class="p">.</span><span class="nx">asyncIterator</span><span class="p">(</span><span class="s1">&#39;commentAdded&#39;</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<blockquote>
-<p>warning <strong>Note</strong> If you use the <code>resolve</code> option, you should return the unwrapped payload (e.g., with our example, return a <code>newComment</code> object directly, not a <code>{{ '{' }} commentAdded: newComment {{ '}' }}</code> object).</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you use the <code>resolve</code> option, you should return the unwrapped payload (e.g., with our example, return a <code>newComment</code> object directly, not a <code>{{ '{' }} commentAdded: newComment {{ '}' }}</code> object).</p>
+</div>
 <p>If you need to access injected providers (e.g., use an external service to validate the data), use the following construction.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
 <span class="normal"><a href="#__codelineno-9-2">2</a></span>
@@ -5120,9 +5122,10 @@
 </code></pre></div></td></tr></table></div>
 <p>The <code>authToken</code> in this example is only sent once by the client, when the connection is first established.
 All subscriptions made with this connection will have the same <code>authToken</code>, and thus the same user info.</p>
-<blockquote>
-<p>warning <strong>Note</strong> There is a bug in <code>subscriptions-transport-ws</code> that allows connections to skip the <code>onConnect</code> phase (read <a href="https://github.com/apollographql/subscriptions-transport-ws/issues/349">more</a>). You should not assume that <code>onConnect</code> was called when the user starts a subscription, and always check that the <code>context</code> is populated.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is a bug in <code>subscriptions-transport-ws</code> that allows connections to skip the <code>onConnect</code> phase (read <a href="https://github.com/apollographql/subscriptions-transport-ws/issues/349">more</a>). You should not assume that <code>onConnect</code> was called when the user starts a subscription, and always check that the <code>context</code> is populated.</p>
+</div>
 <p>If you're using the <code>graphql-ws</code> package, the signature of the <code>onConnect</code> callback will be slightly different:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
 <span class="normal"><a href="#__codelineno-21-2">2</a></span>

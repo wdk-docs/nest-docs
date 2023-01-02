@@ -1019,7 +1019,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1027,10 +1027,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1042,8 +1042,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1056,8 +1056,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1071,7 +1071,7 @@
   
     <li class="md-nav__item">
       <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1084,8 +1084,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4614,12 +4614,10 @@
 通常，Helmet 只是 14 个较小的中间件函数的集合，用于设置与安全相关的 HTTP 头(请阅读<a href="https://github.com/helmetjs/helmet#how-it-works">更多</a>)。</p>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
-<p>注意，将<code>helmet</code>应用为全局或注册它必须在其他调用<code>app.use()</code>或可能调用<code>app.use()</code>的 setup 函数之前。</p>
-</div>
-<blockquote>
-<p>这是由于底层平台(即 Express 或 Fastify)的工作方式，其中中间件/路由的定义顺序很重要。
+<p>注意，将<code>helmet</code>应用为全局或注册它必须在其他调用<code>app.use()</code>或可能调用<code>app.use()</code>的 setup 函数之前。
+这是由于底层平台(即 Express 或 Fastify)的工作方式，其中中间件/路由的定义顺序很重要。
 如果你在定义路由后使用<code>helmet</code>或<code>cors</code>之类的中间件，那么该中间件将不会应用于该路由，它只会应用于路由后定义的中间件。</p>
-</blockquote>
+</div>
 <h2 id="express">与 Express 一起使用(默认)<a class="headerlink" href="#express" title="Permanent link">&para;</a></h2>
 <p>Start by installing the required package.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$ npm i --save helmet
@@ -4633,11 +4631,9 @@
 </code></pre></div></td></tr></table></div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
-<p>If you are getting the <code>This expression is not callable</code> error while trying to import <code>Helmet</code>, you very likely have the <code>allowSyntheticDefaultImports</code> and <code>esModuleInterop</code> options set to <code>true</code> in your project's <code>tsconfig.json</code> file.</p>
+<p>If you are getting the <code>This expression is not callable</code> error while trying to import <code>Helmet</code>, you very likely have the <code>allowSyntheticDefaultImports</code> and <code>esModuleInterop</code> options set to <code>true</code> in your project's <code>tsconfig.json</code> file.
+If that's the case, change the import statement to: <code>import helmet from 'helmet'</code> instead.</p>
 </div>
-<blockquote>
-<p>If that's the case, change the import statement to: <code>import helmet from 'helmet'</code> instead.</p>
-</blockquote>
 <h2 id="fastify">与 Fastify 一起使用<a class="headerlink" href="#fastify" title="Permanent link">&para;</a></h2>
 <p>If you are using the <code>FastifyAdapter</code>, install the <a href="https://github.com/fastify/fastify-helmet">fastify-helmet</a> package:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$ npm i --save fastify-helmet
@@ -4652,8 +4648,6 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>When using <code>apollo-server-fastify</code> and <code>fastify-helmet</code>, there may be a problem with <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP</a> on the GraphQL playground, to solve this collision, configure the CSP as shown below:</p>
-</div>
-<blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -4673,8 +4667,7 @@
 <span class="normal"><a href="#__codelineno-4-17">17</a></span>
 <span class="normal"><a href="#__codelineno-4-18">18</a></span>
 <span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span>
-<span class="normal"><a href="#__codelineno-4-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">fastifyHelmet</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">fastifyHelmet</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="nx">contentSecurityPolicy</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="nx">directives</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">      </span><span class="nx">defaultSrc</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="sb">`&#39;self&#39;`</span><span class="p">],</span><span class="w"></span>
@@ -4690,13 +4683,12 @@
 <a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="p">},</span><span class="w"></span>
 <a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">  </span><span class="p">},</span><span class="w"></span>
 <a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="p">});</span><span class="w"></span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="c1">// If you are not going to use CSP at all, you can use this:</span><span class="w"></span>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">fastifyHelmet</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">  </span><span class="nx">contentSecurityPolicy</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="c1">// If you are not going to use CSP at all, you can use this:</span><span class="w"></span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="k">await</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">fastifyHelmet</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">  </span><span class="nx">contentSecurityPolicy</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="p">});</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-</blockquote>
+</div>
 
 
 

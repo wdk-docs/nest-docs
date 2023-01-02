@@ -1021,7 +1021,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1029,10 +1029,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1044,8 +1044,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1058,8 +1058,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1073,7 +1073,7 @@
   
     <li class="md-nav__item">
       <a href="../redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1086,8 +1086,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4696,11 +4696,9 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <p>安装了这个包后，我们现在可以使用 <code>Express.Multer.File</code> 类型 (您可以如下方式导入该类型: <code>import {{ '{' }} Express {{ '}' }} from 'express'</code>).</p>
 <h2 id="_2">基本的例子<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>要上传单个文件，只需将<code>FileInterceptor()</code>拦截器绑定到路由处理程序上，然后使用<code>@UploadedFile()</code>装饰器从<code>request</code>中提取 <code>file</code> 。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">JavaScript</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -4711,11 +4709,8 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -4728,6 +4723,9 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p><code>FileInterceptor()</code>装饰器是从<code>@nestjs/platform-express</code>包导出的。</p>
@@ -4754,11 +4752,9 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <li><code>options</code>: 可选的<code>MulterOptions</code>对象，如上所述</li>
 </ul>
 <p>当使用<code>FilesInterceptor()</code>时，使用<code>@UploadedFiles()</code>装饰器从<code>request</code>中提取文件。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">TypeScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">JavaScript</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
@@ -4769,11 +4765,8 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
@@ -4786,6 +4779,9 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p><code>FilesInterceptor()</code>装饰器是从<code>@nestjs/platform-express</code>包中导出的。</p>
@@ -4801,11 +4797,9 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <li><code>options</code>: 可选的<code>MulterOptions</code>对象，如上所述</li>
 </ul>
 <p>当使用<code>FileFieldsInterceptor()</code>时，使用<code>@UploadedFiles()</code>装饰器从<code>request</code>中提取文件。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">TypeScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">TypeScript</label><label for="__tabbed_3_2">JavaScript</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
@@ -4822,11 +4816,8 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span>
 <span class="normal"><a href="#__codelineno-6-3">3</a></span>
@@ -4845,15 +4836,16 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_5">任何文件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>要上传带有任意字段名键的所有字段，请使用<code>AnyFilesInterceptor()</code>装饰器。
 这个装饰器可以接受一个可选的<code>options</code>对象，如上所述。</p>
 <p>当使用<code>AnyFilesInterceptor()</code>时，使用<code>@UploadedFiles()</code>装饰器从<code>request</code>中提取文件。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">TypeScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">JavaScript</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
 <span class="normal"><a href="#__codelineno-7-3">3</a></span>
@@ -4864,11 +4856,8 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
 <span class="normal"><a href="#__codelineno-8-2">2</a></span>
 <span class="normal"><a href="#__codelineno-8-3">3</a></span>
@@ -4881,6 +4870,9 @@ Multer 处理以<code>multipart/form-data</code>格式发布的数据，该格�
 <a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">files</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_6">默认选项<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>您可以在上面描述的文件拦截器中指定多个选项。
 要设置默认选项，你可以在导入<code>MulterModule</code>时调用静态的<code>register()</code>方法，传入支持的选项。

@@ -1021,7 +1021,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1029,10 +1029,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1044,8 +1044,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1058,8 +1058,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1073,7 +1073,7 @@
   
     <li class="md-nav__item">
       <a href="../redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1086,8 +1086,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4662,11 +4662,9 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$ npm install --save hbs
 </code></pre></div></td></tr></table></div>
 <p>We've used the <code>hbs</code> (<a href="https://github.com/pillarjs/hbs#readme">Handlebars</a>) engine, though you can use whatever fits your requirements. Once the installation process is complete, we need to configure the express instance using the following code:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">main</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">main.ts</label><label for="__tabbed_1_2">main.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -4697,11 +4695,8 @@
 <a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -4730,6 +4725,9 @@
 <a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>We told <a href="https://github.com/expressjs/express">Express</a> that the <code>public</code> directory will be used for storing static assets, <code>views</code> will contain templates, and the <code>hbs</code> template engine should be used to render HTML output.</p>
 <h2 id="template-rendering">Template rendering<a class="headerlink" href="#template-rendering" title="Permanent link">&para;</a></h2>
 <p>Now, let's create a <code>views</code> directory and <code>index.hbs</code> template inside it. In the template, we'll print a <code>message</code> passed from the controller:</p>
@@ -4754,11 +4752,9 @@
 <a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>Next, open the <code>app.controller</code> file and replace the <code>root()</code> method with the following code:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.controller.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -4779,6 +4775,9 @@
 <a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>In this code, we are specifying the template to use in the <code>@Render()</code> decorator, and the return value of the route handler method is passed to the template for rendering. Notice that the return value is an object with a property <code>message</code>, matching the <code>message</code> placeholder we created in the template.</p>
 <p>While the application is running, open your browser and navigate to <code>http://localhost:3000</code>. You should see the <code>Hello world!</code> message.</p>
 <h2 id="dynamic-template-rendering">Dynamic template rendering<a class="headerlink" href="#dynamic-template-rendering" title="Permanent link">&para;</a></h2>
@@ -4787,11 +4786,9 @@
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>When Nest detects the <code>@Res()</code> decorator, it injects the library-specific <code>response</code> object. We can use this object to dynamically render the template. Learn more about the <code>response</code> object API <a href="https://expressjs.com/en/api.html">here</a>.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">app.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.controller.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -4822,6 +4819,9 @@
 <a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>A working example is available <a href="https://github.com/nestjs/nest/tree/master/sample/15-mvc">here</a>.</p>
 <h2 id="fastify">Fastify<a class="headerlink" href="#fastify" title="Permanent link">&para;</a></h2>
@@ -4829,11 +4829,9 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>$ npm i --save fastify-static point-of-view handlebars
 </code></pre></div></td></tr></table></div>
 <p>The next steps cover almost the same process used with Express, with minor differences specific to the platform. Once the installation process is complete, open the <code>main.ts</code> file and update its contents:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">main</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">main.ts</label><label for="__tabbed_4_2">main.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
@@ -4886,11 +4884,8 @@
 <a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
@@ -4931,12 +4926,13 @@
 <a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>The Fastify API is slightly different but the end result of those methods calls remains the same. One difference to notice with Fastify is that the template name passed into the <code>@Render()</code> decorator must include a file extension.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">app.controller.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
@@ -4957,6 +4953,9 @@
 <a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>While the application is running, open your browser and navigate to <code>http://localhost:3000</code>. You should see the <code>Hello world!</code> message.</p>
 <h2 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h2>
 <p>A working example is available <a href="https://github.com/nestjs/nest/tree/master/sample/17-mvc-fastify">here</a>.</p>

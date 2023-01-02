@@ -1019,7 +1019,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1027,10 +1027,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1042,8 +1042,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1056,8 +1056,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1071,7 +1071,7 @@
   
     <li class="md-nav__item">
       <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1084,8 +1084,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4650,11 +4650,9 @@
 <p>基于角色的访问控制( <strong>RBAC</strong> )是围绕角色和特权定义的策略无关的访问控制机制。
 在本节中，我们将演示如何使用 Nest <a href="/guards">guards</a>实现一个非常基本的 RBAC 机制。</p>
 <p>首先，让我们在系统中创建一个表示角色的<code>Role</code>枚举:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">role.enum</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">role.enum.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
@@ -4663,17 +4661,18 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nx">Admin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"></span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>在更复杂的系统中，可以将角色存储在数据库中，或者从外部身份验证提供器获取角色。</p>
 </div>
 <p>有了这个，我们可以创建一个<code>@Roles()</code>装饰器。
 该装饰器允许指定访问特定资源所需的角色。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">roles.decorator</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">roles.decorator.ts</label><label for="__tabbed_2_2">roles.decorator.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -4684,11 +4683,8 @@
 <a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">ROLES_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;roles&#39;</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Roles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">...roles</span><span class="o">:</span><span class="w"> </span><span class="kt">Role</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">SetMetadata</span><span class="p">(</span><span class="nx">ROLES_KEY</span><span class="p">,</span><span class="w"> </span><span class="nx">roles</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -4697,12 +4693,13 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">ROLES_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;roles&#39;</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Roles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(...</span><span class="nx">roles</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">SetMetadata</span><span class="p">(</span><span class="nx">ROLES_KEY</span><span class="p">,</span><span class="w"> </span><span class="nx">roles</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>现在我们有了一个自定义的<code>@Roles()</code>装饰器，我们可以用它装饰任何路由处理程序。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">cats.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">cats.controller.ts</label><label for="__tabbed_3_2">cats.controller.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
@@ -4713,11 +4710,8 @@
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
@@ -4730,13 +4724,14 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>最后，我们创建一个<code>RolesGuard</code>类，它将把分配给当前用户的角色与正在处理的当前路由所需要的实际角色进行比较。
 为了访问路由的角色(自定义元数据)，我们将使用<code>Reflector</code>helper 类，它是由框架提供的，从<code>@nestjs/core</code>包中公开的。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">roles.guard</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">roles.guard.ts</label><label for="__tabbed_4_2">roles.guard.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -4775,11 +4770,8 @@
 <a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -4824,6 +4816,9 @@
 <a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>请参阅执行上下文章节的<a href="/fundamentals/execution-context#reflection-and-metadata">反射和元数据</a>小节，了解更多关于以上下文敏感的方式使用<code>Reflector</code>的细节。</p>
@@ -4881,11 +4876,9 @@ claim 是一个名称-值对，它表示主语可以做什么，而不是主语�
 <p>要在 Nest 中实现基于声明的授权，您可以按照我们在上面<a href="/security/authorization#basic-rbac-implementation">RBAC</a>小节中展示的相同步骤进行操作，但有一个显著的区别:您应该比较 <strong>权限</strong> ，而不是检查特定的角色。
 每个用户都有一组被分配的权限。
 同样，每个资源/端点将定义需要哪些权限(例如，通过专用的<code>@RequirePermissions()</code>装饰器)来访问它们。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">cats.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">cats.controller.ts</label><label for="__tabbed_5_2">cats.controller.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
 <span class="normal"><a href="#__codelineno-10-3">3</a></span>
@@ -4896,11 +4889,8 @@ claim 是一个名称-值对，它表示主语可以做什么，而不是主语�
 <a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span>
 <span class="normal"><a href="#__codelineno-11-3">3</a></span>
@@ -4913,6 +4903,9 @@ claim 是一个名称-值对，它表示主语可以做什么，而不是主语�
 <a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">catsService</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">createCatDto</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>在上面的例子中，<code>Permission</code>(类似于我们在 RBAC 部分中展示的<code>Role</code>)是一个 TypeScript enum，它包含了你系统中所有可用的权限。</p>
@@ -5046,11 +5039,9 @@ claim 是一个名称-值对，它表示主语可以做什么，而不是主语�
 </div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
-<p><code>detectSubjectType</code>选项让 CASL 了解如何从对象中获取主题类型。</p>
+<p><code>detectSubjectType</code>选项让 CASL 了解如何从对象中获取主题类型。
+有关更多信息，请阅读<a href="https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types">CASL 文档</a>了解详细信息。</p>
 </div>
-<blockquote>
-<p>有关更多信息，请阅读<a href="https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types">CASL 文档</a>了解详细信息。</p>
-</blockquote>
 <p>在上面的例子中，我们使用<code>AbilityBuilder</code>类创建了<code>Ability</code>实例。
 正如你可能猜到的，can 和 cannot 接受相同的参数，但有不同的含义，can 允许对指定的主题做一个动作，而 cannot 禁止。
 两者都可以接受最多 4 个参数。

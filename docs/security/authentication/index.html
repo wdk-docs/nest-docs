@@ -1019,7 +1019,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1027,10 +1027,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1042,8 +1042,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1056,8 +1056,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1071,7 +1071,7 @@
   
     <li class="md-nav__item">
       <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1084,8 +1084,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4827,12 +4827,10 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 </code></pre></div></td></tr></table></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>对于你选择的 <strong>任何</strong> Passport 策略，你总是需要<code>@nestjs/passport</code>和<code>passport</code>包。</p>
-</div>
-<blockquote>
-<p>然后，您需要安装特定于策略的包(例如，<code>passport-jwt</code> 或 <code>passport-local</code>)，它实现了您正在构建的特定身份验证策略。
+<p>对于你选择的 <strong>任何</strong> Passport 策略，你总是需要<code>@nestjs/passport</code>和<code>passport</code>包。
+然后，您需要安装特定于策略的包(例如，<code>passport-jwt</code> 或 <code>passport-local</code>)，它实现了您正在构建的特定身份验证策略。
 此外，你还可以为任何 Passport 策略安装类型定义，如上面 <code>@types/assport-local</code> 所示，它在编写 TypeScript 代码时提供了帮助。</p>
-</blockquote>
+</div>
 <h2 id="_3">实现认证策略<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>现在我们准备实现身份验证特性。
 我们将首先概述用于 <strong>任何</strong> passport 策略的流程。
@@ -4864,11 +4862,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <p>替换这些生成文件的默认内容，如下所示。
 对于我们的示例应用程序，<code>UsersService</code>只是在内存中维护一个硬编码的用户列表，以及一个按用户名检索用户的 find 方法。
 在真正的应用中，这是你构建用户模型和持久层的地方，使用你的库(如 TypeORM, Sequelize, Mongoose 等)。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">users/users.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">users/users.service.ts</label><label for="__tabbed_1_2">users/users.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -4917,11 +4913,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -4968,12 +4961,13 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>在<code>UsersModule</code>中，唯一需要修改的是将<code>UsersService</code>添加到<code>@Module</code>装饰器的<code>exports</code>数组中，这样它就可以在模块外看到了(我们很快就会在<code>AuthService</code>中使用它)。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">users/users.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">users/users.module.ts</label><label for="__tabbed_2_2">users/users.module.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
@@ -4990,11 +4984,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UsersModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span>
 <span class="normal"><a href="#__codelineno-6-3">3</a></span>
@@ -5011,15 +5002,16 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UsersModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>我们的<code>AuthService</code>负责检索用户并验证密码。
 为此，我们创建了一个<code>validateUser()</code>方法。
 在下面的代码中，我们使用一个方便的 ES6 扩展操作符在返回用户对象之前从该对象中剥离密码属性。
 我们稍后将从 passport-local 策略调用<code>validateUser()</code>方法。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">auth/auth.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">auth/auth.service.ts</label><label for="__tabbed_3_2">auth/auth.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
@@ -5052,11 +5044,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
@@ -5095,22 +5084,21 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>当然，在实际的应用程序中，您不会将密码存储为纯文本。</p>
-</div>
-<blockquote>
-<p>相反，您应该使用像<a href="https://github.com/kelektiv/node.bcrypt.js#readme">bcrypt</a>这样的库，并使用加盐的单向哈希算法。
+<p>当然，在实际的应用程序中，您不会将密码存储为纯文本。
+相反，您应该使用像<a href="https://github.com/kelektiv/node.bcrypt.js#readme">bcrypt</a>这样的库，并使用加盐的单向哈希算法。
 使用这种方法，您只需存储经过散列处理的密码，然后将存储的密码与传入的 <strong>密码</strong> 的散列版本进行比较，从而不会以纯文本存储或公开用户密码。
 为了保持示例应用程序的简单性，我们违反了这一绝对规定，使用纯文本。
 <strong>不要在真正的应用中这么做!</strong></p>
-</blockquote>
+</div>
 <p>现在，我们更新<code>AuthModule</code>来导入<code>UsersModule</code>。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">auth/auth.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">auth/auth.module.ts</label><label for="__tabbed_4_2">auth/auth.module.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
 <span class="normal"><a href="#__codelineno-9-2">2</a></span>
 <span class="normal"><a href="#__codelineno-9-3">3</a></span>
@@ -5129,11 +5117,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
 <span class="normal"><a href="#__codelineno-10-3">3</a></span>
@@ -5152,14 +5137,15 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="local">执行 local 认证<a class="headerlink" href="#local" title="Permanent link">&para;</a></h2>
 <p>现在我们可以实现我们的 passport-local <strong>认证策略</strong> 。
 在<code>auth</code>文件夹中创建一个名为<code>local.strategy.ts</code>的文件，并添加以下代码:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">auth/local.strategy</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">auth/local.strategy.ts</label><label for="__tabbed_5_2">auth/local.strategy.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
@@ -5198,11 +5184,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
@@ -5253,17 +5236,18 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>对于所有的 Passport 策略，我们都遵循了前面描述的方法。
 在我们的 passport-local 用例中，没有配置选项，所以构造函数只是调用<code>super()</code>，没有选项对象。</p>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
-<p>我们可以在调用<code>super()</code>时传递一个 options 对象来定制 passport 策略的行为。</p>
-</div>
-<blockquote>
-<p>在本例中，默认情况下，passport-local 策略在请求体中要求名为<code>username</code>和<code>password</code>的属性。
+<p>我们可以在调用<code>super()</code>时传递一个 options 对象来定制 passport 策略的行为。
+在本例中，默认情况下，passport-local 策略在请求体中要求名为<code>username</code>和<code>password</code>的属性。
 例如，传递一个 options 对象来指定不同的属性名: <code>super({{ '{' }} usernameField: 'email' {{ '}' }})</code>.
 更多信息请参阅<a href="http://www.passportjs.org/docs/configure/">Passport 文档</a>。</p>
-</blockquote>
+</div>
 <p>我们还实现了<code>validate()</code>方法。
 对于每个策略，Passport 将使用一组特定于策略的参数调用 verify 函数(在<code>@nestjs/passport</code>中使用<code>validate()</code>方法实现)。
 对于 local 策略，Passport 需要一个带有以下签名的<code>validate()</code>方法: <code>validate(username: string, password:string): any</code>.</p>
@@ -5276,11 +5260,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 因此，这种子类化和实现特定策略验证的模式是一致的、优雅的和可扩展的。</p>
 <p>我们需要配置我们的<code>AuthModule</code>来使用我们刚刚定义的 Passport 特性。
 更新<code>auth.module.ts</code>，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">auth/auth.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">auth/auth.module.ts</label><label for="__tabbed_6_2">auth/auth.module.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
@@ -5303,11 +5285,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
@@ -5330,6 +5309,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_4">内置的认证守卫<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p><a href="guards">Guards</a>一章描述了 Guards 的主要功能:决定一个请求是否会被路由处理器处理。
 这是事实，我们很快就会使用标准功能。
@@ -5360,11 +5342,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <h2 id="_5">登录路由<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>有了策略，我们现在可以实现一个基本的<code>/auth/login</code>路由，并应用内置的 Guard 来启动 passport-local 流。</p>
 <p>打开<code>app.controller.ts</code>文件，并将其内容替换为以下内容:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.controller.ts</label><label for="__tabbed_7_2">app.controller.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
@@ -5387,11 +5367,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
@@ -5416,6 +5393,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>在使用<code>@UseGuards(AuthGuard('local'))</code>时，我们使用了<code>@nestjs/passport</code> <strong>自动提供</strong> 的<code>AuthGuard</code>，这是我们在扩展<code>passport-local</code>策略时自动提供的。
 让我们来分析一下。
 我们的 passport-local 策略的默认名称是<code>local</code>。
@@ -5435,11 +5415,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 </code></pre></div></td></tr></table></div>
 <p>当这工作时，将策略名称直接传递给<code>AuthGuard()</code>会在代码库中引入魔术字符串。
 相反，我们建议创建自己的类，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">auth/local-auth.guard</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">auth/local-auth.guard.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
 <span class="normal"><a href="#__codelineno-18-2">2</a></span>
 <span class="normal"><a href="#__codelineno-18-3">3</a></span>
@@ -5450,6 +5428,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
 <a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">LocalAuthGuard</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">AuthGuard</span><span class="p">(</span><span class="s1">&#39;local&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>现在，我们可以更新<code>/auth/login</code>路由处理程序，使用<code>LocalAuthGuard</code>代替:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
 <span class="normal"><a href="#__codelineno-19-2">2</a></span>
@@ -5486,11 +5467,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <p>考虑到这一点，我们现在终于可以生成真正的 JWT，并以这种方式返回它。
 为了保持服务的整洁模块化，我们将在<code>authService</code>中处理 JWT 的生成。
 打开<code>auth</code>文件夹中的<code>auth.service.ts</code>文件，添加<code>login()</code>方法，并导入<code>JwtService</code>，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">auth/auth.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">auth/auth.service.ts</label><label for="__tabbed_9_2">auth/auth.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-21-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-21-3"> 3</a></span>
@@ -5545,11 +5524,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-21-26" name="__codelineno-21-26"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-21-27" name="__codelineno-21-27"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
@@ -5606,47 +5582,44 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-22-27" name="__codelineno-22-27"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-22-28" name="__codelineno-22-28"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>我们使用<code>@nestjs/jwt</code>库，它提供了一个<code>sign()</code>函数来从<code>user</code>对象属性的子集生成我们的 jwt，然后我们返回一个简单的对象，带有一个<code>access_token</code>属性。
 注意:我们选择属性名<code>sub</code>来保存我们的<code>userId</code>值，以与 JWT 标准保持一致。
 不要忘记将 JwtService 提供器注入到<code>AuthService</code>中。</p>
 <p>现在我们需要更新<code>AuthModule</code>来导入新的依赖项，并配置<code>JwtModule</code>。</p>
 <p>首先,创建的常数。在<code>auth</code>文件夹中添加以下代码:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">auth/constants</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">auth/constants.ts</label><label for="__tabbed_10_2">auth/constants.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
 <span class="normal"><a href="#__codelineno-23-2">2</a></span>
 <span class="normal"><a href="#__codelineno-23-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">jwtConstants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="w">  </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;secretKey&#39;</span><span class="p">,</span><span class="w"></span>
 <a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
 <span class="normal"><a href="#__codelineno-24-2">2</a></span>
 <span class="normal"><a href="#__codelineno-24-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">jwtConstants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="w">  </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;secretKey&#39;</span><span class="p">,</span><span class="w"></span>
 <a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>我们将使用它在 JWT 签名和验证步骤之间共享密钥。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>不要公开此密钥</strong> 。</p>
+<p><strong>不要公开此密钥</strong> 。
+我们在这里这样做是为了明确代码在做什么，但是在生产系统中，您必须使用适当的措施来保护这个密钥，例如密钥库、环境变量或配置服务。</p>
 </div>
-<blockquote>
-<p>我们在这里这样做是为了明确代码在做什么，但是在生产系统中，您必须使用适当的措施来保护这个密钥，例如密钥库、环境变量或配置服务。</p>
-</blockquote>
 <p>现在，打开<code>auth.module.ts</code>文件夹中的<code>auth</code>，并将其更新为如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">auth/auth.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">auth/auth.module.ts</label><label for="__tabbed_11_2">auth/auth.module.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-25-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-25-3"> 3</a></span>
@@ -5689,11 +5662,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-25-20" name="__codelineno-25-20"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-25-21" name="__codelineno-25-21"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
@@ -5736,14 +5706,15 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-26-20" name="__codelineno-26-20"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-26-21" name="__codelineno-26-21"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>我们使用<code>register()</code>来配置<code>JwtModule</code>，传入一个配置对象。
 有关 Nest <code>JwtModule</code>的更多信息，请参见<a href="https://github.com/nestjs/jwt/blob/master/README.md">这里</a>，有关可用配置选项的更多信息，请参见<a href="https://github.com/auth0/node-jsonwebtoken#usage">这里</a>。</p>
 <p>现在我们可以更新<code>/auth/login</code>路由以返回一个 JWT。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">app.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app.controller.ts</label><label for="__tabbed_12_2">app.controller.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
@@ -5772,11 +5743,8 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-27-13" name="__codelineno-27-13"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-27-14" name="__codelineno-27-14"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-28-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-28-3"> 3</a></span>
@@ -5807,6 +5775,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 <a id="__codelineno-28-14" name="__codelineno-28-14"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-28-15" name="__codelineno-28-15"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>让我们继续使用 cURL 测试我们的路由。
 你可以用<code>UsersService</code>中硬编码的任何<code>user</code>对象进行测试。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
@@ -5822,11 +5793,9 @@ Passport 提供了一个名为<a href="https://github.com/jaredhanson/passport-l
 passport 也能帮到我们。
 它提供了<a href="https://github.com/mikenicholson/passport-jwt">passport-jwt</a>策略来使用 JSON Web token 保护 RESTful 端点。
 首先创建一个名为<code>jwt.strategy</code>的文件。在<code>auth</code>文件夹中添加以下代码:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">auth/jwt.strategy</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">auth/jwt.strategy.ts</label><label for="__tabbed_13_2">auth/jwt.strategy.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-30-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-30-3"> 3</a></span>
@@ -5865,11 +5834,8 @@ passport 也能帮到我们。
 <a id="__codelineno-30-18" name="__codelineno-30-18"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-30-19" name="__codelineno-30-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-31-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-31-3"> 3</a></span>
@@ -5908,6 +5874,9 @@ passport 也能帮到我们。
 <a id="__codelineno-31-18" name="__codelineno-31-18"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-31-19" name="__codelineno-31-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>在我们的<code>JwtStrategy</code>中，我们遵循了前面描述的所有 Passport 策略的相同配方。
 这个策略需要一些初始化，所以我们通过在<code>super()</code>调用中传入一个选项对象来实现。
 你可以阅读更多可用选项<a href="https://github.com/mikenicholson/passport-jwt#configure-strategy">这里</a>.
@@ -5934,11 +5903,9 @@ passport 也能帮到我们。
 这也是我们可以决定进行进一步令牌验证的地方，例如在已撤销令牌列表中查找 <code>userId</code>，使我们能够执行令牌撤销。
 我们在示例代码中实现的模型是一个快速的、<code>无状态的 JWT</code>模型，其中每个 API 调用都立即根据有效的 JWT 的存在进行授权，并且请求者的少量信息(它的<code>userId</code>和<code>用户名</code>)在我们的请求管道中可用。</p>
 <p>在<code>AuthModule</code>中添加新的<code>JwtStrategy</code>作为提供器:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="__tabbed_26_1">auth/auth.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">auth/auth.module.ts</label><label for="__tabbed_14_2">auth/auth.module.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-32-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-32-3"> 3</a></span>
@@ -5983,11 +5950,8 @@ passport 也能帮到我们。
 <a id="__codelineno-32-21" name="__codelineno-32-21"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-32-22" name="__codelineno-32-22"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="27:1"><input checked="checked" id="__tabbed_27_1" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="__tabbed_27_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-33-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-33-3"> 3</a></span>
@@ -6032,13 +5996,14 @@ passport 也能帮到我们。
 <a id="__codelineno-33-21" name="__codelineno-33-21"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-33-22" name="__codelineno-33-22"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AuthModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>通过导入我们签署 JWT 时使用的相同密钥，我们确保 Passport 执行的 <strong>验证**阶段和 AuthService 执行的**签名</strong> 阶段使用一个公共密钥。</p>
 <p>最后，我们定义了<code>JwtAuthGuard</code>类，它扩展了内置的<code>AuthGuard</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="28:1"><input checked="checked" id="__tabbed_28_1" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="__tabbed_28_1">auth/jwt-auth.guard</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">auth/jwt-auth.guard.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
 <span class="normal"><a href="#__codelineno-34-2">2</a></span>
 <span class="normal"><a href="#__codelineno-34-3">3</a></span>
@@ -6049,14 +6014,15 @@ passport 也能帮到我们。
 <a id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
 <a id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">JwtAuthGuard</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">AuthGuard</span><span class="p">(</span><span class="s1">&#39;jwt&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="jwt_2">实施保护路由和 JWT 策略守卫<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h2>
 <p>现在我们可以实现受保护的路由及其相关的 Guard。</p>
 <p>打开<code>app.controller.ts</code>文件并更新它，如下图所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="29:1"><input checked="checked" id="__tabbed_29_1" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="__tabbed_29_1">app.controller</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">app.controller.ts</label><label for="__tabbed_16_2">app.controller.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-35-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-35-3"> 3</a></span>
@@ -6099,11 +6065,8 @@ passport 也能帮到我们。
 <a id="__codelineno-35-20" name="__codelineno-35-20"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-35-21" name="__codelineno-35-21"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="30:1"><input checked="checked" id="__tabbed_30_1" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="__tabbed_30_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-36-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-36-3"> 3</a></span>
@@ -6172,6 +6135,9 @@ passport 也能帮到我们。
 <a id="__codelineno-36-33" name="__codelineno-36-33"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-36-34" name="__codelineno-36-34"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>再一次，我们应用了<code>@nestjs/passport</code>模块在配置 passport-jwt 模块时自动为我们提供的<code>AuthGuard</code>。
 这个守卫被它的默认名称<code>jwt</code>引用。
 当我们的<code>GET /profile</code>路由被命中时，Guard 将自动调用我们的 passport-jwt 自定义配置逻辑，验证 JWT，并将<code>user</code>属性分配给<code>Request</code>对象。</p>

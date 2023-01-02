@@ -1153,7 +1153,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1161,10 +1161,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1176,8 +1176,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1190,8 +1190,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1205,7 +1205,7 @@
   
     <li class="md-nav__item">
       <a href="../redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1218,8 +1218,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4795,11 +4795,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$ npm install --save @nestjs/typeorm typeorm mysql2
 </code></pre></div></td></tr></table></div>
 <p>一旦安装过程完成，我们就可以把<code>TypeOrmModule</code>导入到根目录<code>AppModule</code>中。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -4836,6 +4834,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>设置<code>synchronize: true</code>不应该在生产中使用，否则您可能会丢失生产数据。</p>
@@ -4887,11 +4888,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>然后，我们可以不带任何选项调用<code>forRoot()</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
@@ -4906,6 +4905,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>静态的 glob 路径(e.g., <code>dist/** /*.entity{{ '{' }} .ts,.js{{ '}' }}</code>)不会正常工作<a href="https://webpack.js.org/">webpack</a>.</p>
@@ -4932,11 +4934,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 </code></pre></div></td></tr></table></div>
 </blockquote>
 <p>一旦完成，TypeORM <code>Connection</code>和<code>EntityManager</code>对象将可以在整个项目中注入(不需要导入任何模块)，例如:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.module.ts</label><label for="__tabbed_3_2">JavaScript</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
@@ -4953,11 +4953,8 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">connection</span><span class="o">:</span><span class="w"> </span><span class="kt">Connection</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 <a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -4980,16 +4977,17 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_2">库模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/typeorm/typeorm">TypeORM</a>支持 <strong>库设计模式</strong> ，因此每个实体都有自己的库。
 这些存储库可以从数据库连接中获得。</p>
 <p>为了继续这个例子，我们至少需要一个实体。
 让我们定义“用户”实体。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">user.entity</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">user.entity.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
@@ -5022,6 +5020,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">  </span><span class="nx">isActive</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>关于实体的更多信息，请参阅<a href="https://typeorm.io/#/entities">TypeORM 文档</a>。</p>
@@ -5030,11 +5031,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 这个目录包含所有与<code>UsersModule</code>相关的文件。
 你可以决定在哪里保存你的模型文件，然而，我们建议在它们的 <strong>域</strong> 附近创建它们，在相应的模块目录中。</p>
 <p>为了开始使用<code>User</code>实体，我们需要将它插入到模块的<code>forRoot()</code>方法选项中的<code>entities</code>数组中，让 TypeORM 知道它(除非你使用一个静态的 glob 路径):</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
@@ -5073,12 +5072,13 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>接下来，让我们看看<code>UsersModule</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">users.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">users.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
@@ -5103,13 +5103,14 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UsersModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>这个模块使用<code>forFeature()</code>方法来定义哪些存储库注册在当前范围内。
 有了它，我们就可以使用<code>@InjectRepository()</code>装饰器将<code>UsersRepository</code>注入到<code>UsersService</code>中:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">users.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">users.service.ts</label><label for="__tabbed_7_2">users.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
@@ -5158,11 +5159,8 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-10-24" name="__codelineno-10-24"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
@@ -5209,17 +5207,18 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>别忘了把<code>UsersModule</code>导入根模块<code>AppModule</code>。</p>
 </div>
 <p>如果你想使用模块外部的存储库，该模块导入了<code>TypeOrmModule.forFeature()</code>，你需要重新导出它生成的提供器。
 你可以通过导出整个模块来实现，像这样:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">users.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">users.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
 <span class="normal"><a href="#__codelineno-12-2">2</a></span>
 <span class="normal"><a href="#__codelineno-12-3">3</a></span>
@@ -5238,12 +5237,13 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UsersModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>现在，如果我们在<code>UserHttpModule</code>中导入<code>UsersModule</code>，我们可以在后一个模块的 providers 中使用<code>@InjectRepository(User)</code>。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">users-http.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">users-http.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
@@ -5266,6 +5266,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserHttpModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_3">关系<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>关系是在两个或多个表之间建立的关联。
 关系基于每个表的公共字段，通常涉及主键和外键。</p>
@@ -5287,11 +5290,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 
 <p>要定义实体中的关系，请使用相应的 <strong>装饰器</strong> 。
 例如，要定义每个<code>User</code>可以有多个照片，请使用<code>@OneToMany()</code>装饰器。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">user.entity</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">user.entity.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
@@ -5332,6 +5333,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">  </span><span class="nx">photos</span><span class="o">:</span><span class="w"> </span><span class="kt">Photo</span><span class="p">[];</span><span class="w"></span>
 <a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>要了解 TypeORM 中的更多关系，请访问<a href="https://typeorm.io/#/relations">TypeORM 文档</a>。</p>
@@ -5343,11 +5347,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <p>但是请注意，webpack 不支持 glob 路径，所以如果你在 monorepo 中构建你的应用程序，你将无法使用它们。
 为了解决这个问题，我们提供了另一种解决方案。
 要自动加载实体，需要将配置对象(传入<code>forRoot()</code>方法)的<code>autoLoadEntities</code>属性设置为<code>true</code>，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
@@ -5372,6 +5374,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>指定该选项后，每个通过<code>forFeature()</code>方法注册的实体都会自动添加到配置对象的<code>entities</code>数组中。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -6001,11 +6006,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-37-2" name="__codelineno-37-2"></a>$ npm install --save-dev @types/sequelize
 </code></pre></div></td></tr></table></div>
 <p>一旦安装完成，我们就可以把<code>SequelizeModule</code>导入到根目录<code>AppModule</code>中。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-38-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-38-3"> 3</a></span>
@@ -6040,6 +6043,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-38-16" name="__codelineno-38-16"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-38-17" name="__codelineno-38-17"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>forRoot()方法支持 Sequelize 构造函数公开的所有配置属性(<a href="https://sequelize.org/v5/manual/getting-started.html#setting-up-a-connection">read more</a>)。
 此外，下面还描述了几个额外的配置属性。</p>
 <table>
@@ -6066,11 +6072,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 </table>
 
 <p>一旦完成，<code>Sequelize</code>对象将可以在整个项目中注入(不需要导入任何模块)，例如:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">app.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.service.ts</label><label for="__tabbed_13_2">app.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span>
 <span class="normal"><a href="#__codelineno-39-2">2</a></span>
 <span class="normal"><a href="#__codelineno-39-3">3</a></span>
@@ -6085,11 +6089,8 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-39-6" name="__codelineno-39-6"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">sequelize</span><span class="o">:</span><span class="w"> </span><span class="kt">Sequelize</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 <a id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-40-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-40-3"> 3</a></span>
@@ -6110,16 +6111,17 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-40-9" name="__codelineno-40-9"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-40-10" name="__codelineno-40-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_15">模型<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <p><code>Sequelize</code> 实现活动记录模式。
 使用这个模式，您可以直接使用模型类与数据库交互。
 为了继续这个例子，我们至少需要一个模型。
 让我们定义<code>User</code>模型。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">user.model</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">user.model.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-41-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-41-3"> 3</a></span>
@@ -6146,6 +6148,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-41-12" name="__codelineno-41-12"></a><span class="w">  </span><span class="nx">isActive</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-41-13" name="__codelineno-41-13"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>了解更多可用的 decorator<a href="https://github.com/RobinBuschmann/sequelize-typescript#column">这里</a>.</p>
@@ -6154,11 +6159,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 这个目录包含所有与<code>UsersModule</code>相关的文件。
 你可以决定在哪里保存你的模型文件，然而，我们建议在它们的 <strong>域</strong> 附近创建它们，在相应的模块目录中。</p>
 <p>为了开始使用“User”模型，我们需要把它插入到模块的“forRoot()”方法选项中的“models”数组中，让 Sequelize 知道它:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-42-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-42-3"> 3</a></span>
@@ -6195,12 +6198,13 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-42-17" name="__codelineno-42-17"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-42-18" name="__codelineno-42-18"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>接下来，让我们看看“UsersModule”:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">users.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">users.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-43-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-43-3"> 3</a></span>
@@ -6225,13 +6229,14 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-43-11" name="__codelineno-43-11"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-43-12" name="__codelineno-43-12"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UsersModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>这个模块使用<code>forFeature()</code>方法来定义哪些模型注册在当前范围内。
 有了它，我们就可以使用<code>@InjectModel()</code>装饰器将<code>UserModel</code>注入到<code>UsersService</code>中:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">users.service</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">users.service.ts</label><label for="__tabbed_17_2">users.service.js</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-44-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-44-3"> 3</a></span>
@@ -6288,11 +6293,8 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-44-27" name="__codelineno-44-27"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-44-28" name="__codelineno-44-28"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">JavaScript</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-45-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-45-3"> 3</a></span>
@@ -6349,17 +6351,18 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-45-27" name="__codelineno-45-27"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-45-28" name="__codelineno-45-28"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>别忘了把<code>UsersModule</code>导入根模块<code>AppModule</code>。</p>
 </div>
 <p>如果你想在导入<code>SequelizeModulefor.Feature</code>的模块外部使用存储库，你需要重新导出它生成的提供器。
 你可以通过导出整个模块来实现，像这样:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">users.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">users.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span>
 <span class="normal"><a href="#__codelineno-46-2">2</a></span>
 <span class="normal"><a href="#__codelineno-46-3">3</a></span>
@@ -6378,12 +6381,13 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-46-8" name="__codelineno-46-8"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-46-9" name="__codelineno-46-9"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UsersModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>现在，如果我们在<code>UserHttpModule</code>中导入<code>UsersModule</code>，我们可以在后一个模块的<code>providers</code>中使用<code>@InjectModel(User)</code>。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">users-http.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">users-http.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-47-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-47-3"> 3</a></span>
@@ -6406,6 +6410,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-47-10" name="__codelineno-47-10"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-47-11" name="__codelineno-47-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserHttpModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h2 id="_16">关系<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <p>关系是在两个或多个表之间建立的关联。
 关系基于每个表的公共字段，通常涉及主键和外键。</p>
@@ -6427,11 +6434,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 
 <p>要定义实体中的关系，请使用相应的 <strong>装饰器</strong> 。
 例如，要定义每个<code>User</code>可以有多个照片，请使用<code>@HasMany()</code>装饰器。</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">user.entity</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">user.entity.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-48-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-48-3"> 3</a></span>
@@ -6466,6 +6471,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-48-16" name="__codelineno-48-16"></a><span class="w">  </span><span class="nx">photos</span><span class="o">:</span><span class="w"> </span><span class="kt">Photo</span><span class="p">[];</span><span class="w"></span>
 <a id="__codelineno-48-17" name="__codelineno-48-17"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
 <p>要在 Sequelize 中了解更多有关关联的信息，请阅读<a href="https://github.com/RobinBuschmann/sequelize-typescript#model-association">this</a>这一章。</p>
@@ -6474,11 +6482,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <p>手动添加模型到连接选项的<code>models</code>数组中可能会很繁琐。
 此外，从根模块引用模型会打破应用程序域边界，并导致实现细节泄露到应用程序的其他部分。
 为了解决这个问题，通过将配置对象的<code>autoLoadModels</code>和<code>synchronize</code>属性(传入到<code>forRoot()</code>方法中)设置为<code>true</code>来自动加载模型，如下所示:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">app.module</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">app.module.ts</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-49-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-49-3"> 3</a></span>
@@ -6505,6 +6511,9 @@ Nest 使用<a href="https://github.com/typeorm/typeorm">TypeORM</a>是因为它�
 <a id="__codelineno-49-12" name="__codelineno-49-12"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-49-13" name="__codelineno-49-13"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <p>指定了这个选项后，每个通过<code>forFeature()</code>方法注册的模型都会自动添加到配置对象的<code>models</code>数组中。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

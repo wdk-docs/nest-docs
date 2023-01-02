@@ -1019,7 +1019,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1027,10 +1027,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1042,8 +1042,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1056,8 +1056,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1071,7 +1071,7 @@
   
     <li class="md-nav__item">
       <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1084,8 +1084,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4945,9 +4945,10 @@ The <code>ClientKafka#send()</code> method sends messages with a <a href="https:
 <p>Normally, topic partitions are assigned using the round robin partitioner, which assigns topic partitions to a collection of consumers sorted by consumer names which are randomly set on application launch. However, when a new consumer joins the consumer group, the new consumer can be positioned anywhere within the collection of consumers. This creates a condition where pre-existing consumers can be assigned different partitions when the pre-existing consumer is positioned after the new consumer. As a result, the consumers that are assigned different partitions will lose response messages of requests sent before the rebalance.</p>
 <p>To prevent the <code>ClientKafka</code> consumers from losing response messages, a Nest-specific built-in custom partitioner is utilized. This custom partitioner assigns partitions to a collection of consumers sorted by high-resolution timestamps (<code>process.hrtime()</code>) that are set on application launch.</p>
 <h2 id="_6">消息响应订阅<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>warning <strong>Note</strong> This section is only relevant if you use <a href="/microservices/basics#request-response">request-response</a> message style (with the <code>@MessagePatern</code> decorator and the <code>ClientKafka#send</code> method). Subscribing to the response topic is not necessary for the <a href="/microservices/basics#event-based">event-based</a> communication (<code>@EventPattern</code> decorator and <code>ClientKafka#emit</code> method).</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section is only relevant if you use <a href="/microservices/basics#request-response">request-response</a> message style (with the <code>@MessagePatern</code> decorator and the <code>ClientKafka#send</code> method). Subscribing to the response topic is not necessary for the <a href="/microservices/basics#event-based">event-based</a> communication (<code>@EventPattern</code> decorator and <code>ClientKafka#emit</code> method).</p>
+</div>
 <p>The <code>ClientKafka</code> class provides the <code>subscribeToResponseOf()</code> method. The <code>subscribeToResponseOf()</code> method takes a request's topic name as an argument and adds the derived reply topic name to a collection of reply topics. This method is required when implementing the message pattern.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">heroes.controller.ts</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>

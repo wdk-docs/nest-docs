@@ -1019,7 +1019,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1027,10 +1027,10 @@
           
         </div>
       
-      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
+      <nav class="md-nav" aria-label="@liaoliaots/nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          liaoliaots_nestjs-redis
+          @liaoliaots/nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1042,8 +1042,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
-        Cluster
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+        使用
       </a>
     </li>
   
@@ -1056,8 +1056,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
-        Examples
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -1071,7 +1071,7 @@
   
     <li class="md-nav__item">
       <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
-        Health
+        健康
       </a>
     </li>
   
@@ -1084,8 +1084,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../techniques/redis/liaoliaots_nestjs-redis/redis/" class="md-nav__link">
-        Redis
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+        举例
       </a>
     </li>
   
@@ -4690,9 +4690,12 @@
 <a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>此外，它还自动为所有 CRUD 端点创建占位符(REST api 的路由、GraphQL 的查询和突变、微服务和 WebSocket 网关的消息订阅)——所有这些都不需要动一根手指。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>生成的服务类**不**与任何特定的**ORM(或数据源)** 绑定。</p>
+</div>
 <blockquote>
-<p>warning <strong>Note</strong> 生成的服务类**不**与任何特定的**ORM(或数据源)** 绑定。
-这使得生成器足够通用，可以满足任何项目的需要。
+<p>这使得生成器足够通用，可以满足任何项目的需要。
 默认情况下，所有方法都将包含占位符，允许您使用特定于项目的数据源填充占位符。</p>
 </blockquote>
 <p>同样，如果你想为一个 GraphQL 应用程序生成解析器，只需选择<code>GraphQL(代码优先)</code>(或<code>GraphQL(模式优先)</code>)作为你的传输层。</p>
