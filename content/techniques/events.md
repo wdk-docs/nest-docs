@@ -14,17 +14,17 @@ $ npm i --save @nestjs/event-emitter
 
 Once the installation is complete, import the `EventEmitterModule` into the root `AppModule` and run the `forRoot()` static method as shown below:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { EventEmitterModule } from '@nestjs/event-emitter';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { EventEmitterModule } from '@nestjs/event-emitter';
 
-@Module({
-  imports: [EventEmitterModule.forRoot()],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [EventEmitterModule.forRoot()],
+    })
+    export class AppModule {}
+    ```
 
 The `.forRoot()` call initializes the event emitter and registers any declarative event listeners that exist within your app. Registration occurs when the `onApplicationBootstrap` lifecycle hook occurs, ensuring that all modules have loaded and declared any scheduled jobs.
 

@@ -17,17 +17,17 @@ $ npm install --save-dev @types/cron
 
 要激活作业调度，请将`ScheduleModule`导入到根模块`AppModule`中，并运行`forRoot()`静态方法，如下所示:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { ScheduleModule } from '@nestjs/schedule';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { ScheduleModule } from '@nestjs/schedule';
 
-@Module({
-  imports: [ScheduleModule.forRoot()],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [ScheduleModule.forRoot()],
+    })
+    export class AppModule {}
+    ```
 
 `.forroot()`调用初始化调度器，并注册应用程序中存在的任何声明性[cron job](techniques/task-scheduling#declarative-cron-jobs)、[timeout](techniques/task-scheduling#declarative-timeout)和[interval](techniques/task-scheduling#declarative-interval)。
 当`onApplicationBootstrap`生命周期钩子发生时，就会发生注册，以确保所有模块都已加载并声明了任何调度的作业。

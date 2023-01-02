@@ -35,24 +35,24 @@ $ npm install --save-dev @types/bull
 
 一旦安装过程完成，我们就可以将`BullModule`导入到根目录`AppModule`中。
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { BullModule } from '@nestjs/bull';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { BullModule } from '@nestjs/bull';
 
-@Module({
-  imports: [
-    BullModule.forRoot({
-      redis: {
-        host: 'localhost',
-        port: 6379,
-      },
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        BullModule.forRoot({
+          redis: {
+            host: 'localhost',
+            port: 6379,
+          },
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 `forRoot()`方法用于注册一个`bull`包配置对象，该对象将被应用程序中注册的所有队列使用(除非另有说明)。配置对象由以下属性组成:
 

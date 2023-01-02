@@ -12,17 +12,17 @@ $ npm install --save @nestjs/mongoose mongoose
 
 一旦安装完成，我们就可以把`MongooseModule`导入到根目录`AppModule`中。
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { MongooseModule } from '@nestjs/mongoose';
 
-@Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest')],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [MongooseModule.forRoot('mongodb://localhost/nest')],
+    })
+    export class AppModule {}
+    ```
 
 `forRoot()`方法接受与 Mongoose 包中的`Mongoose.connect()`相同的配置对象，如[这里](https://mongoosejs.com/docs/connections.html)所述.
 
@@ -38,30 +38,32 @@ export class AppModule {}
 
 我们定义的 `CatSchema`:
 
-=== "schemas/cat.schema"
+=== "schemas/cat.schema.ts"
 
-```ts
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+    ```ts
+    import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+    import { Document } from 'mongoose';
 
-export type CatDocument = Cat & Document;
+    export type CatDocument = Cat & Document;
 
-@Schema()
-export class Cat {
-  @Prop()
-  name: string;
+    @Schema()
+    export class Cat {
+      @Prop()
+      name: string;
 
-  @Prop()
-  age: number;
+      @Prop()
+      age: number;
 
-  @Prop()
-  breed: string;
-}
+      @Prop()
+      breed: string;
+    }
 
-export const CatSchema = SchemaFactory.createForClass(Cat);
-```
+    export const CatSchema = SchemaFactory.createForClass(Cat);
+    ```
 
-!!! info **提示** 注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
+!!! info **提示**
+
+    注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
 
 `@Schema()`装饰器将一个类标记为一个模式定义。
 它将我们的`Cat`类映射到具有相同名称的 MongoDB 集合，但在末尾添加了一个额外的`s`——所以最终的 mongo 集合名称将是`cats`。
@@ -134,77 +136,77 @@ export const CatSchema = new mongoose.Schema({
 
 让我们看看`CatsModule`:
 
-=== "cats.module"
+=== "cats.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
-import { Cat, CatSchema } from './schemas/cat.schema';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { MongooseModule } from '@nestjs/mongoose';
+    import { CatsController } from './cats.controller';
+    import { CatsService } from './cats.service';
+    import { Cat, CatSchema } from './schemas/cat.schema';
 
-@Module({
-  imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
-  controllers: [CatsController],
-  providers: [CatsService],
-})
-export class CatsModule {}
-```
+    @Module({
+      imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
+      controllers: [CatsController],
+      providers: [CatsService],
+    })
+    export class CatsModule {}
+    ```
 
 `MongooseModule`提供了`forFeature()`方法来配置模块，包括定义哪些模型应该在当前范围内注册。
 如果你还想在另一个模块中使用这些模型，可以将 MongooseModule 添加到`CatsModule`的`exports`部分，并在另一个模块中导入`CatsModule`。
 
 一旦你注册了这个模式，你就可以使用`@InjectModel()`装饰器将一个`Cat`模型注入到`CatsService`中:
 
-=== "cats.service"
+=== "cats.service.ts"
 
-```ts
-import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Cat, CatDocument } from './schemas/cat.schema';
-import { CreateCatDto } from './dto/create-cat.dto';
+    ```ts
+    import { Model } from 'mongoose';
+    import { Injectable } from '@nestjs/common';
+    import { InjectModel } from '@nestjs/mongoose';
+    import { Cat, CatDocument } from './schemas/cat.schema';
+    import { CreateCatDto } from './dto/create-cat.dto';
 
-@Injectable()
-export class CatsService {
-  constructor(@InjectModel(Cat.name) private catModel: Model<CatDocument>) {}
+    @Injectable()
+    export class CatsService {
+      constructor(@InjectModel(Cat.name) private catModel: Model<CatDocument>) {}
 
-  async create(createCatDto: CreateCatDto): Promise<Cat> {
-    const createdCat = new this.catModel(createCatDto);
-    return createdCat.save();
-  }
+      async create(createCatDto: CreateCatDto): Promise<Cat> {
+        const createdCat = new this.catModel(createCatDto);
+        return createdCat.save();
+      }
 
-  async findAll(): Promise<Cat[]> {
-    return this.catModel.find().exec();
-  }
-}
-```
+      async findAll(): Promise<Cat[]> {
+        return this.catModel.find().exec();
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "cats.service.js"
 
-```js
-import { Model } from 'mongoose';
-import { Injectable, Dependencies } from '@nestjs/common';
-import { getModelToken } from '@nestjs/mongoose';
-import { Cat } from './schemas/cat.schema';
+    ```js
+    import { Model } from 'mongoose';
+    import { Injectable, Dependencies } from '@nestjs/common';
+    import { getModelToken } from '@nestjs/mongoose';
+    import { Cat } from './schemas/cat.schema';
 
-@Injectable()
-@Dependencies(getModelToken(Cat.name))
-export class CatsService {
-  constructor(catModel) {
-    this.catModel = catModel;
-  }
+    @Injectable()
+    @Dependencies(getModelToken(Cat.name))
+    export class CatsService {
+      constructor(catModel) {
+        this.catModel = catModel;
+      }
 
-  async create(createCatDto) {
-    const createdCat = new this.catModel(createCatDto);
-    return createdCat.save();
-  }
+      async create(createCatDto) {
+        const createdCat = new this.catModel(createCatDto);
+        return createdCat.save();
+      }
 
-  async findAll() {
-    return this.catModel.find().exec();
-  }
-}
-```
+      async findAll() {
+        return this.catModel.find().exec();
+      }
+    }
+    ```
 
 ## 连接
 
@@ -230,28 +232,28 @@ export class CatsService {
 要处理多个连接，首先要创建连接。
 在这种情况下，连接命名成为 **必须的** 。
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { MongooseModule } from '@nestjs/mongoose';
 
-@Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://localhost/test', {
-      connectionName: 'cats',
-    }),
-    MongooseModule.forRoot('mongodb://localhost/users', {
-      connectionName: 'users',
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        MongooseModule.forRoot('mongodb://localhost/test', {
+          connectionName: 'cats',
+        }),
+        MongooseModule.forRoot('mongodb://localhost/users', {
+          connectionName: 'users',
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
-> warning **请注意** 请注意，您不应该有多个没有名称或具有相同名称的连接，否则它们将被覆盖。
+!!! warning "请注意，您不应该有多个没有名称或具有相同名称的连接，否则它们将被覆盖。"
 
-在这个设置中，你必须告诉`mongoosemmodule.forfeature()`函数应该使用哪个连接。
+在这个设置中，你必须告诉`MongooseModule.forfeature()`函数应该使用哪个连接。
 
 ```typescript
 @Module({
@@ -367,24 +369,24 @@ export class AppModule {}
 要一次性为所有模式注册一个插件，调用`Connection`对象的`.plugin()`方法。
 您应该在创建模型之前访问连接;为此，使用`connectionFactory`:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { MongooseModule } from '@nestjs/mongoose';
 
-@Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://localhost/test', {
-      connectionFactory: (connection) => {
-        connection.plugin(require('mongoose-autopopulate'));
-        return connection;
-      },
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        MongooseModule.forRoot('mongodb://localhost/test', {
+          connectionFactory: (connection) => {
+            connection.plugin(require('mongoose-autopopulate'));
+            return connection;
+          },
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 ## 鉴别器
 
@@ -393,24 +395,24 @@ export class AppModule {}
 
 假设您想要跟踪单个集合中的不同类型的事件。每个事件都有一个时间戳。
 
-=== "event.schema"
+=== "event.schema.ts"
 
-```ts
-@Schema({ discriminatorKey:'kind`})
-export class Event {
-  @Prop({
-    type: String,
-    required: true,
-    enum: [ClickedLinkEvent.name, SignUpEvent.name],
-  })
-  kind: string;
+    ```ts
+    @Schema({ discriminatorKey:'kind`})
+    export class Event {
+      @Prop({
+        type: String,
+        required: true,
+        enum: [ClickedLinkEvent.name, SignUpEvent.name],
+      })
+      kind: string;
 
-  @Prop({ type: Date, required: true })
-  time: Date;
-}
+      @Prop({ type: Date, required: true })
+      time: Date;
+    }
 
-export const EventSchema = SchemaFactory.createForClass(Event);
-```
+    export const EventSchema = SchemaFactory.createForClass(Event);
+    ```
 
 !!! info "**Hint**"
 
@@ -420,64 +422,64 @@ export const EventSchema = SchemaFactory.createForClass(Event);
 
 现在，让我们定义 `clicklinkevent` 类，如下所示:
 
-=== "click-link-event.schema"
+=== "click-link-event.schema.ts"
 
-```ts
-@Schema()
-export class ClickedLinkEvent {
-  kind: string;
-  time: Date;
+    ```ts
+    @Schema()
+    export class ClickedLinkEvent {
+      kind: string;
+      time: Date;
 
-  @Prop({ type: String, required: true })
-  url: string;
-}
+      @Prop({ type: String, required: true })
+      url: string;
+    }
 
-export const ClickedLinkEventSchema =
-  SchemaFactory.createForClass(ClickedLinkEvent);
-```
+    export const ClickedLinkEventSchema =
+      SchemaFactory.createForClass(ClickedLinkEvent);
+    ```
 
 添加 `SignUpEvent` 类:
 
-=== "sign-up-event.schema"
+=== "sign-up-event.schema.ts"
 
-```ts
-@Schema()
-export class SignUpEvent {
-  kind: string;
-  time: Date;
+    ```ts
+    @Schema()
+    export class SignUpEvent {
+      kind: string;
+      time: Date;
 
-  @Prop({ type: String, required: true })
-  user: string;
-}
+      @Prop({ type: String, required: true })
+      user: string;
+    }
 
-export const SignUpEventSchema = SchemaFactory.createForClass(SignUpEvent);
-```
+    export const SignUpEventSchema = SchemaFactory.createForClass(SignUpEvent);
+    ```
 
 在此基础上，使用 `discriminator` 选项为给定的模式注册一个标识符。
 它工作在两个 `MongooseModule。forFeature’和‘MongooseModule.forFeatureAsync”:
 
-=== "event.module"
+=== "event.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { MongooseModule } from '@nestjs/mongoose';
 
-@Module({
-  imports: [
-    MongooseModule.forFeature([
-      {
-        name: Event.name,
-        schema: EventSchema,
-        discriminators: [
-          { name: ClickedLinkEvent.name, schema: ClickedLinkEventSchema },
-          { name: SignUpEvent.name, schema: SignUpEventSchema },
-        ],
-      },
-    ]),
-  ],
-})
-export class EventsModule {}
-```
+    @Module({
+      imports: [
+        MongooseModule.forFeature([
+          {
+            name: Event.name,
+            schema: EventSchema,
+            discriminators: [
+              { name: ClickedLinkEvent.name, schema: ClickedLinkEventSchema },
+              { name: SignUpEvent.name, schema: SignUpEventSchema },
+            ],
+          },
+        ]),
+      ],
+    })
+    export class EventsModule {}
+    ```
 
 ## 测试
 
@@ -561,4 +563,4 @@ MongooseModule.forRootAsync({
 
 ## 例子
 
-(https://github.com/nestjs/nest/tree/master/sample/06-mongoose).
+https://github.com/nestjs/nest/tree/master/sample/06-mongoose

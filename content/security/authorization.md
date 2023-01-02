@@ -18,14 +18,14 @@
 
 首先，让我们在系统中创建一个表示角色的`Role`枚举:
 
-=== "role.enum"
+=== "role.enum.ts"
 
-```ts
-export enum Role {
-  User = 'user',
-  Admin = 'admin',
-}
-```
+    ```ts
+    export enum Role {
+      User = 'user',
+      Admin = 'admin',
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -34,101 +34,101 @@ export enum Role {
 有了这个，我们可以创建一个`@Roles()`装饰器。
 该装饰器允许指定访问特定资源所需的角色。
 
-=== "roles.decorator"
+=== "roles.decorator.ts"
 
-```ts
-import { SetMetadata } from '@nestjs/common';
-import { Role } from '../enums/role.enum';
+    ```ts
+    import { SetMetadata } from '@nestjs/common';
+    import { Role } from '../enums/role.enum';
 
-export const ROLES_KEY = 'roles';
-export const Roles = (...roles: Role[]) => SetMetadata(ROLES_KEY, roles);
-```
+    export const ROLES_KEY = 'roles';
+    export const Roles = (...roles: Role[]) => SetMetadata(ROLES_KEY, roles);
+    ```
 
-=== "JavaScript"
+=== "roles.decorator.js"
 
-```js
-import { SetMetadata } from '@nestjs/common';
+    ```js
+    import { SetMetadata } from '@nestjs/common';
 
-export const ROLES_KEY = 'roles';
-export const Roles = (...roles) => SetMetadata(ROLES_KEY, roles);
-```
+    export const ROLES_KEY = 'roles';
+    export const Roles = (...roles) => SetMetadata(ROLES_KEY, roles);
+    ```
 
 现在我们有了一个自定义的`@Roles()`装饰器，我们可以用它装饰任何路由处理程序。
 
-=== "cats.controller"
+=== "cats.controller.ts"
 
-```ts
-@Post()
-@Roles(Role.Admin)
-create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+    ```ts
+    @Post()
+    @Roles(Role.Admin)
+    create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
-=== "JavaScript"
+=== "cats.controller.js"
 
-```js
-@Post()
-@Roles(Role.Admin)
-@Bind(Body())
-create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+    ```js
+    @Post()
+    @Roles(Role.Admin)
+    @Bind(Body())
+    create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 最后，我们创建一个`RolesGuard`类，它将把分配给当前用户的角色与正在处理的当前路由所需要的实际角色进行比较。
 为了访问路由的角色(自定义元数据)，我们将使用`Reflector `helper 类，它是由框架提供的，从`@nestjs/core`包中公开的。
 
-=== "roles.guard"
+=== "roles.guard.ts"
 
-```ts
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+    ```ts
+    import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+    import { Reflector } from '@nestjs/core';
 
-@Injectable()
-export class RolesGuard implements CanActivate {
-  constructor(private reflector: Reflector) {}
+    @Injectable()
+    export class RolesGuard implements CanActivate {
+      constructor(private reflector: Reflector) {}
 
-  canActivate(context: ExecutionContext): boolean {
-    const requiredRoles = this.reflector.getAllAndOverride<Role[]>(ROLES_KEY, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
-    if (!requiredRoles) {
-      return true;
+      canActivate(context: ExecutionContext): boolean {
+        const requiredRoles = this.reflector.getAllAndOverride<Role[]>(ROLES_KEY, [
+          context.getHandler(),
+          context.getClass(),
+        ]);
+        if (!requiredRoles) {
+          return true;
+        }
+        const { user } = context.switchToHttp().getRequest();
+        return requiredRoles.some((role) => user.roles?.includes(role));
+      }
     }
-    const { user } = context.switchToHttp().getRequest();
-    return requiredRoles.some((role) => user.roles?.includes(role));
-  }
-}
-```
+    ```
 
-=== "JavaScript"
+=== "roles.guard.js"
 
-```js
-import { Injectable, Dependencies } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+    ```js
+    import { Injectable, Dependencies } from '@nestjs/common';
+    import { Reflector } from '@nestjs/core';
 
-@Injectable()
-@Dependencies(Reflector)
-export class RolesGuard {
-  constructor(reflector) {
-    this.reflector = reflector;
-  }
+    @Injectable()
+    @Dependencies(Reflector)
+    export class RolesGuard {
+      constructor(reflector) {
+        this.reflector = reflector;
+      }
 
-  canActivate(context) {
-    const requiredRoles = this.reflector.getAllAndOverride(ROLES_KEY, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
-    if (!requiredRoles) {
-      return true;
+      canActivate(context) {
+        const requiredRoles = this.reflector.getAllAndOverride(ROLES_KEY, [
+          context.getHandler(),
+          context.getClass(),
+        ]);
+        if (!requiredRoles) {
+          return true;
+        }
+        const { user } = context.switchToHttp().getRequest();
+        return requiredRoles.some((role) => user.roles.includes(role));
+      }
     }
-    const { user } = context.switchToHttp().getRequest();
-    return requiredRoles.some((role) => user.roles.includes(role));
-  }
-}
-```
+    ```
 
 !!! info "**Hint**"
 
@@ -187,26 +187,26 @@ claim 是一个名称-值对，它表示主语可以做什么，而不是主语�
 每个用户都有一组被分配的权限。
 同样，每个资源/端点将定义需要哪些权限(例如，通过专用的`@RequirePermissions()`装饰器)来访问它们。
 
-=== "cats.controller"
+=== "cats.controller.ts"
 
-```ts
-@Post()
-@RequirePermissions(Permission.CREATE_CAT)
-create(@Body() createCatDto: CreateCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+    ```ts
+    @Post()
+    @RequirePermissions(Permission.CREATE_CAT)
+    create(@Body() createCatDto: CreateCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
-=== "JavaScript"
+=== "cats.controller.js"
 
-```js
-@Post()
-@RequirePermissions(Permission.CREATE_CAT)
-@Bind(Body())
-create(createCatDto) {
-  this.catsService.create(createCatDto);
-}
-```
+    ```js
+    @Post()
+    @RequirePermissions(Permission.CREATE_CAT)
+    @Bind(Body())
+    create(createCatDto) {
+      this.catsService.create(createCatDto);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -323,8 +323,7 @@ export class CaslAbilityFactory {
 !!! info "**Hint**"
 
     `detectSubjectType`选项让 CASL 了解如何从对象中获取主题类型。
-
-> 有关更多信息，请阅读[CASL 文档](https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types)了解详细信息。
+    有关更多信息，请阅读[CASL 文档](https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types)了解详细信息。
 
 在上面的例子中，我们使用`AbilityBuilder`类创建了`Ability`实例。
 正如你可能猜到的，can 和 cannot 接受相同的参数，但有不同的含义，can 允许对指定的主题做一个动作，而 cannot 禁止。

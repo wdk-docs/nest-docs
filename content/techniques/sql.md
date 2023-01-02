@@ -26,28 +26,28 @@ $ npm install --save @nestjs/typeorm typeorm mysql2
 
 一旦安装过程完成，我们就可以把`TypeOrmModule`导入到根目录`AppModule`中。
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { TypeOrmModule } from '@nestjs/typeorm';
 
-@Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      entities: [],
-      synchronize: true,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        TypeOrmModule.forRoot({
+          type: 'mysql',
+          host: 'localhost',
+          port: 3306,
+          username: 'root',
+          password: 'root',
+          database: 'test',
+          entities: [],
+          synchronize: true,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 !!! warning
 
@@ -96,17 +96,17 @@ export class AppModule {}
 
 然后，我们可以不带任何选项调用`forRoot()`:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { TypeOrmModule } from '@nestjs/typeorm';
 
-@Module({
-  imports: [TypeOrmModule.forRoot()],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [TypeOrmModule.forRoot()],
+    })
+    export class AppModule {}
+    ```
 
 !!! warning
 
@@ -131,34 +131,34 @@ export class AppModule {}
 
 一旦完成，TypeORM `Connection`和`EntityManager`对象将可以在整个项目中注入(不需要导入任何模块)，例如:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Connection } from 'typeorm';
+    ```ts
+    import { Connection } from 'typeorm';
 
-@Module({
-  imports: [TypeOrmModule.forRoot(), UsersModule],
-})
-export class AppModule {
-  constructor(private connection: Connection) {}
-}
-```
+    @Module({
+      imports: [TypeOrmModule.forRoot(), UsersModule],
+    })
+    export class AppModule {
+      constructor(private connection: Connection) {}
+    }
+    ```
 
 === "JavaScript"
 
-```js
-import { Connection } from 'typeorm';
+    ```js
+    import { Connection } from 'typeorm';
 
-@Dependencies(Connection)
-@Module({
-  imports: [TypeOrmModule.forRoot(), UsersModule],
-})
-export class AppModule {
-  constructor(connection) {
-    this.connection = connection;
-  }
-}
-```
+    @Dependencies(Connection)
+    @Module({
+      imports: [TypeOrmModule.forRoot(), UsersModule],
+    })
+    export class AppModule {
+      constructor(connection) {
+        this.connection = connection;
+      }
+    }
+    ```
 
 ## 库模式
 
@@ -168,26 +168,26 @@ export class AppModule {
 为了继续这个例子，我们至少需要一个实体。
 让我们定义“用户”实体。
 
-=== "user.entity"
+=== "user.entity.ts"
 
-```ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+    ```ts
+    import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @Entity()
+    export class User {
+      @PrimaryGeneratedColumn()
+      id: number;
 
-  @Column()
-  firstName: string;
+      @Column()
+      firstName: string;
 
-  @Column()
-  lastName: string;
+      @Column()
+      lastName: string;
 
-  @Column({ default: true })
-  isActive: boolean;
-}
-```
+      @Column({ default: true })
+      isActive: boolean;
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -199,108 +199,108 @@ export class User {
 
 为了开始使用`User`实体，我们需要将它插入到模块的`forRoot()`方法选项中的`entities`数组中，让 TypeORM 知道它(除非你使用一个静态的 glob 路径):
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.entity';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { TypeOrmModule } from '@nestjs/typeorm';
+    import { User } from './users/user.entity';
 
-@Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      entities: [User],
-      synchronize: true,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        TypeOrmModule.forRoot({
+          type: 'mysql',
+          host: 'localhost',
+          port: 3306,
+          username: 'root',
+          password: 'root',
+          database: 'test',
+          entities: [User],
+          synchronize: true,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 接下来，让我们看看`UsersModule`:
 
-=== "users.module"
+=== "users.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
-import { User } from './user.entity';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { TypeOrmModule } from '@nestjs/typeorm';
+    import { UsersService } from './users.service';
+    import { UsersController } from './users.controller';
+    import { User } from './user.entity';
 
-@Module({
-  imports: [TypeOrmModule.forFeature([User])],
-  providers: [UsersService],
-  controllers: [UsersController],
-})
-export class UsersModule {}
-```
+    @Module({
+      imports: [TypeOrmModule.forFeature([User])],
+      providers: [UsersService],
+      controllers: [UsersController],
+    })
+    export class UsersModule {}
+    ```
 
 这个模块使用`forFeature()`方法来定义哪些存储库注册在当前范围内。
 有了它，我们就可以使用`@InjectRepository()`装饰器将`UsersRepository`注入到`UsersService`中:
 
-=== "users.service"
+=== "users.service.ts"
 
-```ts
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from './user.entity';
+    ```ts
+    import { Injectable } from '@nestjs/common';
+    import { InjectRepository } from '@nestjs/typeorm';
+    import { Repository } from 'typeorm';
+    import { User } from './user.entity';
 
-@Injectable()
-export class UsersService {
-  constructor(
-    @InjectRepository(User)
-    private usersRepository: Repository<User>,
-  ) {}
+    @Injectable()
+    export class UsersService {
+      constructor(
+        @InjectRepository(User)
+        private usersRepository: Repository<User>,
+      ) {}
 
-  findAll(): Promise<User[]> {
-    return this.usersRepository.find();
-  }
+      findAll(): Promise<User[]> {
+        return this.usersRepository.find();
+      }
 
-  findOne(id: string): Promise<User> {
-    return this.usersRepository.findOne(id);
-  }
+      findOne(id: string): Promise<User> {
+        return this.usersRepository.findOne(id);
+      }
 
-  async remove(id: string): Promise<void> {
-    await this.usersRepository.delete(id);
-  }
-}
-```
+      async remove(id: string): Promise<void> {
+        await this.usersRepository.delete(id);
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "users.service.js"
 
-```js
-import { Injectable, Dependencies } from '@nestjs/common';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { User } from './user.entity';
+    ```js
+    import { Injectable, Dependencies } from '@nestjs/common';
+    import { getRepositoryToken } from '@nestjs/typeorm';
+    import { User } from './user.entity';
 
-@Injectable()
-@Dependencies(getRepositoryToken(User))
-export class UsersService {
-  constructor(usersRepository) {
-    this.usersRepository = usersRepository;
-  }
+    @Injectable()
+    @Dependencies(getRepositoryToken(User))
+    export class UsersService {
+      constructor(usersRepository) {
+        this.usersRepository = usersRepository;
+      }
 
-  findAll() {
-    return this.usersRepository.find();
-  }
+      findAll() {
+        return this.usersRepository.find();
+      }
 
-  findOne(id) {
-    return this.usersRepository.findOne(id);
-  }
+      findOne(id) {
+        return this.usersRepository.findOne(id);
+      }
 
-  async remove(id) {
-    await this.usersRepository.delete(id);
-  }
-}
-```
+      async remove(id) {
+        await this.usersRepository.delete(id);
+      }
+    }
+    ```
 
 !!! warning
 
@@ -309,37 +309,37 @@ export class UsersService {
 如果你想使用模块外部的存储库，该模块导入了`TypeOrmModule.forFeature()`，你需要重新导出它生成的提供器。
 你可以通过导出整个模块来实现，像这样:
 
-=== "users.module"
+=== "users.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.entity';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { TypeOrmModule } from '@nestjs/typeorm';
+    import { User } from './user.entity';
 
-@Module({
-  imports: [TypeOrmModule.forFeature([User])],
-  exports: [TypeOrmModule],
-})
-export class UsersModule {}
-```
+    @Module({
+      imports: [TypeOrmModule.forFeature([User])],
+      exports: [TypeOrmModule],
+    })
+    export class UsersModule {}
+    ```
 
 现在，如果我们在`UserHttpModule`中导入`UsersModule`，我们可以在后一个模块的 providers 中使用`@InjectRepository(User)`。
 
-=== "users-http.module"
+=== "users-http.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { UsersModule } from './users.module';
-import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { UsersModule } from './users.module';
+    import { UsersService } from './users.service';
+    import { UsersController } from './users.controller';
 
-@Module({
-  imports: [UsersModule],
-  providers: [UsersService],
-  controllers: [UsersController],
-})
-export class UserHttpModule {}
-```
+    @Module({
+      imports: [UsersModule],
+      providers: [UsersService],
+      controllers: [UsersController],
+    })
+    export class UserHttpModule {}
+    ```
 
 ## 关系
 
@@ -366,30 +366,30 @@ export class UserHttpModule {}
 要定义实体中的关系，请使用相应的 **装饰器** 。
 例如，要定义每个`User`可以有多个照片，请使用`@OneToMany()`装饰器。
 
-=== "user.entity"
+=== "user.entity.ts"
 
-```ts
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Photo } from '../photos/photo.entity';
+    ```ts
+    import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+    import { Photo } from '../photos/photo.entity';
 
-@Entity()
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @Entity()
+    export class User {
+      @PrimaryGeneratedColumn()
+      id: number;
 
-  @Column()
-  firstName: string;
+      @Column()
+      firstName: string;
 
-  @Column()
-  lastName: string;
+      @Column()
+      lastName: string;
 
-  @Column({ default: true })
-  isActive: boolean;
+      @Column({ default: true })
+      isActive: boolean;
 
-  @OneToMany((type) => Photo, (photo) => photo.user)
-  photos: Photo[];
-}
-```
+      @OneToMany((type) => Photo, (photo) => photo.user)
+      photos: Photo[];
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -405,22 +405,22 @@ export class User {
 为了解决这个问题，我们提供了另一种解决方案。
 要自动加载实体，需要将配置对象(传入`forRoot()`方法)的`autoLoadEntities`属性设置为`true`，如下所示:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { TypeOrmModule } from '@nestjs/typeorm';
 
-@Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      ...
-      autoLoadEntities: true,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        TypeOrmModule.forRoot({
+          ...
+          autoLoadEntities: true,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 指定该选项后，每个通过`forFeature()`方法注册的实体都会自动添加到配置对象的`entities`数组中。
 
@@ -909,27 +909,27 @@ $ npm install --save-dev @types/sequelize
 
 一旦安装完成，我们就可以把`SequelizeModule`导入到根目录`AppModule`中。
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { SequelizeModule } from '@nestjs/sequelize';
 
-@Module({
-  imports: [
-    SequelizeModule.forRoot({
-      dialect: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      models: [],
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        SequelizeModule.forRoot({
+          dialect: 'mysql',
+          host: 'localhost',
+          port: 3306,
+          username: 'root',
+          password: 'root',
+          database: 'test',
+          models: [],
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 forRoot()方法支持 Sequelize 构造函数公开的所有配置属性([read more](https://sequelize.org/v5/manual/getting-started.html#setting-up-a-connection))。
 此外，下面还描述了几个额外的配置属性。
@@ -959,32 +959,32 @@ forRoot()方法支持 Sequelize 构造函数公开的所有配置属性([read mo
 
 一旦完成，`Sequelize`对象将可以在整个项目中注入(不需要导入任何模块)，例如:
 
-=== "app.service"
+=== "app.service.ts"
 
-```ts
-import { Injectable } from '@nestjs/common';
-import { Sequelize } from 'sequelize-typescript';
+    ```ts
+    import { Injectable } from '@nestjs/common';
+    import { Sequelize } from 'sequelize-typescript';
 
-@Injectable()
-export class AppService {
-  constructor(private sequelize: Sequelize) {}
-}
-```
+    @Injectable()
+    export class AppService {
+      constructor(private sequelize: Sequelize) {}
+    }
+    ```
 
-=== "JavaScript"
+=== "app.service.js"
 
-```js
-import { Injectable } from '@nestjs/common';
-import { Sequelize } from 'sequelize-typescript';
+    ```js
+    import { Injectable } from '@nestjs/common';
+    import { Sequelize } from 'sequelize-typescript';
 
-@Dependencies(Sequelize)
-@Injectable()
-export class AppService {
-  constructor(sequelize) {
-    this.sequelize = sequelize;
-  }
-}
-```
+    @Dependencies(Sequelize)
+    @Injectable()
+    export class AppService {
+      constructor(sequelize) {
+        this.sequelize = sequelize;
+      }
+    }
+    ```
 
 ## 模型
 
@@ -993,23 +993,23 @@ export class AppService {
 为了继续这个例子，我们至少需要一个模型。
 让我们定义`User`模型。
 
-=== "user.model"
+=== "user.model.ts"
 
-```ts
-import { Column, Model, Table } from 'sequelize-typescript';
+    ```ts
+    import { Column, Model, Table } from 'sequelize-typescript';
 
-@Table
-export class User extends Model {
-  @Column
-  firstName: string;
+    @Table
+    export class User extends Model {
+      @Column
+      firstName: string;
 
-  @Column
-  lastName: string;
+      @Column
+      lastName: string;
 
-  @Column({ defaultValue: true })
-  isActive: boolean;
-}
-```
+      @Column({ defaultValue: true })
+      isActive: boolean;
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -1021,116 +1021,116 @@ export class User extends Model {
 
 为了开始使用“User”模型，我们需要把它插入到模块的“forRoot()”方法选项中的“models”数组中，让 Sequelize 知道它:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from './users/user.model';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { SequelizeModule } from '@nestjs/sequelize';
+    import { User } from './users/user.model';
 
-@Module({
-  imports: [
-    SequelizeModule.forRoot({
-      dialect: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'test',
-      models: [User],
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        SequelizeModule.forRoot({
+          dialect: 'mysql',
+          host: 'localhost',
+          port: 3306,
+          username: 'root',
+          password: 'root',
+          database: 'test',
+          models: [User],
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 接下来，让我们看看“UsersModule”:
 
-=== "users.module"
+=== "users.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from './user.model';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { SequelizeModule } from '@nestjs/sequelize';
+    import { User } from './user.model';
+    import { UsersController } from './users.controller';
+    import { UsersService } from './users.service';
 
-@Module({
-  imports: [SequelizeModule.forFeature([User])],
-  providers: [UsersService],
-  controllers: [UsersController],
-})
-export class UsersModule {}
-```
+    @Module({
+      imports: [SequelizeModule.forFeature([User])],
+      providers: [UsersService],
+      controllers: [UsersController],
+    })
+    export class UsersModule {}
+    ```
 
 这个模块使用`forFeature()`方法来定义哪些模型注册在当前范围内。
 有了它，我们就可以使用`@InjectModel()`装饰器将`UserModel`注入到`UsersService`中:
 
-=== "users.service"
+=== "users.service.ts"
 
-```ts
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
-import { User } from './user.model';
+    ```ts
+    import { Injectable } from '@nestjs/common';
+    import { InjectModel } from '@nestjs/sequelize';
+    import { User } from './user.model';
 
-@Injectable()
-export class UsersService {
-  constructor(
-    @InjectModel(User)
-    private userModel: typeof User,
-  ) {}
+    @Injectable()
+    export class UsersService {
+      constructor(
+        @InjectModel(User)
+        private userModel: typeof User,
+      ) {}
 
-  async findAll(): Promise<User[]> {
-    return this.userModel.findAll();
-  }
+      async findAll(): Promise<User[]> {
+        return this.userModel.findAll();
+      }
 
-  findOne(id: string): Promise<User> {
-    return this.userModel.findOne({
-      where: {
-        id,
-      },
-    });
-  }
+      findOne(id: string): Promise<User> {
+        return this.userModel.findOne({
+          where: {
+            id,
+          },
+        });
+      }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
-  }
-}
-```
+      async remove(id: string): Promise<void> {
+        const user = await this.findOne(id);
+        await user.destroy();
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "users.service.js"
 
-```js
-import { Injectable, Dependencies } from '@nestjs/common';
-import { getModelToken } from '@nestjs/sequelize';
-import { User } from './user.model';
+    ```js
+    import { Injectable, Dependencies } from '@nestjs/common';
+    import { getModelToken } from '@nestjs/sequelize';
+    import { User } from './user.model';
 
-@Injectable()
-@Dependencies(getModelToken(User))
-export class UsersService {
-  constructor(usersRepository) {
-    this.usersRepository = usersRepository;
-  }
+    @Injectable()
+    @Dependencies(getModelToken(User))
+    export class UsersService {
+      constructor(usersRepository) {
+        this.usersRepository = usersRepository;
+      }
 
-  async findAll() {
-    return this.userModel.findAll();
-  }
+      async findAll() {
+        return this.userModel.findAll();
+      }
 
-  findOne(id) {
-    return this.userModel.findOne({
-      where: {
-        id,
-      },
-    });
-  }
+      findOne(id) {
+        return this.userModel.findOne({
+          where: {
+            id,
+          },
+        });
+      }
 
-  async remove(id) {
-    const user = await this.findOne(id);
-    await user.destroy();
-  }
-}
-```
+      async remove(id) {
+        const user = await this.findOne(id);
+        await user.destroy();
+      }
+    }
+    ```
 
 !!! warning
 
@@ -1139,37 +1139,37 @@ export class UsersService {
 如果你想在导入`SequelizeModulefor.Feature`的模块外部使用存储库，你需要重新导出它生成的提供器。
 你可以通过导出整个模块来实现，像这样:
 
-=== "users.module"
+=== "users.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from './user.entity';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { SequelizeModule } from '@nestjs/sequelize';
+    import { User } from './user.entity';
 
-@Module({
-  imports: [SequelizeModule.forFeature([User])],
-  exports: [SequelizeModule],
-})
-export class UsersModule {}
-```
+    @Module({
+      imports: [SequelizeModule.forFeature([User])],
+      exports: [SequelizeModule],
+    })
+    export class UsersModule {}
+    ```
 
 现在，如果我们在`UserHttpModule`中导入`UsersModule`，我们可以在后一个模块的`providers`中使用`@InjectModel(User)`。
 
-=== "users-http.module"
+=== "users-http.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { UsersModule } from './users.module';
-import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { UsersModule } from './users.module';
+    import { UsersService } from './users.service';
+    import { UsersController } from './users.controller';
 
-@Module({
-  imports: [UsersModule],
-  providers: [UsersService],
-  controllers: [UsersController],
-})
-export class UserHttpModule {}
-```
+    @Module({
+      imports: [UsersModule],
+      providers: [UsersService],
+      controllers: [UsersController],
+    })
+    export class UserHttpModule {}
+    ```
 
 ## 关系
 
@@ -1196,27 +1196,27 @@ export class UserHttpModule {}
 要定义实体中的关系，请使用相应的 **装饰器** 。
 例如，要定义每个`User`可以有多个照片，请使用`@HasMany()`装饰器。
 
-=== "user.entity"
+=== "user.entity.ts"
 
-```ts
-import { Column, Model, Table, HasMany } from 'sequelize-typescript';
-import { Photo } from '../photos/photo.model';
+    ```ts
+    import { Column, Model, Table, HasMany } from 'sequelize-typescript';
+    import { Photo } from '../photos/photo.model';
 
-@Table
-export class User extends Model {
-  @Column
-  firstName: string;
+    @Table
+    export class User extends Model {
+      @Column
+      firstName: string;
 
-  @Column
-  lastName: string;
+      @Column
+      lastName: string;
 
-  @Column({ defaultValue: true })
-  isActive: boolean;
+      @Column({ defaultValue: true })
+      isActive: boolean;
 
-  @HasMany(() => Photo)
-  photos: Photo[];
-}
-```
+      @HasMany(() => Photo)
+      photos: Photo[];
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -1228,23 +1228,23 @@ export class User extends Model {
 此外，从根模块引用模型会打破应用程序域边界，并导致实现细节泄露到应用程序的其他部分。
 为了解决这个问题，通过将配置对象的`autoLoadModels`和`synchronize`属性(传入到`forRoot()`方法中)设置为`true`来自动加载模型，如下所示:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { SequelizeModule } from '@nestjs/sequelize';
 
-@Module({
-  imports: [
-    SequelizeModule.forRoot({
-      ...
-      autoLoadModels: true,
-      synchronize: true,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        SequelizeModule.forRoot({
+          ...
+          autoLoadModels: true,
+          synchronize: true,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 指定了这个选项后，每个通过`forFeature()`方法注册的模型都会自动添加到配置对象的`models`数组中。
 

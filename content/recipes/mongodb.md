@@ -111,7 +111,9 @@ export const catsProviders = [
 ];
 ```
 
-> warning **警告** 在实际应用中，你应该避免使用**魔法字符串** 。`CAT_MODEL`和`DATABASE_CONNECTION`都应该保存在分开的`constants.ts`文件。
+!!! warning
+
+    在实际应用中，你应该避免使用**魔法字符串** 。`CAT_MODEL`和`DATABASE_CONNECTION`都应该保存在分开的`constants.ts`文件。
 
 现在我们可以使用`@Inject()`装饰器将`CAT_MODEL`注入到`CatsService`中:
 

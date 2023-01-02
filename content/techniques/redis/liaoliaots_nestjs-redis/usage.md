@@ -1,18 +1,18 @@
-## 使用
+# 使用
 
 **First**, we need to import the `RedisModule` into our root module:
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: {
-        host: "localhost",
+        host: 'localhost',
         port: 6379,
-        password: "authpassword",
+        password: 'authpassword',
       },
     }),
   ],
@@ -25,18 +25,18 @@ export class AppModule {}
 via decorator:
 
 ```ts
-import { Injectable } from "@nestjs/common";
-import { InjectRedis, DEFAULT_REDIS_NAMESPACE } from "@liaoliaots/nestjs-redis";
-import Redis from "ioredis";
+import { Injectable } from '@nestjs/common';
+import { InjectRedis, DEFAULT_REDIS_NAMESPACE } from '@liaoliaots/nestjs-redis';
+import Redis from 'ioredis';
 
 @Injectable()
 export class AppService {
   constructor(
-    @InjectRedis() private readonly redis: Redis // or // @InjectRedis(DEFAULT_REDIS_NAMESPACE) private readonly redis: Redis
+    @InjectRedis() private readonly redis: Redis, // or // @InjectRedis(DEFAULT_REDIS_NAMESPACE) private readonly redis: Redis
   ) {}
 
   async set() {
-    return await this.redis.set("key", "value", "EX", 10);
+    return await this.redis.set('key', 'value', 'EX', 10);
   }
 }
 ```
@@ -44,12 +44,12 @@ export class AppService {
 via service:
 
 ```ts
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 import {
   RedisService,
   DEFAULT_REDIS_NAMESPACE,
-} from "@liaoliaots/nestjs-redis";
-import Redis from "ioredis";
+} from '@liaoliaots/nestjs-redis';
+import Redis from 'ioredis';
 
 @Injectable()
 export class AppService {
@@ -62,7 +62,7 @@ export class AppService {
   }
 
   async set() {
-    return await this.redis.set("key", "value", "EX", 10);
+    return await this.redis.set('key', 'value', 'EX', 10);
   }
 }
 ```
@@ -75,18 +75,18 @@ export class AppService {
 
 ```ts
 // an example
-import { Module } from "@nestjs/common";
-import { RedisModule, RedisService } from "@liaoliaots/nestjs-redis";
-import { ThrottlerModule } from "@nestjs/throttler";
-import { ThrottlerStorageRedisService } from "nestjs-throttler-storage-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule, RedisService } from '@liaoliaots/nestjs-redis';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { ThrottlerStorageRedisService } from 'nestjs-throttler-storage-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: {
-        host: "localhost",
+        host: 'localhost',
         port: 6379,
-        password: "authpassword",
+        password: 'authpassword',
       },
     }),
     ThrottlerModule.forRootAsync({
@@ -132,9 +132,9 @@ export class AppModule {}
 via `useFactory`:
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule, RedisModuleOptions } from "@liaoliaots/nestjs-redis";
-import { ConfigService, ConfigModule } from "@nestjs/config";
+import { Module } from '@nestjs/common';
+import { RedisModule, RedisModuleOptions } from '@liaoliaots/nestjs-redis';
+import { ConfigService, ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -142,15 +142,15 @@ import { ConfigService, ConfigModule } from "@nestjs/config";
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (
-        configService: ConfigService
+        configService: ConfigService,
       ): Promise<RedisModuleOptions> => {
         await somePromise();
 
         return {
           config: {
-            host: "localhost",
+            host: 'localhost',
             port: 6379,
-            password: "authpassword",
+            password: 'authpassword',
           },
         };
       },
@@ -163,12 +163,12 @@ export class AppModule {}
 via `useClass`:
 
 ```ts
-import { Module, Injectable } from "@nestjs/common";
+import { Module, Injectable } from '@nestjs/common';
 import {
   RedisModule,
   RedisOptionsFactory,
   RedisModuleOptions,
-} from "@liaoliaots/nestjs-redis";
+} from '@liaoliaots/nestjs-redis';
 
 @Injectable()
 export class RedisConfigService implements RedisOptionsFactory {
@@ -177,9 +177,9 @@ export class RedisConfigService implements RedisOptionsFactory {
 
     return {
       config: {
-        host: "localhost",
+        host: 'localhost',
         port: 6379,
-        password: "authpassword",
+        password: 'authpassword',
       },
     };
   }
@@ -200,17 +200,17 @@ via `extraProviders`:
 ```ts
 // an example
 
-import { Module, ValueProvider } from "@nestjs/common";
-import { RedisModule, RedisModuleOptions } from "@liaoliaots/nestjs-redis";
+import { Module, ValueProvider } from '@nestjs/common';
+import { RedisModule, RedisModuleOptions } from '@liaoliaots/nestjs-redis';
 
-const MyOptionsSymbol = Symbol("options");
+const MyOptionsSymbol = Symbol('options');
 const MyOptionsProvider: ValueProvider<RedisModuleOptions> = {
   provide: MyOptionsSymbol,
   useValue: {
     config: {
-      host: "localhost",
+      host: 'localhost',
       port: 6379,
-      password: "authpassword",
+      password: 'authpassword',
     },
   },
 };
@@ -241,17 +241,17 @@ RedisModule.forRootAsync({
 ### readyLog
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       readyLog: true,
       config: {
-        host: "localhost",
+        host: 'localhost',
         port: 6379,
-        password: "authpassword",
+        password: 'authpassword',
       },
     }),
   ],
@@ -268,16 +268,16 @@ The `RedisModule` will display a message when the server reports that it is read
 ### 单一客户端
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: {
-        host: "localhost",
+        host: 'localhost',
         port: 6379,
-        password: "authpassword",
+        password: 'authpassword',
 
         // or with URL
         // url: 'redis://:authpassword@localhost:6379/0'
@@ -291,23 +291,23 @@ export class AppModule {}
 ### 多个客户端
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: [
         {
-          host: "localhost",
+          host: 'localhost',
           port: 6379,
-          password: "authpassword",
+          password: 'authpassword',
         },
         {
-          namespace: "master2",
-          host: "localhost",
+          namespace: 'master2',
+          host: 'localhost',
           port: 6380,
-          password: "authpassword",
+          password: 'authpassword',
         },
       ],
     }),
@@ -319,19 +319,19 @@ export class AppModule {}
 with URL:
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: [
         {
-          url: "redis://:authpassword@localhost:6379/0",
+          url: 'redis://:authpassword@localhost:6379/0',
         },
         {
-          namespace: "master2",
-          url: "redis://:authpassword@localhost:6380/0",
+          namespace: 'master2',
+          url: 'redis://:authpassword@localhost:6380/0',
         },
       ],
     }),
@@ -347,8 +347,8 @@ export class AppModule {}
 > HINT: The `commonOptions` option works only with multiple clients.
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
@@ -358,15 +358,15 @@ import { RedisModule } from "@liaoliaots/nestjs-redis";
       },
       config: [
         {
-          host: "localhost",
+          host: 'localhost',
           port: 6379,
-          password: "authpassword",
+          password: 'authpassword',
         },
         {
-          namespace: "master2",
-          host: "localhost",
+          namespace: 'master2',
+          host: 'localhost',
           port: 6380,
-          password: "authpassword",
+          password: 'authpassword',
         },
       ],
     }),
@@ -378,8 +378,8 @@ export class AppModule {}
 You can also override the `commonOptions`:
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
@@ -389,15 +389,15 @@ import { RedisModule } from "@liaoliaots/nestjs-redis";
       },
       config: [
         {
-          host: "localhost",
+          host: 'localhost',
           port: 6379,
-          password: "authpassword",
+          password: 'authpassword',
         },
         {
-          namespace: "master2",
-          host: "localhost",
+          namespace: 'master2',
+          host: 'localhost',
           port: 6380,
-          password: "authpassword",
+          password: 'authpassword',
           enableAutoPipelining: false,
         },
       ],
@@ -412,19 +412,19 @@ export class AppModule {}
 For example, we can listen to some events of the redis instance.
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: {
-        host: "localhost",
+        host: 'localhost',
         port: 6379,
-        password: "authpassword",
+        password: 'authpassword',
         onClientCreated(client) {
-          client.on("error", (err) => {});
-          client.on("ready", () => {});
+          client.on('error', (err) => {});
+          client.on('ready', () => {});
         },
       },
     }),
@@ -441,22 +441,22 @@ You can change this behavior by `isGlobal` parameter:
 
 ```ts
 // cats.module.ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
-import { CatsService } from "./cats.service";
-import { CatsController } from "./cats.controller";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
+import { CatsService } from './cats.service';
+import { CatsController } from './cats.controller';
 
 @Module({
   imports: [
     RedisModule.forRoot(
       {
         config: {
-          host: "localhost",
+          host: 'localhost',
           port: 6379,
-          password: "authpassword",
+          password: 'authpassword',
         },
       },
-      false // <-- providers are registered in the module scope
+      false, // <-- providers are registered in the module scope
     ),
   ],
   providers: [CatsService],
@@ -494,14 +494,14 @@ unixsocketperm 777
 **4**, let's setup our application:
 
 ```ts
-import { Module } from "@nestjs/common";
-import { RedisModule } from "@liaoliaots/nestjs-redis";
+import { Module } from '@nestjs/common';
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
     RedisModule.forRoot({
       config: {
-        path: "/run/redis.sock",
+        path: '/run/redis.sock',
       },
     }),
   ],
@@ -516,12 +516,12 @@ And there we go.
 This package exposes `getRedisToken()` function that returns an internal injection token based on the provided context. Using this token, you can provide a mock implementation of the redis instance using any of the standard custom provider techniques, including `useClass`, `useValue`, and `useFactory`.
 
 ```ts
-import { Test, TestingModule } from "@nestjs/testing";
-import { getRedisToken } from "@liaoliaots/nestjs-redis";
+import { Test, TestingModule } from '@nestjs/testing';
+import { getRedisToken } from '@liaoliaots/nestjs-redis';
 
 const module: TestingModule = await Test.createTestingModule({
   providers: [
-    { provide: getRedisToken("namespace"), useValue: mockedInstance },
+    { provide: getRedisToken('namespace'), useValue: mockedInstance },
     YourService,
   ],
 }).compile();

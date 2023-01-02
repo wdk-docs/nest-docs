@@ -24,24 +24,24 @@ $ npm i -D @types/multer
 
 === "TypeScript"
 
-```ts
-@Post('upload')
-@UseInterceptors(FileInterceptor('file'))
-uploadFile(@UploadedFile() file: Express.Multer.File) {
-  console.log(file);
-}
-```
+    ```ts
+    @Post('upload')
+    @UseInterceptors(FileInterceptor('file'))
+    uploadFile(@UploadedFile() file: Express.Multer.File) {
+      console.log(file);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Post('upload')
-@UseInterceptors(FileInterceptor('file'))
-@Bind(UploadedFile())
-uploadFile(file) {
-  console.log(file);
-}
-```
+    ```js
+    @Post('upload')
+    @UseInterceptors(FileInterceptor('file'))
+    @Bind(UploadedFile())
+    uploadFile(file) {
+      console.log(file);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -72,24 +72,24 @@ uploadFile(file) {
 
 === "TypeScript"
 
-```ts
-@Post('upload')
-@UseInterceptors(FilesInterceptor('files'))
-uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
-  console.log(files);
-}
-```
+    ```ts
+    @Post('upload')
+    @UseInterceptors(FilesInterceptor('files'))
+    uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+      console.log(files);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Post('upload')
-@UseInterceptors(FilesInterceptor('files'))
-@Bind(UploadedFiles())
-uploadFile(files) {
-  console.log(files);
-}
-```
+    ```js
+    @Post('upload')
+    @UseInterceptors(FilesInterceptor('files'))
+    @Bind(UploadedFiles())
+    uploadFile(files) {
+      console.log(files);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -109,30 +109,30 @@ uploadFile(files) {
 
 === "TypeScript"
 
-```ts
-@Post('upload')
-@UseInterceptors(FileFieldsInterceptor([
-  { name: 'avatar', maxCount: 1 },
-  { name: 'background', maxCount: 1 },
-]))
-uploadFile(@UploadedFiles() files: { avatar?: Express.Multer.File[], background?: Express.Multer.File[] }) {
-  console.log(files);
-}
-```
+    ```ts
+    @Post('upload')
+    @UseInterceptors(FileFieldsInterceptor([
+      { name: 'avatar', maxCount: 1 },
+      { name: 'background', maxCount: 1 },
+    ]))
+    uploadFile(@UploadedFiles() files: { avatar?: Express.Multer.File[], background?: Express.Multer.File[] }) {
+      console.log(files);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Post('upload')
-@Bind(UploadedFiles())
-@UseInterceptors(FileFieldsInterceptor([
-  { name: 'avatar', maxCount: 1 },
-  { name: 'background', maxCount: 1 },
-]))
-uploadFile(files) {
-  console.log(files);
-}
-```
+    ```js
+    @Post('upload')
+    @Bind(UploadedFiles())
+    @UseInterceptors(FileFieldsInterceptor([
+      { name: 'avatar', maxCount: 1 },
+      { name: 'background', maxCount: 1 },
+    ]))
+    uploadFile(files) {
+      console.log(files);
+    }
+    ```
 
 ## 任何文件
 
@@ -143,24 +143,24 @@ uploadFile(files) {
 
 === "TypeScript"
 
-```ts
-@Post('upload')
-@UseInterceptors(AnyFilesInterceptor())
-uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
-  console.log(files);
-}
-```
+    ```ts
+    @Post('upload')
+    @UseInterceptors(AnyFilesInterceptor())
+    uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+      console.log(files);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Post('upload')
-@Bind(UploadedFiles())
-@UseInterceptors(AnyFilesInterceptor())
-uploadFile(files) {
-  console.log(files);
-}
-```
+    ```js
+    @Post('upload')
+    @Bind(UploadedFiles())
+    @UseInterceptors(AnyFilesInterceptor())
+    uploadFile(files) {
+      console.log(files);
+    }
+    ```
 
 ## 默认选项
 

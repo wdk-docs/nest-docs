@@ -29,7 +29,9 @@ $ npm i --save @nestjs/config
 
     `@nestjs/config`包内部使用[dotenv](https://github.com/motdotla/dotenv).
 
-> warning **Note** `@nestjs/config` 需要 TypeScript 4.1 或更高版本。
+!!! warning
+
+    `@nestjs/config` 需要 TypeScript 4.1 或更高版本。
 
 ## 开始
 
@@ -187,7 +189,9 @@ export default () => {
 };
 ```
 
-> warning **Note** 在构建过程中，Nest CLI 不会自动移动你的"assets"(非 ts 文件)到`dist`文件夹。 为了确保你的 YAML 文件被复制，你必须在`nest-clijson`文件中的`compilerOptions#assets`对象中指定这一点。 例如，如果`config`文件夹和`src`文件夹在同一级别，添加“compilerOptions#assets”值为 `"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]`. 阅读更多(在这里)(/cli/monorepo#assets).
+!!! warning
+
+    在构建过程中，Nest CLI 不会自动移动你的"assets"(非 ts 文件)到`dist`文件夹。 为了确保你的 YAML 文件被复制，你必须在`nest-clijson`文件中的`compilerOptions#assets`对象中指定这一点。 例如，如果`config`文件夹和`src`文件夹在同一级别，添加“compilerOptions#assets”值为 `"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]`. 阅读更多(在这里)(/cli/monorepo#assets).
 
 ## 使用 `ConfigService`
 
@@ -425,7 +429,7 @@ export class AppModule {}
 这个选项对象可以包含由[Joi validation options](https://joi.dev/api/?v=17.3.0#anyvalidatevalue-options)提供的任何标准验证选项属性。
 例如，要反转上面的两个设置，可以这样传递选项:
 
-=== "app.module"
+=== "app.module.ts"
 
 ```ts
 import * as Joi from 'joi';
@@ -468,7 +472,7 @@ export class AppModule {}
 - 一个有验证约束的类，
 - 使用`plainToClass`和`validateSync`函数的验证函数。
 
-=== "env.validation"
+=== "env.validation.ts"
 
 ```ts
 import { plainToClass } from 'class-transformer';
@@ -506,7 +510,7 @@ export function validate(config: Record<string, unknown>) {
 
 在这里，使用`validate`函数作为`ConfigModule`的配置选项，如下所示:
 
-=== "app.module"
+=== "app.module.ts"
 
 ```ts
 import { validate } from './env.validation';
@@ -557,32 +561,32 @@ export class ApiConfigService {
 
 现在我们可以像下面这样使用 getter 函数:
 
-=== "app.service"
+=== "app.service.ts"
 
-```ts
-@Injectable()
-export class AppService {
-  constructor(apiConfigService: ApiConfigService) {
-    if (apiConfigService.isAuthEnabled) {
-      // Authentication is enabled
+    ```ts
+    @Injectable()
+    export class AppService {
+      constructor(apiConfigService: ApiConfigService) {
+        if (apiConfigService.isAuthEnabled) {
+          // Authentication is enabled
+        }
+      }
     }
-  }
-}
-```
+    ```
 
-=== "JavaScript"
+=== "app.service.js"
 
-```js
-@Dependencies(ApiConfigService)
-@Injectable()
-export class AppService {
-  constructor(apiConfigService) {
-    if (apiConfigService.isAuthEnabled) {
-      // Authentication is enabled
+    ```js
+    @Dependencies(ApiConfigService)
+    @Injectable()
+    export class AppService {
+      constructor(apiConfigService) {
+        if (apiConfigService.isAuthEnabled) {
+          // Authentication is enabled
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 ## 可扩展的变量
 
@@ -603,19 +607,19 @@ SUPPORT_EMAIL=support@${APP_URL}
 
 在传递给`ConfigModule`的`forRoot()`方法的 options 对象中，使用`expandVariables`属性启用环境变量展开，如下所示:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      // ...
-      expandVariables: true,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    ```ts
+    @Module({
+      imports: [
+        ConfigModule.forRoot({
+          // ...
+          expandVariables: true,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 ## 在`main.ts`中使用
 

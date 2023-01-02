@@ -37,32 +37,32 @@ export class CatsModule {}
 
 === "TypeScript"
 
-```ts
-@Injectable()
-export class CatsService {
-  constructor(private httpService: HttpService) {}
+    ```ts
+    @Injectable()
+    export class CatsService {
+      constructor(private httpService: HttpService) {}
 
-  findAll(): Observable<AxiosResponse<Cat[]>> {
-    return this.httpService.get('http://localhost:3000/cats');
-  }
-}
-```
+      findAll(): Observable<AxiosResponse<Cat[]>> {
+        return this.httpService.get('http://localhost:3000/cats');
+      }
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Injectable()
-@Dependencies(HttpService)
-export class CatsService {
-  constructor(httpService) {
-    this.httpService = httpService;
-  }
+    ```js
+    @Injectable()
+    @Dependencies(HttpService)
+    export class CatsService {
+      constructor(httpService) {
+        this.httpService = httpService;
+      }
 
-  findAll() {
-    return this.httpService.get('http://localhost:3000/cats');
-  }
-}
-```
+      findAll() {
+        return this.httpService.get('http://localhost:3000/cats');
+      }
+    }
+    ```
 
 !!! info "**Hint**"
 

@@ -34,25 +34,25 @@ $ npm i --save @nestjs/platform-fastify
 
 一旦安装了 Fastify 平台，我们就可以使用`FastifyAdapter`。
 
-=== "main"
+=== "main.ts"
 
-```ts
-import { NestFactory } from '@nestjs/core';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
-import { AppModule } from './app.module';
+    ```ts
+    import { NestFactory } from '@nestjs/core';
+    import {
+      FastifyAdapter,
+      NestFastifyApplication,
+    } from '@nestjs/platform-fastify';
+    import { AppModule } from './app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter(),
-  );
-  await app.listen(3000);
-}
-bootstrap();
-```
+    async function bootstrap() {
+      const app = await NestFactory.create<NestFastifyApplication>(
+        AppModule,
+        new FastifyAdapter(),
+      );
+      await app.listen(3000);
+    }
+    bootstrap();
+    ```
 
 默认情况下，Fastify 只侦听`localhost 127.0.0.1`接口([阅读更多](https://www.fastify.io/docs/latest/Getting-Started/#your-first-server))。
 如果你想在其他主机上接受连接，你应该在`listen()`调用中指定`0.0.0.0`:

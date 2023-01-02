@@ -7,8 +7,7 @@ Nest 提供了一个增强 TypeScript 编译过程的插件，以减少所需样
 !!! info "**Hint**"
 
     这个插件是**opt-in** 。
-
-> 如果愿意，可以手动声明所有的 decorator，或者只在需要它们的地方声明特定的 decorator。
+    如果愿意，可以手动声明所有的 decorator，或者只在需要它们的地方声明特定的 decorator。
 
 ## 概述
 
