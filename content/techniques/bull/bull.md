@@ -1,6 +1,6 @@
 ---
-title: "bull"
-linkTitle: "bull"
+title: 'bull'
+linkTitle: 'bull'
 weight: 1
 description: 最快、最可靠、基于redis的Node队列。 仔细写的岩石固体的稳定性和原子性。
 ---
@@ -117,14 +117,14 @@ yarn add --dev @types/bull
 #### 基本用法
 
 ```js
-const Queue = require("bull");
+const Queue = require('bull');
 
-const videoQueue = new Queue("video transcoding", "redis://127.0.0.1:6379");
-const audioQueue = new Queue("audio transcoding", {
-  redis: { port: 6379, host: "127.0.0.1", password: "foobared" },
+const videoQueue = new Queue('video transcoding', 'redis://127.0.0.1:6379');
+const audioQueue = new Queue('audio transcoding', {
+  redis: { port: 6379, host: '127.0.0.1', password: 'foobared' },
 }); // Specify Redis connection using object
-const imageQueue = new Queue("image transcoding");
-const pdfQueue = new Queue("pdf transcoding");
+const imageQueue = new Queue('image transcoding');
+const pdfQueue = new Queue('pdf transcoding');
 
 videoQueue.process(function (job, done) {
   // job.data contains the custom data passed when the job was created
@@ -137,7 +137,7 @@ videoQueue.process(function (job, done) {
   done();
 
   // or give a error if error
-  done(new Error("error transcoding"));
+  done(new Error('error transcoding'));
 
   // or pass it a result
   done(null, {
@@ -147,7 +147,7 @@ videoQueue.process(function (job, done) {
   });
 
   // If the job throws an unhandled exception it is also handled correctly
-  throw new Error("some unexpected error");
+  throw new Error('some unexpected error');
 });
 
 audioQueue.process(function (job, done) {
@@ -158,7 +158,7 @@ audioQueue.process(function (job, done) {
   done();
 
   // or give a error if error
-  done(new Error("error transcoding"));
+  done(new Error('error transcoding'));
 
   // or pass it a result
   done(null, {
@@ -168,7 +168,7 @@ audioQueue.process(function (job, done) {
   });
 
   // If the job throws an unhandled exception it is also handled correctly
-  throw new Error("some unexpected error");
+  throw new Error('some unexpected error');
 });
 
 imageQueue.process(function (job, done) {
@@ -179,7 +179,7 @@ imageQueue.process(function (job, done) {
   done();
 
   // or give a error if error
-  done(new Error("error transcoding"));
+  done(new Error('error transcoding'));
 
   // or pass it a result
   done(null, {
@@ -190,7 +190,7 @@ imageQueue.process(function (job, done) {
   });
 
   // If the job throws an unhandled exception it is also handled correctly
-  throw new Error("some unexpected error");
+  throw new Error('some unexpected error');
 });
 
 pdfQueue.process(function (job) {
@@ -198,9 +198,9 @@ pdfQueue.process(function (job) {
   return pdfAsyncProcessor();
 });
 
-videoQueue.add({ video: "http://example.com/video1.mov" });
-audioQueue.add({ audio: "http://example.com/audio1.mp3" });
-imageQueue.add({ image: "http://example.com/image1.tiff" });
+videoQueue.add({ video: 'http://example.com/video1.mov' });
+audioQueue.add({ audio: 'http://example.com/audio1.mp3' });
+imageQueue.add({ image: 'http://example.com/image1.tiff' });
 ```
 
 #### 使用承诺
@@ -214,7 +214,7 @@ videoQueue.process(function (job) {
   return fetchVideo(job.data.url).then(transcodeVideo);
 
   // 处理承诺拒绝
-  return Promise.reject(new Error("error transcoding"));
+  return Promise.reject(new Error('error transcoding'));
 
   // 将承诺解析的值传递给“completed”事件
   return Promise.resolve({
@@ -224,9 +224,9 @@ videoQueue.process(function (job) {
   });
 
   // 如果作业抛出一个未处理的异常，它也会得到正确的处理
-  throw new Error("some unexpected error");
+  throw new Error('some unexpected error');
   // 一样
-  return Promise.reject(new Error("some unexpected error"));
+  return Promise.reject(new Error('some unexpected error'));
 });
 ```
 
@@ -253,13 +253,13 @@ module.exports = function (job) {
 
 ```js
 // 单流程:
-queue.process("/path/to/my/processor.js");
+queue.process('/path/to/my/processor.js');
 
 // 你也可以使用并发:
-queue.process(5, "/path/to/my/processor.js");
+queue.process(5, '/path/to/my/processor.js');
 
 // 和指定的处理器:
-queue.process("my processor", 5, "/path/to/my/processor.js");
+queue.process('my processor', 5, '/path/to/my/processor.js');
 ```
 
 #### 重复的工作
@@ -272,7 +272,7 @@ paymentsQueue.process(function (job) {
 });
 
 // Repeat payment job once every day at 3:15 (am)
-paymentsQueue.add(paymentsData, { repeat: { cron: "15 3 * * *" } });
+paymentsQueue.add(paymentsData, { repeat: { cron: '15 3 * * *' } });
 ```
 
 作为提示，请检查这里的表达式，以验证它们是正确的:[cron 表达式生成器](https://crontab.cronhub.io)
@@ -301,7 +301,7 @@ queue.resume().then(function () {
 })
 ```
 
-有关事件的更多信息，包括所触发事件的完整列表，请参阅[事件参考资料](./REFERENCE.md#events)
+有关事件的更多信息，包括所触发事件的完整列表，请参阅[事件参考资料](./reference.md#events)
 
 #### 队列性能
 
@@ -325,30 +325,30 @@ const userLisa = new Queue('lisa');
 检查这个简单的例子，使用 cluster 跨进程并行化任务:
 
 ```js
-const Queue = require("bull");
-const cluster = require("cluster");
+const Queue = require('bull');
+const cluster = require('cluster');
 
 const numWorkers = 8;
-const queue = new Queue("test concurrent queue");
+const queue = new Queue('test concurrent queue');
 
 if (cluster.isMaster) {
   for (let i = 0; i < numWorkers; i++) {
     cluster.fork();
   }
 
-  cluster.on("online", function (worker) {
+  cluster.on('online', function (worker) {
     // Let's create a few jobs for the queue workers
     for (let i = 0; i < 500; i++) {
-      queue.add({ foo: "bar" });
+      queue.add({ foo: 'bar' });
     }
   });
 
-  cluster.on("exit", function (worker, code, signal) {
-    console.log("worker " + worker.process.pid + " died");
+  cluster.on('exit', function (worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
   });
 } else {
   queue.process(function (job, jobDone) {
-    console.log("Job done by worker", cluster.worker.id, job.id);
+    console.log('Job done by worker', cluster.worker.id, job.id);
     jobDone();
   });
 }
@@ -361,9 +361,8 @@ if (cluster.isMaster) {
 要获取完整的文档，请查看参考和常用模式:
 
 - [指南](https://optimalbits.github.io/bull/) - 你使用 Bull 开发的起点。
-- [参考](./REFERENCE.md) - 包含所有可用对象和方法的引用文档。
-- [模式](./PATTERNS.md) - 一组常见模式的示例。
-- [许可证](./LICENSE.md) - Bull 许可证-麻省理工学院。
+- [参考](./reference.md) - 包含所有可用对象和方法的引用文档。
+- [模式](./patterns.md) - 一组常见模式的示例。
 
 如果你看到任何可以使用更多文档的东西，请提交一个 pull request!
 

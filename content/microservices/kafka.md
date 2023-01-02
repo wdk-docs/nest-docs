@@ -20,34 +20,34 @@ $ npm i --save kafkajs
 
 像其他的 Nest 微服务传输层实现一样，你使用传递给 `createMicroservice()` 方法的 options 对象的 `transport` 属性来选择 Kafka 传输机制，以及一个可选的 `options` 属性，如下所示:
 
-=== "main"
+=== "main.ts"
 
-```ts
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-  AppModule,
-  {
-    transport: Transport.KAFKA,
-    options: {
-      client: {
-        brokers: ['localhost:9092'],
+    ```ts
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+      AppModule,
+      {
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            brokers: ['localhost:9092'],
+          },
+        },
       },
-    },
-  },
-);
-```
+    );
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-const app = await NestFactory.createMicroservice(AppModule, {
-  transport: Transport.KAFKA,
-  options: {
-    client: {
-      brokers: ['localhost:9092'],
-    },
-  },
-});
-```
+    ```js
+    const app = await NestFactory.createMicroservice(AppModule, {
+      transport: Transport.KAFKA,
+      options: {
+        client: {
+          brokers: ['localhost:9092'],
+        },
+      },
+    });
+    ```
 
 !!! info "**Hint**"
 
@@ -191,9 +191,7 @@ To prevent the `ClientKafka` consumers from losing response messages, a Nest-spe
 
 The `ClientKafka` class provides the `subscribeToResponseOf()` method. The `subscribeToResponseOf()` method takes a request's topic name as an argument and adds the derived reply topic name to a collection of reply topics. This method is required when implementing the message pattern.
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller.ts"
 onModuleInit() {
   this.client.subscribeToResponseOf('hero.kill.dragon');
 }
@@ -201,9 +199,7 @@ onModuleInit() {
 
 If the `ClientKafka` instance is created asynchronously, the `subscribeToResponseOf()` method must be called before calling the `connect()` method.
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller.ts"
 async onModuleInit() {
   this.client.subscribeToResponseOf('hero.kill.dragon');
   await this.client.connect();
@@ -222,9 +218,7 @@ Nest 接收传入的 Kafka 消息作为一个具有“key”、“value”和“
 这种情况发生在传递给 `ClientKafka` `emit()` 和 `send()` 方法的参数上，或者发生在从 `@ messageppattern` 方法返回的值上。
 这种序列化通过使用 `JSON.stringify()` 或 `toString()` 原型方法来“字符串化”非字符串或缓冲区的对象。
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller"
 @Controller()
 export class HeroesController {
   @MessagePattern('hero.kill.dragon')
@@ -245,9 +239,7 @@ export class HeroesController {
 
 Outgoing messages can also be keyed by passing an object with the `key` and `value` properties. Keying messages is important for meeting the [co-partitioning requirement](https://docs.confluent.io/current/ksql/docs/developer-guide/partition-data.html#co-partitioning-requirements).
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller"
 @Controller()
 export class HeroesController {
   @MessagePattern('hero.kill.dragon')
@@ -274,9 +266,7 @@ export class HeroesController {
 
 Additionally, messages passed in this format can also contain custom headers set in the `headers` hash property. Header hash property values must be either of type `string` or type `Buffer`.
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller"
 @Controller()
 export class HeroesController {
   @MessagePattern('hero.kill.dragon')
@@ -313,22 +303,22 @@ Check out these two sections to learn more about this: [Overview: Event-based](/
 
 === "TypeScript"
 
-```ts
-@MessagePattern('hero.kill.dragon')
-killDragon(@Payload() message: KillDragonMessage, @Ctx() context: KafkaContext) {
-  console.log(`Topic: ${context.getTopic()}`);
-}
-```
+    ```ts
+    @MessagePattern('hero.kill.dragon')
+    killDragon(@Payload() message: KillDragonMessage, @Ctx() context: KafkaContext) {
+      console.log(`Topic: ${context.getTopic()}`);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('hero.kill.dragon')
-killDragon(message, context) {
-  console.log(`Topic: ${context.getTopic()}`);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('hero.kill.dragon')
+    killDragon(message, context) {
+      console.log(`Topic: ${context.getTopic()}`);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -338,24 +328,24 @@ To access the original Kafka `IncomingMessage` object, use the `getMessage()` me
 
 === "TypeScript"
 
-```ts
-@MessagePattern('hero.kill.dragon')
-killDragon(@Payload() message: KillDragonMessage, @Ctx() context: KafkaContext) {
-  const originalMessage = context.getMessage();
-  const { headers, partition, timestamp } = originalMessage;
-}
-```
+    ```ts
+    @MessagePattern('hero.kill.dragon')
+    killDragon(@Payload() message: KillDragonMessage, @Ctx() context: KafkaContext) {
+      const originalMessage = context.getMessage();
+      const { headers, partition, timestamp } = originalMessage;
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('hero.kill.dragon')
-killDragon(message, context) {
-  const originalMessage = context.getMessage();
-  const { headers, partition, timestamp } = originalMessage;
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('hero.kill.dragon')
+    killDragon(message, context) {
+      const originalMessage = context.getMessage();
+      const { headers, partition, timestamp } = originalMessage;
+    }
+    ```
 
 Where the `IncomingMessage` fulfills the following interface:
 
@@ -378,9 +368,7 @@ interface IncomingMessage {
 Kafka 微服务组件在 `client.clientId` 和 `consumer.groupId` 选项上附加了各自角色的描述，以防止 Nest 微服务客户端和服务器组件之间的冲突。
 By default the `ClientKafka` components append `-client` and the `ServerKafka` components append `-server` to both of these options. Note how the provided values below are transformed in that way (as shown in the comments).
 
-=== "main"
-
-```ts
+```ts title="main.ts"
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.KAFKA,
   options: {
@@ -397,9 +385,7 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 And for the client:
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller"
 @Client({
   transport: Transport.KAFKA,
   options: {
@@ -421,9 +407,7 @@ client: ClientKafka;
 
 Since the Kafka microservice message pattern utilizes two topics for the request and reply channels, a reply pattern should be derived from the request topic. By default, the name of the reply topic is the composite of the request topic name with `.reply` appended.
 
-=== "heroes.controller"
-
-```ts
+```ts title="heroes.controller"
 onModuleInit() {
   this.client.subscribeToResponseOf('hero.get'); // hero.get.reply
 }

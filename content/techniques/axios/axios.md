@@ -1,6 +1,6 @@
 ---
-title: "axios"
-linkTitle: ""
+title: 'axios'
+linkTitle: ''
 weight: 1
 ---
 
@@ -77,7 +77,7 @@ Using unpkg CDN:
 In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
 
 ```js
-const axios = require("axios").default;
+const axios = require('axios').default;
 
 // axios.<method> will now provide autocomplete and parameter typings
 ```
@@ -85,11 +85,11 @@ const axios = require("axios").default;
 Performing a `GET` request
 
 ```js
-const axios = require("axios").default;
+const axios = require('axios').default;
 
 // Make a request for a user with a given ID
 axios
-  .get("/user?ID=12345")
+  .get('/user?ID=12345')
   .then(function (response) {
     // handle success
     console.log(response);
@@ -104,7 +104,7 @@ axios
 
 // Optionally the request above could also be done as
 axios
-  .get("/user", {
+  .get('/user', {
     params: {
       ID: 12345,
     },
@@ -122,7 +122,7 @@ axios
 // Want to use async/await? Add the `async` keyword to your outer function/method.
 async function getUser() {
   try {
-    const response = await axios.get("/user?ID=12345");
+    const response = await axios.get('/user?ID=12345');
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -137,9 +137,9 @@ Performing a `POST` request
 
 ```js
 axios
-  .post("/user", {
-    firstName: "Fred",
-    lastName: "Flintstone",
+  .post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone',
   })
   .then(function (response) {
     console.log(response);
@@ -153,11 +153,11 @@ Performing multiple concurrent requests
 
 ```js
 function getUserAccount() {
-  return axios.get("/user/12345");
+  return axios.get('/user/12345');
 }
 
 function getUserPermissions() {
-  return axios.get("/user/12345/permissions");
+  return axios.get('/user/12345/permissions');
 }
 
 Promise.all([getUserAccount(), getUserPermissions()]).then(function (results) {
@@ -175,11 +175,11 @@ Requests can be made by passing the relevant config to `axios`.
 ```js
 // Send a POST request
 axios({
-  method: "post",
-  url: "/user/12345",
+  method: 'post',
+  url: '/user/12345',
   data: {
-    firstName: "Fred",
-    lastName: "Flintstone",
+    firstName: 'Fred',
+    lastName: 'Flintstone',
   },
 });
 ```
@@ -187,11 +187,11 @@ axios({
 ```js
 // GET request for remote image in node.js
 axios({
-  method: "get",
-  url: "http://bit.ly/2mTM3nY",
-  responseType: "stream",
+  method: 'get',
+  url: 'http://bit.ly/2mTM3nY',
+  responseType: 'stream',
 }).then(function (response) {
-  response.data.pipe(fs.createWriteStream("ada_lovelace.jpg"));
+  response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'));
 });
 ```
 
@@ -199,7 +199,7 @@ axios({
 
 ```js
 // Send a GET request (default method)
-axios("/user/12345");
+axios('/user/12345');
 ```
 
 ### 请求方法的别名
@@ -243,9 +243,9 @@ You can create a new instance of axios with a custom config.
 
 ```js
 const instance = axios.create({
-  baseURL: "https://some-domain.com/api/",
+  baseURL: 'https://some-domain.com/api/',
   timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
+  headers: { 'X-Custom-Header': 'foobar' },
 });
 ```
 
@@ -526,7 +526,7 @@ The response for a request contains the following information.
 When using `then`, you will receive the response as follows:
 
 ```js
-axios.get("/user/12345").then(function (response) {
+axios.get('/user/12345').then(function (response) {
   console.log(response.data);
   console.log(response.status);
   console.log(response.statusText);
@@ -544,13 +544,14 @@ When using `catch`, or passing a [rejection callback](https://developer.mozilla.
 ### 全局 axios 默认
 
 ```js
-axios.defaults.baseURL = "https://api.example.com";
+axios.defaults.baseURL = 'https://api.example.com';
 
 // Important: If axios is used with multiple domains, the AUTH_TOKEN will be sent to all of them.
 // See below for an example using Custom instance defaults instead.
-axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
-axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+axios.defaults.headers.post['Content-Type'] =
+  'application/x-www-form-urlencoded';
 ```
 
 ### 自定义实例默认
@@ -558,11 +559,11 @@ axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded
 ```js
 // Set config defaults when creating the instance
 const instance = axios.create({
-  baseURL: "https://api.example.com",
+  baseURL: 'https://api.example.com',
 });
 
 // Alter defaults after instance has been created
-instance.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 ```
 
 ### 配置优先顺序
@@ -579,7 +580,7 @@ const instance = axios.create();
 instance.defaults.timeout = 2500;
 
 // Override timeout for this request as it's known to take a long time
-instance.get("/longRequest", {
+instance.get('/longRequest', {
   timeout: 5000,
 });
 ```
@@ -598,7 +599,7 @@ axios.interceptors.request.use(
   function (error) {
     // Do something with request error
     return Promise.reject(error);
-  }
+  },
 );
 
 // Add a response interceptor
@@ -612,7 +613,7 @@ axios.interceptors.response.use(
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
-  }
+  },
 );
 ```
 
@@ -642,11 +643,11 @@ to the options object that will tell axios to run the code synchronously and avo
 ```js
 axios.interceptors.request.use(
   function (config) {
-    config.headers.test = "I am only a header!";
+    config.headers.test = 'I am only a header!';
     return config;
   },
   null,
-  { synchronous: true }
+  { synchronous: true },
 );
 ```
 
@@ -658,15 +659,15 @@ asynchronous request interceptor that only needs to run at certain times.
 
 ```js
 function onGetCall(config) {
-  return config.method === "get";
+  return config.method === 'get';
 }
 axios.interceptors.request.use(
   function (config) {
-    config.headers.test = "special get headers";
+    config.headers.test = 'special get headers';
     return config;
   },
   null,
-  { runWhen: onGetCall }
+  { runWhen: onGetCall },
 );
 ```
 
@@ -684,12 +685,12 @@ and when the response was fulfilled
   - then the following rejection-interceptor is called
   - once caught, another following fulfill-interceptor is called again (just like in a promise chain).
 
-Read [the interceptor tests](./test/specs/interceptors.spec.js) for seeing all this in code.
+Read [the interceptor tests](https://github.com/axios/axios/test/specs/interceptors.spec.js) for seeing all this in code.
 
 ## 处理错误
 
 ```js
-axios.get("/user/12345").catch(function (error) {
+axios.get('/user/12345').catch(function (error) {
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
@@ -703,7 +704,7 @@ axios.get("/user/12345").catch(function (error) {
     console.log(error.request);
   } else {
     // Something happened in setting up the request that triggered an Error
-    console.log("Error", error.message);
+    console.log('Error', error.message);
   }
   console.log(error.config);
 });
@@ -712,7 +713,7 @@ axios.get("/user/12345").catch(function (error) {
 Using the `validateStatus` config option, you can define HTTP code(s) that should throw an error.
 
 ```js
-axios.get("/user/12345", {
+axios.get('/user/12345', {
   validateStatus: function (status) {
     return status < 500; // Resolve only if the status code is less than 500
   },
@@ -722,7 +723,7 @@ axios.get("/user/12345", {
 Using `toJSON` you get an object with more information about the HTTP error.
 
 ```js
-axios.get("/user/12345").catch(function (error) {
+axios.get('/user/12345').catch(function (error) {
   console.log(error.toJSON());
 });
 ```
@@ -737,7 +738,7 @@ Starting from `v0.22.0` Axios supports AbortController to cancel requests in fet
 const controller = new AbortController();
 
 axios
-  .get("/foo/bar", {
+  .get('/foo/bar', {
     signal: controller.signal,
   })
   .then(function (response) {
@@ -762,29 +763,29 @@ const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
 axios
-  .get("/user/12345", {
+  .get('/user/12345', {
     cancelToken: source.token,
   })
   .catch(function (thrown) {
     if (axios.isCancel(thrown)) {
-      console.log("Request canceled", thrown.message);
+      console.log('Request canceled', thrown.message);
     } else {
       // handle error
     }
   });
 
 axios.post(
-  "/user/12345",
+  '/user/12345',
   {
-    name: "new name",
+    name: 'new name',
   },
   {
     cancelToken: source.token,
-  }
+  },
 );
 
 // cancel the request (the message parameter is optional)
-source.cancel("Operation canceled by the user.");
+source.cancel('Operation canceled by the user.');
 ```
 
 You can also create a cancel token by passing an executor function to the `CancelToken` constructor:
@@ -793,7 +794,7 @@ You can also create a cancel token by passing an executor function to the `Cance
 const CancelToken = axios.CancelToken;
 let cancel;
 
-axios.get("/user/12345", {
+axios.get('/user/12345', {
   cancelToken: new CancelToken(function executor(c) {
     // An executor function receives a cancel function as a parameter
     cancel = c;
@@ -819,9 +820,9 @@ In a browser, you can use the [`URLSearchParams`](https://developer.mozilla.org/
 
 ```js
 const params = new URLSearchParams();
-params.append("param1", "value1");
-params.append("param2", "value2");
-axios.post("/foo", params);
+params.append('param1', 'value1');
+params.append('param2', 'value2');
+axios.post('/foo', params);
 ```
 
 > Note that `URLSearchParams` is not supported by all browsers (see [caniuse.com](http://www.caniuse.com/#feat=urlsearchparams)), but there is a [polyfill](https://github.com/WebReflection/url-search-params) available (make sure to polyfill the global environment).
@@ -829,18 +830,18 @@ axios.post("/foo", params);
 Alternatively, you can encode data using the [`qs`](https://github.com/ljharb/qs) library:
 
 ```js
-const qs = require("qs");
-axios.post("/foo", qs.stringify({ bar: 123 }));
+const qs = require('qs');
+axios.post('/foo', qs.stringify({ bar: 123 }));
 ```
 
 Or in another way (ES6),
 
 ```js
-import qs from "qs";
+import qs from 'qs';
 const data = { bar: 123 };
 const options = {
-  method: "POST",
-  headers: { "content-type": "application/x-www-form-urlencoded" },
+  method: 'POST',
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
   data: qs.stringify(data),
   url,
 };
@@ -854,16 +855,16 @@ axios(options);
 In node.js, you can use the [`querystring`](https://nodejs.org/api/querystring.html) module as follows:
 
 ```js
-const querystring = require("querystring");
-axios.post("http://something.com/", querystring.stringify({ foo: "bar" }));
+const querystring = require('querystring');
+axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 ```
 
 or ['URLSearchParams'](https://nodejs.org/api/url.html#url_class_urlsearchparams) from ['url module'](https://nodejs.org/api/url.html) as follows:
 
 ```js
-const url = require("url");
-const params = new url.URLSearchParams({ foo: "bar" });
-axios.post("http://something.com/", params.toString());
+const url = require('url');
+const params = new url.URLSearchParams({ foo: 'bar' });
+axios.post('http://something.com/', params.toString());
 ```
 
 You can also use the [`qs`](https://github.com/ljharb/qs) library.
@@ -881,17 +882,17 @@ header is set to `multipart/form-data`.
 The following request will submit the data in a FormData format (Browser & Node.js):
 
 ```js
-import axios from "axios";
+import axios from 'axios';
 
 axios
   .post(
-    "https://httpbin.org/post",
+    'https://httpbin.org/post',
     { x: 1 },
     {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
-    }
+    },
   )
   .then(({ data }) => console.log(data));
 ```
@@ -902,18 +903,18 @@ You can overload the FormData class by setting the `env.FormData` config variabl
 but you probably won't need it in most cases:
 
 ```js
-const axios = require("axios");
-var FormData = require("form-data");
+const axios = require('axios');
+var FormData = require('form-data');
 
 axios
   .post(
-    "https://httpbin.org/post",
+    'https://httpbin.org/post',
     { x: 1, buf: new Buffer(10) },
     {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
-    }
+    },
   )
   .then(({ data }) => console.log(data));
 ```
@@ -924,20 +925,20 @@ Axios FormData serializer supports some special endings to perform the following
 - `[]` - unwrap the array like object as separate fields with the same key
 
 ```js
-const axios = require("axios");
+const axios = require('axios');
 
 axios
   .post(
-    "https://httpbin.org/post",
+    'https://httpbin.org/post',
     {
-      "myObj{}": { x: 1, s: "foo" },
-      "files[]": document.querySelector("#fileInput").files,
+      'myObj{}': { x: 1, s: 'foo' },
+      'files[]': document.querySelector('#fileInput').files,
     },
     {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
       },
-    }
+    },
   )
   .then(({ data }) => console.log(data));
 ```
@@ -948,7 +949,10 @@ which are just the corresponding http methods with a header preset: `Content-Typ
 FileList object can be passed directly:
 
 ```js
-await axios.postForm("https://httpbin.org/post", document.querySelector("#fileInput").files);
+await axios.postForm(
+  'https://httpbin.org/post',
+  document.querySelector('#fileInput').files,
+);
 ```
 
 All files will be sent with the same field names: `files[]`;
@@ -958,14 +962,14 @@ All files will be sent with the same field names: `files[]`;
 In node.js, you can use the [`form-data`](https://github.com/form-data/form-data) library as follows:
 
 ```js
-const FormData = require("form-data");
+const FormData = require('form-data');
 
 const form = new FormData();
-form.append("my_field", "my value");
-form.append("my_buffer", new Buffer(10));
-form.append("my_file", fs.createReadStream("/foo/bar.jpg"));
+form.append('my_field', 'my value');
+form.append('my_buffer', new Buffer(10));
+form.append('my_file', fs.createReadStream('/foo/bar.jpg'));
 
-axios.post("https://example.com", form);
+axios.post('https://example.com', form);
 ```
 
 ## Semver
@@ -984,7 +988,7 @@ axios includes [TypeScript](http://typescriptlang.org) definitions and a type gu
 ```typescript
 let user: User = null;
 try {
-  const { data } = await axios.get("/user?ID=12345");
+  const { data } = await axios.get('/user?ID=12345');
   user = data.userDetails;
 } catch (error) {
   if (axios.isAxiosError(error)) {

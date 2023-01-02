@@ -6,22 +6,22 @@
 
 === "TypeScript"
 
-```ts
-@UseInterceptors(new TransformInterceptor())
-@SubscribeMessage('events')
-handleEvent(client: Client, data: unknown): WsResponse<unknown> {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```ts
+    @UseInterceptors(new TransformInterceptor())
+    @SubscribeMessage('events')
+    handleEvent(client: Client, data: unknown): WsResponse<unknown> {
+      const event = 'events';
+      return { event, data };
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UseInterceptors(new TransformInterceptor())
-@SubscribeMessage('events')
-handleEvent(client, data) {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```js
+    @UseInterceptors(new TransformInterceptor())
+    @SubscribeMessage('events')
+    handleEvent(client, data) {
+      const event = 'events';
+      return { event, data };
+    }
+    ```

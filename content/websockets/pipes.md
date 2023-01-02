@@ -4,9 +4,7 @@
 唯一的区别是，你应该使用`WsException`而不是抛出`HttpException`。
 此外，所有管道将只应用于`data`参数(因为验证或转换`client`实例是无用的)。
 
-!!! info "**Hint**"
-
-    `WsException`类是从`@nestjs/websockets`包中公开的。
+!!! info "`WsException`类是从`@nestjs/websockets`包中公开的。"
 
 ## 绑定管道
 
@@ -15,22 +13,22 @@
 
 === "TypeScript"
 
-```ts
-@UsePipes(new ValidationPipe())
-@SubscribeMessage('events')
-handleEvent(client: Client, data: unknown): WsResponse<unknown> {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```ts
+    @UsePipes(new ValidationPipe())
+    @SubscribeMessage('events')
+    handleEvent(client: Client, data: unknown): WsResponse<unknown> {
+      const event = 'events';
+      return { event, data };
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UsePipes(new ValidationPipe())
-@SubscribeMessage('events')
-handleEvent(client, data) {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```js
+    @UsePipes(new ValidationPipe())
+    @SubscribeMessage('events')
+    handleEvent(client, data) {
+      const event = 'events';
+      return { event, data };
+    }
+    ```

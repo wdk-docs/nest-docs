@@ -1003,6 +1003,10 @@
       
         
           
+            
+          
+        
+          
         
           
         
@@ -1012,17 +1016,25 @@
         
       
       
-        <label class="md-nav__link" for="__nav_3_3_2">
-          Redis
-          <span class="md-nav__icon md-icon"></span>
-        </label>
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">liaoliaots_nestjs-redis</a>
+          
+            <label for="__nav_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
       
-      <nav class="md-nav" aria-label="Redis" data-md-level="3">
+      <nav class="md-nav" aria-label="liaoliaots_nestjs-redis" data-md-level="3">
         <label class="md-nav__title" for="__nav_3_3_2">
           <span class="md-nav__icon md-icon"></span>
-          Redis
+          liaoliaots_nestjs-redis
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
           
             
               
@@ -1126,8 +1138,6 @@
         
           
         
-          
-        
       
       
         <label class="md-nav__link" for="__nav_3_5">
@@ -1161,6 +1171,50 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../techniques/validator/">validator</a>
+          
+            <label for="__nav_3_5_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="validator" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          validator
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../techniques/validator/class-transformer/" class="md-nav__link">
         class-transformer
@@ -1179,6 +1233,13 @@
       <a href="../../techniques/validator/class-validator/" class="md-nav__link">
         class-validator
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2728,38 +2789,6 @@
         
           
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
       
       
         <label class="md-nav__link" for="__nav_9_10">
@@ -2786,6 +2815,80 @@
     </li>
   
 
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10_2" type="checkbox" id="__nav_9_10_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../recipes/compodoc/">compodoc</a>
+          
+            <label for="__nav_9_10_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="compodoc" data-md-level="3">
+        <label class="md-nav__title" for="__nav_9_10_2">
+          <span class="md-nav__icon md-icon"></span>
+          compodoc
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
             
           
             
@@ -3021,6 +3124,13 @@
       <a href="../../recipes/compodoc/usage/" class="md-nav__link">
         使用
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -4327,7 +4437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/posts/openapi/api-nestjs-openapi-swagger" class="md-nav__link">
+      <a href="../../blog/posts/openapi/api-nestjs-openapi-swagger/" class="md-nav__link">
         OpenAPI规范和Swagger
       </a>
     </li>
@@ -4606,11 +4716,9 @@
 在某些情况下，您可能并不需要它们。</p>
 <div class="admonition info">
 <p class="admonition-title"><strong>Hint</strong></p>
-<p><code>ws</code>库不支持名称空间(由<code>socket.io</code>普及的通信通道)。</p>
+<p><code>ws</code>库不支持名称空间(由<code>socket.io</code>普及的通信通道)。
+然而，为了以某种方式模拟这个特性，您可以在不同的路径上挂载多个<code>ws</code>服务器 (例如: <code>@WebSocketGateway({ path: '/users' })</code>).</p>
 </div>
-<blockquote>
-<p>然而，为了以某种方式模拟这个特性，您可以在不同的路径上挂载多个<code>ws</code>服务器 (例如: <code>@WebSocketGateway({{ '{' }} path: '/users' {{ '}' }})</code>).</p>
-</blockquote>
 <p>为了使用<code>ws</code>，我们首先需要安装所需的包:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$ npm i --save @nestjs/platform-ws
 </code></pre></div></td></tr></table></div>
@@ -4620,19 +4728,13 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">useWebSocketAdapter</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">WsAdapter</span><span class="p">(</span><span class="nx">app</span><span class="p">));</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition info">
-<p class="admonition-title"><strong>Hint</strong></p>
-<p><code>WsAdapter</code>是从<code>@nestjs/platform-ws</code>导入的。</p>
+<p class="admonition-title"><code>WsAdapter</code>是从<code>@nestjs/platform-ws</code>导入的。</p>
 </div>
 <h2 id="_2">高级(自定义适配器)<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>出于演示目的，我们将手动集成<a href="https://github.com/websockets/ws">ws</a>库。
 正如前面提到的，这个库的适配器已经创建，并作为一个<code>WsAdapter</code>类从<code>@nestjs/platform-ws</code>包中公开。
 下面是简化后的实现可能看起来的样子:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">ws-adapter</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">ws-adapter</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
@@ -4731,16 +4833,10 @@
 <a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition info">
-<p class="admonition-title"><strong>Hint</strong></p>
-<p>当你想利用<a href="https://github.com/websockets/ws">ws</a>库时，使用内置的<code>WsAdapter</code>而不是自己创建一个。</p>
+<p class="admonition-title">当你想利用<a href="https://github.com/websockets/ws">ws</a>库时，使用内置的<code>WsAdapter</code>而不是自己创建一个。</p>
 </div>
 <p>然后，我们可以使用<code>useWebSocketAdapter()</code>方法设置自定义适配器:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">main</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">main.ts</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">NestFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">useWebSocketAdapter</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">WsAdapter</span><span class="p">(</span><span class="nx">app</span><span class="p">));</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>

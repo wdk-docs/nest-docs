@@ -74,8 +74,6 @@ markdown_extensions:
   - pymdownx.magiclink
 
 plugins:
-  tags:
-    tags_file: tags.md
   search:
     # Spaces, dashes, periods and forward-slash (so serving.knative.dev/blibble can be searched as blibble).
     separator: '[\/\s\-\.]+'
@@ -104,7 +102,8 @@ plugins:
       - name: review
         dirs:
           - review
-
+  tags:
+    tags_file: tags.md
 copyright: "版权所有 © 2017-2022 MIT by Kamil Mysliwiec"
 
 extra:

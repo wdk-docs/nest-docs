@@ -17,30 +17,30 @@ $ npm i --save nats
 
 要使用 NATS 传输器，将以下选项对象传递给`createMicroservice()`方法:
 
-=== "main"
+=== "main.ts"
 
-```ts
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-  AppModule,
-  {
-    transport: Transport.NATS,
-    options: {
-      servers: ['nats://localhost:4222'],
-    },
-  },
-);
-```
+    ```ts
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+      AppModule,
+      {
+        transport: Transport.NATS,
+        options: {
+          servers: ['nats://localhost:4222'],
+        },
+      },
+    );
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-const app = await NestFactory.createMicroservice(AppModule, {
-  transport: Transport.NATS,
-  options: {
-    servers: ['nats://localhost:4222'],
-  },
-});
-```
+    ```js
+    const app = await NestFactory.createMicroservice(AppModule, {
+      transport: Transport.NATS,
+      options: {
+        servers: ['nats://localhost:4222'],
+      },
+    });
+    ```
 
 !!! info "**Hint**"
 
@@ -99,9 +99,7 @@ NATS 传输器公开了[此处](https://github.com/nats-io/node-nats#connect-opt
 NATS 提供了一个称为[分布式队列](https://docs.nats.io/nats-concepts/queue)的内置负载平衡特性。
 要创建队列订阅，使用 `queue` 属性如下所示:
 
-=== "main"
-
-```ts
+```ts title="main.ts"
 const app = await NestFactory.createMicroservice(AppModule, {
   transport: Transport.NATS,
   options: {
@@ -118,22 +116,22 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: NatsContext) {
-  console.log(`Subject: ${context.getSubject()}`);
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: NatsContext) {
+      console.log(`Subject: ${context.getSubject()}`);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(`Subject: ${context.getSubject()}`);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(`Subject: ${context.getSubject()}`);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -145,24 +143,24 @@ getNotifications(data, context) {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('time.us.*')
-getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
-  console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
-  return new Date().toLocaleTimeString(...);
-}
-```
+    ```ts
+    @MessagePattern('time.us.*')
+    getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
+      console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
+      return new Date().toLocaleTimeString(...);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('time.us.*')
-getDate(data, context) {
-  console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
-  return new Date().toLocaleTimeString(...);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('time.us.*')
+    getDate(data, context) {
+      console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
+      return new Date().toLocaleTimeString(...);
+    }
+    ```
 
 ## 记录构建
 
@@ -188,24 +186,24 @@ this.client.send('replace-emoji', record).subscribe(...);
 
 === "TypeScript"
 
-```ts
-@MessagePattern('replace-emoji')
-replaceEmoji(@Payload() data: string, @Ctx() context: NatsContext): string {
-  const headers = context.getHeaders();
-  return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
-}
-```
+    ```ts
+    @MessagePattern('replace-emoji')
+    replaceEmoji(@Payload() data: string, @Ctx() context: NatsContext): string {
+      const headers = context.getHeaders();
+      return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('replace-emoji')
-replaceEmoji(data, context) {
-  const headers = context.getHeaders();
-  return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('replace-emoji')
+    replaceEmoji(data, context) {
+      const headers = context.getHeaders();
+      return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
+    }
+    ```
 
 在某些情况下，你可能想为多个请求配置头信息，你可以将这些信息作为选项传递给 `ClientProxyFactory` :
 

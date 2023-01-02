@@ -1,6 +1,6 @@
 ---
-title: "安装"
-linkTitle: ""
+title: '安装'
+linkTitle: ''
 weight: 3
 ---
 
@@ -73,7 +73,7 @@ npm run compodoc
 npx @compodoc/compodoc ...
 ```
 
-请参阅[usage](./usage.html)了解更多细节。
+请参阅[usage](./usage.md)了解更多细节。
 
 ## tsconfig 文件在代码库中的位置
 

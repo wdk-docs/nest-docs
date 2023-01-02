@@ -24,34 +24,34 @@ throw new RpcException('Invalid credentials.');
 微服务异常过滤器的行为类似于 HTTP 异常过滤器，只有一个小区别。
 `catch()`方法必须返回一个`Observable`。
 
-=== "rpc-exception.filter"
+=== "rpc-exception.filter.ts"
 
-```ts
-import { Catch, RpcExceptionFilter, ArgumentsHost } from '@nestjs/common';
-import { Observable, throwError } from 'rxjs';
-import { RpcException } from '@nestjs/microservices';
+    ```ts
+    import { Catch, RpcExceptionFilter, ArgumentsHost } from '@nestjs/common';
+    import { Observable, throwError } from 'rxjs';
+    import { RpcException } from '@nestjs/microservices';
 
-@Catch(RpcException)
-export class ExceptionFilter implements RpcExceptionFilter<RpcException> {
-  catch(exception: RpcException, host: ArgumentsHost): Observable<any> {
-    return throwError(exception.getError());
-  }
-}
-```
+    @Catch(RpcException)
+    export class ExceptionFilter implements RpcExceptionFilter<RpcException> {
+      catch(exception: RpcException, host: ArgumentsHost): Observable<any> {
+        return throwError(exception.getError());
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "rpc-exception.filter.js"
 
-```js
-import { Catch } from '@nestjs/common';
-import { throwError } from 'rxjs';
+    ```js
+    import { Catch } from '@nestjs/common';
+    import { throwError } from 'rxjs';
 
-@Catch(RpcException)
-export class ExceptionFilter {
-  catch(exception, host) {
-    return throwError(exception.getError());
-  }
-}
-```
+    @Catch(RpcException)
+    export class ExceptionFilter {
+      catch(exception, host) {
+        return throwError(exception.getError());
+      }
+    }
+    ```
 
 !!! warning
 
@@ -62,23 +62,23 @@ export class ExceptionFilter {
 
 === "TypeScript"
 
-```ts
-@UseFilters(new ExceptionFilter())
-@MessagePattern({ cmd: 'sum' })
-accumulate(data: number[]): number {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```ts
+    @UseFilters(new ExceptionFilter())
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data: number[]): number {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UseFilters(new ExceptionFilter())
-@MessagePattern({ cmd: 'sum' })
-accumulate(data) {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```js
+    @UseFilters(new ExceptionFilter())
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data) {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 ## 继承
 
@@ -89,31 +89,31 @@ accumulate(data) {
 
 === "TypeScript"
 
-```ts
-import { Catch, ArgumentsHost } from '@nestjs/common';
-import { BaseRpcExceptionFilter } from '@nestjs/microservices';
+    ```ts
+    import { Catch, ArgumentsHost } from '@nestjs/common';
+    import { BaseRpcExceptionFilter } from '@nestjs/microservices';
 
-@Catch()
-export class AllExceptionsFilter extends BaseRpcExceptionFilter {
-  catch(exception: any, host: ArgumentsHost) {
-    return super.catch(exception, host);
-  }
-}
-```
+    @Catch()
+    export class AllExceptionsFilter extends BaseRpcExceptionFilter {
+      catch(exception: any, host: ArgumentsHost) {
+        return super.catch(exception, host);
+      }
+    }
+    ```
 
 === "JavaScript"
 
-```js
-import { Catch } from '@nestjs/common';
-import { BaseRpcExceptionFilter } from '@nestjs/microservices';
+    ```js
+    import { Catch } from '@nestjs/common';
+    import { BaseRpcExceptionFilter } from '@nestjs/microservices';
 
-@Catch()
-export class AllExceptionsFilter extends BaseRpcExceptionFilter {
-  catch(exception, host) {
-    return super.catch(exception, host);
-  }
-}
-```
+    @Catch()
+    export class AllExceptionsFilter extends BaseRpcExceptionFilter {
+      catch(exception, host) {
+        return super.catch(exception, host);
+      }
+    }
+    ```
 
 上面的实现只是演示该方法的 shell。
 扩展异常过滤器的实现将包括定制的 **业务逻辑** (例如，处理各种条件)。

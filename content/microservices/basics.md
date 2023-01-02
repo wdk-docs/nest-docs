@@ -26,44 +26,42 @@ $ npm i --save @nestjs/microservices
 
 要实例化一个微服务，使用`NestFactory`类的`createMicroservice()`方法:
 
-=== "main"
+=== "main.ts"
 
-```ts
-import { NestFactory } from '@nestjs/core';
-import { Transport, MicroserviceOptions } from '@nestjs/microservices';
-import { AppModule } from './app.module';
+    ```ts
+    import { NestFactory } from '@nestjs/core';
+    import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+    import { AppModule } from './app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-    AppModule,
-    {
-      transport: Transport.TCP,
-    },
-  );
-  app.listen();
-}
-bootstrap();
-```
+    async function bootstrap() {
+      const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+        AppModule,
+        {
+          transport: Transport.TCP,
+        },
+      );
+      app.listen();
+    }
+    bootstrap();
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-import { NestFactory } from '@nestjs/core';
-import { Transport, MicroserviceOptions } from '@nestjs/microservices';
-import { AppModule } from './app.module';
+    ```js
+    import { NestFactory } from '@nestjs/core';
+    import { Transport, MicroserviceOptions } from '@nestjs/microservices';
+    import { AppModule } from './app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.TCP,
-  });
-  app.listen(() => console.log('Microservice is listening'));
-}
-bootstrap();
-```
+    async function bootstrap() {
+      const app = await NestFactory.createMicroservice(AppModule, {
+        transport: Transport.TCP,
+      });
+      app.listen(() => console.log('Microservice is listening'));
+    }
+    bootstrap();
+    ```
 
-!!! info "**Hint**"
-
-    微服务默认使用**TCP** 传输层。
+!!! info "微服务默认使用**TCP** 传输层。"
 
 `createMicroservice()`方法的第二个参数是一个`options`对象。
 该对象可以由两个成员组成:
@@ -126,35 +124,35 @@ bootstrap();
 这个装饰器应该只在[controller](https://docs.nestjs.com/controllers)类中使用，因为它们是应用程序的入口点。
 在提供程序中使用它们不会有任何影响，因为它们会被 Nest 运行时忽略。
 
-=== "math.controller"
+=== "math.controller.ts"
 
-```ts
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+    ```ts
+    import { Controller } from '@nestjs/common';
+    import { MessagePattern } from '@nestjs/microservices';
 
-@Controller()
-export class MathController {
-  @MessagePattern({ cmd: 'sum' })
-  accumulate(data: number[]): number {
-    return (data || []).reduce((a, b) => a + b);
-  }
-}
-```
+    @Controller()
+    export class MathController {
+      @MessagePattern({ cmd: 'sum' })
+      accumulate(data: number[]): number {
+        return (data || []).reduce((a, b) => a + b);
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "math.controller.js"
 
-```js
-import { Controller } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+    ```js
+    import { Controller } from '@nestjs/common';
+    import { MessagePattern } from '@nestjs/microservices';
 
-@Controller()
-export class MathController {
-  @MessagePattern({ cmd: 'sum' })
-  accumulate(data) {
-    return (data || []).reduce((a, b) => a + b);
-  }
-}
-```
+    @Controller()
+    export class MathController {
+      @MessagePattern({ cmd: 'sum' })
+      accumulate(data) {
+        return (data || []).reduce((a, b) => a + b);
+      }
+    }
+    ```
 
 在上面的代码中，`accumulate()` **消息处理器** 监听满足 `{{ '{' }} cmd: 'sum' {{ '}' }}` 消息模式的消息。
 消息处理程序只接受一个参数，即从客户端传递的‘data’。
@@ -167,41 +165,41 @@ export class MathController {
 
 === "TypeScript"
 
-```ts
-@MessagePattern({ cmd: 'sum' })
-async accumulate(data: number[]): Promise<number> {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```ts
+    @MessagePattern({ cmd: 'sum' })
+    async accumulate(data: number[]): Promise<number> {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@MessagePattern({ cmd: 'sum' })
-async accumulate(data) {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```js
+    @MessagePattern({ cmd: 'sum' })
+    async accumulate(data) {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 消息处理程序也能够返回一个`Observable`，在这种情况下，结果值将被触发，直到流完成。
 
 === "TypeScript"
 
-```ts
-@MessagePattern({ cmd: 'sum' })
-accumulate(data: number[]): Observable<number> {
-  return from([1, 2, 3]);
-}
-```
+    ```ts
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data: number[]): Observable<number> {
+      return from([1, 2, 3]);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@MessagePattern({ cmd: 'sum' })
-accumulate(data: number[]): Observable<number> {
-  return from([1, 2, 3]);
-}
-```
+    ```js
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data: number[]): Observable<number> {
+      return from([1, 2, 3]);
+    }
+    ```
 
 在上面的例子中，消息处理程序将响应 **3 次** (每一项都来自数组)。
 
@@ -217,21 +215,21 @@ accumulate(data: number[]): Observable<number> {
 
 === "TypeScript"
 
-```ts
-@EventPattern('user_created')
-async handleUserCreated(data: Record<string, unknown>) {
-  // business logic
-}
-```
+    ```ts
+    @EventPattern('user_created')
+    async handleUserCreated(data: Record<string, unknown>) {
+      // business logic
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@EventPattern('user_created')
-async handleUserCreated(data) {
-  // business logic
-}
-```
+    ```js
+    @EventPattern('user_created')
+    async handleUserCreated(data) {
+      // business logic
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -249,24 +247,24 @@ async handleUserCreated(data) {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('time.us.*')
-getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
-  console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
-  return new Date().toLocaleTimeString(...);
-}
-```
+    ```ts
+    @MessagePattern('time.us.*')
+    getDate(@Payload() data: number[], @Ctx() context: NatsContext) {
+      console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
+      return new Date().toLocaleTimeString(...);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('time.us.*')
-getDate(data, context) {
-  console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
-  return new Date().toLocaleTimeString(...);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('time.us.*')
+    getDate(data, context) {
+      console.log(`Subject: ${context.getSubject()}`); // e.g. "time.us.east"
+      return new Date().toLocaleTimeString(...);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -356,15 +354,13 @@ client: ClientProxy;
 相反，它将在第一次微服务调用之前建立，然后在每个后续调用之间重用。
 然而，如果你想要延迟应用程序的引导过程，直到连接建立，你可以使用`OnApplicationBootstrap`生命周期钩子中的`ClientProxy`对象的`connect()`方法手动启动一个连接。
 
-=== "TypeScript"
-
 ```ts
 async onApplicationBootstrap() {
   await this.client.connect();
 }
 ```
 
-If the connection cannot be created, the `connect()` method will reject with the corresponding error object.
+如果不能创建连接， `connect()` 方法将拒绝相应的错误对象。
 
 ## 发送消息
 
@@ -374,23 +370,23 @@ If the connection cannot be created, the `connect()` method will reject with the
 
 === "TypeScript"
 
-```ts
-accumulate(): Observable<number> {
-  const pattern = { cmd: 'sum' };
-  const payload = [1, 2, 3];
-  return this.client.send<number>(pattern, payload);
-}
-```
+    ```ts
+    accumulate(): Observable<number> {
+      const pattern = { cmd: 'sum' };
+      const payload = [1, 2, 3];
+      return this.client.send<number>(pattern, payload);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-accumulate() {
-  const pattern = { cmd: 'sum' };
-  const payload = [1, 2, 3];
-  return this.client.send(pattern, payload);
-}
-```
+    ```js
+    accumulate() {
+      const pattern = { cmd: 'sum' };
+      const payload = [1, 2, 3];
+      return this.client.send(pattern, payload);
+    }
+    ```
 
 `send()`方法有两个参数，`pattern`和`payload`。
 `pattern`应该与`@messageppattern()`装饰器中定义的模式匹配。
@@ -404,19 +400,19 @@ accumulate() {
 
 === "TypeScript"
 
-```ts
-async publish() {
-  this.client.emit<number>('user_created', new UserCreatedEvent());
-}
-```
+    ```ts
+    async publish() {
+      this.client.emit<number>('user_created', new UserCreatedEvent());
+    }
+    ```
 
 === "JavaScript"
 
-```js
-async publish() {
-  this.client.emit('user_created', new UserCreatedEvent());
-}
-```
+    ```js
+    async publish() {
+      this.client.emit('user_created', new UserCreatedEvent());
+    }
+    ```
 
 `emit()`方法有两个参数，`pattern`和`payload`。`pattern`应该与`@EventPattern()`装饰器中定义的模式匹配。`payload`是我们想要传输到远程微服务的事件有效载荷。
 这个方法返回一个 **热的** `可观察对象`(不像`send()`返回的冷的`可观察对象`)，这意味着无论你是否显式地订阅了这个可观察对象，代理都会立即尝试发送这个事件。
@@ -468,21 +464,19 @@ export interface RequestContext<T = any> {
 
 === "TypeScript"
 
-```ts
-this.client
-  .send<TResult, TInput>(pattern, data)
-  .pipe(timeout(5000))
-  .toPromise();
-```
+    ```ts
+    this.client
+      .send<TResult, TInput>(pattern, data)
+      .pipe(timeout(5000))
+      .toPromise();
+    ```
 
 === "JavaScript"
 
-```js
-this.client.send(pattern, data).pipe(timeout(5000)).toPromise();
-```
+    ```js
+    this.client.send(pattern, data).pipe(timeout(5000)).toPromise();
+    ```
 
-!!! info "**Hint**"
-
-    `timeout`操作符是从`rxjs/operators`包中导入的。
+!!! info "`timeout`操作符是从`rxjs/operators`包中导入的。"
 
 5 秒后，如果微服务没有响应，它将抛出一个错误。

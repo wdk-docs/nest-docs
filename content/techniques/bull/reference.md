@@ -1,6 +1,6 @@
 ---
-title: "参考"
-linkTitle: ""
+title: '参考'
+linkTitle: ''
 weight: 3
 ---
 
@@ -18,10 +18,13 @@ Queue(queueName: string, url?: string, opts?: QueueOptions): Queue
 
 ```typescript
 interface QueueOptions {
-  createClient?(type: "client" | "subscriber" | "bclient", config?: Redis.RedisOptions): Redis.Redis | Redis.Cluster;
+  createClient?(
+    type: 'client' | 'subscriber' | 'bclient',
+    config?: Redis.RedisOptions,
+  ): Redis.Redis | Redis.Cluster;
   limiter?: RateLimiter;
   redis?: RedisOpts;
-  prefix?: string = "bull"; // prefix for all queue keys.
+  prefix?: string = 'bull'; // prefix for all queue keys.
   metrics?: MetricsOpts; // Configure metrics
   defaultJobOptions?: JobOpts;
   settings?: AdvancedSettings;
@@ -119,7 +122,7 @@ Redis 在某个地方连接，并在关闭所有队列后断开连接。
 
 `backoffStrategies` :一个包含自定义 backoffStrategies 的对象。
 对象中的键是策略的名称，值是应该返回以毫秒为单位的延迟的函数。
-完整的例子参见[Patterns](./ Patterns .md#custom-backoff-strategy)。
+完整的例子参见[Patterns](./patterns.md#custom-backoff-strategy)。
 
 `drainDelay` :队列处于 `drain` 状态(空等待作业)时的超时。
 它在调用 `queue.getNextJob()` 时使用，它将把它传递给`。brpoplpush` 在 Redis 客户端。
@@ -193,28 +196,28 @@ module.exports = function (job) {
  * 对于每个命名的处理器，并发性叠加在一起，因此这三个进程函数中的任何一个都可以以125并发性运行。
  * 为了避免这种行为，您需要为每个进程函数创建一个自己的队列。
  */
-const loadBalancerQueue = new Queue("loadbalancer");
-loadBalancerQueue.process("requestProfile", 100, requestProfile);
-loadBalancerQueue.process("sendEmail", 25, sendEmail);
-loadBalancerQueue.process("sendInvitation", 0, sendInvite);
+const loadBalancerQueue = new Queue('loadbalancer');
+loadBalancerQueue.process('requestProfile', 100, requestProfile);
+loadBalancerQueue.process('sendEmail', 25, sendEmail);
+loadBalancerQueue.process('sendInvitation', 0, sendInvite);
 
-const profileQueue = new Queue("profile");
+const profileQueue = new Queue('profile');
 // Max concurrency for requestProfile is 100
-profileQueue.process("requestProfile", 100, requestProfile);
+profileQueue.process('requestProfile', 100, requestProfile);
 
-const emailQueue = new Queue("email");
+const emailQueue = new Queue('email');
 // Max concurrency for sendEmail is 25
-emailQueue.process("sendEmail", 25, sendEmail);
+emailQueue.process('sendEmail', 25, sendEmail);
 ```
 
 指定 `*` 作为进程名将使其成为所有已命名作业的默认处理器。
 它经常用于从一个进程函数中处理所有已命名的作业:
 
 ```js
-const differentJobsQueue = new Queue("differentJobsQueue");
-differentJobsQueue.process("*", processFunction);
-differentJobsQueue.add("jobA", data, opts);
-differentJobsQueue.add("jobB", data, opts);
+const differentJobsQueue = new Queue('differentJobsQueue');
+differentJobsQueue.process('*', processFunction);
+differentJobsQueue.add('jobA', data, opts);
+differentJobsQueue.add('jobB', data, opts);
 ```
 
 **注意:** 为了确定是否通过返回 promise 或调用 `done` 回调来通知任务完成，Bull 会查看你传递给它的回调的长度属性。
@@ -353,11 +356,11 @@ cron 表达式使用[cron-parser](https://github.com/harrisiirak/cron-parser)库
 也就是说，以下代码将导致创建三个任务(一个是立即的，两个是延迟的):
 
 ```ts
-await queue.add({}, { jobId: "example", repeat: { every: 5 * 1000 } });
-await queue.add({}, { jobId: "example", repeat: { every: 5 * 1000 } }); // Will not be created, same repeat configuration
-await queue.add({}, { jobId: "example", repeat: { every: 10 * 1000 } }); // Will be created, different repeat configuration
-await queue.add({}, { jobId: "example" }); // Will be created, no regular job with this id
-await queue.add({}, { jobId: "example" }); // Will not be created, conflicts with previous regular job
+await queue.add({}, { jobId: 'example', repeat: { every: 5 * 1000 } });
+await queue.add({}, { jobId: 'example', repeat: { every: 5 * 1000 } }); // Will not be created, same repeat configuration
+await queue.add({}, { jobId: 'example', repeat: { every: 10 * 1000 } }); // Will be created, different repeat configuration
+await queue.add({}, { jobId: 'example' }); // Will be created, no regular job with this id
+await queue.add({}, { jobId: 'example' }); // Will not be created, conflicts with previous regular job
 ```
 
 #### 补偿选项
@@ -464,8 +467,8 @@ removeJobs(pattern: string): Promise<void>
 例子:
 
 ```js
-myQueue.removeJobs("?oo*").then(function () {
-  console.log("done removing jobs");
+myQueue.removeJobs('?oo*').then(function () {
+  console.log('done removing jobs');
 });
 ```
 
@@ -500,16 +503,16 @@ close(doNotWaitJobs?: boolean): Promise
 使用它来执行一个优雅的关闭。
 
 ```js
-const Queue = require("bull");
-const queue = Queue("example");
+const Queue = require('bull');
+const queue = Queue('example');
 
 const after100 = _.after(100, function () {
   queue.close().then(function () {
-    console.log("done");
+    console.log('done');
   });
 });
 
-queue.on("completed", after100);
+queue.on('completed', after100);
 ```
 
 `close` 可以在任何地方调用，但有一点需要注意:如果在作业处理程序内部调用，则队列直到作业处理完毕才会关闭，所以下面的语句不起作用:
@@ -629,7 +632,11 @@ removeRepeatableByKey(key: string): Promise<void>
 当第一次创建作业时， `queue.add()` 将返回一个带有该作业键值的作业对象，你可以将其存储起来供以后使用:
 
 ```ts
-const job = await queue.add("remove", { example: "data" }, { repeat: { every: 1000 } });
+const job = await queue.add(
+  'remove',
+  { example: 'data' },
+  { repeat: { every: 1000 } },
+);
 // store job.opts.repeat.key somewhere...
 const repeatableKey = job.opts.repeat.key;
 
@@ -811,14 +818,14 @@ clean(grace: number, status?: string, limit?: number): Promise<number[]>
 #### Example
 
 ```js
-queue.on("cleaned", function (jobs, type) {
-  console.log("Cleaned %s %s jobs", jobs.length, type);
+queue.on('cleaned', function (jobs, type) {
+  console.log('Cleaned %s %s jobs', jobs.length, type);
 });
 
 //cleans all jobs that completed over 5 seconds ago.
 await queue.clean(5000);
 //clean all jobs that failed over 10 seconds ago.
-await queue.clean(10000, "failed");
+await queue.clean(10000, 'failed');
 ```
 
 ### Queue#obliterate
@@ -1053,21 +1060,21 @@ queue.on('global:completed', listener);
 
 ```js
 // Local events pass the job instance...
-queue.on("progress", function (job, progress) {
+queue.on('progress', function (job, progress) {
   console.log(`Job ${job.id} is ${progress * 100}% ready!`);
 });
 
-queue.on("completed", function (job, result) {
+queue.on('completed', function (job, result) {
   console.log(`Job ${job.id} completed! Result: ${result}`);
   job.remove();
 });
 
 // ...whereas global events only pass the job ID:
-queue.on("global:progress", function (jobId, progress) {
+queue.on('global:progress', function (jobId, progress) {
   console.log(`Job ${jobId} is ${progress * 100}% ready!`);
 });
 
-queue.on("global:completed", function (jobId, result) {
+queue.on('global:completed', function (jobId, result) {
   console.log(`Job ${jobId} completed! Result: ${result}`);
   queue.getJob(jobId).then(function (job) {
     job.remove();

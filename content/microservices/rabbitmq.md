@@ -17,38 +17,38 @@ $ npm i --save amqplib amqp-connection-manager
 
 要使用 RabbitMQ 传输器，需要将以下选项对象传递给 `createMicroservice()` 方法:
 
-=== "main"
+=== "main.ts"
 
-```ts
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-  AppModule,
-  {
-    transport: Transport.RMQ,
-    options: {
-      urls: ['amqp://localhost:5672'],
-      queue: 'cats_queue',
-      queueOptions: {
-        durable: false,
+    ```ts
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+      AppModule,
+      {
+        transport: Transport.RMQ,
+        options: {
+          urls: ['amqp://localhost:5672'],
+          queue: 'cats_queue',
+          queueOptions: {
+            durable: false,
+          },
+        },
       },
-    },
-  },
-);
-```
+    );
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-const app = await NestFactory.createMicroservice(AppModule, {
-  transport: Transport.RMQ,
-  options: {
-    urls: ['amqp://localhost:5672'],
-    queue: 'cats_queue',
-    queueOptions: {
-      durable: false,
-    },
-  },
-});
-```
+    ```js
+    const app = await NestFactory.createMicroservice(AppModule, {
+      transport: Transport.RMQ,
+      options: {
+        urls: ['amqp://localhost:5672'],
+        queue: 'cats_queue',
+        queueOptions: {
+          durable: false,
+        },
+      },
+    });
+    ```
 
 !!! info "**Hint**"
 
@@ -133,22 +133,22 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
-  console.log(`Pattern: ${context.getPattern()}`);
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
+      console.log(`Pattern: ${context.getPattern()}`);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(`Pattern: ${context.getPattern()}`);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(`Pattern: ${context.getPattern()}`);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -158,43 +158,43 @@ getNotifications(data, context) {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
-  console.log(context.getMessage());
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
+      console.log(context.getMessage());
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(context.getMessage());
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(context.getMessage());
+    }
+    ```
 
 获取对 RabbitMQ [channel](https://www.rabbitmq.com/channels.html)的引用, 使用`RmqContext`对象的`getChannelRef`方法，如下所示:
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
-  console.log(context.getChannelRef());
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
+      console.log(context.getChannelRef());
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(context.getChannelRef());
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(context.getChannelRef());
+    }
+    ```
 
 ## 消息确认
 
@@ -219,28 +219,28 @@ options: {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
-  const channel = context.getChannelRef();
-  const originalMsg = context.getMessage();
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: RmqContext) {
+      const channel = context.getChannelRef();
+      const originalMsg = context.getMessage();
 
-  channel.ack(originalMsg);
-}
-```
+      channel.ack(originalMsg);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  const channel = context.getChannelRef();
-  const originalMsg = context.getMessage();
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      const channel = context.getChannelRef();
+      const originalMsg = context.getMessage();
 
-  channel.ack(originalMsg);
-}
-```
+      channel.ack(originalMsg);
+    }
+    ```
 
 ## 记录构建
 
@@ -269,21 +269,21 @@ this.client.send('replace-emoji', record).subscribe(...);
 
 === "TypeScript"
 
-```ts
-@MessagePattern('replace-emoji')
-replaceEmoji(@Payload() data: string, @Ctx() context: RmqContext): string {
-  const { properties: { headers } } = context.getMessage();
-  return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
-}
-```
+    ```ts
+    @MessagePattern('replace-emoji')
+    replaceEmoji(@Payload() data: string, @Ctx() context: RmqContext): string {
+      const { properties: { headers } } = context.getMessage();
+      return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('replace-emoji')
-replaceEmoji(data, context) {
-  const { properties: { headers } } = context.getMessage();
-  return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('replace-emoji')
+    replaceEmoji(data, context) {
+      const { properties: { headers } } = context.getMessage();
+      return headers['x-version'] === '1.0.0' ? '🐱' : '🐈';
+    }
+    ```

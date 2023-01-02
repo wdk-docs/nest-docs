@@ -3,9 +3,7 @@
 web 套接字保护和[常规 HTTP 应用程序保护](/guards)之间没有根本区别。
 唯一的区别是，你应该使用 `WsException` 而不是抛出 `HttpException`。
 
-!!! info "**Hint**"
-
-    `WsException` 类从 `@nestjs/websockets` 包中公开。
+!!! info "`WsException` 类从 `@nestjs/websockets` 包中公开。"
 
 ## 绑定守卫
 
@@ -14,22 +12,22 @@ web 套接字保护和[常规 HTTP 应用程序保护](/guards)之间没有根�
 
 === "TypeScript"
 
-```ts
-@UseGuards(AuthGuard)
-@SubscribeMessage('events')
-handleEvent(client: Client, data: unknown): WsResponse<unknown> {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```ts
+    @UseGuards(AuthGuard)
+    @SubscribeMessage('events')
+    handleEvent(client: Client, data: unknown): WsResponse<unknown> {
+      const event = 'events';
+      return { event, data };
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UseGuards(AuthGuard)
-@SubscribeMessage('events')
-handleEvent(client, data) {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```js
+    @UseGuards(AuthGuard)
+    @SubscribeMessage('events')
+    handleEvent(client, data) {
+      const event = 'events';
+      return { event, data };
+    }
+    ```

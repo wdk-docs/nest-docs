@@ -23,32 +23,32 @@ $ npm i --save @grpc/grpc-js @grpc/proto-loader
 在下面的例子中，我们将设置一个英雄服务。
 `options`属性提供关于该服务的元数据;它的属性描述[如下](microservices/grpc#options)。
 
-=== "main"
+=== "main.ts"
 
-```ts
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-  AppModule,
-  {
-    transport: Transport.GRPC,
-    options: {
-      package: `hero`,
-      protoPath: join(__dirname, `hero/hero.proto`),
-    },
-  },
-);
-```
+    ```ts
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+      AppModule,
+      {
+        transport: Transport.GRPC,
+        options: {
+          package: `hero`,
+          protoPath: join(__dirname, `hero/hero.proto`),
+        },
+      },
+    );
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-const app = await NestFactory.createMicroservice(AppModule, {
-  transport: Transport.GRPC,
-  options: {
-    package: `hero`,
-    protoPath: join(__dirname, `hero/hero.proto`),
-  },
-});
-```
+    ```js
+    const app = await NestFactory.createMicroservice(AppModule, {
+      transport: Transport.GRPC,
+      options: {
+        package: `hero`,
+        protoPath: join(__dirname, `hero/hero.proto`),
+      },
+    });
+    ```
 
 !!! info "**Hint**"
 
@@ -119,41 +119,41 @@ message Hero {
 
 > `@GrpcMethod()`装饰器有效地取代了基于 grpc 的微服务。
 
-=== "heroes.controller"
+=== "heroes.controller.ts"
 
-```ts
-@Controller()
-export class HeroesController {
-  @GrpcMethod(`HeroesService`, `FindOne`)
-  findOne(
-    data: HeroById,
-    metadata: Metadata,
-    call: ServerUnaryCall<any>,
-  ): Hero {
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+    ```ts
+    @Controller()
+    export class HeroesController {
+      @GrpcMethod(`HeroesService`, `FindOne`)
+      findOne(
+        data: HeroById,
+        metadata: Metadata,
+        call: ServerUnaryCall<any>,
+      ): Hero {
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "heroes.controller.js"
 
-```js
-@Controller()
-export class HeroesController {
-  @GrpcMethod(`HeroesService`, `FindOne`)
-  findOne(data, metadata, call) {
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+    ```js
+    @Controller()
+    export class HeroesController {
+      @GrpcMethod(`HeroesService`, `FindOne`)
+      findOne(data, metadata, call) {
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -170,81 +170,81 @@ export class HeroesController {
 如果调用时没有第二个参数(例如，`FindOne`)， Nest 将自动关联`.proto`文件 rpc 方法和基于将处理程序名称转换为上驼峰大小写的处理程序(例如，`findOne`处理程序与`findOne`rpc 调用定义相关联)。
 如下所示。
 
-=== "heroes.controller"
+=== "heroes.controller.ts"
 
-```ts
-@Controller()
-export class HeroesController {
-  @GrpcMethod(`HeroesService`)
-  findOne(
-    data: HeroById,
-    metadata: Metadata,
-    call: ServerUnaryCall<any>,
-  ): Hero {
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+    ```ts
+    @Controller()
+    export class HeroesController {
+      @GrpcMethod(`HeroesService`)
+      findOne(
+        data: HeroById,
+        metadata: Metadata,
+        call: ServerUnaryCall<any>,
+      ): Hero {
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "heroes.controller.js"
 
-```js
-@Controller()
-export class HeroesController {
-  @GrpcMethod(`HeroesService`)
-  findOne(data, metadata, call) {
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+    ```js
+    @Controller()
+    export class HeroesController {
+      @GrpcMethod(`HeroesService`)
+      findOne(data, metadata, call) {
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
 你也可以省略第一个`@GrpcMethod()`参数。
 在这种情况下，Nest 根据定义处理程序的 **类** 名自动将处理程序与来自原定义文件的服务定义关联起来。
 例如，在下面的代码中，类`HeroesService`将它的处理程序方法与`hero`中的`HeroesService`服务定义关联起来`.proto`文件，根据名称"`HeroesService`的匹配。
 
-=== "heroes.controller"
+=== "heroes.controller.ts"
 
-```ts
-@Controller()
-export class HeroesService {
-  @GrpcMethod()
-  findOne(
-    data: HeroById,
-    metadata: Metadata,
-    call: ServerUnaryCall<any>,
-  ): Hero {
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+    ```ts
+    @Controller()
+    export class HeroesService {
+      @GrpcMethod()
+      findOne(
+        data: HeroById,
+        metadata: Metadata,
+        call: ServerUnaryCall<any>,
+      ): Hero {
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "heroes.controller.js"
 
-```js
-@Controller()
-export class HeroesService {
-  @GrpcMethod()
-  findOne(data, metadata, call) {
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+    ```js
+    @Controller()
+    export class HeroesService {
+      @GrpcMethod()
+      findOne(data, metadata, call) {
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
 ## 客户端
 
@@ -274,8 +274,7 @@ imports: [
 !!! info "**Hint**"
 
     `register()`方法接受一个对象数组。
-
-> 通过提供以逗号分隔的注册对象列表来注册多个包。
+    通过提供以逗号分隔的注册对象列表来注册多个包。
 
 注册之后，我们可以用`@Inject()`注入配置好的`ClientGrpc`对象。
 然后我们使用`ClientGrpc`对象的`getService()`方法来检索服务实例，如下所示。
@@ -297,7 +296,9 @@ export class AppService implements OnModuleInit {
 }
 ```
 
-> error **Warning** gRPC 客户端不会发送名称中包含下划线`_` 的字段，除非`keepCase`选项在 proto 加载器配置中设置为`true`。在微服务传输配置中的 Keepcase’)。
+!!! error **Warning**
+
+    gRPC 客户端不会发送名称中包含下划线`_` 的字段，除非`keepCase`选项在 proto 加载器配置中设置为`true`。在微服务传输配置中的 Keepcase’)。
 
 注意，与其他微服务传输方法中使用的技术相比，这里有一个很小的区别。
 我们没有使用`ClientProxy`类，而是使用`ClientGrpc`类，它提供了`getService()`方法。
@@ -344,23 +345,23 @@ interface HeroesService {
 
 消息处理程序还能够返回一个`Observable`，在这种情况下，结果值将被发出，直到流完成。
 
-=== "heroes.controller"
+=== "heroes.controller.ts"
 
-```ts
-@Get()
-call(): Observable<any> {
-  return this.heroesService.findOne({ id: 1 });
-}
-```
+    ```ts
+    @Get()
+    call(): Observable<any> {
+      return this.heroesService.findOne({ id: 1 });
+    }
+    ```
 
-=== "JavaScript"
+=== "heroes.controller.js"
 
-```js
-@Get()
-call() {
-  return this.heroesService.findOne({ id: 1 });
-}
-```
+    ```js
+    @Get()
+    call() {
+      return this.heroesService.findOne({ id: 1 });
+    }
+    ```
 
 要发送 gRPC 元数据(与请求一起)，可以传递第二个参数，如下所示:
 
@@ -373,9 +374,7 @@ call(): Observable<any> {
 }
 ```
 
-!!! info "**Hint**"
-
-    Metadata 类是从 grpc 包中导入的。
+!!! info "Metadata 类是从 grpc 包中导入的。"
 
 请注意，这将需要更新我们在前面几个步骤中定义的`HeroesService`接口。
 
@@ -522,8 +521,7 @@ bidiHello(requestStream: any) {
 !!! info "**Hint**"
 
     这个装饰器不需要提供任何特定的返回参数。
-
-> 预期流的处理方式将与任何其他标准流类型类似。
+    预期流的处理方式将与任何其他标准流类型类似。
 
 在上面的例子中，我们使用`write()`方法将对象写入响应流。
 传递给`.on()`方法的回调作为第二个参数将在每次服务接收到新的数据块时被调用。
@@ -552,51 +550,51 @@ lotsOfGreetings(requestStream: any, callback: (err: unknown, value: HelloRespons
 
 要从处理程序发送回元数据，使用`ServerUnaryCall#sendMetadata()`方法(第三个处理程序参数)。
 
-=== "heroes.controller"
+=== "heroes.controller.ts"
 
-```ts
-@Controller()
-export class HeroesService {
-  @GrpcMethod()
-  findOne(
-    data: HeroById,
-    metadata: Metadata,
-    call: ServerUnaryCall<any>,
-  ): Hero {
-    const serverMetadata = new Metadata();
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
+    ```ts
+    @Controller()
+    export class HeroesService {
+      @GrpcMethod()
+      findOne(
+        data: HeroById,
+        metadata: Metadata,
+        call: ServerUnaryCall<any>,
+      ): Hero {
+        const serverMetadata = new Metadata();
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
 
-    serverMetadata.add(`Set-Cookie`, `yummy_cookie=choco`);
-    call.sendMetadata(serverMetadata);
+        serverMetadata.add(`Set-Cookie`, `yummy_cookie=choco`);
+        call.sendMetadata(serverMetadata);
 
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
-=== "JavaScript"
+=== "heroes.controller.js"
 
-```js
-@Controller()
-export class HeroesService {
-  @GrpcMethod()
-  findOne(data, metadata, call) {
-    const serverMetadata = new Metadata();
-    const items = [
-      { id: 1, name: `John` },
-      { id: 2, name: `Doe` },
-    ];
+    ```js
+    @Controller()
+    export class HeroesService {
+      @GrpcMethod()
+      findOne(data, metadata, call) {
+        const serverMetadata = new Metadata();
+        const items = [
+          { id: 1, name: `John` },
+          { id: 2, name: `Doe` },
+        ];
 
-    serverMetadata.add(`Set-Cookie`, `yummy_cookie=choco`);
-    call.sendMetadata(serverMetadata);
+        serverMetadata.add(`Set-Cookie`, `yummy_cookie=choco`);
+        call.sendMetadata(serverMetadata);
 
-    return items.find(({ id }) => id === data.id);
-  }
-}
-```
+        return items.find(({ id }) => id === data.id);
+      }
+    }
+    ```
 
 同样，要在用`@GrpcStreamMethod()`处理程序([subject strategy](microservices/grpc#subject-strategy))注释的处理程序中读取元数据，请使用第二个参数(metadata)，它的类型为`metadata`(从`grpc`包导入)。
 

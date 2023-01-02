@@ -1,6 +1,6 @@
 ---
-title: "Compodoc"
-linkTitle: ""
+title: 'Compodoc'
+linkTitle: ''
 weight: 8
 description: Compodoc 是 Angular 应用的文档工具。它生成应用程序的静态文档。
 ---
@@ -23,7 +23,7 @@ Compodoc 是[Vincent Ogloblinsky](http://www.vincentogloblinsky.com)的开源成
 
 ## 准备好了吗?走吧!
 
-请阅读[installation](./install.md)页面以了解有关安装的详细信息。[usage](./usage.md)帮助您使用所有可用的选项。
+请阅读[installation](./installation.md)页面以了解有关安装的详细信息。[usage](./usage.md)帮助您使用所有可用的选项。
 
 ## 支持者
 

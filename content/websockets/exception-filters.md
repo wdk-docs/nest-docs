@@ -6,9 +6,7 @@ HTTP[异常过滤器](/exception-filters)层和相应的 web 套接字层之间�
 throw new WsException('Invalid credentials.');
 ```
 
-!!! info "**Hint**"
-
-    `WsException`类是从`@nestjs/websockets`包中导入的。
+!!! info "`WsException`类是从`@nestjs/websockets`包中导入的。"
 
 在上面的示例中，Nest 将处理抛出的异常，并使用以下结构发出`exception`消息:
 
@@ -43,31 +41,31 @@ onEvent(client, data: any): WsResponse<any> {
 
 === "TypeScript"
 
-```ts
-import { Catch, ArgumentsHost } from '@nestjs/common';
-import { BaseWsExceptionFilter } from '@nestjs/websockets';
+    ```ts
+    import { Catch, ArgumentsHost } from '@nestjs/common';
+    import { BaseWsExceptionFilter } from '@nestjs/websockets';
 
-@Catch()
-export class AllExceptionsFilter extends BaseWsExceptionFilter {
-  catch(exception: unknown, host: ArgumentsHost) {
-    super.catch(exception, host);
-  }
-}
-```
+    @Catch()
+    export class AllExceptionsFilter extends BaseWsExceptionFilter {
+      catch(exception: unknown, host: ArgumentsHost) {
+        super.catch(exception, host);
+      }
+    }
+    ```
 
 === "JavaScript"
 
-```js
-import { Catch } from '@nestjs/common';
-import { BaseWsExceptionFilter } from '@nestjs/websockets';
+    ```js
+    import { Catch } from '@nestjs/common';
+    import { BaseWsExceptionFilter } from '@nestjs/websockets';
 
-@Catch()
-export class AllExceptionsFilter extends BaseWsExceptionFilter {
-  catch(exception, host) {
-    super.catch(exception, host);
-  }
-}
-```
+    @Catch()
+    export class AllExceptionsFilter extends BaseWsExceptionFilter {
+      catch(exception, host) {
+        super.catch(exception, host);
+      }
+    }
+    ```
 
 上面的实现只是演示该方法的 shell。
 扩展异常过滤器的实现将包括定制的 **业务逻辑** (例如，处理各种条件)。

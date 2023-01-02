@@ -76,8 +76,7 @@ app.useWebSocketAdapter(new RedisIoAdapter(app));
 !!! info "**Hint**"
 
     `ws`库不支持名称空间(由`socket.io`普及的通信通道)。
-
-> 然而，为了以某种方式模拟这个特性，您可以在不同的路径上挂载多个`ws`服务器 (例如: `@WebSocketGateway({{ '{' }} path: '/users' {{ '}' }})`).
+    然而，为了以某种方式模拟这个特性，您可以在不同的路径上挂载多个`ws`服务器 (例如: `@WebSocketGateway({ path: '/users' })`).
 
 为了使用`ws`，我们首先需要安装所需的包:
 
@@ -92,9 +91,7 @@ const app = await NestFactory.create(AppModule);
 app.useWebSocketAdapter(new WsAdapter(app));
 ```
 
-!!! info "**Hint**"
-
-    `WsAdapter`是从`@nestjs/platform-ws`导入的。
+!!! info "`WsAdapter`是从`@nestjs/platform-ws`导入的。"
 
 ## 高级(自定义适配器)
 
@@ -102,9 +99,7 @@ app.useWebSocketAdapter(new WsAdapter(app));
 正如前面提到的，这个库的适配器已经创建，并作为一个`WsAdapter`类从`@nestjs/platform-ws`包中公开。
 下面是简化后的实现可能看起来的样子:
 
-=== "ws-adapter"
-
-```ts
+```ts title="ws-adapter"
 import * as WebSocket from 'ws';
 import { WebSocketAdapter, INestApplicationContext } from '@nestjs/common';
 import { MessageMappingProperties } from '@nestjs/websockets';
@@ -156,15 +151,13 @@ export class WsAdapter implements WebSocketAdapter {
 }
 ```
 
-!!! info "**Hint**"
+!!! info "当你想利用[ws][ws]库时，使用内置的`WsAdapter`而不是自己创建一个。"
 
-    当你想利用[ws](https://github.com/websockets/ws)库时，使用内置的`WsAdapter`而不是自己创建一个。
+[ws]: https://github.com/websockets/ws
 
 然后，我们可以使用`useWebSocketAdapter()`方法设置自定义适配器:
 
-=== "main"
-
-```ts
+```ts title="main.ts"
 const app = await NestFactory.create(AppModule);
 app.useWebSocketAdapter(new WsAdapter(app));
 ```

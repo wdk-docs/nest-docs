@@ -76,11 +76,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.nestjs.com/static-site-generator/</loc>
-         <lastmod>2023-01-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.nestjs.com/support/</loc>
          <lastmod>2023-01-02</lastmod>
          <changefreq>daily</changefreq>

@@ -22,30 +22,30 @@ $ npm i --save redis
 
 要使用 Redis 传输器，将以下选项对象传递给`createMicroservice()`方法:
 
-=== "main"
+=== "main.ts"
 
-```ts
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-  AppModule,
-  {
-    transport: Transport.REDIS,
-    options: {
-      url: 'redis://localhost:6379',
-    },
-  },
-);
-```
+    ```ts
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+      AppModule,
+      {
+        transport: Transport.REDIS,
+        options: {
+          url: 'redis://localhost:6379',
+        },
+      },
+    );
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-const app = await NestFactory.createMicroservice(AppModule, {
-  transport: Transport.REDIS,
-  options: {
-    url: 'redis://localhost:6379',
-  },
-});
-```
+    ```js
+    const app = await NestFactory.createMicroservice(AppModule, {
+      transport: Transport.REDIS,
+      options: {
+        url: 'redis://localhost:6379',
+      },
+    });
+    ```
 
 !!! info "**Hint**"
 
@@ -106,22 +106,22 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: RedisContext) {
-  console.log(`Channel: ${context.getChannel()}`);
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: RedisContext) {
+      console.log(`Channel: ${context.getChannel()}`);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(`Channel: ${context.getChannel()}`);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(`Channel: ${context.getChannel()}`);
+    }
+    ```
 
 !!! info "**Hint**"
 

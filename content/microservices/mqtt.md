@@ -17,30 +17,30 @@ $ npm i --save mqtt
 
 要使用 MQTT 传输器，请将以下选项对象传递给 `createMicroservice()` 方法:
 
-=== "main"
+=== "main.ts"
 
-```ts
-const app = await NestFactory.createMicroservice<MicroserviceOptions>(
-  AppModule,
-  {
-    transport: Transport.MQTT,
-    options: {
-      url: 'mqtt://localhost:1883',
-    },
-  },
-);
-```
+    ```ts
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+      AppModule,
+      {
+        transport: Transport.MQTT,
+        options: {
+          url: 'mqtt://localhost:1883',
+        },
+      },
+    );
+    ```
 
-=== "JavaScript"
+=== "main.js"
 
-```js
-const app = await NestFactory.createMicroservice(AppModule, {
-  transport: Transport.MQTT,
-  options: {
-    url: 'mqtt://localhost:1883',
-  },
-});
-```
+    ```js
+    const app = await NestFactory.createMicroservice(AppModule, {
+      transport: Transport.MQTT,
+      options: {
+        url: 'mqtt://localhost:1883',
+      },
+    });
+    ```
 
 !!! info "**Hint**"
 
@@ -86,22 +86,22 @@ const app = await NestFactory.createMicroservice(AppModule, {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: MqttContext) {
-  console.log(`Topic: ${context.getTopic()}`);
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: MqttContext) {
+      console.log(`Topic: ${context.getTopic()}`);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(`Topic: ${context.getTopic()}`);
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(`Topic: ${context.getTopic()}`);
+    }
+    ```
 
 !!! info "**Hint**"
 
@@ -111,22 +111,22 @@ getNotifications(data, context) {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('notifications')
-getNotifications(@Payload() data: number[], @Ctx() context: MqttContext) {
-  console.log(context.getPacket());
-}
-```
+    ```ts
+    @MessagePattern('notifications')
+    getNotifications(@Payload() data: number[], @Ctx() context: MqttContext) {
+      console.log(context.getPacket());
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('notifications')
-getNotifications(data, context) {
-  console.log(context.getPacket());
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('notifications')
+    getNotifications(data, context) {
+      console.log(context.getPacket());
+    }
+    ```
 
 ## 通配符
 
@@ -136,22 +136,22 @@ getNotifications(data, context) {
 
 === "TypeScript"
 
-```ts
-@MessagePattern('sensors/+/temperature/+')
-getTemperature(@Ctx() context: MqttContext) {
-  console.log(`Topic: ${context.getTopic()}`);
-}
-```
+    ```ts
+    @MessagePattern('sensors/+/temperature/+')
+    getTemperature(@Ctx() context: MqttContext) {
+      console.log(`Topic: ${context.getTopic()}`);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Ctx())
-@MessagePattern('sensors/+/temperature/+')
-getTemperature(context) {
-  console.log(`Topic: ${context.getTopic()}`);
-}
-```
+    ```js
+    @Bind(Ctx())
+    @MessagePattern('sensors/+/temperature/+')
+    getTemperature(context) {
+      console.log(`Topic: ${context.getTopic()}`);
+    }
+    ```
 
 ## 记录构建器
 
@@ -175,24 +175,24 @@ client.send('replace-emoji', record).subscribe(...);
 
 === "TypeScript"
 
-```ts
-@MessagePattern('replace-emoji')
-replaceEmoji(@Payload() data: string, @Ctx() context: MqttContext): string {
-  const { properties: { userProperties } } = context.getPacket();
-  return userProperties['x-version'] === '1.0.0' ? '🐱' : '🐈';
-}
-```
+    ```ts
+    @MessagePattern('replace-emoji')
+    replaceEmoji(@Payload() data: string, @Ctx() context: MqttContext): string {
+      const { properties: { userProperties } } = context.getPacket();
+      return userProperties['x-version'] === '1.0.0' ? '🐱' : '🐈';
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Bind(Payload(), Ctx())
-@MessagePattern('replace-emoji')
-replaceEmoji(data, context) {
-  const { properties: { userProperties } } = context.getPacket();
-  return userProperties['x-version'] === '1.0.0' ? '🐱' : '🐈';
-}
-```
+    ```js
+    @Bind(Payload(), Ctx())
+    @MessagePattern('replace-emoji')
+    replaceEmoji(data, context) {
+      const { properties: { userProperties } } = context.getPacket();
+      return userProperties['x-version'] === '1.0.0' ? '🐱' : '🐈';
+    }
+    ```
 
 在某些情况下，你可能想要为多个请求配置用户属性，你可以将这些选项传递给`ClientProxyFactory`。
 

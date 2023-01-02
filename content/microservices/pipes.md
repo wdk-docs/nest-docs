@@ -13,20 +13,20 @@
 
 === "TypeScript"
 
-```ts
-@UsePipes(new ValidationPipe())
-@MessagePattern({ cmd: 'sum' })
-accumulate(data: number[]): number {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```ts
+    @UsePipes(new ValidationPipe())
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data: number[]): number {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UsePipes(new ValidationPipe())
-@MessagePattern({ cmd: 'sum' })
-accumulate(data) {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```js
+    @UsePipes(new ValidationPipe())
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data) {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```

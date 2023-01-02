@@ -30,7 +30,8 @@ nav:
           - Mongo: techniques/mongo.md
           - Redis:
                 - techniques/redis/README.md
-                - Redis:
+                - liaoliaots_nestjs-redis:
+                      - techniques/redis/liaoliaots_nestjs-redis/index.md
                       - Cluster: techniques/redis/liaoliaots_nestjs-redis/cluster.md
                       - Examples: techniques/redis/liaoliaots_nestjs-redis/examples.md
                       - Health: techniques/redis/liaoliaots_nestjs-redis/health.md
@@ -38,8 +39,10 @@ nav:
           - 配置: techniques/configuration.md
           - 验证:
                 - techniques/validation.md
-                - class-transformer: techniques/validator/class-transformer.md
-                - class-validator: techniques/validator/class-validator.md
+                - validator:
+                      - techniques/validator/index.md
+                      - class-transformer: techniques/validator/class-transformer.md
+                      - class-validator: techniques/validator/class-validator.md
           - 缓存:
                 - techniques/caching.md
                 - node-cache-manager: techniques/cache-manager/node-cache-manager.md
@@ -124,23 +127,25 @@ nav:
           - CQRS: recipes/cqrs.md
           - Compodoc:
                 - 概述: recipes/documentation.md
-                - 注释: recipes/compodoc/comments.md
-                - 现场演示: recipes/compodoc/demo.md
-                - 文档覆盖: recipes/compodoc/documentation-coverage.md
-                - 扩展: recipes/compodoc/extensions.md
-                - 特性: recipes/compodoc/features.md
-                - 托管: recipes/compodoc/hosting.md
-                - 安装: recipes/compodoc/installation.md
-                - JSDoc 标签: recipes/compodoc/jsdoc-tags.md
-                - 现场例子选项卡: recipes/compodoc/live-example-tab.md
-                - 杂项: recipes/compodoc/miscellaneous.md
-                - 选项: recipes/compodoc/options.md
-                - 路由: recipes/compodoc/routing.md
-                - 选项卡配置: recipes/compodoc/tab-configuration.md
-                - 主题: recipes/compodoc/themes.md
-                - 提示和技巧: recipes/compodoc/tips-and-tricks.md
-                - 教程: recipes/compodoc/tutorial.md
-                - 使用: recipes/compodoc/usage.md
+                - compodoc:
+                      - recipes/compodoc/index.md
+                      - 注释: recipes/compodoc/comments.md
+                      - 现场演示: recipes/compodoc/demo.md
+                      - 文档覆盖: recipes/compodoc/documentation-coverage.md
+                      - 扩展: recipes/compodoc/extensions.md
+                      - 特性: recipes/compodoc/features.md
+                      - 托管: recipes/compodoc/hosting.md
+                      - 安装: recipes/compodoc/installation.md
+                      - JSDoc 标签: recipes/compodoc/jsdoc-tags.md
+                      - 现场例子选项卡: recipes/compodoc/live-example-tab.md
+                      - 杂项: recipes/compodoc/miscellaneous.md
+                      - 选项: recipes/compodoc/options.md
+                      - 路由: recipes/compodoc/routing.md
+                      - 选项卡配置: recipes/compodoc/tab-configuration.md
+                      - 主题: recipes/compodoc/themes.md
+                      - 提示和技巧: recipes/compodoc/tips-and-tricks.md
+                      - 教程: recipes/compodoc/tutorial.md
+                      - 使用: recipes/compodoc/usage.md
           - Prisma: recipes/prisma.md
           - 服务静态: recipes/serve-static.md
           - Commander: recipes/nest-commander.md
@@ -208,7 +213,7 @@ nav:
                 - 用PUT和PATCH更新MongoDB和Mongoose: blog/posts/mongodb/updating.md
                 - MongoDB和Mongoose的虚拟属性: blog/posts/mongodb/virtual.md
           - swagger:
-                - OpenAPI规范和Swagger: blog/posts/openapi/api-nestjs-openapi-swagger
+                - OpenAPI规范和Swagger: blog/posts/openapi/api-nestjs-openapi-swagger.md
           - k8s:
                 - NestJS Dockerfile: blog/posts/nestjs-docker-production.md
           - 其它:

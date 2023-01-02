@@ -15,22 +15,14 @@
 !!! info "**Hint**"
 
     网关可以被视为[providers](/providers);
-
-> 这意味着它们可以通过类构造函数注入依赖项。
-> 另外，网关也可以被其他类(提供程序和控制器)注入。
+    这意味着它们可以通过类构造函数注入依赖项。
+    另外，网关也可以被其他类(提供程序和控制器)注入。
 
 ## 安装
 
 要开始构建基于 websocket 的应用程序，首先要安装所需的包:
 
 ```bash
-@@filename()
-$ npm i --save @nestjs/websockets @nestjs/platform-socket.io
-```
-
-=== "JavaScript"
-
-```js
 $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 ```
 
@@ -57,84 +49,81 @@ $ npm i --save @nestjs/websockets @nestjs/platform-socket.io
 网关现在正在收听，但是我们还没有订阅任何传入的消息。
 让我们创建一个处理程序，它将订阅`events`消息并以完全相同的数据响应用户。
 
-=== "events.gateway"
+=== "events.gateway.ts"
 
-```ts
-@SubscribeMessage('events')
-handleEvent(@MessageBody() data: string): string {
-  return data;
-}
-```
+    ```ts
+    @SubscribeMessage('events')
+    handleEvent(@MessageBody() data: string): string {
+      return data;
+    }
+    ```
 
-=== "JavaScript"
+=== "events.gateway.js"
 
-```js
-@Bind(MessageBody())
-@SubscribeMessage('events')
-handleEvent(data) {
-  return data;
-}
-```
+    ```js
+    @Bind(MessageBody())
+    @SubscribeMessage('events')
+    handleEvent(data) {
+      return data;
+    }
+    ```
 
-!!! info "**Hint**"
-
-    `@SubscribeMessage()`和`@MessageBody()`装饰器是从`@nestjs/websockets`包中导入的.
+!!! info "`@SubscribeMessage()`和`@MessageBody()`装饰器是从`@nestjs/websockets`包中导入的."
 
 一旦创建了网关，我们就可以在我们的模块中注册它。
 
-```typescript
+```ts title="events.module.ts"
 import { Module } from '@nestjs/common';
 import { EventsGateway } from './events.gateway';
 
-@@filename(events.module)
 @Module({
-  providers: [EventsGateway]
+  providers: [EventsGateway],
 })
 export class EventsModule {}
 ```
 
 您还可以将一个属性键传递给装饰器，以便从传入的消息体中提取它
 
-=== "events.gateway"
+=== "events.gateway.ts"
 
-```ts
-@SubscribeMessage('events')
-handleEvent(@MessageBody('id') id: number): number {
-  // id === messageBody.id
-  return id;
-}
-```
+    ```ts
+    @SubscribeMessage('events')
+    handleEvent(@MessageBody('id') id: number): number {
+      // id === messageBody.id
+      return id;
+    }
+    ```
 
-=== "JavaScript"
+=== "events.gateway.js"
 
-```js
-@Bind(MessageBody('id'))
-@SubscribeMessage('events')
-handleEvent(id) {
-  // id === messageBody.id
-  return id;
-}
-```
+    ```js
+    @Bind(MessageBody('id'))
+    @SubscribeMessage('events')
+    handleEvent(id) {
+      // id === messageBody.id
+      return id;
+    }
+    ```
 
 如果不喜欢使用装饰器，下面的代码在功能上是等价的:
 
-=== "events.gateway"
+=== "events.gateway.ts"
 
-```ts
-@SubscribeMessage('events')
-handleEvent(client: Socket, data: string): string {
-  return data;
-}
-```
+    ```ts
+    @SubscribeMessage('events')
+    handleEvent(client: Socket, data: string): string {
+      return data;
+    }
+    ```
 
-=== "JavaScript"
+=== "events.gateway.js"
 
-```js
-@SubscribeMessage('events')
-handleEvent(client, data) {
-  return data;
-}
-```
+    ```js
+    @SubscribeMessage('events')
+    handleEvent(client, data) {
+      return data;
+    }
+    ```
 
 在上面的例子中，`handleEvent()`函数接受两个参数。
 第一个是平台特定的[套接字实例](https://socket.io/docs/server-api/#socket)，而第二个是从客户端接收的数据。
@@ -144,31 +133,29 @@ handleEvent(client, data) {
 此外，还可以使用特定于库的方法发出消息，例如使用`client.emit()`方法。
 为了访问已连接的套接字实例，请使用`@ConnectedSocket()`装饰器。
 
-=== "events.gateway"
+=== "events.gateway.ts"
 
-```ts
-@SubscribeMessage('events')
-handleEvent(
-  @MessageBody() data: string,
-  @ConnectedSocket() client: Socket,
-): string {
-  return data;
-}
-```
+    ```ts
+    @SubscribeMessage('events')
+    handleEvent(
+      @MessageBody() data: string,
+      @ConnectedSocket() client: Socket,
+    ): string {
+      return data;
+    }
+    ```
 
-=== "JavaScript"
+=== "events.gateway.js"
 
-```js
-@Bind(MessageBody(), ConnectedSocket())
-@SubscribeMessage('events')
-handleEvent(data, client) {
-  return data;
-}
-```
+    ```js
+    @Bind(MessageBody(), ConnectedSocket())
+    @SubscribeMessage('events')
+    handleEvent(data, client) {
+      return data;
+    }
+    ```
 
-!!! info "**Hint**"
-
-    `@ConnectedSocket()`装饰器是从`@nestjs/websockets`包导入的。
+!!! info "`@ConnectedSocket()`装饰器是从`@nestjs/websockets`包导入的。"
 
 然而，在这种情况下，您将无法利用拦截器。
 如果你不想响应用户，你可以简单地跳过`return`语句(或者显式地返回`falsy`值，例如`undefined`)。
@@ -193,30 +180,28 @@ socket.emit('events', { name: 'Nest' }, (data) => console.log(data));
 为了解决这个限制，你可以返回一个包含两个属性的对象。
 `event`是发出事件的名称，以及必须转发给客户端的`data`。
 
-=== "events.gateway"
+=== "events.gateway.ts"
 
-```ts
-@SubscribeMessage('events')
-handleEvent(@MessageBody() data: unknown): WsResponse<unknown> {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```ts
+    @SubscribeMessage('events')
+    handleEvent(@MessageBody() data: unknown): WsResponse<unknown> {
+      const event = 'events';
+      return { event, data };
+    }
+    ```
 
-=== "JavaScript"
+=== "events.gateway.js"
 
-```js
-@Bind(MessageBody())
-@SubscribeMessage('events')
-handleEvent(data) {
-  const event = 'events';
-  return { event, data };
-}
-```
+    ```js
+    @Bind(MessageBody())
+    @SubscribeMessage('events')
+    handleEvent(data) {
+      const event = 'events';
+      return { event, data };
+    }
+    ```
 
-!!! info "**Hint**"
-
-    `WsResponse`接口是从`@nestjs/websockets`包导入的。
+!!! info "`WsResponse`接口是从`@nestjs/websockets`包导入的。"
 
 !!! warning
 
@@ -234,34 +219,34 @@ socket.on('events', (data) => console.log(data));
 因此，支持`async`方法。
 消息处理程序还可以返回一个`Observable`，在这种情况下，结果值将一直发出，直到流完成。
 
-=== "events.gateway"
+=== "events.gateway.ts"
 
-```ts
-@SubscribeMessage('events')
-onEvent(@MessageBody() data: unknown): Observable<WsResponse<number>> {
-  const event = 'events';
-  const response = [1, 2, 3];
+    ```ts
+    @SubscribeMessage('events')
+    onEvent(@MessageBody() data: unknown): Observable<WsResponse<number>> {
+      const event = 'events';
+      const response = [1, 2, 3];
 
-  return from(response).pipe(
-    map(data => ({ event, data })),
-  );
-}
-```
+      return from(response).pipe(
+        map(data => ({ event, data })),
+      );
+    }
+    ```
 
-=== "JavaScript"
+=== "events.gateway.js"
 
-```js
-@Bind(MessageBody())
-@SubscribeMessage('events')
-onEvent(data) {
-  const event = 'events';
-  const response = [1, 2, 3];
+    ```js
+    @Bind(MessageBody())
+    @SubscribeMessage('events')
+    onEvent(data) {
+      const event = 'events';
+      const response = [1, 2, 3];
 
-  return from(response).pipe(
-    map(data => ({ event, data })),
-  );
-}
-```
+      return from(response).pipe(
+        map(data => ({ event, data })),
+      );
+    }
+    ```
 
 在上面的例子中，消息处理程序将响应 **3 次** (对于数组中的每个项)。
 
@@ -299,9 +284,7 @@ onEvent(data) {
   </tr>
 </table>
 
-!!! info "**Hint**"
-
-    每个生命周期接口都是从`@nestjs/websockets`包中公开的。
+!!! info "每个生命周期接口都是从`@nestjs/websockets`包中公开的。"
 
 ## 服务器
 

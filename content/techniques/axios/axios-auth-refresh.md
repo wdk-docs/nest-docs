@@ -1,6 +1,6 @@
 ---
-title: "axios-auth-refresh"
-linkTitle: "认证刷新"
+title: 'axios-auth-refresh'
+linkTitle: '认证刷新'
 weight: 3
 ---
 
@@ -58,23 +58,29 @@ createAuthRefreshInterceptor(
 在 refreshAuthLogic 处理期间创建的所有新请求都将被绑定到从 refreshAuthLogic 函数返回的 Promise 上。这意味着当获取新的访问令牌或刷新逻辑失败时，请求将得到解决。
 
 ```javascript
-import axios from "axios";
-import createAuthRefreshInterceptor from "axios-auth-refresh";
+import axios from 'axios';
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
 
 // Function that will be called to refresh authorization
 const refreshAuthLogic = (failedRequest) =>
-  axios.post("https://www.example.com/auth/token/refresh").then((tokenRefreshResponse) => {
-    localStorage.setItem("token", tokenRefreshResponse.data.token);
-    failedRequest.response.config.headers["Authorization"] = "Bearer " + tokenRefreshResponse.data.token;
-    return Promise.resolve();
-  });
+  axios
+    .post('https://www.example.com/auth/token/refresh')
+    .then((tokenRefreshResponse) => {
+      localStorage.setItem('token', tokenRefreshResponse.data.token);
+      failedRequest.response.config.headers['Authorization'] =
+        'Bearer ' + tokenRefreshResponse.data.token;
+      return Promise.resolve();
+    });
 
 // Instantiate the interceptor
 createAuthRefreshInterceptor(axios, refreshAuthLogic);
 
 // Make a call. If it returns a 401 error, the refreshAuthLogic will be run,
 // and the request retried with the new token
-axios.get("https://www.example.com/restricted/area").then(/* ... */).catch(/* ... */);
+axios
+  .get('https://www.example.com/restricted/area')
+  .then(/* ... */)
+  .catch(/* ... */);
 ```
 
 #### 跳过拦截器
@@ -87,13 +93,13 @@ axios.get("https://www.example.com/restricted/area").then(/* ... */).catch(/* ..
 要做到这一点，你需要为每个你不想拦截的请求传递`skipAuthRefresh`选项到请求配置。
 
 ```javascript
-axios.get("https://www.example.com/", { skipAuthRefresh: true });
+axios.get('https://www.example.com/', { skipAuthRefresh: true });
 ```
 
 如果你使用的是 TypeScript，你可以从`axios-auth-refresh`中导入自定义请求配置接口。
 
 ```typescript
-import { AxiosAuthRefreshRequestConfig } from "axios-auth-refresh";
+import { AxiosAuthRefreshRequestConfig } from 'axios-auth-refresh';
 ```
 
 #### 请求拦截器
@@ -105,12 +111,12 @@ import { AxiosAuthRefreshRequestConfig } from "axios-auth-refresh";
 ```javascript
 // Obtain the fresh token each time the function is called
 function getAccessToken() {
-  return localStorage.getItem("token");
+  return localStorage.getItem('token');
 }
 
 // Use interceptor to inject the token to requests
 axios.interceptors.request.use((request) => {
-  request.headers["Authorization"] = `Bearer ${getAccessToken()}`;
+  request.headers['Authorization'] = `Bearer ${getAccessToken()}`;
   return request;
 });
 ```
@@ -133,7 +139,8 @@ axios.interceptors.request.use((request) => {
 
 ```javascript
 {
-  shouldRefresh: (error) => error?.response?.data?.business_error_code === 100385;
+  shouldRefresh: (error) =>
+    error?.response?.data?.business_error_code === 100385;
 }
 ```
 
@@ -154,7 +161,7 @@ axios.interceptors.request.use((request) => {
 
 ```javascript
 {
-  onRetry: (requestConfig) => ({ ...requestConfig, baseURL: "" }); // default: undefined
+  onRetry: (requestConfig) => ({ ...requestConfig, baseURL: '' }); // default: undefined
 }
 ```
 
@@ -209,15 +216,3 @@ CAUTION: 这应该作为最后的手段。如果此方法用于处理带有 HTTP
 - **v3.0.0**
   - `skipWhileRefresh` flag has been deprecated due to its unclear name and its logic has been moved to `pauseInstanceWhileRefreshing` flag
   - `pauseInstanceWhileRefreshing` is set to `false` by default
-
----
-
-#### 想要帮助吗?
-
-查看[贡献指南](CONTRIBUTING.md)或我的[patreon page!](https://www.patreon.com/dawidzbinski)
-
----
-
-#### 特别感谢[JetBrains](https://www.jetbrains.com/?from=axios-auth-refresh)为我们的库提供了 IDE
-
-<a href="https://www.jetbrains.com/?from=axios-auth-refresh" title="Link to JetBrains"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/JetBrains_Logo_2016.svg/128px-JetBrains_Logo_2016.svg.png" alt="JetBrains"></a>

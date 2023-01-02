@@ -5,20 +5,20 @@
 
 === "TypeScript"
 
-```ts
-@UseInterceptors(new TransformInterceptor())
-@MessagePattern({ cmd: 'sum' })
-accumulate(data: number[]): number {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```ts
+    @UseInterceptors(new TransformInterceptor())
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data: number[]): number {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UseInterceptors(new TransformInterceptor())
-@MessagePattern({ cmd: 'sum' })
-accumulate(data) {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```js
+    @UseInterceptors(new TransformInterceptor())
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data) {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```

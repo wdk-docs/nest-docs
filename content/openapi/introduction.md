@@ -21,9 +21,7 @@ $ npm install --save @nestjs/swagger fastify-swagger
 
 安装过程完成后，打开`main.ts`并使用 `SwaggerModule` 类初始化 Swagger:
 
-=== "main"
-
-```ts
+```ts title="main.ts"
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
@@ -85,23 +83,22 @@ $ npm run start
 
     当使用`fastify-swagger`和 `helmet`时，[CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)可能会有一个问题，为了解决这个碰撞，配置 CSP 如下所示:
 
-> ```typescript
-> app.register(helmet, {
->   contentSecurityPolicy: {
->     directives: {
->       defaultSrc: [`'self'`],
->       styleSrc: [`'self'`, `'unsafe-inline'`],
->       imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
->       scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
->     },
->   },
-> });
->
-> // If you are not going to use CSP at all, you can use this:
-> app.register(helmet, {
->   contentSecurityPolicy: false,
-> });
-> ```
+    ```typescript
+    app.register(helmet, {
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: [`'self'`],
+          styleSrc: [`'self'`, `'unsafe-inline'`],
+          imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+          scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+        },
+      },
+    });
+    // If you are not going to use CSP at all, you can use this:
+    app.register(helmet, {
+      contentSecurityPolicy: false,
+    });
+    ```
 
 ## 文档选项
 

@@ -14,20 +14,20 @@
 
 === "TypeScript"
 
-```ts
-@UseGuards(AuthGuard)
-@MessagePattern({ cmd: 'sum' })
-accumulate(data: number[]): number {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```ts
+    @UseGuards(AuthGuard)
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data: number[]): number {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@UseGuards(AuthGuard)
-@MessagePattern({ cmd: 'sum' })
-accumulate(data) {
-  return (data || []).reduce((a, b) => a + b);
-}
-```
+    ```js
+    @UseGuards(AuthGuard)
+    @MessagePattern({ cmd: 'sum' })
+    accumulate(data) {
+      return (data || []).reduce((a, b) => a + b);
+    }
+    ```
