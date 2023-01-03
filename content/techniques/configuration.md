@@ -25,13 +25,9 @@
 $ npm i --save @nestjs/config
 ```
 
-!!! info "**Hint**"
+!!! info "`@nestjs/config`包内部使用[dotenv](https://github.com/motdotla/dotenv)."
 
-    `@nestjs/config`包内部使用[dotenv](https://github.com/motdotla/dotenv).
-
-!!! warning
-
-    `@nestjs/config` 需要 TypeScript 4.1 或更高版本。
+!!! warning "`@nestjs/config` 需要 TypeScript 4.1 或更高版本。"
 
 ## 开始
 
@@ -42,15 +38,15 @@ $ npm i --save @nestjs/config
 
 === "app.module"
 
-```ts
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { ConfigModule } from '@nestjs/config';
 
-@Module({
-  imports: [ConfigModule.forRoot()],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [ConfigModule.forRoot()],
+    })
+    export class AppModule {}
+    ```
 
 上面的代码将从默认位置(项目根目录)加载并解析一个`.env`文件，将`.env`文件中的键/值对与分配给`processenv`的环境变量合并，并将结果存储在一个私有结构中，你可以通过`ConfigService`访问该结构。
 `forRoot()`方法注册了`ConfigService`提供程序，后者提供了一个`get()`方法来读取这些解析/合并的配置变量。
@@ -119,15 +115,15 @@ ConfigModule.forRoot({
 
 === "config/configuration"
 
-```ts
-export default () => ({
-  port: parseInt(process.env.PORT, 10) || 3000,
-  database: {
-    host: process.env.DATABASE_HOST,
-    port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
-  },
-});
-```
+    ```ts
+    export default () => ({
+      port: parseInt(process.env.PORT, 10) || 3000,
+      database: {
+        host: process.env.DATABASE_HOST,
+        port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
+      },
+    });
+    ```
 
 我们使用传递给`ConfigModule.forRoot()`方法的 options 对象的`load`属性来加载这个文件:
 
@@ -144,7 +140,7 @@ import configuration from './config/configuration';
 export class AppModule {}
 ```
 
-!!! info **Notice** `load`属性的值是一个数组，允许你加载多个配置文件 (如... `load: [databaseConfig, authConfig]`)
+!!! info "`load`属性的值是一个数组，允许你加载多个配置文件 (如 `load: [databaseConfig, authConfig]`)"
 
 使用自定义配置文件，我们还可以管理自定义文件，如 YAML 文件。
 下面是一个使用 YAML 格式的配置示例:
@@ -175,23 +171,23 @@ $ npm i -D @types/js-yaml
 
 === "config/configuration"
 
-```ts
-import { readFileSync } from 'fs';
-import * as yaml from 'js-yaml';
-import { join } from 'path';
+    ```ts
+    import { readFileSync } from 'fs';
+    import * as yaml from 'js-yaml';
+    import { join } from 'path';
 
-const YAML_CONFIG_FILENAME = 'config.yaml';
+    const YAML_CONFIG_FILENAME = 'config.yaml';
 
-export default () => {
-  return yaml.load(
-    readFileSync(join(__dirname, YAML_CONFIG_FILENAME), 'utf8'),
-  ) as Record<string, any>;
-};
-```
+    export default () => {
+      return yaml.load(
+        readFileSync(join(__dirname, YAML_CONFIG_FILENAME), 'utf8'),
+      ) as Record<string, any>;
+    };
+    ```
 
 !!! warning
 
-    在构建过程中，Nest CLI 不会自动移动你的"assets"(非 ts 文件)到`dist`文件夹。 为了确保你的 YAML 文件被复制，你必须在`nest-clijson`文件中的`compilerOptions#assets`对象中指定这一点。 例如，如果`config`文件夹和`src`文件夹在同一级别，添加“compilerOptions#assets”值为 `"assets": [{{ '{' }}"include": "../config/*.yaml", "outDir": "./dist/config"{{ '}' }}]`. 阅读更多(在这里)(/cli/monorepo#assets).
+    在构建过程中，Nest CLI 不会自动移动你的`assets`(非 ts 文件)到`dist`文件夹。 为了确保你的 YAML 文件被复制，你必须在`nest-cli.json`文件中的`compilerOptions#assets`对象中指定这一点。 例如，如果`config`文件夹和`src`文件夹在同一级别，添加`compilerOptions#assets`值为 `"assets": [{ "include": "../config/*.yaml", "outDir": "./dist/config" }]`. 参阅[这里](/cli/monorepo#assets).
 
 ## 使用 `ConfigService`
 
@@ -201,12 +197,12 @@ export default () => {
 
 === "feature.module"
 
-```ts
-@Module({
-  imports: [ConfigModule],
-  // ...
-})
-```
+    ```ts
+    @Module({
+      imports: [ConfigModule],
+      // ...
+    })
+    ```
 
 然后我们可以使用标准构造函数注入来注入它:
 
@@ -214,9 +210,7 @@ export default () => {
 constructor(private configService: ConfigService) {}
 ```
 
-!!! info "**Hint**"
-
-    ConfigService 是从`@nestjs/config`包中导入的。
+!!! info "ConfigService 是从`@nestjs/config`包中导入的。"
 
 在我们的类上使用它:
 
@@ -302,18 +296,16 @@ ConfigModule 允许你定义和加载多个自定义配置文件，如上面[自
 
 === "config/database.config"
 
-```ts
-export default registerAs('database', () => ({
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT || 5432,
-}));
-```
+    ```ts
+    export default registerAs('database', () => ({
+      host: process.env.DATABASE_HOST,
+      port: process.env.DATABASE_PORT || 5432,
+    }));
+    ```
 
 与自定义配置文件一样，在你的`registerAs()`工厂函数中，`process.env`对象将包含完全解析的环境变量键/值对(与`.env`文件和外部定义的变量解析和合并，如[上面](techniques/configuration#gettingstarted)所述。
 
-!!! info "**Hint**"
-
-    `registerAs`函数是从`@nestjs/config`包导出的。
+!!! info "`registerAs`函数是从`@nestjs/config`包导出的。"
 
 用`forRoot()`方法的 options 对象的`load`属性加载有命名空间的配置，就像你加载自定义配置文件一样:
 
@@ -346,9 +338,7 @@ constructor(
 ) {}
 ```
 
-!!! info "**Hint**"
-
-    ConfigType 是从`@nestjs/config`包中导出的。
+!!! info "ConfigType 是从`@nestjs/config`包中导出的。"
 
 ## 缓存环境变量
 
@@ -376,7 +366,9 @@ import databaseConfig from './config/database.config';
 export class DatabaseModule {}
 ```
 
-!!! info **Warning** 在某些情况下，您可能需要使用`onModuleInit()`钩子访问通过部分注册加载的属性，而不是在构造函数中。这是因为`forFeature()`方法是在模块初始化期间运行的，模块初始化的顺序是不确定的。如果在构造函数中访问另一个模块以这种方式加载的值，则配置所依赖的模块可能还没有初始化。`onModuleInit()`方法只有在它依赖的所有模块都被初始化后才会运行，所以这种技术是安全的。
+!!! Warning
+
+    在某些情况下，您可能需要使用`onModuleInit()`钩子访问通过部分注册加载的属性，而不是在构造函数中。这是因为`forFeature()`方法是在模块初始化期间运行的，模块初始化的顺序是不确定的。如果在构造函数中访问另一个模块以这种方式加载的值，则配置所依赖的模块可能还没有初始化。`onModuleInit()`方法只有在它依赖的所有模块都被初始化后才会运行，所以这种技术是安全的。
 
 ## 模式验证
 
@@ -397,25 +389,25 @@ $ npm install --save joi
 
 现在我们可以定义一个 Joi 验证模式，并通过`forRoot()`方法的 options 对象的`validationSchema`属性传递它，如下所示:
 
-=== "app.module"
+=== "app.module.ts"
 
-```ts
-import * as Joi from 'joi';
+    ```ts
+    import * as Joi from 'joi';
 
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      validationSchema: Joi.object({
-        NODE_ENV: Joi.string()
-          .valid('development', 'production', 'test', 'provision')
-          .default('development'),
-        PORT: Joi.number().default(3000),
-      }),
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        ConfigModule.forRoot({
+          validationSchema: Joi.object({
+            NODE_ENV: Joi.string()
+              .valid('development', 'production', 'test', 'provision')
+              .default('development'),
+            PORT: Joi.number().default(3000),
+          }),
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 默认情况下，所有模式键都被认为是可选的。
 在这里，我们为`NODE_ENV`和`PORT`设置了默认值，如果我们在环境(`.env`文件或进程环境)中不提供这些变量，将使用它们。
@@ -431,27 +423,27 @@ export class AppModule {}
 
 === "app.module.ts"
 
-```ts
-import * as Joi from 'joi';
+    ```ts
+    import * as Joi from 'joi';
 
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      validationSchema: Joi.object({
-        NODE_ENV: Joi.string()
-          .valid('development', 'production', 'test', 'provision')
-          .default('development'),
-        PORT: Joi.number().default(3000),
-      }),
-      validationOptions: {
-        allowUnknown: false,
-        abortEarly: true,
-      },
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        ConfigModule.forRoot({
+          validationSchema: Joi.object({
+            NODE_ENV: Joi.string()
+              .valid('development', 'production', 'test', 'provision')
+              .default('development'),
+            PORT: Joi.number().default(3000),
+          }),
+          validationOptions: {
+            allowUnknown: false,
+            abortEarly: true,
+          },
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 `@nestjs/config`包使用默认设置:
 
@@ -474,56 +466,56 @@ export class AppModule {}
 
 === "env.validation.ts"
 
-```ts
-import { plainToClass } from 'class-transformer';
-import { IsEnum, IsNumber, validateSync } from 'class-validator';
+    ```ts
+    import { plainToClass } from 'class-transformer';
+    import { IsEnum, IsNumber, validateSync } from 'class-validator';
 
-enum Environment {
-  Development = 'development',
-  Production = 'production',
-  Test = 'test',
-  Provision = 'provision',
-}
+    enum Environment {
+      Development = 'development',
+      Production = 'production',
+      Test = 'test',
+      Provision = 'provision',
+    }
 
-class EnvironmentVariables {
-  @IsEnum(Environment)
-  NODE_ENV: Environment;
+    class EnvironmentVariables {
+      @IsEnum(Environment)
+      NODE_ENV: Environment;
 
-  @IsNumber()
-  PORT: number;
-}
+      @IsNumber()
+      PORT: number;
+    }
 
-export function validate(config: Record<string, unknown>) {
-  const validatedConfig = plainToClass(EnvironmentVariables, config, {
-    enableImplicitConversion: true,
-  });
-  const errors = validateSync(validatedConfig, {
-    skipMissingProperties: false,
-  });
+    export function validate(config: Record<string, unknown>) {
+      const validatedConfig = plainToClass(EnvironmentVariables, config, {
+        enableImplicitConversion: true,
+      });
+      const errors = validateSync(validatedConfig, {
+        skipMissingProperties: false,
+      });
 
-  if (errors.length > 0) {
-    throw new Error(errors.toString());
-  }
-  return validatedConfig;
-}
-```
+      if (errors.length > 0) {
+        throw new Error(errors.toString());
+      }
+      return validatedConfig;
+    }
+    ```
 
 在这里，使用`validate`函数作为`ConfigModule`的配置选项，如下所示:
 
 === "app.module.ts"
 
-```ts
-import { validate } from './env.validation';
+    ```ts
+    import { validate } from './env.validation';
 
-@Module({
-  imports: [
-    ConfigModule.forRoot({
-      validate,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        ConfigModule.forRoot({
+          validate,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 ## 定制的 getter 函数
 
@@ -532,32 +524,32 @@ export class AppModule {}
 
 === "TypeScript"
 
-```ts
-@Injectable()
-export class ApiConfigService {
-  constructor(private configService: ConfigService) {}
+    ```ts
+    @Injectable()
+    export class ApiConfigService {
+      constructor(private configService: ConfigService) {}
 
-  get isAuthEnabled(): boolean {
-    return this.configService.get('AUTH_ENABLED') === 'true';
-  }
-}
-```
+      get isAuthEnabled(): boolean {
+        return this.configService.get('AUTH_ENABLED') === 'true';
+      }
+    }
+    ```
 
 === "JavaScript"
 
-```js
-@Dependencies(ConfigService)
-@Injectable()
-export class ApiConfigService {
-  constructor(configService) {
-    this.configService = configService;
-  }
+    ```js
+    @Dependencies(ConfigService)
+    @Injectable()
+    export class ApiConfigService {
+      constructor(configService) {
+        this.configService = configService;
+      }
 
-  get isAuthEnabled() {
-    return this.configService.get('AUTH_ENABLED') === 'true';
-  }
-}
-```
+      get isAuthEnabled() {
+        return this.configService.get('AUTH_ENABLED') === 'true';
+      }
+    }
+    ```
 
 现在我们可以像下面这样使用 getter 函数:
 
@@ -599,11 +591,9 @@ APP_URL=mywebsite.com
 SUPPORT_EMAIL=support@${APP_URL}
 ```
 
-在这个构造中，变量`SUPPORT_EMAIL`解析为`'support@mywebsite.com'`。注意`${{ '{' }}...{{ '}' }}`语法触发解析`SUPPORT_EMAIL`定义中的变量`APP_URL`的值。
+在这个构造中，变量`SUPPORT_EMAIL`解析为`'support@mywebsite.com'`。注意`${ ... }`语法触发解析`SUPPORT_EMAIL`定义中的变量`APP_URL`的值。
 
-!!! info "**Hint**"
-
-    对于这个特性，`@nestjs/config`包内部使用[dotenv-expand](https://github.com/motdotla/dotenv-expand)。
+!!! info "对于这个特性，`@nestjs/config`包内部使用[dotenv-expand](https://github.com/motdotla/dotenv-expand)。"
 
 在传递给`ConfigModule`的`forRoot()`方法的 options 对象中，使用`expandVariables`属性启用环境变量展开，如下所示:
 
