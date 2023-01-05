@@ -1,4 +1,9 @@
-# 执行上下文
+---
+title: 执行上下文
+tags:
+  - 上下文
+  - context
+---
 
 Nest 提供了几个实用程序类，帮助编写跨多个应用上下文的应用程序(例如，Nest 基于 HTTP 服务器、微服务和 WebSockets 应用上下文)。
 这些实用程序提供了有关当前执行上下文的信息，可用于构建通用的[guards](/guards)、[filters](/exception-filters)和[interceptors](/interceptors)，它们可以跨广泛的控制器、方法和执行上下文工作。

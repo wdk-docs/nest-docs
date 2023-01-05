@@ -14,17 +14,17 @@ nav:
                   - 拦截器: interceptors.md
                   - 自定义修饰符: custom-decorators.md
         - 基本原理:
-                  - 提供器:自定义: fundamentals/dependency-injection.md
-                  - 提供器:异步服务: fundamentals/async-components.md
-                  - 动态模块: fundamentals/dynamic-modules.md
-                  - 注入作用域: fundamentals/provider-scopes.md
-                  - 循环依赖: fundamentals/circular-dependency.md
-                  - 模块引用: fundamentals/module-reference.md
-                  - 延迟加载模块: fundamentals/lazy-loading-modules.md
-                  - 执行上下文: fundamentals/execution-context.md
-                  - 生命周期事件: fundamentals/lifecycle-events.md
-                  - 平台无关性: fundamentals/platform-agnosticism.md
-                  - 测试: fundamentals/unit-testing.md
+                  - fundamentals/dependency-injection.md
+                  - fundamentals/async-components.md
+                  - fundamentals/dynamic-modules.md
+                  - fundamentals/provider-scopes.md
+                  - fundamentals/circular-dependency.md
+                  - fundamentals/module-reference.md
+                  - fundamentals/lazy-loading-modules.md
+                  - fundamentals/execution-context.md
+                  - fundamentals/lifecycle-events.md
+                  - fundamentals/platform-agnosticism.md
+                  - fundamentals/unit-testing.md
         - 技术:
                   - 数据库: techniques/sql.md
                   - Mongo: techniques/mongo.md
@@ -116,6 +116,7 @@ nav:
                   - 其他功能: openapi/other-features.md
                   - 迁移向导: openapi/migration-guide.md
         - 食谱:
+                  - recipes/repl.md
                   - CRUD 生成器: recipes/crud-generator.md
                   - Hot 重载: recipes/hot-reload.md
                   - MikroORM: recipes/mikroorm.md
@@ -186,6 +187,7 @@ nav:
                   - 支持我们: support.md
                   - 企业支持: enterprise.md
                   - AWESOME: awesome.md
+        - 标签: tags.md
         - 博客:
                   - blog/index.md
                   - 发布V9: blog/posts/nestjs-9-is-now-available.md

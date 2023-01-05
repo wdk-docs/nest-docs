@@ -177,7 +177,7 @@ create(@Body() createUserDto: CreateUserDto) {
 
     当导入你的 DTOs 时，你不能使用仅类型导入，因为它会在运行时被删除。
 
-> 记得 `import {{ '{' }} CreateUserDto {{ '}' }}` 而不是 `import type {{ '{' }} CreateUserDto {{ '}' }}`.
+> 记得 `import { CreateUserDto }` 而不是 `import type { CreateUserDto }`.
 
 现在我们可以在`CreateUserDto`中添加一些验证规则。
 我们使用 `class-validator` 包提供的装饰器来实现这一点，详细描述[在这里](https://github.com/typestack/class-validator#validation-decorators)。

@@ -1,4 +1,4 @@
-# 毫服务器
+# 无服务器
 
 无服务器计算是一种云计算执行模型，在该模型中，云提供器按需分配机器资源，代表客户管理服务器。
 当应用不被使用时，该应用将没有计算资源分配给该应用。
@@ -124,9 +124,11 @@ With this configuration, we received the following results:
 | Nest (standalone application)        | 0.0319s (31.9ms) |
 | Raw Node.js script                   | 0.0066s (6.6ms)  |
 
-!!! info **Note** Machine: MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD.
+!!! note
 
-!!! info "**Hint**"
+    Machine: MacBook Pro Mid 2014, 2.5 GHz Quad-Core Intel Core i7, 16 GB 1600 MHz DDR3, SSD.
+
+!!! info
 
     You could optimize it even further by applying additional code minification & optimization techniques (using `webpack` plugins, etc.).
 

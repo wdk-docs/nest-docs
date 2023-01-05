@@ -85,7 +85,7 @@ title: string;
 
 !!! info "**Hint**"
 
-    You can also add a description to, or deprecate, the whole object type: `@ObjectType({{ '{' }} description: 'Author model' {{ '}' }})`.
+    You can also add a description to, or deprecate, the whole object type: `@ObjectType({ description: 'Author model' })`.
 
 When the field is an array, we must manually indicate the array type in the `Field()` decorator's type function, as shown below:
 
@@ -248,7 +248,7 @@ type Query {
 
 ## Query decorator options
 
-The `@Query()` decorator's options object (where we pass `{{ '{' }}name: 'author'{{ '}' }}` above) accepts a number of key/value pairs:
+The `@Query()` decorator's options object (where we pass `{name: 'author'}` above) accepts a number of key/value pairs:
 
 - `name`: name of the query; a `string`
 - `description`: a description that will be used to generate GraphQL schema documentation (e.g., in GraphQL playground); a `string`

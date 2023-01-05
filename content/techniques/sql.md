@@ -110,7 +110,7 @@ $ npm install --save @nestjs/typeorm typeorm mysql2
 
 !!! warning
 
-    静态的 glob 路径(e.g., `dist/** /*.entity{{ '{' }} .ts,.js{{ '}' }}`)不会正常工作[webpack](https://webpack.js.org/).
+    静态的 glob 路径(e.g., `dist/** /*.entity{ .ts,.js}`)不会正常工作[webpack](https://webpack.js.org/).
 
 !!! info "**Hint**"
 
@@ -399,7 +399,7 @@ $ npm install --save @nestjs/typeorm typeorm mysql2
 
 手动添加实体到连接选项的`entities`数组中可能很繁琐。
 此外，从根模块引用实体会打破应用程序域边界，并导致实现细节泄露到应用程序的其他部分。
-为了解决这个问题，可以使用静态 glob 路径 (e.g., `dist/**/*.entity{{ '{' }} .ts,.js{{ '}' }}`).
+为了解决这个问题，可以使用静态 glob 路径 (e.g., `dist/**/*.entity{ .ts,.js}`).
 
 但是请注意，webpack 不支持 glob 路径，所以如果你在 monorepo 中构建你的应用程序，你将无法使用它们。
 为了解决这个问题，我们提供了另一种解决方案。

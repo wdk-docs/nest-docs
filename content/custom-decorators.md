@@ -157,7 +157,6 @@ export const User = createParamDecorator(
 === "TypeScript"
 
     ```typescript
-    @@filename()
     @Get()
     async findOne(@User('firstName') firstName: string) {
       console.log(`Hello ${firstName}`);

@@ -17,7 +17,6 @@
 === "cats.service.ts"
 
     ```typescript linenums="1" hl_lines="3"
-    @@filename(cats.service)
     @Injectable()
     export class CatsService {
       constructor(private lazyModuleLoader: LazyModuleLoader) {}
@@ -26,7 +25,7 @@
 
 === "cats.service.js"
 
-    ```js linenums="1" hl_lines="3"
+    ```js linenums="1" hl_lines="5"
     @Injectable()
     @Dependencies(LazyModuleLoader)
     export class CatsService {
@@ -36,18 +35,16 @@
     }
     ```
 
-!!! info "**Hint**"
+!!! info "`LazyModuleLoader`类是从`@nestjs/core`包中导入的。**Hint**"
 
-    The `LazyModuleLoader` class is imported from the `@nestjs/core` package.
+或者，你可以从你的应用程序引导文件(`main.ts`)中获得`LazyModuleLoader`提供程序的引用，如下所示:
 
-Alternatively, you can obtain a reference to the `LazyModuleLoader` provider from within your application bootstrap file (`main.ts`), as follows:
-
-```typescript linenums="1" hl_lines="3"
+```typescript linenums="1" hl_lines="1"
 // "app" represents a Nest application instance
 const lazyModuleLoader = app.get(LazyModuleLoader);
 ```
 
-With this in place, you can now load any module using the following construction:
+使用此处，您现在可以使用以下结构加载任何模块：
 
 ```typescript linenums="1" hl_lines="3"
 const { LazyModule } = await import('./lazy.module');
@@ -56,28 +53,27 @@ const moduleRef = await this.lazyModuleLoader.load(() => LazyModule);
 
 !!! info "**Hint**"
 
-    "Lazy-loaded" modules are **cached** upon the first `LazyModuleLoader#load` method invocation.
+    “惰性加载”模块在第一次`LazyModuleLoader#load`方法调用时被 **缓存**。
+    这意味着，每次连续尝试加载`LazyModule`将非常快，并将返回一个缓存的实例，而不是再次加载模块。
 
-> That means, each consecutive attempt to load `LazyModule` will be **very fast** and will return a cached instance, instead of loading the module again.
->
-> ```bash
-> Load "LazyModule" attempt: 1
-> time: 2.379ms
-> Load "LazyModule" attempt: 2
-> time: 0.294ms
-> Load "LazyModule" attempt: 3
-> time: 0.303ms
-> ```
->
-> Also, "lazy-loaded" modules share the same modules graph as those eagerly loaded on the application bootstrap as well as any other lazy modules registered later in your app.
+    ```bash
+    Load "LazyModule" attempt: 1
+    time: 2.379ms
+    Load "LazyModule" attempt: 2
+    time: 0.294ms
+    Load "LazyModule" attempt: 3
+    time: 0.303ms
+    ```
 
-Where `lazy.module.ts` is a TypeScript file that exports a **regular Nest module** (no extra changes are required).
+    此外，“惰性加载”模块与那些在应用程序引导中急切加载的模块以及稍后在应用程序中注册的任何其他惰性模块共享相同的模块图。
 
-The `LazyModuleLoader#load` method returns the [module reference](/fundamentals/module-ref) (of `LazyModule`) that lets you navigate the internal list of providers and obtain a reference to any provider using its injection token as a lookup key.
+其中`lazy.module.ts`是一个 TypeScript 文件，它导出了一个 **常规的 Nest 模块**(不需要额外的更改)。
 
-For example, let's say we have a `LazyModule` with the following definition:
+`LazyModuleLoader#load`方法返回[模块引用](/fundamentals/module-ref)(`LazyModule`的)，它允许你浏览内部的提供者列表，并使用其注入令牌作为查找键获得对任何提供者的引用。
 
-```typescript linenums="1" hl_lines="3"
+例如，我们有一个`LazyModule`，定义如下:
+
+```typescript linenums="1" hl_lines="2 3"
 @Module({
   providers: [LazyService],
   exports: [LazyService],
@@ -85,15 +81,15 @@ For example, let's say we have a `LazyModule` with the following definition:
 export class LazyModule {}
 ```
 
-!!! info "**Hint**"
+!!! warning
 
-    Lazy-loaded modules cannot be registered as **global modules** as it simply makes no sense (since they are registered lazily, on-demand when all the statically registered modules have been already instantiated).
+    惰性加载的模块不能注册为 **全局模块**，因为这根本没有意义(因为它们是惰性注册的，当所有静态注册的模块都已经实例化时，它们是按需注册的)。
 
-> Likewise, registered **global enhancers** (guards/interceptors/etc.) **will not work** properly either.
+    同样，注册的 **全局增强器**(守卫/拦截器等)也 **不能** 正常工作。
 
-With this, we could obtain a reference to the `LazyService` provider, as follows:
+这样，我们就可以获得对`LazyService`提供者的引用，如下所示:
 
-```typescript linenums="1" hl_lines="3"
+```typescript linenums="1" hl_lines="5"
 const { LazyModule } = await import('./lazy.module');
 const moduleRef = await this.lazyModuleLoader.load(() => LazyModule);
 
@@ -101,9 +97,9 @@ const { LazyService } = await import('./lazy.service');
 const lazyService = moduleRef.get(LazyService);
 ```
 
-!!! warning "**Warning**"
+!!! warning
 
-    If you use **Webpack** , make sure to update your `tsconfig.json` file - setting `compilerOptions.module` to `"esnext"` and adding `compilerOptions.moduleResolution` property with `"node"` as a value:
+    如果你使用 **Webpack**，请确保更新你的 `tsconfig.json` 文件 —— 将 `compilerOptions.module` 设置为 `"esnext"`，并添加 `compilerOptions.moduleResolution` 属性，值为 `"node"`:
 
     ```json
     {
@@ -115,28 +111,27 @@ const lazyService = moduleRef.get(LazyService);
     }
     ```
 
-    With these options set up, you'll be able to leverage the [code splitting](https://webpack.js.org/guides/code-splitting/) feature.
+    设置好这些选项后，您将能够利用[代码分割](https://webpack.js.org/guides/code-splitting/)特性。
 
 ## 懒惰的控制器，网关和解析器
 
-懒惰的控制器，网关和解析器
-Since controllers (or resolvers in GraphQL applications) in Nest represent sets of routes/paths/topics (or queries/mutations), you **cannot lazy load them** using the `LazyModuleLoader` class.
+因为 Nest 中的控制器(或 GraphQL 应用程序中的解析器)表示一组路由/路径/主题(或查询/突变)，你不能使用`LazyModuleLoader`类来惰性加载它们。
 
-!!! error "**Warning**"
+!!! error
 
-    Controllers, [resolvers](/graphql/resolvers), and [gateways](/websockets/gateways) registered inside lazy-loaded modules will not behave as expected.
-    Similarly, you cannot register middleware functions (by implementing the `MiddlewareConsumer` interface) on-demand.
+    在惰性加载模块中注册的控制器、[resolvers](/graphql/resolvers)和[gateway](/websockets/gateway)将不能像预期的那样运行。
+    类似地，您不能按需注册中间件函数(通过实现`MiddlewareConsumer`接口)。
 
-For example, let's say you're building a REST API (HTTP application) with a Fastify driver under the hood (using the `@nestjs/platform-fastify` package).
-Fastify does not let you register routes after the application is ready/successfully listening to messages.
-That means even if we analyzed route mappings registered in the module's controllers, all lazy-loaded routes wouldn't be accessible since there is no way to register them at runtime.
+例如，假设您正在构建一个带有 Fastify 驱动程序的 REST API (HTTP 应用程序)(使用`@nestjs/platform-fastify`包)。
+Fastify 不允许在应用程序准备好/成功侦听消息后注册路由。
+这意味着即使我们分析了在模块控制器中注册的路由映射，所有惰性加载的路由都是不可访问的，因为没有办法在运行时注册它们。
 
-Likewise, some transport strategies we provide as part of the `@nestjs/microservices` package (including Kafka, gRPC, or RabbitMQ) require to subscribe/listen to specific topics/channels before the connection is established.
-Once your application starts listening to messages, the framework would not be able to subscribe/listen to new topics.
+同样地，我们在`@nestjs/microservices`包中提供的一些传输策略(包括 Kafka、gRPC 或 RabbitMQ)需要在连接建立之前订阅/监听特定的主题/通道。
+一旦应用程序开始侦听消息，框架将无法订阅/侦听新的主题。
 
-Lastly, the `@nestjs/graphql` package with the code first approach enabled automatically generates the GraphQL schema on-the-fly based on the metadata.
-That means, it requires all classes to be loaded beforehand.
-Otherwise, it would not be doable to create the appropriate, valid schema.
+最后，启用代码优先方法的`@nestjs/graphql`包根据元数据自动生成 graphql 模式。
+这意味着，它需要预先加载所有类。
+否则，将无法创建适当的、有效的模式。
 
 ## 常见用例
 

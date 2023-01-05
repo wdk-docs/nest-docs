@@ -1,12 +1,16 @@
 # SQL (Sequelize)
 
-### This chapter applies only to TypeScript
+### 本章仅适用于打字稿
 
-> **Warning** In this article, you'll learn how to create a `DatabaseModule` based on the **Sequelize** package from scratch using custom components. As a consequence, this technique contains a lot of overhead that you can avoid by using the dedicated, out-of-the-box `@nestjs/sequelize` package. To learn more, see [here](/techniques/database#sequelize-integration).
+!!! Warning
+
+    在本文中，您将学习如何使用自定义组件从头创建基于 **Sequelize** 包的`DatabaseModule`。
+    因此，这种技术包含了大量的开销，你可以通过使用专用的、开箱即用的`@nestjs/sequelize`包来避免。
+    要了解更多信息，请参见[这里](/techniques/database#sequelize-integration)。
 
 [Sequelize](https://github.com/sequelize/sequelize) is a popular Object Relational Mapper (ORM) written in a vanilla JavaScript, but there is a [sequelize-typescript](https://github.com/RobinBuschmann/sequelize-typescript) TypeScript wrapper which provides a set of decorators and other extras for the base sequelize.
 
-## Getting started
+## 入门
 
 To start the adventure with this library we have to install the following dependencies:
 
@@ -62,7 +66,7 @@ export class DatabaseModule {}
 
 Now we can inject the `Sequelize` object using `@Inject()` decorator. Each class that would depend on the `Sequelize` async provider will wait until a `Promise` is resolved.
 
-## Model injection
+## 模型注入
 
 In [Sequelize](https://github.com/sequelize/sequelize) the **Model** defines a table in the database. Instances of this class represent a database row. Firstly, we need at least one entity:
 

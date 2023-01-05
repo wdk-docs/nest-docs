@@ -61,7 +61,7 @@ $ npm install --save @nestjs/mongoose mongoose
     export const CatSchema = SchemaFactory.createForClass(Cat);
     ```
 
-!!! info **提示**
+!!! info
 
     注意，你也可以使用`defintionsfactory`类(从`nestjs/mongoose`)生成一个原始模式定义。 这允许您手动修改基于您提供的元数据生成的模式定义。这对于某些边缘情况非常有用，在这种情况下，可能很难用 decorator 来表示所有内容。
 

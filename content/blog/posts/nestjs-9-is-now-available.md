@@ -79,7 +79,7 @@ get(AppService).getHello();
 ('Hello World!');
 ```
 
-You can execute any JavaScript code from within your terminal, for example, assign an instance of the AppController to a local variable, and use await to call an asynchronous method:
+您可以从终端内执行任何 JavaScript 代码，例如，将 AppController 的实例分配给本地变量，并使用等待调用异步方法：
 
 ```ts
 appController = get(AppController)
@@ -88,7 +88,7 @@ await appController.getHello()
 'Hello World!'
 ```
 
-To display all public methods available on a given provider or controller, use the methods() function, as follows:
+要显示给定提供商或控制器上可用的所有公共方法，请使用 Method（）函数，如下：
 
 ```ts
 > methods(AppController)
@@ -96,7 +96,7 @@ Methods:
   ◻ getHello
 ```
 
-To print all registered modules as a list together with their controllers and providers, use debug().
+要将所有注册模块与其控制器和提供商一起打印为列表，请使用`debug（）`。
 
 ```
 > debug()
@@ -121,6 +121,7 @@ We aim to simplify this in Nest v9, which will provide a ConfigurableModuleBuild
 
 For demonstration purposes, let's create a configurable HttpClientModule using the new ConfigurableModuleBuilder. Before we start, let's make sure we declare a dedicated interface that represents what options our HttpClientModule takes in.
 
+```ts
 export interface HttpClientModuleOptions {
 baseUrl: string;
 }
@@ -155,6 +156,8 @@ HttpClientModule.register({ baseUrl: 'https://trilon.io' }),
 ],
 })
 export class AppModule {}
+```
+
 You also have the ability to inject a configuration object using the @Inject(MODULE_OPTIONS_TOKEN) construction. Read more on this feature in the documentation.
 
 ## Durable providers
@@ -179,11 +182,13 @@ Before we start flagging providers as durable, we must first register a strategy
 
 instructs Nest what those "common request attributes" are
 provides logic that groups requests, and associates them with their corresponding DI sub-trees.
+
+```ts
 import {
-HostComponentInfo,
-ContextId,
-ContextIdFactory,
-ContextIdStrategy,
+  HostComponentInfo,
+  ContextId,
+  ContextIdFactory,
+  ContextIdStrategy,
 } from '@nestjs/core';
 import { Request } from 'express';
 
@@ -191,32 +196,38 @@ import { Request } from 'express';
 const tenants = new Map<string, ContextId>();
 
 export class AggregateByTenantContextIdStrategy implements ContextIdStrategy {
-attach(contextId: ContextId, request: Request) {
-const tenantId = request.headers['x-tenant-id'] as string;
-let tenantSubTreeId: ContextId;
-if (tenants.has(tenantId)) {
-tenantSubTreeId = tenants.get(tenantId);
-} else {
-// Construct a new context id (think of a root node)
-tenantSubTreeId = ContextIdFactory.create();
-tenants.set(tenantId, tenantSubTreeId);
+  attach(contextId: ContextId, request: Request) {
+    const tenantId = request.headers['x-tenant-id'] as string;
+    let tenantSubTreeId: ContextId;
+    if (tenants.has(tenantId)) {
+      tenantSubTreeId = tenants.get(tenantId);
+    } else {
+      // Construct a new context id (think of a root node)
+      tenantSubTreeId = ContextIdFactory.create();
+      tenants.set(tenantId, tenantSubTreeId);
+    }
+    // If tree is not durable, return the original "contextId" object
+    return (info: HostComponentInfo) =>
+      info.isTreeDurable ? tenantSubTreeId : contextId;
+  }
 }
-// If tree is not durable, return the original "contextId" object
-return (info: HostComponentInfo) =>
-info.isTreeDurable ? tenantSubTreeId : contextId;
-}
-}
+```
+
 Hint Similar to the request scope, durability bubbles up the injection chain. That means if A depends on B which is flagged as durable, A implicitly becomes durable too (unless durable is explicitly set to false for A provider).
 
 Warning Note this strategy is not ideal for applications operating with a large number of tenants.
 
 With this strategy in place, you can register it somewhere in your code (as it applies globally anyway), so for example, we could place it in the main.ts file:
 
+```ts
 ContextIdFactory.apply(new AggregateByTenantContextIdStrategy());
+```
+
 As long as the registration occurs before any request hits your application, everything will work as intended.
 
 Lastly, to turn a regular provider into a durable provider, simply set the durable flag to true:
 
+```ts
 import { Injectable, Scope } from '@nestjs/common';
 
 @Injectable({ scope: Scope.REQUEST, durable: true })
@@ -229,6 +240,7 @@ useFactory: () => { ... },
 scope: Scope.REQUEST,
 durable: true, // <-- here
 }
+```
 
 ## Redis transporter
 

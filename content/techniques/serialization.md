@@ -42,7 +42,7 @@ findOne(): UserEntity {
 }
 ```
 
-> **Warning** Note that we must return an instance of the class. If you return a plain JavaScript object, for example, `{{ '{' }} user: new UserEntity() {{ '}' }}`, the object won't be properly serialized.
+> **Warning** Note that we must return an instance of the class. If you return a plain JavaScript object, for example, `{ user: new UserEntity() }`, the object won't be properly serialized.
 
 !!! info "**Hint**"
 

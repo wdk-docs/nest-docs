@@ -27,7 +27,7 @@ const loggerMiddleware: FieldMiddleware = async (
 
 !!! info "**Hint**"
 
-    The `MiddlewareContext` is an object that consist of the same arguments that are normally received by the GraphQL resolver function (`{{ '{' }} source, args, context, info {{ '}' }}`), while `NextFn` is a function that let you execute the next middleware in the stack (bound to this field) or the actual field resolver.
+    The `MiddlewareContext` is an object that consist of the same arguments that are normally received by the GraphQL resolver function (`{ source, args, context, info }`), while `NextFn` is a function that let you execute the next middleware in the stack (bound to this field) or the actual field resolver.
 
 !!! warning
 

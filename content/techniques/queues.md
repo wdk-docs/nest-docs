@@ -424,35 +424,37 @@ await audioQueue.resume();
 - 更好地利用多核 cpu。
 - 减少与 redis 的连接。
 
-```ts
-@@filename(app.module)
-import { Module } from '@nestjs/common';
-import { BullModule } from '@nestjs/bull';
-import { join } from 'path';
+=== "app.module.ts"
 
-@Module({
-  imports: [
-    BullModule.registerQueue({
-      name: 'audio',
-      processors: [join(__dirname, 'processor.js')],
-    }),
-  ],
-})
-export class AppModule {}
-```
+    ```ts
+    import { Module } from '@nestjs/common';
+    import { BullModule } from '@nestjs/bull';
+    import { join } from 'path';
+
+    @Module({
+      imports: [
+        BullModule.registerQueue({
+          name: 'audio',
+          processors: [join(__dirname, 'processor.js')],
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
 请注意，因为你的函数是在一个分叉的进程中执行的，所以依赖注入(和 IoC 容器)将不可用。
 这意味着您的处理器函数将需要包含(或创建)它需要的所有外部依赖项实例。
 
-```ts
-@@filename(processor)
-import { Job, DoneCallback } from 'bull';
+=== "processor.ts"
 
-export default function (job: Job, cb: DoneCallback) {
-  console.log(`[${process.pid}] ${JSON.stringify(job.data)}`);
-  cb(null, 'It works');
-}
-```
+    ```ts
+    import { Job, DoneCallback } from 'bull';
+
+    export default function (job: Job, cb: DoneCallback) {
+      console.log(`[${process.pid}] ${JSON.stringify(job.data)}`);
+      cb(null, 'It works');
+    }
+    ```
 
 ## 异步的配置
 

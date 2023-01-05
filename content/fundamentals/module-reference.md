@@ -1,4 +1,8 @@
-# 模块引用
+---
+title: 模块引用
+tags:
+  - 模块引用
+---
 
 Nest 提供了`ModuleRef`类来导航提供器的内部列表，并使用其注入令牌作为查找键来获取对任何提供器的引用。
 `ModuleRef`类还提供了一种方法来动态实例化静态和限定作用域的提供器。
@@ -7,7 +11,6 @@ Nest 提供了`ModuleRef`类来导航提供器的内部列表，并使用其注�
 === "cats.service.ts"
 
     ```typescript hl_lines="3"
-    @@filename(cats.service)
     @Injectable()
     export class CatsService {
       constructor(private moduleRef: ModuleRef) {}
@@ -30,13 +33,12 @@ Nest 提供了`ModuleRef`类来导航提供器的内部列表，并使用其注�
 
 ## 检索实例
 
-`ModuleRef`实例(以后我们将把它称为 **模块引用** )有一个`get()`方法。
+`ModuleRef`实例(**模块引用**)有一个`get()`方法。
 这个方法使用注入令牌/类名来获取存在于 **当前** 模块中(已被实例化)的提供器、控制器或可注入对象(例如，守卫、拦截器等)。
 
 === "cats.service.ts"
 
     ```typescript hl_lines="5 8"
-    @@filename(cats.service)
     @Injectable()
     export class CatsService implements OnModuleInit {
       private service: Service;
@@ -70,7 +72,7 @@ Nest 提供了`ModuleRef`类来导航提供器的内部列表，并使用其注�
     相反，使用[下面](https://docs.nestjs.com/fundamentals/module-ref#resolving-scoped-providers)描述的技术。
     [此处](/fundamentals/injection-scopes)学习如何控制作用域.
 
-要从全局上下文中检索提供器(例如，如果提供器已被注入到不同的模块中)，将 `{{ '{' }} strict: false {{ '}' }}` 选项作为第二个参数传递给 `get()`。
+要从全局上下文中检索提供器(例如，如果提供器已被注入到不同的模块中)，将 `{ strict: false }` 选项作为第二个参数传递给 `get()`。
 
 ```typescript hl_lines="1"
 this.moduleRef.get(Service, { strict: false });
@@ -111,7 +113,7 @@ this.moduleRef.get(Service, { strict: false });
     ```
 
 `resolve()`方法从它自己的 **DI 容器子树** 中返回提供器的唯一实例。
-每个子树都有一个惟一的上下文标 **识符** 。
+每个子树都有一个惟一的上下文 **标识符**。
 因此，如果多次调用该方法并比较实例引用，就会发现它们是不相等的。
 
 === "cats.service.ts"

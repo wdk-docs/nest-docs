@@ -55,7 +55,9 @@ Our healthcheck(s) can be executed using a [controller](/controllers), which can
 $ nest g controller health
 ```
 
-!!! info **Info** It is highly recommended to enable shutdown hooks in your application.
+!!! info
+
+    It is highly recommended to enable shutdown hooks in your application.
 
 > Terminus integration makes use of this lifecycle event if enabled.
 > Read more about shutdown hooks [here](fundamentals/lifecycle-events#application-shutdown).

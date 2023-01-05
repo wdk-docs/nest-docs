@@ -1,9 +1,8 @@
 ---
+title: 动态模块
 tags:
   - 动态模块
 ---
-
-# 动态模块
 
 [模块章节](/modules)涵盖了 Nest 模块的基础知识，并包含了[动态模块](https://docs.nestjs.com/modules#dynamic-modules)的简要介绍。
 本章扩展了动态模块的主题。

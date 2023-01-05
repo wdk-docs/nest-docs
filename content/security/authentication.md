@@ -325,7 +325,7 @@ $ nest g service users
 
     我们可以在调用`super()`时传递一个 options 对象来定制 passport 策略的行为。
     在本例中，默认情况下，passport-local 策略在请求体中要求名为`username`和`password`的属性。
-    例如，传递一个 options 对象来指定不同的属性名: `super({{ '{' }} usernameField: 'email' {{ '}' }})`.
+    例如，传递一个 options 对象来指定不同的属性名: `super({ usernameField: 'email' })`.
     更多信息请参阅[Passport 文档](http://www.passportjs.org/docs/configure/)。
 
 我们还实现了`validate()`方法。

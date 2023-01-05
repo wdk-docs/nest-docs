@@ -36,7 +36,7 @@ $ npm i --save @nestjs/config
 在此步骤中，将解析和解决环境变量键/值对。
 稍后，我们将在其他特性模块中看到访问`ConfigModule`类的`ConfigService`类的几个选项。
 
-=== "app.module"
+=== "app.module.ts"
 
     ```ts
     import { Module } from '@nestjs/common';

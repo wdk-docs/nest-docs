@@ -85,10 +85,9 @@ Potential solutions:
 
 Please make sure that the `RedisModule` is added directly to the `imports` array of `@Module()` decorator of "Root Module"(if `isGlobal` is true) or "Feature Module"(if `isGlobal` is false).
 
-Examples of code:
+代码示例:
 
-```ts
-// redis-config.service.ts
+```ts title="redis-config.service.ts"
 import { Injectable } from '@nestjs/common';
 import {
   RedisModuleOptions,
@@ -110,52 +109,49 @@ export class RedisConfigService implements RedisOptionsFactory {
 }
 ```
 
-#### ✅ 正确的
+=== "✅ 正确的"
 
-```ts
-// app.module.ts
-import { Module } from '@nestjs/common';
-import { RedisModule } from '@liaoliaots/nestjs-redis';
-import { RedisConfigService } from './redis-config.service';
+    ```ts title="app.module.ts"
+    import { Module } from '@nestjs/common';
+    import { RedisModule } from '@liaoliaots/nestjs-redis';
+    import { RedisConfigService } from './redis-config.service';
 
-@Module({
-  imports: [
-    RedisModule.forRootAsync({
-      useClass: RedisConfigService,
-    }),
-  ],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [
+        RedisModule.forRootAsync({
+          useClass: RedisConfigService,
+        }),
+      ],
+    })
+    export class AppModule {}
+    ```
 
-#### ❌ 不正确
+=== "❌ 不正确"
 
-```ts
-// my-redis.module.ts
-import { Module } from '@nestjs/common';
-import { RedisModule } from '@liaoliaots/nestjs-redis';
-import { RedisConfigService } from './redis-config.service';
+    ```ts title="my-redis.module.ts"
+    import { Module } from '@nestjs/common';
+    import { RedisModule } from '@liaoliaots/nestjs-redis';
+    import { RedisConfigService } from './redis-config.service';
 
-@Module({
-  imports: [
-    RedisModule.forRootAsync({
-      useClass: RedisConfigService,
-    }),
-  ],
-})
-export class MyRedisModule {}
-```
+    @Module({
+      imports: [
+        RedisModule.forRootAsync({
+          useClass: RedisConfigService,
+        }),
+      ],
+    })
+    export class MyRedisModule {}
+    ```
 
-```ts
-// app.module.ts
-import { Module } from '@nestjs/common';
-import { MyRedisModule } from './my-redis.module';
+    ```ts title="app.module.ts"
+    import { Module } from '@nestjs/common';
+    import { MyRedisModule } from './my-redis.module';
 
-@Module({
-  imports: [MyRedisModule],
-})
-export class AppModule {}
-```
+    @Module({
+      imports: [MyRedisModule],
+    })
+    export class AppModule {}
+    ```
 
 ## 测试覆盖范围
 

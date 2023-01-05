@@ -303,4 +303,6 @@ import { User } from './users/entities/user.entity';
 export class AppModule {}
 ```
 
-[动态模块](/fundamentals/dynamic-modules)一章更详细地介绍了这个主题，并包括了一个[工作示例](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules)。
+[动态模块](./fundamentals/dynamic-modules.md)一章更详细地介绍了这个主题，并包括了一个[工作示例][example]。
+
+[example]: https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules

@@ -1,4 +1,8 @@
-# 自定义提供器
+---
+title: 自定义提供器
+tags:
+  - provider
+---
 
 在前面的章节中，我们谈到了 **依赖注入(DI)** 的各个方面，以及它在 Nest 中是如何使用的。
 其中一个例子就是[基于构造函数](https://docs.nestjs.com/providers#dependency-injection)依赖注入，它将实例(通常是服务提供器)注入到类中。
@@ -124,7 +128,7 @@ export class AppModule {}
 依赖关系图确保依赖关系按照正确的顺序解析——本质上是`自底向上`。
 这种机制使开发人员不必管理如此复杂的依赖关系图。
 
-## 标准的提供器
+## 标准提供器
 
 让我们仔细看看`@Module()`装饰器。
 在`app.module`,中，我们声明:
@@ -153,7 +157,7 @@ providers: [
 这里，我们明确地将令牌`CatsService`与类`CatsService`关联起来。
 短表示法只是简化最常见的用例的便利性，在该案例中，令牌用于以同一名称要求类实例。
 
-## 定制的提供器
+## 定制提供器
 
 当您的要求超出 _标准提供器_ 提供的要求时会发生什么？这里有一些例子：
 
@@ -163,13 +167,11 @@ providers: [
 
 NEST 允许您定义自定义提供器来处理这些情况。
 它提供了几种定义自定义提供器的方法。
-让我们走过他们。
+让我们看看他们。
 
-!!! info "**Hint**"
+!!! info "如果你在解决依赖关系时遇到问题，你可以设置`NEST_DEBUG`环境变量，在启动时获得额外的依赖关系解决日志。"
 
-    如果你在解决依赖关系时遇到问题，你可以设置`NEST_DEBUG`环境变量，在启动时获得额外的依赖关系解决日志。
-
-## 值提供器: `useValue`
+### 值提供器: `useValue`
 
 `useValue` 语法在注入常量值、将外部库放入 Nest 容器或用模拟对象替换实际实现时非常有用。
 假设你想强迫 Nest 使用一个模拟的`CatsService`来进行测试。
@@ -199,7 +201,7 @@ export class AppModule {}
 `useValue`需要一个值-在这种情况下，一个文字对象具有与它正在替换的`CatsService`类相同的接口。
 由于 TypeScript 的[结构类型](https://www.typescriptlang.org/docs/handbook/type-compatibility.html)，你可以使用任何具有兼容接口的对象，包括文字对象或用`new`实例化的类实例。
 
-## 非基于类的提供器令牌
+### 非基于类的提供器令牌
 
 到目前为止，我们使用类名作为我们的提供器令牌(在`providers`数组中列出的提供器`provider`属性的值)。
 这与[基于构造函数的注入](https://docs.nestjs.com/providers#dependency-injection)使用的标准模式相匹配，其中令牌也是一个类名。
@@ -223,7 +225,7 @@ export class AppModule {}
 
 在这个例子中，我们将一个字符串值的令牌(`'CONNECTION'`)与我们从外部文件导入的一个预先存在的`connection`对象相关联。
 
-!!! warning "**Notice**"
+!!! warning
 
     除了使用字符串作为标记值，你还可以使用JavaScript [symbols](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)或TypeScript [enums](https://www.typescriptlang.org/docs/handbook/enums.html)。
 
@@ -261,7 +263,7 @@ export class AppModule {}
 虽然我们在上面的例子中直接使用字符串`'CONNECTION'` 来进行演示，但为了组织干净的代码，最好在单独的文件中定义令牌，例如`constants.ts`。
 对待它们就像对待在自己的文件中定义并在需要时导入的符号或枚举一样。
 
-## 类提供器: `useClass`
+### 类提供器: `useClass`
 
 `useClass`语法允许您动态地确定一个令牌应该解析到的类。
 例如，假设我们有一个抽象(或默认)`ConfigService`类。
@@ -290,9 +292,9 @@ export class AppModule {}
 同样，我们使用了`ConfigService`类名作为我们的令牌。
 对于任何依赖于`ConfigService`的类，Nest 将注入一个所提供类的实例(`DevelopmentConfigService`或`ProductionConfigService`)，覆盖任何可能在其他地方声明的默认实现(例如，`ConfigService`声明了一个`@Injectable()`装饰器)。
 
-## 工厂的提供器: `useFactory`
+### 工厂提供器: `useFactory`
 
-`useFactory`语法允许*动态*地创建提供器。
+`useFactory`语法允许 _动态_ 地创建提供器。
 实际的提供程序将由工厂函数返回的值提供。
 工厂功能可以根据需要简单或复杂。
 简单工厂可能不依赖于任何其他提供器。
@@ -341,7 +343,7 @@ export class AppModule {}
     export class AppModule {}
     ```
 
-## 别名提供器: `useExisting`
+### 别名提供器: `useExisting`
 
 `useExisting`语法允许您为现有的提供程序创建别名。
 这就创建了两种访问同一提供程序的方法。
@@ -366,7 +368,7 @@ const loggerAliasProvider = {
 export class AppModule {}
 ```
 
-## 非服务提供器
+### 非服务提供器
 
 虽然提供器经常提供服务，但它们并不局限于这种用途。
 提供器可以提供 **任意** 值。
