@@ -12,7 +12,7 @@
         <meta name="author" content="Kamil Mysliwiec">
       
       
-        <link rel="canonical" href="https://docs.nestjs.com/fundamentals/execution-context/">
+        <link rel="canonical" href="https://wdk-docs.github.io/nest-docs/fundamentals/execution-context/">
       
       <link rel="icon" href="../../assets/favicons/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#argumentshost" class="md-skip">
           跳转至
         </a>
       
@@ -306,7 +306,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../recipes/crud-generator/" class="md-tabs__link">
+      <a href="../../recipes/repl/" class="md-tabs__link">
         食谱
       </a>
     </li>
@@ -359,6 +359,18 @@
       </a>
     </li>
   
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../tags/" class="md-tabs__link">
+      标签
+    </a>
+  </li>
 
       
         
@@ -695,7 +707,7 @@
   
     <li class="md-nav__item">
       <a href="../dependency-injection/" class="md-nav__link">
-        提供器:自定义
+        自定义提供器
       </a>
     </li>
   
@@ -709,7 +721,7 @@
   
     <li class="md-nav__item">
       <a href="../async-components/" class="md-nav__link">
-        提供器:异步服务
+        异步服务提供器
       </a>
     </li>
   
@@ -798,8 +810,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           执行上下文
@@ -816,8 +826,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -833,14 +841,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     当前应用程序上下文
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     主机处理程序参数
   </a>
   
@@ -854,7 +862,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     反射和元数据
   </a>
   
@@ -2360,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/workspaces/" class="md-nav__link">
+      <a href="../../cli/monorepo/" class="md-nav__link">
         工作区
       </a>
     </li>
@@ -2638,6 +2646,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_9">
@@ -2651,6 +2661,20 @@
           食谱
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/repl/" class="md-nav__link">
+        REPL
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -2787,7 +2811,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_11" type="checkbox" id="__nav_9_11" >
       
       
       
@@ -2798,13 +2822,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_9_10">
+        <label class="md-nav__link" for="__nav_9_11">
           Compodoc
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
-        <label class="md-nav__title" for="__nav_9_10">
+        <label class="md-nav__title" for="__nav_9_11">
           <span class="md-nav__icon md-icon"></span>
           Compodoc
         </label>
@@ -2833,7 +2857,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10_2" type="checkbox" id="__nav_9_10_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_11_2" type="checkbox" id="__nav_9_11_2" >
       
       
       
@@ -2883,14 +2907,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../recipes/compodoc/">compodoc</a>
           
-            <label for="__nav_9_10_2">
+            <label for="__nav_9_11_2">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="compodoc" data-md-level="3">
-        <label class="md-nav__title" for="__nav_9_10_2">
+        <label class="md-nav__title" for="__nav_9_11_2">
           <span class="md-nav__icon md-icon"></span>
           compodoc
         </label>
@@ -3841,11 +3865,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        标签
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
       
       
@@ -3881,14 +3920,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../blog/">博客</a>
           
-            <label for="__nav_13">
+            <label for="__nav_14">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="博客" data-md-level="1">
-        <label class="md-nav__title" for="__nav_13">
+        <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
           博客
         </label>
@@ -3919,7 +3958,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_3" type="checkbox" id="__nav_14_3" >
       
       
       
@@ -3930,13 +3969,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_3">
+        <label class="md-nav__link" for="__nav_14_3">
           模块
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="模块" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_3">
+        <label class="md-nav__title" for="__nav_14_3">
           <span class="md-nav__icon md-icon"></span>
           模块
         </label>
@@ -3986,7 +4025,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_4" type="checkbox" id="__nav_14_4" >
       
       
       
@@ -3995,13 +4034,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_4">
+        <label class="md-nav__link" for="__nav_14_4">
           认证
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="认证" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_4">
+        <label class="md-nav__title" for="__nav_14_4">
           <span class="md-nav__icon md-icon"></span>
           认证
         </label>
@@ -4037,7 +4076,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_5" type="checkbox" id="__nav_14_5" >
       
       
       
@@ -4052,13 +4091,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_5">
+        <label class="md-nav__link" for="__nav_14_5">
           文件
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="文件" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_5">
+        <label class="md-nav__title" for="__nav_14_5">
           <span class="md-nav__icon md-icon"></span>
           文件
         </label>
@@ -4136,7 +4175,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_6" type="checkbox" id="__nav_13_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_6" type="checkbox" id="__nav_14_6" >
       
       
       
@@ -4145,13 +4184,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_6">
+        <label class="md-nav__link" for="__nav_14_6">
           日志
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="日志" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_6">
+        <label class="md-nav__title" for="__nav_14_6">
           <span class="md-nav__icon md-icon"></span>
           日志
         </label>
@@ -4187,7 +4226,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_7" type="checkbox" id="__nav_13_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_7" type="checkbox" id="__nav_14_7" >
       
       
       
@@ -4198,13 +4237,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_7">
+        <label class="md-nav__link" for="__nav_14_7">
           WebSockets
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="WebSockets" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_7">
+        <label class="md-nav__title" for="__nav_14_7">
           <span class="md-nav__icon md-icon"></span>
           WebSockets
         </label>
@@ -4254,7 +4293,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_8" type="checkbox" id="__nav_13_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_8" type="checkbox" id="__nav_14_8" >
       
       
       
@@ -4277,13 +4316,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_8">
+        <label class="md-nav__link" for="__nav_14_8">
           MongoDB
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_8">
+        <label class="md-nav__title" for="__nav_14_8">
           <span class="md-nav__icon md-icon"></span>
           MongoDB
         </label>
@@ -4417,7 +4456,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_9" type="checkbox" id="__nav_13_9" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_9" type="checkbox" id="__nav_14_9" >
       
       
       
@@ -4426,13 +4465,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_9">
+        <label class="md-nav__link" for="__nav_14_9">
           swagger
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="swagger" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_9">
+        <label class="md-nav__title" for="__nav_14_9">
           <span class="md-nav__icon md-icon"></span>
           swagger
         </label>
@@ -4468,7 +4507,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_10" type="checkbox" id="__nav_13_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_10" type="checkbox" id="__nav_14_10" >
       
       
       
@@ -4477,13 +4516,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_10">
+        <label class="md-nav__link" for="__nav_14_10">
           k8s
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="k8s" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_10">
+        <label class="md-nav__title" for="__nav_14_10">
           <span class="md-nav__icon md-icon"></span>
           k8s
         </label>
@@ -4519,7 +4558,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_11" type="checkbox" id="__nav_13_11" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_11" type="checkbox" id="__nav_14_11" >
       
       
       
@@ -4528,13 +4567,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_11">
+        <label class="md-nav__link" for="__nav_14_11">
           其它
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="其它" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_11">
+        <label class="md-nav__title" for="__nav_14_11">
           <span class="md-nav__icon md-icon"></span>
           其它
         </label>
@@ -4584,8 +4623,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -4601,14 +4638,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     当前应用程序上下文
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     主机处理程序参数
   </a>
   
@@ -4622,7 +4659,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     反射和元数据
   </a>
   
@@ -4643,6 +4680,20 @@
                   
   
 
+  <nav class="md-tags" >
+    
+      
+      
+        <a href="../../tags/#" class="md-tag">上下文</a>
+      
+    
+      
+      
+        <a href="../../tags/#context" class="md-tag">context</a>
+      
+    
+  </nav>
+
 
 
   <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/fundamentals/execution-context.md" title="编辑此页" class="md-content__button md-icon">
@@ -4651,7 +4702,8 @@
   </a>
 
 
-<h1 id="_1">执行上下文<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+  <h1>执行上下文</h1>
+
 <p>Nest 提供了几个实用程序类，帮助编写跨多个应用上下文的应用程序(例如，Nest 基于 HTTP 服务器、微服务和 WebSockets 应用上下文)。
 这些实用程序提供了有关当前执行上下文的信息，可用于构建通用的<a href="/guards">guards</a>、<a href="/exception-filters">filters</a>和<a href="/interceptors">interceptors</a>，它们可以跨广泛的控制器、方法和执行上下文工作。</p>
 <p>我们将在本章中介绍两个这样的类:<code>ArgumentsHost</code>和<code>ExecutionContext</code>。</p>
@@ -4663,7 +4715,7 @@
 <p><code>ArgumentsHost</code>只是作为处理程序参数的抽象。
 例如，对于 HTTP 服务器应用程序(当使用 <code>@nestjs/platform-express</code> 时)，<code>host</code> 对象封装了 <code>Express</code> 的<code>[request, response, next]</code>数组，其中<code>request</code>是请求对象，<code>response</code>是响应对象，而<code>next</code>是一个控制应用程序的请求-响应周期的函数。
 另一方面，对于<a href="/graphql/quick-start">GraphQL</a> 应用程序，<code>host</code>对象包含<code>[root, args, context, info]</code>数组。</p>
-<h2 id="_2">当前应用程序上下文<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_1">当前应用程序上下文<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>当构建泛型的<a href="/guards">guards</a>、<a href="/exception-filters">filters</a>和<a href="/interceptors">interceptors</a>要在多个应用程序上下文中运行时，我们需要一种方法来确定我们的方法当前运行的应用程序类型。
 使用<code>ArgumentsHost</code>的<code>getType()</code>方法完成:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -4685,7 +4737,7 @@
 <p><code>GqlContextType</code>是从<code>@nestjs/graphql</code>包中导入的。</p>
 </div>
 <p>有了可用的应用程序类型，我们可以编写更通用的组件，如下所示。</p>
-<h2 id="_3">主机处理程序参数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">主机处理程序参数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>要检索传递给处理器的参数数组，一种方法是使用主机对象的<code>getArgs()</code>方法。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">host</span><span class="p">.</span><span class="nx">getArgs</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
@@ -4812,7 +4864,7 @@
 <p>访问当前类和处理程序方法的引用的能力提供了极大的灵活性。
 最重要的是，它让我们有机会通过<code>@SetMetadata()</code>装饰器从守卫或拦截器中访问元数据集。
 我们将在下面讨论这个用例。</p>
-<h2 id="_4">反射和元数据<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_3">反射和元数据<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p><code>Nest</code> 提供了通过<code>@SetMetadata()</code>装饰器将 <strong>定制元数据</strong> 连接到路由处理程序的能力。
 然后，我们可以从类中访问这些元数据来做出某些决定。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">cats.controller.ts</label><label for="__tabbed_1_2">cats.controller.js</label></div>

@@ -12,14 +12,14 @@
         <meta name="author" content="Kamil Mysliwiec">
       
       
-        <link rel="canonical" href="https://docs.nestjs.com/fundamentals/dependency-injection/">
+        <link rel="canonical" href="https://wdk-docs.github.io/nest-docs/fundamentals/dependency-injection/">
       
       <link rel="icon" href="../../assets/favicons/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>提供器:自定义 - NestJS</title>
+        <title>自定义提供器 - NestJS</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#di" class="md-skip">
           跳转至
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              提供器:自定义
+              自定义提供器
             
           </span>
         </div>
@@ -306,7 +306,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../recipes/crud-generator/" class="md-tabs__link">
+      <a href="../../recipes/repl/" class="md-tabs__link">
         食谱
       </a>
     </li>
@@ -359,6 +359,18 @@
       </a>
     </li>
   
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../tags/" class="md-tabs__link">
+      标签
+    </a>
+  </li>
 
       
         
@@ -700,16 +712,14 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          提供器:自定义
+          自定义提供器
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        提供器:自定义
+        自定义提供器
       </a>
       
         
@@ -717,8 +727,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -735,63 +743,69 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    标准提供器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    标准的提供器
+    定制提供器
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    定制的提供器
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="定制提供器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#usevalue" class="md-nav__link">
     值提供器: useValue
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     非基于类的提供器令牌
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#useclass" class="md-nav__link">
     类提供器: useClass
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#usefactory" class="md-nav__link">
-    工厂的提供器: useFactory
+    工厂提供器: useFactory
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#useexisting" class="md-nav__link">
     别名提供器: useExisting
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     非服务提供器
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     导出自定义服务提供器程序
   </a>
   
@@ -813,7 +827,7 @@
   
     <li class="md-nav__item">
       <a href="../async-components/" class="md-nav__link">
-        提供器:异步服务
+        异步服务提供器
       </a>
     </li>
   
@@ -2395,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/workspaces/" class="md-nav__link">
+      <a href="../../cli/monorepo/" class="md-nav__link">
         工作区
       </a>
     </li>
@@ -2673,6 +2687,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_9">
@@ -2686,6 +2702,20 @@
           食谱
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/repl/" class="md-nav__link">
+        REPL
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -2822,7 +2852,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_11" type="checkbox" id="__nav_9_11" >
       
       
       
@@ -2833,13 +2863,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_9_10">
+        <label class="md-nav__link" for="__nav_9_11">
           Compodoc
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
-        <label class="md-nav__title" for="__nav_9_10">
+        <label class="md-nav__title" for="__nav_9_11">
           <span class="md-nav__icon md-icon"></span>
           Compodoc
         </label>
@@ -2868,7 +2898,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10_2" type="checkbox" id="__nav_9_10_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_11_2" type="checkbox" id="__nav_9_11_2" >
       
       
       
@@ -2918,14 +2948,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../recipes/compodoc/">compodoc</a>
           
-            <label for="__nav_9_10_2">
+            <label for="__nav_9_11_2">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="compodoc" data-md-level="3">
-        <label class="md-nav__title" for="__nav_9_10_2">
+        <label class="md-nav__title" for="__nav_9_11_2">
           <span class="md-nav__icon md-icon"></span>
           compodoc
         </label>
@@ -3876,11 +3906,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        标签
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
       
       
@@ -3916,14 +3961,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../blog/">博客</a>
           
-            <label for="__nav_13">
+            <label for="__nav_14">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="博客" data-md-level="1">
-        <label class="md-nav__title" for="__nav_13">
+        <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
           博客
         </label>
@@ -3954,7 +3999,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_3" type="checkbox" id="__nav_14_3" >
       
       
       
@@ -3965,13 +4010,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_3">
+        <label class="md-nav__link" for="__nav_14_3">
           模块
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="模块" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_3">
+        <label class="md-nav__title" for="__nav_14_3">
           <span class="md-nav__icon md-icon"></span>
           模块
         </label>
@@ -4021,7 +4066,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_4" type="checkbox" id="__nav_14_4" >
       
       
       
@@ -4030,13 +4075,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_4">
+        <label class="md-nav__link" for="__nav_14_4">
           认证
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="认证" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_4">
+        <label class="md-nav__title" for="__nav_14_4">
           <span class="md-nav__icon md-icon"></span>
           认证
         </label>
@@ -4072,7 +4117,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_5" type="checkbox" id="__nav_14_5" >
       
       
       
@@ -4087,13 +4132,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_5">
+        <label class="md-nav__link" for="__nav_14_5">
           文件
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="文件" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_5">
+        <label class="md-nav__title" for="__nav_14_5">
           <span class="md-nav__icon md-icon"></span>
           文件
         </label>
@@ -4171,7 +4216,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_6" type="checkbox" id="__nav_13_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_6" type="checkbox" id="__nav_14_6" >
       
       
       
@@ -4180,13 +4225,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_6">
+        <label class="md-nav__link" for="__nav_14_6">
           日志
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="日志" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_6">
+        <label class="md-nav__title" for="__nav_14_6">
           <span class="md-nav__icon md-icon"></span>
           日志
         </label>
@@ -4222,7 +4267,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_7" type="checkbox" id="__nav_13_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_7" type="checkbox" id="__nav_14_7" >
       
       
       
@@ -4233,13 +4278,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_7">
+        <label class="md-nav__link" for="__nav_14_7">
           WebSockets
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="WebSockets" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_7">
+        <label class="md-nav__title" for="__nav_14_7">
           <span class="md-nav__icon md-icon"></span>
           WebSockets
         </label>
@@ -4289,7 +4334,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_8" type="checkbox" id="__nav_13_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_8" type="checkbox" id="__nav_14_8" >
       
       
       
@@ -4312,13 +4357,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_8">
+        <label class="md-nav__link" for="__nav_14_8">
           MongoDB
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_8">
+        <label class="md-nav__title" for="__nav_14_8">
           <span class="md-nav__icon md-icon"></span>
           MongoDB
         </label>
@@ -4452,7 +4497,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_9" type="checkbox" id="__nav_13_9" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_9" type="checkbox" id="__nav_14_9" >
       
       
       
@@ -4461,13 +4506,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_9">
+        <label class="md-nav__link" for="__nav_14_9">
           swagger
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="swagger" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_9">
+        <label class="md-nav__title" for="__nav_14_9">
           <span class="md-nav__icon md-icon"></span>
           swagger
         </label>
@@ -4503,7 +4548,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_10" type="checkbox" id="__nav_13_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_10" type="checkbox" id="__nav_14_10" >
       
       
       
@@ -4512,13 +4557,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_10">
+        <label class="md-nav__link" for="__nav_14_10">
           k8s
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="k8s" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_10">
+        <label class="md-nav__title" for="__nav_14_10">
           <span class="md-nav__icon md-icon"></span>
           k8s
         </label>
@@ -4554,7 +4599,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_11" type="checkbox" id="__nav_13_11" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_11" type="checkbox" id="__nav_14_11" >
       
       
       
@@ -4563,13 +4608,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_11">
+        <label class="md-nav__link" for="__nav_14_11">
           其它
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="其它" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_11">
+        <label class="md-nav__title" for="__nav_14_11">
           <span class="md-nav__icon md-icon"></span>
           其它
         </label>
@@ -4619,8 +4664,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -4636,63 +4679,69 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    标准提供器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    标准的提供器
+    定制提供器
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    定制的提供器
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="定制提供器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#usevalue" class="md-nav__link">
     值提供器: useValue
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     非基于类的提供器令牌
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#useclass" class="md-nav__link">
     类提供器: useClass
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#usefactory" class="md-nav__link">
-    工厂的提供器: useFactory
+    工厂提供器: useFactory
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#useexisting" class="md-nav__link">
     别名提供器: useExisting
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     非服务提供器
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     导出自定义服务提供器程序
   </a>
   
@@ -4713,6 +4762,15 @@
                   
   
 
+  <nav class="md-tags" >
+    
+      
+      
+        <a href="../../tags/#provider" class="md-tag">provider</a>
+      
+    
+  </nav>
+
 
 
   <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/fundamentals/dependency-injection.md" title="编辑此页" class="md-content__button md-icon">
@@ -4721,7 +4779,8 @@
   </a>
 
 
-<h1 id="_1">自定义提供器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+  <h1>自定义提供器</h1>
+
 <p>在前面的章节中，我们谈到了 <strong>依赖注入(DI)</strong> 的各个方面，以及它在 Nest 中是如何使用的。
 其中一个例子就是<a href="https://docs.nestjs.com/providers#dependency-injection">基于构造函数</a>依赖注入，它将实例(通常是服务提供器)注入到类中。
 你不会惊讶于依赖注入以一种基本的方式内置到 Nest 核心中。
@@ -4892,7 +4951,7 @@
 在上面的例子中，如果 <code>CatsService</code> 本身有依赖项，这些依赖项也会被解析。
 依赖关系图确保依赖关系按照正确的顺序解析——本质上是<code>自底向上</code>。
 这种机制使开发人员不必管理如此复杂的依赖关系图。</p>
-<h2 id="_2">标准的提供器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_1">标准提供器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>让我们仔细看看<code>@Module()</code>装饰器。
 在<code>app.module</code>,中，我们声明:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
@@ -4921,7 +4980,7 @@
 <p>现在我们看到了这种明确的构造，我们可以了解注册过程。
 这里，我们明确地将令牌<code>CatsService</code>与类<code>CatsService</code>关联起来。
 短表示法只是简化最常见的用例的便利性，在该案例中，令牌用于以同一名称要求类实例。</p>
-<h2 id="_3">定制的提供器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">定制提供器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>当您的要求超出 <em>标准提供器</em> 提供的要求时会发生什么？这里有一些例子：</p>
 <ul>
 <li>您要创建一个自定义实例，而不是让 NEST 实例化（或返回一个缓存的实例）类</li>
@@ -4930,12 +4989,11 @@
 </ul>
 <p>NEST 允许您定义自定义提供器来处理这些情况。
 它提供了几种定义自定义提供器的方法。
-让我们走过他们。</p>
+让我们看看他们。</p>
 <div class="admonition info">
-<p class="admonition-title"><strong>Hint</strong></p>
-<p>如果你在解决依赖关系时遇到问题，你可以设置<code>NEST_DEBUG</code>环境变量，在启动时获得额外的依赖关系解决日志。</p>
+<p class="admonition-title">如果你在解决依赖关系时遇到问题，你可以设置<code>NEST_DEBUG</code>环境变量，在启动时获得额外的依赖关系解决日志。</p>
 </div>
-<h2 id="usevalue">值提供器: <code>useValue</code><a class="headerlink" href="#usevalue" title="Permanent link">&para;</a></h2>
+<h3 id="usevalue">值提供器: <code>useValue</code><a class="headerlink" href="#usevalue" title="Permanent link">&para;</a></h3>
 <p><code>useValue</code> 语法在注入常量值、将外部库放入 Nest 容器或用模拟对象替换实际实现时非常有用。
 假设你想强迫 Nest 使用一个模拟的<code>CatsService</code>来进行测试。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
@@ -4977,7 +5035,7 @@
 <p>在本例中，<code>CatsService</code>令牌将解析为<code>mockCatsService</code>模拟对象。
 <code>useValue</code>需要一个值-在这种情况下，一个文字对象具有与它正在替换的<code>CatsService</code>类相同的接口。
 由于 TypeScript 的<a href="https://www.typescriptlang.org/docs/handbook/type-compatibility.html">结构类型</a>，你可以使用任何具有兼容接口的对象，包括文字对象或用<code>new</code>实例化的类实例。</p>
-<h2 id="_4">非基于类的提供器令牌<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_3">非基于类的提供器令牌<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>到目前为止，我们使用类名作为我们的提供器令牌(在<code>providers</code>数组中列出的提供器<code>provider</code>属性的值)。
 这与<a href="https://docs.nestjs.com/providers#dependency-injection">基于构造函数的注入</a>使用的标准模式相匹配，其中令牌也是一个类名。
 (如果这个概念不完全清楚，可以参考<a href="/fundamentals/custom-providers#di-fundamentals">DI fundamentals</a>来复习标记)。
@@ -5007,7 +5065,7 @@
 </code></pre></div></td></tr></table></div>
 <p>在这个例子中，我们将一个字符串值的令牌(<code>'CONNECTION'</code>)与我们从外部文件导入的一个预先存在的<code>connection</code>对象相关联。</p>
 <div class="admonition warning">
-<p class="admonition-title"><strong>Notice</strong></p>
+<p class="admonition-title">Warning</p>
 <p>除了使用字符串作为标记值，你还可以使用JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol">symbols</a>或TypeScript <a href="https://www.typescriptlang.org/docs/handbook/enums.html">enums</a>。</p>
 </div>
 <p>我们之前已经了解了如何使用标准的<a href="https://docs.nestjs.com/providers#dependency-injection">基于构造函数的注入</a>模式注入提供程序。</p>
@@ -5048,7 +5106,7 @@
 </div>
 <p>虽然我们在上面的例子中直接使用字符串<code>'CONNECTION'</code> 来进行演示，但为了组织干净的代码，最好在单独的文件中定义令牌，例如<code>constants.ts</code>。
 对待它们就像对待在自己的文件中定义并在需要时导入的符号或枚举一样。</p>
-<h2 id="useclass">类提供器: <code>useClass</code><a class="headerlink" href="#useclass" title="Permanent link">&para;</a></h2>
+<h3 id="useclass">类提供器: <code>useClass</code><a class="headerlink" href="#useclass" title="Permanent link">&para;</a></h3>
 <p><code>useClass</code>语法允许您动态地确定一个令牌应该解析到的类。
 例如，假设我们有一个抽象(或默认)<code>ConfigService</code>类。
 根据当前环境的不同，我们希望 Nest 提供配置服务的不同实现。
@@ -5082,8 +5140,8 @@
 这只是一些代码组织，但在功能上与本章迄今为止使用的示例相当。</p>
 <p>同样，我们使用了<code>ConfigService</code>类名作为我们的令牌。
 对于任何依赖于<code>ConfigService</code>的类，Nest 将注入一个所提供类的实例(<code>DevelopmentConfigService</code>或<code>ProductionConfigService</code>)，覆盖任何可能在其他地方声明的默认实现(例如，<code>ConfigService</code>声明了一个<code>@Injectable()</code>装饰器)。</p>
-<h2 id="usefactory">工厂的提供器: <code>useFactory</code><a class="headerlink" href="#usefactory" title="Permanent link">&para;</a></h2>
-<p><code>useFactory</code>语法允许*动态*地创建提供器。
+<h3 id="usefactory">工厂提供器: <code>useFactory</code><a class="headerlink" href="#usefactory" title="Permanent link">&para;</a></h3>
+<p><code>useFactory</code>语法允许 <em>动态</em> 地创建提供器。
 实际的提供程序将由工厂函数返回的值提供。
 工厂功能可以根据需要简单或复杂。
 简单工厂可能不依赖于任何其他提供器。
@@ -5155,7 +5213,7 @@
 </div>
 </div>
 </div>
-<h2 id="useexisting">别名提供器: <code>useExisting</code><a class="headerlink" href="#useexisting" title="Permanent link">&para;</a></h2>
+<h3 id="useexisting">别名提供器: <code>useExisting</code><a class="headerlink" href="#useexisting" title="Permanent link">&para;</a></h3>
 <p><code>useExisting</code>语法允许您为现有的提供程序创建别名。
 这就创建了两种访问同一提供程序的方法。
 在下面的例子中，(基于字符串的)令牌<code>'AliasedLoggerService'</code>是(基于类的)令牌<code>LoggerService</code>的别名。
@@ -5189,7 +5247,7 @@
 <a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h2 id="_5">非服务提供器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_4">非服务提供器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>虽然提供器经常提供服务，但它们并不局限于这种用途。
 提供器可以提供 <strong>任意</strong> 值。
 例如，提供器可以根据当前环境提供一个配置对象数组，如下所示:</p>
@@ -5215,7 +5273,7 @@
 <a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="p">})</span><span class="w"></span>
 <a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h2 id="_6">导出自定义服务提供器程序<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">导出自定义服务提供器程序<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>与任何提供程序一样，自定义提供程序的作用域仅限于其声明模块。
 为了使它对其他模块可见，必须导出它。
 要导出自定义提供程序，可以使用它的令牌或完整的提供程序对象。</p>
@@ -5390,13 +5448,13 @@
       
       
         
-        <a href="../async-components/" class="md-footer__link md-footer__link--next" aria-label="下一页: 提供器:异步服务" rel="next">
+        <a href="../async-components/" class="md-footer__link md-footer__link--next" aria-label="下一页: 异步服务提供器" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              提供器:异步服务
+              异步服务提供器
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -1,7 +1,7 @@
 INHERIT: config/nav.yml
 
 site_name: NestJS
-site_url: https://docs.nestjs.com
+site_url: https://wdk-docs.github.io/nest-docs/
 site_author: Kamil Mysliwiec
 site_description: NestJS 文档
 docs_dir: content
@@ -87,7 +87,7 @@ plugins:
       - snippets/*
       - smoketest.md
   awesome-pages:
-    filename: ".index"
+    filename: '.index'
     collapse_single_pages: true
     strict: false
   blogging:
@@ -104,7 +104,7 @@ plugins:
           - review
   tags:
     tags_file: tags.md
-copyright: "版权所有 © 2017-2022 MIT by Kamil Mysliwiec"
+copyright: '版权所有 © 2017-2022 MIT by Kamil Mysliwiec'
 
 extra:
   social:
@@ -120,9 +120,9 @@ extra:
     - icon: fontawesome/brands/blogger
       link: https://kamilmysliwiec.com
       name: Kamil Mysliwiec Blog | Full-Stack Software Engineer
-  version_warning: !!python/object/apply:os.getenv ["VERSION_WARNING"]
-  knative_version: !!python/object/apply:os.getenv ["KNATIVE_VERSION"]
-  branch: !!python/object/apply:os.getenv ["SAMPLES_BRANCH", "main"]
+  version_warning: !!python/object/apply:os.getenv ['VERSION_WARNING']
+  knative_version: !!python/object/apply:os.getenv ['KNATIVE_VERSION']
+  branch: !!python/object/apply:os.getenv ['SAMPLES_BRANCH', 'main']
   # analytics:
   #   provider: google
   #   property: G-YRMNFYE32R

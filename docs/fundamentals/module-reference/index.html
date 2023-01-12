@@ -12,7 +12,7 @@
         <meta name="author" content="Kamil Mysliwiec">
       
       
-        <link rel="canonical" href="https://docs.nestjs.com/fundamentals/module-reference/">
+        <link rel="canonical" href="https://wdk-docs.github.io/nest-docs/fundamentals/module-reference/">
       
       <link rel="icon" href="../../assets/favicons/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
@@ -306,7 +306,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../recipes/crud-generator/" class="md-tabs__link">
+      <a href="../../recipes/repl/" class="md-tabs__link">
         食谱
       </a>
     </li>
@@ -359,6 +359,18 @@
       </a>
     </li>
   
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../tags/" class="md-tabs__link">
+      标签
+    </a>
+  </li>
 
       
         
@@ -695,7 +707,7 @@
   
     <li class="md-nav__item">
       <a href="../dependency-injection/" class="md-nav__link">
-        提供器:自定义
+        自定义提供器
       </a>
     </li>
   
@@ -709,7 +721,7 @@
   
     <li class="md-nav__item">
       <a href="../async-components/" class="md-nav__link">
-        提供器:异步服务
+        异步服务提供器
       </a>
     </li>
   
@@ -770,8 +782,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           模块引用
@@ -788,8 +798,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -798,35 +806,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     检索实例
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     解决作用域内的提供器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     注册请求的提供器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     获得当前子树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     动态实例化自定义类
   </a>
   
@@ -2360,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/workspaces/" class="md-nav__link">
+      <a href="../../cli/monorepo/" class="md-nav__link">
         工作区
       </a>
     </li>
@@ -2638,6 +2646,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_9">
@@ -2651,6 +2661,20 @@
           食谱
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/repl/" class="md-nav__link">
+        REPL
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -2787,7 +2811,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10" type="checkbox" id="__nav_9_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_11" type="checkbox" id="__nav_9_11" >
       
       
       
@@ -2798,13 +2822,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_9_10">
+        <label class="md-nav__link" for="__nav_9_11">
           Compodoc
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Compodoc" data-md-level="2">
-        <label class="md-nav__title" for="__nav_9_10">
+        <label class="md-nav__title" for="__nav_9_11">
           <span class="md-nav__icon md-icon"></span>
           Compodoc
         </label>
@@ -2833,7 +2857,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_10_2" type="checkbox" id="__nav_9_10_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_11_2" type="checkbox" id="__nav_9_11_2" >
       
       
       
@@ -2883,14 +2907,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../recipes/compodoc/">compodoc</a>
           
-            <label for="__nav_9_10_2">
+            <label for="__nav_9_11_2">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="compodoc" data-md-level="3">
-        <label class="md-nav__title" for="__nav_9_10_2">
+        <label class="md-nav__title" for="__nav_9_11_2">
           <span class="md-nav__icon md-icon"></span>
           compodoc
         </label>
@@ -3841,11 +3865,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        标签
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
       
       
       
@@ -3881,14 +3920,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../blog/">博客</a>
           
-            <label for="__nav_13">
+            <label for="__nav_14">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
       <nav class="md-nav" aria-label="博客" data-md-level="1">
-        <label class="md-nav__title" for="__nav_13">
+        <label class="md-nav__title" for="__nav_14">
           <span class="md-nav__icon md-icon"></span>
           博客
         </label>
@@ -3919,7 +3958,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_3" type="checkbox" id="__nav_13_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_3" type="checkbox" id="__nav_14_3" >
       
       
       
@@ -3930,13 +3969,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_3">
+        <label class="md-nav__link" for="__nav_14_3">
           模块
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="模块" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_3">
+        <label class="md-nav__title" for="__nav_14_3">
           <span class="md-nav__icon md-icon"></span>
           模块
         </label>
@@ -3986,7 +4025,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_4" type="checkbox" id="__nav_13_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_4" type="checkbox" id="__nav_14_4" >
       
       
       
@@ -3995,13 +4034,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_4">
+        <label class="md-nav__link" for="__nav_14_4">
           认证
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="认证" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_4">
+        <label class="md-nav__title" for="__nav_14_4">
           <span class="md-nav__icon md-icon"></span>
           认证
         </label>
@@ -4037,7 +4076,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_5" type="checkbox" id="__nav_13_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_5" type="checkbox" id="__nav_14_5" >
       
       
       
@@ -4052,13 +4091,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_5">
+        <label class="md-nav__link" for="__nav_14_5">
           文件
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="文件" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_5">
+        <label class="md-nav__title" for="__nav_14_5">
           <span class="md-nav__icon md-icon"></span>
           文件
         </label>
@@ -4136,7 +4175,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_6" type="checkbox" id="__nav_13_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_6" type="checkbox" id="__nav_14_6" >
       
       
       
@@ -4145,13 +4184,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_6">
+        <label class="md-nav__link" for="__nav_14_6">
           日志
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="日志" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_6">
+        <label class="md-nav__title" for="__nav_14_6">
           <span class="md-nav__icon md-icon"></span>
           日志
         </label>
@@ -4187,7 +4226,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_7" type="checkbox" id="__nav_13_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_7" type="checkbox" id="__nav_14_7" >
       
       
       
@@ -4198,13 +4237,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_7">
+        <label class="md-nav__link" for="__nav_14_7">
           WebSockets
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="WebSockets" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_7">
+        <label class="md-nav__title" for="__nav_14_7">
           <span class="md-nav__icon md-icon"></span>
           WebSockets
         </label>
@@ -4254,7 +4293,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_8" type="checkbox" id="__nav_13_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_8" type="checkbox" id="__nav_14_8" >
       
       
       
@@ -4277,13 +4316,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_8">
+        <label class="md-nav__link" for="__nav_14_8">
           MongoDB
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="MongoDB" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_8">
+        <label class="md-nav__title" for="__nav_14_8">
           <span class="md-nav__icon md-icon"></span>
           MongoDB
         </label>
@@ -4417,7 +4456,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_9" type="checkbox" id="__nav_13_9" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_9" type="checkbox" id="__nav_14_9" >
       
       
       
@@ -4426,13 +4465,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_9">
+        <label class="md-nav__link" for="__nav_14_9">
           swagger
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="swagger" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_9">
+        <label class="md-nav__title" for="__nav_14_9">
           <span class="md-nav__icon md-icon"></span>
           swagger
         </label>
@@ -4468,7 +4507,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_10" type="checkbox" id="__nav_13_10" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_10" type="checkbox" id="__nav_14_10" >
       
       
       
@@ -4477,13 +4516,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_10">
+        <label class="md-nav__link" for="__nav_14_10">
           k8s
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="k8s" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_10">
+        <label class="md-nav__title" for="__nav_14_10">
           <span class="md-nav__icon md-icon"></span>
           k8s
         </label>
@@ -4519,7 +4558,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13_11" type="checkbox" id="__nav_13_11" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14_11" type="checkbox" id="__nav_14_11" >
       
       
       
@@ -4528,13 +4567,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_13_11">
+        <label class="md-nav__link" for="__nav_14_11">
           其它
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="其它" data-md-level="2">
-        <label class="md-nav__title" for="__nav_13_11">
+        <label class="md-nav__title" for="__nav_14_11">
           <span class="md-nav__icon md-icon"></span>
           其它
         </label>
@@ -4584,8 +4623,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -4594,35 +4631,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     检索实例
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     解决作用域内的提供器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     注册请求的提供器
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     获得当前子树
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     动态实例化自定义类
   </a>
   
@@ -4643,6 +4680,15 @@
                   
   
 
+  <nav class="md-tags" >
+    
+      
+      
+        <a href="../../tags/#" class="md-tag">模块引用</a>
+      
+    
+  </nav>
+
 
 
   <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/fundamentals/module-reference.md" title="编辑此页" class="md-content__button md-icon">
@@ -4651,7 +4697,8 @@
   </a>
 
 
-<h1 id="_1">模块引用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+  <h1>模块引用</h1>
+
 <p>Nest 提供了<code>ModuleRef</code>类来导航提供器的内部列表，并使用其注入令牌作为查找键来获取对任何提供器的引用。
 <code>ModuleRef</code>类还提供了一种方法来动态实例化静态和限定作用域的提供器。
 <code>ModuleRef</code>可以通过正常的方式注入到类中:</p>
@@ -4661,12 +4708,10 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">service</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="hll"><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-</span><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="kr">module</span><span class="nx">Ref</span><span class="o">:</span><span class="w"> </span><span class="nx">ModuleRef</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="kr">module</span><span class="nx">Ref</span><span class="o">:</span><span class="w"> </span><span class="nx">ModuleRef</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</span><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -4690,31 +4735,29 @@
 <div class="admonition info">
 <p class="admonition-title"><code>ModuleRef</code>类是从<code>@nestjs/core</code>包导入的。</p>
 </div>
-<h2 id="_2">检索实例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><code>ModuleRef</code>实例(以后我们将把它称为 <strong>模块引用</strong> )有一个<code>get()</code>方法。
+<h2 id="_1">检索实例<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><code>ModuleRef</code>实例(<strong>模块引用</strong>)有一个<code>get()</code>方法。
 这个方法使用注入令牌/类名来获取存在于 <strong>当前</strong> 模块中(已被实例化)的提供器、控制器或可注入对象(例如，守卫、拦截器等)。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">cats.service.ts</label><label for="__tabbed_2_2">cats.service.js</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="err">@</span><span class="kd">@filename</span><span class="p">(</span><span class="nx">cats</span><span class="p">.</span><span class="nx">service</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">OnModuleInit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">Service</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="hll"><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="kr">module</span><span class="nx">Ref</span><span class="o">:</span><span class="w"> </span><span class="nx">ModuleRef</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</span><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span><span class="nx">onModuleInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="hll"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="kr">module</span><span class="nx">Ref.get</span><span class="p">(</span><span class="nx">Service</span><span class="p">);</span><span class="w"></span>
-</span><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="p">}</span><span class="w"></span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">@Injectable</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CatsService</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">OnModuleInit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="kt">Service</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="kr">module</span><span class="nx">Ref</span><span class="o">:</span><span class="w"> </span><span class="nx">ModuleRef</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="hll">
+</span><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="nx">onModuleInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="kr">module</span><span class="nx">Ref.get</span><span class="p">(</span><span class="nx">Service</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="hll"><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</span><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -4749,10 +4792,10 @@
 相反，使用<a href="https://docs.nestjs.com/fundamentals/module-ref#resolving-scoped-providers">下面</a>描述的技术。
 <a href="/fundamentals/injection-scopes">此处</a>学习如何控制作用域.</p>
 </div>
-<p>要从全局上下文中检索提供器(例如，如果提供器已被注入到不同的模块中)，将 <code>{{ '{' }} strict: false {{ '}' }}</code> 选项作为第二个参数传递给 <code>get()</code>。</p>
+<p>要从全局上下文中检索提供器(例如，如果提供器已被注入到不同的模块中)，将 <code>{ strict: false }</code> 选项作为第二个参数传递给 <code>get()</code>。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="hll"><span class="k">this</span><span class="p">.</span><span class="kr">module</span><span class="nx">Ref.get</span><span class="p">(</span><span class="nx">Service</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">strict</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="_3">解决作用域内的提供器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">解决作用域内的提供器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>要动态解析作用域的提供器(瞬态或请求作用域)，请使用<code>resolve()</code>方法，并将提供器的注入令牌作为参数传递。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">cats.service.ts</label><label for="__tabbed_3_2">cats.service.js</label></div>
 <div class="tabbed-content">
@@ -4803,7 +4846,7 @@
 </div>
 </div>
 <p><code>resolve()</code>方法从它自己的 <strong>DI 容器子树</strong> 中返回提供器的唯一实例。
-每个子树都有一个惟一的上下文标 <strong>识符</strong> 。
+每个子树都有一个惟一的上下文 <strong>标识符</strong>。
 因此，如果多次调用该方法并比较实例引用，就会发现它们是不相等的。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">cats.service.ts</label><label for="__tabbed_4_2">cats.service.js</label></div>
 <div class="tabbed-content">
@@ -4939,14 +4982,14 @@
 <div class="admonition info">
 <p class="admonition-title"><code>ContextIdFactory</code>类是从<code>@nestjs/core</code>包中导入的。</p>
 </div>
-<h2 id="_4">注册请求的提供器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_3">注册请求的提供器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>手动生成的上下文标识符(使用<code>ContextIdFactory.create()</code>)表示 DI 子树，其中<code>REQUEST</code>提供器是<code>undefined</code>，因为它们没有被 Nest 依赖注入系统实例化和管理。</p>
 <p>要为手动创建的 DI 子树注册一个自定义的<code>REQUEST</code>对象，请使用<code>ModuleRef#registerRequestByContextId()</code>方法，如下所示:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">contextId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ContextIdFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">();</span><span class="w"></span>
 <a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="hll"><span class="k">this</span><span class="p">.</span><span class="kr">module</span><span class="nx">Ref.registerRequestByContextId</span><span class="p">(</span><span class="cm">/* YOUR_REQUEST_OBJECT */</span><span class="p">,</span><span class="w"> </span><span class="nx">contextId</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="_5">获得当前子树<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">获得当前子树<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>有时，您可能希望在 <strong>请求</strong> 上下文中解析请求作用域的提供器的实例。
 假设<code>CatsService</code>是请求作用域的，您希望解析<code>CatsRepository</code>实例，该实例也被标记为请求作用域的提供器。
 为了共享相同的 DI 容器子树，你必须获取当前的上下文标识符，而不是生成一个新的上下文标识符(例如，使用<code>ContextIdFactory.create()</code>函数，如上所示)。
@@ -4993,7 +5036,7 @@
 <span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">contextId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ContextIdFactory</span><span class="p">.</span><span class="nx">getByRequest</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">request</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="hll"><span class="kd">const</span><span class="w"> </span><span class="nx">catsRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="kr">module</span><span class="nx">Ref.resolve</span><span class="p">(</span><span class="nx">CatsRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">contextId</span><span class="p">);</span><span class="w"></span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="_6">动态实例化自定义类<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">动态实例化自定义类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>要动态实例化一个之前没有注册为提供器的类，请使用模块引用的<code>create()</code>方法。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">cats.service.ts</label><label for="__tabbed_7_2">cats.service.js</label></div>
 <div class="tabbed-content">

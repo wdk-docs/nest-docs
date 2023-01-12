@@ -1,10 +1,10 @@
 # 中间件
 
-中间件是一个在路由处理器 **之前** 被称为的函数。
+中间件是一个在路由处理器 **之前** 被调用的函数。
 中间件函数可以访问[request](https://expressjs.com/en/4x/api.html#req)和[response](https://expressjs.com/en/4x/api.html#res)对象，以及应用程序请求-响应周期中的 `next()` 中间件函数。
 **next** 中间件函数通常由一个名为`next`的变量表示。
 
-<figure><img src="/assets/Middlewares_1.png" /></figure>
+![](./assets/Middlewares_1.png)
 
 默认情况下，Nest 中间件等价于[express](https://expressjs.com/en/guide/using-middleware.html)中间件。
 以下是官方文档中对中间件功能的描述:
@@ -55,16 +55,16 @@
 
 ## 依赖注入
 
-嵌套中间件完全支持依赖注入。
-就像提供程序和控制器一样，它们能够注入在同一个模块中可用的 **依赖项** 。
+Nest 中间件完全支持依赖注入。
+就像提供器和控制器一样，它们能够注入在同一个模块中可用的 **依赖项** 。
 通常，这是通过`构造函数`来完成的。
 
 ## 应用中间件
 
 在 `@Module()` 装饰器中没有中间件的位置。
 相反，我们使用模块类的 `configure()` 方法来设置它们。
-包含中间件的模块必须实现 `NestModule` 接口。
-让我们在`AppModule`级别设置`LoggerMiddleware`。
+包含中间件的模块必须 implements `NestModule` 接口。
+让我们在`AppModule`层设置`LoggerMiddleware`。
 
 === "app.module.ts"
 
@@ -101,8 +101,8 @@
     ```
 
 在上面的例子中，我们为之前在 CatsController 中定义的路由处理器`/cats`设置了`LoggerMiddleware`。
-在配置中间件时，我们还可以通过将包含路径和请求方法的对象传递给 forRoutes()方法来进一步限制中间件只能使用特定的请求方法。
-在下面的例子中，请注意我们导入了 `RequestMethod` enum 来引用所需的请求方法类型。
+在配置中间件时，我们还可以通过将包含路径和请求方法的对象传递给 `forRoutes()` 方法来进一步限制中间件只能使用特定的请求方法。
+在下面的例子中，请注意我们导入了 `RequestMethod` 枚举来引用所需的请求方法类型。
 
 === "app.module.ts"
 
@@ -147,9 +147,9 @@
     }
     ```
 
-!!! info "**Hint**"
+!!! info "可以使用 `async/await` 方法使 `configure()` 方法变为异步的"
 
-    可以使用 `async/await` 方法使 `configure()` 方法变为异步的(例如，你可以在 `configure()` 方法体中 `await` 异步操作的完成)。
+    (例如，你可以在 `configure()` 方法体中 `await` 异步操作的完成)。
 
 ## 路由通配符
 
@@ -162,18 +162,17 @@ forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });
 
 `ab*cd` 路由路径将匹配 `abcd`， `ab_cd`， `abecd`，等等。 字符`?`， `+`， `*`和`()`可以在路由路径中使用，它们是它们对应的正则表达式的子集。 连字符(`-`)和点(`.` )按字面意思解释基于字符串的路径。
 
-!!! warning
+!!! warning "`fastify` 包使用 `path-to-regexp` 包的最新版本，该包不再支持通配符星号 `*` 。"
 
-    `fastify` 包使用 `path-to-regexp` 包的最新版本，该包不再支持通配符星号 `*` 。
     相反,您必须使用参数(如`(.*)`, `:splat*`)。
 
-## 中间件的消费者
+## 消费者路由或控制器
 
 `MiddlewareConsumer`是一个助手类。
 它提供了几个内建的方法来管理中间件。
-所有这些都可以用[流利的风格]简单地链接起来(https://en.wikipedia.org/wiki/Fluent_interface)。
-`forRoutes()` 方法可以接受一个字符串，多个字符串，一个 `RouteInfo` 对象，一个控制器类，甚至多个控制器类。
-在大多数情况下，你可能只是传递一个以逗号分隔的`控制器`列表。
+所有这些都可以用[流式接口风格](https://en.wikipedia.org/wiki/Fluent_interface)简单地链接起来。
+`forRoutes()` 方法可以接受 **一个字符串**，**多个字符串**，**一个 `RouteInfo` 对象**，**一个控制器类**，甚至 **多个控制器类**。
+在大多数情况下，你可能只是 **传递一个以逗号分隔的`控制器`列表**。
 下面是一个单控制器的例子:
 
 === "app.module.ts"
@@ -212,15 +211,13 @@ forRoutes({ path: 'ab*cd', method: RequestMethod.ALL });
     }
     ```
 
-!!! info "**Hint**"
+!!! info "`apply()` 方法可以使用单个中间件，也可以使用多个参数来指定[多个中间件](/middleware#multiple-middleware)。"
 
-    `apply()` 方法可以使用单个中间件，也可以使用多个参数来指定[multiple middleware](/middleware#multiple-middleware)。
-
-## 不包括路由
+## 控制器排除路由
 
 有时我们想要从中间件应用中排除某些路由。
 我们可以使用`exclude()`方法轻松地排除某些路由。
-这个方法可以接受一个字符串，多个字符串，或者一个 `RouteInfo` 对象来标识要排除的路由，如下所示:
+这个方法可以接受 **一个字符串**，**多个字符串**，或者 **一个 `RouteInfo` 对象** 来标识要排除的路由，如下所示:
 
 ```typescript
 consumer
@@ -233,21 +230,19 @@ consumer
   .forRoutes(CatsController);
 ```
 
-!!! info "**Hint**"
-
-    `exclude()`方法支持使用[path-to-regexp](https://github.com/pillarjs/path-to-regexp#parameters)包的通配符参数。
+!!! info "`exclude()`方法支持使用[path-to-regexp](https://github.com/pillarjs/path-to-regexp#parameters)包的通配符参数。"
 
 在上面的例子中， `LoggerMiddleware` 将被绑定到 `CatsController` 中定义的所有路由，除了传递给 `exclude()` 方法的三个路由。
 
 <a id="functional-middleware"></a>
 
-## 功能中间件
+## 函数中间件
 
 我们使用的 LoggerMiddleware 类非常简单。
 它没有成员，没有额外的方法，也没有依赖关系。
-为什么我们不能在一个简单的函数中定义它，而不是在一个类中?事实上，我们可以。
-这种类型的中间件被称为功能中间件。
-让我们将 logger 中间件从基于类的中间件转换为功能中间件来说明两者的区别:
+为什么我们不能在一个简单的函数中而不是在一个类中定义它呢? 事实上，我们可以。
+这种类型的中间件被称为函数中间件。
+让我们将 logger 中间件从基于类的中间件转换为函数中间件来说明两者的区别:
 
 === "logger.middleware.ts"
 
@@ -277,7 +272,9 @@ consumer
     consumer.apply(logger).forRoutes(CatsController);
     ```
 
-!!! info "当你的中间件不需要任何依赖时，考虑使用更简单的功能中间件。"
+!!! info "当你的中间件不需要任何依赖时，考虑使用更简单的函数中间件。"
+
+<a id="multiple-middleware"></a>
 
 ## 多个中间件
 
@@ -302,5 +299,5 @@ consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
 !!! info
 
     访问全局中间件中的 DI 容器是不可能的。
-    当使用 `app.use()` 时，你可以使用[功能中间件](middleware#functional-middleware)来代替。
+    当使用 `app.use()` 时，你可以使用[函数中间件](middleware#functional-middleware)来代替。
     或者，你也可以使用一个类中间件，在 `AppModule` (或任何其他模块)中使用 `.forroutes('*')` 来使用它。

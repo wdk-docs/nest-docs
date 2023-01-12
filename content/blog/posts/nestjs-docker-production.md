@@ -1,12 +1,14 @@
 # 如何编写一个优化生产的 NestJS Dockerfile
 
+:link: https://www.tomray.dev/nestjs-docker-production
+
 这是一个循序渐进的教程，教你如何为 NestJS 项目编写 Dockerfile，创建一个生产优化的映像。
 
 有了这个 Dockerfile，你就可以进行本地开发和容器化部署，例如 Cloud Run。
 
 准备好了吗?让我们开始吧。
 
-附注:如果你只想复制和粘贴生产就绪的 Dockerfile，请跳过本节。
+!!! note "如果你只想复制和粘贴生产就绪的 Dockerfile，请跳过本节。"
 
 ## 编写 Dockerfile
 
@@ -87,8 +89,8 @@ docker run -p80:3000 nest-cloud-run
 
 ## 为生产优化 Dockerfile
 
-现在我们已经确认图像在本地工作，让我们尝试减小图像的大小，使其更有效地用于生产。
-我们还希望确保图像尽可能安全。
+现在我们已经确认镜像在本地工作，让我们尝试减小镜像的大小，使其更有效地用于生产。
+我们还希望确保镜像尽可能安全。
 
 在计算要收取多少费用时，Cloud Run 等部署工具会考虑映像的大小，因此尽可能减小映像的大小是个好主意。
 
@@ -104,7 +106,7 @@ nest-cloud-run latest 004f7f222139 31 seconds ago 1.24GB
 
 ### 使用 Alpine 节点映像
 
-在尝试优化图像大小时，建议使用 Alpine 节点图像。使用`node:18-alpine`而不是`node:18`本身将图像大小从`1.24GB`减少到`466MB`!
+在尝试优化镜像大小时，建议使用 Alpine 节点镜像。使用`node:18-alpine`而不是`node:18`本身将镜像大小从`1.24GB`减少到`466MB`!
 
 ### 添加一个 NODE_ENV 环境变量
 
@@ -116,11 +118,13 @@ ENV NODE_ENV production
 
 另外，如果你对如何在 NestJS 的配置文件中使用环境变量感兴趣，请查看本教程。
 
-### 使用 npm ci 代替 npm install
+### 使用 `npm ci` 代替 `npm install`
 
-NPM 建议在构建映像时使用`npm ci`而不是`npm install`。以下是他们网站上的一段话:
+NPM 建议在构建映像时使用`npm ci`而不是`npm install`。
 
-"`npm ci`类似于`npm install`，除了它被用于自动化环境中，比如测试平台、持续集成和部署，或者任何你想要确保你对依赖项进行干净安装的情况。"
+!!! info "以下是他们网站上的一段话:"
+
+    `npm ci`类似于`npm install`，除了它被用于自动化环境中，比如测试平台、持续集成和部署，或者任何你想要确保你对依赖项进行干净安装的情况。
 
 这非常适合我们正在做的事情，所以我们将在`Dockerfile`中使用`npm ci`而不是`npm install`。
 
@@ -133,7 +137,7 @@ RUN npm ci
 默认情况下，如果你没有在`Dockerfile`中指定`USER`指令，映像将使用根权限运行。
 这是一个安全风险，所以我们将在`Dockerfile`中添加一个`USER`指令。
 
-我们正在使用的节点图像已经为我们创建了一个名为 node 的用户，所以让我们使用它:
+我们正在使用的节点镜像已经为我们创建了一个名为 node 的用户，所以让我们使用它:
 
 ```dockerfile
 USER node
@@ -149,7 +153,9 @@ COPY --chown=node:node package*.json ./
 
 ### 使用多级构建
 
-在 Dockerfile 中，您可以定义多级构建，这是一种通过构建多个映像来顺序构建最优化映像的方法。
+!!! tip
+
+    在 Dockerfile 中，您可以定义多级构建，这是一种通过构建多个映像来顺序构建最优化映像的方法。
 
 除了使用小映像之外，多阶段构建是可以进行最大优化的地方。
 
@@ -197,13 +203,13 @@ FROM node:18-alpine As production
 
 如果你对本地使用 Docker 来运行你的 NestJS 应用不感兴趣，你可以将第 1 步和第 2 步合并到一个阶段中。
 
-然而，上面的多阶段设置的好处是，你有一个单独的 Dockerfile，可以在本地开发中使用(与 docker-compose.yml 文件结合使用)，还可以创建一个为生产优化的 Docker 映像。
+然而，上面的多阶段设置的好处是，你有一个单独的 `Dockerfile` ，可以在本地开发中使用(与 `docker-compose.yml` 文件结合使用)，还可以创建一个为生产优化的 `Docker` 映像。
 
-如果你有兴趣使用 Dockerfile 和 Docker Compose 进行本地开发(带热重载)，请查看这篇文章。
+如果你有兴趣使用 `Dockerfile` 和 `Docker Compose` 进行本地开发(带热重载)，请查看[这篇文章](https://www.tomray.dev/nestjs-docker-compose-postgres)。
 
 ### 把它们放在一起
 
-使用上面描述的所有技术，下面是我们用来构建生产优化映像的 Dockerfile:
+使用上面描述的所有技术，下面是我们用来构建生产优化映像的 `Dockerfile`:
 
 ```dockerfile title="Dockerfile"
 ###################
@@ -300,7 +306,7 @@ docker build -t nest-cloud-run .
 docker run -p80:3000 nest-cloud-run
 ```
 
-如果你再次运行`docker images`来检查我们的图像大小，你会发现它现在明显变小了:
+如果你再次运行`docker images`来检查我们的镜像大小，你会发现它现在明显变小了:
 
 ```sh
 docker images
@@ -312,25 +318,25 @@ nest-cloud-run latest 004f7f222139 31 seconds ago 189MB
 
 你可能会遇到以下错误:
 
-### Error: Cannot find module 'webpack'
+??? failure "Error: Cannot find module 'webpack'"
 
-如果你得到如下错误，很可能你在基本映像中使用了错误的节点版本:
+    如果你得到如下错误，很可能你在基本映像中使用了错误的节点版本:
 
-- Error: Cannot find module 'webpack'
+    - Error: Cannot find module 'webpack'
 
-例如，不使用`FROM node:14-alpine`，而是使用`FROM node:18-alpine`来解决这个问题。
+    例如，不使用`FROM node:14-alpine`，而是使用`FROM node:18-alpine`来解决这个问题。
 
-### Error: nest command not found
+??? failure "Error: nest command not found"
 
-当你运行`npm run build`时，它会使用 Nest CLI 来生成构建文件。
+    当你运行`npm run build`时，它会使用 Nest CLI 来生成构建文件。
 
-Nest CLI 是一个开发依赖，所以如果你得到的错误 nest 命令没有找到，你需要:
+    Nest CLI 是一个开发依赖，所以如果你得到的错误 nest 命令没有找到，你需要:
 
-- (推荐选项):在多阶段 Dockerfile 设置中运行 `npm run build`，其中您已经安装了生产和开发依赖项(使用 npm ci)
-- 更新 `package.json` 文件，在生产依赖项中包含 Nest CLI 包。
-  这种方法的唯一缺点是它增加了 node_modules 的大小，导致映像更大
+    - (推荐选项):在多阶段 Dockerfile 设置中运行 `npm run build`，其中您已经安装了生产和开发依赖项(使用 npm ci)
+    - 更新 `package.json` 文件，在生产依赖项中包含 Nest CLI 包。
+      这种方法的唯一缺点是它增加了 node_modules 的大小，导致映像更大
 
-推荐的选项是在本教程中提到的 `Dockerfile` 中实现的，如果你想要一个如何工作的示例。
+    推荐的选项是在本教程中提到的 `Dockerfile` 中实现的，如果你想要一个如何工作的示例。
 
 ## Dockerfile 与 pnpm 包管理器
 
@@ -404,22 +410,28 @@ CMD [ "node", "dist/main.js" ]
 
 ```ts
 main.ts;
-import { NestFactory } from "@nestjs/core";
-import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
-import { AppModule } from "./app.module";
+import { NestFactory } from '@nestjs/core';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
-  await app.listen(process.env.PORT || 3000, "0.0.0.0");
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter(),
+  );
+  await app.listen(process.env.PORT || 3000, '0.0.0.0');
 }
 bootstrap();
 ```
 
-这在 `Fastify` 文档中有说明，如果你想了解更多的话。
+这在 [`Fastify` 文档](https://www.fastify.io/docs/latest/Guides/Getting-Started/#your-first-server)中有说明，如果你想了解更多的话。
 
 ## 结论
 
-总之，这里是我们为一个 NestJS 项目优化的 Docker 图像(没有所有的解释器注释):
+总之，这里是我们为一个 NestJS 项目优化的 Docker 镜像(没有所有的解释注释):
 
 ```dockerfile title="Dockerfile"
 ###################
@@ -480,7 +492,6 @@ CMD [ "node", "dist/main.js" ]
 
 以下是一些与部署到生产环境相关的额外资源，可能会有所帮助:
 
-- 使用NestJS Logger
-- 添加带有一些自动化单元测试的CI管道
-- 将NestJS应用程序部署到Cloud Run
-  
+- [使用 NestJS Logger](https://www.tomray.dev/nestjs-logging)
+- [添加带有一些自动化单元测试的 CI 管道](https://www.tomray.dev/nestjs-unit-testing)
+- [将 NestJS 应用程序部署到 Cloud Run](https://www.tomray.dev/deploy-nestjs-cloud-run)

@@ -12,21 +12,21 @@
         <meta name="author" content="Kamil Mysliwiec">
       
       
-        <link rel="canonical" href="https://wdk-docs.github.io/nest-docs/techniques/axios/axios-auth-refresh/">
+        <link rel="canonical" href="https://wdk-docs.github.io/nest-docs/recipes/repl/">
       
-      <link rel="icon" href="../../../assets/favicons/favicon.ico">
+      <link rel="icon" href="../../assets/favicons/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>axios-auth-refresh - NestJS</title>
+        <title>REPL - NestJS</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
         
       
       
@@ -43,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#read-eval-print-loop-repl" class="md-skip">
           跳转至
         </a>
       
@@ -86,9 +86,9 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="NestJS" class="md-header__button md-logo" aria-label="NestJS" data-md-component="logo">
+    <a href="../.." title="NestJS" class="md-header__button md-logo" aria-label="NestJS" data-md-component="logo">
       
-  <img src="../../../assets/logo/logo-small.svg" alt="logo">
+  <img src="../../assets/logo/logo-small.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              axios-auth-refresh
+              REPL
             
           </span>
         </div>
@@ -176,7 +176,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         入门介绍
       </a>
     </li>
@@ -192,8 +192,104 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../fundamentals/dependency-injection/" class="md-tabs__link">
+      <a href="../../fundamentals/dependency-injection/" class="md-tabs__link">
         基本原理
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../techniques/sql/" class="md-tabs__link">
+        技术
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../security/authentication/" class="md-tabs__link">
+        安全
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../websockets/gateways/" class="md-tabs__link">
+        WebSockets
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../microservices/basics/" class="md-tabs__link">
+        微服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cli/overview/" class="md-tabs__link">
+        CLI
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../openapi/introduction/" class="md-tabs__link">
+        OpenAPI
       </a>
     </li>
   
@@ -210,103 +306,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../sql/" class="md-tabs__link md-tabs__link--active">
-        技术
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../security/authentication/" class="md-tabs__link">
-        安全
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../websockets/gateways/" class="md-tabs__link">
-        WebSockets
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../microservices/basics/" class="md-tabs__link">
-        微服务
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../cli/overview/" class="md-tabs__link">
-        CLI
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../openapi/introduction/" class="md-tabs__link">
-        OpenAPI
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../recipes/repl/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         食谱
       </a>
     </li>
@@ -322,7 +322,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../faq/serverless/" class="md-tabs__link">
+      <a href="../../faq/serverless/" class="md-tabs__link">
         FAQ
       </a>
     </li>
@@ -338,7 +338,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../graphql/quick-start/" class="md-tabs__link">
+      <a href="../../graphql/quick-start/" class="md-tabs__link">
         GraphQL
       </a>
     </li>
@@ -354,7 +354,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../application-context/" class="md-tabs__link">
+      <a href="../../application-context/" class="md-tabs__link">
         其它
       </a>
     </li>
@@ -367,7 +367,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../tags/" class="md-tabs__link">
+    <a href="../../tags/" class="md-tabs__link">
       标签
     </a>
   </li>
@@ -382,7 +382,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../blog/" class="md-tabs__link">
+      <a href="../../blog/" class="md-tabs__link">
         博客
       </a>
     </li>
@@ -416,9 +416,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="NestJS" class="md-nav__button md-logo" aria-label="NestJS" data-md-component="logo">
+    <a href="../.." title="NestJS" class="md-nav__button md-logo" aria-label="NestJS" data-md-component="logo">
       
-  <img src="../../../assets/logo/logo-small.svg" alt="logo">
+  <img src="../../assets/logo/logo-small.svg" alt="logo">
 
     </a>
     NestJS
@@ -483,7 +483,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../..">入门介绍</a>
+          <a href="../..">入门介绍</a>
           
             <label for="__nav_1">
               <span class="md-nav__icon md-icon"></span>
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../first-steps/" class="md-nav__link">
+      <a href="../../first-steps/" class="md-nav__link">
         第一步
       </a>
     </li>
@@ -520,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../controllers/" class="md-nav__link">
+      <a href="../../controllers/" class="md-nav__link">
         控制器
       </a>
     </li>
@@ -534,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../components/" class="md-nav__link">
+      <a href="../../components/" class="md-nav__link">
         提供器
       </a>
     </li>
@@ -548,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../modules/" class="md-nav__link">
+      <a href="../../modules/" class="md-nav__link">
         模块
       </a>
     </li>
@@ -562,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../middlewares/" class="md-nav__link">
+      <a href="../../middlewares/" class="md-nav__link">
         中间件
       </a>
     </li>
@@ -576,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../exception-filters/" class="md-nav__link">
+      <a href="../../exception-filters/" class="md-nav__link">
         异常过滤
       </a>
     </li>
@@ -590,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../pipes/" class="md-nav__link">
+      <a href="../../pipes/" class="md-nav__link">
         管道
       </a>
     </li>
@@ -604,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guards/" class="md-nav__link">
+      <a href="../../guards/" class="md-nav__link">
         守卫
       </a>
     </li>
@@ -618,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../interceptors/" class="md-nav__link">
+      <a href="../../interceptors/" class="md-nav__link">
         拦截器
       </a>
     </li>
@@ -632,7 +632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../custom-decorators/" class="md-nav__link">
+      <a href="../../custom-decorators/" class="md-nav__link">
         自定义修饰符
       </a>
     </li>
@@ -704,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/dependency-injection/" class="md-nav__link">
+      <a href="../../fundamentals/dependency-injection/" class="md-nav__link">
         自定义提供器
       </a>
     </li>
@@ -718,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/async-components/" class="md-nav__link">
+      <a href="../../fundamentals/async-components/" class="md-nav__link">
         异步服务提供器
       </a>
     </li>
@@ -732,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/dynamic-modules/" class="md-nav__link">
+      <a href="../../fundamentals/dynamic-modules/" class="md-nav__link">
         动态模块
       </a>
     </li>
@@ -746,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/provider-scopes/" class="md-nav__link">
+      <a href="../../fundamentals/provider-scopes/" class="md-nav__link">
         注入作用域
       </a>
     </li>
@@ -760,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/circular-dependency/" class="md-nav__link">
+      <a href="../../fundamentals/circular-dependency/" class="md-nav__link">
         循环依赖
       </a>
     </li>
@@ -774,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/module-reference/" class="md-nav__link">
+      <a href="../../fundamentals/module-reference/" class="md-nav__link">
         模块引用
       </a>
     </li>
@@ -788,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/lazy-loading-modules/" class="md-nav__link">
+      <a href="../../fundamentals/lazy-loading-modules/" class="md-nav__link">
         延迟加载模块
       </a>
     </li>
@@ -802,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/execution-context/" class="md-nav__link">
+      <a href="../../fundamentals/execution-context/" class="md-nav__link">
         执行上下文
       </a>
     </li>
@@ -816,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/lifecycle-events/" class="md-nav__link">
+      <a href="../../fundamentals/lifecycle-events/" class="md-nav__link">
         生命周期事件
       </a>
     </li>
@@ -830,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/platform-agnosticism/" class="md-nav__link">
+      <a href="../../fundamentals/platform-agnosticism/" class="md-nav__link">
         平台无关性
       </a>
     </li>
@@ -844,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../fundamentals/unit-testing/" class="md-nav__link">
+      <a href="../../fundamentals/unit-testing/" class="md-nav__link">
         测试
       </a>
     </li>
@@ -864,14 +864,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -938,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sql/" class="md-nav__link">
+      <a href="../../techniques/sql/" class="md-nav__link">
         数据库
       </a>
     </li>
@@ -952,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mongo/" class="md-nav__link">
+      <a href="../../techniques/mongo/" class="md-nav__link">
         Mongo
       </a>
     </li>
@@ -985,7 +983,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../redis/">Redis</a>
+          <a href="../../techniques/redis/">Redis</a>
           
             <label for="__nav_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -1033,7 +1031,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
+          <a href="../../techniques/redis/liaoliaots_nestjs-redis/">@liaoliaots/nestjs-redis</a>
           
             <label for="__nav_3_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1056,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/usage/" class="md-nav__link">
         使用
       </a>
     </li>
@@ -1070,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/cluster/" class="md-nav__link">
         举例
       </a>
     </li>
@@ -1084,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/health/" class="md-nav__link">
         健康
       </a>
     </li>
@@ -1098,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
+      <a href="../../techniques/redis/liaoliaots_nestjs-redis/examples/" class="md-nav__link">
         举例
       </a>
     </li>
@@ -1126,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/" class="md-nav__link">
+      <a href="../../techniques/configuration/" class="md-nav__link">
         配置
       </a>
     </li>
@@ -1172,7 +1170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../validation/" class="md-nav__link">
+      <a href="../../techniques/validation/" class="md-nav__link">
         验证
       </a>
     </li>
@@ -1207,7 +1205,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../validator/">validator</a>
+          <a href="../../techniques/validator/">validator</a>
           
             <label for="__nav_3_5_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1230,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../validator/class-transformer/" class="md-nav__link">
+      <a href="../../techniques/validator/class-transformer/" class="md-nav__link">
         class-transformer
       </a>
     </li>
@@ -1244,7 +1242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../validator/class-validator/" class="md-nav__link">
+      <a href="../../techniques/validator/class-validator/" class="md-nav__link">
         class-validator
       </a>
     </li>
@@ -1304,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../caching/" class="md-nav__link">
+      <a href="../../techniques/caching/" class="md-nav__link">
         缓存
       </a>
     </li>
@@ -1318,7 +1316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cache-manager/node-cache-manager/" class="md-nav__link">
+      <a href="../../techniques/cache-manager/node-cache-manager/" class="md-nav__link">
         node-cache-manager
       </a>
     </li>
@@ -1339,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../serialization/" class="md-nav__link">
+      <a href="../../techniques/serialization/" class="md-nav__link">
         序列化
       </a>
     </li>
@@ -1353,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../versioning/" class="md-nav__link">
+      <a href="../../techniques/versioning/" class="md-nav__link">
         版本控制
       </a>
     </li>
@@ -1367,7 +1365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../task-scheduling/" class="md-nav__link">
+      <a href="../../techniques/task-scheduling/" class="md-nav__link">
         任务调度
       </a>
     </li>
@@ -1419,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../queues/" class="md-nav__link">
+      <a href="../../techniques/queues/" class="md-nav__link">
         队列
       </a>
     </li>
@@ -1433,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bull/bull/" class="md-nav__link">
+      <a href="../../techniques/bull/bull/" class="md-nav__link">
         Bull
       </a>
     </li>
@@ -1447,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bull/guide/" class="md-nav__link">
+      <a href="../../techniques/bull/guide/" class="md-nav__link">
         guide
       </a>
     </li>
@@ -1461,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bull/patterns/" class="md-nav__link">
+      <a href="../../techniques/bull/patterns/" class="md-nav__link">
         patterns
       </a>
     </li>
@@ -1475,7 +1473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../bull/reference/" class="md-nav__link">
+      <a href="../../techniques/bull/reference/" class="md-nav__link">
         reference
       </a>
     </li>
@@ -1496,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../logger/" class="md-nav__link">
+      <a href="../../techniques/logger/" class="md-nav__link">
         日志
       </a>
     </li>
@@ -1510,7 +1508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookies/" class="md-nav__link">
+      <a href="../../techniques/cookies/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -1524,7 +1522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../events/" class="md-nav__link">
+      <a href="../../techniques/events/" class="md-nav__link">
         事件
       </a>
     </li>
@@ -1538,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compression/" class="md-nav__link">
+      <a href="../../techniques/compression/" class="md-nav__link">
         压缩
       </a>
     </li>
@@ -1552,7 +1550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../file-upload/" class="md-nav__link">
+      <a href="../../techniques/file-upload/" class="md-nav__link">
         文件上传
       </a>
     </li>
@@ -1566,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streaming-files/" class="md-nav__link">
+      <a href="../../techniques/streaming-files/" class="md-nav__link">
         流文件
       </a>
     </li>
@@ -1578,14 +1576,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_17" type="checkbox" id="__nav_3_17" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_17" type="checkbox" id="__nav_3_17" >
       
       
       
@@ -1618,7 +1614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../http-module/" class="md-nav__link">
+      <a href="../../techniques/http-module/" class="md-nav__link">
         HTTP module
       </a>
     </li>
@@ -1632,7 +1628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../axios/" class="md-nav__link">
+      <a href="../../techniques/axios/axios/" class="md-nav__link">
         Axios
       </a>
     </li>
@@ -1644,171 +1640,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          axios-auth-refresh
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../techniques/axios/axios-auth-refresh/" class="md-nav__link">
         axios-auth-refresh
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    语法
-  </a>
-  
-    <nav class="md-nav" aria-label="语法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    参数
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    返回
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    使用
-  </a>
-  
-    <nav class="md-nav" aria-label="使用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    跳过拦截器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    请求拦截器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    可用选项
-  </a>
-  
-    <nav class="md-nav" aria-label="可用选项">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    要拦截的状态代码
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    自定义拦截逻辑
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    停止请求的重试实例
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#onretry" class="md-nav__link">
-    onRetry 在发送停止的请求之前回调
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    在“刷新逻辑”运行时暂停实例
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    拦截网络错误
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    库的其他用途
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    更新日志
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1820,7 +1656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../nest-axios-interceptor/" class="md-nav__link">
+      <a href="../../techniques/axios/nest-axios-interceptor/" class="md-nav__link">
         @narando/nest-axios-interceptor
       </a>
     </li>
@@ -1841,7 +1677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sessions/" class="md-nav__link">
+      <a href="../../techniques/sessions/" class="md-nav__link">
         Session
       </a>
     </li>
@@ -1855,7 +1691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mvc/" class="md-nav__link">
+      <a href="../../techniques/mvc/" class="md-nav__link">
         Model-View-Controller
       </a>
     </li>
@@ -1869,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../performance/" class="md-nav__link">
+      <a href="../../techniques/performance/" class="md-nav__link">
         性能 (Fastify)
       </a>
     </li>
@@ -1883,7 +1719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../server-sent-events/" class="md-nav__link">
+      <a href="../../techniques/server-sent-events/" class="md-nav__link">
         服务器发送的事件
       </a>
     </li>
@@ -1947,7 +1783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/authentication/" class="md-nav__link">
+      <a href="../../security/authentication/" class="md-nav__link">
         身份验证
       </a>
     </li>
@@ -1961,7 +1797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/authorization/" class="md-nav__link">
+      <a href="../../security/authorization/" class="md-nav__link">
         授权
       </a>
     </li>
@@ -1975,7 +1811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/encryption-hashing/" class="md-nav__link">
+      <a href="../../security/encryption-hashing/" class="md-nav__link">
         加密和散列
       </a>
     </li>
@@ -1989,7 +1825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/helmet/" class="md-nav__link">
+      <a href="../../security/helmet/" class="md-nav__link">
         Helmet
       </a>
     </li>
@@ -2003,7 +1839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/cors/" class="md-nav__link">
+      <a href="../../security/cors/" class="md-nav__link">
         CORS
       </a>
     </li>
@@ -2017,7 +1853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/csrf/" class="md-nav__link">
+      <a href="../../security/csrf/" class="md-nav__link">
         CSRF 保护
       </a>
     </li>
@@ -2031,7 +1867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/rate-limiting/" class="md-nav__link">
+      <a href="../../security/rate-limiting/" class="md-nav__link">
         速度限制
       </a>
     </li>
@@ -2093,7 +1929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websockets/gateways/" class="md-nav__link">
+      <a href="../../websockets/gateways/" class="md-nav__link">
         网关
       </a>
     </li>
@@ -2107,7 +1943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websockets/exception-filters/" class="md-nav__link">
+      <a href="../../websockets/exception-filters/" class="md-nav__link">
         异常过滤
       </a>
     </li>
@@ -2121,7 +1957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websockets/pipes/" class="md-nav__link">
+      <a href="../../websockets/pipes/" class="md-nav__link">
         管道
       </a>
     </li>
@@ -2135,7 +1971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websockets/guards/" class="md-nav__link">
+      <a href="../../websockets/guards/" class="md-nav__link">
         守卫
       </a>
     </li>
@@ -2149,7 +1985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websockets/interceptors/" class="md-nav__link">
+      <a href="../../websockets/interceptors/" class="md-nav__link">
         拦截器
       </a>
     </li>
@@ -2163,7 +1999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../websockets/adapter/" class="md-nav__link">
+      <a href="../../websockets/adapter/" class="md-nav__link">
         适配器
       </a>
     </li>
@@ -2237,7 +2073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/basics/" class="md-nav__link">
+      <a href="../../microservices/basics/" class="md-nav__link">
         概述
       </a>
     </li>
@@ -2251,7 +2087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/redis/" class="md-nav__link">
+      <a href="../../microservices/redis/" class="md-nav__link">
         Redis
       </a>
     </li>
@@ -2265,7 +2101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/mqtt/" class="md-nav__link">
+      <a href="../../microservices/mqtt/" class="md-nav__link">
         MQTT
       </a>
     </li>
@@ -2279,7 +2115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/nats/" class="md-nav__link">
+      <a href="../../microservices/nats/" class="md-nav__link">
         NATS
       </a>
     </li>
@@ -2293,7 +2129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/rabbitmq/" class="md-nav__link">
+      <a href="../../microservices/rabbitmq/" class="md-nav__link">
         RabbitMQ
       </a>
     </li>
@@ -2307,7 +2143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/kafka/" class="md-nav__link">
+      <a href="../../microservices/kafka/" class="md-nav__link">
         Kafka
       </a>
     </li>
@@ -2321,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/grpc/" class="md-nav__link">
+      <a href="../../microservices/grpc/" class="md-nav__link">
         gRPC
       </a>
     </li>
@@ -2335,7 +2171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/custom-transport/" class="md-nav__link">
+      <a href="../../microservices/custom-transport/" class="md-nav__link">
         定制的传输器
       </a>
     </li>
@@ -2349,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/exception-filters/" class="md-nav__link">
+      <a href="../../microservices/exception-filters/" class="md-nav__link">
         异常过滤器
       </a>
     </li>
@@ -2363,7 +2199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/pipes/" class="md-nav__link">
+      <a href="../../microservices/pipes/" class="md-nav__link">
         管道
       </a>
     </li>
@@ -2377,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/guards/" class="md-nav__link">
+      <a href="../../microservices/guards/" class="md-nav__link">
         守卫
       </a>
     </li>
@@ -2391,7 +2227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../microservices/interceptors/" class="md-nav__link">
+      <a href="../../microservices/interceptors/" class="md-nav__link">
         拦截器
       </a>
     </li>
@@ -2451,7 +2287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/overview/" class="md-nav__link">
+      <a href="../../cli/overview/" class="md-nav__link">
         概述
       </a>
     </li>
@@ -2465,7 +2301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/monorepo/" class="md-nav__link">
+      <a href="../../cli/monorepo/" class="md-nav__link">
         工作区
       </a>
     </li>
@@ -2479,7 +2315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/libraries/" class="md-nav__link">
+      <a href="../../cli/libraries/" class="md-nav__link">
         库
       </a>
     </li>
@@ -2493,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/usages/" class="md-nav__link">
+      <a href="../../cli/usages/" class="md-nav__link">
         使用
       </a>
     </li>
@@ -2507,7 +2343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/scripts/" class="md-nav__link">
+      <a href="../../cli/scripts/" class="md-nav__link">
         脚本
       </a>
     </li>
@@ -2575,7 +2411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/introduction/" class="md-nav__link">
+      <a href="../../openapi/introduction/" class="md-nav__link">
         介绍
       </a>
     </li>
@@ -2589,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/types-and-parameters/" class="md-nav__link">
+      <a href="../../openapi/types-and-parameters/" class="md-nav__link">
         类型和参数
       </a>
     </li>
@@ -2603,7 +2439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/operations/" class="md-nav__link">
+      <a href="../../openapi/operations/" class="md-nav__link">
         操作
       </a>
     </li>
@@ -2617,7 +2453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/security/" class="md-nav__link">
+      <a href="../../openapi/security/" class="md-nav__link">
         安全
       </a>
     </li>
@@ -2631,7 +2467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/mapped-types/" class="md-nav__link">
+      <a href="../../openapi/mapped-types/" class="md-nav__link">
         映射类型
       </a>
     </li>
@@ -2645,7 +2481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/decorators/" class="md-nav__link">
+      <a href="../../openapi/decorators/" class="md-nav__link">
         修饰符
       </a>
     </li>
@@ -2659,7 +2495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/cli-plugin/" class="md-nav__link">
+      <a href="../../openapi/cli-plugin/" class="md-nav__link">
         CLI 插件
       </a>
     </li>
@@ -2673,7 +2509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/other-features/" class="md-nav__link">
+      <a href="../../openapi/other-features/" class="md-nav__link">
         其他功能
       </a>
     </li>
@@ -2687,7 +2523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../openapi/migration-guide/" class="md-nav__link">
+      <a href="../../openapi/migration-guide/" class="md-nav__link">
         迁移向导
       </a>
     </li>
@@ -2707,12 +2543,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
       
       
       
@@ -2763,11 +2601,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../recipes/repl/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          REPL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         REPL
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    本机函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    观看模式
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2779,7 +2672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/crud-generator/" class="md-nav__link">
+      <a href="../crud-generator/" class="md-nav__link">
         CRUD 生成器
       </a>
     </li>
@@ -2793,7 +2686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/hot-reload/" class="md-nav__link">
+      <a href="../hot-reload/" class="md-nav__link">
         Hot 重载
       </a>
     </li>
@@ -2807,7 +2700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/mikroorm/" class="md-nav__link">
+      <a href="../mikroorm/" class="md-nav__link">
         MikroORM
       </a>
     </li>
@@ -2821,7 +2714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/sql-typeorm/" class="md-nav__link">
+      <a href="../sql-typeorm/" class="md-nav__link">
         TypeORM
       </a>
     </li>
@@ -2835,7 +2728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/mongodb/" class="md-nav__link">
+      <a href="../mongodb/" class="md-nav__link">
         Mongoose
       </a>
     </li>
@@ -2849,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/sql-sequelize/" class="md-nav__link">
+      <a href="../sql-sequelize/" class="md-nav__link">
         Sequelize
       </a>
     </li>
@@ -2863,7 +2756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/router-module/" class="md-nav__link">
+      <a href="../router-module/" class="md-nav__link">
         路由器模块
       </a>
     </li>
@@ -2877,7 +2770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/terminus/" class="md-nav__link">
+      <a href="../terminus/" class="md-nav__link">
         健康检查
       </a>
     </li>
@@ -2891,7 +2784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/cqrs/" class="md-nav__link">
+      <a href="../cqrs/" class="md-nav__link">
         CQRS
       </a>
     </li>
@@ -2937,7 +2830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/documentation/" class="md-nav__link">
+      <a href="../documentation/" class="md-nav__link">
         概述
       </a>
     </li>
@@ -3002,7 +2895,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../recipes/compodoc/">compodoc</a>
+          <a href="../compodoc/">compodoc</a>
           
             <label for="__nav_9_11_2">
               <span class="md-nav__icon md-icon"></span>
@@ -3025,7 +2918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/comments/" class="md-nav__link">
+      <a href="../compodoc/comments/" class="md-nav__link">
         注释
       </a>
     </li>
@@ -3039,7 +2932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/demo/" class="md-nav__link">
+      <a href="../compodoc/demo/" class="md-nav__link">
         现场演示
       </a>
     </li>
@@ -3053,7 +2946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/documentation-coverage/" class="md-nav__link">
+      <a href="../compodoc/documentation-coverage/" class="md-nav__link">
         文档覆盖
       </a>
     </li>
@@ -3067,7 +2960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/extensions/" class="md-nav__link">
+      <a href="../compodoc/extensions/" class="md-nav__link">
         扩展
       </a>
     </li>
@@ -3081,7 +2974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/features/" class="md-nav__link">
+      <a href="../compodoc/features/" class="md-nav__link">
         特性
       </a>
     </li>
@@ -3095,7 +2988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/hosting/" class="md-nav__link">
+      <a href="../compodoc/hosting/" class="md-nav__link">
         托管
       </a>
     </li>
@@ -3109,7 +3002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/installation/" class="md-nav__link">
+      <a href="../compodoc/installation/" class="md-nav__link">
         安装
       </a>
     </li>
@@ -3123,7 +3016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/jsdoc-tags/" class="md-nav__link">
+      <a href="../compodoc/jsdoc-tags/" class="md-nav__link">
         JSDoc 标签
       </a>
     </li>
@@ -3137,7 +3030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/live-example-tab/" class="md-nav__link">
+      <a href="../compodoc/live-example-tab/" class="md-nav__link">
         现场例子选项卡
       </a>
     </li>
@@ -3151,7 +3044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/miscellaneous/" class="md-nav__link">
+      <a href="../compodoc/miscellaneous/" class="md-nav__link">
         杂项
       </a>
     </li>
@@ -3165,7 +3058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/options/" class="md-nav__link">
+      <a href="../compodoc/options/" class="md-nav__link">
         选项
       </a>
     </li>
@@ -3179,7 +3072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/routing/" class="md-nav__link">
+      <a href="../compodoc/routing/" class="md-nav__link">
         路由
       </a>
     </li>
@@ -3193,7 +3086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/tab-configuration/" class="md-nav__link">
+      <a href="../compodoc/tab-configuration/" class="md-nav__link">
         选项卡配置
       </a>
     </li>
@@ -3207,7 +3100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/themes/" class="md-nav__link">
+      <a href="../compodoc/themes/" class="md-nav__link">
         主题
       </a>
     </li>
@@ -3221,7 +3114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/tips-and-tricks/" class="md-nav__link">
+      <a href="../compodoc/tips-and-tricks/" class="md-nav__link">
         提示和技巧
       </a>
     </li>
@@ -3235,7 +3128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/tutorial/" class="md-nav__link">
+      <a href="../compodoc/tutorial/" class="md-nav__link">
         教程
       </a>
     </li>
@@ -3249,7 +3142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/compodoc/usage/" class="md-nav__link">
+      <a href="../compodoc/usage/" class="md-nav__link">
         使用
       </a>
     </li>
@@ -3277,7 +3170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/prisma/" class="md-nav__link">
+      <a href="../prisma/" class="md-nav__link">
         Prisma
       </a>
     </li>
@@ -3291,7 +3184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/serve-static/" class="md-nav__link">
+      <a href="../serve-static/" class="md-nav__link">
         服务静态
       </a>
     </li>
@@ -3305,7 +3198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recipes/nest-commander/" class="md-nav__link">
+      <a href="../nest-commander/" class="md-nav__link">
         Commander
       </a>
     </li>
@@ -3371,7 +3264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/serverless/" class="md-nav__link">
+      <a href="../../faq/serverless/" class="md-nav__link">
         Serverless
       </a>
     </li>
@@ -3385,7 +3278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/http-adapter/" class="md-nav__link">
+      <a href="../../faq/http-adapter/" class="md-nav__link">
         HTTP 适配器
       </a>
     </li>
@@ -3399,7 +3292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/global-prefix/" class="md-nav__link">
+      <a href="../../faq/global-prefix/" class="md-nav__link">
         全局路径前缀
       </a>
     </li>
@@ -3413,7 +3306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/hybrid-application/" class="md-nav__link">
+      <a href="../../faq/hybrid-application/" class="md-nav__link">
         混合应用程序
       </a>
     </li>
@@ -3427,7 +3320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/multiple-servers/" class="md-nav__link">
+      <a href="../../faq/multiple-servers/" class="md-nav__link">
         HTTPS 多服务器
       </a>
     </li>
@@ -3441,7 +3334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/request-lifecycle/" class="md-nav__link">
+      <a href="../../faq/request-lifecycle/" class="md-nav__link">
         请求生命周期
       </a>
     </li>
@@ -3455,7 +3348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../faq/errors/" class="md-nav__link">
+      <a href="../../faq/errors/" class="md-nav__link">
         常见的错误
       </a>
     </li>
@@ -3553,7 +3446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/quick-start/" class="md-nav__link">
+      <a href="../../graphql/quick-start/" class="md-nav__link">
         快速启动
       </a>
     </li>
@@ -3567,7 +3460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/resolvers-map/" class="md-nav__link">
+      <a href="../../graphql/resolvers-map/" class="md-nav__link">
         解析器
       </a>
     </li>
@@ -3581,7 +3474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/mutations/" class="md-nav__link">
+      <a href="../../graphql/mutations/" class="md-nav__link">
         突变
       </a>
     </li>
@@ -3595,7 +3488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/subscriptions/" class="md-nav__link">
+      <a href="../../graphql/subscriptions/" class="md-nav__link">
         订阅
       </a>
     </li>
@@ -3609,7 +3502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/scalars/" class="md-nav__link">
+      <a href="../../graphql/scalars/" class="md-nav__link">
         标量
       </a>
     </li>
@@ -3623,7 +3516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/directives/" class="md-nav__link">
+      <a href="../../graphql/directives/" class="md-nav__link">
         指令
       </a>
     </li>
@@ -3637,7 +3530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/plugins/" class="md-nav__link">
+      <a href="../../graphql/plugins/" class="md-nav__link">
         插件
       </a>
     </li>
@@ -3651,7 +3544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/interfaces/" class="md-nav__link">
+      <a href="../../graphql/interfaces/" class="md-nav__link">
         接口
       </a>
     </li>
@@ -3665,7 +3558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/unions-and-enums/" class="md-nav__link">
+      <a href="../../graphql/unions-and-enums/" class="md-nav__link">
         联合和枚举
       </a>
     </li>
@@ -3679,7 +3572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/field-middleware/" class="md-nav__link">
+      <a href="../../graphql/field-middleware/" class="md-nav__link">
         字段中间件
       </a>
     </li>
@@ -3693,7 +3586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/mapped-types/" class="md-nav__link">
+      <a href="../../graphql/mapped-types/" class="md-nav__link">
         映射类型
       </a>
     </li>
@@ -3707,7 +3600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/complexity/" class="md-nav__link">
+      <a href="../../graphql/complexity/" class="md-nav__link">
         复杂性
       </a>
     </li>
@@ -3721,7 +3614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/extensions/" class="md-nav__link">
+      <a href="../../graphql/extensions/" class="md-nav__link">
         扩展
       </a>
     </li>
@@ -3735,7 +3628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/cli-plugin/" class="md-nav__link">
+      <a href="../../graphql/cli-plugin/" class="md-nav__link">
         CLI 插件
       </a>
     </li>
@@ -3749,7 +3642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/schema-generator/" class="md-nav__link">
+      <a href="../../graphql/schema-generator/" class="md-nav__link">
         生成 SDL
       </a>
     </li>
@@ -3763,7 +3656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/guards-interceptors/" class="md-nav__link">
+      <a href="../../graphql/guards-interceptors/" class="md-nav__link">
         其他功能
       </a>
     </li>
@@ -3777,7 +3670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../graphql/federation/" class="md-nav__link">
+      <a href="../../graphql/federation/" class="md-nav__link">
         联合会
       </a>
     </li>
@@ -3843,7 +3736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../application-context/" class="md-nav__link">
+      <a href="../../application-context/" class="md-nav__link">
         独立的应用程序
       </a>
     </li>
@@ -3857,7 +3750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../migration/" class="md-nav__link">
+      <a href="../../migration/" class="md-nav__link">
         迁移向导
       </a>
     </li>
@@ -3885,7 +3778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../discover/who-uses/" class="md-nav__link">
+      <a href="../../discover/who-uses/" class="md-nav__link">
         谁在使用Nest?
       </a>
     </li>
@@ -3913,7 +3806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../support/" class="md-nav__link">
+      <a href="../../support/" class="md-nav__link">
         支持我们
       </a>
     </li>
@@ -3927,7 +3820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../enterprise/" class="md-nav__link">
+      <a href="../../enterprise/" class="md-nav__link">
         企业支持
       </a>
     </li>
@@ -3941,7 +3834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../awesome/" class="md-nav__link">
+      <a href="../../awesome/" class="md-nav__link">
         AWESOME
       </a>
     </li>
@@ -3963,7 +3856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tags/" class="md-nav__link">
+      <a href="../../tags/" class="md-nav__link">
         标签
       </a>
     </li>
@@ -4015,7 +3908,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../blog/">博客</a>
+          <a href="../../blog/">博客</a>
           
             <label for="__nav_14">
               <span class="md-nav__icon md-icon"></span>
@@ -4038,7 +3931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/nestjs-9-is-now-available/" class="md-nav__link">
+      <a href="../../blog/posts/nestjs-9-is-now-available/" class="md-nav__link">
         发布V9
       </a>
     </li>
@@ -4084,7 +3977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/70.api-with-nestjs-dynamic-modules/" class="md-nav__link">
+      <a href="../../blog/posts/70.api-with-nestjs-dynamic-modules/" class="md-nav__link">
         Nestjs动态模块
       </a>
     </li>
@@ -4098,7 +3991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/61.circular-dependencies/" class="md-nav__link">
+      <a href="../../blog/posts/61.circular-dependencies/" class="md-nav__link">
         处理循环依赖项
       </a>
     </li>
@@ -4149,7 +4042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/" class="md-nav__link">
+      <a href="../../blog/posts/jwt-authentication-using-node-nestjs-mongoose-passport-ionic5-part1/" class="md-nav__link">
         JWT Authentication
       </a>
     </li>
@@ -4206,7 +4099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/nestjs-file-uploading-using-multer/" class="md-nav__link">
+      <a href="../../blog/posts/nestjs-file-uploading-using-multer/" class="md-nav__link">
         使用Multer上传文件
       </a>
     </li>
@@ -4220,7 +4113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/api-nestjs-uploading-files-to-server/" class="md-nav__link">
+      <a href="../../blog/posts/api-nestjs-uploading-files-to-server/" class="md-nav__link">
         文件上传
       </a>
     </li>
@@ -4234,7 +4127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/api-nestjs-error-handling-validation/" class="md-nav__link">
+      <a href="../../blog/posts/api-nestjs-error-handling-validation/" class="md-nav__link">
         错误处理
       </a>
     </li>
@@ -4248,7 +4141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/api-nestjs-stripe-events-webhooks/" class="md-nav__link">
+      <a href="../../blog/posts/api-nestjs-stripe-events-webhooks/" class="md-nav__link">
         Stripe事件
       </a>
     </li>
@@ -4299,7 +4192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/api-nestjs-logging-typeorm/" class="md-nav__link">
+      <a href="../../blog/posts/api-nestjs-logging-typeorm/" class="md-nav__link">
         日志
       </a>
     </li>
@@ -4352,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/scalable-websockets-with-nestjs-and-redis/" class="md-nav__link">
+      <a href="../../blog/posts/scalable-websockets-with-nestjs-and-redis/" class="md-nav__link">
         使用 NestJS 和 Redis 扩展 WebSockets
       </a>
     </li>
@@ -4366,7 +4259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/websocket-cluster-with-nestjs-and-redis/" class="md-nav__link">
+      <a href="../../blog/posts/websocket-cluster-with-nestjs-and-redis/" class="md-nav__link">
         WebSocket cluster with NestJs and Redis
       </a>
     </li>
@@ -4431,7 +4324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/indexes/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/indexes/" class="md-nav__link">
         使用MongoDB和Mongoose定义索引
       </a>
     </li>
@@ -4445,7 +4338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/introduction/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/introduction/" class="md-nav__link">
         MongoDB概论
       </a>
     </li>
@@ -4459,7 +4352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/pagination/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/pagination/" class="md-nav__link">
         使用MongoDB和Mongoose实现分页
       </a>
     </li>
@@ -4473,7 +4366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/relationships/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/relationships/" class="md-nav__link">
         实现与MongoDB的关系
       </a>
     </li>
@@ -4487,7 +4380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/transactions/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/transactions/" class="md-nav__link">
         与MongoDB和Mongoose管理事务
       </a>
     </li>
@@ -4501,7 +4394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/typescript-express-put-vs-patch-mongodb-mongoose/" class="md-nav__link">
         MongoDB与Mongoose使用PUT vs PATCH
       </a>
     </li>
@@ -4515,7 +4408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/updating/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/updating/" class="md-nav__link">
         用PUT和PATCH更新MongoDB和Mongoose
       </a>
     </li>
@@ -4529,7 +4422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/mongodb/virtual/" class="md-nav__link">
+      <a href="../../blog/posts/mongodb/virtual/" class="md-nav__link">
         MongoDB和Mongoose的虚拟属性
       </a>
     </li>
@@ -4580,7 +4473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/openapi/api-nestjs-openapi-swagger/" class="md-nav__link">
+      <a href="../../blog/posts/openapi/api-nestjs-openapi-swagger/" class="md-nav__link">
         OpenAPI规范和Swagger
       </a>
     </li>
@@ -4631,7 +4524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/nestjs-docker-production/" class="md-nav__link">
+      <a href="../../blog/posts/nestjs-docker-production/" class="md-nav__link">
         NestJS Dockerfile
       </a>
     </li>
@@ -4682,7 +4575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/posts/applying-solid-principles-to-your-typescript-code/" class="md-nav__link">
+      <a href="../../blog/posts/applying-solid-principles-to-your-typescript-code/" class="md-nav__link">
         对typescript代码应用可靠的原则
       </a>
     </li>
@@ -4720,6 +4613,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -4729,131 +4624,22 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    安装
+    用法
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    语法
+    本机函数
   </a>
   
-    <nav class="md-nav" aria-label="语法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    参数
+    观看模式
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    返回
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    使用
-  </a>
-  
-    <nav class="md-nav" aria-label="使用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    跳过拦截器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    请求拦截器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    可用选项
-  </a>
-  
-    <nav class="md-nav" aria-label="可用选项">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    要拦截的状态代码
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    自定义拦截逻辑
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    停止请求的重试实例
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#onretry" class="md-nav__link">
-    onRetry 在发送停止的请求之前回调
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    在“刷新逻辑”运行时暂停实例
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    拦截网络错误
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    库的其他用途
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    更新日志
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4874,220 +4660,181 @@
 
 
 
-  <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/techniques/axios/axios-auth-refresh.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/wdk-docs/nest-docs/edit/master/content/recipes/repl.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>axios-auth-refresh</h1>
-
-<blockquote>
-<p><a href="https://github.com/Flyrell/axios-auth-refresh">https://github.com/Flyrell/axios-auth-refresh</a></p>
-</blockquote>
-<p><img alt="Package version" src="https://img.shields.io/npm/v/axios-auth-refresh?label=version" />
-<img alt="Package size" src="https://img.shields.io/bundlephobia/min/axios-auth-refresh" />
-<img alt="Package downloads" src="https://img.shields.io/npm/dm/axios-auth-refresh" />
-<img alt="Package types definitions" src="https://img.shields.io/npm/types/axios-auth-refresh" /></p>
-<p>帮助您通过 axios <a href="https://github.com/axios/axios#interceptors">interceptors</a>实现自动刷新授权的库。
-当原始请求失败时，您可以轻松地拦截它，刷新授权并继续原始请求，而不需要任何用户交互。</p>
-<p>当请求由于授权而失败时，将发生什么完全取决于您。
-您可以为新的授权令牌运行刷新调用，也可以运行自定义逻辑。</p>
-<p>在等待新的授权令牌时，插件将暂停已进入的其他请求，并在新令牌可用时解析它们。</p>
-<h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>使用<a href="https://www.npmjs.com/get-npm">npm</a>或<a href="https://yarnpkg.com/en/docs/install">yarn</a>:</p>
+<h1 id="read-eval-print-loop-repl">Read-Eval-Print-Loop (REPL)<a class="headerlink" href="#read-eval-print-loop-repl" title="Permanent link">&para;</a></h1>
+<p>REPL 是一个简单的交互式环境，可将单个用户输入，执行它们并将结果返回给用户。
+REPL 功能使您可以直接从终端检查提供商（和控制器）上的依赖关系图并调用方法。</p>
+<h2 id="_1">用法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>要以模式运行您的 Nestjs 应用程序，请创建一个新的<code>repl.ts</code>文件（与<code>main.ts</code>同目录），然后内部添加以下代码：</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">repl.ts</label><label for="__tabbed_1_2">repl.js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm install axios-auth-refresh --save
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1"># or</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>yarn add axios-auth-refresh
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">repl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./app.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">await</span><span class="w"> </span><span class="nx">repl</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h2 id="_2">语法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
 <span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nx">createAuthRefreshInterceptor</span><span class="p">(</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="nx">axios</span><span class="o">:</span><span class="w"> </span><span class="kt">AxiosInstance</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nx">refreshAuthLogic</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">failedRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="kt">AxiosAuthRefreshOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">repl</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nestjs/core&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AppModule</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./app.module&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">await</span><span class="w"> </span><span class="nx">repl</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nx">bootstrap</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h4 id="_3">参数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>axios</code> - Axios 的实例</li>
-<li><code>refreshAuthLogic</code> - 一个用于刷新授权的函数(<strong>必须返回一个承诺</strong>)。
-  只接受一个参数，即原始调用返回的' failedRequest '。</li>
-<li><code>options</code> - 对象的拦截器设置(参见<a href="#available-options">可用选项</a>)</li>
-</ul>
-<h4 id="_4">返回<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>拦截器<code>id</code>，以防你想手动拒绝它。</p>
-<h2 id="_5">使用<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>为了激活拦截器，您需要从*默认导出*的<code>axios-auth-refresh</code>导入一个函数，并使用想要拦截器的**axios 实例**调用它，以及需要编写刷新授权逻辑的**刷新授权函数**。</p>
-<p>然后拦截器将被绑定到 axios 实例上，当从服务器(或您在选项中提供的任何其他状态代码)返回<a href="https://httpstatuses.com/401">401 (Unauthorized)</a>状态代码时，指定的逻辑就会运行。
-在 refreshAuthLogic 处理期间创建的所有新请求都将被绑定到从 refreshAuthLogic 函数返回的 Promise 上。这意味着当获取新的访问令牌或刷新逻辑失败时，请求将得到解决。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;axios&#39;</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">createAuthRefreshInterceptor</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;axios-auth-refresh&#39;</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1">// Function that will be called to refresh authorization</span><span class="w"></span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">refreshAuthLogic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">failedRequest</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"></span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="nx">axios</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;https://www.example.com/auth/token/refresh&#39;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">tokenRefreshResponse</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">      </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">tokenRefreshResponse</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">token</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">      </span><span class="nx">failedRequest</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;Authorization&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">        </span><span class="s1">&#39;Bearer &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">tokenRefreshResponse</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="p">});</span><span class="w"></span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="c1">// Instantiate the interceptor</span><span class="w"></span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="nx">createAuthRefreshInterceptor</span><span class="p">(</span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="nx">refreshAuthLogic</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1">// Make a call. If it returns a 401 error, the refreshAuthLogic will be run,</span><span class="w"></span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="c1">// and the request retried with the new token</span><span class="w"></span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="nx">axios</span><span class="w"></span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">  </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://www.example.com/restricted/area&#39;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">);</span><span class="w"></span>
+</div>
+</div>
+</div>
+<p>现在，在您的终端中，使用以下命令启动重复：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$ npm run start -- --entryFile repl
 </code></pre></div></td></tr></table></div>
-<h4 id="_6">跳过拦截器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><img alt="⚠" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/26a0.svg" title=":warning:" /> 由于错误<a href="https://github.com/axios/axios/issues/2295">axios#2295</a>不支持 v0.19.0。 <img alt="⚠" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/26a0.svg" title=":warning:" /></p>
-<p><img alt="✅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2705.svg" title=":white_check_mark:" /> 这个问题已经修复，将在 axios v0.19.1 中发布</p>
-<p>对于特定的调用，有可能跳过拦截器的逻辑。
-要做到这一点，你需要为每个你不想拦截的请求传递<code>skipAuthRefresh</code>选项到请求配置。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://www.example.com/&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">skipAuthRefresh</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="admonition info">
+<p class="admonition-title"><code>repl</code> 返回一个<a href="https://nodejs.org/api/repl.html">node.js REPL 服务器</a>对象。</p>
+</div>
+<p>启动并运行后，您应该在控制台中看到以下消息：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>LOG <span class="o">[</span>NestFactory<span class="o">]</span> Starting Nest application...
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>LOG <span class="o">[</span>InstanceLoader<span class="o">]</span> AppModule dependencies initialized
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>LOG REPL initialized
 </code></pre></div></td></tr></table></div>
-<p>如果你使用的是 TypeScript，你可以从<code>axios-auth-refresh</code>中导入自定义请求配置接口。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AxiosAuthRefreshRequestConfig</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;axios-auth-refresh&#39;</span><span class="p">;</span><span class="w"></span>
+<p>现在，您可以开始与依赖关系图进行交互。
+例如，你可以检索一个<code>AppService</code>(我们在这里使用 starter 项目作为示例)并调用<code>getHello()</code>方法:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nx">get</span><span class="p">(</span><span class="nx">AppService</span><span class="p">).</span><span class="nx">getHello</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="s1">&#39;Hello World!&#39;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h4 id="_7">请求拦截器<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>由于这个插件会在刷新令牌的同时自动停止其他请求，所以将请求逻辑**包装在一个函数中**是一个好主意，以确保暂停的请求使用了新获取的数据(比如令牌)。</p>
-<p>发送令牌的示例:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-5-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">// Obtain the fresh token each time the function is called</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getAccessToken</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c1">// Use interceptor to inject the token to requests</span><span class="w"></span>
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="nx">axios</span><span class="p">.</span><span class="nx">interceptors</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">request</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">  </span><span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;Authorization&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Bearer </span><span class="si">${</span><span class="nx">getAccessToken</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">request</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">});</span><span class="w"></span>
+<p>你可以在你的终端中执行任何 JavaScript 代码，例如，将<code>AppController</code>的实例分配给一个局部变量，并使用<code>await</code>调用一个异步方法:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nx">appController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">get</span><span class="p">(</span><span class="nx">AppController</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nx">AppController</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">appService</span><span class="o">:</span><span class="w"> </span><span class="kt">AppService</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="o">&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">appController</span><span class="p">.</span><span class="nx">getHello</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="s1">&#39;Hello World!&#39;</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h2 id="_8">可用选项<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h4 id="_9">要拦截的状态代码<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>您可以指定多个希望拦截器运行的状态代码。</p>
+<p>要显示给定提供者或控制器上可用的所有公共方法，使用<code>methods()</code>函数，如下所示:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span><span class="nx">statusCodes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">401</span><span class="p">,</span><span class="w"> </span><span class="mf">403</span><span class="p">];</span><span class="w"> </span><span class="c1">// default: [ 401 ]</span><span class="w"></span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">}</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nx">methods</span><span class="p">(</span><span class="nx">AppController</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nx">Methods</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w"> </span><span class="err">◻</span><span class="w"> </span><span class="nx">getHello</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h4 id="_10">自定义拦截逻辑<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>您可以指定多个希望拦截器运行的状态代码。</p>
+<p>使用<code>debug()</code>将所有已注册的模块连同它们的控制器和提供者以列表的形式打印出来。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
 <span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="nx">shouldRefresh</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"></span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="nx">error</span><span class="o">?</span><span class="p">.</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">business_error_code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">100385</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="p">}</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="o">&gt;</span><span class="w"> </span><span class="nx">debug</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nx">AppModule</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">controllers</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="err">◻</span><span class="w"> </span><span class="nx">AppController</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">providers</span><span class="o">:</span><span class="w"></span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">  </span><span class="err">◻</span><span class="w"> </span><span class="nx">AppService</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h4 id="_11">停止请求的重试实例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>您可以指定用于重试停止的请求的实例。
-默认值为<code>undefined</code>，并使用传递给<code>createAuthRefreshInterceptor</code>函数的实例。</p>
+<p>Quick demo:</p>
+<figure><img src="../../assets/repl.gif" alt="REPL example" /></figure>
+
+<p>您可以在下一节中找到有关现有的预定义本机方法的更多信息。</p>
+<h2 id="_2">本机函数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>The built-in NestJS REPL comes with a few native functions that are globally available when you start REPL. You can call <code>help()</code> to list them out.</p>
+<p>If you don't recall what's the signature (ie: expected parameters and a return type) of a function, you can call <code>&lt;function_name&gt;.help</code>.
+For instance:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
 <span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nx">retryInstance</span><span class="o">:</span><span class="w"> </span><span class="nx">someAxiosInstance</span><span class="p">;</span><span class="w"> </span><span class="c1">// default: undefined</span><span class="w"></span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">}</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>&gt; $.help
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>Retrieves an instance of either injectable or controller, otherwise, throws exception.
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>Interface: $(token: InjectionToken) =&gt; any
 </code></pre></div></td></tr></table></div>
-<h4 id="onretry"><code>onRetry</code> 在发送停止的请求之前回调<a class="headerlink" href="#onretry" title="Permanent link">&para;</a></h4>
-<p>你可以指定<code>onRetry</code>回调，它将在每个暂停的请求被调用之前，使用请求配置对象调用。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span>
-<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nx">onRetry</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">requestConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="p">...</span><span class="nx">requestConfig</span><span class="p">,</span><span class="w"> </span><span class="nx">baseURL</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// default: undefined</span><span class="w"></span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="p">}</span><span class="w"></span>
+<blockquote>
+<p>info <strong>Hint</strong> Those function interfaces are written in <a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#function-type-expressions">TypeScript function type expression syntax</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>debug</code></td>
+<td>Print all registered modules as a list together with their controllers and providers.</td>
+<td><code>debug(moduleCls?: ClassRef \| string) =&gt; void</code></td>
+</tr>
+<tr>
+<td><code>get</code> or <code>$</code></td>
+<td>Retrieves an instance of either injectable or controller, otherwise, throws exception.</td>
+<td><code>get(token: InjectionToken) =&gt; any</code></td>
+</tr>
+<tr>
+<td><code>methods</code></td>
+<td>Display all public methods available on a given provider or controller.</td>
+<td><code>methods(token: ClassRef \| string) =&gt; void</code></td>
+</tr>
+<tr>
+<td><code>resolve</code></td>
+<td>Resolves transient or request-scoped instance of either injectable or controller, otherwise, throws exception.</td>
+<td><code>resolve(token: InjectionToken, contextId: any) =&gt; Promise&lt;any&gt;</code></td>
+</tr>
+<tr>
+<td><code>select</code></td>
+<td>Allows navigating through the modules tree, for example, to pull out a specific instance from the selected module.</td>
+<td><code>select(token: DynamicModule \| ClassRef) =&gt; INestApplicationContext</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">观看模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>During development it is useful to run REPL in a watch mode to reflect all the code changes automatically:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>$ npm run start -- --watch --entryFile repl
 </code></pre></div></td></tr></table></div>
-<h4 id="_12">在“刷新逻辑”运行时暂停实例<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>当您的刷新逻辑运行时，拦截器将为每个返回指定的<code>options.statusCodes</code>之一的请求(默认为 HTTP 401)触发。</p>
-<p>为了防止拦截器循环(当你的刷新逻辑由于<code>options.statusCodes</code>中指定的任何状态代码而失败时)，你需要在<code>refreshAuthLogic</code>函数内的刷新调用中使用<a href="#skip-the-interceptor"><code>skipAuthRefresh</code></a>标志。</p>
-<p>如果您的刷新逻辑不进行任何调用，您应该考虑在初始化拦截器时使用以下标志，以便在刷新挂起时暂停整个 axios 实例。
-这将防止拦截器对每个失败的请求运行。</p>
+<p>This has one flaw, the REPL's command history is discarded after each reload which might be cumbersome.
+Fortunately, there is a very simple solution. Modify your <code>bootstrap</code> function like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
-<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nx">pauseInstanceWhileRefreshing</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// default: false</span><span class="w"></span>
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">}</span><span class="w"></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span>
+<span class="normal"><a href="#__codelineno-10-7">7</a></span>
+<span class="normal"><a href="#__codelineno-10-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">bootstrap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">replServer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">repl</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">  </span><span class="nx">replServer</span><span class="p">.</span><span class="nx">setupHistory</span><span class="p">(</span><span class="s1">&#39;.nestjs_repl_history&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">  </span><span class="p">});</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<h4 id="_13">拦截网络错误<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>当返回一个 HTTP 401 Unauthorized 响应时，一些 CORS api 可能不会返回 CORS 响应头。
-在这种情况下，浏览器将无法读取响应头来确定响应状态代码。</p>
-<p>要拦截*any*网络错误，启用<code>interceptNetworkError</code>选项。</p>
-<p>CAUTION: 这应该作为最后的手段。如果此方法用于处理带有 HTTP 401 响应的不支持 CORS 的 API，则重试逻辑可以测试尝试刷新身份验证的网络连通性。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
-<span class="normal"><a href="#__codelineno-11-2">2</a></span>
-<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nx">interceptNetworkError</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// default: undefined</span><span class="w"></span>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
-<h3 id="_14">库的其他用途<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>这个库还被用于:</p>
-<ul>
-<li>自动请求节流<a href="https://github.com/amcsi">@amcsi</a></li>
-<li>Google2FA 的 OTP 挑战<a href="https://github.com/LeoniePhiline">@LeoniePhiline</a></li>
-</ul>
-<p>你把它用在别的地方了吗?用你的用例创建一个公共关系来分享它。</p>
-<hr />
-<h3 id="_15">更新日志<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><strong>v3.1.0</strong></p>
-</li>
-<li>
-<p>axios v0.21.1 支持</p>
-</li>
-<li>
-<p><code>interceptNetworkError</code> . See <a href="https://github.com/Flyrell/axios-auth-refresh/issues/133">#133</a>.</p>
-</li>
-<li>
-<p><strong>v3.0.0</strong></p>
-</li>
-<li><code>skipWhileRefresh</code> flag has been deprecated due to its unclear name and its logic has been moved to <code>pauseInstanceWhileRefreshing</code> flag</li>
-<li><code>pauseInstanceWhileRefreshing</code> is set to <code>false</code> by default</li>
-</ul>
+<p>Now the history is preserved between the runs/reloads.</p>
 
 
 
@@ -5113,7 +4860,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../axios/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Axios" rel="prev">
+        <a href="../../openapi/migration-guide/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 迁移向导" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -5122,20 +4869,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              Axios
+              迁移向导
             </div>
           </div>
         </a>
       
       
         
-        <a href="../nest-axios-interceptor/" class="md-footer__link md-footer__link--next" aria-label="下一页: @narando/nest-axios-interceptor" rel="next">
+        <a href="../crud-generator/" class="md-footer__link md-footer__link--next" aria-label="下一页: CRUD 生成器" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              @narando/nest-axios-interceptor
+              CRUD 生成器
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -5198,10 +4945,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "navigation.indexes", "content.code.annotate", "navigation.top"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "navigation.indexes", "content.code.annotate", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
       
     
     
