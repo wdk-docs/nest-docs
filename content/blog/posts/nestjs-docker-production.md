@@ -431,7 +431,7 @@ bootstrap();
 
 ## 结论
 
-总之，这里是我们为一个 NestJS 项目优化的 Docker 镜像(没有所有的解释注释):
+总之，这里是我们为一个 NestJS 项目优化的 Docker 图像(没有所有的解释器注释):
 
 ```dockerfile title="Dockerfile"
 ###################
